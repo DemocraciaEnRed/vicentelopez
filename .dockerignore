@@ -1,0 +1,13 @@
+.git
+.gitignore
+.DS_Store
+.dockerignore
+docker-compose*.yml
+node_modules
+./tmp
+
+# Docs
+*.md
+
+# Never leave out the license
+!LICENSE

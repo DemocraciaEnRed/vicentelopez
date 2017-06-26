@@ -1,0 +1,5 @@
+.DS_Store
+/*.override.yml
+node_modules
+public
+tmp
