@@ -30,7 +30,7 @@ export default class HomeForumExt extends HomeForum {
         )}
         {topics.length > 0 && (
           <div className='container'>
-            <p>Here's a list of all your Topics:</p>
+            <p>topics:</p>
             <ul>
               {topics.map((topic) => (
                 <li>
