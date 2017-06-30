@@ -8,7 +8,7 @@ export default function Footer (props) {
         <div className='row'>
           <div
             className='col-xs-6 col-md-6'>
-            <h3>Contacto</h3>
+            <h3>CONTACTO</h3>
             <p
               className='datos-contacto'>
                 <span>Subsecretaría de Participación Ciudadana </span>

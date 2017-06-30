@@ -9,14 +9,9 @@ export default function BarriosBotones (props) {
             className='row'>
 
               <div
-                className='col-md-4 offset-md-4'>
+                className='barrio-verde'>
 
-                <div
-                 className
-                    ="boton-verde">
-                    <h2>BARRIOS</h2>
-                </div>
-
+                  <h2>BARRIOS</h2>
 
               </div>
 
@@ -24,104 +19,104 @@ export default function BarriosBotones (props) {
 
           </div>
           <div
-            className='row'>
+            className='row seccion-botones'>
 
               <div
-                className='col-xs-3 offset-xs-2 col-md-2 offset-md-1'>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
-                    ="btn boton-azul">
+                    =" boton-azul btn">
                     <h3>CARAPACHAY</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-3 col-md-2 '>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>FLORIDA ESTE</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-2 col-md-2'>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>FLORIDA OESTE</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-2 col-md-2'>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>LA LUCILA</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-2 col-md-2'>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>MUNRO</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-3 offset-xs-1 col-md-2 offset-md-1'>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>OLIVOS</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-3 offset-xs-1 col-md-5'>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>VICENTE LÓPEZ</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-3 offset-xs-1 col-md-5'>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>VILLA ADELINA</h3>
-                </button>
+                </button></a>
 
 
               </div>
               <div
-                className='col-xs-3 offset-xs-1 '>
+                className='contenedor-boton'>
 
-                <button
+                <a href='#'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>VILLA MARTELLI</h3>
-                </button>
+                </button></a>
 
 
               </div>
