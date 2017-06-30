@@ -11,3 +11,8 @@ import * as HomeMultiForum from 'lib/site/home-multiforum/component'
 import HomeMultiForumExt from 'ext/lib/site/home-multiforum/component'
 
 HomeMultiForum.default = HomeMultiForumExt
+
+import * as Header from 'lib/header/component'
+import HeaderExt from 'ext/lib/site/header/component'
+
+Header.default = HeaderExt
