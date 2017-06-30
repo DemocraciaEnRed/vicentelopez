@@ -14,25 +14,7 @@ export default function HomeMultiforumOverride (props) {
   return (
     <div className='ext-home-multiforum'>
 
-      <div className='ext-home-cover' style={{
-          backgroundImage: `url("${video.image}")`
-        }}>
-        {window.innerWidth >= 768 && (
-          <div className='banner'>
-            <div className='video'>
-              <video
-                playsInline
-                autoPlay
-                muted
-                loop
-                poster={video.image}
-                id='bgvid'>
-                <source src={video.video} type='video/mp4' />
-              </video>
-            </div>
-          </div>
-        )}
-      </div>
+      
       <BannerForoVecinal />
       <ThumbsVoto />
       <BarriosBotones />
