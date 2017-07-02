@@ -5,15 +5,15 @@ import React from 'react'
 export default function BannerForoVecinal (props) {
 
   return (
-    <section className="seccion-general">
+    <section className="container-fluid seccion-general ">
       <div className="banner">
 
       </div>
       <div
-        className='contenedor'>
+        className='contenedor row'>
           <div
-            className='fondo-titulo center-block'>
-              <h1>FOROS VECINALES</h1>
+            className='col-md-6 offset-md-3 '>
+              <h1 className='fondo-titulo'>FOROS VECINALES</h1>
           </div>
       </div>
     </section>
