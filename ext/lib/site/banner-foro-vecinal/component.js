@@ -12,7 +12,7 @@ export default function BannerForoVecinal (props) {
       <div
         className='contenedor row'>
           <div
-            className='col-md-6 offset-md-3 '>
+            className=''>
               <h1 className='fondo-titulo'>FOROS VECINALES</h1>
           </div>
       </div>

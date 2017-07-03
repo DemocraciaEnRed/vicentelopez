@@ -37,7 +37,7 @@ export default function Footer (props) {
         <div
           className='row'>
           <div
-            className='col-xs-5 col-md-4 social-icon'>
+            className='col-xs-6 col-md-4 social-icon'>
             <div
               className='social-facebook'>
             </div>
@@ -49,7 +49,7 @@ export default function Footer (props) {
             </div>
           </div>
           <div
-              className='col-xs-6 col-md-4 offset-md-4 logo'>
+              className='col-xs-6 col-md-3 offset-md-5 logo'>
 
           </div>
 
@@ -57,16 +57,16 @@ export default function Footer (props) {
 
 
 
+        <div
+          className='row'>
           <div
-            className='row'>
-            <div
-              className='col-xs-6 col-md-4'>
+            className='col-xs-6 col-md-4'>
 
 
-                <p>TÉRMINOS Y CONDICIONES</p>
-            </div>
-
+              <p className='terminos'>TÉRMINOS Y CONDICIONES</p>
           </div>
+
+        </div>
 
 
 
