@@ -5,14 +5,20 @@
   display: -webkit-flex
   display: flex
   flex-wrap: wrap
+  h2
+  h3
+    font-weight: 500
   .row
     width: 100%
+  .cont-barrio
+    margin-top: 3%
+    text-align: center
   .barrio-verde
     display: block
     // background-color: #7cbb42
     text-align: center
-    width: 33%
-    margin: 3% 0 0 33%
+    // width: 33%
+    // margin: 3% 0 0 33%
     color: white
     // box-shadow: 0 6px 4px -2px unquote("rgba(0, 0, 0, 0.24)"), 0 0 2px 0 unquote("rgba(0, 0, 0, 0.12)")
 
@@ -21,9 +27,9 @@
     h2
       color: #93c01f
       padding: 0
-  h3
-    font-size: 1.4rem
-    margin: 0
+      margin: 0
+      font-size: 4rem
+
   .seccion-botones
     margin: 3% 0
     align-items: center
@@ -33,15 +39,21 @@
     margin: 3% 0 0 5%
   .boton-azul
     background-color: #1791be
-    height: 80px
     color: white
-    font-weight: 300
     box-shadow: 0 6px 4px -2px unquote("rgba(0, 0, 0, 0.24)"), 0 0 2px 0 unquote("rgba(0, 0, 0, 0.12)")
-    // padding: 10% 8%
-    // font-size: 1.3em
+
     display: inline-block
     a
       color white
+    h3
+      margin: 0
+      font-size: 4vw
+
+    @media screen and (min-width: 764px)
+      line-height: 24px
+      height: 77px
+      h3
+        font-size: 1.88rem
 
   button:hover
     background-color: #106c8e

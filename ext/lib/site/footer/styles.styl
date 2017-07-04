@@ -3,29 +3,39 @@
 
   background-color: #595959
   width: 100%
+  font-size: 2.5vw
+  @media screen and (min-width: 614px)
+    font-size: 1.5em
+    line-height: 24px
   .datos-contacto
     margin-left: 3.62%
-    font-size: 1.5em
     font-weight: 300
-    line-height: 24px
+
     text-align: left
     color: #ffffff
   .datos-contacto span:first-child
-    font-weight: bold
+    font-family: 'BrandonGrotesqueBold', sans-serif
   h3
     color: white
     border-bottom: solid 1px #76b72a
     padding-bottom: 10px
-    font-weight: bold
+    // font-weight: bold
     margin-left: 3.62%
+    font-size: 3vw
+    @media screen and (min-width: 1000px)
+      font-size: 1.25rem
+      line-height: 24px
 
   p
     color: #d8d8d8
   span
     color: #d8d8d8
     display: block
+    font-weight: 300
+
   span:first-child
     color: white
+    margin-bottom: 3%
 
   .mapa
     background-image: unquote("url('ext/lib/site/footer/mapa.svg')")
@@ -39,34 +49,30 @@
 
   .logo
     background-image: unquote("url('ext/lib/site/footer/vicente-lopez-footer.svg')")
-    height: 120px
+    height: 83px
     background-repeat: no-repeat
-    background-size: 100% 100%
-    // background-position: center
-    // top: 32
+    background-position: right
     display: auto
-    position: relative
-    // width: 300px
-    // padding: 0
-    // margin-right: 45%
+    margin-top: 15%
 
 
 
   .social-icon
     width: 50px
     height: 50px
-    margin-bottom: 5px
-    margin-top: 5px
     .social-facebook
     .social-twitter
     .social-mail
       background-repeat: no-repeat
-      width: 50px
-      height: 50px
-      margin-right: 10%
+      background-size: cover
+      width: 25px
+      height: 25px
+      margin-right: 5%
       display: inline-block
-      float: left
       margin-bottom:10px
+      @media screen and (min-width: 614px)
+        width: 50px
+        height: 50px
     .social-facebook
       background-image: unquote("url('ext/lib/site/footer/facebook-c.svg')")
       margin-left: 3.62%
@@ -75,5 +81,9 @@
     .social-mail
       background-image: unquote("url('ext/lib/site/footer/email-c.svg')")
   .terminos
-    margin-left: 3.62%
-    font-size: 1.3rem
+    margin: 0 0 0 3.62%
+    display: block
+    padding: 0
+    font-size: 2vw
+    @media screen and (min-width: 676px)
+      font-size: 1.3rem

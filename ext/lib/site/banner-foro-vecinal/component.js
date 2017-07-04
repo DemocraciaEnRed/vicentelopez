@@ -12,8 +12,8 @@ export default function BannerForoVecinal (props) {
       <div
         className='contenedor row'>
           <div
-            className=''>
-              <h1 className='fondo-titulo'>FOROS VECINALES</h1>
+            className='fondo-titulo'>
+              <h1 className=''>FOROS VECINALES</h1>
           </div>
       </div>
     </section>

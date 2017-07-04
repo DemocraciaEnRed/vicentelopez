@@ -11,7 +11,8 @@ export default function Footer (props) {
             <h3>CONTACTO</h3>
             <p
               className='datos-contacto'>
-                <span>Subsecretaría de Participación Ciudadana </span>
+                <span>Subsecretaría de Participación Ciudadana</span>
+                <span>Secretaría de Gobierno y Asuntos Interjurisdiccionales</span>
                 <span>Interjurisdiccionales </span>
                 <span>Juan B. Alberdi 830 </span>
                 <span>CP1636, Olivos.</span>
@@ -21,7 +22,7 @@ export default function Footer (props) {
           <div
             className='col-xs-6 col-md-4 offset-md-2'>
             <div
-              className='mapa img-responsive pull-right'>
+              className='mapa'>
             </div>
           </div>
         </div>
@@ -34,42 +35,34 @@ export default function Footer (props) {
           </div>
         </div>
 
-        <div
-          className='row'>
-          <div
-            className='col-xs-6 col-md-4 social-icon'>
-            <div
-              className='social-facebook'>
-            </div>
-            <div
-              className='social-twitter'>
-            </div>
-            <div
-              className='social-mail'>
-            </div>
-          </div>
-          <div
-              className='col-xs-6 col-md-3 offset-md-5 logo'>
-
-          </div>
-
-        </div>
-
-
 
         <div
           className='row'>
-          <div
-            className='col-xs-6 col-md-4'>
+            <div
+              className='col-xs-6 col-md-6 social-icon'>
+                <div
+                  className='social-facebook'>
+                </div>
+                <div
+                  className='social-twitter'>
+                </div>
+                <div
+                  className='social-mail'>
+                </div>
 
+                <div
+                  className='terminos'>
+                    <p>TÉRMINOS Y CONDICIONES</p>
+                </div>
 
-              <p className='terminos'>TÉRMINOS Y CONDICIONES</p>
-          </div>
+            </div>
+            <div
+              className='col-xs-6 col-sm-6 col-md-4 offset-md-2'>
+                <div className='logo'> </div>
+
+            </div>
 
         </div>
-
-
-
 
       </footer>
   )
