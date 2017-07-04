@@ -11,6 +11,9 @@
     "lib/config": "lib/config/config"
   },
   "license": "GPL-3.0",
+  "dependencies": {
+    "flickity": "^2.0.8"
+  },
   "devDependencies": {
     "eslint": ">=3.0.0",
     "eslint-config-democracyos": "*"
