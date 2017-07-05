@@ -7,7 +7,7 @@ import Footer from 'ext/lib/site/footer/component'
 import BarriosBotones from 'ext/lib/site/barrios-botones/component'
 import ThumbsVoto from 'ext/lib/site/thumbs-voto/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
-import HomeConsultas from 'ext/lib/site/carrusel/carrusel'
+import Carrusel from 'ext/lib/site/carrusel/component'
 
 export default function HomeMultiforumOverride (props) {
   const video = videos[Math.floor(Math.random() * videos.length)]
@@ -19,7 +19,7 @@ export default function HomeMultiforumOverride (props) {
       <BannerForoVecinal />
       <ThumbsVoto />
       <BarriosBotones />
-      <HomeConsultas />
+      <Carrusel />
       <Footer />
 
     </div>

@@ -1,0 +1,181 @@
+.ext-topic-card
+  display: flex
+  flex-direction: column
+  z-index: 0
+  position: relative
+  margin: 15px
+  width: 350px
+  box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)
+  color: inherit
+  transition: all .3s unquote('cubic-bezier(.25,.8,.25,1)')
+  background-color: #fff
+  overflow: hidden
+
+  &:hover
+    box-shadow 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23)
+
+  .topic-card-cover
+    display: block
+    position: relative
+    width: 100%
+    background-size: cover
+    background-position: center
+    background-color: #efefef
+
+    &:after
+      content ''
+      display block
+      padding-top 50%
+
+  .topic-card-info
+    border-top: 4px solid #00adef
+    flex-grow: 2
+    display: flex
+    flex-direction: column
+    padding: 15px
+
+  .topic-card-title
+    margin: 0 0 .8em
+    color: #444
+    font-size: 1.5em
+    font-weight: 400
+    line-height: 1.3
+
+    a
+      font-weight: inherit
+      color: inherit
+
+      &:hover
+        text-decoration: none
+
+  .topic-card-tags
+    .badge
+      margin-right: 5px
+      margin-bottom: 5px
+
+  .topic-card-description
+    margin: 0 0 1.2em
+    color: #444
+    font-weight: 300
+    line-height: 1.25
+    font-size: 1em
+
+    a
+      font-weight: inherit
+      color: inherit
+
+      &:hover
+        text-decoration: none
+
+.presupuesto-topic-card
+  width: 260px
+
+  &.has-votes
+    .budget
+      color: #A5A9AA
+      font-weight: 400
+
+  &.proyectado
+    .state
+      background-color: #00adef
+
+    .topic-card-info
+      border-top-color: #00adef
+
+  &.finalizado
+    .state
+      background-color: #30aa2d
+
+    .topic-card-info
+      border-top-color: #30aa2d
+
+  &.ejecutandose
+    .state
+      background-color: #F39431
+
+    .topic-card-info
+      border-top-color: #F39431
+
+  .topic-card-info
+    border-top-color: #999
+    position: relative
+
+  .state
+    z-index: 10
+    position: absolute
+    right: 0
+    top: -107px
+    padding: 7px 16px
+    line-height: 1
+    color: #fff
+    font-size: 21px
+    font-weight: 500
+    background-color: #00adef
+
+  .topic-results
+    padding: 12px 15px 9px
+    color: #00adef
+    border-bottom: 1px solid #00adef
+
+    h2,
+    p
+      margin: 0
+      color: inherit
+      text-transform: uppercase
+      font-weight: 600
+
+    h2
+      font-size: 20px
+
+    p
+      font-size: 14px
+
+  .topic-location
+    color: #a5a9aa
+    font-size: 13px
+    margin-bottom: 0.8em
+
+    i
+      margin-right: .5em
+
+  .number
+    float: right
+
+  .topic-card-title
+    font-size: 1.125em
+
+  .topic-card-body
+    flex: 1
+
+  .topic-card-footer
+    text-align: right
+    align-self: flex-end
+    width: 100%
+    position: relative
+
+  .budget
+    margin: 0
+    color: #999
+    font-weight: 900
+    line-height: 1
+    font-size: 24px
+
+  .social-links
+    position: absolute
+    font-size: 20px
+
+    span
+      cursor: pointer
+      margin-right: 7px
+      color: #999
+
+    .wp
+      width: 25px
+      height: 20px
+      background-size: contain
+      background-repeat: no-repeat
+      display: inline-block
+      margin-top: 0
+      background-image: unquote("url('/ext/lib/site/topic-layout/whatsapp-logo-gris.svg')")
+
+@import '../../../node_modules/flickity/css/flickity.css'
