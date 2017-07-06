@@ -34,16 +34,13 @@ export default ({ topic, forum }) => {
   // if (topic.attrs && topic.attrs.state) classNames.push(topic.attrs.state.toLowerCase())
   return (
     <div className={classNames.join(' ')}>
-      {topic.coverUrl && (
-        <Link
-          to={topic.url}
-          className='topic-card-cover'
-          style={{ backgroundImage: `url(${topic.coverUrl})` }} />
-      )}
-      {topic.attrs && (
-        <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
-      )}
-      <span>{topic.attrs && topic.attrs.area && topic.attrs.area !== '0' ? `Área Barrial ${topic.attrs.area}` : topic.attrs && topic.attrs.district ? `Distrito ${distritos[topic.attrs.district]}` : ''}</span>
+      <div
+        className='portada topic-card-cover' style={{ backgroundImage: `url(${topic.coverUrl})` }}>
+
+          {topic.attrs && (
+            <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
+          )}
+      </div>
       {topic.extra && typeof topic.extra.votes === 'number' && (
         <div className='topic-results'>
           <h2>{prettyDecimals(topic.extra.votes)} Votos</h2>
@@ -87,8 +84,7 @@ export default ({ topic, forum }) => {
             <span
               onClick={handleLinkClick}
               target='_blank'
-              href='#'>
-              <i className='linkclipboard-icon' />
+              href='#' className='linkclipboard-icon'>
             </span>
             {window.innerWidth <= 630 &&
               <span

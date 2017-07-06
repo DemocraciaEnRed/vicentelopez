@@ -12,8 +12,9 @@
   color: inherit
   transition: all .3s unquote('cubic-bezier(.25,.8,.25,1)')
   background-color: #fff
-  content: counter(carousel-cell)
+  counter-increment: carousel-cell;
   // overflow: hidden
+
 
   &:hover
     box-shadow 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23)
@@ -175,47 +176,28 @@
       margin-right: 7px
       color: #999
 
-    // .wp
-    // & .twitter-icon
-    // & .facebook-icon
-    // & .linkclipboard-icon
-    //   width: 25px
-    //   height: 20px
-    //   background-size: contain
-    //   background-repeat: no-repeat
-    //   display: inline-block
-    //   margin-top: 0
+    .wp
+    .twitter-icon
+    .facebook-icon
+    .linkclipboard-icon
+      width: 30px
+      height: 30px
+      background-size: cover
+      background-repeat: no-repeat
+      display: inline-block
+      margin-top: 0
     .wp
       background-image: unquote("url('ext/lib/site/carrusel/whatsapp.svg')")
-      width: 30px
-      height: 30px
-      background-size: contain
-      background-repeat: no-repeat
-      display: inline-block
-      margin-top: 0
+
     .twittericon
       background-image: unquote("url('ext/lib/site/carrusel/twitter.svg')")
-      width: 30px
-      height: 30px
-      background-size: contain
-      background-repeat: no-repeat
-      display: inline-block
-      margin-top: 0
+
     .facebookicon
       background-image: unquote("url('ext/lib/site/carrusel/facebook.svg')")
-      width: 30px
-      height: 30px
-      background-size: contain
-      background-repeat: no-repeat
-      display: inline-block
-      margin-top: 0
+
     .linkclipboardicon
       background-image: unquote("url('ext/lib/site/carrusel/linkclipboard.svg')")
-      width: 30px
-      height: 30px
-      background-size: contain
-      background-repeat: no-repeat
-      display: inline-block
-      margin-top: 0
+
+
 
 @import '../../../node_modules/flickity/css/flickity.css'

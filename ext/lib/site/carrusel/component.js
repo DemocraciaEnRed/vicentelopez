@@ -44,7 +44,7 @@ export default class Carrusel extends Component{
       <div className='carrusel-seccion container-fluid'>
         <div className='row'>
           <div className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
-            <div className='barrio-verde'>
+            <div className='titulo-verde'>
               <h2>Proyectos</h2>
             </div>
           </div>
