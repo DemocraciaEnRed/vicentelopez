@@ -1,15 +1,19 @@
 .ext-topic-card
-  display: flex
+  font-family: 'Roboto', sans-serif
+  display: inline-block
   flex-direction: column
   z-index: 0
   position: relative
-  margin: 15px
-  width: 350px
+  margin-left: 4.5%
+  margin-top: 4%
+  width: 24.79%
+  // height: 33.75%
   box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)
   color: inherit
   transition: all .3s unquote('cubic-bezier(.25,.8,.25,1)')
   background-color: #fff
-  overflow: hidden
+  content: counter(carousel-cell)
+  // overflow: hidden
 
   &:hover
     box-shadow 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23)
@@ -18,9 +22,11 @@
     display: block
     position: relative
     width: 100%
+    // height: 227px
     background-size: cover
     background-position: center
     background-color: #efefef
+
 
     &:after
       content ''
@@ -28,7 +34,7 @@
       padding-top 50%
 
   .topic-card-info
-    border-top: 4px solid #00adef
+    // border-top: 4px solid #00adef
     flex-grow: 2
     display: flex
     flex-direction: column
@@ -36,13 +42,15 @@
 
   .topic-card-title
     margin: 0 0 .8em
-    color: #444
+    color: #93c01f
     font-size: 1.5em
-    font-weight: 400
+    font-weight: 700
     line-height: 1.3
+    text-transform: uppercase
+    font-family: 'Roboto', sans-serif
 
     a
-      font-weight: inherit
+      // font-weight: inherit
       color: inherit
 
       &:hover
@@ -67,8 +75,6 @@
       &:hover
         text-decoration: none
 
-.presupuesto-topic-card
-  width: 260px
 
   &.has-votes
     .budget
@@ -79,25 +85,25 @@
     .state
       background-color: #00adef
 
-    .topic-card-info
-      border-top-color: #00adef
+    // .topic-card-info
+      // border-top-color: #00adef
 
   &.finalizado
     .state
       background-color: #30aa2d
 
-    .topic-card-info
-      border-top-color: #30aa2d
+    // .topic-card-info
+      // border-top-color: #30aa2d
 
   &.ejecutandose
-    .state
-      background-color: #F39431
+    // .state
+      // background-color: #F39431
 
     .topic-card-info
-      border-top-color: #F39431
+      // border-top-color: #F39431
 
   .topic-card-info
-    border-top-color: #999
+    // border-top-color: #999
     position: relative
 
   .state
@@ -169,13 +175,47 @@
       margin-right: 7px
       color: #999
 
+    // .wp
+    // & .twitter-icon
+    // & .facebook-icon
+    // & .linkclipboard-icon
+    //   width: 25px
+    //   height: 20px
+    //   background-size: contain
+    //   background-repeat: no-repeat
+    //   display: inline-block
+    //   margin-top: 0
     .wp
-      width: 25px
-      height: 20px
+      background-image: unquote("url('ext/lib/site/carrusel/whatsapp.svg')")
+      width: 30px
+      height: 30px
       background-size: contain
       background-repeat: no-repeat
       display: inline-block
       margin-top: 0
-      background-image: unquote("url('/ext/lib/site/topic-layout/whatsapp-logo-gris.svg')")
+    .twittericon
+      background-image: unquote("url('ext/lib/site/carrusel/twitter.svg')")
+      width: 30px
+      height: 30px
+      background-size: contain
+      background-repeat: no-repeat
+      display: inline-block
+      margin-top: 0
+    .facebookicon
+      background-image: unquote("url('ext/lib/site/carrusel/facebook.svg')")
+      width: 30px
+      height: 30px
+      background-size: contain
+      background-repeat: no-repeat
+      display: inline-block
+      margin-top: 0
+    .linkclipboardicon
+      background-image: unquote("url('ext/lib/site/carrusel/linkclipboard.svg')")
+      width: 30px
+      height: 30px
+      background-size: contain
+      background-repeat: no-repeat
+      display: inline-block
+      margin-top: 0
 
 @import '../../../node_modules/flickity/css/flickity.css'

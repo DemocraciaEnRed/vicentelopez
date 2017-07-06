@@ -14,13 +14,13 @@ export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
 
   let state
-  if (topic.attrs && topic.attrs.state) {
-    state = forum.topicsAttrs
-      .find((attr) => attr.name === 'state')
-      .options
-      .find((attr) => attr.name === topic.attrs.state)
-      .title
-  }
+  // if (topic.attrs && topic.attrs.state) {
+  //   state = forum.topicsAttrs
+  //     .find((attr) => attr.name === 'state')
+  //     .options
+  //     .find((attr) => attr.name === topic.attrs.state)
+  //     .title
+  // }
 
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl} #YoVotoPorMiBarrio`)
 
@@ -30,8 +30,8 @@ export default ({ topic, forum }) => {
     classNames.push('has-votes')
   }
 
-  if (topic.attrs && topic.attrs.winner) classNames.push('is-winner')
-  if (topic.attrs && topic.attrs.state) classNames.push(topic.attrs.state.toLowerCase())
+  // if (topic.attrs && topic.attrs.winner) classNames.push('is-winner')
+  // if (topic.attrs && topic.attrs.state) classNames.push(topic.attrs.state.toLowerCase())
   return (
     <div className={classNames.join(' ')}>
       {topic.coverUrl && (
@@ -40,6 +40,10 @@ export default ({ topic, forum }) => {
           className='topic-card-cover'
           style={{ backgroundImage: `url(${topic.coverUrl})` }} />
       )}
+      {topic.attrs && (
+        <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
+      )}
+      <span>{topic.attrs && topic.attrs.area && topic.attrs.area !== '0' ? `Área Barrial ${topic.attrs.area}` : topic.attrs && topic.attrs.district ? `Distrito ${distritos[topic.attrs.district]}` : ''}</span>
       {topic.extra && typeof topic.extra.votes === 'number' && (
         <div className='topic-results'>
           <h2>{prettyDecimals(topic.extra.votes)} Votos</h2>
@@ -50,18 +54,9 @@ export default ({ topic, forum }) => {
       )}
       <div className='topic-card-info'>
         {topic.attrs && topic.attrs.state && (
-          <div className='state'>{state}</div>
+          <div className=''></div>
         )}
-        <div className='topic-location'>
-          <i className='icon-location-pin' />
-          <span>{topic.attrs && topic.attrs.area && topic.attrs.area !== '0' ? `Área Barrial ${topic.attrs.area}` : topic.attrs && topic.attrs.district ? `Distrito ${distritos[topic.attrs.district]}` : ''}</span>
-          {topic.attrs && topic.attrs.number && (
-            <span className='number'>
-              <i className='icon-tag' />
-              {prettyNumber(topic.attrs.number)}
-            </span>
-          )}
-        </div>
+
         <div className='topic-card-body'>
           <h1 className='topic-card-title'>
             <Link to={topic.url}>{topic.mediaTitle}</Link>
@@ -80,8 +75,20 @@ export default ({ topic, forum }) => {
             <span
               onClick={handleLinkClick}
               target='_blank'
+              href='#'>
+              <i className='facebook-icon' />
+            </span>
+            <span
+              onClick={handleLinkClick}
+              target='_blank'
               href={`http://twitter.com/home?status=${twitterDesc}`}>
-              <i className='icon-social-twitter' />
+              <i className='twitter-icon' />
+            </span>
+            <span
+              onClick={handleLinkClick}
+              target='_blank'
+              href='#'>
+              <i className='linkclipboard-icon' />
             </span>
             {window.innerWidth <= 630 &&
               <span
@@ -90,8 +97,15 @@ export default ({ topic, forum }) => {
                 className='wp' />
             }
           </div>
-          {topic.attrs && (
-            <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
+
+        </div>
+        <div className='topic-location'>
+
+          {topic.attrs && topic.attrs.number && (
+            <span className='number'>
+              <i className='icon-tag' />
+              {prettyNumber(topic.attrs.number)}
+            </span>
           )}
         </div>
       </div>

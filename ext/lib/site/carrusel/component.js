@@ -32,23 +32,29 @@ export default class Carrusel extends Component{
   carruselMount = (e) => {
     console.log(e)
     this.flkty = new Flickity(e, {
-      autoPlay: true
+      autoPlay: true,
+      wrapAround: true,
+      contain: true
     })
   }
 
   render(){
     const { forum, topics } = this.state
     return (
-      <div ref={this.carruselMount}>
-        {topics && topics.map((topic, i) => <TopicCard key={topic.id} forum={forum} topic={topic} />)}
+      <div className='carrusel-seccion container-fluid'>
+        <div className='row'>
+          <div className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
+            <div className='barrio-verde'>
+              <h2>Proyectos</h2>
+            </div>
+          </div>
+        </div>
+        <div ref={this.carruselMount}>
+          {topics && topics.map((topic, i) => <TopicCard key={topic.id} forum={forum} topic={topic} />)}
+        </div>
+
       </div>
 
-      // <div ref={this.carruselMount} className='carousel'>
-      //     <div className='cell'>1</div>
-      //     <div className='cell'>2</div>
-      //     <div className='cell'>3</div>
-      //     <div className='cell'>4</div>
-      // </div>
     )
   }
 }
