@@ -1,8 +1,8 @@
 import 'lib/boot/routes'
 import router from 'lib/site/boot/router'
-import TerminosYCondiciones from './pages/terminos-y-condiciones'
+import AcercaDe from './pages/acerca-de'
 
 router.childRoutes.unshift({
-  path: 's/terminos-y-condiciones',
-  component: TerminosYCondiciones
+  path: 's/acerca-de',
+  component: AcercaDe
 })
