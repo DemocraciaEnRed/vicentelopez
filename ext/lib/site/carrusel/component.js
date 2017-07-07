@@ -32,10 +32,10 @@ export default class Carrusel extends Component{
   componentDidUpdate (){
     const carousel = this.refs.carousel;
     const options = {
-        cellSelector: '.ext-topic-card',
-        contain: true,
         initialIndex: 0,
-        accessibility: true
+        accessibility: true,
+        pageDots: false,
+        wrapAround: true
     }
 
     this.flkty = new Flickity(carousel, options);
@@ -48,10 +48,32 @@ export default class Carrusel extends Component{
   render(){
     const { forum, topics } = this.state
     return (
-      <div ref='carousel' >
-        {topics && topics.map((topic, i) => <TopicCard key={topic.id} forum={forum} topic={topic} />)}
+      <div className='carrusel-seccion container-fluid'>
+        <div className='row'>
+          <div
+            className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
+            <div className='titulo-verde' >
+              <h2>Proyectos</h2>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div ref='carousel' >
+            {topics && topics.map((topic, i) => <TopicCard key={topic.id} forum={forum} topic={topic} />)}
+          </div>
+        </div>
+        <div
+          className='row'>
+            <div
+              className='col-xs-12 col-md-4 offset-md-4 cont-boton-azul'>
+                <a href='#'><button
+                  type="button" className
+                    =" boton-azul btn">
+                    <p>VER MÁS</p>
+                </button></a>
+            </div>
+        </div>
       </div>
-
 
     )
   }

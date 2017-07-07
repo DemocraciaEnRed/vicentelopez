@@ -65,33 +65,14 @@ export default ({ topic, forum }) => {
           )}
         </div>
         <div className='topic-card-footer'>
+
           <div className='social-links'>
-            <SharerFacebook
-              className='fb'
-              params={{ picture: topic.coverUrl, link: topicUrl }} />
-            <span
-              onClick={handleLinkClick}
-              target='_blank'
-              href='#'>
-              <i className='facebook-icon' />
-            </span>
-            <span
-              onClick={handleLinkClick}
-              target='_blank'
-              href={`http://twitter.com/home?status=${twitterDesc}`}>
-              <i className='twitter-icon' />
-            </span>
-            <span
-              onClick={handleLinkClick}
-              target='_blank'
-              href='#' className='linkclipboard-icon'>
-            </span>
-            {window.innerWidth <= 630 &&
-              <span
-                onClick={handleLinkClick}
-                href={`whatsapp://send?text=${twitterDesc}`}
-                className='wp' />
-            }
+            <div className='facebook-icon'></div>
+            <div className='twitter-icon'></div>
+            <div className='wp'></div>
+            <div className='linkclipboard-icon'></div>
+
+
           </div>
 
         </div>
@@ -99,7 +80,7 @@ export default ({ topic, forum }) => {
 
           {topic.attrs && topic.attrs.number && (
             <span className='number'>
-              <i className='icon-tag' />
+              
               {prettyNumber(topic.attrs.number)}
             </span>
           )}
