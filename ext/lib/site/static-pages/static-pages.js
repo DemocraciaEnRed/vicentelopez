@@ -15,7 +15,7 @@ import {Route} from 'react-router'
 >>>>>>> Corrige static pages
 import 'lib/boot/routes'
 import router from 'lib/site/boot/router'
-import TerminosYCondiciones from './pages/terminos-y-condiciones'
+import AcercaDe from './pages/acerca-de'
 
 <<<<<<< HEAD
 const site = router.find((route) => route.key === 'lib-site')
@@ -29,7 +29,7 @@ site.props.children.unshift(
 >>>>>>> Agrega static-pages
 =======
 router.childRoutes.unshift({
-  path: 's/terminos-y-condiciones',
-  component: TerminosYCondiciones
+  path: 's/acerca-de',
+  component: AcercaDe
 })
 >>>>>>> Corrige static pages
