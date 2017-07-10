@@ -12,7 +12,8 @@
   },
   "license": "GPL-3.0",
   "dependencies": {
-    "flickity": "^2.0.8"
+    "flickity": "^2.0.8",
+    "string.prototype.padstart": "3.0.0"
   },
   "devDependencies": {
     "eslint": ">=3.0.0",

@@ -9,7 +9,7 @@ export default function BarriosBotones (props) {
             className='row'>
 
               <div
-                className='col-xs-10 offset-xs-2 col-md-8 offset-md-2 cont-barrio'>
+                className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
                   <div
                     className='barrio-verde'>
 

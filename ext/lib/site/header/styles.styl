@@ -1,10 +1,28 @@
 nav.navbar
+  padding: 0 4px
+  @media screen and (min-width: 455px)
+    padding: 0 1rem
+  .navbar-brand
+    padding-top: 0
+    padding-bottom: 0
+    margin: 0
   a
     color: #71bf44
-
+    text-transform: uppercase
+    font-family: 'Roboto', sans-serif
+    font-weight: 400
+    // padding: 0 auto
+  ul
+    margin-top: 15px
+    @media screen and (min-width: 455px)
+      margin-top: 25px
   .navbar-brand
     img
-      height 30px
+      margin-top: 5px
+      height: 45px
+      @media screen and (min-width: 455px)
+        height: 73px
+        margin-top: 0
   .nav-link
     text-transform uppercase
     color inherit
