@@ -115,10 +115,11 @@
       padding: 20px 30px 40px
       &:first-child
         padding-top:0
-        .thumbs
-          margin-top: 0
+        @media screen and (max-width: 500px)
+          .thumbs
+            margin-top: 0
       @media screen and (min-width: 500px)
-          padding: 20px 30px
+        padding: 20px 30px
       @media screen and (min-width: 769px)
         padding: 30px 60px
 

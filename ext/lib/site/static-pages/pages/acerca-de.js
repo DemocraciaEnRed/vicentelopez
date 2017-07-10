@@ -5,6 +5,7 @@ import React from 'react'
 >>>>>>> Agrega assets. Edita maquetado de ACERCA DE
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
+import Carrusel from 'ext/lib/site/carrusel/component'
 
 
 <<<<<<< HEAD
@@ -67,6 +68,7 @@ export default function Page () {
           </div>
         </div>
       </div>
+          <Carrusel />
           <Footer />
 =======
 =======
