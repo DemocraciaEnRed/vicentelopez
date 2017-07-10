@@ -2,7 +2,7 @@
   font-family: 'BrandonGrotesque', sans-serif
   background-color: #595959
   width: 100%
-  font-size: 2.5vw
+  font-size: 14px
   @media screen and (min-width: 850px)
     font-size: 1.5rem
 
@@ -15,6 +15,7 @@
     color: #ffffff
   .datos-contacto span:first-child
     font-family: 'BrandonGrotesqueBold', sans-serif
+    font-size: 16px
 
   h3
     color: white
@@ -22,7 +23,7 @@
     padding-bottom: 10px
     font-weight: bold
     margin-left: 3.62%
-    font-size: 3vw
+    font-size: 20px
     @media screen and (min-width: 750px)
       font-size: 1.25rem
 
@@ -44,56 +45,73 @@
 
   .mapa
     background-image: unquote("url('ext/lib/site/footer/mapa.svg')")
-    display: auto
+    display: block
     position: relative
     height: 25%
     background-repeat: no-repeat
     background-size: cover
     background-position: center
-    margin-top: 10%
-    margin-right: 4.7%
     @media screen and (min-width: 500px)
       height: 250px
+      margin-top: 10%
+      margin-right: 4.7%
 
   .logo
     background-image: unquote("url('ext/lib/site/footer/vicente-lopez-footer.svg')")
-    height: 92px
+    height: 60px
     background-repeat: no-repeat
-    background-position: right
+    background-position: center
+    @media screen and (min-width: 500px)
+      background-position: right
+      height: 92px
     background-size: contain
-    margin-top: 5%
+    margin-top: 10%
+    margin-bottom: 10%
     position: relative
     margin-right: 4.7%
 
 
 
   .social-icon
-    width: 50px
-    height: 50px
+    text-align: center
+    margin: 20px 0
+    @media screen and (min-width: 500px)
+      text-align: left
+
     .social-facebook
     .social-twitter
     .social-mail
       background-repeat: no-repeat
       background-size: cover
-      width: 30px
-      height: 30px
-      margin-right: 5%
+      width: 50px
+      height: 50px
+      margin: 0 5%
       display: inline-block
-      margin-bottom:10px
+      margin-bottom: 10px
       @media screen and (min-width: 500px)
-        width: 50px
-        height: 50px
+        width: 30px
+        height: 30px
     .social-facebook
       background-image: unquote("url('ext/lib/site/footer/facebook-c.svg')")
-      margin-left: 3.62%
     .social-twitter
       background-image: unquote("url('ext/lib/site/footer/twitter-c.svg')")
     .social-mail
       background-image: unquote("url('ext/lib/site/footer/email-c.svg')")
   .terminos
-    margin: 0 0 0 3.62%
+    margin: 10px 0 0
     display: block
     padding: 0
     font-size: 3vw
+    width: 100%
+    @media screen and (min-width: 500px)
+      width: auto
     @media screen and (min-width: 676px)
       font-size: 1.25rem
+
+
+@media screen and (max-width: 500px)
+  .row > div
+    -webkit-flex: 100%;
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
