@@ -39,15 +39,15 @@ export default function Footer (props) {
           className='row'>
             <div
               className='col-xs-6 col-md-6 social-icon'>
-                <div
-                  className='social-facebook'>
-                </div>
-                <div
-                  className='social-twitter'>
-                </div>
-                <div
-                  className='social-mail'>
-                </div>
+                <a
+                  className='social-facebook' href="#">
+                </a>
+                <a
+                  className='social-twitter' href="#">
+                </a>
+                <a
+                  className='social-mail' href="#">
+                </a>
 
                 <div
                   className='terminos'>
