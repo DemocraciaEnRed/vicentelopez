@@ -40,6 +40,10 @@
     .fila
       padding: 30px 60px
 
+      &.no-bg
+        background:none !important
+        border: none !important
+
       .cols
         float: left
 
@@ -51,9 +55,9 @@
 
       &:nth-child(even)
         background:#f9f9f9
-        border-color: #c4c4c4
-        border-top-width: 1px
-        border-bottom-width: 1px
+        border: 1px solid #c2c2c2
+        border-left: none
+        border-right: none
 
         .col-1
           width: 62%
@@ -65,3 +69,13 @@
         content: ""
         display: table
         clear: both
+
+  .map-box
+    .mapa
+      background-image: unquote("url('ext/lib/site/static-pages/map.png')")
+      height: 340px
+      width: 650px
+      display: block
+      margin: auto
+      background-size: contain
+      background-repeat: no-repeat
