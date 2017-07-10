@@ -18,8 +18,8 @@ export default function HomeMultiforumOverride (props) {
 
       <BannerForoVecinal />
       <ThumbsVoto />
-      <BarriosBotones />
       <Carrusel />
+      <BarriosBotones />
       <Footer />
 
     </div>
