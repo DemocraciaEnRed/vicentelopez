@@ -32,6 +32,7 @@ export default class Carrusel extends Component{
   componentDidUpdate (){
     const carousel = this.refs.carousel;
     const options = {
+        contain: true,
         initialIndex: 0,
         accessibility: true,
         pageDots: false,

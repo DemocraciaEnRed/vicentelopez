@@ -80,7 +80,7 @@ export default ({ topic, forum }) => {
 
           {topic.attrs && topic.attrs.number && (
             <span className='number'>
-              
+
               {prettyNumber(topic.attrs.number)}
             </span>
           )}
