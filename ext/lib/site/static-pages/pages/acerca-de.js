@@ -1,7 +1,10 @@
 import React from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
+<<<<<<< HEAD
 import Carrusel from 'ext/lib/site/carrusel/component'
+=======
+>>>>>>> 299a77ad4f70c948c3f0780e4ea61c17713c2c44
 
 
 
@@ -63,7 +66,10 @@ export default function Page () {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
           <Carrusel />
+=======
+>>>>>>> 299a77ad4f70c948c3f0780e4ea61c17713c2c44
           <Footer />
     </div>
   )
