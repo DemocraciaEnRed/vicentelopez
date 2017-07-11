@@ -6,8 +6,8 @@ import AcercaDe from './pages/acerca-de'
 import Datos from './pages/datos'
 
 router.childRoutes.unshift({
-  path: 's/acerca-de',
-  component: AcercaDe
+  path: 's/datos',
+  component: Datos
 })
 <<<<<<< HEAD
 
