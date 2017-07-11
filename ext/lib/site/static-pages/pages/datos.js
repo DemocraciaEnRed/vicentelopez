@@ -11,6 +11,7 @@ export default function Page () {
   return (
     <div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <BannerForoVecinal title="Los foros en datos"/>
       <div className='ext-datos container'>
 
@@ -81,6 +82,9 @@ export default function Page () {
 
 =======
       <BannerForoVecinal />
+=======
+      <BannerForoVecinal title="Los foros en datos"/>
+>>>>>>> Corrige acerca de y datos.
       <div className='ext-datos container'>
 
         <div className="filas">

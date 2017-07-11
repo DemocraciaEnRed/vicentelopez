@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import 'lib/boot/routes'
 import router from 'lib/site/boot/router'
 import AcercaDe from './pages/acerca-de'
@@ -9,6 +7,7 @@ router.childRoutes.unshift({
   path: 's/datos',
   component: Datos
 })
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -43,13 +42,15 @@ site.props.children.unshift(
 =======
 =======
 =======
+=======
+>>>>>>> Corrige acerca de y datos.
 
->>>>>>> Corrige Acerca De (clases CSS) y Datos.
 router.childRoutes.unshift({
   path: 's/acerca-de',
   component: AcercaDe
 })
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Corrige static pages
 <<<<<<< HEAD
 >>>>>>> Corrige static pages
@@ -57,3 +58,5 @@ router.childRoutes.unshift({
 =======
 >>>>>>> Corrige Acerca De (clases CSS) y Datos.
 >>>>>>> Corrige Acerca De (clases CSS) y Datos.
+=======
+>>>>>>> Corrige acerca de y datos.
