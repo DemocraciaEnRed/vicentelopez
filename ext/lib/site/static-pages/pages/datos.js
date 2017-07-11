@@ -6,11 +6,7 @@ import Carrusel from 'ext/lib/site/carrusel/component'
 export default function Page () {
   return (
     <div>
-<<<<<<< HEAD
       <BannerForoVecinal title="Los foros en datos"/>
-=======
-      <BannerForoVecinal />
->>>>>>> 5047e2c6b705ad5b1d0d864f51ecea0f620581a6
       <div className='ext-datos container'>
 
         <div className="filas">

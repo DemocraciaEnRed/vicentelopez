@@ -1,22 +1,13 @@
 import React from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
-<<<<<<< HEAD
-
-
-=======
 import Carrusel from 'ext/lib/site/carrusel/component'
->>>>>>> 5047e2c6b705ad5b1d0d864f51ecea0f620581a6
 
 export default function Page () {
   return (
     <div>
       <BannerForoVecinal />
-<<<<<<< HEAD
-      <div className='ext-terminos-y-condiciones container'>
-=======
       <div className='ext-acerca-de container'>
->>>>>>> 5047e2c6b705ad5b1d0d864f51ecea0f620581a6
 
         <div className="filas">
           <div className="fila">
@@ -70,10 +61,7 @@ export default function Page () {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
           <Carrusel />
->>>>>>> 5047e2c6b705ad5b1d0d864f51ecea0f620581a6
           <Footer />
     </div>
   )
