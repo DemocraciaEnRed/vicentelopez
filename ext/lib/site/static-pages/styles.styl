@@ -1,0 +1,119 @@
+.ext-terminos-y-condiciones
+  position: relative
+  @media screen and (max-width: 500px)
+    padding: 0
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    & > a
+      color: inherit
+
+      &:hover
+        border-bottom: 1px solid #666
+
+  .thumbs
+    background: transparent
+    margin-top: 25px
+    > div
+      height:150px
+      width: 150px
+      @media screen and (min-width: 500px)
+        height: 75px
+        width: 75px
+      background-size: contain
+
+  .filas
+    @media screen and (min-width: 500px)
+      padding: 0 5%
+    font-family: 'Roboto', sans-serif
+    font-weight: 300
+    font-size: 15px
+    text-align: center
+    color: #696969
+
+    @media screen and (min-width: 500px)
+      font-size:13px
+      text-align: left
+    @media screen and (min-width: 769px)
+      font-size: 16px
+      padding: 0 10%
+
+
+    h2
+      font-size: 30px
+      @media screen and (min-width: 500px)
+        font-size:  24px
+      font-family: 'BrandonGrotesque', sans-serif
+      text-transform: uppercase
+      text-align: center
+      color: #696969
+      margin: 15px 0
+
+    .fila
+      padding: 20px 30px 40px
+      &:first-child
+        padding-top:0
+        @media screen and (max-width: 500px)
+          .thumbs
+            margin-top: 0
+      @media screen and (min-width: 500px)
+        padding: 20px 30px
+      @media screen and (min-width: 769px)
+        padding: 30px 60px
+
+
+      &.no-bg
+        background:none !important
+        border: none !important
+
+
+      @media screen and (min-width: 500px)
+        .cols
+          float: left
+
+        .col-1
+          width: 38%
+
+        .col-2
+          width: 62%
+
+      &:nth-child(even)
+        background:#f9f9f9
+        border: 1px solid #c2c2c2
+        border-left: none
+        border-right: none
+
+        @media screen and (min-width: 500px)
+          .cols
+            float:right
+
+      &:after
+        content: ""
+        display: table
+        clear: both
+
+  .map-box
+    position: relative;
+    padding-bottom: 52%; /* 1000:200 */
+    height: 0;
+    margin-bottom: 50px
+    &:after
+      content: ""
+      display: table
+      clear: both
+    .mapa
+      background-image: unquote("url('ext/lib/site/static-pages/map.png')")
+      display: block
+      margin: auto
+      background-size: contain
+      background-repeat: no-repeat
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
