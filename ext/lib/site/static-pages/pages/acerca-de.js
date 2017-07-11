@@ -6,9 +6,12 @@ import React from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Carrusel from 'ext/lib/site/carrusel/component'
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
+=======
+>>>>>>> Agrega Carrusel.
 
 export default function Page () {
   return (
@@ -69,6 +72,7 @@ export default function Page () {
         </div>
       </div>
           <Carrusel />
+<<<<<<< HEAD
           <Footer />
 =======
 =======
@@ -137,6 +141,8 @@ export default function Page () {
 
 >>>>>>> Edita estilos de página de info.
 =======
+=======
+>>>>>>> Agrega Carrusel.
           <Footer />
 >>>>>>> Agrega assets. Edita maquetado de ACERCA DE
     </div>
