@@ -6,7 +6,7 @@ import Carrusel from 'ext/lib/site/carrusel/component'
 export default function Page () {
   return (
     <div>
-      <BannerForoVecinal />
+      <BannerForoVecinal title="Los foros en datos"/>
       <div className='ext-datos container'>
 
         <div className="filas">
