@@ -1,9 +1,11 @@
 import React from 'react'
+
 import { Link } from 'react-router'
 import urlBuilder from 'lib/url-builder'
 import { HomeForum } from 'lib/site/home-forum/component'
 import BannerProyectos from 'ext/lib/site/banner-proyectos/component'
-import BarriosBotones from 'ext/lib/site/barrios-botones/component'
+import Barrios from 'ext/lib/site/barrios/component'
+import Footer from 'ext/lib/site/footer/component'
 
 export default class HomeForumExt extends HomeForum {
   render () {
@@ -15,7 +17,7 @@ export default class HomeForumExt extends HomeForum {
 
       <div className='ext-home-forum'>
         <BannerProyectos />
-        <BarriosBotones />
+        <Barrios />
         <div className='jumbotron'>
           <div className='container'>
             <h1 className='display-3'>Custom Homepage</h1>
@@ -47,6 +49,7 @@ export default class HomeForumExt extends HomeForum {
             </ul>
           </div>
         )}
+        <Footer />
       </div>
 
     )
