@@ -81,7 +81,7 @@ export default function Page () {
 
 =======
       <BannerForoVecinal />
-      <div className='ext-terminos-y-condiciones container'>
+      <div className='ext-datos container'>
 
         <div className="filas">
           <div className="fila">
