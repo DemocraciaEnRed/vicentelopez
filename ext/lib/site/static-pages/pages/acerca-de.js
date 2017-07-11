@@ -17,7 +17,7 @@ export default function Page () {
   return (
     <div>
       <BannerForoVecinal />
-      <div className='ext-terminos-y-condiciones container'>
+      <div className='ext-acerca-de container'>
 
         <div className="filas">
           <div className="fila">

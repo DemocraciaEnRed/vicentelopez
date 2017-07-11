@@ -9,6 +9,7 @@ router.childRoutes.unshift({
   path: 's/datos',
   component: Datos
 })
+<<<<<<< HEAD
 =======
 import React from 'react'
 import {Route} from 'react-router'
@@ -29,8 +30,14 @@ site.props.children.unshift(
 )
 >>>>>>> Agrega static-pages
 =======
+=======
+
+>>>>>>> Corrige Acerca De (clases CSS) y Datos.
 router.childRoutes.unshift({
   path: 's/acerca-de',
   component: AcercaDe
 })
+<<<<<<< HEAD
 >>>>>>> Corrige static pages
+=======
+>>>>>>> Corrige Acerca De (clases CSS) y Datos.
