@@ -70,7 +70,7 @@ export default function BarriosBotones (props) {
               <div
                 className='contenedor-boton'>
 
-                <a href='#'><button
+                <a href='./munro'><button
                   type="button" className
                     ="btn boton-azul">
                     <h3>MUNRO</h3>
