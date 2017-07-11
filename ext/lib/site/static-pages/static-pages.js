@@ -7,3 +7,8 @@ router.childRoutes.unshift({
   path: 's/datos',
   component: Datos
 })
+
+router.childRoutes.unshift({
+  path: 's/acerca-de',
+  component: AcercaDe
+})
