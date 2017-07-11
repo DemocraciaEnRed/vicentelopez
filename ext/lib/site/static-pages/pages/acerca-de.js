@@ -1,14 +1,22 @@
 import React from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
+<<<<<<< HEAD
 
 
+=======
+import Carrusel from 'ext/lib/site/carrusel/component'
+>>>>>>> Corrige conflictos de acerca de y datos
 
 export default function Page () {
   return (
     <div>
       <BannerForoVecinal />
+<<<<<<< HEAD
       <div className='ext-terminos-y-condiciones container'>
+=======
+      <div className='ext-acerca-de container'>
+>>>>>>> Corrige conflictos de acerca de y datos
 
         <div className="filas">
           <div className="fila">
@@ -62,6 +70,10 @@ export default function Page () {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+          <Carrusel />
+>>>>>>> Corrige conflictos de acerca de y datos
           <Footer />
     </div>
   )
