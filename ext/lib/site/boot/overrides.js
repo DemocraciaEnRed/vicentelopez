@@ -15,3 +15,8 @@ import * as Header from 'lib/header/component'
 import HeaderExt from 'ext/lib/site/header/component'
 
 Header.default = HeaderExt
+
+import * as TopicLayout from 'lib/topic-layout/component'
+import TopicLayoutExt from 'ext/lib/site/topic-laout/component'
+
+TopicLayout.default = HeaderExt
