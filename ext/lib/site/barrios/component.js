@@ -1,114 +1,42 @@
 import React from 'react'
 
-export default function Barrios (props) {
 
+
+
+export default function Barrios ({ forums }) {
+//
+// const barrios = [
+//   {label: 'carapachay', code: 'carapachay'}
+//   {label: 'munro', code: 'munro'}
+//   {label: 'florida este', code: 'florida este'}
+//   {label: 'florida oeste', code: 'florida oeste'}
+//   {label: 'la lucila', code: 'la lucila'}
+//   {label: 'olivos', code: 'olivos'}
+//   {label: 'vicente lopez', code: 'vicente lopez'}
+//   {label: 'villa adelina', code: 'villa adelina'}
+//   {label: 'villa martelli', code: 'villa martelli'}
+// ]
+console.log(forums)
   return (
-      <section
-        className='seccion-barrios-proyectos container'>
-
-          <div
-            className='row seccion-botones'>
-
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    =" boton-azul btn">
-                    <h3>CARAPACHAY</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>FLORIDA ESTE</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>FLORIDA OESTE</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>LA LUCILA</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='./munro'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>MUNRO</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>OLIVOS</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>VICENTE LÓPEZ</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>VILLA ADELINA</h3>
-                </button></a>
-
-
-              </div>
-              <div
-                className='contenedor-boton'>
-
-                <a href='#'><button
-                  type="button" className
-                    ="btn boton-azul">
-                    <h3>VILLA MARTELLI</h3>
-                </button></a>
-
-
-              </div>
-
+      <section className='seccion-barrios-proyectos container'>
+          <div className='row seccion-botones'>
+              {
+                forums && forums.map((forum) => {
+                  console.log(forum.name, window.location.pathname, window.location.pathname.replace('/', ''), forum.name === window.location.pathname.replace('/', ''))
+                  return (
+                    <div
+                      className='contenedor-boton'>
+                      <a href={`/${forum.name}`}>
+                        <button
+                          type="button"
+                          className={`boton-azul btn ${forum.name === window.location.pathname.replace('/', '') ? 'active' : ''}`}>
+                          <h3>{ forum.title }</h3>
+                        </button>
+                      </a>
+                    </div>
+                  )
+                })
+              }
           </div>
       </section>
   )

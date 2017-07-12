@@ -20,7 +20,8 @@ export class HomeForum extends Component {
     this.state = {
       loading: null,
       topics: [],
-      forum: null
+      forum: null,
+      forums: null
     }
   }
 
@@ -42,27 +43,29 @@ export class HomeForum extends Component {
     var u = new window.URLSearchParams(window.location.search)
     let query = {}
 
-    forumStore.findOneByName(name)
-      .then((forum) => {
-        query.forum = forum.id
-        if (u.has('tag')) query.tag = u.get('tag')
-        return Promise.all([
-          forum,
-          topicStore.findAll(query)
-        ])
+    forumStore.findAll().then((forums) => {
+      const forum = forums.find((forum) => forum.name === name)
+      query.forum = forum.id
+      if (u.has('tag')) query.tag = u.get('tag')
+      return Promise.all([
+        forums,
+        forum,
+        topicStore.findAll(query)
+      ])
+    })
+    .then(([forums, forum, topics]) => {
+      this.setState({
+        loading: false,
+        forums,
+        forum,
+        topics
       })
-      .then(([forum, topics]) => {
-        this.setState({
-          loading: false,
-          forum,
-          topics
-        })
-      })
-      .catch((err) => {
-        if (err.status === 404) return browserHistory.push('/404')
-        if (err.status === 401) return browserHistory.push('/401')
-        throw err
-      })
+    })
+    .catch((err) => {
+      if (err.status === 404) return browserHistory.push('/404')
+      if (err.status === 401) return browserHistory.push('/401')
+      throw err
+    })
   }
 
   render () {
@@ -73,7 +76,7 @@ export class HomeForum extends Component {
 
     if (!this.state.forum) return null
 
-    const { forum, topics } = this.state
+    const { forums, forum, topics } = this.state
 
     const cover = (forum.coverUrl && {
       backgroundImage: 'linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("' + forum.coverUrl + '")'
@@ -83,7 +86,7 @@ export class HomeForum extends Component {
       <div id='forum-home'>
         <BannerProyectos />
 
-        <Barrios />
+        <Barrios forums={forums} />
         {topics.length === 0 && (
           <div className='no-topics'>
             <p>{t('homepage.no-topics')}</p>
