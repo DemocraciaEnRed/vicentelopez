@@ -16,7 +16,7 @@ export default function Barrios ({ forums }) {
 //   {label: 'villa adelina', code: 'villa adelina'}
 //   {label: 'villa martelli', code: 'villa martelli'}
 // ]
-console.log(forums)
+console.log('forums', forums)
   return (
       <section className='seccion-barrios-proyectos container'>
           <div className='row seccion-botones'>
