@@ -1,31 +1,7 @@
 @import './topic-card/styles'
 .carrusel-seccion
   background-color: #d8d8d8
-  .wp
-  .facebook-icon
-  .twitter-icon
-  .linkclipboard-icon
-    background-size: cover
-    background-repeat: no-repeat
-    display: inline-block
-    margin-top: 0
-    margin-right: 3%
-    width: 8px
-    height: 8px
-    @media screen and (min-width: 750px)
-      width: 35px
-      height: 35px
 
-  .twitter-icon
-    background-image: unquote("url('ext/lib/site/carrusel/twitter.svg')")
-
-  .facebook-icon
-    background-image: unquote("url('ext/lib/site/carrusel/facebook.svg')")
-
-  .linkclipboard-icon
-    background-image: unquote("url('ext/lib/site/carrusel/linkclipboard.svg')")
-  .wp
-    background-image: unquote("url('ext/lib/site/carrusel/whatsapp.svg')")
   .titulo-verde
     display: block
     // background-color: #7cbb42
@@ -72,53 +48,25 @@
     text-align: center
   .cont-boton-azul
     text-align: center
-  .topic-card-title
-    margin: 0 0 .8em
-    color: #93c01f
-    font-weight: 700
-    line-height: 1.3
-    text-transform: uppercase
-    font-family: 'Roboto', sans-serif
 
-    a
-      color: inherit
-
-      &:hover
-        text-decoration: none
-
-    font-size: 2vw
-    @media screen and (min-width: 750px)
-      font-size: 1.5rem
-  .budget
+  .titulo-verde
     display: block
-    margin: 0
-    color: white
-    font-weight: 900
-    right: 10
-    position: absolute
-    bottom: 0
-    font-size: 3vw
-    @media screen and (min-width: 750px)
-      font-size: 1.5rem
+    // background-color: #7cbb42
+    text-align: center
 
-  .number
-    font-size: 2vw
-    @media screen and (min-width: 750px)
-      font-size: 1rem
+    // width: 33%
+    // margin: 3% 0 0 33%
+    // color: white
+    // box-shadow: 0 6px 4px -2px unquote("rgba(0, 0, 0, 0.24)"), 0 0 2px 0 unquote("rgba(0, 0, 0, 0.12)")
 
-  .portada
-    background-color: #93c01f
-    height: 227.2px
-    &:before
-      content: ''
-      position: absolute
-      top: 0
-      right: 0
-      bottom: 0
-      left: 0
-
-
-      background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1) 90%)
-      background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1) 90%)
-      background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1) 90%)
-      background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1) 90%)
+    // Prueba de linea verde
+    h2
+      border-bottom: 3px solid #93c01f
+      font-family: 'BrandonGrotesque', sans-serif
+      color: #93c01f
+      padding: 0
+      margin: 0
+      font-size: 8vw
+      font-weight: 500
+      @media screen and (min-width: 750px)
+        font-size: 4rem

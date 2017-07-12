@@ -7,9 +7,10 @@ import checkReservedNames from 'lib/forum/check-reserved-names'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
-import TopicCard from './topic-card/component'
+import TopicCard from '../carrusel/topic-card/component'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
+import BannerProyectos from 'ext/lib/site/banner-proyectos/component'
 
 
 
@@ -80,24 +81,8 @@ export class HomeForum extends Component {
 
     return (
       <div id='forum-home'>
-        <div
-          className={'cover' + (forum.coverUrl ? '' : ' no-img')}
-          style={cover}>
-          <div className='cover-content'>
-            <h1>{forum.title}</h1>
-            <p>{forum.summary}</p>
-            {
-              forum.privileges.canCreateTopics &&
-                <a
-                  href={urlBuilder.for('admin.topics.create', {
-                    forum: forum.name
-                  })}
-                  className='btn btn-primary'>
-                  {t('proposal-article.create')}
-                </a>
-            }
-          </div>
-        </div>
+        <BannerProyectos />
+
         <Barrios />
         {topics.length === 0 && (
           <div className='no-topics'>
