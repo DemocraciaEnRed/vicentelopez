@@ -9,6 +9,7 @@ import topicConnector from 'lib/site/connectors/topic'
 import Sidebar from './sidebar/component'
 import TopicArticle from './topic-article/component'
 
+
 export class TopicLayout extends Component {
   state = {
     topics: null,
@@ -58,6 +59,7 @@ export class TopicLayout extends Component {
         {forum && topic && (
           <TopicArticle topic={topic} forum={forum} />
         )}
+
       </div>
     )
   }
