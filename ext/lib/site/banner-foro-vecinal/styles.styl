@@ -1,5 +1,10 @@
 .seccion-general
   padding: 0
+  position: relative;
+  margin-bottom: 50px;
+  @media screen and (min-width: 620px)
+    margin-bottom: 70px;
+
 
   .banner
 
@@ -12,12 +17,14 @@
     background-repeat: no-repeat
     padding: 0
   .contenedor
-    height: 90px
-    top: -45
-    position: relative
-    display: block
-    margin: 0 auto
-    width: 90%
+    height: 90px;
+    bottom: -45px;
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    left: 0;
+    right: 0;
     @media screen and (min-width: 620px)
       width: 614px
 
@@ -36,7 +43,7 @@
       font-family: 'BrandonGrotesqueBlack', sans-serif
       padding: 0
       margin: 0 auto
-      font-size: 30px
+      font-size: 28px
       font-weight: 400
       text-transform: uppercase
       @media screen and (min-width: 620px)
