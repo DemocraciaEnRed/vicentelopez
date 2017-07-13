@@ -2,21 +2,29 @@ import React from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 import Carrusel from 'ext/lib/site/carrusel/component'
 >>>>>>> Corrige conflictos de acerca de y datos
+=======
+import Carrusel from 'ext/lib/site/carrusel/component'
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
 
 export default function Page () {
   return (
     <div>
       <BannerForoVecinal />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div className='ext-terminos-y-condiciones container'>
 =======
       <div className='ext-acerca-de container'>
 >>>>>>> Corrige conflictos de acerca de y datos
+=======
+      <div className='ext-acerca-de container'>
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
 
         <div className="filas">
           <div className="fila">
@@ -71,9 +79,13 @@ export default function Page () {
         </div>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           <Carrusel />
 >>>>>>> Corrige conflictos de acerca de y datos
+=======
+          <Carrusel />
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
           <Footer />
     </div>
   )

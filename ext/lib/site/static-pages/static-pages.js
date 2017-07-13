@@ -10,6 +10,7 @@ router.childRoutes.unshift({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 router.childRoutes.unshift({
   path: 's/datos',
@@ -44,11 +45,14 @@ site.props.children.unshift(
 =======
 =======
 >>>>>>> Corrige acerca de y datos.
+=======
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
 
 router.childRoutes.unshift({
   path: 's/acerca-de',
   component: AcercaDe
 })
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Corrige static pages
@@ -60,3 +64,5 @@ router.childRoutes.unshift({
 >>>>>>> Corrige Acerca De (clases CSS) y Datos.
 =======
 >>>>>>> Corrige acerca de y datos.
+=======
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac

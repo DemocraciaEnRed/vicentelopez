@@ -4,12 +4,16 @@ import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Carrusel from 'ext/lib/site/carrusel/component'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
 =======
 >>>>>>> Agrega página estática de Datos.
 =======
 import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
 >>>>>>> Agrega Carousel de Datos.
+=======
+import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
 
 export default function Page () {
   return (
@@ -17,12 +21,18 @@ export default function Page () {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
       <BannerForoVecinal title="Los foros en datos"/>
       <div className='ext-datos container'>
 
         <section className="intro">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
           <div className="text=box">
             <div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas aliquet luctus. Curabitur vestibulum lorem quis porta interdum. Fusce ullamcorper lectus tortor, nec sagittis odio fringilla ac. Curabitur rutrum libero ac urna pretium, in bibendum neque tincidunt. Suspendisse vitae elementum sapien. Donec et libero ut ipsum vestibulum imperdiet. Mauris commodo orci nisi, id ultricies magna blandit at. Curabitur in lectus eu enim tincidunt dignissim quis vitae velit. Donec vehicula risus arcu. Etiam laoreet nibh lacinia rutrum euismod. Vivamus eget velit magna. Proin faucibus leo nec volutpat ullamcorper. In hac habitasse platea dictumst. Duis quis sem efficitur, semper leo at, gravida nunc. Sed condimentum non mi ut porta.</div>
           </div>
@@ -53,6 +63,9 @@ export default function Page () {
           </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
           </div>
 
         </section>
@@ -88,6 +101,7 @@ export default function Page () {
         </section>
 
 
+<<<<<<< HEAD
 =======
       <BannerForoVecinal />
 =======
@@ -206,6 +220,8 @@ export default function Page () {
 
 
 >>>>>>> Agrega un montón de gráficos.
+=======
+>>>>>>> a0ad60d163428e8ab7a405c97c45d5fb01e995ac
       </div>
           <Carrusel />
           <Footer />
