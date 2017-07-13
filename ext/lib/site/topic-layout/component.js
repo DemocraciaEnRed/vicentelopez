@@ -6,9 +6,8 @@ import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import topicConnector from 'lib/site/connectors/topic'
-import Sidebar from './sidebar/component'
 import TopicArticle from './topic-article/component'
-
+import Footer from 'ext/lib/site/footer/component'
 
 export class TopicLayout extends Component {
   state = {
@@ -54,12 +53,15 @@ export class TopicLayout extends Component {
     const { forum, topics } = this.state
 
     return (
-      <div id='topic-wrapper'>
-        <Sidebar topics={topics} />
-        {forum && topic && (
-          <TopicArticle topic={topic} forum={forum} />
-        )}
+      <div>
+        <div id='topic-wrapper'>
 
+          {forum && topic && (
+            <TopicArticle topic={topic} forum={forum} />
+          )}
+
+        </div>
+        <Footer />
       </div>
     )
   }
