@@ -2,6 +2,7 @@ import React from 'react'
 
 
 
+
 export default function BannerForoVecinal (props) {
 
   return (
@@ -13,9 +14,13 @@ export default function BannerForoVecinal (props) {
         className='contenedor row'>
           <div
             className='fondo-titulo'>
-              <h1 className=''>FOROS VECINALES</h1>
+              <h1 className=''>{props.title}</h1>
           </div>
       </div>
     </section>
   )
+}
+
+BannerForoVecinal.defaultProps = {
+  title: 'Foros vecinales'
 }

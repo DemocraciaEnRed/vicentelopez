@@ -1,7 +1,8 @@
 import React from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
-import Carrusel from 'ext/lib/site/carrusel/component'
+
+
 
 export default function Page () {
   return (
@@ -61,7 +62,6 @@ export default function Page () {
           </div>
         </div>
       </div>
-          <Carrusel />
           <Footer />
     </div>
   )

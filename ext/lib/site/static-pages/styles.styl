@@ -1,7 +1,9 @@
-.ext-terminos-y-condiciones
+.ext-acerca-de
+.ext-datos
   position: relative
   @media screen and (max-width: 500px)
     padding: 0
+    max-width: 630px
 
   h1,
   h2,
@@ -117,3 +119,91 @@
       left: 0;
       width: 100%;
       height: 100%;
+
+.ext-datos
+  color: #4D4D4D !important
+  padding-bottom: 20px
+
+  section
+    margin-bottom: 20px
+
+  .text
+    padding: 0 5%
+    font-size: 14px
+
+  @media screen and (min-width: 780px)
+
+    .flexBox
+      display: flex;
+      flex-direction: row;
+      .graph-box
+        width: 40%
+      .text-box
+        padding-top: 20px
+        width: 60%
+
+  h3
+    text-align: center
+    font-size: 22px
+    color: #4D4D4D !important
+    text-transform: uppercase
+    max-width: 80%
+    margin: 0 auto 20px
+
+  .graph-box
+    margin-bottom: 20px
+
+    .graph-ref
+      max-width: 300px;
+      margin: auto;
+      display: block;
+
+
+.carousel-distribucion-proyectos
+  width: 440px;
+  max-width: 100%
+  margin: auto;
+
+  img
+    max-width: calc(100% - 88px)
+    margin: auto
+    display: block
+  .carousel-cell
+    width: 100%
+    height: 340px
+    margin: 0 20px
+    @media screen and (min-width: 780px)
+      height: 180px
+    @media screen and (min-width: 1000px)
+      height: 280px
+
+
+
+
+  .flickity-prev-next-button.previous
+    background-image: unquote("url('ext/lib/site/static-pages/LeftArrowCarousel.svg')")
+  .flickity-prev-next-button.next
+    background-image: unquote("url('ext/lib/site/static-pages/RightArrowCarousel.svg')")
+
+  .flickity-prev-next-button.previous,
+  .flickity-prev-next-button.next
+    background-size: contain;
+    background-color: transparent
+    height: 100px
+    background-repeat: no-repeat;
+    background-position: center
+    top: 160px;
+    @media screen and (min-width: 780px)
+      top: 100px
+    @media screen and (min-width: 1000px)
+      top: 160px
+
+    svg
+      display: none
+
+  .refe
+    margin-top: 20px
+    width: 300px
+    max-width: 80%
+    @media screen and (min-width: 780px)
+      max-width: 400px
