@@ -61,6 +61,7 @@ export class TopicLayout extends Component {
           )}
 
         </div>
+        
         <Footer />
       </div>
     )

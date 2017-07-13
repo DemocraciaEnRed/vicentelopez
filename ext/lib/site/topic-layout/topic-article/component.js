@@ -12,6 +12,7 @@ import Poll from './poll/component'
 import Cause from './cause/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
+import Carrusel from 'ext/lib/site/carrusel/component'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -132,6 +133,7 @@ class TopicArticle extends Component {
           )
         }
         <Social topic={topic} />
+
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
