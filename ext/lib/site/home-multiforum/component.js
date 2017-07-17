@@ -18,37 +18,22 @@ export default class HomeMultiforumOverride extends Component {
     }
   }
   componentWillMount () {
-    if (!config.multiForum && !config.defaultForum) {
-      window.location = urlBuilder.for('forums.new')
-    }
-
-    let name = this.props.params.forum
-
-    if (!name && !config.multiForum) {
-      name = config.defaultForum
-    }
-
-    var u = new window.URLSearchParams(window.location.search)
-    let query = {limit: 10, page: 1}
-
-    forumStore.findAll().then((forums) => {
-      this.setState({
-        forums
+    window.fetch(`/ext/api/feed`, { credentials: 'include' })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.result) {
+          this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
+        }
       })
-    })
-    .catch((err) => {
-      if (err.status === 404) return browserHistory.push('/404')
-      if (err.status === 401) return browserHistory.push('/401')
-      throw err
-    })
   }
 
   render () {
+    const { topics, forums } = this.state
     return (
       <div className='ext-home-multiforum'>
         <BannerForoVecinal />
         <ThumbsVoto />
-        <Carrusel />
+        <Carrusel topics={topics} forums={forums} />
         <section className='seccion-barrios container'>
             <div className='row'>
               <div className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
@@ -58,7 +43,7 @@ export default class HomeMultiforumOverride extends Component {
               </div>
             </div>
         </section>
-        <Barrios forums={this.state.forums}/>
+        <Barrios forums={forums}/>
         <Footer />
       </div>
     )

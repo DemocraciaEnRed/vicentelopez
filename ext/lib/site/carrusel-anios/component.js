@@ -16,8 +16,7 @@ export default class CarruselAnios extends Component{
         wrapAround: true
     }
 
-    this.flkty = new Flickity(carouselgraph, options);
-    this.flkty.on('cellSelect', this.updateSelected);
+    this.flkty = new Flickity(carouselgraph, options)
   }
 
   componentDidUpdate (){

@@ -5,46 +5,26 @@ import TopicCard from './topic-card/component'
 import Flickity from 'flickity'
 
 
-export default class Carrusel extends Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      topics: null,
-      forums: null
-    }
-    this.flkty = null
+export default class Carrusel extends Component {
+  constructor (props) {
+      super(props)
+      this.flkty = null
   }
 
-  componentWillMount () {
-    window.fetch(`/ext/api/feed`, { credentials: 'include' })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.result) {
-          this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
-        }
-      })
-  }
-
-  componentDidUpdate (){
-    const carousel = this.refs.carousel;
+  componentDidUpdate(){
     const options = {
-        contain: true,
-        initialIndex: 0,
-        accessibility: true,
-        pageDots: false,
-        wrapAround: true
+      cellAlign: 'center',
+      draggable: true,
+      friction: 0.2,
+      contain: true,
+      wrapAround: true,
+      imagesLoaded: true
     }
-
-    this.flkty = new Flickity(carousel, options);
-    this.flkty.on('cellSelect', this.updateSelected);
-  }
-
-  carruselMount = (e) => {
-    console.log(e, this.state.topics)
+    this.flkty = new Flickity(this.refs.carrusel, options)
   }
 
   render(){
-    const { forums, topics } = this.state
+    const { forums, topics } = this.props
     return (
       <div className='carrusel-seccion container-fluid'>
         <div className='row'>
@@ -56,8 +36,10 @@ export default class Carrusel extends Component{
           </div>
         </div>
         <div>
-          <div ref={this.carruselMount}>
-            {topics && topics.map((topic, i) => <TopicCard key={topic.id} forum={forums.find((f) => f.id === topic.id)} topic={topic} />)}
+          <div ref='carrusel'>
+            {topics && topics.map((topic, i) => (
+              <TopicCard key={topic.id} forum={forums.find((f) => f.id === topic.id)} topic={topic} />
+            ))}
           </div>
         </div>
         <div

@@ -16,7 +16,7 @@ function getFeed (req, res, next) {
         { $match: {
             forum: { $in: forumsM.map((f) => f._id) },
             deletedAt: null,
-            $or: [{closingAt: { $exists: false }}, {closingAt: { $gt: (new Date())}}]
+            // $or: [{closingAt: { $exists: false }}, {closingAt: { $gt: (new Date())}}]
         }},
         { $sort: { 'createdAt': -1 } },
         { $sort: { 'participantsCount': -1 } },

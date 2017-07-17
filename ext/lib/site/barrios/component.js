@@ -5,10 +5,9 @@ export default function Barrios ({ forums }) {
       <section className='seccion-barrios-proyectos container'>
           <div className='row seccion-botones'>
               {
-                forums && forums.map((forum) => {
+                forums && forums.map((forum, i) => {
                   return (
-                    <div
-                      className='contenedor-boton'>
+                    <div key={i} className='contenedor-boton'>
                       <a href={`/${forum.name}`}>
                         <button
                           type="button"
