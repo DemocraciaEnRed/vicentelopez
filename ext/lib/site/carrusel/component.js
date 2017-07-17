@@ -10,22 +10,18 @@ export default class Carrusel extends Component{
     super(props)
     this.state = {
       topics: null,
-      forum: null
+      forums: null
     }
     this.flkty = null
   }
 
-  componentDidMount () {
-    forumStore.findOneByName('proyectos')
-      .then((forum) => {
-        return Promise.all([forum, topicStore.findAll({ forum: forum.id })])
-      })
-      .then(([forum, topics]) => {
-        console.log(forum, topics)
-        this.setState({ topics, forum })
-      })
-      .catch((err) => {
-        console.log(err)
+  componentWillMount () {
+    window.fetch(`/ext/api/feed`, { credentials: 'include' })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.result) {
+          this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
+        }
       })
   }
 
@@ -41,13 +37,14 @@ export default class Carrusel extends Component{
 
     this.flkty = new Flickity(carousel, options);
     this.flkty.on('cellSelect', this.updateSelected);
+  }
 
-}
-
-
+  carruselMount = (e) => {
+    console.log(e, this.state.topics)
+  }
 
   render(){
-    const { forum, topics } = this.state
+    const { forums, topics } = this.state
     return (
       <div className='carrusel-seccion container-fluid'>
         <div className='row'>
@@ -59,8 +56,8 @@ export default class Carrusel extends Component{
           </div>
         </div>
         <div>
-          <div ref='carousel' >
-            {topics && topics.map((topic, i) => <TopicCard key={topic.id} forum={forum} topic={topic} />)}
+          <div ref={this.carruselMount}>
+            {topics && topics.map((topic, i) => <TopicCard key={topic.id} forum={forums.find((f) => f.id === topic.id)} topic={topic} />)}
           </div>
         </div>
         <div
