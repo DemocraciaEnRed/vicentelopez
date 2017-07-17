@@ -5,7 +5,7 @@ import React from 'react'
 export default function BannerProyectos (props) {
 
   return (
-    <section className="container-fluid seccion-general ">
+    <section className="container-fluid banner-p ">
       <div className="banner">
 
       </div>

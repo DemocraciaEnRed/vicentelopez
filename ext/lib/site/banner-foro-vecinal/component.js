@@ -6,12 +6,12 @@ import React from 'react'
 export default function BannerForoVecinal (props) {
 
   return (
-    <section className="container-fluid seccion-general ">
+    <section className="container-fluid banner-fv ">
       <div className="banner">
 
       </div>
       <div
-        className='contenedor row'>
+        className='contenedor'>
           <div
             className='fondo-titulo'>
               <h1 className=''>{props.title}</h1>
