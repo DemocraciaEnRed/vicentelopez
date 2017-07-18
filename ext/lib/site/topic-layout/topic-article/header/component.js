@@ -63,15 +63,6 @@ export default class Header extends Component {
         {learnMore}
         {closingAt}
         <h1>{this.props.mediaTitle}</h1>
-        {
-          this.props.tags &&
-          this.props.tags.length > 0 &&
-          (
-            <div className='topic-tags'>
-              { this.props.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forumName })}?tag=${tag}`} key={i}>{tag}</a>) }
-            </div>
-          )
-        }
         {author}
 
       </header>

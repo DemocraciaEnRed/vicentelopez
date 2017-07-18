@@ -13,18 +13,14 @@ export default class HomeMultiforumOverride extends Component {
   constructor(props){
     super(props)
     this.state = {
-      topics: null,
       forums: null
     }
   }
+
   componentWillMount () {
-    window.fetch(`/ext/api/feed`, { credentials: 'include' })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.result) {
-          this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
-        }
-      })
+    forumStore.findAll().then((forums) => {
+      this.setState({ forums: forums })
+    })
   }
 
   render () {
@@ -33,15 +29,25 @@ export default class HomeMultiforumOverride extends Component {
       <div className='ext-home-multiforum'>
         <BannerForoVecinal />
         <ThumbsVoto />
-        <Carrusel topics={topics} forums={forums} />
-        <section className='seccion-barrios container'>
-            <div className='row'>
-              <div className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
-                <div className='barrio-verde'>
-                  <h2>BARRIOS</h2>
-                </div>
+        <div className='carrusel-seccion container-fluid'>
+          <div className='row'>
+            <div
+              className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
+              <div className='titulo-verde' >
+                <h2>Proyectos</h2>
               </div>
             </div>
+          </div>
+          <Carrusel />
+        </div>
+        <section className='seccion-barrios container'>
+          <div className='row'>
+            <div className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
+              <div className='barrio-verde'>
+                <h2>BARRIOS</h2>
+              </div>
+            </div>
+          </div>
         </section>
         <Barrios forums={forums}/>
         <Footer />

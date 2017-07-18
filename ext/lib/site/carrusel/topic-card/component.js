@@ -2,11 +2,11 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 export default ({ topic, forum }) => {
-  console.log(topic, forum)
   const topicUrl = `${window.location.origin}${topic.url}`
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
+  const linkTopic = () => { browserHistory.push(`/${forum.name}/topic/${topic.id}`) }
   return (
-    <div className='ext-topic-card' onClick={linkTopic(topic, forum)}>
+    <div className='ext-topic-card' onClick={linkTopic}>
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl})` }}>
@@ -64,8 +64,4 @@ function handleLinkClick (evt) {
   const link = evt.currentTarget
   evt.preventDefault()
   window.open(link.getAttribute('href'), '_blank')
-}
-
-function linkTopic(topic, forum) {
-  return () => { browserHistory.push(`/${forum.name}/${topic.id}`) }
 }

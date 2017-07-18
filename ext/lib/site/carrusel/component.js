@@ -9,9 +9,24 @@ export default class Carrusel extends Component {
   constructor (props) {
       super(props)
       this.flkty = null
+      this.state = {
+        forums: null,
+        topics: null
+      }
+  }
+
+  componentWillMount () {
+    window.fetch(`/ext/api/feed`, { credentials: 'include' })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.result) {
+          this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
+        }
+      })
   }
 
   componentDidUpdate(){
+    if (this.flkty) this.flkty.destroy()
     const options = {
       // cellAlign: 'center',
       // draggable: true,
@@ -24,41 +39,19 @@ export default class Carrusel extends Component {
   }
 
   componentWillUnmount () {
-    console.log(this.flkty)
+    this.flkty.destroy()
   }
 
   render(){
-    const { forums, topics } = this.props
+    const { forums, topics } = this.state
     return (
-      <div className='carrusel-seccion container-fluid'>
-        <div className='row'>
-          <div
-            className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
-            <div className='titulo-verde' >
-              <h2>Proyectos</h2>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div ref='carrusel'>
-            {topics && topics.map((topic, i) => (
-              <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
-            ))}
-          </div>
-        </div>
-        <div
-          className='row'>
-            <div
-              className='col-xs-12 col-md-4 offset-md-4 cont-boton-azul'>
-                <a href='#'><button
-                  type="button" className
-                    =" boton-azul btn">
-                    <p>VER MÁS</p>
-                </button></a>
-            </div>
+      <div>
+        <div ref='carrusel'>
+          {topics && topics.map((topic, i) => (
+            <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
+          ))}
         </div>
       </div>
-
     )
   }
 }

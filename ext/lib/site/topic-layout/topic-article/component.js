@@ -133,7 +133,7 @@ class TopicArticle extends Component {
           )
         }
         <Social topic={topic} />
-
+        <Carrusel />
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
