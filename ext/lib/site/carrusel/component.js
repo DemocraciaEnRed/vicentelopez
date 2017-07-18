@@ -13,14 +13,18 @@ export default class Carrusel extends Component {
 
   componentDidUpdate(){
     const options = {
-      cellAlign: 'center',
-      draggable: true,
-      friction: 0.2,
-      contain: true,
-      wrapAround: true,
-      imagesLoaded: true
+      // cellAlign: 'center',
+      // draggable: true,
+      // friction: 0.2,
+      // contain: true,
+      pageDots: false,
+      wrapAround: true
     }
     this.flkty = new Flickity(this.refs.carrusel, options)
+  }
+
+  componentWillUnmount () {
+    console.log(this.flkty)
   }
 
   render(){
@@ -38,7 +42,7 @@ export default class Carrusel extends Component {
         <div>
           <div ref='carrusel'>
             {topics && topics.map((topic, i) => (
-              <TopicCard key={topic.id} forum={forums.find((f) => f.id === topic.id)} topic={topic} />
+              <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
             ))}
           </div>
         </div>
