@@ -33,23 +33,17 @@ export default class HomeMultiforumOverride extends Component {
           <div className='row'>
             <div
               className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
-              <div className='titulo-verde' >
-                <h2>Proyectos</h2>
-              </div>
+              <h2 className='title'>
+                Proyectos
+              </h2>
             </div>
           </div>
           <Carrusel />
         </div>
         <section className='seccion-barrios container'>
-          <div className='row'>
-            <div className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
-              <div className='barrio-verde'>
-                <h2>BARRIOS</h2>
-              </div>
-            </div>
-          </div>
+          <h2 className='title'>Barrios</h2>
+          <Barrios forums={forums}/>
         </section>
-        <Barrios forums={forums}/>
         <Footer />
       </div>
     )

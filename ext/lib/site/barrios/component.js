@@ -2,24 +2,21 @@ import React from 'react'
 
 export default function Barrios ({ forums }) {
   return (
-      <section className='seccion-barrios-proyectos container'>
-          <div className='row seccion-botones'>
+      <div className='seccion-barrios-proyectos container'>
+          <div className='seccion-botones'>
               {
                 forums && forums.map((forum, i) => {
                   return (
-                    <div key={i} className='contenedor-boton'>
-                      <a href={`/${forum.name}`}>
-                        <button
-                          type="button"
-                          className={`boton-azul btn ${forum.name === window.location.pathname.replace('/', '') ? 'active' : ''}`}>
-                          <h3>{ forum.title }</h3>
-                        </button>
+            //        <div key={i} className='contenedor-boton'>
+                      <a href={`/${forum.name}`}
+                        className={`boton-azul btn ${forum.name === window.location.pathname.replace('/', '') ? 'active' : ''}`}>
+                          { forum.title }
                       </a>
-                    </div>
+              //      </div>
                   )
                 })
               }
           </div>
-      </section>
+      </div>
   )
 }
