@@ -46,10 +46,8 @@ export default function ThumbsVoto (props) {
           className='row'>
             <div
               className='col-xs-12 col-md-4 offset-md-4 cont-boton-azul'>
-                <Link to='/s/acerca-de'>
-                  <button type="button" className=" boton-azul btn">
-                    <p>VER MÁS</p>
-                  </button>
+                <Link to='/s/acerca-de' className="boton-azul">
+                    VER MÁS
                 </Link>
             </div>
         </div>
