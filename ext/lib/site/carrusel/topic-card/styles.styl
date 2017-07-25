@@ -1,3 +1,5 @@
+$green = #93c01f
+
 .ext-topic-card
   font-family: 'Roboto', sans-serif
   display: flex
@@ -16,18 +18,33 @@
   &:hover
     box-shadow 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23)
   .topic-card-title
-    margin: 0 0 .8em
-    color: #93c01f
+    margin: 0
+    color: $green
     font-weight: 700
-    line-height: 1.3
     text-transform: uppercase
     font-family: 'Roboto', sans-serif
-    max-height: 0.8rem
-    overflow: hidden
-    font-size: 1.6rem
+    font-size: 1.2em
+    display: block;
+    display: -webkit-box
+    line-height: 1.4em
+    width: 100%
+    max-height: 2.8em
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;   /* required for Opera */
+    -ms-text-overflow: ellipsis;  /* required for IE8, allegedly */
+
     @media screen and (min-width: 750px)
       font-size: 1.3rem
       max-height: 3.3rem
+
+  .topic-card-forum
+    color: $green
+    font-weight: 400
+    font-size: 1em
+
   .wp
   .facebook-icon
   .twitter-icon
@@ -80,10 +97,11 @@
       padding-top 50%
 
   .topic-card-info
+    background: rgb(249, 249, 249)
     flex-grow: 2
     display: flex
     flex-direction: column
-    padding: 10px
+    padding: 20px
     @media screen and (min-width: 750px)
       padding: 5px
     text-align: left
@@ -104,7 +122,7 @@
 
   .topic-card-description
     display: flex
-    margin: 0 0 1.2em
+    margin: 1.4em 0 1.2em
     color: #444
     font-weight: 300
     line-height: 1.25
@@ -153,6 +171,7 @@
   .social-links
     position: relative
     font-size: 20px
+    display: none
     div
       position: relative
 
