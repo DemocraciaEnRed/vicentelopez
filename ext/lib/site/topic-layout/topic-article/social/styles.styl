@@ -1,4 +1,4 @@
-.topic-social
+.topic-social-vilo
   display: flex
   justify-content: space-between
   margin-bottom: 20px
@@ -24,23 +24,24 @@
       cursor: pointer
 
   .share-links
-    min-width: 72px
-
-    a
-      background: #666
-      padding: 8px 5px
-      margin-left: 10px
-      border-radius: 2px
-      color: white
+    .wp
+    .facebook-icon
+    .twitter-icon
+    .linkclipboard-icon
+      background-size: cover
+      background-repeat: no-repeat
       display: inline-block
-      line-height: 10px
-      transition: all .3s ease-in-out
+      margin-right: 5px
+      width: 30px
+      height: 30px
 
-      &:hover
-        text-decoration: none
+    .twitter-icon
+      background-image: unquote("url('ext/lib/site/carrusel/twitter.svg')")
 
-      &.icon-social-facebook:hover
-        background-color: #3b5998
+    .facebook-icon
+      background-image: unquote("url('ext/lib/site/carrusel/facebook.svg')")
 
-      &.icon-social-twitter:hover
-        background-color: #3498db
+    .linkclipboard-icon
+      background-image: unquote("url('ext/lib/site/carrusel/linkclipboard.svg')")
+    .wp
+      background-image: unquote("url('ext/lib/site/carrusel/whatsapp.svg')")

@@ -11,19 +11,15 @@ export default ({ topic }) => {
   )
 
   return (
-    <div className='topic-article-content topic-social'>
-      <Participants participants={participants} />
+    <div className='topic-article-content topic-social-vilo'>
       <div className='share-links'>
-        <a
-          href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='icon-social-facebook' />
-        <a
-          href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='icon-social-twitter' />
+        <a target='_blank' href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`} rel='noopener noreferrer' className='facebook-icon'></a>
+        <a target='_blank' href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`} rel='noopener noreferrer' className='twitter-icon'></a>
+        {
+          window.innerWidth <= 630 &&
+            <a target='_blank' href={`whatsapp://send?text=${twitterText}`} rel='noopener noreferrer' className='wp'></a>
+        }
+        <div className='linkclipboard-icon'></div>
       </div>
     </div>
   )

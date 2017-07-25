@@ -133,10 +133,13 @@ class TopicArticle extends Component {
           )
         }
         <Social topic={topic} />
-        <Carrusel />
+        <div className='topic-tags topic-article-content'>
+          {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
+        </div>
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
+        <Carrusel />
       </div>
     )
   }
