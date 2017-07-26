@@ -6,14 +6,14 @@ $green = #93c01f
   flex-direction: column
   z-index: 0
   position: relative
-  margin: 10px
+  margin: 10px 15px 20px
   overflow: hidden
-  box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)
+  box-shadow: 0 37px 11px -30px rgba(0,0,0,0.3)
   color: inherit
   transition: all .3s unquote('cubic-bezier(.25,.8,.25,1)')
   background-color: #fff
-  width: 280px
-  height: auto
+  width: 335px
+  height: 460px
 
   &:hover
     box-shadow 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23)
@@ -24,9 +24,7 @@ $green = #93c01f
     font-weight: 700
     text-transform: uppercase
     font-family: 'Roboto', sans-serif
-    font-size: 1.2em
-    line-height: 1.4em
-    max-height: 2.8em
+    font-size: 23px
     display: block;
     display: -webkit-box
     width: 100%
@@ -39,8 +37,8 @@ $green = #93c01f
 
   .topic-card-forum
     color: $green
-    font-weight: 400
-    font-size: 1em
+    font-weight: 100
+    font-size: 23px
 
   .wp
   .facebook-icon
@@ -76,9 +74,7 @@ $green = #93c01f
     right: 10
     position: absolute
     bottom: 0
-    font-size: 18px
-    @media screen and (min-width: 750px)
-      font-size: 24px
+    font-size: 30px
 
   .topic-card-cover
     display: block
@@ -94,23 +90,24 @@ $green = #93c01f
       padding-top 50%
 
   .topic-card-info
-    background: rgb(249, 249, 249)
-    padding: 20px
+    padding: 20px 35px
     text-align: left
+    display: flex
+    flex-direction: column
+    height: 100%
   .cont-boton-azul
     text-align: center
   .portada
     background-color: #93c01f
-    height: 150px
+    height: 430px
     overflow: hidden
-    @media screen and (min-width: 750px)
-      height: 150px
     &:before
       content: ''
       box-shadow: 0 0 60px 20px #000
       width: 100%
       position: absolute
       bottom: 0
+      left: 0
 
   .topic-card-description
     display: flex
@@ -152,9 +149,10 @@ $green = #93c01f
     width: 100%
     padding: 0 0 20px
     .topic-tags
-      color: #9E9E9E
-      margin-top: 10px
-      font-size: 0.9em
+      flex: 1
+      color: #9a3a96
+      font-size: 16px
+      font-weight: 100
       display: block;
       display: -webkit-box
       line-height: 1.2em

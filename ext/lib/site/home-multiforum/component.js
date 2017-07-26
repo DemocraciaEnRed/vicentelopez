@@ -31,9 +31,9 @@ export default class HomeMultiforumOverride extends Component {
         <BannerForoVecinal />
         <ThumbsVoto />
         <div className='seccion-proyectos container-fluid'>
-              <h2 className='title'>
-                Proyectos
-              </h2>
+          <div className="fondo-titulo">
+            <h2 className='title'>Proyectos</h2>
+          </div>
           <Carrusel />
         </div>
         <ForosEnDatos />
