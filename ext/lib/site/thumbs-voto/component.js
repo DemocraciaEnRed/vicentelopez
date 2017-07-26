@@ -16,7 +16,7 @@ export default function ThumbsVoto (props) {
               className="text-center">
                 ¿Qué Son?
             </h2>
-            <p className="que-son-cont">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p className="que-son-cont">Son espacios de participación ciudadana donde los vecinos deciden en que invertir parte del presupuesto municipal. Todos los años desde hace 5 años se asigna y comunica una partida por barrio para la ejecución de estos proyectos.</p>
           </div>
 
           <div className="col-md-4">
@@ -24,7 +24,7 @@ export default function ThumbsVoto (props) {
               className="como-voto img-responsive  ">
             </div>
             <h2 className="text-center">¿Cómo Voto?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Cualquier mayor de 16 años que viva o trabaje en vicente lopez podrá votar desde el XXX hasta el XXX en todas las urnas habilitadas</p>
 
           </div>
 
@@ -35,7 +35,7 @@ export default function ThumbsVoto (props) {
             <h2 className="text-center">
               ¿Donde Voto?
             </h2>
-            <p className="donde-voto-cont">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p className="donde-voto-cont">Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente Lopez: Munro , Florida Oeste , Carapachay, La Lucila, Olivos , Villa Martilli, Florida Este, Vicente Lopez y Villa Adelina.</p>
 
           </div>
 
