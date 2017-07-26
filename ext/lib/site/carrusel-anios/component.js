@@ -13,14 +13,11 @@ export default class CarruselAnios extends Component{
         initialIndex: 0,
         accessibility: true,
         pageDots: false,
-        wrapAround: true
+        wrapAround: true,
+        contain: true
     }
 
     this.flkty = new Flickity(carouselgraph, options)
-  }
-
-  componentDidUpdate (){
-
   }
 
   render(){
