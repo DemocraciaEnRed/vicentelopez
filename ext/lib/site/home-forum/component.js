@@ -99,7 +99,7 @@ export class HomeForum extends Component {
             </div>
           )}
           {topics.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} />
+            <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
           ))}
         </div>
         <Footer />

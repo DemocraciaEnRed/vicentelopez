@@ -3,6 +3,8 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import TopicCard from './topic-card/component'
 import Flickity from 'flickity'
+import {Link} from 'react-router'
+
 
 
 export default class Carrusel extends Component {

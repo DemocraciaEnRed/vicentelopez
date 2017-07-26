@@ -8,7 +8,7 @@ export default function Barrios ({ forums }) {
                 forums && forums.map((forum, i) => {
                   return (
             //        <div key={i} className='contenedor-boton'>
-                      <a href={`/${forum.name}`}
+                      <a key={i} href={`/${forum.name}`}
                         className={`boton-azul btn ${forum.name === window.location.pathname.replace('/', '') ? 'active' : ''}`}>
                           { forum.title }
                       </a>

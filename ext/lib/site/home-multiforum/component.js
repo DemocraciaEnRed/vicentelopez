@@ -30,14 +30,9 @@ export default class HomeMultiforumOverride extends Component {
         <BannerForoVecinal />
         <ThumbsVoto />
         <div className='seccion-proyectos container-fluid'>
-          <div className='row'>
-            <div
-              className='col-xs-10 offset-xs-1 col-md-8 offset-md-2 cont-barrio'>
               <h2 className='title'>
                 Proyectos
               </h2>
-            </div>
-          </div>
           <Carrusel />
         </div>
         <section className='seccion-barrios container'>
