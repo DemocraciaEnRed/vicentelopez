@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Barrios ({ forums }) {
   return (
+    <section className='seccion-barrios container'>
+      <h2 className='title'>Barrios</h2>
       <div className='seccion-barrios-proyectos container'>
           <div className='seccion-botones'>
               {
@@ -18,5 +20,6 @@ export default function Barrios ({ forums }) {
               }
           </div>
       </div>
+    </section>
   )
 }
