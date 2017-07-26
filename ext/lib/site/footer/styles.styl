@@ -4,90 +4,105 @@
   width: 100%
   font-size: 16px
   padding: 5%
-  @media screen and (min-width: 850px)
-    font-size: 1.5rem
-  h3
-    color: white
-    border-bottom: solid 1px #76b72a
-    padding-bottom: 10px
-    margin: 10px 0 20px
-    font-weight: bold
+  @media screen and (min-width: 769px)
     font-size: 20px
-    @media screen and (min-width: 750px)
-      font-size: 1.25rem
-
-  .datos-contacto
-    margin: 20px 0
-    text-align: left
-    color: #ffffff
-    span:first-child
-      font-size: 18px
-      font-weight: 500
-
-
-
-  p
-    color: #d8d8d8
-    line-height: 1.4
-
-  span
-    color: #d8d8d8
-    display: block
-
-  span:first-child
-    color: white
-    margin-bottom: 3%
-    @media screen and (min-width: 614px)
-      margin-bottom: 0
-
-  .mapa
-    background-image: unquote("url('ext/lib/site/footer/mapa.svg')")
-    display: block
-    position: relative
-    height: 25%
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: center
+  .contacto-detalles
     @media screen and (min-width: 500px)
-      height: 250px
-      margin-top: 10%
-      margin-right: 4.7%
+      float: left
+      width: 45%
+      margin-right: 5%
+    @media screen and (min-width: 769px)
+      float: left
+    h3
+      color: white
+      border-bottom: solid 1px #76b72a
+      padding-bottom: 10px
+      margin: 10px 0 20px
+      font-weight: bold
+      font-size: 20px
+      line-height: 1.2em
+
+    .datos-contacto
+      margin: 20px 0
+      text-align: left
+      color: #ffffff
+      span:first-child
+        font-size: 18px
+        font-weight: 500
+        @media screen and (min-width: 769px)
+          font-size: 22px
+
+    p
+      color: #d8d8d8
+      line-height: 1.4
+
+    span
+      color: #d8d8d8
+      display: block
+
+    span:first-child
+      color: white
+      margin-bottom: 3%
+      @media screen and (min-width: 500px)
+        margin-bottom: 0
+
+  .mapa-box
+    @media screen and (min-width: 500px)
+      float: right
+      width: 50%
+
+    .mapa
+      background-image: unquote("url('ext/lib/site/footer/mapa.svg')")
+      display: block
+      position: relative
+      height: 25%
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: center
+      @media screen and (min-width: 500px)
+        height: 250px
+        margin-top: 40px
 
   .logo
-    background-image: unquote("url('ext/lib/site/footer/vicente-lopez-footer.svg')")
-    height: 60px
-    background-repeat: no-repeat
-    background-position: center
-    @media screen and (min-width: 500px)
-      background-position: right
-      height: 92px
-    background-size: contain
-    margin-top: 10%
-    margin-bottom: 10%
-    position: relative
-    margin-right: 4.7%
-
-
+    clear: both
+    padding-top: 20px
+    width: 216px
+    margin: auto
+    a
+      display: block
+      background-image: unquote("url('ext/lib/site/footer/vicente-lopez-footer.svg')")
+      width: 100%
+      padding-top: 33%
+      background-repeat: no-repeat
+      background-position: center
+      background-size: contain
+      margin-bottom: 5px
+      position: relative
+      @media screen and (min-width: 360px)
+        height: 70px
 
   .social-icon
     text-align: center
     margin: 20px 0
     @media screen and (min-width: 500px)
       text-align: left
+      width: 300px
 
     .social-facebook
     .social-twitter
     .social-mail
       background-repeat: no-repeat
       background-size: cover
-      width: 50px
-      height: 50px
+      width: 30px
+      height: 30px
       margin: 0 5%
       display: inline-block
-      margin-bottom: 10px
       @media screen and (min-width: 500px)
-        width: 30px
-        height: 30px
+        width: 40px
+        height: 40px
+      @media screen and (min-width: 769px)
+        width: 50px
+        height: 50px
     .social-facebook
       background-image: unquote("url('ext/lib/site/footer/facebook-c.svg')")
     .social-twitter
@@ -98,17 +113,14 @@
     margin: 10px 0 0
     display: block
     padding: 0
-    font-size: 3vw
+    font-size: 12px
+    text-transform: uppercase
+    text-align: center
     width: 100%
-    @media screen and (min-width: 500px)
-      width: auto
-    @media screen and (min-width: 676px)
-      font-size: 1.25rem
-
+    a
+      color: #d8d8d8
 
 @media screen and (max-width: 500px)
-  .row > div
-    -webkit-flex: 100%;
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
+  .container
+    max-width: 900px
+    margin: auto

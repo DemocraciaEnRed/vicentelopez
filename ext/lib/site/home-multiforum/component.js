@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router'
 import config from 'lib/config'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
