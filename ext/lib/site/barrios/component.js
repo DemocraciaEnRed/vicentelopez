@@ -3,7 +3,9 @@ import React from 'react'
 export default function Barrios ({ forums }) {
   return (
     <section className='seccion-barrios container'>
-      <h2 className='title'>Barrios</h2>
+      <div className="fondo-titulo">
+        <h2 className='title'>Barrios</h2>
+      </div>
       <div className='seccion-barrios-proyectos container'>
           <div className='seccion-botones'>
               {
