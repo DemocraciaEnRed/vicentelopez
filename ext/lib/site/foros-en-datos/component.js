@@ -1,6 +1,6 @@
 import React from 'react'
 import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
-
+import {Link} from 'react-router'
 
 export default function ForosEnDatos () {
   return (
@@ -11,6 +11,14 @@ export default function ForosEnDatos () {
         <div className="flexBox">
           <div className="graph-box">
           <CarruselAnios />
+          </div>
+          <div
+            className='row'>
+              <div className='cont-boton-azul'>
+                  <Link to='/s/datos' className="boton-azul">
+                      Ver más datos
+                  </Link>
+              </div>
           </div>
         </div>
       </section>
