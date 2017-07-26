@@ -30,12 +30,7 @@ export default class HomeMultiforumOverride extends Component {
       <div className='ext-home-multiforum'>
         <BannerForoVecinal />
         <ThumbsVoto />
-        <div className='seccion-proyectos container-fluid'>
-              <h2 className='title'>
-                Proyectos
-              </h2>
-          <Carrusel />
-        </div>
+        <Carrusel />
         <ForosEnDatos />
         <Barrios forums={forums}/>
         <Footer />
