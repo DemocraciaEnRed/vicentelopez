@@ -3,6 +3,8 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import TopicCard from './topic-card/component'
 import Flickity from 'flickity'
+import {Link} from 'react-router'
+
 
 
 export default class Carrusel extends Component {
@@ -50,6 +52,11 @@ export default class Carrusel extends Component {
           {topics && topics.map((topic, i) => (
             <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
           ))}
+        </div>
+        <div className="cont-boton-azul">
+          <Link to='/proyectos' className="boton-azul">
+              VER MÁS
+          </Link>
         </div>
       </div>
     )

@@ -16,9 +16,12 @@ export default ({ topic, forum }) => {
       </div>
       <div className='topic-card-info'>
         <div className='topic-card-body'>
-          <h1 className='topic-card-title'>
+          <h4 className='topic-card-title'>
             {topic.mediaTitle}
-          </h1>
+          </h4>
+          <h5 className='topic-card-forum'>
+            {forum.title}
+          </h5>
           {topic.attrs && topic.attrs.description && (
             <p className='topic-card-description'>
               {topic.attrs.description}
