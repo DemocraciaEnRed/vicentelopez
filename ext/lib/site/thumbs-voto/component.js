@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 export default function ThumbsVoto (props) {
 
   return (
-    <section className="thumbs">
+    <section className="thumbs info-landing">
       <div className="container-fluid">
 
         <div className="row cont">

@@ -99,26 +99,16 @@
         clear: both
 
   .map-box
-    position: relative;
-    padding-bottom: 52%; /* 1000:200 */
-    height: 0;
     margin-bottom: 50px
     &:after
       content: ""
       display: table
       clear: both
     .mapa
-      background-image: unquote("url('ext/lib/site/static-pages/map.png')")
       display: block
-      margin: auto
-      background-size: contain
-      background-repeat: no-repeat
-      max-width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      text-align: center
+      & iframe
+        border: none
 
 .ext-datos
   color: #4D4D4D !important

@@ -9,7 +9,6 @@ export default function Page () {
     <div>
       <BannerForoVecinal />
       <div className='ext-acerca-de container'>
-
         <div className="filas">
           <div className="fila">
             <div className="cols col-1">
@@ -56,7 +55,9 @@ export default function Page () {
           </div>
           <div className="fila no-bg">
             <div className="map-box">
-              <div className='mapa'></div>
+              <div className='mapa'>
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1DEX8V6qaMQy-8NYKNPhsLH_xQnY" width="640" height="480"></iframe>
+              </div>
             </div>
 
           </div>
