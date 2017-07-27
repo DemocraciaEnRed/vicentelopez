@@ -11,9 +11,16 @@
     margin: 0 auto
     height: 416px
     background-size: cover
-    background-image: unquote("url('ext/lib/site/banner-foro-vecinal/VialCosteroVteLopezImgBanner.png')")
+    background-image: unquote("url('ext/lib/site/banner-foro-vecinal/banner.png')")
     background-repeat: no-repeat
     padding: 0
+    overflow: hidden;
+    & video
+      width: 100%
+    @media(max-width: 768px)
+      height: 300px
+    @media(max-width: 500px)
+      height: 200px
   .contenedor
     bottom: -42px;
     position: absolute;
@@ -31,8 +38,13 @@
       text-align: center
       box-shadow: 0 44px 12px -38px unquote("rgba(0, 0, 0, 0.31)")
       margin: 0 auto
-      padding: 15px 40px 9px;
-      letter-spacing: 1px;
+      padding: 15px 40px 9px
+      letter-spacing: 1px
+      @media(max-width: 768px)
+        box-shadow: 0 25px 3px -21px unquote("rgba(0, 0, 0, 0.31)")
+        padding: 15px 20px 9px
+        h1
+          font-size: 40px
     h1
       font-family: 'BrandonGrotesqueBlack', sans-serif
       padding: 0
