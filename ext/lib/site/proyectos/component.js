@@ -47,7 +47,10 @@ export default class Carrusel extends Component {
   render(){
     const { forums, topics } = this.state
     return (
-      <div>
+      <div className='seccion-proyectos container-fluid'>
+        <div className="fondo-titulo">
+          <h2 className='title'>Proyectos</h2>
+        </div>
         <div ref='carrusel'>
           {topics && topics.map((topic, i) => (
             <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />

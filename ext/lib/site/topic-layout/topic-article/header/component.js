@@ -24,17 +24,17 @@ export default class Header extends Component {
     }
 
     var closingAt
-    if (this.props.closingAt) {
-      closingAt = (
-        <p className='meta-information'>
-          <i className='icon-clock' />
-          <span className='time-ago-label'>
-            {(this.props.closed ? t('common.closed') : t('common.close')) + ' '}
-          </span>
-          <Timeago className='meta-timeago' date={this.props.closingAt} />
-        </p>
-      )
-    }
+    // if (this.props.closingAt) {
+    //   closingAt = (
+    //     <p className='meta-information'>
+    //       <i className='icon-clock' />
+    //       <span className='time-ago-label'>
+    //         {(this.props.closed ? t('common.closed') : t('common.close')) + ' '}
+    //       </span>
+    //       <Timeago className='meta-timeago' date={this.props.closingAt} />
+    //     </p>
+    //   )
+    // }
 
     let author = null
     if (this.props.author) {

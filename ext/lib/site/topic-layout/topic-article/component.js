@@ -12,7 +12,7 @@ import Poll from './poll/component'
 import Cause from './cause/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
-import Carrusel from 'ext/lib/site/carrusel/component'
+import Proyectos from 'ext/lib/site/proyectos/component'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -80,6 +80,9 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
+        {
+          topic.coverUrl && <div className="cover" style={{backgroundImage: 'url("' + topic.coverUrl + '")'}}></div>
+        }
         <AdminActions forum={forum} topic={topic} />
         <Header
           closingAt={topic.closingAt}
@@ -136,10 +139,10 @@ class TopicArticle extends Component {
         <div className='topic-tags topic-article-content'>
           {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
         </div>
+        <Proyectos />
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
-        <Carrusel />
       </div>
     )
   }

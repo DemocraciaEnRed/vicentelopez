@@ -56,13 +56,10 @@ export class TopicLayout extends Component {
     return (
       <div>
         <div id='topic-wrapper'>
-
           {forum && topic && (
             <TopicArticle topic={topic} forum={forum} />
           )}
-
         </div>
-
         <Footer />
       </div>
     )

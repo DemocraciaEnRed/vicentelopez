@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
-import Carrusel from 'ext/lib/site/carrusel/component'
+import Proyectos from 'ext/lib/site/proyectos/component'
 import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
 
 export default function Page () {
@@ -76,7 +76,7 @@ export default function Page () {
 
 
       </div>
-          <Carrusel />
+          <Proyectos />
           <Footer />
     </div>
   )
