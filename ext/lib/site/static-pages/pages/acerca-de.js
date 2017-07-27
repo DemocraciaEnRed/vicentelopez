@@ -8,7 +8,7 @@ export default function Page () {
       <BannerForoVecinal />
       <div className='ext-acerca-de container'>
         <div className="filas">
-          <div className="fila">
+          <div className="fila con-icono">
             <div className="cols col-1">
               <div>
                 <div className="thumbs">
@@ -19,11 +19,11 @@ export default function Page () {
             </div>
             <div className="cols col-2">
               <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum eget leo ut ullamcorper. Integer vitae erat nisl. Sed hendrerit egestas aliquet. Pellentesque maximus ullamcorper ligula, sit amet dignissim nunc rhoncus eget. Suspendisse imperdiet nisl quis dictum porta. Sed sit amet mi vitae felis bibendum pretium nec ac ligula. In dignissim at neque sed ullamcorper. Nunc massa mauris, congue vel felis quis, facilisis commodo mi. Ut bibendum nunc at eros interdum, sit amet iaculis magna aliquam.
+                Son espacios de participación ciudadana donde los vecinos deciden en que invertir parte del presupuesto municipal. Todos los años desde hace 5 años se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
               </div>
             </div>
           </div>
-          <div className="fila">
+          <div className="fila con-icono">
             <div className="cols col-1">
               <div>
                 <div className="thumbs">
@@ -34,11 +34,11 @@ export default function Page () {
             </div>
             <div className="cols col-2">
               <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum eget leo ut ullamcorper. Integer vitae erat nisl. Sed hendrerit egestas aliquet. Pellentesque maximus ullamcorper ligula, sit amet dignissim nunc rhoncus eget. Suspendisse imperdiet nisl quis dictum porta. Sed sit amet mi vitae felis bibendum pretium nec ac ligula. In dignissim at neque sed ullamcorper. Nunc massa mauris, congue vel felis quis, facilisis commodo mi. Ut bibendum nunc at eros interdum, sit amet iaculis magna aliquam.
+                Cualquier mayor de 16 años que viva o trabaje en vicente lopez podrá votar desde el XXX hasta el XXX en todas las urnas habilitadas.
               </div>
             </div>
           </div>
-          <div className="fila">
+          <div className="fila con-icono">
             <div className="cols col-1">
               <div className="thumbs">
                 <div className="donde-voto"></div>
@@ -47,9 +47,17 @@ export default function Page () {
             </div>
             <div className="cols col-2">
               <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum eget leo ut ullamcorper. Integer vitae erat nisl. Sed hendrerit egestas aliquet. Pellentesque maximus ullamcorper ligula, sit amet dignissim nunc rhoncus eget. Suspendisse imperdiet nisl quis dictum porta. Sed sit amet mi vitae felis bibendum pretium nec ac ligula. In dignissim at neque sed ullamcorper. Nunc massa mauris, congue vel felis quis, facilisis commodo mi. Ut bibendum nunc at eros interdum, sit amet iaculis magna aliquam.
+                Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente Lopez: Munro , Florida Oeste , Carapachay, La Lucila, Olivos , Villa Martilli, Florida Este, Vicente Lopez y Villa Adelina.
               </div>
             </div>
+          </div>
+          <div className="fila">
+            <h3>Cómo se distribuye el dinero por barrio:</h3>
+            <p>La partida de este año (presupuesto 2018) se repartió en parte de manera igualitaria en los 9 barrios ( $31.5 millones) y en parte ( $33.5 millones) teniendo en cuenta la cantidad de habitantes de cada barrio para lo cual se establecieron 3 franjas: hasta 20 mil, de 20 a 40 mil y más de 40 mil habitantes.</p>
+          </div>
+          <div className="fila">
+            <h3>Cómo funcionan los foros vecinales:</h3>
+            <p>Vecinos y funcionarios municipales se encontraron en reuniones programadas. Los vecinos hicieron sus propuestas para el barrio y junto a los funcionarios del área elaboraron los proyectos.</p>
           </div>
           <div className="fila no-bg">
             <div className="map-box">
@@ -57,11 +65,10 @@ export default function Page () {
                 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1DEX8V6qaMQy-8NYKNPhsLH_xQnY" width="640" height="480"></iframe>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-          <Footer />
+      <Footer />
     </div>
   )
 }
