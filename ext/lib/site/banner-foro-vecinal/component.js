@@ -5,8 +5,8 @@ export default function BannerForoVecinal (props) {
     <section className="container-fluid banner-fv ">
       <div className="banner">
         <video playsInline autoPlay muted loop>
-          <source src="ext/lib/site/banner-foro-vecinal/banner.webm" type="video/webm" />
-          <source src="ext/lib/site/banner-foro-vecinal/banner.mp4" type="video/mp4" />
+          <source src="https://rosariociudaddemocracyos.blob.core.windows.net/assets/vicentelopez-banner.webm" type="video/webm" />
+          <source src="https://rosariociudaddemocracyos.blob.core.windows.net/assets/vicentelopez-banner.mp4" type="video/mp4" />
         </video>
       </div>
       <div
