@@ -8,76 +8,47 @@ export default function Page () {
   return (
     <div>
       <BannerForoVecinal title="Los foros en datos"/>
-      <div className='ext-datos container'>
-
-        <section className="intro">
-          <div className="text=box">
-            <div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas aliquet luctus. Curabitur vestibulum lorem quis porta interdum. Fusce ullamcorper lectus tortor, nec sagittis odio fringilla ac. Curabitur rutrum libero ac urna pretium, in bibendum neque tincidunt. Suspendisse vitae elementum sapien. Donec et libero ut ipsum vestibulum imperdiet. Mauris commodo orci nisi, id ultricies magna blandit at. Curabitur in lectus eu enim tincidunt dignissim quis vitae velit. Donec vehicula risus arcu. Etiam laoreet nibh lacinia rutrum euismod. Vivamus eget velit magna. Proin faucibus leo nec volutpat ullamcorper. In hac habitasse platea dictumst. Duis quis sem efficitur, semper leo at, gravida nunc. Sed condimentum non mi ut porta.</div>
-          </div>
-        </section>
-        <section className="progreso-proyectos">
-          <h3>Proyectos por año</h3>
-          <div className="flexBox">
-            <div className="graph-box">
-              <img className="graph" src="../ext/lib/site/static-pages/progreso-proyectos.svg" alt=""/>
-              <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-ref.svg" alt=""/>
-            </div>
-            <div className="text-box">
-              <div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas aliquet luctus. Curabitur vestibulum lorem quis porta interdum. Fusce ullamcorper lectus tortor, nec sagittis odio fringilla ac. Curabitur rutrum libero ac urna pretium, in bibendum neque tincidunt. Suspendisse vitae elementum sapien. Donec et libero ut ipsum vestibulum imperdiet. Mauris commodo orci nisi, id ultricies magna blandit at. Curabitur in lectus eu enim tincidunt dignissim quis vitae velit. Donec vehicula risus arcu. Etiam laoreet nibh lacinia rutrum euismod. Vivamus eget velit magna. Proin faucibus leo nec volutpat ullamcorper. In hac habitasse platea dictumst. Duis quis sem efficitur, semper leo at, gravida nunc. Sed condimentum non mi ut porta.</div>
-            </div>
+      <div className='ext-datos'>
+        <div className="text">
+          El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de Foros Vecinales.
         </div>
-        </section>
-        <section className="progreso-proyectos-por-tipo">
-          <h3>Cantidad de proyectos por año por tipo</h3>
-          <div className="flexBox">
+        <h3>Proyectos por año</h3>
+        <div className="graph-box">
+          <img className="graph" src="../ext/lib/site/static-pages/progreso-proyectos.svg" alt=""/>
+          <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-ref.svg" alt=""/>
+        </div>
+        <div className="text">
+          Evolución de cantidad de proyectos presentados, aprobados y ejecutados.
+        </div>
 
-          <div className="graph-box">
-            <img className="graph" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo.svg" alt=""/>
-            <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo-ref.svg" alt=""/>
-          </div>
-          <div className="text-box">
+        <h3>Cantidad de proyectos por año por tipo</h3>
+        <div className="graph-box">
+          <img className="graph" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo.svg" alt=""/>
+          <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo-ref.svg" alt=""/>
+        </div>
+        <div className="text">
+          Evolución en el tiempo de cantidad de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).
+        </div>
 
-          <div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas aliquet luctus. Curabitur vestibulum lorem quis porta interdum. Fusce ullamcorper lectus tortor, nec sagittis odio fringilla ac. Curabitur rutrum libero ac urna pretium, in bibendum neque tincidunt. Suspendisse vitae elementum sapien. Donec et libero ut ipsum vestibulum imperdiet. Mauris commodo orci nisi, id ultricies magna blandit at. Curabitur in lectus eu enim tincidunt dignissim quis vitae velit. Donec vehicula risus arcu. Etiam laoreet nibh lacinia rutrum euismod. Vivamus eget velit magna. Proin faucibus leo nec volutpat ullamcorper. In hac habitasse platea dictumst. Duis quis sem efficitur, semper leo at, gravida nunc. Sed condimentum non mi ut porta.</div>
-          </div>
-
-          </div>
-
-        </section>
-        <section className="distribucion-proyectos">
-          <h3>Distribución de proyectos por tipo</h3>
-          <div className="flexBox">
-
-          <div className="graph-box">
+        <h3>Distribución de proyectos por tipo</h3>
+        <div className="graph-box">
           <CarruselAnios />
-          </div>
-          <div className="text-box">
-
-          <div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas aliquet luctus. Curabitur vestibulum lorem quis porta interdum. Fusce ullamcorper lectus tortor, nec sagittis odio fringilla ac. Curabitur rutrum libero ac urna pretium, in bibendum neque tincidunt. Suspendisse vitae elementum sapien. Donec et libero ut ipsum vestibulum imperdiet. Mauris commodo orci nisi, id ultricies magna blandit at. Curabitur in lectus eu enim tincidunt dignissim quis vitae velit. Donec vehicula risus arcu. Etiam laoreet nibh lacinia rutrum euismod. Vivamus eget velit magna. Proin faucibus leo nec volutpat ullamcorper. In hac habitasse platea dictumst. Duis quis sem efficitur, semper leo at, gravida nunc. Sed condimentum non mi ut porta.</div>
-          </div>
-
-          </div>
-
-        </section>
-        <section className="evolucion-participacion">
-          <h3>Evolución de la participación</h3>
-          <div className="flexBox">
-
-          <div className="graph-box">
-            <img className="graph" src="../ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
-          </div>
-          <div className="text-box">
-
-          <div className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas aliquet luctus. Curabitur vestibulum lorem quis porta interdum. Fusce ullamcorper lectus tortor, nec sagittis odio fringilla ac. Curabitur rutrum libero ac urna pretium, in bibendum neque tincidunt. Suspendisse vitae elementum sapien. Donec et libero ut ipsum vestibulum imperdiet. Mauris commodo orci nisi, id ultricies magna blandit at. Curabitur in lectus eu enim tincidunt dignissim quis vitae velit. Donec vehicula risus arcu. Etiam laoreet nibh lacinia rutrum euismod. Vivamus eget velit magna. Proin faucibus leo nec volutpat ullamcorper. In hac habitasse platea dictumst. Duis quis sem efficitur, semper leo at, gravida nunc. Sed condimentum non mi ut porta.</div>
-          </div>
-
-          </div>
-
-        </section>
+        </div>
+        <div className="text">
+          Visualización por año de la distribución de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).
+        </div>
 
 
+        <h3>Evolución de la participación</h3>
+        <div className="graph-box">
+          <img className="graph" src="../ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
+        </div>
+        <div className="text">
+          Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales del municipio.
+        </div>
       </div>
-          <Proyectos />
-          <Footer />
+      <Proyectos />
+      <Footer />
     </div>
   )
 }

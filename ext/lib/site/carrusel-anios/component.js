@@ -7,7 +7,7 @@ export default class CarruselAnios extends Component{
     this.flkty = null
   }
 
-  componentDidUpdate (v) {
+  componentDidMount (v) {
     const carouselgraph = this.refs.carouselgraph;
     const options = {
         initialIndex:1,

@@ -116,26 +116,28 @@
         border: none
 
 .ext-datos
-  color: #4D4D4D !important
+  color: #696969 !important
   padding-bottom: 20px
-
+  max-width: 1000px
+  width: 100%
+  margin: 0 auto
   section
     margin-bottom: 20px
 
   .text
-    padding: 0 5%
-    font-size: 14px
+    font-size: 17px
+    margin: 30px 0
 
-  @media screen and (min-width: 780px)
-
-    .flexBox
-      display: flex;
-      flex-direction: row;
-      .graph-box
-        width: 40%
-      .text-box
-        padding-top: 20px
-        width: 60%
+  .graph-box
+    img
+      display: block
+      margin: 0 auto
+    .graph-ref
+      width: 300px
+      margin-bottom: 20px
+    .graph
+      width: 450px
+      margin-top: 20px
 
   h3
     text-align: center
@@ -143,16 +145,10 @@
     color: #4D4D4D !important
     text-transform: uppercase
     max-width: 80%
-    margin: 0 auto 20px
+    margin: 100px auto 50px
 
-  .graph-box
-    margin-bottom: 20px
-
-    .graph-ref
-      max-width: 300px;
-      margin: auto;
-      display: block;
-
+  .carousel-distribucion-proyectos
+    width: 300px
 
 .carousel-distribucion-proyectos
   width: 1000px
@@ -167,8 +163,10 @@
 
   .flickity-prev-next-button.previous
     background-image: unquote("url('ext/lib/site/static-pages/LeftArrowCarousel.svg')")
+    left: -40px
   .flickity-prev-next-button.next
     background-image: unquote("url('ext/lib/site/static-pages/RightArrowCarousel.svg')")
+    right: -40px
 
   .flickity-prev-next-button.previous,
   .flickity-prev-next-button.next
