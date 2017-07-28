@@ -155,20 +155,15 @@
 
 
 .carousel-distribucion-proyectos
-  width: 1000px;
-  max-width: 100%
+  width: 1000px
   margin: auto;
-
-  .graph
-    width: 324px
-
-  img
-    max-width: calc(100% - 88px)
-    margin: auto
-    display: block
-
-
-
+  @media screen and (max-width: 1200px)
+    width: 100%
+  .carousel-cell
+    img
+      margin: 0 20px
+      width: 300px
+      height: 300px
 
   .flickity-prev-next-button.previous
     background-image: unquote("url('ext/lib/site/static-pages/LeftArrowCarousel.svg')")

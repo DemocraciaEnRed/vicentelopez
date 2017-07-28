@@ -10,10 +10,8 @@ export default class CarruselAnios extends Component{
   componentDidUpdate (v) {
     const carouselgraph = this.refs.carouselgraph;
     const options = {
-        initialIndex: 0,
-        accessibility: true,
+        initialIndex:1,
         pageDots: false,
-        wrapAround: true,
         contain: true
     }
     this.flkty = new Flickity(carouselgraph, options)
@@ -24,19 +22,19 @@ export default class CarruselAnios extends Component{
       <div className='carousel-distribucion-proyectos'>
         <div ref='carouselgraph' >
           <div className="carousel-cell">
-            <img width="236" height="236" className="graph" src="../ext/lib/site/static-pages/2012.svg" alt=""/>
+            <img className="graph" src="../ext/lib/site/static-pages/2012.svg" />
           </div>
           <div className="carousel-cell">
-            <img width="236" height="236" className="graph" src="../ext/lib/site/static-pages/2013.svg" alt=""/>
+            <img className="graph" src="../ext/lib/site/static-pages/2013.svg" />
           </div>
           <div className="carousel-cell">
-            <img width="236" height="236" className="graph" src="../ext/lib/site/static-pages/2014.svg" alt=""/>
+            <img className="graph" src="../ext/lib/site/static-pages/2014.svg" />
           </div>
           <div className="carousel-cell">
-            <img width="236" height="236" className="graph" src="../ext/lib/site/static-pages/2015.svg" alt=""/>
+            <img className="graph" src="../ext/lib/site/static-pages/2015.svg" />
           </div>
           <div className="carousel-cell">
-            <img width="236" height="236" className="graph" src="../ext/lib/site/static-pages/2016.svg" alt=""/>
+            <img className="graph" src="../ext/lib/site/static-pages/2016.svg" />
           </div>
         </div>
         <img className="refe" src="../ext/lib/site/static-pages/refes.svg" alt=""/>
