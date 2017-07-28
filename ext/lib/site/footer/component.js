@@ -19,7 +19,7 @@ export default function Footer (props) {
         </div>
         <div className='mapa-box'>
           <div>
-            <iframe className='mapa' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.80690130259!2d-58.4867401486855!3d-34.50777938038877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb14018ac8413%3A0x50b76f9f4f319407!2sJuan+Bautista+Alberdi+830%2C+Olivos%2C+Buenos+Aires!5e0!3m2!1sen!2sar!4v1501095308553"  frameBorder="0"  allowFullScreen></iframe>
+            <iframe className='mapa' src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3287.7955547382676!2d-58.483951!3d-34.508067!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb14018ac8413%3A0x50b76f9f4f319407!2sJuan+Bautista+Alberdi+830%2C+Olivos%2C+Buenos+Aires%2C+Argentina!5e0!3m2!1ses!2sar!4v1501270118288" frameBorder="0"  allowFullScreen></iframe>
           </div>
         </div>
         <div className='social-icon'>
