@@ -13,6 +13,7 @@ import Cause from './cause/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
+import {Link} from 'react-router'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -139,10 +140,13 @@ class TopicArticle extends Component {
         <div className='topic-tags topic-article-content'>
           {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
         </div>
-        <Proyectos />
+        <div className='topic-tags topic-article-content votar-este'>
+          <Link className='boton-azul btn' to='/s/acerca-de'>VOTAR ESTE PROYECTO</Link>
+        </div>
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
+        <Proyectos />
       </div>
     )
   }
