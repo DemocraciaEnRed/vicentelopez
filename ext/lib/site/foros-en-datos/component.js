@@ -9,8 +9,9 @@ export default function ForosEnDatos () {
           <h2 className='title'>Los foros en datos</h2>
         </div>
         <div className="flexBox">
+          <p>El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de Foros Vecinales.</p>
           <div className="graph-box">
-          <CarruselAnios />
+            <CarruselAnios />
           </div>
           <div
             className='row'>
