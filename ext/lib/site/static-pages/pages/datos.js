@@ -5,6 +5,7 @@ import Proyectos from 'ext/lib/site/proyectos/component'
 import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
 
 export default function Page () {
+  document.body.scrollTop = 0
   return (
     <div>
       <BannerForoVecinal title="Los foros en datos"/>

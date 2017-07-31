@@ -3,6 +3,7 @@ import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 
 export default function Page () {
+  document.body.scrollTop = 0
   return (
     <div className='ext-terminos-y-condiciones'>
       <section className="banner-tyc ">
