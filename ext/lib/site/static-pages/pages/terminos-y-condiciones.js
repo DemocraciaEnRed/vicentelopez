@@ -4,9 +4,16 @@ import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 
 export default function Page () {
   return (
-    <div>
-      <div className='ext-terminos-y-condiciones container'>
-        <h1><span>T&eacute;rminos y condiciones de uso</span></h1>
+    <div className='ext-terminos-y-condiciones'>
+      <section className="banner-tyc ">
+        <div className="banner"></div>
+        <div className='contenedor'>
+          <div className='fondo-titulo'>
+            <h1>T&eacute;rminos y condiciones de uso</h1>
+          </div>
+        </div>
+      </section>
+      <div className='container'>
         <ul>
            <li><span>Acerca de este sitio</span></li>
            <li><span>Usuarios, obligaciones y condiciones</span></li>

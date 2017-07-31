@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 export default function BannerProyectos (props) {
 
   return (
@@ -13,7 +11,7 @@ export default function BannerProyectos (props) {
         className='contenedor row'>
           <div
             className='fondo-titulo'>
-              <h1 className=''>PROYECTOS</h1>
+              <h1>PROYECTOS</h1>
           </div>
       </div>
     </section>
