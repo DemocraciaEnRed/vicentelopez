@@ -19,10 +19,10 @@ export default function Page () {
           <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-ref.svg" alt=""/>
         </div>
         <div className="text">
-          Evolución de cantidad de proyectos presentados, aprobados y ejecutados.
+          Evolución de cantidad de proyectos presentados, aprobados y ejecutados año a año.
         </div>
 
-        <h3>Cantidad de proyectos por año por tipo</h3>
+        <h3>Cantidad de proyectos por año por categoría</h3>
         <div className="graph-box">
           <img className="graph" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo.svg" alt=""/>
           <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo-ref.svg" alt=""/>
@@ -31,7 +31,7 @@ export default function Page () {
           Evolución en el tiempo de cantidad de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).
         </div>
 
-        <h3>Distribución de proyectos por tipo</h3>
+        <h3>Distribución de proyectos por categoría</h3>
         <div className="graph-box">
           <CarruselAnios />
         </div>
@@ -45,7 +45,7 @@ export default function Page () {
           <img className="graph" src="../ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
         </div>
         <div className="text">
-          Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales del municipio.
+          Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.
         </div>
       </div>
       <Proyectos />

@@ -54,13 +54,14 @@ export default function Page () {
           </div>
           <div className="fila faq">
             <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>
-            <p>La partida de este año (presupuesto 2018) se repartió en parte de manera igualitaria en los 9 barrios ($31,5 millones) y en parte ($33,5 millones) teniendo en cuenta la cantidad de habitantes de cada barrio para lo cual se establecieron 3 franjas: hasta 20 mil, de 20 a 40 mil y más de 40 mil habitantes.</p>
+            <p>La partida de este año (presupuesto 2018) se repartió siguiendo dos criterios. Los primeros 31,5 millones se los repartió por partes iguales a cada uno de los 9 barrios. Los siguientes 33,5 millones según la cantidad de habitantes de cada barrio.</p>
             <h3>¿CÓMO SE ELABORARON LOS PROYECTOS?</h3>
-            <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encontraron con funcionarios municipales de cada área para presentarles ideas y propuestas para los barrios y en conjunto se definieron los proyectos.</p>
+            <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encontraron con los funcionarios municipales de cada área para presentarles ideas y propuestas para cada barrio y en conjunto se definieron los proyectos.
+            Si te quedaste con alguna idea para tu barrio no la descartes: estamos avanzando para que el año que viene hayan más instancias de presupuesto participativo.</p>
             <h3>¿CÓMO SE DECIDIERON LOS PROYECTOS VOTABLES?</h3>
-            <p>Una vez presentado, cada proyecto fue verificado técnica y legalmente. El total de proyectos factibles se someterá a votación.</p>
+            <p>Para que una idea pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasó a una etapa de verificación técnica y legal. En esta instancia se terminó de definir la factibilidad del proyecto y los costos reales del mismo.</p>
             <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
-            <p>Los proyectos más votados de cada barrio que no superen el monto asignado serán ejecutados el año que viene.</p>
+            <p>Los proyectos ganadores de cada barrio, van a surgir de tu voto y el de todos. En las urnas vas a encontrar una boleta con todos los proyectos y vas a poder elegir hasta 3. Los proyectos más votados de cada barrio que no superen el monto asignado serán ejecutados el año que viene.</p>
           </div>
           <div className="fila no-bg">
             <div className="map-box">

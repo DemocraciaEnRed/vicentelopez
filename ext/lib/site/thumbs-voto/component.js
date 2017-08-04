@@ -16,7 +16,9 @@ export default function ThumbsVoto (props) {
               className="text-center">
                 ¿Qué Son?
             </h2>
-            <p className="que-son-cont">Son espacios de participación ciudadana donde los vecinos deciden en que invertir parte del presupuesto municipal. Todos los años desde hace 5 años se asigna y comunica una partida por barrio para la ejecución de estos proyectos.</p>
+            <p className="que-son-cont">
+            Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 5 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
+            </p>
           </div>
 
           <div className="col-md-4">
@@ -24,7 +26,10 @@ export default function ThumbsVoto (props) {
               className="como-voto img-responsive  ">
             </div>
             <h2 className="text-center">¿Cómo Voto?</h2>
-            <p>Cualquier mayor de 16 años que viva o trabaje en vicente lopez podrá votar desde el XXX hasta el XXX en todas las urnas habilitadas</p>
+            <p>
+            Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas.
+            Votar es muy fácil, si te acercas a las urnas te van a dar una boleta con los proyectos que podes encontrar en esta web. Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
+            </p>
 
           </div>
 
@@ -35,7 +40,9 @@ export default function ThumbsVoto (props) {
             <h2 className="text-center">
               ¿Donde Voto?
             </h2>
-            <p className="donde-voto-cont">Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente Lopez: Munro , Florida Oeste , Carapachay, La Lucila, Olivos , Villa Martilli, Florida Este, Vicente Lopez y Villa Adelina.</p>
+            <p className="donde-voto-cont">
+            Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. La votación estará abierta desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017, de lunes a viernes entre las 8:30hs a 16hs. También instalaremos urnas móviles en cada uno de los barrios.
+            </p>
 
           </div>
 
