@@ -27,7 +27,6 @@ export default function ThumbsVoto (props) {
             </div>
             <h2 className="text-center">¿Cómo Voto?</h2>
             <p>
-            Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas.
             Votar es muy fácil, si te acercas a las urnas te van a dar una boleta con los proyectos que podes encontrar en esta web. Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
             </p>
 
@@ -41,7 +40,7 @@ export default function ThumbsVoto (props) {
               ¿Donde Voto?
             </h2>
             <p className="donde-voto-cont">
-            Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. La votación estará abierta desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017, de lunes a viernes entre las 8:30hs a 16hs. También instalaremos urnas móviles en cada uno de los barrios.
+            Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López. La votación estará abierta desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017, de lunes a viernes entre las 8:30hs a 16hs. También instalaremos urnas móviles en cada uno de los barrios.
             </p>
 
           </div>

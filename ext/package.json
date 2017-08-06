@@ -12,7 +12,9 @@
   },
   "license": "GPL-3.0",
   "dependencies": {
-    "flickity": "^2.0.8"
+    "flickity": "^2.0.8",
+    "jump.js": "^1.0.2",
+    "lodash.debounce": "~4.0.8"
   },
   "devDependencies": {
     "eslint": ">=3.0.0",

@@ -10,9 +10,6 @@ import userConnector from 'lib/site/connectors/user'
 import TopicCard from '../proyectos/topic-card/component'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
-import BannerProyectos from 'ext/lib/site/banner-proyectos/component'
-
-
 
 export class HomeForum extends Component {
   constructor (props) {
@@ -84,7 +81,14 @@ export class HomeForum extends Component {
 
     return (
       <div id='forum-home'>
-        <BannerProyectos />
+        <section className="banner-proyectos">
+          <div className="banner"></div>
+          <div className='contenedor'>
+            <div className='fondo-titulo'>
+              <h1>Proyectos</h1>
+            </div>
+          </div>
+        </section>
 
         <Barrios forums={forums} />
         {topics.length === 0 && (

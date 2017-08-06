@@ -44,7 +44,6 @@ export class TopicLayout extends Component {
   }
 
   render () {
-    document.body.scrollTop = 0
     if (config.visibility === 'hidden' && this.props.user.state.rejected) {
       browserHistory.push('/signin')
       return null

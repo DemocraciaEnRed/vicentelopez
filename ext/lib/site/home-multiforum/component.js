@@ -9,6 +9,7 @@ import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
+import Anchor from 'ext/lib/site/anchor'
 
 export default class HomeMultiforumOverride extends Component {
   constructor(props){
@@ -24,16 +25,22 @@ export default class HomeMultiforumOverride extends Component {
     })
   }
 
+  componentDidMount () {
+    Anchor.goTo('container')
+  }
+
   render () {
     const { topics, forums } = this.state
     return (
       <div className='ext-home-multiforum'>
-        <BannerForoVecinal />
-        <ThumbsVoto />
-        <Proyectos />
-        <ForosEnDatos />
-        <Barrios forums={forums}/>
-        <Footer />
+        <Anchor id='container'>
+          <BannerForoVecinal />
+          <ThumbsVoto />
+          <Proyectos />
+          <ForosEnDatos />
+          <Barrios forums={forums}/>
+          <Footer />
+        </Anchor>
       </div>
     )
   }
