@@ -23,14 +23,9 @@ export class TopicLayout extends Component {
     }
 
     forumStore.findOneByName(name)
-      .then((forum) => Promise.all([
-        forum,
-        topicStore.findAll({ forum: forum.id })
-      ]))
-      .then(([forum, topics]) => {
+      .then((forum) => {
         this.setState({
-          forum,
-          topics
+          forum
         })
       })
       .catch((err) => {
@@ -50,7 +45,7 @@ export class TopicLayout extends Component {
     }
 
     const { topic } = this.props
-    const { forum, topics } = this.state
+    const { forum } = this.state
 
     return (
       <div>

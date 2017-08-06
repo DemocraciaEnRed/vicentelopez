@@ -14,7 +14,6 @@ import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import {Link} from 'react-router'
-import Anchor from 'ext/lib/site/anchor'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -30,8 +29,7 @@ class TopicArticle extends Component {
   }
 
   componentDidUpdate () {
-    debugger
-    Anchor.goTo('container')
+    document.body.scrollTop = 0
   }
 
   componentWillUnmount () {
@@ -83,78 +81,76 @@ class TopicArticle extends Component {
 
     return (
       <div className='topic-article-wrapper'>
-        <Anchor id='container'>
-          {
-            this.state.showSidebar &&
-              <div onClick={hideSidebar} className='topic-overlay' />
-          }
-          {
-            topic.coverUrl && <div className="cover" style={{backgroundImage: 'url("' + topic.coverUrl + '")'}}></div>
-          }
-          <AdminActions forum={forum} topic={topic} />
-          <Header
-            closingAt={topic.closingAt}
-            closed={topic.closed}
-            author={topic.author}
-            authorUrl={topic.authorUrl}
-            tags={topic.tags}
-            forumName={forum.name}
-            mediaTitle={topic.mediaTitle} />
-          {topic.clauses && <Content clauses={topic.clauses} />}
-          {
-            topic.links && (
-              <Footer
-                source={topic.source}
-                links={topic.links}
-                socialUrl={topic.url}
-                title={topic.mediaTitle} />
-            )
-          }
-          {
-            topic.action.method && topic.action.method === 'vote' && (
-              <Vote
-                votes={{
-                  positive: topic.upvotes || [],
-                  negative: topic.downvotes || [],
-                  neutral: topic.abstentions || []
-                }}
-                closed={topic.closed}
-                id={topic.id}
-                url={topic.url}
-                closingAt={topic.closingAt}
+        {
+          this.state.showSidebar &&
+            <div onClick={hideSidebar} className='topic-overlay' />
+        }
+        {
+          topic.coverUrl && <div className="cover" style={{backgroundImage: 'url("' + topic.coverUrl + '")'}}></div>
+        }
+        <AdminActions forum={forum} topic={topic} />
+        <Header
+          closingAt={topic.closingAt}
+          closed={topic.closed}
+          author={topic.author}
+          authorUrl={topic.authorUrl}
+          tags={topic.tags}
+          forumName={forum.name}
+          mediaTitle={topic.mediaTitle} />
+        {topic.clauses && <Content clauses={topic.clauses} />}
+        {
+          topic.links && (
+            <Footer
+              source={topic.source}
+              links={topic.links}
+              socialUrl={topic.url}
+              title={topic.mediaTitle} />
+          )
+        }
+        {
+          topic.action.method && topic.action.method === 'vote' && (
+            <Vote
+              votes={{
+                positive: topic.upvotes || [],
+                negative: topic.downvotes || [],
+                neutral: topic.abstentions || []
+              }}
+              closed={topic.closed}
+              id={topic.id}
+              url={topic.url}
+              closingAt={topic.closingAt}
+              canVoteAndComment={forum.privileges.canVoteAndComment} />
+          )
+        }
+        {
+          topic.action.method && topic.action.method === 'poll' && (
+            <div className='topic-article-content'>
+              <Poll
+                topic={topic}
                 canVoteAndComment={forum.privileges.canVoteAndComment} />
-            )
-          }
-          {
-            topic.action.method && topic.action.method === 'poll' && (
-              <div className='topic-article-content'>
-                <Poll
-                  topic={topic}
-                  canVoteAndComment={forum.privileges.canVoteAndComment} />
-              </div>
-            )
-          }
-          {
-            topic.action.method && topic.action.method === 'cause' && (
-              <div className='topic-article-content'>
-                <Cause
-                  topic={topic}
-                  canVoteAndComment={forum.privileges.canVoteAndComment} />
-              </div>
-            )
-          }
-          <Social topic={topic} />
-          <div className='topic-tags topic-article-content'>
-            {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
-          </div>
-          <div className='topic-tags topic-article-content votar-este'>
-            <Link className='boton-azul btn' to='/s/acerca-de'>VOTAR ESTE PROYECTO</Link>
-          </div>
-          {
-            !user.state.pending && <Comments forum={forum} topic={topic} />
-          }
-          <Proyectos />
-        </Anchor>
+            </div>
+          )
+        }
+        {
+          topic.action.method && topic.action.method === 'cause' && (
+            <div className='topic-article-content'>
+              <Cause
+                topic={topic}
+                canVoteAndComment={forum.privileges.canVoteAndComment} />
+            </div>
+          )
+        }
+        <Social topic={topic} />
+        <div className='topic-tags topic-article-content'>
+          {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
+        </div>
+        <div className='topic-tags topic-article-content votar-este'>
+          <Link className='boton-azul btn' to='/s/acerca-de'>VOTAR ESTE PROYECTO</Link>
+        </div>
+        {
+          !user.state.pending && <Comments forum={forum} topic={topic} />
+        }
+        <Proyectos />
       </div>
     )
   }
