@@ -53,9 +53,15 @@ export default class Page extends Component {
             <div className="text">
               Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.
             </div>
+            <div className='descargas'>
+              <h4>DESCARGAS</h4>
+              <div className="btns-descargas">
+                <a target='_blank' href='https://rosariociudaddemocracyos.blob.core.windows.net/assets/informacion-sobre-participantes.xlsx' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
+                <a target='_blank' href='https://rosariociudaddemocracyos.blob.core.windows.net/assets/proyectos-2012-2017-por-tipo.xlsx' className='boton-azul'>Información sobre participación</a>
+              </div>
+            </div>
           </div>
         </Anchor>
-        <Proyectos />
         <Footer />
       </div>
     )

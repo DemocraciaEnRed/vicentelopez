@@ -145,7 +145,7 @@ class TopicArticle extends Component {
           {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
         </div>
         <div className='topic-tags topic-article-content votar-este'>
-          <Link className='boton-azul btn' to='/s/acerca-de'>VOTAR ESTE PROYECTO</Link>
+          <Link className='boton-azul btn' to='/s/acerca-de#mapa'>VOTAR ESTE PROYECTO</Link>
         </div>
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
