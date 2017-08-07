@@ -145,6 +145,7 @@ class TopicArticle extends Component {
           {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
         </div>
         <div className='topic-tags topic-article-content votar-este'>
+          <p>Podés votar éste y cualquier otro proyecto en la mesa de votación mas cercana entre el 18 de septiembre y el 1 de octubre.</p>
           <Link className='boton-azul btn' to='/s/acerca-de#mapa'>VOTAR ESTE PROYECTO</Link>
         </div>
         {
