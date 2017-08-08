@@ -20,21 +20,24 @@ export default class Page extends Component {
               El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de Foros Vecinales.
             </div>
             <h3>Proyectos por año</h3>
-            <div className="graph-box">
-              <img className="graph" src="../ext/lib/site/static-pages/progreso-proyectos.svg" alt=""/>
-              <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-ref.svg" alt=""/>
+            <div className="seccion-datos">
+              <div className="graph-box">
+                <img className="graph" src="/ext/lib/site/static-pages/progreso-proyectos.svg" alt=""/>
+              </div>
+              <div className="text">
+                Evolución de cantidad de proyectos presentados, aprobados y ejecutados año a año.
+                <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-ref.png" alt=""/>
+              </div>
             </div>
-            <div className="text">
-              Evolución de cantidad de proyectos presentados, aprobados y ejecutados año a año.
-            </div>
-
             <h3>Cantidad de proyectos por año por categoría</h3>
-            <div className="graph-box">
-              <img className="graph" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo.svg" alt=""/>
-              <img className="graph-ref" src="../ext/lib/site/static-pages/progreso-proyectos-por-tipo-ref.svg" alt=""/>
-            </div>
-            <div className="text">
-              Evolución en el tiempo de cantidad de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).
+            <div className="seccion-datos">
+              <div className="graph-box">
+                <img className="graph" src="/ext/lib/site/static-pages/progreso-proyectos-por-tipo.svg" alt=""/>
+              </div>
+              <div className="text">
+                Evolución en el tiempo de cantidad de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).
+                <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-por-tipo-ref.svg" alt=""/>
+              </div>
             </div>
 
             <h3>Distribución de proyectos por categoría</h3>
@@ -47,11 +50,13 @@ export default class Page extends Component {
 
 
             <h3>Evolución de la participación</h3>
-            <div className="graph-box">
-              <img className="graph" src="../ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
-            </div>
-            <div className="text">
-              Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.
+            <div className="seccion-datos">
+              <div className="graph-box">
+                <img className="graph" src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
+              </div>
+              <div className="text">
+                Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.
+              </div>
             </div>
             <div className='descargas'>
               <h4>DESCARGAS</h4>
