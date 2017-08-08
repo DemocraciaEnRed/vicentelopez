@@ -4,9 +4,9 @@ import ReactOutsideEvent from 'react-outside-event'
 
 export class CommentsOrderBy extends Component {
   static sorts = [
-    {id: '-score', label: t('comments.sorts.score')},
-    {id: '-createdAt', label: t('comments.sorts.newest-first')},
-    {id: 'createdAt', label: t('comments.sorts.oldest-first')}
+    {id: '-score', label: 'Relevancia'},
+    {id: '-createdAt', label: 'Más recientes'},
+    {id: 'createdAt', label: 'Más antiguos'}
   ]
 
   static getSortLabel (id) {
