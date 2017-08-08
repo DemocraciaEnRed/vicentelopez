@@ -37,8 +37,8 @@ export default class HomeMultiforumOverride extends Component {
           <BannerForoVecinal />
           <ThumbsVoto />
           <Proyectos />
-          <ForosEnDatos />
           <Barrios forums={forums}/>
+          <ForosEnDatos />
           <Footer />
         </Anchor>
       </div>
