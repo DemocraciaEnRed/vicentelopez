@@ -148,7 +148,7 @@ function NeedsLogin () {
   return (
     <div className='alert alert-info' role='alert'>
       <span className='icon-bubble' />{' '}
-      {t('comments.sign-in-required')}.{' '}
+      Debés estar registrado para poder comentar aquí.{' '}
       <Link to={{pathname: '/signin', query: {ref}}}>
         {t('signin.login')}
       </Link>
