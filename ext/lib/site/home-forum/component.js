@@ -10,6 +10,7 @@ import userConnector from 'lib/site/connectors/user'
 import TopicCard from '../proyectos/topic-card/component'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
+import DatosPorForo from 'ext/lib/site/datos-forum/component'
 
 export class HomeForum extends Component {
   constructor (props) {
@@ -93,13 +94,13 @@ export class HomeForum extends Component {
             </div>
           </div>
         </section>
-
         <Barrios forums={forums} />
         {topics.length === 0 && (
           <div className='no-topics'>
             <p>{t('homepage.no-topics')}</p>
           </div>
         )}
+        <DatosPorForo forum={forum} />
         <div className='topics-container'>
           {this.state.loading && (
             <div className='loader-wrapper'>
