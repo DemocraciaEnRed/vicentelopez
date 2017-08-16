@@ -109,7 +109,7 @@ class CommentsForm extends Component {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
-          placeholder={t('comments.create.placeholder')}
+          placeholder='Escribir un comentario...'
           maxLength='4096'
           minLength='1'
           rows='1'
