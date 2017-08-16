@@ -74,6 +74,10 @@ export class HomeForum extends Component {
     if (!this.state.forum) return null
 
     const { forums, forum, topics } = this.state
+  
+    //randomizo los topics
+    topics.sort(() => 0.5 - Math.random())
+  
 
     const cover = (forum.coverUrl && {
       backgroundImage: 'linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("' + forum.coverUrl + '")'
@@ -102,7 +106,7 @@ export class HomeForum extends Component {
               <div className='topic-loader' />
             </div>
           )}
-          {topics.map((topic) => (
+         {topics.map((topic) => (
             <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
           ))}
         </div>
