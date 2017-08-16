@@ -6,7 +6,7 @@ services:
     build: .
     command: ["./node_modules/.bin/gulp", "bws"]
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - DEBUG=democracyos*
       - MONGO_URL=mongodb://mongo/development
       - ORGANIZATION_NAME=DemocracyOS Fork
