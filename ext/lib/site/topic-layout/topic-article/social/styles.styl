@@ -24,6 +24,7 @@
       cursor: pointer
 
   .share-links
+    position: relative
     .wp
     .facebook-icon
     .twitter-icon
@@ -46,13 +47,15 @@
       z-index: 1
     .wp
       background-image: unquote("url('ext/lib/site/proyectos/whatsapp.svg')")
-      
+
     .copied
       display: none
-      padding: 3px 5px
-      border-radius: 2px
-      background-color: black
-      color: white
+      padding: 3px 10px
+      background-color: #4CAF50
+      color: #fff
       z-index: 2
-      position: relative
-      right: 30px
+      font-size: 14px
+      position: absolute
+      right: -10px
+      top: -32px
+      border-radius: 15px
