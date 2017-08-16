@@ -23,9 +23,9 @@ export default function Footer (props) {
           </div>
         </div>
         <div className='social-icon'>
-          <a className='social-facebook' href="#"></a>
-          <a className='social-twitter' href="#"></a>
-          <a className='social-mail' href="#"></a>
+          <a className='social-facebook' href="https://www.facebook.com/VivamosVL/"></a>
+          <a className='social-twitter' href="https://twitter.com/vivamosvl"></a>
+          <a className='social-mail' href="mailto:participacion.ciudadana@vicentelopez.gov.ar"></a>
         </div>
         <div className='logo'>
           <a href="http://www.vicentelopez.gov.ar/"></a>
