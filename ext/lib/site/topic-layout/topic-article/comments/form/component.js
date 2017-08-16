@@ -109,7 +109,7 @@ class CommentsForm extends Component {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
-          placeholder={t('comments.create.placeholder')}
+          placeholder='Escribir un comentario...'
           maxLength='4096'
           minLength='1'
           rows='1'
@@ -148,7 +148,7 @@ function NeedsLogin () {
   return (
     <div className='alert alert-info' role='alert'>
       <span className='icon-bubble' />{' '}
-      {t('comments.sign-in-required')}.{' '}
+      Debés estar registrado para poder comentar aquí.{' '}
       <Link to={{pathname: '/signin', query: {ref}}}>
         {t('signin.login')}
       </Link>

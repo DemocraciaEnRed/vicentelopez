@@ -7,7 +7,7 @@ export default ({ topic }) => {
 
   const socialLinksUrl = window.location.origin + url
   const twitterText = encodeURIComponent(
-    config.tweetText ? t(config.tweetText, { topic }) : mediaTitle
+    'Apoyemos este proyecto para mejorar Vicente López.'
   )
 
   return (
