@@ -19,7 +19,8 @@ export default ({ topic }) => {
           window.innerWidth <= 630 &&
             <a target='_blank' href={`whatsapp://send?text=${twitterText}`} rel='noopener noreferrer' className='wp'></a>
         }
-        <div className='linkclipboard-icon'></div>
+        <a onClick={copyURLToClipboard} href='#' rel='noopener noreferrer' className='linkclipboard-icon'></a>
+        <span id='copied' className='copied'>Copiado!</span>
       </div>
     </div>
   )
@@ -69,4 +70,48 @@ class Participants extends PureComponent {
       </div>
     )
   }
+}
+
+
+function copyURLToClipboard(event) {
+  event.preventDefault()
+  var textArea = document.createElement('textarea')
+  var url = window.location.href
+
+  // Si llegara a renderearse, la textarea es casi invisible
+  textArea.style.position = 'fixed'
+  textArea.style.top = 0
+  textArea.style.left = 0
+  textArea.style.width = '2px'
+  textArea.style.height = '2px'
+  textArea.style.padding = 0
+  textArea.style.border = 'none'
+  textArea.style.boxShadow = 'none'
+  textArea.style.outline = 'none'
+  textArea.style.background = 'transparent'
+
+  textArea.value = url
+  document.body.appendChild(textArea)
+  textArea.select()
+
+  try  {
+    var copied = document.execCommand('copy')
+
+    if (copied) {
+      console.log('La URL se copió correctamente.')
+      // renderiza la tooltip
+      var tooltip = document.getElementById('copied')
+      tooltip.style.display = 'inline-block'
+
+    } else {
+      console.error('Error al copiar URL.')
+    }
+  } catch (err) {
+    console.error('No se pudo copiar la URL. Intente nuevamente.')
+  }
+
+  //elimino la textarea y la tooltip
+  document.body.removeChild(textArea)
+  setTimeout(function() {tooltip.style.display = 'none'}, 2000)
+  
 }
