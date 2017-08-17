@@ -92,19 +92,44 @@ class Header extends Component {
           className='nav navbar-nav float-xs-right'>
 
             <div className="header-item">
-              <a className="header-link" href="/s/acerca-de">Acerca de</a>
+              <Link
+                to='/s/acerca-de'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
+                Acerca de
+              </Link>
             </div>
             <div className="header-item">
-              <a className="header-link" href="#">Proyectos</a>
+              <Link
+                to='#'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
+                Proyectos
+              </Link>
             </div>
             <div className="header-item">
-              <a className="header-link" href="#">Barrios</a>
+              <Link
+                to='#'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
+                Barrios
+              </Link>
             </div>
             <div className="header-item">
-              <a className="header-link" href="/s/datos">Datos</a>
+              <Link
+                to='/s/datos'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
+                Datos
+              </Link>
             </div>
             <div className="header-item">
-              <a className="header-link" href="#">Prensa</a>
+              <Link
+                to='#'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
+                Prensa
+              </Link>
             </div>
           {this.props.user.state.fulfilled && (
             <li className='nav-item'>
