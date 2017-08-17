@@ -59,7 +59,7 @@ class Header extends Component {
     }
 
     return (
-      <nav className='navbar navbar-fixed-top' style={styles}>
+      <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
         {
           this.state.showToggleSidebar &&
           (
@@ -91,7 +91,21 @@ class Header extends Component {
         <ul
           className='nav navbar-nav float-xs-right'>
 
-
+            <div className="header-item">
+              <a className="header-link" href="/s/acerca-de">Acerca de</a>
+            </div>
+            <div className="header-item">
+              <a className="header-link" href="#">Proyectos</a>
+            </div>
+            <div className="header-item">
+              <a className="header-link" href="#">Barrios</a>
+            </div>
+            <div className="header-item">
+              <a className="header-link" href="/s/datos">Datos</a>
+            </div>
+            <div className="header-item">
+              <a className="header-link" href="#">Prensa</a>
+            </div>
           {this.props.user.state.fulfilled && (
             <li className='nav-item'>
               <Link
