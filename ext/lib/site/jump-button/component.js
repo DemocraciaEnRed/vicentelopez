@@ -6,7 +6,7 @@ export default class Jump extends Component {
 	constructor(props) {
 		super(props) 
 		this.state={visibility:false}
-		this.limit=400
+		this.limit=370
 	}
 	componentWillMount(){
 		window.addEventListener('scroll', this.checkScroll) 
@@ -21,18 +21,17 @@ export default class Jump extends Component {
 		} else {
 			this.limit = 370
 		}	
-		if (event.pageY>this.limit){
+		if (document.body.scrollTop>this.limit){
 			this.setState({visibility:true})
 		}else{
 			this.setState({visibility:false})
 		}
-		
 	}
 	render () {
 		return (
 			<div className='jump-container'>
 				{ this.state.visibility && (
-					<button className='boton-azul' onClick={this.props.goTop}>
+					<button className='boton-azul boton-jump' onClick={this.props.goTop}>
 						Up
 					</button>
 				)}
