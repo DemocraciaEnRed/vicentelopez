@@ -10,7 +10,7 @@ import userConnector from 'lib/site/connectors/user'
 import TopicCard from '../proyectos/topic-card/component'
 import Footer from 'ext/lib/site/footer/component'
 import Jump from 'ext/lib/site/jump-button/component'
-import Anchor from 'ext/lib/site/anchor
+import Anchor from 'ext/lib/site/anchor'
 import Barrios from 'ext/lib/site/barrios/component'
 
 export class HomeForum extends Component {
