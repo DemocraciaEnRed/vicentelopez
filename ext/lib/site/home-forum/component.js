@@ -117,9 +117,9 @@ export class HomeForum extends Component {
               <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
             ))}
           </div>
-          <Jump />
-        <Anchor />
-        <Footer />
+          <Jump goTop={this.goTop} />
+          <Footer />
+        </Anchor>
       </div>
     )
   }

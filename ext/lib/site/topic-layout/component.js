@@ -62,8 +62,8 @@ export class TopicLayout extends Component {
             )}
           </div>
           <Jump goTop={this.goTop} />
-        <Anchor />
-        <Footer />
+          <Footer />
+        </Anchor>
       </div>
     )
   }
