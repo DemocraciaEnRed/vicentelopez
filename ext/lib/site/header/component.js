@@ -58,6 +58,7 @@ class Header extends Component {
       backgroundColor: config.headerBackgroundColor
     }
 
+    // MEDIA QUERY - Si es menor al breakpoint muestra un menú, si es mayor, otro
 
     if (window.matchMedia("(max-width: 960px)").matches) {
       return (
@@ -78,7 +79,7 @@ class Header extends Component {
           className='navbar-brand hidden-sm-up'>
           <img
             src={config.logoMobile}
-            className='d-inline-block align-top'
+            className='d-inline-block align-top logo-mobile'
             height='30' />
         </Link>
         <Link
@@ -91,7 +92,7 @@ class Header extends Component {
         </Link>
 
         <ul
-          className='nav navbar-nav float-xs-right'>
+          className='nav navbar-nav float-xs-right nav-mobile'>
 
           {this.props.user.state.fulfilled && (
             <li className='nav-item'>
