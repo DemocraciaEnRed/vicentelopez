@@ -11,6 +11,9 @@ nav.navbar
     padding: 0
     img
       height: 47px
+      @media screen and (min-width: 1080px)
+        width: 100%
+        height: auto
     .logo-mobile
       height: 15%
   a
@@ -27,7 +30,7 @@ nav.navbar
       .user-badge-link
         margin: 0
     .nav-item
-      margin-left 25px
+      margin: 0 25px
       .nav-link
         //padding: 0
         //text-transform uppercase
@@ -50,3 +53,5 @@ nav.navbar
     margin-left 25px
     .header-link:hover
       color: #8C1E81
+  .user-badge-helper
+    margin-left 0

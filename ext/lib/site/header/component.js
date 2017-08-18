@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 import bus from 'bus'
 import config from 'lib/config'
 import userConnector from 'lib/site/connectors/user'
-import UserBadge from 'lib/header/user-badge/component'
+import UserBadge from 'ext/lib/site//header/user-badge/component'
 import AnonUser from 'lib/header/anon-user/component'
 
 class Header extends Component {
@@ -60,7 +60,7 @@ class Header extends Component {
 
     // MEDIA QUERY - Si es menor al breakpoint muestra un menú, si es mayor, otro
 
-    if (window.matchMedia("(max-width: 960px)").matches) {
+    if (window.matchMedia("(max-width: 975px)").matches) {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
         {
