@@ -6,7 +6,15 @@ export default function ThumbsVoto (props) {
   return (
     <section className="thumbs info-landing">
       <div className="container-fluid">
-
+        <div className="row cont">
+          <div className="subtitulo">
+            <h2>Presupuesto Participativo 2017</h2>
+              <p>
+                Gracias a vos recibimos más de 350 proyectos, vamos a votar y decidir juntos cómo
+                invertir $65 millones de pesos.
+              </p>
+          </div>
+        </div>
         <div className="row cont">
           <div className="col-md-4">
             <div
