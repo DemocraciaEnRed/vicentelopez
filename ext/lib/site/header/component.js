@@ -58,8 +58,10 @@ class Header extends Component {
       backgroundColor: config.headerBackgroundColor
     }
 
-    return (
-      <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
+
+    if (window.matchMedia("(max-width: 960px)").matches) {
+      return (
+        <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
         {
           this.state.showToggleSidebar &&
           (
@@ -91,46 +93,6 @@ class Header extends Component {
         <ul
           className='nav navbar-nav float-xs-right'>
 
-            <div className="header-item">
-              <Link
-                to='/s/acerca-de'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                Acerca de
-              </Link>
-            </div>
-            <div className="header-item">
-              <Link
-                to='#'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                Proyectos
-              </Link>
-            </div>
-            <div className="header-item">
-              <Link
-                to='#'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                Barrios
-              </Link>
-            </div>
-            <div className="header-item">
-              <Link
-                to='/s/datos'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                Datos
-              </Link>
-            </div>
-            <div className="header-item">
-              <Link
-                to='#'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                Prensa
-              </Link>
-            </div>
           {this.props.user.state.fulfilled && (
             <li className='nav-item'>
               <Link
@@ -150,7 +112,105 @@ class Header extends Component {
           )}
         </ul>
       </nav>
-    )
+      )
+    } else {
+      return (
+        <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
+          {
+            this.state.showToggleSidebar &&
+            (
+              <button
+                id='toggleButton'
+                onClick={this.handleToggleSidebar}>
+                <span className='icon-menu' />
+              </button>
+            )
+          }
+
+          <Link
+            to={config.homeLink}
+            className='navbar-brand hidden-sm-up'>
+            <img
+              src={config.logoMobile}
+              className='d-inline-block align-top'
+              height='30' />
+          </Link>
+          <Link
+            to={config.homeLink}
+            className='navbar-brand hidden-xs-down'>
+            <img
+              src={config.logo}
+              className='d-inline-block align-top'
+              height='30' />
+          </Link>
+
+          <ul
+            className='nav navbar-nav float-xs-right'>
+
+              <div className="header-item">
+                <Link
+                  to='/s/acerca-de'
+                  className='header-link'
+                  activeStyle={{ color: '#8C1E81' }}>
+                  Acerca de
+                </Link>
+              </div>
+              <div className="header-item">
+                <Link
+                  to='/placeholder'
+                  className='header-link'
+                  activeStyle={{ color: '#8C1E81' }}>
+                  Proyectos
+                </Link>
+              </div>
+              <div className="header-item">
+                <Link
+                  to='/placeholder'
+                  className='header-link'
+                  activeStyle={{ color: '#8C1E81' }}>
+                  Barrios
+                </Link>
+              </div>
+              <div className="header-item">
+                <Link
+                  to='/s/datos'
+                  className='header-link'
+                  activeStyle={{ color: '#8C1E81' }}>
+                  Datos
+                </Link>
+              </div>
+              <div className="header-item">
+                <Link
+                  to='/placeholder'
+                  className='header-link'
+                  activeStyle={{ color: '#8C1E81' }}>
+                  Prensa
+                </Link>
+              </div>
+
+            {this.props.user.state.fulfilled && (
+              <li className='nav-item'>
+                <Link
+                  to='/notifications'
+                  className='nav-link hidden-xs-down'>
+                  <span className='icon-bell' />
+                </Link>
+              </li>
+            )}
+
+            {this.props.user.state.fulfilled && (
+              <UserBadge />
+            )}
+
+            {this.props.user.state.rejected && (
+              <AnonUser form={this.state.userForm} />
+            )}
+          </ul>
+        </nav>
+    )  
+    }   
+
+    
   }
 }
 
