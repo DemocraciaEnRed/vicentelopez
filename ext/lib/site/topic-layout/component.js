@@ -7,6 +7,8 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import topicConnector from 'lib/site/connectors/topic'
 import TopicArticle from './topic-article/component'
+import Jump from 'ext/lib/site/jump-button/component'
+import Anchor from 'ext/lib/site/anchor'
 import Footer from 'ext/lib/site/footer/component'
 
 export class TopicLayout extends Component {
@@ -38,6 +40,10 @@ export class TopicLayout extends Component {
       })
   }
 
+  goTop () {
+    Anchor.goTo('container')
+  }
+
   render () {
     if (config.visibility === 'hidden' && this.props.user.state.rejected) {
       browserHistory.push('/signin')
@@ -49,12 +55,15 @@ export class TopicLayout extends Component {
 
     return (
       <div>
-        <div id='topic-wrapper'>
-          {forum && topic && (
-            <TopicArticle topic={topic} forum={forum} />
-          )}
-        </div>
-        <Footer />
+        <Anchor id='container'>
+          <div id='topic-wrapper'>
+            {forum && topic && (
+              <TopicArticle topic={topic} forum={forum} />
+            )}
+          </div>
+          <Jump goTop={this.goTop} />
+          <Footer />
+        </Anchor>
       </div>
     )
   }

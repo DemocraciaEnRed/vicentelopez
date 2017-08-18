@@ -9,6 +9,7 @@ import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
+import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
 export default class HomeMultiforumOverride extends Component {
@@ -26,6 +27,10 @@ export default class HomeMultiforumOverride extends Component {
   }
 
   componentDidMount () {
+    this.goTop()
+  }
+
+  goTop () {
     Anchor.goTo('container')
   }
 
@@ -39,6 +44,7 @@ export default class HomeMultiforumOverride extends Component {
           <Proyectos />
           <Barrios forums={forums}/>
           <ForosEnDatos />
+          <Jump goTop={this.goTop} />
           <Footer />
         </Anchor>
       </div>

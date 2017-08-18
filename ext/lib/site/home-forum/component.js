@@ -9,6 +9,8 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import TopicCard from '../proyectos/topic-card/component'
 import Footer from 'ext/lib/site/footer/component'
+import Jump from 'ext/lib/site/jump-button/component'
+import Anchor from 'ext/lib/site/anchor'
 import Barrios from 'ext/lib/site/barrios/component'
 
 export class HomeForum extends Component {
@@ -65,6 +67,10 @@ export class HomeForum extends Component {
     })
   }
 
+  goTop () {
+    Anchor.goTo('container')
+  }
+
   render () {
     if (config.visibility === 'hidden' && this.props.user.state.rejected) {
       browserHistory.push('/signin')
@@ -85,32 +91,35 @@ export class HomeForum extends Component {
 
     return (
       <div id='forum-home'>
-        <section className="banner-proyectos">
-          <div className="banner"></div>
-          <div className='contenedor'>
-            <div className='fondo-titulo'>
-              <h1>Proyectos</h1>
+        <Anchor id='container'>
+          <section className="banner-proyectos">
+            <div className="banner"></div>
+            <div className='contenedor'>
+              <div className='fondo-titulo'>
+                <h1>Proyectos</h1>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <Barrios forums={forums} />
-        {topics.length === 0 && (
-          <div className='no-topics'>
-            <p>{t('homepage.no-topics')}</p>
-          </div>
-        )}
-        <div className='topics-container'>
-          {this.state.loading && (
-            <div className='loader-wrapper'>
-              <div className='topic-loader' />
+          <Barrios forums={forums} />
+          {topics.length === 0 && (
+            <div className='no-topics'>
+              <p>{t('homepage.no-topics')}</p>
             </div>
           )}
-         {topics.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
-          ))}
-        </div>
-        <Footer />
+          <div className='topics-container'>
+            {this.state.loading && (
+              <div className='loader-wrapper'>
+                <div className='topic-loader' />
+              </div>
+            )}
+          {topics.map((topic) => (
+              <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
+            ))}
+          </div>
+          <Jump goTop={this.goTop} />
+          <Footer />
+        </Anchor>
       </div>
     )
   }
