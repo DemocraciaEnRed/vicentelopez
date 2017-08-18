@@ -14,23 +14,25 @@
     background-image: unquote("url('ext/lib/site/banner-foro-vecinal/banner.png')")
     background-repeat: no-repeat
     padding: 0
-    overflow: hidden;
+    overflow: hidden
     & video
       width: 100%
     @media(max-width: 768px)
       height: 300px
     @media(max-width: 500px)
       height: 200px
+      & video
+        display: none
   .contenedor
-    bottom: -42px;
-    position: absolute;
-    display: block;
-    text-align: center;
-    left: 0;
-    right: 0;
+    bottom: -42px
+    position: absolute
+    display: block
+    text-align: center
+    left: 0
+    right: 0
 
     .fondo-titulo
-      display: inline-flex;
+      display: inline-flex
       justify-content: center
       align-items: center
       background-color: #7cbb42
