@@ -15,6 +15,13 @@ export default class Page extends Component {
         <Anchor id='container'>
           <div className='ext-acerca-de container'>
             <div className="filas">
+              <div className="subtitulo">
+                <h2>Presupuesto Participativo 2017</h2>
+                <p>
+                  Gracias a vos recibimos más de 350 proyectos, vamos a votar y decidir juntos cómo
+                  invertir $65 millones de pesos.
+                </p>
+              </div>
               <div className="fila con-icono">
                 <div className="cols col-1">
                   <div>
