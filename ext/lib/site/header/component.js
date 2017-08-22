@@ -3,8 +3,9 @@ import {Link} from 'react-router'
 import bus from 'bus'
 import config from 'lib/config'
 import userConnector from 'lib/site/connectors/user'
-import UserBadge from 'ext/lib/site//header/user-badge/component'
-import AnonUser from 'lib/header/anon-user/component'
+import UserBadge from 'ext/lib/site/header/user-badge/component'
+import MobileMenu from 'ext/lib/site/header/mobile-menu/component'
+import AnonUser from 'ext/lib/site/header/anon-user/component'
 
 class Header extends Component {
   constructor (props) {
@@ -108,9 +109,8 @@ class Header extends Component {
             <UserBadge />
           )}
 
-          {this.props.user.state.rejected && (
-            <AnonUser form={this.state.userForm} />
-          )}
+          <MobileMenu form={this.state.userForm} />        
+
         </ul>
       </nav>
       )
@@ -152,7 +152,7 @@ class Header extends Component {
                   to='/s/acerca-de'
                   className='header-link'
                   activeStyle={{ color: '#8C1E81' }}>
-                  Acerca de ≡
+                  Acerca de
                 </Link>
               </div>
               <div className="header-item">
@@ -161,14 +161,6 @@ class Header extends Component {
                   className='header-link'
                   activeStyle={{ color: '#8C1E81' }}>
                   Proyectos
-                </Link>
-              </div>
-              <div className="header-item">
-                <Link
-                  to='/placeholder'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
-                  Barrios
                 </Link>
               </div>
               <div className="header-item">

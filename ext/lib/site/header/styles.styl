@@ -1,3 +1,5 @@
+@import "mobile-menu/styles"
+
 #outer-layout
   padding: 0 !important
 nav.navbar
@@ -6,18 +8,19 @@ nav.navbar
   flex-wrap: wrap
   justify-content: space-between
   align-items: center
-  //overflow: hidden
   &:after
     content: none
   .navbar-brand
     padding: 0
+    margin-right: 0
     img
       height: 47px
       @media screen and (min-width: 1080px)
         width: 100%
         height: auto
     .logo-mobile
-      height: 15%
+      //height: 15%
+      height: 32px
   a
     color: #71bf44
     text-transform: uppercase
@@ -28,7 +31,6 @@ nav.navbar
     display: flex
     align-items center
     .user-badge
-      //height: 60px
       .user-badge-link
         margin: 0
     .nav-item
