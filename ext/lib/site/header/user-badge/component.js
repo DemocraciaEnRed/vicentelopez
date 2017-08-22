@@ -74,8 +74,6 @@ export class UserBadge extends Component {
       <div className={classes.join(' ')} onClick={this.toggleMenu}>
         <button className='header-link'>
           <img src={userAttrs.avatar} alt='' />
-          <span className='name hidden-xs-down'>{userAttrs.firstName}</span>
-          <span className='caret hidden-xs-down' />
         </button>
         <ul
           className='dropdown-list'>

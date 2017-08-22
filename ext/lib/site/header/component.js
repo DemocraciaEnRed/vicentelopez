@@ -92,16 +92,16 @@ class Header extends Component {
         </Link>
 
         <ul
-          className='nav navbar-nav float-xs-right nav-mobile'>
+          className='nav navbar-nav nav-mobile'>
 
           {this.props.user.state.fulfilled && (
-            <li className='nav-item'>
-              <Link
-                to='/notifications'
-                className='nav-link hidden-xs-down'>
-                <span className='icon-bell' />
-              </Link>
-            </li>
+              <li className='nav-item'>
+                <Link
+                  to='/notifications'
+                  className='nav-link'>
+                  <span className='icon-bell' />
+                </Link>
+              </li>
           )}
 
           {this.props.user.state.fulfilled && (
@@ -145,15 +145,14 @@ class Header extends Component {
               height='30' />
           </Link>
 
-          <ul
-            className='nav navbar-nav float-xs-right'>
+          <ul className='nav navbar-nav'>
 
               <div className="header-item">
                 <Link
                   to='/s/acerca-de'
                   className='header-link'
                   activeStyle={{ color: '#8C1E81' }}>
-                  Acerca de
+                  Acerca de ≡
                 </Link>
               </div>
               <div className="header-item">

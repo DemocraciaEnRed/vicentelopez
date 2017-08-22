@@ -3,8 +3,10 @@
 nav.navbar
   padding: 1rem
   display: flex
+  flex-wrap: wrap
   justify-content: space-between
   align-items: center
+  //overflow: hidden
   &:after
     content: none
   .navbar-brand
@@ -20,25 +22,26 @@ nav.navbar
     color: #71bf44
     text-transform: uppercase
     font-family: 'Roboto', sans-serif
-    font-weight: 400
+    font-weight: bold
   .navbar-nav
     font-size: 17px
     display: flex
     align-items center
     .user-badge
-      height: 60px
+      //height: 60px
       .user-badge-link
         margin: 0
     .nav-item
-      margin: 0 25px
+      margin: 0 15px
+      @media screen and (min-width: 500px)
+        margin: 0 25px
       .nav-link
-        //padding: 0
-        //text-transform uppercase
         color inherit
-        //font-size 12px
         span.icon-bell
-          font-size 16px
-          font-weight bold
+          font-size: 22px
+          color: #71bf44
+          @media screen and (min-width: 975px)
+            font-weight: bold
       #toggleButton
         display none
         float left
@@ -51,6 +54,7 @@ nav.navbar
           font-size 22px
   .header-item
     margin-left 25px
+    font-weight: bold
     .header-link:hover
       color: #8C1E81
   .user-badge-helper
