@@ -9,9 +9,8 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import TopicCard from '../proyectos/topic-card/component'
 import Footer from 'ext/lib/site/footer/component'
-import Jump from 'ext/lib/site/jump-button/component'
-import Anchor from 'ext/lib/site/anchor'
 import Barrios from 'ext/lib/site/barrios/component'
+import DatosPorForo from 'ext/lib/site/datos-forum/component'
 
 export class HomeForum extends Component {
   constructor (props) {
@@ -45,6 +44,16 @@ export class HomeForum extends Component {
     forumStore.findAll().then((forums) => {
       const forum = forums.find((forum) => forum.name === name)
       query.forum = forum.id
+      if (name == 'proyectos') {
+        window.fetch(`/ext/api/feed`, { credentials: 'include' })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.result) {
+            this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
+          }
+        })
+        console.log('si')
+      }
       if (u.has('tag')) query.tag = u.get('tag')
       return Promise.all([
         forums,
@@ -67,10 +76,6 @@ export class HomeForum extends Component {
     })
   }
 
-  goTop () {
-    Anchor.goTo('container')
-  }
-
   render () {
     if (config.visibility === 'hidden' && this.props.user.state.rejected) {
       browserHistory.push('/signin')
@@ -91,35 +96,32 @@ export class HomeForum extends Component {
 
     return (
       <div id='forum-home'>
-        <Anchor id='container'>
-          <section className="banner-proyectos">
-            <div className="banner"></div>
-            <div className='contenedor'>
-              <div className='fondo-titulo'>
-                <h1>Proyectos</h1>
-              </div>
+        <section className="banner-proyectos">
+          <div className="banner"></div>
+          <div className='contenedor'>
+            <div className='fondo-titulo'>
+              <h1>Proyectos</h1>
             </div>
-          </section>
-
-          <Barrios forums={forums} />
-          {topics.length === 0 && (
-            <div className='no-topics'>
-              <p>{t('homepage.no-topics')}</p>
+          </div>
+        </section>
+        <Barrios forums={forums} />
+        {topics.length === 0 && (
+          <div className='no-topics'>
+            <p>{t('homepage.no-topics')}</p>
+          </div>
+        )}
+        <DatosPorForo forum={forum} />
+        <div className='topics-container'>
+          {this.state.loading && (
+            <div className='loader-wrapper'>
+              <div className='topic-loader' />
             </div>
           )}
-          <div className='topics-container'>
-            {this.state.loading && (
-              <div className='loader-wrapper'>
-                <div className='topic-loader' />
-              </div>
-            )}
-          {topics.map((topic) => (
-              <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
-            ))}
-          </div>
-          <Jump goTop={this.goTop} />
-          <Footer />
-        </Anchor>
+         {topics.map((topic) => (
+            <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
+          ))}
+        </div>
+        <Footer />
       </div>
     )
   }
