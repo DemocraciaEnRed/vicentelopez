@@ -49,7 +49,7 @@ export default class Carrusel extends Component {
     return (
       <div className='seccion-proyectos container-fluid'>
         <div className="fondo-titulo">
-          <h2 className='title'>Proyectos</h2>
+          <h2 className='title'>Proyectos a votación</h2>
         </div>
         <div ref='carrusel'>
           {topics && topics.map((topic, i) => (

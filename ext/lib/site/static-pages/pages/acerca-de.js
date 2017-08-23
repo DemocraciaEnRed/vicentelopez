@@ -33,7 +33,7 @@ export default class Page extends Component {
                 </div>
                 <div className="cols col-2">
                   <div>
-                    Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 5 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
+                    Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 6 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
                   </div>
                 </div>
               </div>
@@ -48,7 +48,7 @@ export default class Page extends Component {
                 </div>
                 <div className="cols col-2">
                   <div>
-                    Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas. Votar es muy fácil, si te acercas a las urnas te van a dar una boleta con los proyectos que podes encontrar en esta web. Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
+                    Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas. Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con los proyectos (que también podés encontrar en esta web, descargar e imprimir). Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
                   </div>
                 </div>
               </div>
@@ -61,21 +61,21 @@ export default class Page extends Component {
                 </div>
                 <div className="cols col-2">
                   <div>
-                    Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. La votación estará abierta desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017, de lunes a viernes entre las 8:30hs a 16hs. También instalaremos urnas móviles en cada uno de los barrios.
-                    <button className='boton-azul' onClick={() => Anchor.goTo('mapa')}>Ver mapa de urnas habilitadas</button>
+                    Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. La votación estará abierta desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017.
+                    <button className='boton-azul' onClick={() => Anchor.goTo('mapa')}>Consultá todos los puntos de votación aquí</button>
                   </div>
                 </div>
               </div>
               <div className="fila faq">
                 <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>
-                <p>La partida de este año (presupuesto 2018) se repartió siguiendo dos criterios. Los primeros 31,5 millones se los repartió por partes iguales a cada uno de los 9 barrios. Los siguientes 33,5 millones según la cantidad de habitantes de cada barrio.</p>
+                <p>La partida de este año (presupuesto 2018) se repartió siguiendo dos criterios. Los primeros 31,5 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 33,5 millones se distribuyeron según la cantidad de habitantes de cada barrio.</p>
                 <h3>¿CÓMO SE ELABORARON LOS PROYECTOS?</h3>
                 <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encontraron con los funcionarios municipales de cada área para presentarles ideas y propuestas para cada barrio y en conjunto se definieron los proyectos.
-                Si te quedaste con alguna idea para tu barrio no la descartes: estamos avanzando para que el año que viene hayan más instancias de presupuesto participativo.</p>
-                <h3>¿CÓMO SE DECIDIERON LOS PROYECTOS VOTABLES?</h3>
-                <p>Para que una idea pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasó a una etapa de verificación técnica y legal. En esta instancia se terminó de definir la factibilidad del proyecto y los costos reales del mismo.</p>
+                Si te quedaste con alguna idea para tu barrio, no la descartes: estamos avanzando para que el año que viene haya más instancias de presupuesto participativo.</p>
+                <h3>¿CÓMO SE DECIDIÓ QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
+                <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasó a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se terminó de definir la factibilidad del proyecto y los costos reales del mismo.</p>
                 <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
-                <p>Los proyectos ganadores de cada barrio, van a surgir de tu voto y el de todos. En las urnas vas a encontrar una boleta con todos los proyectos y vas a poder elegir hasta 3. Los proyectos más votados de cada barrio que no superen el monto asignado serán ejecutados el año que viene.</p>
+                <p>Los proyectos ganadores de cada barrio, van a surgir de tu voto y el de tus vecinos. En las urnas vas a encontrar una boleta con todos los proyectos y vas a poder elegir hasta 3 (también podés descargar la boleta de votación de este sitio). Los proyectos más votados de cada barrio que no superen el monto asignado serán realizados el año que viene.</p>
               </div>
               <div className="fila no-bg">
                 <Anchor id='mapa'>
@@ -99,8 +99,8 @@ export default class Page extends Component {
                   </div>
                   <div>
                     <span>Delegación Florida Central</span>
-                    <span>Delegado: Susana Mabel Orue, Florida</span>
-                    <span>Dirección: V. Vergara 2382</span>
+                    <span>Delegado: Susana Mabel Orue</span>
+                    <span>Dirección: V. Vergara 2382, Florida</span>
                     <span>Teléfono: 4796-3894/ 4718-1991</span>
                     <span>Mail: delegacion.florida@vicentelopez.gov.ar</span>
                   </div>
