@@ -52,7 +52,6 @@ export class HomeForum extends Component {
             this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
           }
         })
-        console.log('si')
       }
       if (u.has('tag')) query.tag = u.get('tag')
       return Promise.all([
@@ -105,12 +104,12 @@ export class HomeForum extends Component {
           </div>
         </section>
         <Barrios forums={forums} />
+        <DatosPorForo forum={forum} />
         {topics.length === 0 && (
           <div className='no-topics'>
             <p>{t('homepage.no-topics')}</p>
           </div>
         )}
-        <DatosPorForo forum={forum} />
         <div className='topics-container'>
           {this.state.loading && (
             <div className='loader-wrapper'>
