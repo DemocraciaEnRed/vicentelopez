@@ -64,7 +64,7 @@ export default class Page extends Component {
                 <p>La partida de este año (presupuesto 2018) se repartió siguiendo dos criterios. Los primeros 31,5 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 33,5 millones se distribuyeron según la cantidad de habitantes de cada barrio.</p>
                 <h3>¿CÓMO SE ELABORARON LOS PROYECTOS?</h3>
                 <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encontraron con los funcionarios municipales de cada área para presentarles ideas y propuestas para cada barrio y en conjunto se definieron los proyectos.
-                Si te quedaste con alguna idea para tu barrio no la descartes: estamos avanzando para que el año que viene haya más instancias de presupuesto participativo.</p>
+                Si te quedaste con alguna idea para tu barrio, no la descartes: estamos avanzando para que el año que viene haya más instancias de presupuesto participativo.</p>
                 <h3>¿CÓMO SE DECIDIÓ QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
                 <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasó a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se terminó de definir la factibilidad del proyecto y los costos reales del mismo.</p>
                 <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
