@@ -112,8 +112,17 @@
     .mapa
       display: block
       text-align: center
+      position: relative
+      height: 0
+      overflow: hidden
+      padding-bottom: 75% //aspect ratio FIJARSE
       & iframe
         border: none
+        position: absolute
+        top: 0
+        left: 0
+        width: 100% !important
+        height: 100% !important
 .ext-acerca-de
   .subtitulo
     margin-top: 10px
