@@ -29,7 +29,8 @@ export default class AnonUser extends Component {
            (
              <Link
                to='/signup'
-               className='header-link anon-user'>
+               className='header-link anon-user'
+               onClick={this.props.toggleOnClick}>
                {t('header.signup')}
              </Link>
            )
@@ -44,7 +45,8 @@ export default class AnonUser extends Component {
                    ? { ref: window.location.pathname }
                    : null
                }}
-               className='header-link anon-user'>
+               className='header-link anon-user'
+               onClick={this.props.toggleOnClick}>
                {t('header.signin')}
              </Link>
            )

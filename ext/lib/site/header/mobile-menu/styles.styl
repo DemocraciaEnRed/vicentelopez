@@ -1,20 +1,24 @@
 .mobile-nav
+  margin-left: 20px
+  @media screen and (min-width: 500px)
+    margin-left: 25px
   .mobile-menu
-    margin-left: 10px
+    margin-bottom: 2px // corrige alineacion
     display: inline-block
-    .mobile-menu-icon
-      font-style: normal
-      font-size: 33px
-      color: #71bf44
-      cursor: pointer
-      &:hover, &:active
-        color: #8C1E81
+    width: 30px
+    height: 30px
+    background-image: url('/ext/lib/site/header/mobile-menu/mobile-menu.svg')
+    background-repeat: no-repeat
+    background-size: cover
+    cursor: pointer
+    &:hover, &:active
+      color: #8C1E81
   .mobile-menu-display
     display: block
     position: absolute
     width: 100%
     left: 0
-    top: 86px
+    top: 79px
     background: white
     ul
       padding: 10px 0

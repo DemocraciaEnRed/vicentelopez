@@ -1,4 +1,5 @@
 @import "mobile-menu/styles"
+@import "user-badge/styles"
 
 #outer-layout
   padding: 0 !important
@@ -33,31 +34,23 @@ nav.navbar
     .user-badge
       .user-badge-link
         margin: 0
-    .nav-item
-      margin: 0 15px
+    .nav-item //campanita notificaciones
+      margin: 0 20px
       @media screen and (min-width: 500px)
         margin: 0 25px
       .nav-link
         color inherit
         span.icon-bell
-          font-size: 22px
+          font-size: 24px
           color: #71bf44
           @media screen and (min-width: 975px)
             font-weight: bold
-      #toggleButton
-        display none
-        float left
-        background none
-        border none
-        color inherit
-        padding .5rem 0
-        margin-right 10px
-        .icon-menu
-          font-size 22px
   .header-item
     margin-left 25px
     font-weight: bold
-    .header-link:hover
+    .header-link
+      height: auto
+    &:hover
       color: #8C1E81
   .user-badge-helper
     margin-left 0

@@ -12,45 +12,22 @@ class Header extends Component {
     super(props)
 
     this.state = {
-      userForm: null,
-      showToggleSidebar: null,
-      showSidebar: null
+      userForm: null
     }
   }
 
   componentWillMount () {
     bus.on('user-form:load', this.onLoadUserForm)
-    bus.on('sidebar:enable', this.showToggleSidebarChange)
-    bus.on('sidebar:show', this.showSidebarChange)
   }
 
   componentWillUnmount () {
     bus.off('user-form:load', this.onLoadUserForm)
-    bus.off('sidebar:enable', this.showToggleSidebarChange)
-    bus.off('sidebar:show', this.showSidebarChange)
   }
 
   onLoadUserForm = (formName) => {
     this.setState({
       userForm: formName
     })
-  }
-
-  showToggleSidebarChange = (bool) => {
-    this.setState({
-      showToggleSidebar: bool
-    })
-  }
-
-  showSidebarChange = (bool) => {
-    this.setState({
-      showSidebar: bool
-    })
-  }
-
-  handleToggleSidebar = (evt) => {
-    evt.preventDefault()
-    bus.emit('sidebar:show', !this.state.showSidebar)
   }
 
   render () {
@@ -64,30 +41,12 @@ class Header extends Component {
     if (window.matchMedia("(max-width: 975px)").matches) {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
-        {
-          this.state.showToggleSidebar &&
-          (
-            <button
-              id='toggleButton'
-              onClick={this.handleToggleSidebar}>
-              <span className='icon-menu' />
-            </button>
-          )
-        }
 
         <Link
           to={config.homeLink}
-          className='navbar-brand hidden-sm-up'>
+          className='navbar-brand'>
           <img
-            src={config.logoMobile}
-            className='d-inline-block align-top logo-mobile'
-            height='30' />
-        </Link>
-        <Link
-          to={config.homeLink}
-          className='navbar-brand hidden-xs-down'>
-          <img
-            src={config.logo}
+            src='/ext/lib/site/header/mobile-menu/mobile-logo.svg'
             className='d-inline-block align-top'
             height='30' />
         </Link>
@@ -117,28 +76,10 @@ class Header extends Component {
     } else {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
-          {
-            this.state.showToggleSidebar &&
-            (
-              <button
-                id='toggleButton'
-                onClick={this.handleToggleSidebar}>
-                <span className='icon-menu' />
-              </button>
-            )
-          }
 
           <Link
             to={config.homeLink}
-            className='navbar-brand hidden-sm-up'>
-            <img
-              src={config.logoMobile}
-              className='d-inline-block align-top'
-              height='30' />
-          </Link>
-          <Link
-            to={config.homeLink}
-            className='navbar-brand hidden-xs-down'>
+            className='navbar-brand'>
             <img
               src={config.logo}
               className='d-inline-block align-top'

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router'
+import bus from 'bus'
 import userConnector from 'lib/site/connectors/user'
+import AnonUser from 'ext/lib/site/header/anon-user/component'
 
 class MobileMenu extends Component {
   constructor (props) {
@@ -11,7 +13,7 @@ class MobileMenu extends Component {
   }
 
   toggleOnClick = () => {
-    this.setState({menuOn: false})
+    this.setState({menuOn: !this.state.menuOn})
   }
 
   render () {
@@ -20,8 +22,7 @@ class MobileMenu extends Component {
         <a
           id="mobile-menu"
           className="mobile-menu"
-          onClick={() => this.setState({menuOn: !this.state.menuOn})}>
-          <i className ="mobile-menu-icon">☰</i>
+          onClick={this.toggleOnClick}>
         </a>
         {
           this.state.menuOn && (
@@ -34,7 +35,7 @@ class MobileMenu extends Component {
                     to='/s/acerca-de'
                     className='header-link'
                     activeStyle={{ color: '#8C1E81' }}
-                    onClick={toggleOnClick}>
+                    onClick={this.toggleOnClick}>
                     Acerca de
                   </Link>
                 </div>
@@ -43,7 +44,7 @@ class MobileMenu extends Component {
                     to='/placeholder'
                     className='header-link'
                     activeStyle={{ color: '#8C1E81' }}
-                    onClick={() => this.setState({menuOn: false})}>
+                    onClick={this.toggleOnClick}>
                     Proyectos
                   </Link>
                 </div>
@@ -52,7 +53,7 @@ class MobileMenu extends Component {
                     to='/s/datos'
                     className='header-link'
                     activeStyle={{ color: '#8C1E81' }}
-                    onClick={() => this.setState({menuOn: false})}>
+                    onClick={this.toggleOnClick}>
                     Datos
                   </Link>
                 </div>
@@ -61,14 +62,14 @@ class MobileMenu extends Component {
                     to='/placeholder'
                     className='header-link'
                     activeStyle={{ color: '#8C1E81' }}
-                    onClick={() => this.setState({menuOn: false})}>
+                    onClick={this.toggleOnClick}>
                     Prensa
                   </Link>
                 </div>
                 <div>
                   {this.props.user.state.rejected && (
-                    <AnonUser form={this.props.userForm}
-                    onClick={() => this.setState({menuOn: false})} />
+                    <AnonUser form={this.props.form}
+                    toggleOnClick={this.toggleOnClick} />
                   )}
                 </div>
               </ul>
