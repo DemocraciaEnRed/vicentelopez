@@ -8,7 +8,6 @@ export default function BannerForoVecinal (props) {
       {
         window.innerWidth >= 630 &&
           <video playsInline autoPlay muted loop>
-            <source src="https://rosariociudaddemocracyos.blob.core.windows.net/assets/vicentelopez-banner.webm" type="video/webm" />
             <source src="https://rosariociudaddemocracyos.blob.core.windows.net/assets/vicentelopez-banner.mp4" type="video/mp4" />
           </video>
         }
