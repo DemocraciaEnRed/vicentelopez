@@ -81,7 +81,7 @@ export default class Page extends Component {
                 <Anchor id='mapa'>
                   <div className="map-box">
                     <div className='mapa'>
-                      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1DEX8V6qaMQy-8NYKNPhsLH_xQnY" width="640" height="480"></iframe>
+                      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1DEX8V6qaMQy-8NYKNPhsLH_xQnY&z=11&ll=-34.5174, -58.5026" width="640" height="480"></iframe>
                     </div>
                   </div>
                 </Anchor>
