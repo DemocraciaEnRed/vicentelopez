@@ -25,8 +25,8 @@ export default class Page extends Component {
                 <img className="graph" src="/ext/lib/site/static-pages/progreso-proyectos.svg" alt=""/>
               </div>
               <div className="text">
-                Evolución de cantidad de proyectos presentados, aprobados y ejecutados año a año.
-                <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-ref.png" alt=""/>
+                Evolución de cantidad de proyectos presentados, factibles y ganadores año a año.
+                <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-ref.svg" alt=""/>
               </div>
             </div>
             <h3>Cantidad de proyectos por año por categoría</h3>
