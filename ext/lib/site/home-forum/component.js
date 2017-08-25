@@ -49,10 +49,10 @@ export class HomeForum extends Component {
         .then((res) => res.json())
         .then((res) => {
           if (res.result) {
-            this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
+            this.setState({topics: res.result.topics.sort(() => 0.5 - Math.random()) })
           }
         })
-      }
+      } 
       if (u.has('tag')) query.tag = u.get('tag')
       return Promise.all([
         forums,
@@ -60,6 +60,7 @@ export class HomeForum extends Component {
         topicStore.findAll(query)
       ])
     })
+
     .then(([forums, forum, topics]) => {
       this.setState({
         loading: false,
@@ -87,7 +88,6 @@ export class HomeForum extends Component {
   
     //randomizo los topics
     topics.sort(() => 0.5 - Math.random())
-  
 
     const cover = (forum.coverUrl && {
       backgroundImage: 'linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("' + forum.coverUrl + '")'
@@ -104,7 +104,9 @@ export class HomeForum extends Component {
           </div>
         </section>
         <Barrios forums={forums} />
-        <DatosPorForo forum={forum} />
+        {this.props.params.forum != 'proyectos' &&
+          <DatosPorForo forum={forum} />
+        }
         {topics.length === 0 && (
           <div className='no-topics'>
             <p>{t('homepage.no-topics')}</p>
