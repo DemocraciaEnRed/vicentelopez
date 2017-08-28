@@ -1,10 +1,15 @@
 import React, {Component} from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
+import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
 export default class Page extends Component {
   componentDidMount () {
+    Anchor.goTo('container')
+  }
+
+  goTop () {
     Anchor.goTo('container')
   }
 
@@ -81,8 +86,9 @@ export default class Page extends Component {
             <p><span>Foros Vecinales</span><span>&nbsp;puede recopilar informaci&oacute;n sobre la forma en que los usuarios usan la plataforma. Entre la informaci&oacute;n obtenida de esta forma, se incluye el tipo de navegador utilizado, la preferencias de lenguaje y, por ejemplo, los comentarios que ha realizado.</span></p>
             <p><span>Foros Vecinales</span><span>&nbsp;podr&aacute; compartir informaci&oacute;n de manera agregada, y en car&aacute;cter no personal, con el p&uacute;blico en general (por ejemplo, mostrar tendencias sobre el uso del sitio).</span></p>
             <p><span>Foros Vecinales</span><span>&nbsp;garantiza la debida protecci&oacute;n de los datos personales almacenados en esta plataforma web as&iacute; como tambi&eacute;n el acceso a la informaci&oacute;n registrada en el mismo, de conformidad a lo establecido en el art&iacute;culo 43, p&aacute;rrafo tercero de la Constituci&oacute;n Nacional y la Ley N&deg; 25.326 de Protecci&oacute;n de los Datos Personales.</span></p>
-          </div>
+          </div> 
         </Anchor>
+        <Jump goTop={this.goTop} />
         <Footer />
       </div>
     )

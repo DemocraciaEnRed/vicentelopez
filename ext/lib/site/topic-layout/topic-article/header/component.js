@@ -35,7 +35,7 @@ export default class Header extends Component {
     //     </p>
     //   )
     // }
-
+    
     let author = null
     if (this.props.author) {
       let authorName

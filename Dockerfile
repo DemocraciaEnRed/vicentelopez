@@ -1,4 +1,4 @@
-FROM democracyos/democracyos:2.8.2
+FROM democracyos/democracyos:2.9.0
 
 MAINTAINER Francisco Pensa <francisco@democracyos.io>
 
@@ -15,7 +15,7 @@ ENV LOCALE=es \
   NOTIFICATIONS_MAILER_NAME='Foros Vecinales Vicente Lopez' \
   ORGANIZATION_EMAIL=participacion.ciudadana@vicentelopez.gov.ar \
   ORGANIZATION_NAME='Foros Vecinales' \
-  SOCIALSHARE_SITE_NAME='Foros Vecinales Vicente Lopez' \
+  SOCIALSHARE_SITE_NAME='Presupuesto Participativo Vicente López' \
   SOCIALSHARE_SITE_DESCRIPTION='Plataforma de participación ciudadana de Vicente Lopez.' \
   SOCIALSHARE_IMAGE=https://cldup.com/xjWy914AyG.jpg \
   SOCIALSHARE_DOMAIN=forosvecinales.org \
