@@ -16,12 +16,7 @@ export default class Jump extends Component {
 		window.removeEventListener('scroll', this.checkScroll) 
 	}
 	checkScroll = (event) => {
-		if (window.matchMedia("(max-width: 500px)").matches) {
-			this.limit = 200
-		} else {
-			this.limit = 370
-		}	
-		if (document.body.scrollTop>this.limit){
+		if (window.matchMedia("(min-width: 975px)").matches && document.body.scrollTop>this.limit){
 			this.setState({visibility:true})
 		}else{
 			this.setState({visibility:false})
@@ -31,9 +26,8 @@ export default class Jump extends Component {
 		return (
 			<div className='jump-container'>
 				{ this.state.visibility && (
-					<button className='boton-azul boton-jump' onClick={this.props.goTop}>
-						Up
-					</button>
+					<div className='boton-jump' onClick={this.props.goTop}>
+					</div>
 				)}
 			</div>
 		)
