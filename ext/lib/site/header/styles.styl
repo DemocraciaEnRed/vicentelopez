@@ -1,63 +1,55 @@
-nav.navbar
-  padding: 0 4px
-  @media screen and (min-width: 455px)
-    padding: 0 1rem
+@import "mobile-menu/styles"
+@import "user-badge/styles"
 
+#outer-layout
+  padding: 0 !important
+nav.navbar
+  padding: 1rem
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  &:after
+    content: none
   .navbar-brand
-    padding-top: 0
-    padding-bottom: 0
-    margin: 0
+    padding: 0
+    margin-right: 0
+    img
+      height: 47px
+      @media screen and (min-width: 1080px)
+        width: 100%
+        height: auto
+    .logo-mobile
+      height: 32px
   a
     color: #71bf44
     text-transform: uppercase
     font-family: 'Roboto', sans-serif
-    font-weight: 400
-    // padding: 0 auto
-  ul
-    margin-top: 24px
+    font-weight: bold
   .navbar-nav
-    margin-right: 18px
     font-size: 17px
+    display: flex
+    align-items center
     .user-badge
-      float: left
-      height: 60px
-    .nav-item
-      float: left
+      .user-badge-link
+        margin: 0
+    .nav-item //campanita notificaciones
+      margin: 0 20px
+      @media screen and (min-width: 500px)
+        margin: 0 25px
       .nav-link
-        padding-top: 20px
-        padding-right: 20px
-        font-size 16px
-      height: 60px
-  .navbar-brand
-    padding: 7px
-    img
-      height: 47px
-      margin: 5px 0 0 9px
-  .nav-link
-    text-transform uppercase
-    color inherit
-    font-size 12px
-    padding-top .7rem
-    padding-bottom .7rem
-    span.icon-bell
-      font-size 16px
-      font-weight bold
-      position: absolute
-      right: 160
-      bottom: 15
-  #toggleButton
-    display none
-    float left
-    background none
-    border none
-    color inherit
-    padding .5rem 0
-    margin-right 10px
-    .icon-menu
-      font-size 22px
-
-@media screen and (max-width: 700px)
-  #toggleButton
-    display block!important
-
-// @import 'lib/header/user-badge/styles'
+        color inherit
+        span.icon-bell
+          font-size: 24px
+          color: #71bf44
+          @media screen and (min-width: 975px)
+            font-weight: bold
+  .header-item
+    margin-left 25px
+    font-weight: bold
+    .header-link
+      height: auto
+    &:hover
+      color: #8C1E81
+  .user-badge-helper
+    margin-left 0

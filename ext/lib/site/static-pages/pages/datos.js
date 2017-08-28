@@ -3,10 +3,15 @@ import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
+import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
 export default class Page extends Component {
   componentDidMount () {
+    Anchor.goTo('container')
+  }
+
+  goTop () {
     Anchor.goTo('container')
   }
 
@@ -61,12 +66,13 @@ export default class Page extends Component {
             <div className='descargas'>
               <h4>DESCARGAS</h4>
               <div className="btns-descargas">
-                <a target='_blank' href='https://rosariociudaddemocracyos.blob.core.windows.net/assets/informacion-sobre-participantes.xlsx' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
-                <a target='_blank' href='https://rosariociudaddemocracyos.blob.core.windows.net/assets/proyectos-2012-2017-por-tipo.xlsx' className='boton-azul'>Información sobre participación</a>
+                <a target='_blank' href='https://rosariociudaddemocracyos.blob.core.windows.net/assets/proyectos-2012-2017-por-tipo.xlsx' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
+                <a target='_blank' href='https://rosariociudaddemocracyos.blob.core.windows.net/assets/informacion-sobre-participantes.xlsx' className='boton-azul'>Información sobre participación</a>
               </div>
             </div>
           </div>
         </Anchor>
+        <Jump goTop={this.goTop} />
         <Footer />
       </div>
     )
