@@ -3,10 +3,15 @@ import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
+import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
 export default class Page extends Component {
   componentDidMount () {
+    Anchor.goTo('container')
+  }
+
+  goTop () {
     Anchor.goTo('container')
   }
 
@@ -67,6 +72,7 @@ export default class Page extends Component {
             </div>
           </div>
         </Anchor>
+        <Jump goTop={this.goTop} />
         <Footer />
       </div>
     )
