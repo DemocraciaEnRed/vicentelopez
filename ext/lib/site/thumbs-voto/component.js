@@ -49,7 +49,7 @@ export default function ThumbsVoto (props) {
             </h2>
             <p className="donde-voto-cont">
             Encontrarás más de 100 urnas habilitadas para votar en los 9 barrios de Vicente López. La votación estará abierta desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017, de lunes a viernes entre las 8:30hs a 16hs. 
-            <Link to='/s/acerca-de#mapa' className='boton-azul'>Consultá todos los puntos de votación aquí.</Link>
+            <a href='/s/acerca-de#mapa'> Consultá todos los puntos de votación aquí.</a>
             </p>
 
           </div>
