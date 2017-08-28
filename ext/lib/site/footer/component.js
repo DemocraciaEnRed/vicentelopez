@@ -33,6 +33,8 @@ export default function Footer (props) {
         <div className='terminos'>
           <Link to='/s/terminos-y-condiciones'> Términos y condiciones
           </Link>
+          <Link to='/s/reglamento'> Reglamento
+          </Link>
         </div>
       </div>
     </footer>
