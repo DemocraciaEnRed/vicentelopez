@@ -81,82 +81,82 @@ export default class Page extends Component {
               <table className="tabla-presupuestos">
                 <tbody>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       CARAPACHAY
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 6.000.000
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       FLORIDA ESTE
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 8.500.000
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       FLORIDA OESTE
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 7.166.666
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       LA LUCILA
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 6.000.000
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       MUNRO
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 8.500.000
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       OLIVOS
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 8.500.000
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       VICENTE LÓPEZ
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 7.166.666
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       VILLA ADELINA
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 6.000.000
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       VILLA MARTELLI
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       $ 7.166.666
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       Total
                     </td>
-                    <td colspan="1" rowspan="1">
+                    <td>
                       <strong>$65.000.000</strong>
                     </td>
                   </tr>
