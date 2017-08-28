@@ -56,7 +56,7 @@ export default class Page extends Component {
               <h3>Distribución de proyectos por categoría</h3>
               <figure className="graph-box">
                 <CarruselAnios />
-                <figcaption>
+                <figcaption className="caption-carrusel">
                   <p>Visualización por año de la distribución de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).</p>
                 </figcaption>
               </figure>
