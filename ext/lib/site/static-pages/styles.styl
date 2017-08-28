@@ -1,5 +1,6 @@
 .ext-acerca-de
 .ext-datos
+.ext-terminos-y-condiciones
   position: relative
   @media screen and (max-width: 500px)
     padding: 0
@@ -228,6 +229,10 @@
 .ext-terminos-y-condiciones
   p, li
     color: #555
+  .articulo
+    font-weight: bold
+  .underline
+    text-decoration: underline 
   h2
     color: #7cbb42
   h4
@@ -235,6 +240,13 @@
 
   .container
     margin-bottom: 100px
+    .tabla-presupuestos
+      tbody
+        tr
+          td
+            padding: 10px
+          td:first-child
+            font-weight: bold
   .banner-reglamento
   .banner-tyc
     padding: 0
@@ -291,6 +303,7 @@
             font-size: 20px
           @media(max-width: 1085px) and (min-width: 768px)
             font-size: 40px
+
 
 .carousel-distribucion-proyectos
   max-width: 1000px
