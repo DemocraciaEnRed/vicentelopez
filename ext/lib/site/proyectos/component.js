@@ -56,6 +56,9 @@ export default class Carrusel extends Component {
             <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
           ))}
         </div>
+        <Link className='boton-azul' href='/proyectos'>
+          Ver más
+        </Link>
       </div>
     )
   }
