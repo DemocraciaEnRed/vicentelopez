@@ -133,14 +133,14 @@
     h2
       font-size: 2em
       text-transform: uppercase
-      text-align: center 
+      text-align: center
       font-family: 'BrandonGrotesque', sans-serif
       color: #71bf44
     p
       font-family: 'BrandonGrotesque', sans-serif
       color: #71bf44
       text-align: center
-      font-size: 1.7em 
+      font-size: 1.7em
   .boton-azul
     font-size: 16px
     margin: 10px 0 0
@@ -168,45 +168,88 @@
   max-width: 1000px
   width: 100%
   margin: 0 auto
-  .seccion-datos
-    display: flex
-    .text
-      display: flex
-      flex-direction: column
-      justify-content: space-between
-      img
-        max-width: 300px
-        width: 100%
-  section
-    margin-bottom: 20px
-
+  @media screen and (max-width: 1000px)
+    padding: 0 5px
   .text
     font-size: 17px
     margin: 30px 0
-
-  .graph-box
-    img
-      display: block
-      margin: 0 auto
-    .graph-ref
-      width: 300px
-      margin-bottom: 20px
-    .graph
-      width: 450px
-      margin-top: 20px
-
-  h3
-    text-align: center
-    font-size: 22px
-    color: #4D4D4D !important
-    text-transform: uppercase
-    max-width: 80%
-    margin: 100px 30px 50px
-
-  .carousel-distribucion-proyectos
-    width: 400px
+  .seccion-datos
+    display: flex
+    flex-wrap: wrap
+    margin: 30px 0
+    h3
+      width: 100%
+      margin: 0 0 30px 0
+      font-size: 22px
+      color: #4D4D4D !important
+      text-transform: uppercase
+    figure.graph-box
+      width: 100%
+      display: flex
+      flex-wrap: wrap
+      .graph-img
+        width: 60%
+        @media screen and (max-width: 550px)
+          width: 100%
+        img
+          width: 100%
+      .graph
+        width: 450px
+      figcaption
+        width: 40%
+        padding: 10px 0 20px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        font-size: 17px
+        @media screen and (max-width: 750px)
+          font-size: 14px
+        @media screen and (max-width: 550px)
+          width: 100%
+        .graph-ref
+          width: 100%
+          max-width: 300px
+          @media screen and (max-width: 550px)
+            max-width: 280px
+            align-self: center
+      .caption-carrusel
+        width: 100%
+        padding: 15px 0 0 0
+      .tabla-presupuestoparticipativo
+        margin: 0 auto
+        font-family: 'BrandonGrotesque', sans-serif
+        font-weight: bold
+        text-transform: uppercase
+        color: #4A4A49
+        tbody
+          tr
+            td
+              padding: 15px
+              text-align: center
+              border: 1px solid #4A4A49
+              &:nth-child(odd)
+                background-color: white
+              &:nth-child(even)
+                background-color: #E8E8E8
+              &:first-child
+                background-color: #ACDFF2
+              @media screen and (max-width: 550px)
+                padding: 5px
+                font-size: 12px
+                font-weight: normal
+            &:first-child
+              width: 20%
+    .carousel-distribucion-proyectos
+      width: 400px
+      @media screen and (max-width: 480px)
+        width: 350px
 
   .descargas
+    h4
+      font-weight: bold
+      font-size: 24px
+      text-align: center
+      color: #71bf44
     .btns-descargas
       text-align: center
       a
@@ -220,19 +263,14 @@
       .boton-azul
         font-size: 16px!important
         padding: 10px 20px
-    h4
-      font-weight: 100;
-      font-size: 24px;
-      text-align: center
-      color: #71bf44
-.ext-reglamento
+
 .ext-terminos-y-condiciones
   p, li
     color: #555
   .articulo
     font-weight: bold
   .underline
-    text-decoration: underline 
+    text-decoration: underline
   h2
     color: #7cbb42
   h4
@@ -311,9 +349,12 @@
   margin: auto
   .carousel-cell
     img
-      margin: 0 20px
       width: 300px
       height: 300px
+      margin: 0 20px
+      @media screen and (max-width: 480px)
+        width: 250px
+        height: 250px
 
   .flickity-prev-next-button.previous
     background-image: unquote("url('ext/lib/site/static-pages/LeftArrowCarousel.svg')")
@@ -330,8 +371,6 @@
     background-repeat: no-repeat;
     background-position: center
     @media screen and (min-width: 780px)
-      height: 100px
-    @media screen and (min-width: 1000px)
       height: 100px
 
     svg
