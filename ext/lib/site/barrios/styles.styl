@@ -21,6 +21,8 @@
     display: -webkit-flex
     display: flex
     flex-wrap: wrap
+    @media screen and (max-width: 500px)
+      padding: 0
     .fondo-titulo
       margin-bottom: 35px
     h2
@@ -36,10 +38,18 @@
     .seccion-botones
       margin-bottom: 3%
       text-align: center
+      @media screen and (max-width: 500px)
+        width: 100%
+        display: flex
+        flex-flow: column wrap
+        align-items: center
       .boton-azul
         font-size: 30px
         margin: 10px 15px 30px
         padding: 20px 25px
+        @media screen and (max-width: 500px)
+          font-size: 20px
+          margin: 15px 0
 
     .contenedor-boton
       margin: 3% 0 0 5%
