@@ -155,8 +155,8 @@ $green = #93c01f
       color: #9a3a96
       font-size: 16px
       font-weight: 100
-      display: block;
-      display: -webkit-box
+      display: flex
+      flex-wrap: wrap
       line-height: 1.2em
       width: 100%
       max-height: 2.4em
@@ -166,6 +166,11 @@ $green = #93c01f
       text-overflow: ellipsis;
       -o-text-overflow: ellipsis;   /* required for Opera */
       -ms-text-overflow: ellipsis;  /* required for IE8, allegedly */
+      a
+        margin-right: 10px
+        font-weight: normal
+        &:hover
+          color: #8C1E81
 
 
   .social-links

@@ -23,7 +23,6 @@ class TopicArticle extends Component {
     this.state = {
       showSidebar: false
     }
-    console.log(this.props)
   }
 
   componentWillMount () {
@@ -144,7 +143,9 @@ class TopicArticle extends Component {
         }
         <Social topic={topic} />
         <div className='topic-tags topic-article-content'>
-          { this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>) }
+          {
+            this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
+          }
         </div>
         <div className='topic-article-content votar-este'>
           <p>Podés votar éste y cualquier otro proyecto en el punto de votación más cercano entre el 18 de septiembre y el 1 de octubre.</p>
