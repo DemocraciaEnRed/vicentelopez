@@ -4,11 +4,11 @@ import config from 'lib/config'
 
 export default ({ topic }) => {
   const { url, mediaTitle, participants } = topic
-
   const socialLinksUrl = window.location.origin + url
   const twitterText = encodeURIComponent(
     'Apoyemos este proyecto para mejorar Vicente López. '
   )
+  const messageWp = twitterText + ' ' + socialLinksUrl
 
   return (
     <div className='topic-article-content topic-social-vilo'>
@@ -17,8 +17,7 @@ export default ({ topic }) => {
         <a target='_blank' href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`} rel='noopener noreferrer' className='twitter-icon'></a>
         {
           window.innerWidth <= 630 &&
-            
-            <a target='_blank' href={`whatsapp://send?text=${twitterText}${socialLinksUrl}`} rel='noopener noreferrer' className='wp'></a>
+            <a href={`whatsapp://send?text=${messageWp}`} rel='noopener noreferrer' className='wp'></a>
         }
         <a onClick={copyURLToClipboard} href='#' rel='noopener noreferrer' className='linkclipboard-icon'></a>
         <span id='copied' className='copied'>Copiado!</span>
