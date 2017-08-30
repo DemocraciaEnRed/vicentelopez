@@ -74,8 +74,18 @@ export default class Page extends Component {
               </figure>
             </article>
 
-            <article>
-              <iframe allowFullScreen src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="634" scrolling="no" frameBorder="0" ></iframe><div><a href="https://infogram.com/5dc23892-297a-4a38-b350-fe6459013d00" target="_blank">Distribución de proyectos por área temática por año</a><br /><a href="https://infogram.com" target="_blank" rel="nofollow">Infogram</a></div>
+            <article className="seccion-datos iframe">
+              <h3>Distribución de proyectos por área temática por año</h3>
+              <figure className="graph-box">
+              {
+                window.matchMedia("(min-width: 550px)").matches &&
+                return (
+                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="570" scrolling="no" frameBorder="0" ></iframe>
+                ) : return (
+                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="570" scrolling="no" frameBorder="0" ></iframe>
+                )
+              }
+              </figure>
             </article>
 
             <article className="seccion-datos">
