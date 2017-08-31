@@ -25,7 +25,7 @@ export default class Page extends Component {
             <p className="text">
               El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de Foros Vecinales.
             </p>
-            
+
             <article className="seccion-datos">
               <h3>Cantidad de proyectos por año</h3>
               <figure className="graph-box">
@@ -78,10 +78,10 @@ export default class Page extends Component {
               <h3>Distribución de proyectos por área temática por año</h3>
               <figure className="graph-box">
               {
-                window.matchMedia("(min-width: 550px)").matches &&
-                return (
+                window.matchMedia("(min-width: 550px)").matches ?
+                (
                   <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="570" scrolling="no" frameBorder="0" ></iframe>
-                ) : return (
+                ) : (
                   <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="570" scrolling="no" frameBorder="0" ></iframe>
                 )
               }
