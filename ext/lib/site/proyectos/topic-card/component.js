@@ -1,5 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import urlBuilder from 'lib/url-builder'
 
 export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
@@ -36,7 +37,9 @@ export default ({ topic, forum }) => {
             <div className='linkclipboard-icon'></div>
           </div>
           <div className='topic-tags'>
-            {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
+            {
+              topic.tags && topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
+            }
           </div>
         </div>
       </div>

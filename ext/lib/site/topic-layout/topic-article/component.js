@@ -143,9 +143,11 @@ class TopicArticle extends Component {
         }
         <Social topic={topic} />
         <div className='topic-tags topic-article-content'>
-          {topic.tags && topic.tags.map((t) => `#${t}`).join(' ')}
+          {
+            this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
+          }
         </div>
-        <div className='topic-tags topic-article-content votar-este'>
+        <div className='topic-article-content votar-este'>
           <p>Podés votar éste y cualquier otro proyecto en el punto de votación más cercano entre el 18 de septiembre y el 1 de octubre.</p>
           <Link className='boton-azul btn' to='/s/acerca-de#mapa'>CONSULTAR PUNTOS DE VOTACIÓN</Link>
         </div>
