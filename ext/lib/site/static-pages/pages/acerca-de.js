@@ -53,7 +53,7 @@ export default class Page extends Component {
                 </div>
                 <div className="cols col-2">
                   <div>
-                    Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas. Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con las propuestas (que también podés encontrar en esta web, descargar e imprimir). Marcás las propuestas que considerás prioritarias y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
+                    Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas. Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con los proyectos (que también podés encontrar en esta web, descargar e imprimir). Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años. <a href="/s/reglamento">Consultá el reglamento.</a>
                   </div>
                 </div>
               </div>
