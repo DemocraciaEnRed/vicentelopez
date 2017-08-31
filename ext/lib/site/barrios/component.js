@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default function Barrios ({ forums }) {
-  // ordena los botones alfabéticamente, dejando primero "Todos los proyectos"
+  // ordena los botones alfabéticamente, dejando primero "Todas las propuestas"
   forums && forums.sort(function (a,b) {
     var titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase()
-    return (titleA == "todos los proyectos") ? -1 : (titleA < titleB) ? -1 : (titleA > titleB) ? 1 : 0
+    return (titleA == "todas las propuestas") ? -1 : (titleA < titleB) ? -1 : (titleA > titleB) ? 1 : 0
   })
 
   return (
