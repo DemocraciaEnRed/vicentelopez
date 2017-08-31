@@ -23,7 +23,7 @@ export default class Page extends Component {
               <div className="subtitulo">
                 <h2>Presupuesto Participativo 2017</h2>
                 <p>
-                  Gracias a vos recibimos más de 350 proyectos, vamos a votar y decidir juntos cómo
+                  Gracias a vos recibimos más de 350 propuestas, vamos a votar y decidir juntos cómo
                   invertir $65 millones de pesos.
                 </p>
               </div>
@@ -38,7 +38,7 @@ export default class Page extends Component {
                 </div>
                 <div className="cols col-2">
                   <div>
-                    Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 6 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
+                    Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 6 años, se asigna y comunica una partida por barrio para la ejecución de estas propuestas.
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@ export default class Page extends Component {
                 </div>
                 <div className="cols col-2">
                   <div>
-                    Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas. Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con los proyectos (que también podés encontrar en esta web, descargar e imprimir). Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
+                    Cualquier mayor de 16 años que viva o trabaje en Vicente López podrá votar desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017 inclusive en todas las urnas habilitadas. Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con las propuestas (que también podés encontrar en esta web, descargar e imprimir). Marcás las propuestas que considerás prioritarias y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
                   </div>
                 </div>
               </div>
@@ -74,13 +74,13 @@ export default class Page extends Component {
               <div className="fila faq">
                 <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>
                 <p>La partida de este año (presupuesto 2018) se repartió siguiendo dos criterios. Los primeros 31,5 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 33,5 millones se distribuyeron según la cantidad de habitantes de cada barrio.</p>
-                <h3>¿CÓMO SE ELABORARON LOS PROYECTOS?</h3>
-                <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encontraron con los funcionarios municipales de cada área para presentarles ideas y propuestas para cada barrio y en conjunto se definieron los proyectos.
+                <h3>¿CÓMO SE ELABORARON LAS PROPUESTAS?</h3>
+                <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encontraron con los funcionarios municipales de cada área para presentarles ideas para cada barrio y en conjunto se definieron las propuestas.
                 Si te quedaste con alguna idea para tu barrio, no la descartes: estamos avanzando para que el año que viene haya más instancias de presupuesto participativo.</p>
-                <h3>¿CÓMO SE DECIDIÓ QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
-                <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasó a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se terminó de definir la factibilidad del proyecto y los costos reales del mismo.</p>
-                <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
-                <p>Los proyectos ganadores de cada barrio, van a surgir de tu voto y el de tus vecinos. En las urnas vas a encontrar una boleta con todos los proyectos y vas a poder elegir hasta 3 (también podés descargar la boleta de votación de este sitio). Los proyectos más votados de cada barrio que no superen el monto asignado serán realizados el año que viene.</p>
+                <h3>¿CÓMO SE DECIDIÓ QUÉ PROPUESTAS VAN A VOTACIÓN?</h3>
+                <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasó a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se terminó de definir la factibilidad de la propuesta y los costos reales de la misma.</p>
+                <h3>¿CÓMO SE DEFINEN LAS PROPUESTAS GANADORAS?</h3>
+                <p>Las propuestas ganadoras de cada barrio, van a surgir de tu voto y el de tus vecinos. En las urnas vas a encontrar una boleta con todas las propuestas y vas a poder elegir hasta 3 (también podés descargar la boleta de votación de este sitio). Las propuestas más votadas de cada barrio que no superen el monto asignado serán realizadas el año que viene.</p>
               </div>
               <div className="fila no-bg">
                 <Anchor id='mapa'>
