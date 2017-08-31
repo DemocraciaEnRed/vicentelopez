@@ -27,68 +27,6 @@ export default class Page extends Component {
             </p>
 
             <article className="seccion-datos">
-              <h3>Cantidad de proyectos por año</h3>
-              <figure className="graph-box">
-                <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/progreso-proyectos.svg" alt=""/>
-                </div>
-                <figcaption>
-                  <p>Evolución de cantidad de proyectos presentados, aprobados y ejecutados año a año.</p>
-                  <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-ref.png" alt=""/>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
-            <h3>Cantidad de proyectos por año por categoría</h3>
-              <figure className="graph-box">
-                <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/progreso-proyectos-por-tipo.svg" alt=""/>
-                </div>
-                <figcaption>
-                  <p>Evolución en el tiempo de cantidad de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).</p>
-                  <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-por-tipo-ref.svg" alt=""/>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
-              <h3>Distribución de proyectos por categoría</h3>
-              <figure className="graph-box">
-                <CarruselAnios />
-                <figcaption className="caption-carrusel">
-                  <p>Visualización por año de la distribución de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).</p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
-              <h3>Evolución de la participación</h3>
-              <figure className="graph-box">
-                <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
-                </div>
-                <figcaption>
-                  <p>Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos iframe">
-              <h3>Distribución de proyectos por área temática por año</h3>
-              <figure className="graph-box">
-              {
-                window.matchMedia("(min-width: 550px)").matches ?
-                (
-                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="570" scrolling="no" frameBorder="0" ></iframe>
-                ) : (
-                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="570" scrolling="no" frameBorder="0" ></iframe>
-                )
-              }
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
               <h3>Evolución del Presupuesto Participativo 2012 - 2017</h3>
               <figure className="graph-box">
                 <table className="tabla-presupuestoparticipativo">
@@ -151,6 +89,34 @@ export default class Page extends Component {
                     </tr>
                   </tbody>
                 </table>
+              </figure>
+            </article>
+
+            <article className="seccion-datos">
+              <h3>Evolución de la participación</h3>
+              <figure className="graph-box">
+                <div className="graph-img">
+                  <img src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
+                </div>
+                <figcaption>
+                  <p>Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article className="seccion-datos iframe">
+              <h3>Distribución de proyectos por área temática por año</h3>
+              <figure className="graph-box">
+              {
+                window.matchMedia("(min-width: 550px)").matches ?
+                (
+                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="570" scrolling="no" frameBorder="0" >
+                  </iframe>
+                ) : (
+                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="570" scrolling="no" frameBorder="0" >
+                  </iframe>
+                )
+              }
               </figure>
             </article>
 
