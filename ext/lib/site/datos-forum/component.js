@@ -9,10 +9,10 @@ export default function DatosPorForo (props) {
           <h3>Presupuesto asignado: ${props.forum.extra.presupuesto}</h3>
       </div>
       <div className='div-boleta'>
-        <a href="#">
+        <a target='_blank' href={`${props.forum.extra.boleta}`}>
             <div className="icon-boleta"></div>
             DESCARGAR BOLETA
-          </a>
+        </a>
       </div>
     </section>
     )
