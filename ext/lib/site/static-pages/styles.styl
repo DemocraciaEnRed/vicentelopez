@@ -193,6 +193,7 @@
       width: 100%
       display: flex
       flex-wrap: wrap
+      justify-content: center
       .graph-img
         width: 60%
         @media screen and (max-width: 550px)
@@ -212,15 +213,15 @@
           font-size: 14px
         @media screen and (max-width: 550px)
           width: 100%
+          padding-bottom: 0
+          .caption
+            margin-bottom: 0
         .graph-ref
           width: 100%
           max-width: 300px
           @media screen and (max-width: 550px)
             max-width: 280px
             align-self: center
-      .caption-carrusel
-        width: 100%
-        padding: 15px 0 0 0
       .tabla-presupuestoparticipativo
         margin: 0 auto
         font-family: 'BrandonGrotesque', sans-serif
@@ -245,14 +246,12 @@
                 font-weight: normal
             &:first-child
               width: 20%
-    .carousel-distribucion-proyectos
-      width: 400px
-      @media screen and (max-width: 480px)
-        width: 350px
-    &.iframe
-      .graph-box
-        justify-content: center
-
+  .infogram
+    margin-bottom: 0
+    figure
+      margin: 0
+  .infogram + .infogram
+    margin-top: 0 !important    
   .descargas
     h4
       font-weight: bold
@@ -270,7 +269,7 @@
           background-size: contain
           background-repeat: no-repeat
       .boton-azul
-        font-size: 16px!important
+        font-size: 16px
         padding: 10px 20px
 
 .ext-terminos-y-condiciones
