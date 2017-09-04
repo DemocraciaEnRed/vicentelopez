@@ -29,15 +29,17 @@ export default class Page extends Component {
               <h3>Evolución del Presupuesto Participativo 2012 - 2017</h3>
               <figure className="graph-box">
                 <table className="tabla-presupuestoparticipativo">
-                  <tbody>
+                  <thead>
                     <tr>
-                      <td>Edición</td>
-                      <td>2012 - 2013</td>
-                      <td>2013 - 2014</td>
-                      <td>2014 - 2015</td>
-                      <td>2015 - 2016</td>
-                      <td>2016 - 2017</td>
+                      <th>Edición</th>
+                      <th>2012 - 2013</th>
+                      <th>2013 - 2014</th>
+                      <th>2014 - 2015</th>
+                      <th>2015 - 2016</th>
+                      <th>2016 - 2017</th>
                     </tr>
+                  </thead>
+                  <tbody>
                     <tr>
                       <td>Presupuesto Asignado</td>
                       <td>10 MM</td>
