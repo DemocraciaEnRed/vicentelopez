@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Footer from   'ext/lib/site/footer/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
-import CarruselAnios from 'ext/lib/site/carrusel-anios/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
@@ -27,80 +26,20 @@ export default class Page extends Component {
             </p>
 
             <article className="seccion-datos">
-              <h3>Cantidad de proyectos por año</h3>
-              <figure className="graph-box">
-                <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/progreso-proyectos.svg" alt=""/>
-                </div>
-                <figcaption>
-                  <p>Evolución de cantidad de proyectos presentados, aprobados y ejecutados año a año.</p>
-                  <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-ref.png" alt=""/>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
-            <h3>Cantidad de proyectos por año por categoría</h3>
-              <figure className="graph-box">
-                <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/progreso-proyectos-por-tipo.svg" alt=""/>
-                </div>
-                <figcaption>
-                  <p>Evolución en el tiempo de cantidad de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).</p>
-                  <img className="graph-ref" src="/ext/lib/site/static-pages/progreso-proyectos-por-tipo-ref.svg" alt=""/>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
-              <h3>Distribución de proyectos por categoría</h3>
-              <figure className="graph-box">
-                <CarruselAnios />
-                <figcaption className="caption-carrusel">
-                  <p>Visualización por año de la distribución de proyectos por categoría (cultura, deporte, educación, fiscalizacion, gobierno, planeamiento, salud, seguridad y tránsito).</p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
-              <h3>Evolución de la participación</h3>
-              <figure className="graph-box">
-                <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
-                </div>
-                <figcaption>
-                  <p>Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
-                </figcaption>
-              </figure>
-            </article>
-
-            <article className="seccion-datos iframe">
-              <h3>Distribución de proyectos por área temática por año</h3>
-              <figure className="graph-box">
-              {
-                window.matchMedia("(min-width: 550px)").matches ?
-                (
-                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="570" scrolling="no" frameBorder="0" ></iframe>
-                ) : (
-                  <iframe src="//e.infogram.com/5dc23892-297a-4a38-b350-fe6459013d00?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="570" scrolling="no" frameBorder="0" ></iframe>
-                )
-              }
-              </figure>
-            </article>
-
-            <article className="seccion-datos">
               <h3>Evolución del Presupuesto Participativo 2012 - 2017</h3>
               <figure className="graph-box">
                 <table className="tabla-presupuestoparticipativo">
-                  <tbody>
+                  <thead>
                     <tr>
-                      <td>Edición</td>
-                      <td>2012 - 2013</td>
-                      <td>2013 - 2014</td>
-                      <td>2014 - 2015</td>
-                      <td>2015 - 2016</td>
-                      <td>2016 - 2017</td>
+                      <th>Edición</th>
+                      <th>2012 - 2013</th>
+                      <th>2013 - 2014</th>
+                      <th>2014 - 2015</th>
+                      <th>2015 - 2016</th>
+                      <th>2016 - 2017</th>
                     </tr>
+                  </thead>
+                  <tbody>
                     <tr>
                       <td>Presupuesto Asignado</td>
                       <td>10 MM</td>
@@ -151,6 +90,66 @@ export default class Page extends Component {
                     </tr>
                   </tbody>
                 </table>
+              </figure>
+            </article>
+
+            <article className="seccion-datos">
+              <h3>Evolución de la participación</h3>
+              <figure className="graph-box">
+                <div className="graph-img">
+                  <img src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
+                </div>
+                <figcaption>
+                  <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article className="seccion-datos infogram">
+              <h3>Distribución de proyectos por área temática por año</h3>
+              <figure className="graph-box">
+              {
+                window.matchMedia("(min-width: 550px)").matches ?
+                (
+                  <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="594" scrolling="no" frameBorder="0">
+                  </iframe>
+                ) : (
+                  <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="594" scrolling="no" frameBorder="0">
+                  </iframe>
+                )
+              }
+              </figure>
+            </article>
+
+            <article className="seccion-datos infogram">
+              <h3>Distribución de inversión por área temática por año</h3>
+              <figure className="graph-box">
+              {
+                window.matchMedia("(min-width: 550px)").matches ?
+                (
+                  <iframe src="//e.infogram.com/7a29f42e-fcde-4b83-95d4-9958ed232335?src=embed" title="Distribución de inversión por área temática por año" width="550" height="676" scrolling="no" frameBorder="0">
+                  </iframe>
+                ) : (
+                  <iframe src="//e.infogram.com/7a29f42e-fcde-4b83-95d4-9958ed232335?src=embed" title="Distribución de inversión por área temática por año" width="360" height="676" scrolling="no" frameBorder="0">
+                  </iframe>
+                )
+              }
+              </figure>
+            </article>
+
+            <article className="seccion-datos infogram">
+              <h3>Ejecución del Presupuesto Participativo 2016-2017</h3>
+              <figure className="graph-box">
+              {
+                window.matchMedia("(min-width: 550px)").matches ?
+                (
+                  <iframe src="//e.infogram.com/26f001a1-faa1-4d72-b881-3818cc217568?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="550" height="578" scrolling="no" frameBorder="0">
+                  </iframe>
+                ) : (
+                  <iframe src="//e.infogram.com/26f001a1-faa1-4d72-b881-3818cc217568?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="360" height="578" scrolling="no" frameBorder="0">
+                  </iframe>
+                )
+              }
               </figure>
             </article>
 
