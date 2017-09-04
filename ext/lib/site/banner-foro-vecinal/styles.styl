@@ -17,13 +17,23 @@
     padding: 0
     overflow: hidden
     & video
-      width: 100%
+      max-width: 100%
       //muevo verticalmente un poco el video para que no corte tantas caras
       position: relative;
       top: 10%;
-      transform: translateY(-10%);
-    @media(max-width: 768px)
+      transform: translateY(-27%);
+      @media(min-width: 1440px)
+        max-width: 1440px
+        margin: 0
+    @media(min-width: 1440px)
+      max-width: 1440px
+      height: 450px
+    @media(max-width: 1420px)
+      height: 360px
+    @media(max-width: 1280px)
       height: 300px
+    @media(max-width: 768px)
+      height: 245px
     @media(max-width: 500px)
       height: 200px
   .contenedor

@@ -6,10 +6,19 @@ export default function BannerForoVecinal (props) {
     <section className="container-fluid banner-fv ">
       <div className="banner">
       {
-        window.innerWidth >= 630 &&
-          <video playsInline autoPlay muted loop>
-            <source src="https://rosariociudaddemocracyos.blob.core.windows.net/assets/vicentelopez-banner.mp4" type="video/mp4" />
-          </video>
+        Math.random(1) > 0.5 ? (
+          window.innerWidth >= 630 &&
+            <video playsInline autoPlay muted loop>
+              <source src="https://cldup.com/pQZlAEpzw0.mp4" type="video/mp4" />
+              <source src="https://cldup.com/b5-PScfd-V.webm" type="video/webm" />
+            </video>
+        ) : (
+          window.innerWidth >= 630 &&
+            <video playsInline autoPlay muted loop>
+              <source src="https://cldup.com/w4RSGFJStA.mp4" type="video/mp4" />
+              <source src="https://cldup.com/0Cy2GaQ-cR.webm" type="video/webm" />
+            </video>
+        )
         }
       </div>
       <div className='contenedor'>
