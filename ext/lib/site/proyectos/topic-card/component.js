@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import urlBuilder from 'lib/url-builder'
 
 export default ({ topic, forum }) => {
@@ -38,13 +38,20 @@ export default ({ topic, forum }) => {
           </div>
           <div className='topic-tags'>
             {
-              topic.tags && topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
+              topic.tags && topic.tags.map((tag, i) => <a onClick={linkTags(forum.name, tag)} key={i}>#{tag}</a>)
             }
           </div>
         </div>
       </div>
     </div>
   )
+}
+
+function linkTags (forum, tag) {
+  return (e) => {
+    e.stopPropagation()
+    window.location = `/${forum}?tag=${tag}`
+  }
 }
 
 function prettyPrice (number) {

@@ -35,6 +35,7 @@ function getFeed (req, res, next) {
             .then((topics) => topics.map((topic) => {
               return scopes.ordinary.expose(topic, forumsM.find((f) => f._id.toString() === topic.forum.toString()), req.user)
             }))
+            .then((topics) => Promise.all(topics))
             .then((topics) => {
               const forums = forumsM.map((f) => {
                 let forum = f.toJSON()
