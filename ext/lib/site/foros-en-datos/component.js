@@ -7,19 +7,15 @@ export default function ForosEnDatos () {
       <div className="fondo-titulo">
         <h2 className='title'>Los foros en datos</h2>
       </div>
-      <div className="flexBox">
+      <div className="datos">
         <p>El Presupuesto Participativo de Vicente López se implementa de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de los Foros Vecinales.</p>
         <figure className="graph-box">
-        {
-          window.matchMedia("(min-width: 550px)").matches ?
-          (
-            <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="594" scrolling="no" frameBorder="0">
-            </iframe>
-          ) : (
-            <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="594" scrolling="no" frameBorder="0">
-            </iframe>
-          )
-        }
+          <div className="graph-img">
+            <img src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
+          </div>
+          <figcaption>
+            <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
+          </figcaption>
         </figure>
         <div className='row'>
           <div className='cont-boton-azul'>

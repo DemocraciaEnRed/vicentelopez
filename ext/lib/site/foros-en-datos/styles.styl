@@ -6,11 +6,16 @@
   background-color: #e9e9e9
   .fondo-titulo
     margin-bottom: 35px
-    .flexBox
-      .graph-box
-        margin: 0
-      .row
-        margin-top: -55px
+  .datos
+    display: flex
+    flex-direction: column
+    align-items: center
+    @media screen and (max-width: 580px)
+      padding: 0 10px
+    .graph-box
+      margin: 0
+      figcaption
+        margin-top: 20px
   h3
     font-size: 18px
     text-align: center
