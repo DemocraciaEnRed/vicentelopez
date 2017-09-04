@@ -9,6 +9,7 @@ const app = module.exports = express()
 
 app.get('/',
 function getFeed (req, res, next) {
+  const s = +req.query.s || 0
   let forumsNames = ['villa-martelli', 'villa-adelina', 'vicente-lopez', 'olivos', 'munro', 'la-lucila', 'florida-oeste', 'florida-este', 'carapachay']
   Forum.find({ name: { $in: forumsNames } })
     .then((forumsM) => {
@@ -16,12 +17,12 @@ function getFeed (req, res, next) {
         { $match: {
             forum: { $in: forumsM.map((f) => f._id) },
             deletedAt: null,
-            // $or: [{closingAt: { $exists: false }}, {closingAt: { $gt: (new Date())}}]
+            $or: [{closingAt: { $exists: false }}, {closingAt: { $gt: (new Date())}}]
         }},
         { $sort: { 'createdAt': -1 } },
         { $sort: { 'participantsCount': -1 } },
         { $group: { _id: '$forum', topics: { $push: '$$ROOT' } } },
-        { $project: { best_topics: { $slice: [ '$topics', 2 ] } } },
+        { $project: { best_topics: { $slice: [ '$topics', s, 2 ] } } },
         { $unwind: '$best_topics' }
       ], function (err, topicsM) {
         if (err) {

@@ -19,7 +19,9 @@ export class HomeForum extends Component {
       loading: null,
       topics: [],
       forum: null,
-      forums: null
+      forums: null,
+      feedCount: 0,
+      noMore: false
     }
   }
 
@@ -41,39 +43,53 @@ export class HomeForum extends Component {
     var u = new window.URLSearchParams(window.location.search)
     let query = {}
 
-    forumStore.findAll().then((forums) => {
-      const forum = forums.find((forum) => forum.name === name)
-      query.forum = forum.id
-      if (name == 'proyectos') {
-        window.fetch(`/ext/api/feed`, { credentials: 'include' })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.result) {
-            this.setState({topics: res.result.topics.sort(() => 0.5 - Math.random()) })
-          }
-        })
-      } 
-      if (u.has('tag')) query.tag = u.get('tag')
-      return Promise.all([
-        forums,
-        forum,
-        topicStore.findAll(query)
-      ])
-    })
+    forumStore.findAll()
+      .then((forums) => {
+        const forum = forums.find((forum) => forum.name === name)
+        query.forum = forum.id
+        if (u.has('tag')) query.tag = u.get('tag')
+        const topics = (name == 'proyectos') ? this.getFeed() : topicStore.findAll(query)
 
-    .then(([forums, forum, topics]) => {
-      this.setState({
-        loading: false,
-        forums,
-        forum,
-        topics
+        return Promise.all([
+          forums,
+          forum,
+          topics
+        ])
       })
+      .then(([forums, forum, topics]) => {
+        this.setState({
+          loading: false,
+          forums,
+          forum,
+          topics
+        })
+      })
+      .catch((err) => {
+        if (err.status === 404) return browserHistory.push('/404')
+        if (err.status === 401) return browserHistory.push('/401')
+        throw err
+      })
+  }
+
+  getFeed = () => {
+    return window.fetch(`/ext/api/feed?s=${this.state.feedCount}`, { credentials: 'include' })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.result) {
+        this.setState({feedCount: (this.state.feedCount + 2)})
+        return res.result.topics
+      }
     })
-    .catch((err) => {
-      if (err.status === 404) return browserHistory.push('/404')
-      if (err.status === 401) return browserHistory.push('/401')
-      throw err
-    })
+  }
+
+  verMas = () => {
+    this.getFeed()
+      .then((topics) => {
+        this.setState({
+          topics: this.state.topics.concat(topics),
+          noMore: !topics.length
+        })
+      })
   }
 
   render () {
@@ -85,9 +101,9 @@ export class HomeForum extends Component {
     if (!this.state.forum) return null
 
     const { forums, forum, topics } = this.state
-  
+
     //randomizo los topics
-    topics.sort(() => 0.5 - Math.random())
+    if (topics && forum.name !== 'proyectos') topics.sort(() => 0.5 - Math.random())
 
     const cover = (forum.coverUrl && {
       backgroundImage: 'linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("' + forum.coverUrl + '")'
@@ -121,6 +137,17 @@ export class HomeForum extends Component {
          {topics.map((topic) => (
             <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
           ))}
+        </div>
+        <div className='btn-wrapper'>
+          {
+            !this.state.noMore &&
+            forum.name === 'proyectos' &&
+              (<button
+                className='boton-azul'
+                onClick={this.verMas}>
+                VER MAS
+              </button>)
+          }
         </div>
         <Footer />
       </div>
