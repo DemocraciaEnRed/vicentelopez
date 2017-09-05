@@ -98,10 +98,10 @@ class Header extends Component {
               </div>
               <div className="header-item">
                 <Link
-                  to='/propuestas'
+                  to='/proyectos'
                   className='header-link'
                   activeStyle={{ color: '#8C1E81' }}>
-                  Propuestas
+                  Proyectos
                 </Link>
               </div>
               <div className="header-item">
