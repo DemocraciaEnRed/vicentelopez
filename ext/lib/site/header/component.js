@@ -68,7 +68,7 @@ class Header extends Component {
             <UserBadge />
           )}
 
-          <MobileMenu form={this.state.userForm} />        
+          <MobileMenu form={this.state.userForm} />
 
         </ul>
       </nav>
@@ -98,7 +98,7 @@ class Header extends Component {
               </div>
               <div className="header-item">
                 <Link
-                  to='/proyectos'
+                  to='/propuestas'
                   className='header-link'
                   activeStyle={{ color: '#8C1E81' }}>
                   Propuestas
@@ -140,10 +140,10 @@ class Header extends Component {
             )}
           </ul>
         </nav>
-    )  
-    }   
+    )
+    }
 
-    
+
   }
 }
 

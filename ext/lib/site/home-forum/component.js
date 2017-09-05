@@ -48,7 +48,7 @@ export class HomeForum extends Component {
         const forum = forums.find((forum) => forum.name === name)
         query.forum = forum.id
         if (u.has('tag')) query.tag = u.get('tag')
-        const topics = (name == 'proyectos') ? this.getFeed() : topicStore.findAll(query)
+        const topics = (name == 'propuestas') ? this.getFeed() : topicStore.findAll(query)
 
         return Promise.all([
           forums,
@@ -103,7 +103,7 @@ export class HomeForum extends Component {
     const { forums, forum, topics } = this.state
 
     //randomizo los topics
-    if (topics && forum.name !== 'proyectos') topics.sort(() => 0.5 - Math.random())
+    if (topics && forum.name !== 'propuestas') topics.sort(() => 0.5 - Math.random())
 
     const cover = (forum.coverUrl && {
       backgroundImage: 'linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("' + forum.coverUrl + '")'
@@ -120,7 +120,7 @@ export class HomeForum extends Component {
           </div>
         </section>
         <Barrios forums={forums} />
-        {this.props.params.forum != 'proyectos' &&
+        {this.props.params.forum !== 'propuestas' &&
           <DatosPorForo forum={forum} />
         }
         {topics.length === 0 && (
@@ -141,7 +141,7 @@ export class HomeForum extends Component {
         <div className='btn-wrapper'>
           {
             !this.state.noMore &&
-            forum.name === 'proyectos' &&
+            forum.name === 'propuestas' &&
               (<button
                 className='boton-azul'
                 onClick={this.verMas}>
