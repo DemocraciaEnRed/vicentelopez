@@ -14,7 +14,7 @@ module.exports = ({
   ${styles}
   <p>Hola ${userName}.</p>
   <p>Por favor <a href="${raw(validateUrl)}">entra acá</a> para validar tu cuenta de correo.</p>
-  <p>Podrás informarte y comentar todas las propuestas del presupuesto participativo de Vicente López.</p>
+  <p>Podrás informarte y comentar todos los proyectos del presupuesto participativo de Vicente López.</p>
   <br />
   <p>Muchas gracias,</p>
   <br />

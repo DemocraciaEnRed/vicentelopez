@@ -115,7 +115,7 @@ export class HomeForum extends Component {
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
-              <h1>Propuestas</h1>
+              <h1>Proyectos</h1>
             </div>
           </div>
         </section>

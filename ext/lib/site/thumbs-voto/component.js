@@ -35,7 +35,7 @@ export default function ThumbsVoto (props) {
             </div>
             <h2 className="text-center">¿Cómo Voto?</h2>
             <p>
-            Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con las propuestas que podés encontrar en esta web. Marcás las propuestas que considerás prioritarias y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
+            Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con los proyectos que podés encontrar en esta web. Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
             </p>
 
           </div>
