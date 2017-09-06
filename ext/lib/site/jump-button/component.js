@@ -1,5 +1,4 @@
 import React,{Component} from 'react'
-import jump from 'jump.js'
 import {Link} from 'react-router'
 
 export default class Jump extends Component {

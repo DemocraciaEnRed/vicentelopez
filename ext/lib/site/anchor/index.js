@@ -7,7 +7,12 @@ export default class Anchor extends Component {
   static anchors = {}
 
   static goTo (id) {
-    if (this.anchors[id]) {
+    if (this.anchors[id] && id === 'container') {
+      jump(this.anchors[id], {
+        duration: 400,
+        offset: -600
+      })
+    } else if (this.anchors[id]) {
       jump(this.anchors[id], {
         duration: 400
       })
