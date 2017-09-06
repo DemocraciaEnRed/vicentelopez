@@ -17,7 +17,7 @@ export default class Page extends Component {
       <div>
         <section className="banner-static">
           <div className="banner"></div>
-          <div className='contenedor'>
+          <div className='contenedor largo'>
             <div className='fondo-titulo'>
               <h1>Términos y Condiciones</h1>
             </div>
