@@ -29,3 +29,4 @@ router.childRoutes.unshift({
 router.childRoutes.unshift({
   path: 's/herramientas',
   component: Herramientas
+})

@@ -26,13 +26,15 @@ export default class Page extends Component {
         </section>
         <Anchor id='container'>
           <div className='ext-herramientas'>
-            <p>
-              Si tenés dudas de cómo utilizar la plataforma de foros vecinales, descargá este instructivo con capturas paso a paso de cómo usarla.
-            </p>
-            <img src="/ext/lib/site/static-pages/ThumbInstructivo.png" alt="Instructivo"/>
-            <Link to='#' className="boton-azul">
-              Descargas
-            </Link>
+            <div className='instructivo'>
+              <p>
+                Si tenés dudas de cómo utilizar la plataforma de foros vecinales, descargá este instructivo con capturas paso a paso de cómo usarla.
+              </p>
+              <img className='thumb-instructivo' src='/ext/lib/site/static-pages/ThumbInstructivo.png' alt='Instructivo'/>
+                <div className="btns-descargas">
+                  <a target='_blank' href='https://cloudup.com/cQDssht_3L9' className='boton-azul'>Instructivo</a>
+                </div>
+            </div>
           </div>
         </Anchor>
         <Jump goTop={this.goTop} />
