@@ -132,9 +132,9 @@
         height: 100% !important
 .ext-acerca-de
   .subtitulo
-    margin-top: 10px
+    //margin-top: 10px
     border-bottom: 1px solid #c2c2c2
-    padding: 10px
+    padding: 0 10px
     h2
       font-size: 2em
       text-transform: uppercase
@@ -281,7 +281,77 @@
         font-size: 16px
         padding: 10px 20px
 
+// BANNER PAGINAS ESTATICAS
+
+.banner-static
+  padding: 0
+  height: 270px
+  position: relative
+  @media(max-width: 768px)
+    height: 210px
+  .banner
+    width: 100%
+    display: block
+    margin: 0 auto
+    height: 180px
+    background-size: cover
+    background-image: unquote("url('ext/lib/site/VialCosteroVteLopezImgBanner.png')") 
+    background-repeat: no-repeat
+    padding: 0
+    @media(max-width: 768px)
+      height: 160px
+  .contenedor
+    top: 140px
+    position: absolute
+    display: block
+    text-align: center
+    left: 0
+    right: 0
+    @media(max-width: 768px)
+      top: 138px
+    @media(max-width: 420px)
+      top: 127px
+      width: 90%
+      margin: 0 auto
+
+    .fondo-titulo
+      display: inline-flex
+      justify-content: center
+      align-items: center
+      background-color: #7cbb42
+      color: white
+      text-align: center
+      box-shadow: 0 44px 12px -38px unquote("rgba(0, 0, 0, 0.31)")
+      margin: 0 auto
+      padding: 15px 40px 9px
+      letter-spacing: 1px
+      z-index: 99
+      @media(max-width: 768px)
+        box-shadow: 0 25px 3px -21px unquote("rgba(0, 0, 0, 0.31)")
+        padding: 15px 20px 9px
+      @media(max-width: 1085px)
+        box-shadow: 0 25px 3px -21px unquote("rgba(0, 0, 0, 0.31)")
+
+      h1
+        font-family: 'BrandonGrotesqueBlack', sans-serif
+        padding: 0
+        margin: 0 auto
+        font-size: 54px
+        font-weight: 400
+        text-transform: uppercase
+        @media(max-width: 768px)
+          font-size: 20px
+        @media(max-width: 1085px) and (min-width: 768px)
+          font-size: 40px
+
+// BANNER TERMINOS Y CONDICIONES
+
 .ext-terminos-y-condiciones
+  padding: 0 15px 15px
+  @media screen and (max-width: 768px)
+    padding: 15px
+  h2
+    color: #7cbb42
 .ext-reglamento
   p, li
     color: #555
@@ -293,9 +363,7 @@
     color: #7cbb42
   h4
     color: #444
-
-  .container
-    margin-bottom: 100px
+        
   .tabla-presupuestos
     tbody
       tr
@@ -306,28 +374,32 @@
   .banner-tyc
     padding: 0
     height: 270px
-    margin-bottom: 75px
+    @media(max-width: 768px)
+      height: 210px
     .banner
       width: 100%
       display: block
       margin: 0 auto
-      position: absolute
-      top: 66px
-      left: 0
       height: 180px
       background-size: cover
-      background-image: unquote("url('ext/lib/site/assets/VialCosteroVteLopezImgBanner.png')")
+      background-image: unquote("url('ext/lib/site/VialCosteroVteLopezImgBanner.png')") 
       background-repeat: no-repeat
       padding: 0
+      @media(max-width: 768px)
+        height: 160px
     .contenedor
-      top: 200px
+      top: 140px
       position: absolute
       display: block
       text-align: center
       left: 0
       right: 0
-      @media(max-width: 1085px)
-        top: 220px
+      @media(max-width: 768px)
+        top: 138px
+      @media(max-width: 420px)
+        top: 127px
+        width: 90%
+        margin: 0 auto
 
       .fondo-titulo
         display: inline-flex

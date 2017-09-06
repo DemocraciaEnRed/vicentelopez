@@ -41,28 +41,27 @@
     padding: 0
     height: 270px
     @media(max-width: 768px)
-      height: 230px
+      height: 210px
     .banner
       width: 100%
       display: block
       margin: 0 auto
-      position: absolute
-      top: 66px
-      left: 0
       height: 180px
       background-size: cover
       background-image: unquote("url('ext/lib/site/VialCosteroVteLopezImgBanner.png')")
       background-repeat: no-repeat
       padding: 0
+      @media(max-width: 768px)
+        height: 160px
     .contenedor
-      top: 200px
+      top: 234px
       position: absolute
       display: block
       text-align: center
       left: 0
       right: 0
-      @media(max-width: 1085px)
-        top: 220px
+      @media(max-width: 768px)
+        top: 210px
 
       .fondo-titulo
         display: inline-flex
