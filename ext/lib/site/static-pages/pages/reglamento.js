@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Footer from   'ext/lib/site/footer/component'
-import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
@@ -13,15 +12,19 @@ export default class Page extends Component {
     Anchor.goTo('container')
   }
 
-    render () {
+  render () {
     return (
       <div>
-        <BannerForoVecinal title="Reglamento Electoral"/>
+        <section className="banner-static">
+          <div className="banner"></div>
+          <div className='contenedor'>
+            <div className='fondo-titulo'>
+              <h1>Reglamento Electoral</h1>
+            </div>
+          </div>
+        </section>
           <Anchor id='container'>
-            <div className='ext-reglamento'>
-      
-       
-            
+            <div className='ext-reglamento'>  
               <p><span className="articulo">Art. 1° ELECCIÓN PROYECTOS 2018 PRESUPUESTO PARTICIPATIVO.</span> El presente Reglamento regula el proceso de elección de los proyectos del Presupuesto Participativo propuestos en los Foros Vecinales Barriales 2017 para ser ejecutados en el año 2018 en el Partido de Vicente López.</p>
               <p><span className="articulo">Art. 2° FECHA Y LUGAR.</span> La Votación de Proyectos 2018 se realizará durante 14 días consecutivos desde el lunes 18 DE SEPTIEMBRE hasta el domingo 1° de OCTUBRE de 2017 en los lugares y horarios que serán publicados en el sitio WWW.FOROSVECINALES.ORG. Por razones de fuerza mayor, la Subsecretaría de Participación Ciudadana podrá extender el período de votación y deberá comunicarlo a través del sitio de internet antes mencionado.</p>
               <p><span className="articulo">Art. 3° QUIÉNES PUEDEN VOTAR.</span> Podrán emitir su voto: a) los mayores de 16 años con domicilio en cualquiera de los 9 barrios en que se divide el Partido de Vicente López (Villa Martelli, Florida Oeste, Munro, Carapachay, Villa Adelina, Florida Este, Vicente López, Olivos y La Lucila), b) aquéllos que trabajen en alguno de los mencionados barrios, c) Alumnos mayores de 16 años y los padres o encargados de alumnos menores de 16 años (uno por alumno) de los Establecimientos Educativos Públicos tanto Provinciales como Municipales del Partido, aunque no tengan domicilio en el barrio en que se encuentra ubicada la escuela ni en el Partido de Vicente López, siempre que el Establecimiento Educativo haya presentado propuesta y el sufragante se encuentre inscripto en el padrón especial al que se refiere el art. 11 del presente reglamento, d) las personas vinculadas a las entidades intermedias que hayan presentado propuestas, entendiendo por tal a: directivos, asociados, inscriptos en actividades y talleres brindados por la entidad, aunque no tengan domicilio en el barrio en que se encuentra ubicada la entidad ni en el Partido de Vicente López y siempre que los sufragantes se encuentren inscriptos en el padrón especial al que se refiere el art. 12 del presente reglamento.</p>
@@ -159,11 +162,11 @@ export default class Page extends Component {
                 </tbody>
               </table>
 
-          </div>
-        </Anchor>
-        <Jump goTop={this.goTop} />
-        <Footer />
-      </div>
+            </div>
+          </Anchor>
+          <Jump goTop={this.goTop} />
+          <Footer />
+        </div>
     )
   }
 }
