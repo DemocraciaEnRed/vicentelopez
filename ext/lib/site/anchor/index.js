@@ -8,7 +8,6 @@ export default class Anchor extends Component {
 
   static goTo (id) {
     if (this.anchors[id] && id === 'container') {
-      console.log('no entra ahi')
       jump(this.anchors[id], {
         duration: 400,
         offset: -260
