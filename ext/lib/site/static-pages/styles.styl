@@ -54,7 +54,7 @@
       text-transform: uppercase
       text-align: center
       color: #696969
-      margin: 15px 0
+      margin: 0 0 15px
 
     .fila
       padding: 20px 30px 40px
@@ -132,7 +132,6 @@
         height: 100% !important
 .ext-acerca-de
   .subtitulo
-    //margin-top: 10px
     border-bottom: 1px solid #c2c2c2
     padding: 0 10px
     h2
@@ -178,7 +177,7 @@
     padding: 0 5px
   .text
     font-size: 17px
-    margin: 30px 0
+    margin-bottom: 30px
   .seccion-datos
     display: flex
     flex-wrap: wrap
@@ -299,7 +298,7 @@
     background-repeat: no-repeat
     padding: 0
     @media(max-width: 768px)
-      height: 160px
+      height: 150px
   .contenedor
     top: 140px
     position: absolute
@@ -308,12 +307,12 @@
     left: 0
     right: 0
     @media(max-width: 768px)
-      top: 138px
+      top: 127px
     @media(max-width: 420px)
       top: 127px
-      width: 90%
+      width: 75%
       margin: 0 auto
-
+  
     .fondo-titulo
       display: inline-flex
       justify-content: center
@@ -343,13 +342,17 @@
           font-size: 20px
         @media(max-width: 1085px) and (min-width: 768px)
           font-size: 40px
+  .largo
+    @media(max-width: 420px)
+      top: 117px
+      width: 60%
 
 // BANNER TERMINOS Y CONDICIONES
 
 .ext-terminos-y-condiciones
   padding: 0 15px 15px
   @media screen and (max-width: 768px)
-    padding: 15px
+    padding: 0 15px
   h2
     color: #7cbb42
 .ext-reglamento
@@ -371,67 +374,7 @@
           padding: 10px
         td:first-child
           font-weight: bold
-  .banner-tyc
-    padding: 0
-    height: 270px
-    @media(max-width: 768px)
-      height: 210px
-    .banner
-      width: 100%
-      display: block
-      margin: 0 auto
-      height: 180px
-      background-size: cover
-      background-image: unquote("url('ext/lib/site/VialCosteroVteLopezImgBanner.png')") 
-      background-repeat: no-repeat
-      padding: 0
-      @media(max-width: 768px)
-        height: 160px
-    .contenedor
-      top: 140px
-      position: absolute
-      display: block
-      text-align: center
-      left: 0
-      right: 0
-      @media(max-width: 768px)
-        top: 138px
-      @media(max-width: 420px)
-        top: 127px
-        width: 90%
-        margin: 0 auto
-
-      .fondo-titulo
-        display: inline-flex
-        justify-content: center
-        align-items: center
-        background-color: #7cbb42
-        color: white
-        text-align: center
-        box-shadow: 0 44px 12px -38px unquote("rgba(0, 0, 0, 0.31)")
-        margin: 0 auto
-        padding: 15px 40px 9px
-        letter-spacing: 1px
-        z-index: 99
-        @media(max-width: 768px)
-          box-shadow: 0 25px 3px -21px unquote("rgba(0, 0, 0, 0.31)")
-          padding: 15px 20px 9px
-        @media(max-width: 1085px)
-          box-shadow: 0 25px 3px -21px unquote("rgba(0, 0, 0, 0.31)")
-
-        h1
-          font-family: 'BrandonGrotesqueBlack', sans-serif
-          padding: 0
-          margin: 0 auto
-          font-size: 54px
-          font-weight: 400
-          text-transform: uppercase
-          @media(max-width: 768px)
-            font-size: 20px
-          @media(max-width: 1085px) and (min-width: 768px)
-            font-size: 40px
-
-
+  
 .carousel-distribucion-proyectos
   max-width: 1000px
   width: 100%
