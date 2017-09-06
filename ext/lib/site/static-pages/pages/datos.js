@@ -122,7 +122,7 @@ export default class Page extends Component {
             </article>
 
             <article className="seccion-datos infogram">
-              <h3>Distribución de inversión por área temática por año</h3>
+              <h3>Distribución de inversión por área de gobierno por año</h3>
               <figure className="graph-box">
               {
                 window.matchMedia("(min-width: 550px)").matches ?
@@ -143,10 +143,10 @@ export default class Page extends Component {
               {
                 window.matchMedia("(min-width: 550px)").matches ?
                 (
-                  <iframe src="//e.infogram.com/26f001a1-faa1-4d72-b881-3818cc217568?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="550" height="578" scrolling="no" frameBorder="0">
+                  <iframe src="//e.infogram.com/dd7e5f37-0ef2-4392-9171-13c6d97ca489?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="550" height="578" scrolling="no" frameBorder="0">
                   </iframe>
                 ) : (
-                  <iframe src="//e.infogram.com/26f001a1-faa1-4d72-b881-3818cc217568?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="360" height="578" scrolling="no" frameBorder="0">
+                  <iframe src="//e.infogram.com/dd7e5f37-0ef2-4392-9171-13c6d97ca489?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="360" height="578" scrolling="no" frameBorder="0">
                   </iframe>
                 )
               }
