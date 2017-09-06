@@ -2,6 +2,7 @@
 .ext-datos
 .ext-terminos-y-condiciones
 .ext-reglamento
+.ext-herramientas
   position: relative
   @media screen and (max-width: 500px)
     padding: 0
@@ -166,7 +167,7 @@
         display: block
       span:first-child
         font-weight: bold
-
+.ext-herramientas
 .ext-reglamento
 .ext-datos
   color: #696969 !important
@@ -259,7 +260,34 @@
     figure
       margin: 0
   .infogram + .infogram
-    margin-top: 0 !important    
+    margin-top: 0 !important
+  .instructivo
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    @media screen and (max-width: 768px)
+      text-align: center
+    img
+      max-width: 900px
+      max-height: 500px
+      @media screen and (max-width: 768px)
+        max-width: 600px
+      @media screen and (max-width: 500px)
+        max-width: 300px
+    .btns-descargas
+      text-align: center
+      a
+        margin: 10px
+        &::before
+          content: ''
+          background-image: unquote("url('ext/lib/site/static-pages/DownloadFile.svg')")
+          padding-left: 30px
+          background-size: contain
+          background-repeat: no-repeat
+      .boton-azul
+        font-size: 16px
+        padding: 10px 20px    
   .descargas
     h4
       font-weight: bold
