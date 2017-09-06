@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Footer from   'ext/lib/site/footer/component'
-import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
@@ -16,7 +15,14 @@ export default class Page extends Component {
   render () {
     return (
       <div>
-        <BannerForoVecinal />
+        <section className="banner-static">
+          <div className="banner"></div>
+          <div className='contenedor'>
+            <div className='fondo-titulo'>
+              <h1>Foros Vecinales</h1>
+            </div>
+          </div>
+        </section>
         <Anchor id='container'>
           <div className='ext-acerca-de container'>
             <div className="filas">
