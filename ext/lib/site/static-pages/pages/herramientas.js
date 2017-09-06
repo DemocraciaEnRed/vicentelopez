@@ -26,6 +26,10 @@ export default class Page extends Component {
         </section>
         <Anchor id='container'>
           <div className='ext-herramientas'>
+            <p>
+              Si tenés dudas de cómo utilizar la plataforma de foros vecinales, descargá este instructivo con capturas paso a paso de cómo usarla.
+            </p>
+            <img src="/ext/lib/site/static-pages/ThumbInstructivo.png" alt="Instructivo"/>
             <Link to='#' className="boton-azul">
               Descargas
             </Link>
