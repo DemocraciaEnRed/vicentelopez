@@ -6,7 +6,7 @@ import Anchor from 'ext/lib/site/anchor'
 
 export default class Page extends Component {
   componentDidMount () {
-    Anchor.goTo('container')
+    this.goTop()
   }
 
   goTop () {

@@ -6,7 +6,7 @@ import {Link} from 'react-router'
 
 export default class Page extends Component {
   componentDidMount () {
-  Anchor.goTo('container')
+    this.goTop()
   }
 
   goTop () {
