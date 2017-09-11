@@ -129,7 +129,8 @@ export class HomeForum extends Component {
             </div>
           </div>
         </section>
-        <Anchor id='container'>
+        <Anchor
+        id='container'>
           <Barrios forums={forums} />
           {this.props.params.forum !== 'proyectos' &&
             <DatosPorForo forum={forum} />

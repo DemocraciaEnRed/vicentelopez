@@ -128,22 +128,6 @@ export default class Page extends Component {
             </article>
 
             <article className="seccion-datos infogram">
-              <h3>Distribución de inversión por área de gobierno por año</h3>
-              <figure className="graph-box">
-              {
-                window.matchMedia("(min-width: 550px)").matches ?
-                (
-                  <iframe src="//e.infogram.com/7a29f42e-fcde-4b83-95d4-9958ed232335?src=embed" title="Distribución de inversión por área temática por año" width="550" height="676" scrolling="no" frameBorder="0">
-                  </iframe>
-                ) : (
-                  <iframe src="//e.infogram.com/7a29f42e-fcde-4b83-95d4-9958ed232335?src=embed" title="Distribución de inversión por área temática por año" width="360" height="676" scrolling="no" frameBorder="0">
-                  </iframe>
-                )
-              }
-              </figure>
-            </article>
-
-            <article className="seccion-datos infogram">
               <h3>Ejecución del Presupuesto Participativo 2016-2017</h3>
               <figure className="graph-box">
               {
