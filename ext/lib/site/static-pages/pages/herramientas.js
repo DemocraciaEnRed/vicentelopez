@@ -30,7 +30,7 @@ export default class Page extends Component {
               <p>
                 Si tenés dudas de cómo utilizar la plataforma de foros vecinales, descargá este instructivo con capturas paso a paso de cómo usarla.
               </p>
-              <img className='thumb-instructivo' src='/ext/lib/site/static-pages/ThumbInstructivo.png' alt='Instructivo'/>
+              <img className='thumb-instructivo' src='/ext/lib/site/static-pages/ThumbInstructivo.jpg' alt='Instructivo'/>
                 <div className="btns-descargas">
                   <a target='_blank' href='https://cloudup.com/cQDssht_3L9' className='boton-azul'>Instructivo</a>
                 </div>
