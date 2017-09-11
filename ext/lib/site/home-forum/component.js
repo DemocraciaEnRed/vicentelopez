@@ -84,6 +84,14 @@ export class HomeForum extends Component {
     })
   }
 
+  componentDidMount() {
+    this.goTop()
+  }
+
+  goTop () {
+    Anchor.goTo('container')
+  }
+
   verMas = () => {
     this.getFeed()
       .then((topics) => {
@@ -92,10 +100,6 @@ export class HomeForum extends Component {
           noMore: !topics.length
         })
       })
-  }
-
-  goTop () {
-    Anchor.goTo('container')
   }
 
   render () {
@@ -117,15 +121,15 @@ export class HomeForum extends Component {
 
     return (
       <div id='forum-home'>
-        <Anchor id='container'>
-          <section className="banner-proyectos">
-            <div className="banner"></div>
-            <div className='contenedor'>
-              <div className='fondo-titulo'>
-                <h1>Proyectos</h1>
-              </div>
+        <section className="banner-proyectos">
+          <div className="banner"></div>
+          <div className='contenedor'>
+            <div className='fondo-titulo'>
+              <h1>Proyectos</h1>
             </div>
-          </section>
+          </div>
+        </section>
+        <Anchor id='container'>
           <Barrios forums={forums} />
           {this.props.params.forum !== 'proyectos' &&
             <DatosPorForo forum={forum} />
@@ -156,9 +160,9 @@ export class HomeForum extends Component {
                 </button>)
             }
           </div>
-          <Jump goTop={this.goTop} />
-          <Footer />
         </Anchor>
+        <Jump goTop={this.goTop} />
+        <Footer />
       </div>
     )
   }
