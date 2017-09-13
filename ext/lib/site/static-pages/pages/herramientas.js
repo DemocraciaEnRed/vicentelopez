@@ -28,12 +28,14 @@ export default class Page extends Component {
           <div className='ext-herramientas'>
             <div className='instructivo'>
               <p>
-                Si tenés dudas de cómo utilizar la plataforma de foros vecinales, descargá este instructivo con capturas paso a paso de cómo usarla.
+                Si tenés dudas de cómo utilizar la plataforma de foros vecinales, podés seguir el instructivo en video o descargarlo en pdf.
               </p>
-              <img className='thumb-instructivo' src='/ext/lib/site/static-pages/ThumbInstructivo.jpg' alt='Instructivo'/>
-                <div className="btns-descargas">
-                  <a target='_blank' href='https://cloudup.com/cQDssht_3L9' className='boton-azul'>Instructivo</a>
-                </div>
+              <video controls className='video-instructivo'>
+                <source src="https://cldup.com/puxr4wF2a7.mp4" type="video/mp4" />
+              </video>
+              <div className="btns-descargas">
+                <a target='_blank' href='https://cloudup.com/cQDssht_3L9' className='boton-azul'>Descargar instructivo en PDF</a>
+              </div>
             </div>
           </div>
         </Anchor>
