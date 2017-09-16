@@ -146,8 +146,8 @@ export default class Page extends Component {
             <div className='descargas'>
               <h4>DESCARGAS</h4>
               <div className="btns-descargas">
-                <a target='_blank' href='https://cloudup.com/ip01dzAtzzX' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
-                <a target='_blank' href='https://cloudup.com/iqMkk90ciad' className='boton-azul'>Información sobre participación</a>
+                <a href='https://cldup.com/8tzw4YWwst.xlsx' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
+                <a href='https://cldup.com/cGHsAU6aG4.xlsx' className='boton-azul'>Información sobre participación</a>
               </div>
             </div>
           </div>
