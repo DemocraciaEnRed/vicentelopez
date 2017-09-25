@@ -17,6 +17,10 @@ export class TopicLayout extends Component {
     forum: null
   }
 
+  componentWillReceiveProps (props) {
+    if (props.topic) Anchor.goTo('container')
+  }
+
   componentDidMount () {
     let name = this.props.params.forum
 

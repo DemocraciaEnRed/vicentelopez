@@ -28,17 +28,11 @@ export class HomeForum extends Component {
   }
 
   componentWillMount () {
-    if (!config.multiForum && !config.defaultForum) {
-      window.location = urlBuilder.for('forums.new')
-    }
+    this.fetchAll()
+  }
 
+  fetchAll = () => {
     let name = this.props.params.forum
-
-    if (!name && !config.multiForum) {
-      name = config.defaultForum
-    }
-
-    checkReservedNames(name)
 
     this.setState({ loading: true })
 
@@ -64,6 +58,8 @@ export class HomeForum extends Component {
           forums,
           forum,
           topics
+        }, () => {
+          this.goTop()
         })
       })
       .catch((err) => {
@@ -84,12 +80,8 @@ export class HomeForum extends Component {
     })
   }
 
-  componentDidMount() {
-    this.goTop()
-  }
-
   goTop () {
-    Anchor.goTo('container')
+    Anchor.goTo('containerr')
   }
 
   verMas = () => {
@@ -129,9 +121,9 @@ export class HomeForum extends Component {
             </div>
           </div>
         </section>
+        <Barrios forums={forums} />
         <Anchor
-        id='container'>
-          <Barrios forums={forums} />
+          id='containerr'>
           {this.props.params.forum !== 'proyectos' &&
             <DatosPorForo forum={forum} />
           }

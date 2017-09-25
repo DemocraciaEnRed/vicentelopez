@@ -3,6 +3,7 @@ import {Link} from 'react-router'
 import bus from 'bus'
 import userConnector from 'lib/site/connectors/user'
 import AnonUser from 'ext/lib/site/header/anon-user/component'
+import ProyectosLink from 'ext/lib/site/header/proyectos-link'
 
 class MobileMenu extends Component {
   constructor (props) {
@@ -40,13 +41,7 @@ class MobileMenu extends Component {
                   </Link>
                 </div>
                 <div className="header-item mobile-link">
-                  <Link
-                    to='/proyectos'
-                    className='header-link'
-                    activeStyle={{ color: '#8C1E81' }}
-                    onClick={this.toggleOnClick}>
-                    Proyectos
-                  </Link>
+                  <ProyectosLink />
                 </div>
                 <div className="header-item mobile-link">
                   <Link

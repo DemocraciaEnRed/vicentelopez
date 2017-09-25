@@ -6,7 +6,7 @@ import jump from 'jump.js'
 export default class Anchor extends Component {
   static anchors = {}
 
-  static goTo (id) {
+  static goTo (id, offset) {
     if (!this.anchors[id]) return
     if (id === 'container' && (window.matchMedia("(max-width: 768px)").matches)) {
       jump(this.anchors[id], {

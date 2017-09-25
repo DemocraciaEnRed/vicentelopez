@@ -6,6 +6,7 @@ import userConnector from 'lib/site/connectors/user'
 import UserBadge from 'ext/lib/site/header/user-badge/component'
 import MobileMenu from 'ext/lib/site/header/mobile-menu/component'
 import AnonUser from 'ext/lib/site/header/anon-user/component'
+import ProyectosLink from 'ext/lib/site/header/proyectos-link'
 
 class Header extends Component {
   constructor (props) {
@@ -97,12 +98,7 @@ class Header extends Component {
                 </Link>
               </div>
               <div className="header-item">
-                <Link
-                  to='/proyectos'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
-                  Proyectos
-                </Link>
+                <ProyectosLink />
               </div>
               <div className="header-item">
                 <Link
