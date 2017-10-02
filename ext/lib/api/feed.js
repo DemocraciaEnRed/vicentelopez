@@ -16,8 +16,7 @@ function getFeed (req, res, next) {
       Topic.aggregate([
         { $match: {
             forum: { $in: forumsM.map((f) => f._id) },
-            deletedAt: null,
-            $or: [{closingAt: { $exists: false }}, {closingAt: { $gt: (new Date())}}]
+            deletedAt: null
         }},
         { $sort: { 'createdAt': -1 } },
         { $sort: { 'participantsCount': -1 } },
