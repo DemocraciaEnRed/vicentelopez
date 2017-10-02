@@ -1,6 +1,6 @@
 {
   "name": "ext",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Extension folder of a DemocracyOS fork.",
   "main": "lib/boot",
   "scripts": {
