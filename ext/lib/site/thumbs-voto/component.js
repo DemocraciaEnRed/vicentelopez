@@ -14,9 +14,9 @@ export default function ThumbsVoto (props) {
             </h2>
             <p>
               Este lunes 2 de Octubre se estarán contando los votos de Vicente López, Munro y Carapachay<br />
-              Martes se contarán los votos de Florida Este, La Lucila y Olivos<br />
-              El Miércoles se contarán los de Villa Adelina, Florida Oeste y Villa Martelli<br />
-              ¡A partir de el jueves 5 de Octubre se podrán ver los resultados de la votación!
+              El Martes se contarán los votos de Florida Este, La Lucila y Olivos.<br />
+              El Miércoles se contarán los de Villa Adelina, Florida Oeste y Villa Martelli.<br />
+              ¡A partir del jueves 5 de Octubre se podrán ver los resultados de la votación!
             </p>
           </div>
         </div>
