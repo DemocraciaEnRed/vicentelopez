@@ -148,8 +148,11 @@ class TopicArticle extends Component {
           }
         </div>
         <div className='topic-article-content votar-este'>
-          <p>Podés votar éste y cualquier otro proyecto en el punto de votación más cercano entre el 18 de septiembre y el 1 de octubre.</p>
-          <Link className='boton-azul btn' to='/s/acerca-de#mapa'>CONSULTAR PUNTOS DE VOTACIÓN</Link>
+          <p>La votación ya cerró, pero podés ver los resultados a partir del Jueves 5 de Octubre aquí mismo!</p>
+          {
+            // <p>Podés votar éste y cualquier otro proyecto en el punto de votación más cercano entre el 18 de septiembre y el 1 de octubre.</p>
+            // <Link className='boton-azul btn' to='/s/acerca-de#mapa'>CONSULTAR PUNTOS DE VOTACIÓN</Link>
+          }
         </div>
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
