@@ -23,7 +23,6 @@ class TopicArticle extends Component {
     this.state = {
       showSidebar: false
     }
-    console.log(this.props.topic)
   }
 
   componentWillMount () {
@@ -81,7 +80,10 @@ class TopicArticle extends Component {
       )
     }
 
-    console.log(topic.attrs.state)
+    const socialLinksUrl = window.location.origin + topic.url
+    const twitterText = encodeURIComponent(
+      'Apoyemos este proyecto para mejorar Vicente López. '
+    )
 
     return (
       <div className='topic-article-wrapper'>
@@ -179,8 +181,8 @@ class TopicArticle extends Component {
                 </div>
                 <div className='box-footer'>
                   <span className='hashtag'>#ForosVecinalesVteLopez</span>
-                    <a>f</a>
-                    <a>tw</a>
+                    <a target='_blank' href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`} rel='noopener noreferrer' className='fb'></a>
+                    <a target='_blank' href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`} rel='noopener noreferrer' className='tw'></a>
                 </div>
               </div>
             )
