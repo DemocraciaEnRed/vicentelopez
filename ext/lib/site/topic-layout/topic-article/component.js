@@ -23,6 +23,7 @@ class TopicArticle extends Component {
     this.state = {
       showSidebar: false
     }
+    console.log(this.props.topic)
   }
 
   componentWillMount () {
@@ -79,6 +80,8 @@ class TopicArticle extends Component {
         </div>
       )
     }
+
+    console.log(topic.attrs.state)
 
     return (
       <div className='topic-article-wrapper'>
@@ -147,13 +150,41 @@ class TopicArticle extends Component {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
           }
         </div>
-        <div className='topic-article-content votar-este'>
-          <p>La votación ya cerró, pero podés ver los resultados a partir del Jueves 5 de Octubre aquí mismo!</p>
-          {
-            // <p>Podés votar éste y cualquier otro proyecto en el punto de votación más cercano entre el 18 de septiembre y el 1 de octubre.</p>
-            // <Link className='boton-azul btn' to='/s/acerca-de#mapa'>CONSULTAR PUNTOS DE VOTACIÓN</Link>
-          }
-        </div>
+        {
+          topic.attrs.state === 'pendiente' && (
+            <div className='topic-article-content votar-este'>
+              <p>La votación ya cerró, pero podés ver los resultados a partir del Jueves 5 de Octubre aquí mismo!</p>
+              {
+                // <p>Podés votar éste y cualquier otro proyecto en el punto de votación más cercano entre el 18 de septiembre y el 1 de octubre.</p>
+                // <Link className='boton-azul btn' to='/s/acerca-de#mapa'>CONSULTAR PUNTOS DE VOTACIÓN</Link>
+              }
+            </div>
+          )
+        }
+        {
+          topic.attrs.state === 'proyectado' && (
+              <div className='topic-article-content proyecto-ganador'>
+                <div className='box-header'>
+                  <span>Proyecto ganador</span>
+                </div>
+                <div className='box-content'>
+                  <div className='box-content-item'>
+                    <span className='box-content-title'>Presupuesto asignado:</span>
+                    <span className='box-content-info'>{topic.attrs.budget}</span>
+                  </div>
+                  <div className='box-content-item'>
+                    <span className='box-content-title'>Cantidad de votos:</span>
+                    <span className='box-content-info'>{topic.attrs.votos}</span>
+                  </div>
+                </div>
+                <div className='box-footer'>
+                  <span className='hashtag'>#ForosVecinalesVteLopez</span>
+                    <a>f</a>
+                    <a>tw</a>
+                </div>
+              </div>
+            )
+        }
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
