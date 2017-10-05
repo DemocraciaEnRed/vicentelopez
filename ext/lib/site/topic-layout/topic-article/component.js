@@ -54,9 +54,9 @@ class TopicArticle extends Component {
       case 'pendiente':
       return encodeURIComponent('Apoyemos este proyecto para mejorar Vicente López. ')
       case 'perdedor':
-      return encodeURIComponent(topic.mediaTitle)
+      return encodeURIComponent(this.props.topic.mediaTitle)
       case 'proyectado':
-      return encodeURIComponent('Gracias a la participación de los vecinos este proyecto se va a realizar. ')
+      return encodeURIComponent('Este proyecto se va a realizar gracias a la participación de los vecinos. ')
       default:
       return ''
     }
@@ -95,7 +95,7 @@ class TopicArticle extends Component {
 
     const socialLinksUrl = window.location.origin + topic.url
     const twitterText = this.twitText()
-    
+
     return (
       <div className='topic-article-wrapper'>
         {
