@@ -2,12 +2,9 @@ import React, { PureComponent } from 'react'
 import t from 't-component'
 import config from 'lib/config'
 
-export default ({ topic }) => {
+export default (props) => {
+  const { topic, twitterText, socialLinksUrl } = props
   const { url, mediaTitle, participants } = topic
-  const socialLinksUrl = window.location.origin + url
-  const twitterText = encodeURIComponent(
-    'Apoyemos este proyecto para mejorar Vicente López. '
-  )
   const messageWp = twitterText + ' ' + socialLinksUrl
 
   return (
