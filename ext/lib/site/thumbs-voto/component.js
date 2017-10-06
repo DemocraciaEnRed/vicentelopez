@@ -13,10 +13,10 @@ export default function ThumbsVoto (props) {
               PRESUPUESTO PARTICIPATIVO 2017!
             </h2>
             <p>
-              Este miércoles 11 de octubre se estarán contando los votos de Vicente López, Munro y Carapachay<br />
+              Este lunes 2 de octubre se estarán contando los votos de Vicente López, Munro y Carapachay<br />
               El Martes se contarán los votos de Florida Este, La Lucila y Olivos.<br />
               El Miércoles se contarán los de Villa Adelina, Florida Oeste y Villa Martelli.<br />
-              ¡A partir del jueves 5 de Octubre se podrán ver los resultados de la votación!
+              ¡A partir del miércoles 11 de octubre se podrán ver los resultados de la votación!
             </p>
           </div>
         </div>
