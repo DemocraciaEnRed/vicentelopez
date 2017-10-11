@@ -36,7 +36,7 @@ export default class Page extends Component {
               <div className='resultados-wrapper'>
                 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSFJYWMSTNIj4zJMX--cLiA-_h-_x8Y1DsqbFdqTD1ZwrcyD_w-xjqICqcylSj01_JwXDyeGOdOZzU8/pubhtml?gid=1331534280&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
               </div>
-              <a href='https://cldup.com/Ffeq5NbW_i.csv' className='boton-azul btn-resultados-17'>Descargar resultados de votación</a>
+              <a href='https://s3.amazonaws.com/forosvecinales/resultados-votacion-2017.csv' className='btn-resultados-17'>Descargar resultados</a>
               
             </article>
 
