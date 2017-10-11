@@ -9,7 +9,7 @@ export default function ThumbsVoto (props) {
         <div className="row cont">
           <div className="subtitulo">
             <h2>
-              Gracias a los 44247 que eligieron proyectos para realizar en 2018.
+              Gracias a los 44247 vecinos que eligieron proyectos para realizar en 2018.
             </h2>
             <Link
               to='/s/datos'

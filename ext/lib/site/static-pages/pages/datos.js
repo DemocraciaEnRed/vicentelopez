@@ -32,6 +32,15 @@ export default class Page extends Component {
             </p>
 
             <article className="seccion-datos">
+              <h3>Resultados de la votación 2017</h3>
+              <div className='resultados-wrapper'>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSFJYWMSTNIj4zJMX--cLiA-_h-_x8Y1DsqbFdqTD1ZwrcyD_w-xjqICqcylSj01_JwXDyeGOdOZzU8/pubhtml?gid=1331534280&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+              </div>
+              <a href='https://cldup.com/Ffeq5NbW_i.csv' className='boton-azul btn-resultados-17'>Descargar resultados de votación</a>
+              
+            </article>
+
+            <article className="seccion-datos">
               <h3>Evolución del Presupuesto Participativo 2012 - 2017</h3>
               <figure className="graph-box">
                 <table className="tabla-presupuestoparticipativo">
