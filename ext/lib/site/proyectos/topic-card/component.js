@@ -14,6 +14,9 @@ export default ({ topic, forum }) => {
           {topic.attrs && topic.attrs.budget && (
             <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
           )}
+          {topic.attrs && topic.attrs.state && topic.attrs.state === 'proyectado' && (
+            <p className='winner'>Proyecto ganador</p>
+          )}
       </div>
       <div className='topic-card-info'>
         <div className='topic-card-body'>

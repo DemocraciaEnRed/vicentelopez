@@ -165,18 +165,7 @@ class TopicArticle extends Component {
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
           }
-        </div>
-        {
-          topic.attrs.state === 'pendiente' && (
-            <div className='topic-article-content votar-este'>
-              <p>La votación ya cerró, pero podés ver los resultados a partir del miércoles 11 de octubre aquí mismo!</p>
-              {
-                // <p>Podés votar éste y cualquier otro proyecto en el punto de votación más cercano entre el 18 de septiembre y el 1 de octubre.</p>
-                // <Link className='boton-azul btn' to='/s/acerca-de#mapa'>CONSULTAR PUNTOS DE VOTACIÓN</Link>
-              }
-            </div>
-          )
-        }
+        </div>  
         {
           topic.attrs.state === 'proyectado' && (
               <div className='topic-article-content proyecto-ganador'>
@@ -198,6 +187,11 @@ class TopicArticle extends Component {
                     <a target='_blank' href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`} rel='noopener noreferrer' className='fb'></a>
                     <a target='_blank' href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`} rel='noopener noreferrer' className='tw'></a>
                 </div>
+                <Link
+                  to='/s/datos'
+                  className='ver-resu'>
+                  Ver los resultados de la votacón aquí
+                  </Link>
               </div>
             )
         }

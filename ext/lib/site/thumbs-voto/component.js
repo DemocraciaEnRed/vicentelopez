@@ -9,15 +9,13 @@ export default function ThumbsVoto (props) {
         <div className="row cont">
           <div className="subtitulo">
             <h2>
-              YA CERRÓ LA VOTACIÓN<br />
-              PRESUPUESTO PARTICIPATIVO 2017!
+              Gracias a los 44247 que eligieron proyectos para realizar en 2018.
             </h2>
-            <p>
-              Este lunes 2 de octubre se estarán contando los votos de Vicente López, Munro y Carapachay<br />
-              El Martes se contarán los votos de Florida Este, La Lucila y Olivos.<br />
-              El Miércoles se contarán los de Villa Adelina, Florida Oeste y Villa Martelli.<br />
-              ¡A partir del miércoles 11 de octubre se podrán ver los resultados de la votación!
-            </p>
+            <Link
+              to='/s/datos'
+              className="boton-azul">
+              Ver los resultados de la votacón aquí
+            </Link>
           </div>
         </div>
         <div className="row cont">
