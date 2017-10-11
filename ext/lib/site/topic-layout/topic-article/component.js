@@ -49,6 +49,19 @@ class TopicArticle extends Component {
     })
   }
 
+  twitText = () => {
+    switch (this.props.topic.attrs.state) {
+      case 'pendiente':
+      return encodeURIComponent('Apoyemos este proyecto para mejorar Vicente López. ')
+      case 'perdedor':
+      return encodeURIComponent(this.props.topic.mediaTitle)
+      case 'proyectado':
+      return encodeURIComponent('Este proyecto se va a realizar gracias a la participación de los vecinos. ')
+      default:
+      return ''
+    }
+  }
+
   render () {
     const {
       topic,
@@ -81,9 +94,7 @@ class TopicArticle extends Component {
     }
 
     const socialLinksUrl = window.location.origin + topic.url
-    const twitterText = encodeURIComponent(
-      'Apoyemos este proyecto para mejorar Vicente López. '
-    )
+    const twitterText = this.twitText()
 
     return (
       <div className='topic-article-wrapper'>
@@ -146,7 +157,10 @@ class TopicArticle extends Component {
             </div>
           )
         }
-        <Social topic={topic} />
+        <Social
+          topic={topic}
+          twitterText={twitterText}
+          socialLinksUrl={socialLinksUrl} />
         <div className='topic-tags topic-article-content'>
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
