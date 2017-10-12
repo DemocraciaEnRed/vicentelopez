@@ -190,7 +190,7 @@ class TopicArticle extends Component {
                 <Link
                   to='/s/datos'
                   className='ver-resu'>
-                  Ver los resultados de la votacón aquí
+                  Ver los resultados de la votación aquí
                   </Link>
               </div>
             )
