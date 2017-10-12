@@ -34,7 +34,7 @@ export default class Page extends Component {
             <article className="seccion-datos">
               <h3>Resultados de la votación 2017</h3>
               <div className='resultados-wrapper'>
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQZ7k_CLtwE0gZs79IdS6TtM41EQ_jC0Xgf7FV2T5aY6mOwHJGikzQ2GDkljtYrEmYm3PcTSGsQalJS/pubhtml?gid=64911122&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToyYQd7OTjvh7d_KUBHyq6Kq8SGPT9JEKr9fsl_gIVa7PH1P3usLVl72nSyoFurshFPHGDN7Sgd7bS/pubhtml?gid=1962576158&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
               </div>
               <a href='https://s3.amazonaws.com/forosvecinales/resultados-votacion-2017.csv' className='btn-resultados-17'>Descargar resultados</a>
               
