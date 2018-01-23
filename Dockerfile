@@ -1,4 +1,4 @@
-FROM democracyos/democracyos:2.9.5
+FROM democracyos/democracyos:2.9.8
 
 MAINTAINER Francisco Pensa <francisco@democracyos.io>
 
