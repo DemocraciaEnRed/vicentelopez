@@ -4,8 +4,6 @@ import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import tagsConnector from 'lib/site/connectors/tags'
-// import Cover from '../cover'
-// import Footer from '../footer/component'
 import TopicCard from './topic-card/component'
 
 const filters = {
@@ -161,18 +159,12 @@ class HomeAnteproyectos extends Component {
 
     return (
       <div className='ext-home-ideas'>
-        {/* <Cover
-          logo='/ext/lib/site/home-multiforum/ideas-icono.png'
-          title='Ideas'
-          description='¿Tenés ideas para mejorar la vida en la ciudad? Compartilas.' /> */}
         <ListTools
           activeFilter={this.state.filter}
           onChangeFilter={this.handleFilterChange} />
         <div className='container topics-container'>
           <div className='row'>
             <div className='col-md-4 push-md-8 etiquetas'>
-              <h3>Distritos</h3>
-              {forum && <TagsList tags={forum.initialTags} forumName={forum.name} />}
               <h3>Temas</h3>
               {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
             </div>
