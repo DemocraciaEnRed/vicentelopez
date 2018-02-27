@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import forumStore from 'lib/stores/forum-store/forum-store'
-
+import ForumTagsSearch from 'lib/admin/admin-topics-form/tag-autocomplete/component'
+import Attrs from 'lib/admin/admin-topics-form/attrs/component'
 
 export default class Create extends Component {
+    
     constructor (props) {
         super(props)
         this.state = {
-            forum: "",
+            forum: null,
             title: "",
-            body: ""
+            body: "",
+            tags: "",
+            topic: ""
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,23 +23,20 @@ export default class Create extends Component {
         const target = event.target
         const value = target.value
         const name = target.name
-        console.log(value)
-        console.log(name)
         this.setState({
           [name]: value
-        }, ()=> console.log(this.state))
+        } )
         event.preventDefault();
-        console.log("holi")
           }
 
     componentWillMount () {
-        const name = "florida-este"
+        const name = "ante-proyectos"
         forumStore.findOneByName(name)
         .then((forum) =>  {
-        this.setState({
-        'forum' : forum.id
+            this.setState({forum: forum})
+        
         })
-        })
+        
     }
 
    
@@ -43,71 +44,96 @@ export default class Create extends Component {
         e.preventDefault();
         const formData = { forum: this.state.forum,
                            title: this.state.title,
-                           body: this.state.body 
+                           body: this.state.body,
+                           tag: "59665fe8724f61003327eb2f" 
                          }
-        console.log(formData)                 
-        fetch(('/api/v2/topics/' ) ,{
+        fetch(('/api/v2/topics/' + forum ) ,{
             method: 'POST',
+            credentials: 'include', 
             body: JSON.stringify(formData),
             headers: {
               'Content-Type': 'application/json'
             }
             
           })
+          
     }
-
-
-
-
-
-
+   
     render() {
+        if(!this.state.forum) return null
+       
         return (
+          
+            <div className="wrapper" >
+           <h1 className="text-center">{'Crear anteproyecto' }</h1>
+                <form className="form-control" onSubmit={this.handleSubmit}>
 
-            
-                <form onSubmit={this.handleSubmit}>
-                    <div >
+                <Attrs forum={this.state.forum} />
+                <div >Tags</div >
+                <div className="tags-autocomplete">
+                <ForumTagsSearch
+                    tags={this.topic && this.topic.tags && this.topic.tags}
+                    initialTags={this.state.forum.initialTags}
+                    forum={this.state.forum.id} />
+                 </div >
+
+                <div >
+                        <div >  
+
+                            <label className="required" htmlFor=""></label>
+                            <div>
+                                <input type="hidden"
+                                       name="tag"
+                                       value={this.state.tag}/>
+                            </div>
+                        </div>
                         <div >
-                            <label className="col-sm-2 control-label required" htmlFor=""></label>
-                            <div className="col-sm-10">
+                            <label className="required" htmlFor=""></label>
+                            <div>
                                 <input type="hidden"
                                        name="forum"
-                                       value={this.state.forum}/>
+                                       value={this.state.forum.id}/>
                             </div>
                         </div>
 
-                        <div >
-                            <label className="col-sm-2 control-label required" htmlFor="">Título</label>
-                            <div className="col-sm-10">
-                                <input type="text"
+                        <div className='form-group kind-string'>
+                            <label className="required" htmlFor="">Título</label>
+                            
+                                <input  className='form-control'
+                                       type="text"
                                        name="title"
-                                       value={this.state.formTitle}
+                                       value={this.state.title}
                                        onChange={this.handleInputChange}/>
 
-                            </div>
                         </div>
-                        <div className="form-group">
-                            <label className="col-sm-2 control-label required" htmlFor="">Cuerpo</label>
-                            <div className="col-sm-10">
-                                <input type="text"
+                        <div className='form-group kind-string'>
+                            <label className="required" htmlFor="">Cuerpo</label>
+                                <textarea className="form-control" rows="6" 
                                        name="body"
-                                       value={this.state.formTitle}
+                                       value={this.state.body}
                                        onChange={this.handleInputChange}/>
-                            </div>
+
                         </div>
-                        <div className="form-group">
-                            <div className="col-sm-2"></div>
-                            <div className="col-sm-10">
+                        
+                        <div>
                                 <button type="submit"
                                         name="formSend"
                                         onChange={this.handleInputChange}
-                                        value={this.state.formTitle}>
+                                        value={this.formSend}>
                                     Enviar
                                 </button>
-                            </div>
                         </div>
                     </div>
-                </form>
+                                </form>
+        
+                                </div>
+        
+
+
+
+
+
+
         );
     }
 }
