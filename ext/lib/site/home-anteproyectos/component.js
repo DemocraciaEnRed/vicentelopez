@@ -27,9 +27,7 @@ const filters = {
   }
 }
 
-function filter (key, items = []) {
-  return items.filter(filters[key].filter)
-}
+const filter = (key, items = []) => items.filter(filters[key].filter)
 
 const ListTools = ({ onChangeFilter, activeFilter }) => (
   <div className='container'>
@@ -56,8 +54,8 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
 )
 
 class HomeAnteproyectos extends Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
 
     this.state = {
       page: 1,
@@ -70,10 +68,11 @@ class HomeAnteproyectos extends Component {
   }
 
   componentDidMount = () => {
-
     forumStore.findOneByName('anteproyectos')
       .then((forum) => {
-        const tags = window.fetch(`/api/v2/forums/${forum.id}/tags`).then((res) => res.json())
+        const tags = window.fetch(`/api/v2/forums/${forum.id}/tags`)
+          .then((res) => res.json())
+
         return Promise.all([
           forum,
           this.fetchTopics(this.state.page, forum.id),
@@ -84,46 +83,42 @@ class HomeAnteproyectos extends Component {
         this.setState({
           forum,
           topics: filter(this.state.filter, topics),
-          tags: tags.results.tags.filter(tag => tag.count > 1).map(tag => tag.tag)
+          tags: tags.results.tags.filter((tag) => tag.count > 1)
+            .map((tag) => tag.tag)
         })
       })
       .catch((err) => { throw err })
   }
 
   fetchTopics = (page, forumId) => {
-    var u = new window.URLSearchParams(window.location.search)
-    let query = {}
-    query.forum = forumId
-    query.page = page
-    query.limit = 20
-    query.sort = filters[this.state.filter].sort
+    const query = {
+      forum: forumId,
+      page,
+      limit: 20,
+      sort: filters[this.state.filter].sort
+    }
+
+    const u = new window.URLSearchParams(window.location.search)
     if (u.has('tag')) query.tag = u.get('tag')
+
     return topicStore.findAll(query).then(([topics, pagination]) => topics)
   }
 
   paginateForward = () => {
-    let page = this.state.page
-    page++
+    const page = this.state.page + 1
+
     this.fetchTopics(page, this.state.forum.id)
-    .then((topics) => {
-      this.setState({
-        topics: this.state.topics.concat(topics),
-        noMore: topics.length === 0 || topics.length < 20,
-        page
+      .then((topics) => {
+        this.setState({
+          topics: this.state.topics.concat(topics),
+          noMore: topics.length === 0 || topics.length < 20,
+          page
+        })
       })
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .catch((err) => { console.error(err) })
   }
 
   handleFilterChange = (key) => {
-    let query = {}
-    var u = new window.URLSearchParams(window.location.search)
-    if (u.has('tag')) query.tag = u.get('tag')
-    query.forum = this.state.forum.id
-    query.sort = filters[this.state.filter].sort
-
     this.setState({ filter: key }, () => {
       this.fetchTopics(1, this.state.forum.id)
         .then((topics) => {
@@ -133,6 +128,7 @@ class HomeAnteproyectos extends Component {
             page: 1
           })
         })
+        .catch((err) => { console.error(err) })
     })
   }
 
@@ -147,8 +143,8 @@ class HomeAnteproyectos extends Component {
     }
 
     topicStore.vote(id, 'apoyo-idea').then((res) => {
-      let topics = this.state.topics
-      let index = topics.findIndex((t) => t.id === id)
+      const topics = this.state.topics
+      const index = topics.findIndex((t) => t.id === id)
       topics[index] = res
       this.setState({ topics })
     }).catch((err) => { throw err })
@@ -169,7 +165,6 @@ class HomeAnteproyectos extends Component {
               {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
             </div>
             <div className='col-md-8 pull-md-4'>
-
               {topics && topics.length === 0 && (
                 <div className='empty-msg'>
                   <div className='alert alert-success' role='alert'>
@@ -184,14 +179,11 @@ class HomeAnteproyectos extends Component {
                   forum={forum}
                   topic={topic} />
               ))}
-              {
-                !this.state.noMore &&
-                  (
-                  <div className='more-topics'>
-                    <button onClick={this.paginateForward}>Ver Más</button>
-                  </div>
-                  )
-              }
+              {!this.state.noMore && (
+                <div className='more-topics'>
+                  <button onClick={this.paginateForward}>Ver Más</button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -202,25 +194,28 @@ class HomeAnteproyectos extends Component {
 }
 
 const TagsList = tagsConnector(({ tags, forumName, without }) => {
-  var u = new window.URLSearchParams(window.location.search)
+  const u = new window.URLSearchParams(window.location.search)
   if (without) tags = tags.filter((t) => !~without.indexOf(t))
+
   return tags && tags.length > 0 && (
     <div className='forum-tags'>
       {tags.map((tag, i) => {
-        let active, url
+        let active = ''
+        let url = `${window.location.origin}/${forumName}?tag=${tag}`
+
         if (u.has('tag') && u.get('tag') === tag) {
           active = 'active'
           url = `${window.location.origin}/${forumName}`
-        } else {
-          active = ''
-          url = `${window.location.origin}/${forumName}?tag=${tag}`
         }
-        return <a
-          className={`badge badge-default ${active}`}
-          href={`${url}`}
-          key={i}>
-          {tag}
-        </a>
+
+        return (
+          <a
+            className={`badge badge-default ${active}`}
+            href={url}
+            key={`${tag}-${i}`}>
+            {tag}
+          </a>
+        )
       })}
     </div>
   )
