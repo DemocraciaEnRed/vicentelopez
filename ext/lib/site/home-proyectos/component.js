@@ -13,8 +13,9 @@ import Anchor from 'ext/lib/site/anchor'
 import TopicCard from '../proyectos/topic-card/component'
 
 export class HomeForum extends Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
+
     this.state = {
       loading: null,
       topics: [],
@@ -30,12 +31,12 @@ export class HomeForum extends Component {
   }
 
   fetchAll = () => {
-    let name = this.props.params.forum
+    const { name } = this.props.params
 
     this.setState({ loading: true })
 
-    var u = new window.URLSearchParams(window.location.search)
-    let query = {}
+    const u = new window.URLSearchParams(window.location.search)
+    const query = {}
 
     forumStore.findAll()
       .then((forums) => {

@@ -8,12 +8,12 @@ export default class Anchor extends Component {
 
   static goTo (id, offset) {
     if (!this.anchors[id]) return
-    if (id === 'container' && (window.matchMedia("(max-width: 768px)").matches)) {
+    if (id === 'container' && (window.matchMedia('(max-width: 768px)').matches)) {
       jump(this.anchors[id], {
         duration: 400,
         offset: -180
       })
-    } else if (id === 'container' && (window.matchMedia("(max-width: 975px)").matches)) {
+    } else if (id === 'container' && (window.matchMedia('(max-width: 975px)').matches)) {
       jump(this.anchors[id], {
         duration: 400,
         offset: -230
