@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import t from 't-component'
-import urlBuilder from 'lib/url-builder'
 import config from 'lib/config'
-import checkReservedNames from 'lib/forum/check-reserved-names'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
-import TopicCard from '../proyectos/topic-card/component'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
 import DatosPorForo from 'ext/lib/site/datos-forum/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
+import TopicCard from '../proyectos/topic-card/component'
 
 export class HomeForum extends Component {
   constructor (props) {
@@ -44,13 +42,12 @@ export class HomeForum extends Component {
         const forum = forums.find((forum) => forum.name === name)
         query.forum = forum.id
         if (u.has('tag')) query.tag = u.get('tag')
-        const topics = (name == 'proyectos') ? this.getFeed() : topicStore.findAll(query)
 
-        return Promise.all([
-          forums,
-          forum,
-          topics
-        ])
+        const topics = name === 'proyectos'
+          ? this.getFeed()
+          : topicStore.findAll(query)
+
+        return Promise.all([forums, forum, topics])
       })
       .then(([forums, forum, topics]) => {
         this.setState({
@@ -70,14 +67,16 @@ export class HomeForum extends Component {
   }
 
   getFeed = () => {
-    return window.fetch(`/ext/api/feed?s=${this.state.feedCount}`, { credentials: 'include' })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.result) {
-        this.setState({feedCount: (this.state.feedCount + 2)})
-        return res.result.topics
-      }
-    })
+    const opts = { credentials: 'include' }
+
+    return window.fetch(`/ext/api/feed?s=${this.state.feedCount}`, opts)
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.result) {
+          this.setState({ feedCount: this.state.feedCount + 2 })
+          return res.result.topics
+        }
+      })
   }
 
   goTop () {
@@ -85,13 +84,12 @@ export class HomeForum extends Component {
   }
 
   verMas = () => {
-    this.getFeed()
-      .then((topics) => {
-        this.setState({
-          topics: this.state.topics.concat(topics),
-          noMore: !topics.length
-        })
+    this.getFeed().then((topics) => {
+      this.setState({
+        topics: this.state.topics.concat(topics),
+        noMore: !topics.length
       })
+    }).catch((err) => console.error(err))
   }
 
   render () {
@@ -102,19 +100,22 @@ export class HomeForum extends Component {
 
     if (!this.state.forum) return null
 
-    const { forums, forum, topics } = this.state
+    const { forums, forum } = this.state
+    let { topics } = this.state
 
-    //randomizo los topics
-    if (topics && forum.name !== 'proyectos') topics.sort(() => 0.5 - Math.random())
+    // randomizo los topics
+    if (topics && forum.name !== 'proyectos') {
+      topics = topics.sort(() => 0.5 - Math.random())
+    }
 
-    const cover = (forum.coverUrl && {
-      backgroundImage: 'linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("' + forum.coverUrl + '")'
-    }) || null
+    // const cover = (forum.coverUrl && {
+    //   backgroundImage: 'linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("' + forum.coverUrl + '")'
+    // }) || null
 
     return (
       <div id='forum-home'>
-        <section className="banner-proyectos">
-          <div className="banner"></div>
+        <section className='banner-proyectos'>
+          <div className='banner' />
           <div className='contenedor'>
             <div className='fondo-titulo'>
               <h1>Proyectos</h1>
@@ -122,8 +123,7 @@ export class HomeForum extends Component {
           </div>
         </section>
         <Barrios forums={forums} />
-        <Anchor
-          id='containerr'>
+        <Anchor id='containerr'>
           {this.props.params.forum !== 'proyectos' &&
             <DatosPorForo forum={forum} />
           }
@@ -143,15 +143,11 @@ export class HomeForum extends Component {
             ))}
           </div>
           <div className='btn-wrapper'>
-            {
-              !this.state.noMore &&
-              forum.name === 'proyectos' &&
-                (<button
-                  className='boton-azul'
-                  onClick={this.verMas}>
-                  VER MAS
-                </button>)
-            }
+            {!this.state.noMore && forum.name === 'proyectos' && (
+              <button className='boton-azul' onClick={this.verMas}>
+                VER MAS
+              </button>
+            )}
           </div>
         </Anchor>
         <Jump goTop={this.goTop} />

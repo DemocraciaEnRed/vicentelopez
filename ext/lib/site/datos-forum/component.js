@@ -1,19 +1,17 @@
 import React from 'react'
-import forumStore from 'lib/stores/forum-store/forum-store'
-import {Link} from 'react-router'
 
 export default function DatosPorForo (props) {
   return (
     <section className='seccion-datos-por-foro'>
       <div className='div-presupuesto'>
-          <h3>Presupuesto asignado: ${props.forum.extra.presupuesto}</h3>
+        <h3>Presupuesto asignado: ${props.forum.extra.presupuesto}</h3>
       </div>
       <div className='div-boleta'>
         <a target='_blank' href={`${props.forum.extra.boleta}`}>
-            <div className="icon-boleta"></div>
-            DESCARGAR BOLETA
+          <div className='icon-boleta' />
+          DESCARGAR BOLETA
         </a>
       </div>
     </section>
-    )
+  )
 }
