@@ -121,39 +121,33 @@ export default class Page extends Component {
             <article className="seccion-datos infogram">
               <h3>Distribución de proyectos por área temática por año</h3>
               <figure className="graph-box">
-              {
-                window.matchMedia("(min-width: 550px)").matches ?
-                (
-                  <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="594" scrolling="no" frameBorder="0">
-                  </iframe>
-                ) : (
-                  <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="594" scrolling="no" frameBorder="0">
-                  </iframe>
-                )
-              }
+                <iframe
+                  src="https://e.infogram.com/11f7f34e-4534-4569-80c2-7dc10920f923?src=embed"
+                  title="Distribución de proyectos por área temática por año"
+                  width={window.matchMedia("(min-width: 550px)").matches ? "550":"360"}
+                  height={window.matchMedia("(min-width: 550px)").matches ? "594":"360"}
+                  scrolling="no"
+                  frameBorder="0" />
               </figure>
             </article>
 
             <article className="seccion-datos infogram">
               <h3>Ejecución del Presupuesto Participativo 2016-2017</h3>
               <figure className="graph-box">
-              {
-                window.matchMedia("(min-width: 550px)").matches ?
-                (
-                  <iframe src="//e.infogram.com/dd7e5f37-0ef2-4392-9171-13c6d97ca489?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="550" height="578" scrolling="no" frameBorder="0">
-                  </iframe>
-                ) : (
-                  <iframe src="//e.infogram.com/dd7e5f37-0ef2-4392-9171-13c6d97ca489?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="360" height="578" scrolling="no" frameBorder="0">
-                  </iframe>
-                )
-              }
+                <iframe
+                  src="https://e.infogram.com/58c318ca-86b9-4d29-8793-8dc412551f54?src=embed"
+                  title="Distribución de proyectos por área temática por año"
+                  width={window.matchMedia("(min-width: 550px)").matches ? "550":"360"}
+                  height={window.matchMedia("(min-width: 550px)").matches ? "594":"360"}
+                  scrolling="no"
+                  frameBorder="0" />
               </figure>
             </article>
 
             <div className='descargas'>
               <h4>DESCARGAS</h4>
               <div className="btns-descargas">
-                <a href='https://cldup.com/8tzw4YWwst.xlsx' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
+                <a href='proyectos-2012-2017_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
                 <a href='https://cldup.com/cGHsAU6aG4.xlsx' className='boton-azul'>Información sobre participación</a>
                 <a href='https://s3.amazonaws.com/forosvecinales/resultados-votacion-2017.csv' className='boton-azul'>Resultados de la votación 2017</a>
               </div>
