@@ -9,12 +9,12 @@ export default function ThumbsVoto (props) {
         <div className="row cont">
           <div className="subtitulo">
             <h2>
-              Gracias a los 44247 vecinos que eligieron proyectos para realizar en 2018
+              Proponé ideas y soluciones para tu barrio.
             </h2>
             <Link
-              to='/s/datos'
+              to='/crear-anteproyecto'
               className="boton-azul">
-              Ver los resultados de la votación
+              Mandá tu propuesta
             </Link>
           </div>
         </div>
