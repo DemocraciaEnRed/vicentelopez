@@ -44,7 +44,7 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
           ))}
         </div>
         <a
-          href='/ideas/admin/topics/create'
+          href='/crear-anteproyecto'
           className='btn btn-lg btn-primary crear-idea'>
           Escribí tu idea
         </a>

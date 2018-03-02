@@ -3,6 +3,8 @@ import forumStore from 'lib/stores/forum-store/forum-store'
 import ForumTagsSearch from 'lib/admin/admin-topics-form/tag-autocomplete/component'
 import Attrs from 'lib/admin/admin-topics-form/attrs/component'
 
+const PROPOSALS_FORUM_NAME = 'anteproyectos'
+
 export default class Create extends Component {
   constructor () {
     super()
@@ -28,24 +30,22 @@ export default class Create extends Component {
   }
 
   componentWillMount () {
-    const name = 'ante-proyectos'
-    forumStore.findOneByName(name).then((forum) => {
+    forumStore.findOneByName(PROPOSALS_FORUM_NAME).then((forum) => {
       this.setState({ forum })
     }).catch((err) => { console.error(err) })
   }
 
   handleSubmit (evt) {
     evt.preventDefault()
-    const { forum, title, body } = this.state
+    const { title, body } = this.state
 
     const formData = {
-      forum,
       title,
       body,
       tag: '59665fe8724f61003327eb2f'
     }
 
-    window.fetch(`/api/v2/topics/${forum.id}`, {
+    window.fetch(`/ext/api/proposals`, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(formData),

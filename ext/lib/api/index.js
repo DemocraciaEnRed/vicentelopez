@@ -6,7 +6,13 @@ const log = debug('democracyos:ext:api')
 
 const app = module.exports = express()
 
-app.use('/ext/api/feed', require('./feed'))
+app.all('*', function apiLog (req, res, next) {
+  log(`${req.method.toUpperCase()} ${req.app.mountpath}${req.url}`)
+  next()
+})
+
+app.use('/ext/api', require('./feed'))
+app.use('/ext/api', require('./proposals'))
 
 app.use(function validationErrorHandler (err, req, res, next) {
   if (res.headersSent) return next(err)
