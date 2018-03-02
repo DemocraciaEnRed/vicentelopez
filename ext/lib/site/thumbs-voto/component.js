@@ -51,10 +51,7 @@ export default function ThumbsVoto (props) {
               ¿Cómo se elaboran los proyectos?
             </h2>
             <p className="donde-voto-cont">
-            En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta
-              <Link to='/crear-anteproyecto'>
-                Aquí
-              </Link>
+            En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{display: 'inline'}} to='/crear-anteproyecto'>aquí</Link>
             </p>
           </div>
 
