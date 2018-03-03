@@ -11,7 +11,7 @@ app.all('*', function apiLog (req, res, next) {
   next()
 })
 
-app.use('/ext/api', require('./feed'))
+app.use(require('./feed'))
 
 app.use(function validationErrorHandler (err, req, res, next) {
   if (res.headersSent) return next(err)
