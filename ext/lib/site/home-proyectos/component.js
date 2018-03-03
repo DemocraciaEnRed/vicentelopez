@@ -12,7 +12,7 @@ import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 import TopicCard from '../proyectos/topic-card/component'
 
-export class HomeForum extends Component {
+export class HomeProyectos extends Component {
   constructor () {
     super()
 
@@ -31,7 +31,7 @@ export class HomeForum extends Component {
   }
 
   fetchAll = () => {
-    const { name } = this.props.params
+    const { forum: name } = this.props.params
 
     this.setState({ loading: true })
 
@@ -40,6 +40,7 @@ export class HomeForum extends Component {
 
     forumStore.findAll()
       .then((forums) => {
+        const barrios = ['villa-martelli','proyectos','villa-adelina','vicente-lopez','olivos','munro','la-lucila','florida-oeste','florida-este','carapachay']
         const forum = forums.find((forum) => forum.name === name)
         query.forum = forum.id
         if (u.has('tag')) query.tag = u.get('tag')
@@ -158,4 +159,4 @@ export class HomeForum extends Component {
   }
 }
 
-export default userConnector(HomeForum)
+export default userConnector(HomeProyectos)
