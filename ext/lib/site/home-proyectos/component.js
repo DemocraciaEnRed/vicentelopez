@@ -40,14 +40,13 @@ export class HomeProyectos extends Component {
 
     forumStore.findAll()
       .then((forums) => {
-        const barrios = ['villa-martelli','proyectos','villa-adelina','vicente-lopez','olivos','munro','la-lucila','florida-oeste','florida-este','carapachay']
         const forum = forums.find((forum) => forum.name === name)
         query.forum = forum.id
         if (u.has('tag')) query.tag = u.get('tag')
 
         const topics = name === 'proyectos'
           ? this.getFeed()
-          : topicStore.findAll(query)
+          : topicStore.findAll(query).then(([ topics, pagination ]) => topics)
 
         return Promise.all([forums, forum, topics])
       })
