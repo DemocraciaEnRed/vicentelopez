@@ -44,7 +44,6 @@ export default class Create extends Component {
       mediaTitle,
       clauses,
       forum: forum.id,
-      tag: '59665fe8724f61003327eb2f'
     }
 
     window.fetch(`/api/v2/topics`, {
