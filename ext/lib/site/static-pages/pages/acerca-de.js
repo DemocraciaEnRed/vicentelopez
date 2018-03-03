@@ -80,7 +80,7 @@ export default class Page extends Component {
                 <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>
                 <p>La partida, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 36 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 39 millones se distribuirán según la cantidad de habitantes de cada barrio.</p>
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
-                <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{display: 'inline'}} to='/crear-anteproyecto'>aquí</Link>
+                <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{display: 'inline'}} to='/crear-propuesta'>aquí</Link>
                 </p>
                 <h3>¿CÓMO SE DECIDE QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
                 <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasa a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se termina de definir la factibilidad del proyecto y los costos reales del mismo.</p>

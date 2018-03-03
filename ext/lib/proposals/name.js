@@ -1,1 +1,1 @@
-module.exports = 'anteproyectos'
+module.exports = 'propuestas'

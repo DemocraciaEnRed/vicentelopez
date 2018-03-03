@@ -3,7 +3,7 @@ import forumStore from 'lib/stores/forum-store/forum-store'
 import ForumTagsSearch from 'lib/admin/admin-topics-form/tag-autocomplete/component'
 import Attrs from 'lib/admin/admin-topics-form/attrs/component'
 
-const PROPOSALS_FORUM_NAME = 'anteproyectos'
+const PROPOSALS_FORUM_NAME = 'propuestas'
 
 export default class Create extends Component {
   constructor () {
@@ -64,7 +64,7 @@ export default class Create extends Component {
 
     return (
       <div className='wrapper'>
-        <h1 className='text-center'>Crear anteproyecto</h1>
+        <h1 className='text-center'>Crear propuesta</h1>
         <form className='form-control' onSubmit={this.handleSubmit}>
           <Attrs forum={forum} />
           <div >Tags</div >

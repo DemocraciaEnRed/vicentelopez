@@ -2,7 +2,7 @@ const { getIdString } = require('lib/utils')
 const api = require('lib/api-v2/db-api')
 const validate = require('lib/api-v2/validate')
 
-const PROPOSALS_FORUM_NAME = 'anteproyectos'
+const PROPOSALS_FORUM_NAME = 'propuestas'
 
 class ForumNotFound extends Error {
   constructor () {

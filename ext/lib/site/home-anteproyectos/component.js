@@ -44,7 +44,7 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
           ))}
         </div>
         <a
-          href='/crear-anteproyecto'
+          href='/crear-propuesta'
           className='btn btn-lg btn-primary crear-idea'>
           Escribí tu idea
         </a>
@@ -53,7 +53,7 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
   </div>
 )
 
-class HomeAnteproyectos extends Component {
+class HomePropuestas extends Component {
   constructor () {
     super()
 
@@ -68,7 +68,7 @@ class HomeAnteproyectos extends Component {
   }
 
   componentDidMount = () => {
-    forumStore.findOneByName('anteproyectos')
+    forumStore.findOneByName('propuestas')
       .then((forum) => {
         const tags = window.fetch(`/api/v2/forums/${forum.id}/tags`)
           .then((res) => res.json())
@@ -221,4 +221,4 @@ const TagsList = tagsConnector(({ tags, forumName, without }) => {
   )
 })
 
-export default userConnector(HomeAnteproyectos)
+export default userConnector(HomePropuestas)

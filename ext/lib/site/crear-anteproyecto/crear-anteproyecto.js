@@ -1,8 +1,8 @@
 import 'lib/boot/routes'
 import router from 'lib/site/boot/router'
-import CrearAnteproyecto from './component'
+import CrearPropuesta from './component'
 
 router.childRoutes.unshift({
-  path: 'crear-anteproyecto',
-  component: CrearAnteproyecto
+  path: 'crear-propuesta',
+  component: CrearPropuesta
 })
