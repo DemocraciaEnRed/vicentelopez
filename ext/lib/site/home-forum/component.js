@@ -3,7 +3,8 @@ import HomeProyectos from '../home-proyectos/component'
 import HomeAnteproyectos from '../home-anteproyectos/component'
 
 const HomeForum = (props) => {
-  switch (name) {
+  const { params: { forum } } = props
+  switch (forum) {
     case 'anteproyectos':
       return <HomeAnteproyectos {...props} />
     default:
