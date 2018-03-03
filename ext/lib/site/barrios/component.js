@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Barrios ({ forums }) {
+  if (!forums) return null
   const validButtons = ["villa-martelli", "villa-adelina", "vicente-lopez", "olivos", "munro", "la-lucila", "florida-oeste", "florida-este", "carapachay", "proyectos"]
   forums = forums.filter(f => validButtons.includes(f.name))
   // ordena los botones alfabéticamente, dejando primero "Todos los proyectos"
