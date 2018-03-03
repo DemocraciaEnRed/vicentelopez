@@ -5,13 +5,18 @@ const { isCitizenOnProposal } = require('../../proposals')
 
 const app = module.exports = express.Router()
 
-const EDITABLE_KEYS = ['mediaTitle', 'clauses', 'tag', 'forum']
+const EDITABLE_KEYS = [
+  'forum',
+  'mediaTitle',
+  'clauses',
+  'tag'
+]
 
 // Only allow to edit specific keys when is a proposal
 // and the users doesn't have forum privileges.
 const purgeBody = (req, res, next) => {
   if (isCitizenOnProposal(req.user, req.forum)) {
-    req.body = pick(EDITABLE_KEYS, req.body)
+    req.body = pick(req.body, EDITABLE_KEYS)
   }
 
   return next()
