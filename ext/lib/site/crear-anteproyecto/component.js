@@ -11,10 +11,11 @@ export default class Create extends Component {
 
     this.state = {
       forum: null,
-      title: '',
+      topic: null,
+      mediaTitle: '',
       body: '',
       tags: '',
-      topic: ''
+      clauses: []
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -37,15 +38,16 @@ export default class Create extends Component {
 
   handleSubmit (evt) {
     evt.preventDefault()
-    const { title, body } = this.state
+    const { mediaTitle, clauses, forum } = this.state
 
     const formData = {
-      title,
-      body,
+      mediaTitle,
+      clauses,
+      forum: forum.id,
       tag: '59665fe8724f61003327eb2f'
     }
 
-    window.fetch(`/ext/api/proposals`, {
+    window.fetch(`/api/v2/topics`, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(formData),
@@ -89,8 +91,8 @@ export default class Create extends Component {
               <label className='required' htmlFor=''>Título</label>
               <input className='form-control'
                 type='text'
-                name='title'
-                value={this.state.title}
+                name='mediaTitle'
+                value={this.state.mediaTitle}
                 onChange={this.handleInputChange} />
             </div>
             <div className='form-group kind-string'>
