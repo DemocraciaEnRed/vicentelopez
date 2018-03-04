@@ -11,7 +11,7 @@ const { isCitizenOnProposal } = require('../proposals')
 
   topicPrivileges[privilege] = (forum, user, topic) => {
     if (isCitizenOnProposal(user, forum)) {
-      if (topic.attrs.state !== 'pending') return false
+      if (topic.attrs && topic.attrs.state !== 'pending') return false
     }
 
     return original(forum, user, topic)
@@ -25,7 +25,7 @@ const { isCitizenOnProposal } = require('../proposals')
 
   topicPrivileges.canVote = (forum, user, topic) => {
     if (isCitizenOnProposal(user, forum)) {
-      if (topic.attrs.state === 'rejected') return false
+      if (topic.attrs && topic.attrs.state === 'rejected') return false
     }
 
     return original(forum, user, topic)
