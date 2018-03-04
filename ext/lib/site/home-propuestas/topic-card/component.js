@@ -4,14 +4,6 @@ import moment from 'moment'
 
 export default ({ topic, onVote }) => (
   <div className='ext-topic-card ideas-topic-card'>
-    {/*
-    {topic.coverUrl && (
-      <Link
-        to={topic.url}
-        className='topic-card-cover'
-        style={{ backgroundImage: `url(${topic.coverUrl})` }} />
-    )}
-    */}
     <div className='topic-card-info'>
       <div className='topic-creation'>
         <div
@@ -44,25 +36,20 @@ export default ({ topic, onVote }) => (
     </div>
     <div className='topic-card-footer'>
       <div className='participants'>
-        <span className='icon-heart' />
-        {
-          // !topic.voted
-          //   ? <span onClick={() => onVote(topic.id)} className='icon-heart' />
-          //   : <span className='icon-heart' />
-        }
+        <span className='icon-like' />
         &nbsp;
         {topic.action.count}
       </div>
       {topic.voted && (
         <button disabled className='btn btn-primary'>
-          ¡Gracias!
+          Me gusta
         </button>
       )}
       {!topic.voted && (
         <button
           onClick={() => onVote(topic.id)}
           className='btn btn-primary'>
-          Apoyar
+          Me gusta
         </button>
       )}
     </div>

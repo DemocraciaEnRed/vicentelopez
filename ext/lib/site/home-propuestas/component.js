@@ -45,8 +45,8 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
         </div>
         <a
           href='/formulario-propuesta'
-          className='btn btn-lg btn-primary crear-idea'>
-          Escribí tu idea
+          className='boton-azul btn'>
+          Mandá tu propuesta
         </a>
       </div>
     </div>
@@ -187,7 +187,6 @@ class HomePropuestas extends Component {
             </div>
           </div>
         </div>
-        {/* {topics && <Footer />} */}
       </div>
     )
   }

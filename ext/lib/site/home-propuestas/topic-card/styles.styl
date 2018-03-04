@@ -1,18 +1,23 @@
 .ideas-topic-card
   width: 100%
   margin: 0 0 1.5em
-
+  height: auto
+  box-shadow: 0 0 1px 0 #555
+  height: auto
+  &:hover
+    box-shadow: 0 2px 5px #555
   .topic-card-title
     margin-bottom: 5px
+    &>a
+      color: #444
 
   .participants
     font-weight: 400
     color: #a5a9aa
-    // cursor: pointer
-    // padding: 5px
     display: inline-block
     span
-      color: #ff3131
+      color: #099dc3
+
   .topic-card-info
     padding-bottom: 0
 
@@ -20,6 +25,7 @@
     margin-top: 10px
     span
       font-weight: 400
+      margin: 5px 5px 0 0
 
   .topic-card-description
     margin: 10px 0 0 0
@@ -30,6 +36,8 @@
     display: flex
     justify-content: space-between
     align-items: flex-end
+    .btn
+      background: #099dc3
 
   .topic-creation
     color: #a5a9aa
