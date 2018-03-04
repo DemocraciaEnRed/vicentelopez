@@ -1,4 +1,4 @@
 import './overrides'
 import '../static-pages/static-pages'
-import '../crear-propuesta/crear-propuesta'
+import '../formulario-propuesta/formulario-propuesta'
 require('lib/site/boot/boot')

@@ -3,6 +3,6 @@ import router from 'lib/site/boot/router'
 import CrearPropuesta from './component'
 
 router.childRoutes.unshift({
-  path: 'crear-propuesta',
+  path: 'formulario-propuesta',
   component: CrearPropuesta
 })
