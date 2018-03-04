@@ -1,14 +1,25 @@
+@import '../../../../node_modules/tags-input/tags-input.css'
+@import '../../../../lib/admin/admin-topics-form/tag-autocomplete/styles'
+
+
 .form-propuesta
+  display: flex
+  flex-direction: column
+  align-items: center
   .propuesta-header
-    background: #e5e5e5
     color: white
     text-shadow: 0 1px 4px #555
     display: flex
     align-items: center
     flex-direction: column
     justify-content: center
-    height: 250px
-    margin-bottom: 40px
+    min-height: 250px
+    width: 100%
+    padding: 0 20px
+    text-align: center
+    background-size: cover
+    background-image: unquote("url('ext/lib/site/anfiteatro-1.jpg')")
+    background-repeat: no-repeat
     h1
       font-size: 40px
     p
@@ -16,8 +27,8 @@
 
   .wrapper
     max-width:900px
-    padding-left: 300px
-    padding-top: 5px
+    width: 100%
+    padding: 20px
     position: relative
 
     label
@@ -25,7 +36,30 @@
       margin: 10px 0 5px 0
     input
       width:100%
+    .tags-input
+      border-radius: 5px
+      border: 1px solid rgba(0, 0, 0, 0.15)
+      padding: 8px 10px
+      width: 100%
+
     input, select, textarea
       border-radius: 5px
       border: 1px solid rgba(0, 0, 0, 0.15)
-    
+    .submit-div
+      text-align: center
+      .submit-btn
+        border-radius: 10px
+        background: #1791be
+        color: #fff
+        border: none
+        padding: 5px 10px
+        font-size: 20px
+    .form-section-label
+      color: #9e41b9
+      font-size: 18px
+      font-weight: bold
+      @media screen and (min-width: 1360px)
+        position: relative
+        left: -240px
+        margin-top: 10px
+        top: 30px

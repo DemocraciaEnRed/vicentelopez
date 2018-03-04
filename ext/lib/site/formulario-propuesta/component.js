@@ -68,9 +68,12 @@ export default class Create extends Component {
         </div>
         <form className='wrapper' onSubmit={this.handleSubmit}>
           <input type='hidden' name='forum' value={forum.id} />
+          <span className='form-section-label'>
+            Datos personales
+          </span>
           <div className='form-group'>
             <label className='required' htmlFor='nombre'>
-              Apellido
+              Nombre y apellido
             </label>
             <input
               className='form-control'
@@ -128,6 +131,9 @@ export default class Create extends Component {
               value={this.state['email']}
               onChange={this.handleInputChange} />
           </div>
+          <span className='form-section-label'>
+            Propuesta
+          </span>
           <div className='form-group'>
             <label className='required' htmlFor='titulo'>
               Titulo
@@ -209,12 +215,9 @@ export default class Create extends Component {
             </textarea>
           </div>
 
-          <div>
-            <button type='submit'
-              name='formSend'
-              onChange={this.handleInputChange}
-              value={this.formSend}>
-              Enviar
+          <div className='submit-div'>
+            <button type='submit' className='submit-btn'>
+              Enviar tu propuesta
             </button>
           </div>
 
