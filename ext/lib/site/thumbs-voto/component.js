@@ -9,12 +9,12 @@ export default function ThumbsVoto (props) {
         <div className="row cont">
           <div className="subtitulo">
             <h2>
-              Gracias a los 44247 vecinos que eligieron proyectos para realizar en 2018
+              Proponé ideas y soluciones para tu barrio.
             </h2>
             <Link
-              to='/s/datos'
+              to='/formulario-propuesta'
               className="boton-azul">
-              Ver los resultados de la votación
+              Mandá tu propuesta
             </Link>
           </div>
         </div>
@@ -28,7 +28,7 @@ export default function ThumbsVoto (props) {
                 ¿Qué Son?
             </h2>
             <p className="que-son-cont">
-            Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 6 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
+            Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 7 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
             </p>
           </div>
 
@@ -36,9 +36,9 @@ export default function ThumbsVoto (props) {
             <div
               className="como-voto img-responsive  ">
             </div>
-            <h2 className="text-center">¿Cómo Voto?</h2>
+            <h2 className="text-center">¿Cómo se distribuye el dinero por barrio?</h2>
             <p>
-            Votar es muy fácil, si te acercás a las urnas te van a dar una boleta con los proyectos que podés encontrar en esta web. Marcás los proyectos que considerás prioritarios y listo. Los requisitos son vivir o trabajar en Vicente López y ser mayor de 16 años.
+            La partida, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 39 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 36 millones se distribuirán según la cantidad de habitantes de cada barrio.
             </p>
 
           </div>
@@ -48,13 +48,10 @@ export default function ThumbsVoto (props) {
               className=" donde-voto img-responsive  ">
             </div>
             <h2 className="text-center">
-              ¿Dónde Voto?
+              ¿Cómo se elaboran los proyectos?
             </h2>
             <p className="donde-voto-cont">
-            Encontrarás más de 100 urnas habilitadas para votar en los 9 barrios de Vicente López. La votación estará abierta desde el lunes 18 de septiembre hasta el domingo 1 de octubre de 2017.
-              <Link to='/s/acerca-de#mapa'>
-                Consultá todos los puntos de votación aquí.
-              </Link>
+            En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{display: 'inline'}} to='/formulario-propuesta'>aquí</Link>
             </p>
           </div>
 
