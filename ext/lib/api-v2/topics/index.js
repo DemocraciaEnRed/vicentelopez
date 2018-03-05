@@ -6,10 +6,18 @@ const { isCitizenOnProposal } = require('../../proposals')
 const app = module.exports = express.Router()
 
 const EDITABLE_KEYS = [
+  'forum',
   'mediaTitle',
-  'clauses',
-  'tag',
-  'forum'
+  'tags',
+  'attrs.nombre',
+  'attrs.domicilio',
+  'attrs.documento',
+  'attrs.telefono',
+  'attrs.email',
+  'attrs.barrio',
+  'attrs.problema',
+  'attrs.solucion',
+  'attrs.beneficios',
 ]
 
 const defaultValues = () => ({

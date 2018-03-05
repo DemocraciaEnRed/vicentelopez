@@ -49,15 +49,15 @@ class FormularioPropuesta extends Component {
     const formData = {
       forum: this.state.forum.id,
       mediaTitle: this.state.titulo,
-      nombre: this.state.nombre,
-      domicilio: this.state.domicilio,
-      documento: this.state.documento,
-      telefono: this.state.telefono,
-      email: this.state.email,
-      barrio: this.state.barrio,
-      problema: this.state.problema,
-      solucion: this.state.solucion,
-      beneficios: this.state.beneficios,
+      'attrs.nombre': this.state.nombre,
+      'attrs.domicilio': this.state.domicilio,
+      'attrs.documento': this.state.documento,
+      'attrs.telefono': this.state.telefono,
+      'attrs.email': this.state.email,
+      'attrs.barrio': this.state.barrio,
+      'attrs.problema': this.state.problema,
+      'attrs.solucion': this.state.solucion,
+      'attrs.beneficios': this.state.beneficios,
       tags: e.target.elements.tags.value
     }
 
