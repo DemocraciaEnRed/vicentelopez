@@ -58,7 +58,7 @@ class FormularioPropuesta extends Component {
       'attrs.problema': this.state.problema,
       'attrs.solucion': this.state.solucion,
       'attrs.beneficios': this.state.beneficios,
-      tags: e.target.elements.tags.value
+      tags: e.target.elements.tags.value.split(',')
     }
 
     window.fetch(`/api/v2/topics`, {
