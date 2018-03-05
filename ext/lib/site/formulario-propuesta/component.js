@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import forumStore from 'lib/stores/forum-store/forum-store'
+import topicStore from 'lib/stores/topic-store/topic-store'
 import Tags from 'lib/admin/admin-topics-form/tag-autocomplete/component'
 import Attrs from 'lib/admin/admin-topics-form/attrs/component'
 import { browserHistory } from 'react-router'
@@ -14,6 +15,7 @@ class FormularioPropuesta extends Component {
     this.state = {
       forum: null,
       topic: null,
+      mode: null,
       nombre: '',
       domicilio: '',
       documento: '',
@@ -23,7 +25,8 @@ class FormularioPropuesta extends Component {
       barrio: '',
       problema: '',
       solucion: '',
-      beneficios: ''
+      beneficios: '',
+      tags: null
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -38,6 +41,29 @@ class FormularioPropuesta extends Component {
   }
 
   componentWillMount () {
+    if (this.props.params.id) {
+      this.setState({ mode: 'edit' })
+      topicStore.findOne(this.props.params.id)
+        .then((topic) => {
+          console.log(topic.tags)
+          this.setState({
+            titulo: topic.mediaTitle,
+            nombre: topic.attrs.nombre,
+            domicilio: topic.attrs.domicilio,
+            documento: topic.attrs.documento,
+            telefono: topic.attrs.telefono,
+            email: topic.attrs.email,
+            barrio: topic.attrs.barrio,
+            problema: topic.attrs.problema,
+            solucion: topic.attrs.solucion,
+            beneficios: topic.attrs.beneficios,
+            tags: topic.tags,
+          })
+        })
+    } else {
+      this.setState({ mode: 'new' })
+    }
+
     forumStore.findOneByName(PROPOSALS_FORUM_NAME).then((forum) => {
       this.setState({ forum })
     }).catch((err) => { console.error(err) })
@@ -61,6 +87,14 @@ class FormularioPropuesta extends Component {
       tags: e.target.elements.tags.value.split(',')
     }
 
+    if (this.state.mode === 'new') {
+      this.crearPropuesta(formData)
+    } else {
+      this.editarPropuesta(formData)
+    }
+  }
+
+  crearPropuesta = (formData) => {
     window.fetch(`/api/v2/topics`, {
       method: 'POST',
       credentials: 'include',
@@ -70,7 +104,25 @@ class FormularioPropuesta extends Component {
       }
     })
     .then((res) => {
-      console.log(res.status)
+      if (res.status === 200) {
+        browserHistory.push('/propuestas?sort=new')
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  editarPropuesta (formData) {
+    window.fetch(`/api/v2/topics/${this.props.params.id}`, {
+      method: 'PUT',
+      credentials: 'include',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
       if (res.status === 200) {
         browserHistory.push('/propuestas?sort=new')
       }
@@ -205,15 +257,28 @@ class FormularioPropuesta extends Component {
               <option value='carapachay'>Carapachay</option>
             </select>
           </div>
-          <div className='tags-autocomplete'>
-            <label className='required'>
-              Etiquetas
-            </label>
-            <Tags
-              tags={this.topic && this.topic.tags && this.topic.tags}
-              initialTags={forum.initialTags}
-              forum={forum.id} />
-          </div>
+          {
+            this.state.mode === 'edit' && this.state.tags && 
+            <div className='tags-autocomplete'>
+              <label className='required'>
+                Etiquetas
+              </label>
+              <Tags
+                tags={this.state.tags}
+                forum={forum.id} />
+            </div>
+          }
+          {
+            this.state.mode === 'new' &&
+            <div className='tags-autocomplete'>
+              <label className='required'>
+                Etiquetas
+              </label>
+              <Tags
+                tags={this.state.tags}
+                forum={forum.id} />
+            </div>
+          }
           <div className='form-group'>
             <label className='required' htmlFor='problema'>
               Problema o necesidad existente
