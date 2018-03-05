@@ -2,20 +2,28 @@ import React, { Component } from 'react'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import Tags from 'lib/admin/admin-topics-form/tag-autocomplete/component'
 import Attrs from 'lib/admin/admin-topics-form/attrs/component'
+import { browserHistory } from 'react-router'
+import userConnector from 'lib/site/connectors/user'
 
 const PROPOSALS_FORUM_NAME = 'propuestas'
 
-export default class Create extends Component {
+class FormularioPropuesta extends Component {
   constructor () {
     super()
 
     this.state = {
       forum: null,
       topic: null,
-      mediaTitle: '',
-      body: '',
-      tags: '',
-      clauses: []
+      nombre: '',
+      domicilio: '',
+      documento: '',
+      telefono: '',
+      email: '',
+      titulo: '',
+      barrio: '',
+      problema: '',
+      solucion: '',
+      beneficios: ''
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -35,14 +43,22 @@ export default class Create extends Component {
     }).catch((err) => { console.error(err) })
   }
 
-  handleSubmit (evt) {
-    evt.preventDefault()
-    const { mediaTitle, clauses, forum } = this.state
+  handleSubmit (e) {
+    e.preventDefault()
 
     const formData = {
-      mediaTitle,
-      clauses,
-      forum: forum.id,
+      forum: this.state.forum.id,
+      mediaTitle: this.state.titulo,
+      nombre: this.state.nombre,
+      domicilio: this.state.domicilio,
+      documento: this.state.documento,
+      telefono: this.state.telefono,
+      email: this.state.email,
+      barrio: this.state.barrio,
+      problema: this.state.problema,
+      solucion: this.state.solucion,
+      beneficios: this.state.beneficios,
+      tags: e.target.elements.tags.value
     }
 
     window.fetch(`/api/v2/topics`, {
@@ -53,6 +69,21 @@ export default class Create extends Component {
         'Content-Type': 'application/json'
       }
     })
+    .then((res) => {
+      console.log(res.status)
+      if (res.status === 200) {
+        browserHistory.push('/propuestas')
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  componentWillUpdate (props) {
+    if (this.props.user.state.rejected) {
+      browserHistory.push('/signin?ref=/formulario-propuesta')
+    }
   }
 
   render () {
@@ -77,6 +108,7 @@ export default class Create extends Component {
             </label>
             <input
               className='form-control'
+              required
               type='text'
               max='128'
               name='nombre'
@@ -89,6 +121,7 @@ export default class Create extends Component {
             </label>
             <input
               className='form-control'
+              required
               type='text'
               max='200'
               name='domicilio'
@@ -101,6 +134,7 @@ export default class Create extends Component {
             </label>
             <input
               className='form-control'
+              required
               type='text'
               max='50'
               name='documento'
@@ -113,6 +147,7 @@ export default class Create extends Component {
             </label>
             <input
               className='form-control'
+              required
               type='text'
               max='50'
               name='telefono'
@@ -125,6 +160,7 @@ export default class Create extends Component {
             </label>
             <input
               className='form-control'
+              required
               type='text'
               max='128'
               name='email'
@@ -140,6 +176,7 @@ export default class Create extends Component {
             </label>
             <input
               className='form-control'
+              required
               type='text'
               max='128'
               name='titulo'
@@ -152,9 +189,11 @@ export default class Create extends Component {
             </label>
             <select
               className='form-control'
+              required
               name='barrio'
               value={this.state['barrio']}
               onChange={this.handleInputChange}>
+              <option value=''>Seleccione un barrio</option>
               <option value='villa-martelli'>Villa Marteli</option>
               <option value='villa-adelina'>Villa Adelina</option>
               <option value='vicente-lopez'>Vicente Lopez</option>
@@ -181,6 +220,7 @@ export default class Create extends Component {
             </label>
             <textarea
               className='form-control'
+              required
               rows='6'
               max='1000'
               name='problema'
@@ -194,6 +234,7 @@ export default class Create extends Component {
             </label>
             <textarea
               className='form-control'
+              required
               rows='6'
               max='1000'
               name='solucion'
@@ -207,6 +248,7 @@ export default class Create extends Component {
             </label>
             <textarea
               className='form-control'
+              required
               rows='6'
               max='1000'
               name='beneficios'
@@ -226,3 +268,5 @@ export default class Create extends Component {
     )
   }
 }
+
+export default userConnector(FormularioPropuesta)
