@@ -23,7 +23,7 @@ const purgeBody = (req, res, next) => {
   if (isCitizenOnProposal(req.user, req.forum)) {
     req.body = Object.assign(
       defaultValues(),
-      pick(req.body, EDITABLE_KEYS),
+      pick(req.body, EDITABLE_KEYS)
     )
   }
 
