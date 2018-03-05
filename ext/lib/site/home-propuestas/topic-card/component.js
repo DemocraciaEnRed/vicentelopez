@@ -21,7 +21,9 @@ export default ({ topic, onVote }) => (
           {topic.mediaTitle}
         </Link>
         <p className='topic-card-description'>
-          <Link to={topic.url}>{createClauses(topic.clauses)}</Link>
+          <Link to={topic.url}>
+            {createClauses(topic)}
+          </Link>
         </p>
       </h1>
       {
@@ -36,13 +38,13 @@ export default ({ topic, onVote }) => (
     </div>
     <div className='topic-card-footer'>
       <div className='participants'>
-        <span className='icon-like' />
-        &nbsp;
         {topic.action.count}
+        &nbsp;
+        <span className='icon-like' />
       </div>
       {topic.voted && (
         <button disabled className='btn btn-primary'>
-          Me gusta
+          Te gusta
         </button>
       )}
       {!topic.voted && (
@@ -56,16 +58,22 @@ export default ({ topic, onVote }) => (
   </div>
 )
 
-function createClauses (clauses) {
+function createClauses ({ attrs, clauses}) {
   let div = document.createElement('div')
-  const content = clauses
-    .sort(function (a, b) {
-      return a.position > b.position ? 1 : -1
-    })
-    .map(function (clause) {
-      return clause.markup
-    })
-    .join('')
+  let content
+  if (!attrs) {
+    content = clauses
+      .sort(function (a, b) {
+        return a.position > b.position ? 1 : -1
+      })
+      .map(function (clause) {
+        return clause.markup
+      })
+      .join('')
+  } else {
+    const { problema, solucion, beneficios } = attrs
+    content = `${problema} ${solucion} ${beneficios}`
+  }
   div.innerHTML = content
   return div.textContent.replace(/\r?\n|\r/g, '').slice(0, 140) + '...'
 }
