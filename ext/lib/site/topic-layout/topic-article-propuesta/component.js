@@ -102,7 +102,21 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
-        <AdminActions forum={forum} topic={topic} />
+
+        {
+          <div className='topic-article-content topic-admin-actions'>
+            {topic.privileges && topic.privileges.canEdit && (
+              <a
+                href={`/formulario-propuesta/${topic.id}`}
+                className='btn btn-default btn-sm'>
+                <i className='icon-pencil' />
+                &nbsp;
+                {t('proposal-article.edit')}
+              </a>
+            )}
+          </div>
+        }
+
         <Header
           closingAt={topic.closingAt}
           closed={topic.closed}
@@ -124,15 +138,6 @@ class TopicArticle extends Component {
               socialUrl={topic.url}
               title={topic.mediaTitle} />
           )
-        }
-        {
-          // topic.action.method && topic.action.method === 'cause' && (
-          //   <div className='topic-article-content'>
-          //     <Cause
-          //       topic={topic}
-          //       canVoteAndComment={forum.privileges.canVoteAndComment} />
-          //   </div>
-          // )
         }
         <Social
           topic={topic}

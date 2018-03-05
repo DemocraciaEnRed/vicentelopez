@@ -6,3 +6,8 @@ router.childRoutes.unshift({
   path: 'formulario-propuesta',
   component: CrearPropuesta
 })
+
+router.childRoutes.unshift({
+  path: 'formulario-propuesta/*',
+  component: CrearPropuesta
+})
