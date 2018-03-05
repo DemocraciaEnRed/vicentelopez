@@ -68,6 +68,8 @@ class HomePropuestas extends Component {
   }
 
   componentDidMount = () => {
+    const u = new window.URLSearchParams(window.location.search)
+    if (u.get('sort') === 'new') this.setState({ filter: 'new' })
     forumStore.findOneByName('propuestas')
       .then((forum) => {
         const tags = window.fetch(`/api/v2/forums/${forum.id}/tags`)

@@ -72,7 +72,7 @@ class FormularioPropuesta extends Component {
     .then((res) => {
       console.log(res.status)
       if (res.status === 200) {
-        browserHistory.push('/propuestas')
+        browserHistory.push('/propuestas?sort=new')
       }
     })
     .catch((err) => {
