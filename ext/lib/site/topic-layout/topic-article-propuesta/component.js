@@ -13,8 +13,7 @@ import Cause from './cause/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
-import {Link} from 'react-router'
-
+import { Link } from 'react-router'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -52,13 +51,13 @@ class TopicArticle extends Component {
   twitText = () => {
     switch (this.props.topic.attrs && this.props.topic.attrs.state) {
       case 'pendiente':
-      return encodeURIComponent('Apoyemos este proyecto para mejorar Vicente López. ')
+        return encodeURIComponent('Apoyemos este proyecto para mejorar Vicente López. ')
       case 'perdedor':
-      return encodeURIComponent(this.props.topic.mediaTitle)
+        return encodeURIComponent(this.props.topic.mediaTitle)
       case 'proyectado':
-      return encodeURIComponent('Este proyecto se va a realizar gracias a la participación de los vecinos. ')
+        return encodeURIComponent('Este proyecto se va a realizar gracias a la participación de los vecinos. ')
       default:
-      return ''
+        return ''
     }
   }
 
@@ -149,7 +148,16 @@ class TopicArticle extends Component {
           mediaTitle={topic.mediaTitle} />
 
         <div className='topic-article-content entry-content'>
-          {createClauses(topic)}
+          {topic.attrs.problema &&
+          <p><span>Problema:</span> {topic.attrs.problema} </p>
+          }
+          {topic.attrs.problema &&
+          <p><span>Solución:</span>  {topic.attrs.solucion} </p>
+          }
+          {topic.attrs.problema &&
+          <p><span>Beneficios: </span> {topic.attrs.beneficios} </p>
+          }
+
         </div>
 
         {
@@ -169,7 +177,7 @@ class TopicArticle extends Component {
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
           }
-        </div>  
+        </div>
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
@@ -184,7 +192,7 @@ function hideSidebar () {
   bus.emit('sidebar:show', false)
 }
 
-function createClauses ({ attrs, clauses}) {
+function createClauses ({ attrs, clauses }) {
   let div = document.createElement('div')
   let content
   if (!attrs) {
