@@ -57,7 +57,7 @@ class FormularioPropuesta extends Component {
             problema: topic.attrs.problema,
             solucion: topic.attrs.solucion,
             beneficios: topic.attrs.beneficios,
-            tags: topic.tags,
+            tags: topic.tags
           })
         })
     } else {
@@ -103,14 +103,14 @@ class FormularioPropuesta extends Component {
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      if (res.status === 200) {
-        browserHistory.push('/propuestas?sort=new')
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((res) => {
+        if (res.status === 200) {
+          browserHistory.push('/propuestas?sort=new')
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   editarPropuesta (formData) {
@@ -122,14 +122,14 @@ class FormularioPropuesta extends Component {
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      if (res.status === 200) {
-        browserHistory.push('/propuestas?sort=new')
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((res) => {
+        if (res.status === 200) {
+          browserHistory.push('/propuestas?sort=new')
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   componentWillUpdate (props) {
@@ -154,6 +154,7 @@ class FormularioPropuesta extends Component {
           <span className='form-section-label'>
             Datos personales
           </span>
+          <p className='span-alert'>*todos estos datos son confidenciales</p>
           <div className='form-group'>
             <label className='required' htmlFor='nombre'>
               Nombre y apellido
@@ -258,11 +259,12 @@ class FormularioPropuesta extends Component {
             </select>
           </div>
           {
-            this.state.mode === 'edit' && this.state.tags && 
+            this.state.mode === 'edit' && this.state.tags &&
             <div className='tags-autocomplete'>
               <label className='required'>
                 Etiquetas
               </label>
+              <label className='tag-label'>Presiona TAB o ENTER para separar tags</label>
               <Tags
                 tags={this.state.tags}
                 forum={forum.id} />
@@ -273,6 +275,9 @@ class FormularioPropuesta extends Component {
             <div className='tags-autocomplete'>
               <label className='required'>
                 Etiquetas
+              </label>
+              <label className='tag-label'>
+                Presiona TAB o ENTER para separar tags
               </label>
               <Tags
                 tags={this.state.tags}

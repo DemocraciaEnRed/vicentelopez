@@ -3,18 +3,16 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import TopicCard from './topic-card/component'
 import Flickity from 'flickity'
-import {Link} from 'react-router'
-
-
+import { Link } from 'react-router'
 
 export default class Carrusel extends Component {
   constructor (props) {
-      super(props)
-      this.flkty = null
-      this.state = {
-        forums: null,
-        topics: null
-      }
+    super(props)
+    this.flkty = null
+    this.state = {
+      forums: null,
+      topics: null
+    }
   }
 
   componentWillMount () {
@@ -27,7 +25,7 @@ export default class Carrusel extends Component {
       })
   }
 
-  componentDidUpdate(){
+  componentDidUpdate () {
     if (this.flkty) this.flkty.destroy()
     const options = {
       // cellAlign: 'center',
@@ -44,12 +42,12 @@ export default class Carrusel extends Component {
     this.flkty.destroy()
   }
 
-  render(){
+  render () {
     const { forums, topics } = this.state
     return (
       <div className='seccion-proyectos container-fluid'>
         <div className="fondo-titulo">
-          <h2 className='title'>Proyectos a votación</h2>
+          <h2 className='title'>Proyectos ganadores del 2017</h2>
         </div>
         <div ref='carrusel'>
           {topics && topics.map((topic, i) => (
