@@ -14,6 +14,7 @@ import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import { Link } from 'react-router'
+import topicStore from 'lib/stores/topic-store/topic-store'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -147,17 +148,38 @@ class TopicArticle extends Component {
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
 
-        <div className='topic-article-content entry-content'>
-          {topic.attrs.problema &&
+        <div className='topic-card-body'>
+          <div className='topic-article-content entry-content'>
+            {topic.attrs.problema &&
           <p><span>Problema:</span> {topic.attrs.problema} </p>
-          }
-          {topic.attrs.problema &&
+            }
+            {topic.attrs.problema &&
           <p><span>Solución:</span>  {topic.attrs.solucion} </p>
-          }
-          {topic.attrs.problema &&
+            }
+            {topic.attrs.problema &&
           <p><span>Beneficios: </span> {topic.attrs.beneficios} </p>
-          }
+            }
 
+            { /*  <div className='topic-card-footer'>
+              <div className='participants'>
+                {topic.action.count}
+                <span className='icon-like' />
+              </div>
+              {topic.voted && (
+                <button disabled className='btn btn-primary'>
+          Te gusta
+                </button>
+              )}
+              {!topic.voted && (
+                <button
+                  onClick={() => onVote(topic.id)}
+                  className='btn btn-primary'>
+          Me gusta
+                </button>
+              )}
+            </div> */ }
+
+          </div>
         </div>
 
         {
@@ -211,3 +233,19 @@ function createClauses ({ attrs, clauses }) {
   div.innerHTML = content
   return div.textContent
 }
+
+/*
+handleVote = (id) => {
+  const { user } = this.props
+
+  if (user.state.rejected) {
+    return browserHistory.push({
+      pathname: ‘/signin’,
+      query: { ref: window.location.pathname }
+    })
+  }
+
+    topicStore.vote(id, ‘apoyo-idea’)
+    .then((res) => res.json())
+    .then((res) => console.log(res))
+    .catch((err) => { throw err }) */

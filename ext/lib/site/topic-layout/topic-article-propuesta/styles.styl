@@ -2,6 +2,8 @@
   padding-top: 0em
   width: 100%
 
+  @import '../../home-propuestas/styles'
+  @import '../../proyectos/topic-card/styles'
   @import './admin-actions/styles'
   @import './header/styles'
   @import './content/styles'
@@ -242,3 +244,84 @@ topicColor2 = #999
         topicBoxSize*-1px topicBoxSize*-1px topicColor2
       }
     }
+
+
+.btn
+  border: none
+  background: #099dc3
+  margin: 0
+  color: #fff
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075)
+  display: inline-block
+  font-weight: 400
+  line-height: 1.25
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  cursor: pointer
+  padding: .5rem 1rem
+  font-size: 1rem
+  text-align:right
+
+.participants
+  font-weight: 400
+  color: #a5a9aa
+  display: inline-block
+  span
+    color: #099dc3
+
+.topic-card-info
+  padding-bottom: 0
+  height: auto
+
+.topic-card-tags
+  margin-top: 10px
+  span
+    font-weight: 400
+    margin: 5px 5px 0 0
+
+.topic-card-description
+  margin: 10px 0 0 0
+  a
+    font-size: 15px
+    white-space: normal
+.topic-card-footer
+  padding: 20px 35px
+  display: flex
+  justify-content: space-between
+  align-items: flex-end
+  .btn
+    background: #099dc3
+    margin: 0
+
+.topic-card-body
+  width:70%
+  margin-left:auto
+  margin-right:auto
+  margin-bottom: 2em
+  height: auto
+  box-shadow: 0 0 1px 0 #555
+  padding: 20px 35px 
+  text-align: left
+  display: flex
+  flex-direction: column
+  .participants 
+    font-weight: 400
+    color: #a5a9aa
+    display: inline-block
+  .topic-card-body:hover 
+  box-shadow: 0 2px 5px #555
+  .topic-card-footer 
+    padding: 20px 35px
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+  .topic-card-footer .btn
+    background: #099dc3
+    margin: 0
+
+
+
+
+
+
