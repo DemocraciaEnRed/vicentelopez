@@ -1,8 +1,9 @@
 const topicPrivileges = require('lib/privileges/topic')
-const { isCitizenOnProposal } = require('../proposals')
+const { isCitizenOnProposal, isAdminOnProposal } = require('../proposals')
 
 // Not allow to edit or delete a Proposal by its author
 // when the state is "rejected" or "feasible" (not "pending")
+// Allow admins to edit or delete always
 ;[
   'canEdit',
   'canDelete'
@@ -13,6 +14,8 @@ const { isCitizenOnProposal } = require('../proposals')
     if (isCitizenOnProposal(user, forum)) {
       if (topic.attrs && topic.attrs.state !== 'pending') return false
     }
+
+    if (isAdminOnProposal(user, forum)) return true
 
     return original(forum, user, topic)
   }
