@@ -6,6 +6,8 @@ import Anchor from 'ext/lib/site/anchor'
 
 export default class Page extends Component {
   componentDidMount () {
+    const u = new window.URLSearchParams(window.location.search)
+    if (u.get('scroll') === 'cronograma') return Anchor.goTo('cronograma')
     this.goTop()
   }
 
@@ -94,87 +96,88 @@ export default class Page extends Component {
                     </div>
                   </div>
                 </Anchor>
+                <Anchor id='cronograma'>
+                  <div className='table-responsive'>
+                    <h3>Cronograma de reuniones por barrio</h3>
+                    <table className='table tabla-reuniones'>
+                      <tbody>
+                        <tr>
+                          <th>Olivos</th>
+                          <th>Martes 20 de marzo</th>
+                          <th>Colegio Virgen Del Carmen</th>
+                          <th>Valle Grande 3141</th>
+                        </tr>
+                        <tr>
+                          <td>Olivos</td>
+                          <td>Jueves 22 de marzo</td>
+                          <td>Colegio Asunción De La Virgen</td>
+                          <td>Ugarte 2379</td>
+                        </tr>
+                        <tr>
+                          <td>Olivos</td>
+                          <td>Jueves 5 de abril</td>
+                          <td>Escuela Primaria nº 2</td>
+                          <td>Pelliza 1390</td>
+                        </tr>
+                        <tr>
+                          <td>La Lucila</td>
+                          <td>Martes 10 de abril</td>
+                          <td>Jardín De Infantes nº 8</td>
+                          <td>Díaz Vélez 1129</td>
+                        </tr>
+                        <tr>
+                          <td>Munro</td>
+                          <td>Jueves 12 de abril</td>
+                          <td>Inst. De Ed. Integral De Munro</td>
+                          <td>Carlos Tejedor 2761</td>
+                        </tr>
+                        <tr>
+                          <td>Munro</td>
+                          <td>Martes 17 de abril</td>
+                          <td>Colegio María Auxiliadora</td>
+                          <td>Panamá 3274</td>
+                        </tr>
+                        <tr>
+                          <td>Vicente López</td>
+                          <td>Jueves 16 de abril</td>
+                          <td>Colegio Saint Gregory</td>
+                          <td>Melo 948</td>
+                        </tr>
+                        <tr>
+                          <td>Carapachay</td>
+                          <td>Jueves 3 de Mayo</td>
+                          <td>Escuela Secundaria nº 3</td>
+                          <td>Drysale 5635</td>
+                        </tr>
+                        <tr>
+                          <td>Florida Oeste</td>
+                          <td>Martes 8 de mayo</td>
+                          <td>Instituto FLorentino Ameghino</td>
+                          <td>C. De Alvear 1144</td>
+                        </tr>
+                        <tr>
+                          <td>Villa Martelli</td>
+                          <td>Jueves 10 de mayo</td>
+                          <td>Instituto Fátima</td>
+                          <td>Laprida 4075</td>
+                        </tr>
 
-                <div className='table-responsive'>
-                  <h3>Cronograma de reuniones por barrio</h3>
-                  <table className='table tabla-reuniones'>
-                    <tbody>
-                      <tr>
-                        <th>Olivos</th>
-                        <th>Martes 20 de marzo</th>
-                        <th>Colegio Virgen Del Carmen</th>
-                        <th>Valle Grande 3141</th>
-                      </tr>
-                      <tr>
-                        <td>Olivos</td>
-                        <td>Jueves 22 de marzo</td>
-                        <td>Colegio Asunción De La Virgen</td>
-                        <td>Ugarte 2379</td>
-                      </tr>
-                      <tr>
-                        <td>Olivos</td>
-                        <td>Jueves 5 de abril</td>
-                        <td>Escuela Primaria nº 2</td>
-                        <td>Pelliza 1390</td>
-                      </tr>
-                      <tr>
-                        <td>La Lucila</td>
-                        <td>Martes 10 de abril</td>
-                        <td>Jardín De Infantes nº 8</td>
-                        <td>Díaz Vélez 1129</td>
-                      </tr>
-                      <tr>
-                        <td>Munro</td>
-                        <td>Jueves 12 de abril</td>
-                        <td>Inst. De Ed. Integral De Munro</td>
-                        <td>Carlos Tejedor 2761</td>
-                      </tr>
-                      <tr>
-                        <td>Munro</td>
-                        <td>Martes 17 de abril</td>
-                        <td>Colegio María Auxiliadora</td>
-                        <td>Panamá 3274</td>
-                      </tr>
-                      <tr>
-                        <td>Vicente López</td>
-                        <td>Jueves 16 de abril</td>
-                        <td>Colegio Saint Gregory</td>
-                        <td>Melo 948</td>
-                      </tr>
-                      <tr>
-                        <td>Carapachay</td>
-                        <td>Jueves 3 de Mayo</td>
-                        <td>Escuela Secundaria nº 3</td>
-                        <td>Drysale 5635</td>
-                      </tr>
-                      <tr>
-                        <td>Florida Oeste</td>
-                        <td>Martes 8 de mayo</td>
-                        <td>Instituto FLorentino Ameghino</td>
-                        <td>C. De Alvear 1144</td>
-                      </tr>
-                      <tr>
-                        <td>Villa Martelli</td>
-                        <td>Jueves 10 de mayo</td>
-                        <td>Instituto Fátima</td>
-                        <td>Laprida 4075</td>
-                      </tr>
-
-                      <tr>
-                        <td>Villa Adelina</td>
-                        <td>Martes 15 de mayo</td>
-                        <td>Avapea</td>
-                        <td>Plaza Ader</td>
-                      </tr>
-                      <tr>
-                        <td>Florida Este</td>
-                        <td>Jueves 17 de mayo</td>
-                        <td>Escuela Secundaria nº 12</td>
-                        <td>Haedo 2180</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                        <tr>
+                          <td>Villa Adelina</td>
+                          <td>Martes 15 de mayo</td>
+                          <td>Avapea</td>
+                          <td>Plaza Ader</td>
+                        </tr>
+                        <tr>
+                          <td>Florida Este</td>
+                          <td>Jueves 17 de mayo</td>
+                          <td>Escuela Secundaria nº 12</td>
+                          <td>Haedo 2180</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </Anchor>
                 {/* <div className="delegaciones-head">
                   <h3>Horarios de las delegaciones</h3>
                   <p>Estarán abiertas de 8:30hs a 16hs de lunes a viernes. Las urnas serán atendidas por personal de cada delegación</p>

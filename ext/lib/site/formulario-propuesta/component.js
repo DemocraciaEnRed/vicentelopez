@@ -152,7 +152,9 @@ class FormularioPropuesta extends Component {
           <p>Envianos tus propuestas para que sean presentadas en la votación de este año.</p>
         </div>
         <alert className='alert alert-info cronograma'>
-          <Link style={{ display: 'inline' }} to='/formulario-propuesta'>Consultá el cronograma de reuniones por barrio aquí</Link>
+          <Link style={{ display: 'inline' }} to='/s/acerca-de?scroll=cronograma'>
+            Consultá el cronograma de reuniones por barrio aquí
+          </Link>
         </alert>
         <form className='wrapper' onSubmit={this.handleSubmit}>
           <input type='hidden' name='forum' value={forum.id} />
