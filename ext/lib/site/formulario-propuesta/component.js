@@ -5,6 +5,7 @@ import Tags from 'lib/admin/admin-topics-form/tag-autocomplete/component'
 import Attrs from 'lib/admin/admin-topics-form/attrs/component'
 import { browserHistory } from 'react-router'
 import userConnector from 'lib/site/connectors/user'
+import { Link } from 'react-router'
 
 const PROPOSALS_FORUM_NAME = 'propuestas'
 
@@ -264,7 +265,10 @@ class FormularioPropuesta extends Component {
               <label className='required'>
                 Etiquetas
               </label>
-              <label className='tag-label'>Presiona TAB o ENTER para separar tags</label>
+              <span className='help-text'>Mencioná acá los Temas vinculados a tu idea. Por ejemplo, "Solidaridad", "Transporte" o "Ambiente".
+              <br/>
+              Escribí cada una y pulsá ENTER o TAB para que se convierta en una etiqueta.
+              </span>
               <Tags
                 tags={this.state.tags}
                 forum={forum.id} />
@@ -276,9 +280,10 @@ class FormularioPropuesta extends Component {
               <label className='required'>
                 Etiquetas
               </label>
-              <label className='tag-label'>
-                Presiona TAB o ENTER para separar tags
-              </label>
+              <span className='help-text'>Mencioná acá los Temas vinculados a tu idea. Por ejemplo, "Solidaridad", "Transporte" o "Ambiente".
+              <br/>
+              Escribí cada una y pulsá ENTER o TAB para que se convierta en una etiqueta.
+              </span>
               <Tags
                 tags={this.state.tags}
                 forum={forum.id} />
@@ -326,13 +331,14 @@ class FormularioPropuesta extends Component {
               onChange={this.handleInputChange}>
             </textarea>
           </div>
-
           <div className='submit-div'>
             <button type='submit' className='submit-btn'>
               Enviar tu propuesta
             </button>
           </div>
-
+          <div className='cronograma-alert'>
+            <p className='span-alert'><Link style={{ display: 'inline' }} to='/formulario-propuesta'>Ver cronograma de reuniones</Link></p>
+          </div>
         </form>
       </div>
     )

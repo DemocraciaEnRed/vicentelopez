@@ -29,8 +29,7 @@ export default class Page extends Component {
             <div className="filas">
               <div className="subtitulo">
                 <h2>Presupuesto Participativo 2018-2019</h2>
-                <p>
-                  Proponé proyectos para tu barrio y decidamos juntos cómo invertir $75 millones de pesos.
+                <p> <Link style={{ display: 'inline' }} to='/formulario-propuesta'>Proponé proyectos para tu barrio</Link> y decidamos juntos cómo invertir $75 millones de pesos.
                 </p>
               </div>
               <div className="fila con-icono">
