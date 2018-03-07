@@ -145,11 +145,15 @@ class FormularioPropuesta extends Component {
     if (!forum) return null
 
     return (
+
       <div className='form-propuesta'>
         <div className='propuesta-header'>
           <h1 className='text-center'>Presupuesto Participativo 2018</h1>
           <p>Envianos tus propuestas para que sean presentadas en la votación de este año.</p>
         </div>
+        <alert className='alert alert-info cronograma'>
+          <Link style={{ display: 'inline' }} to='/formulario-propuesta'>Consultá el cronograma de reuniones por barrio aquí</Link>
+        </alert>
         <form className='wrapper' onSubmit={this.handleSubmit}>
           <input type='hidden' name='forum' value={forum.id} />
           <span className='form-section-label'>
@@ -259,36 +263,27 @@ class FormularioPropuesta extends Component {
               <option value='carapachay'>Carapachay</option>
             </select>
           </div>
-          {
-            this.state.mode === 'edit' && this.state.tags &&
-            <div className='tags-autocomplete'>
-              <label className='required'>
+          <div className='tags-autocomplete'>
+            <label className='required'>
                 Etiquetas
-              </label>
-              <span className='help-text'>Mencioná acá los Temas vinculados a tu idea. Por ejemplo, "Solidaridad", "Transporte" o "Ambiente".
-              <br/>
+            </label>
+            <span className='help-text'>Mencioná acá los Temas vinculados a tu idea. Por ejemplo, "Solidaridad", "Transporte" o "Ambiente".
+            <br/>
               Escribí cada una y pulsá ENTER o TAB para que se convierta en una etiqueta.
-              </span>
-              <Tags
-                tags={this.state.tags}
-                forum={forum.id} />
-            </div>
-          }
-          {
-            this.state.mode === 'new' &&
-            <div className='tags-autocomplete'>
-              <label className='required'>
-                Etiquetas
-              </label>
-              <span className='help-text'>Mencioná acá los Temas vinculados a tu idea. Por ejemplo, "Solidaridad", "Transporte" o "Ambiente".
-              <br/>
-              Escribí cada una y pulsá ENTER o TAB para que se convierta en una etiqueta.
-              </span>
-              <Tags
-                tags={this.state.tags}
-                forum={forum.id} />
-            </div>
-          }
+            </span>
+            {
+              this.state.mode === 'edit' && this.state.tags &&
+                  <Tags
+                    tags={this.state.tags}
+                    forum={forum.id} />
+            }
+            {
+              this.state.mode === 'new' &&
+                  <Tags
+                    tags={this.state.tags}
+                    forum={forum.id} />
+            }
+          </div>
           <div className='form-group'>
             <label className='required' htmlFor='problema'>
               Problema o necesidad existente
@@ -304,7 +299,7 @@ class FormularioPropuesta extends Component {
             </textarea>
           </div>
           <div className='form-group'>
-            <label className='required' htmlFor='solucion'>
+            <label className='required' htmlFor='solucion' placeholder='campo obligatorio' >
               Propuesta para solucionar el problema
             </label>
             <textarea
@@ -318,7 +313,7 @@ class FormularioPropuesta extends Component {
             </textarea>
           </div>
           <div className='form-group'>
-            <label className='required' htmlFor='beneficios'>
+            <label className='required' htmlFor='beneficios'  >
               Beneficios que brindará el proyecto al barrio
             </label>
             <textarea
@@ -336,9 +331,7 @@ class FormularioPropuesta extends Component {
               Enviar tu propuesta
             </button>
           </div>
-          <div className='cronograma-alert'>
-            <p className='span-alert'><Link style={{ display: 'inline' }} to='/formulario-propuesta'>Ver cronograma de reuniones</Link></p>
-          </div>
+
         </form>
       </div>
     )
