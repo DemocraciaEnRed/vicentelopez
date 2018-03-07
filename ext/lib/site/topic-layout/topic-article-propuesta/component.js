@@ -104,18 +104,40 @@ class TopicArticle extends Component {
         }
 
         {
-          <div className='topic-article-content topic-admin-actions'>
-            {topic.privileges && topic.privileges.canEdit && (
-              <a
-                href={`/formulario-propuesta/${topic.id}`}
-                className='btn btn-default btn-sm'>
-                <i className='icon-pencil' />
-                &nbsp;
-                {t('proposal-article.edit')}
-              </a>
-            )}
-          </div>
-        }
+          (forum.privileges && forum.privileges.canChangeTopics)
+          ? (
+            <div className='topic-article-content topic-admin-actions'>
+                <a
+                  href={urlBuilder.for('admin.topics.id', {
+                    forum: forum.name,
+                    id: topic.id
+                  })}
+                  className='btn btn-default btn-sm'>
+                  <i className='icon-pencil' />
+                  &nbsp;
+                  {t('proposal-article.edit')}
+                </a>
+            </div>
+          )
+          : (topic.privileges && topic.privileges.canEdit)
+            ? (
+                <div className='topic-article-content topic-admin-actions'>
+                    <a
+                      href={`/formulario-propuesta/${topic.id}`}
+                      className='btn btn-default btn-sm'>
+                      <i className='icon-pencil' />
+                      &nbsp;
+                      {t('proposal-article.edit')}
+                    </a>
+                </div>
+              )
+            : (user.state.value && topic.owner.id === user.state.value.id) &&
+              (
+                <p className='alert alert-warning'>
+                  El estado de ésta propuesta fue cambiado a {topic.attrs.state}, por lo tanto ya no puede ser editada por su autor/a.
+                </p>
+              )
+          }
 
         <Header
           closingAt={topic.closingAt}
