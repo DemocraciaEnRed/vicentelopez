@@ -21,7 +21,7 @@ const EDITABLE_KEYS = [
 ]
 
 const defaultValues = () => ({
-  'attrs.state': 'pending',
+  'attrs.state': 'pendiente',
   tag: '59665fe8724f61003327eb2f'
 })
 

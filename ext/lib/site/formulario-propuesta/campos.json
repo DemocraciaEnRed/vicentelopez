@@ -7,15 +7,15 @@
     "kind" : "Enum", 
     "options" : [
         {
-            "name" : "pending", 
+            "name" : "pendiente", 
             "title" : "Pendiente"
         }, 
         {
-            "name" : "feasible", 
+            "name" : "factible", 
             "title" : "Factible"
         }, 
         {
-            "name" : "rejected", 
+            "name" : "rechazado", 
             "title" : "Rechazado"
         }
     ]
