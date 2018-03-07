@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import Footer from   'ext/lib/site/footer/component'
+import React, { Component } from 'react'
+import Footer from 'ext/lib/site/footer/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
@@ -16,7 +16,7 @@ export default class Page extends Component {
   render () {
     return (
       <div>
-         <section className="banner-static">
+        <section className="banner-static">
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
@@ -124,8 +124,8 @@ export default class Page extends Component {
                 <iframe
                   src="https://e.infogram.com/11f7f34e-4534-4569-80c2-7dc10920f923?src=embed"
                   title="Distribución de proyectos por área temática por año"
-                  width={window.matchMedia("(min-width: 550px)").matches ? "550":"360"}
-                  height={window.matchMedia("(min-width: 550px)").matches ? "594":"360"}
+                  width={window.matchMedia('(min-width: 550px)').matches ? '550' : '360'}
+                  height={window.matchMedia('(min-width: 550px)').matches ? '594' : '360'}
                   scrolling="no"
                   frameBorder="0" />
               </figure>
@@ -137,8 +137,8 @@ export default class Page extends Component {
                 <iframe
                   src="https://e.infogram.com/58c318ca-86b9-4d29-8793-8dc412551f54?src=embed"
                   title="Distribución de proyectos por área temática por año"
-                  width={window.matchMedia("(min-width: 550px)").matches ? "550":"360"}
-                  height={window.matchMedia("(min-width: 550px)").matches ? "594":"360"}
+                  width={window.matchMedia('(min-width: 550px)').matches ? '550' : '360'}
+                  height={window.matchMedia('(min-width: 550px)').matches ? '594' : '360'}
                   scrolling="no"
                   frameBorder="0" />
               </figure>
