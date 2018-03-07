@@ -299,7 +299,7 @@ class FormularioPropuesta extends Component {
             </textarea>
           </div>
           <div className='form-group'>
-            <label className='required' htmlFor='solucion' placeholder='campo obligatorio' >
+            <label className='required' htmlFor='solucion' >
               Propuesta para solucionar el problema
             </label>
             <textarea
