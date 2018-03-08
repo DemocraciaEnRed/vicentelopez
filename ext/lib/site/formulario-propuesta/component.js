@@ -161,7 +161,7 @@ class FormularioPropuesta extends Component {
           <span className='form-section-label'>
             Datos personales
           </span>
-          <p className='span-alert'>*todos estos datos son confidenciales</p>
+          <p className='span-alert'>* todos estos datos son confidenciales</p>
           <div className='form-group'>
             <label className='required' htmlFor='nombre'>
               Nombre y apellido
@@ -177,7 +177,7 @@ class FormularioPropuesta extends Component {
           </div>
           <div className='form-group'>
             <label className='required' htmlFor='domicilio'>
-              Domicilio
+              Domicilio *
             </label>
             <input
               className='form-control'
@@ -190,7 +190,7 @@ class FormularioPropuesta extends Component {
           </div>
           <div className='form-group'>
             <label className='required' htmlFor='documento'>
-              DNI
+              DNI *
             </label>
             <input
               className='form-control'
@@ -203,7 +203,7 @@ class FormularioPropuesta extends Component {
           </div>
           <div className='form-group'>
             <label className='required' htmlFor='telefono'>
-              Teléfono
+              Teléfono *
             </label>
             <input
               className='form-control'
@@ -216,7 +216,7 @@ class FormularioPropuesta extends Component {
           </div>
           <div className='form-group'>
             <label className='required' htmlFor='email'>
-              Email
+              Email *
             </label>
             <input
               className='form-control'
