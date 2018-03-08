@@ -73,7 +73,7 @@ export default class Page extends Component {
                 </div>
                 <div className="cols col-2">
                   <div>
-                    La votación estará abierta desde el lunes 15 hasta el domingo 28 de octubre de 2018. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.
+                    La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.
                   </div>
                 </div>
               </div>
@@ -178,75 +178,6 @@ export default class Page extends Component {
                     </table>
                   </div>
                 </Anchor>
-                {/* <div className="delegaciones-head">
-                  <h3>Horarios de las delegaciones</h3>
-                  <p>Estarán abiertas de 8:30hs a 16hs de lunes a viernes. Las urnas serán atendidas por personal de cada delegación</p>
-                </div>
-                <div className="delegaciones">
-                  <div>
-                    <span>Delegación Carapachay</span>
-                    <span>Delegado: Juan Antonio Gentiluomo</span>
-                    <span>Dirección: Ascasubi 5702, Carapachay</span>
-                    <span>Teléfono: 4756-3098</span>
-                    <span>Mail: delegacion.carapachay@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación Florida Central</span>
-                    <span>Delegado: Susana Mabel Orue</span>
-                    <span>Dirección: V. Vergara 2382, Florida</span>
-                    <span>Teléfono: 4796-3894/ 4718-1991</span>
-                    <span>Mail: delegacion.florida@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación Florida Oeste</span>
-                    <span>Delegado: Juan Marandola</span>
-                    <span>Dirección: San Martin 4106, Florida Oeste</span>
-                    <span>Teléfono: 4760-5896/ 4760-9268</span>
-                    <span>Mail: delegacion.floridao@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación La Loma de Roca (Olivos)</span>
-                    <span>Delegado: Rocío Suarez</span>
-                    <span>Dirección: Uzal 3620, Olivos</span>
-                    <span>Teléfono: 4519-2137/ 4519-2138</span>
-                    <span>Mail: delegacion.laloma@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación La Lucila</span>
-                    <span>Delegado: Laura Caramella</span>
-                    <span>Dirección: Anchorena 721, La Lucila</span>
-                    <span>Teléfono: 4790-8264/ 4711-0704</span>
-                    <span>Mail: delegacion.lalucila@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación Munro</span>
-                    <span>Delegado: Héctor Cioncio</span>
-                    <span>Dirección: Vélez Sarsfield 4839, Munro</span>
-                    <span>Teléfono: 4762-1204</span>
-                    <span>Mail: delegacion.munro@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación Villa Adelina</span>
-                    <span>Delegado: Ester Lanzalot</span>
-                    <span>Dirección: Av. Ader 4057, Villa Adelina</span>
-                    <span>Teléfono: 4763-7727</span>
-                    <span>Mail: delegacion.adelina@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación Villa Martelli</span>
-                    <span>Delegado: Katia Seguín</span>
-                    <span>Dirección: Laprida 3902, Villa Martelli</span>
-                    <span>Teléfono: 4709-5775/ 4709-1144</span>
-                    <span>Mail: delegacion.martelli@vicentelopez.gov.ar</span>
-                  </div>
-                  <div>
-                    <span>Delegación Puente Saavedra</span>
-                    <span>Delegado: José Luis Ruiz</span>
-                    <span>Dirección: Av. Maipú 130, Florida</span>
-                    <span>Teléfono: 4791-2011 / 5194-4327</span>
-                    <span>Mail: delegacion.saavedra@vicentelopez.gov.ar</span>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
