@@ -171,7 +171,7 @@ export default class Page extends Component {
                         <tr>
                           <td>Florida Este</td>
                           <td>Jueves 17 de mayo</td>
-                          <td>Escuela Secundaria nº 12</td>
+                          <td>Escuela Primaria nº 12</td>
                           <td>Haedo 2180</td>
                         </tr>
                       </tbody>
