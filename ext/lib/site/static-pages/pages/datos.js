@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import Footer from   'ext/lib/site/footer/component'
+import React, { Component } from 'react'
+import Footer from 'ext/lib/site/footer/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
@@ -16,7 +16,7 @@ export default class Page extends Component {
   render () {
     return (
       <div>
-         <section className="banner-static">
+        <section className="banner-static">
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
@@ -32,16 +32,7 @@ export default class Page extends Component {
             </p>
 
             <article className="seccion-datos">
-              <h3>Resultados de la votación 2017</h3>
-              <div className='resultados-wrapper'>
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToyYQd7OTjvh7d_KUBHyq6Kq8SGPT9JEKr9fsl_gIVa7PH1P3usLVl72nSyoFurshFPHGDN7Sgd7bS/pubhtml?gid=1962576158&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-              </div>
-              <a href='https://s3.amazonaws.com/forosvecinales/resultados-votacion-2017.csv' className='btn-resultados-17'>Descargar resultados</a>
-              
-            </article>
-
-            <article className="seccion-datos">
-              <h3>Evolución del Presupuesto Participativo 2012 - 2017</h3>
+              <h3>Evolución del Presupuesto Participativo 2012 - 2018</h3>
               <figure className="graph-box">
                 <table className="tabla-presupuestoparticipativo">
                   <thead>
@@ -52,6 +43,7 @@ export default class Page extends Component {
                       <th>2014 - 2015</th>
                       <th>2015 - 2016</th>
                       <th>2016 - 2017</th>
+                      <th>2017 - 2018</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -62,6 +54,7 @@ export default class Page extends Component {
                       <td>20 MM</td>
                       <td>30 MM</td>
                       <td>45 MM</td>
+                      <td>65 MM</td>
                     </tr>
                     <tr>
                       <td>Propuestas Presentadas</td>
@@ -70,6 +63,7 @@ export default class Page extends Component {
                       <td>277</td>
                       <td>465</td>
                       <td>348</td>
+                      <td>350</td>
                     </tr>
                     <tr>
                       <td>Proyectos Factibles</td>
@@ -78,6 +72,7 @@ export default class Page extends Component {
                       <td>153</td>
                       <td>152</td>
                       <td>148</td>
+                      <td>145</td>
                     </tr>
                     <tr>
                       <td>Proyectos Ganadores</td>
@@ -86,6 +81,7 @@ export default class Page extends Component {
                       <td>69</td>
                       <td>63</td>
                       <td>81</td>
+                      <td>74</td>
                     </tr>
                     <tr>
                       <td>Cantidad de Participantes</td>
@@ -94,6 +90,7 @@ export default class Page extends Component {
                       <td>10.068</td>
                       <td>18.880</td>
                       <td>26.537</td>
+                      <td>45.010</td>
                     </tr>
                     <tr>
                       <td>Proporción de Participantes</td>
@@ -102,6 +99,7 @@ export default class Page extends Component {
                       <td>1 cada 20</td>
                       <td>1 cada 11</td>
                       <td>1 cada 8</td>
+                      <td>1 cada 5</td>
                     </tr>
                   </tbody>
                 </table>
@@ -123,40 +121,35 @@ export default class Page extends Component {
             <article className="seccion-datos infogram">
               <h3>Distribución de proyectos por área temática por año</h3>
               <figure className="graph-box">
-              {
-                window.matchMedia("(min-width: 550px)").matches ?
-                (
-                  <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="550" height="594" scrolling="no" frameBorder="0">
-                  </iframe>
-                ) : (
-                  <iframe src="//e.infogram.com/0e934508-19f4-4faa-a5b9-5ab8ce664e72?src=embed" title="Distribución de proyectos por área temática por año" width="360" height="594" scrolling="no" frameBorder="0">
-                  </iframe>
-                )
-              }
+                <iframe
+                  src="https://e.infogram.com/11f7f34e-4534-4569-80c2-7dc10920f923?src=embed"
+                  title="Distribución de proyectos por área temática por año"
+                  width={window.matchMedia('(min-width: 550px)').matches ? '550' : '360'}
+                  height={window.matchMedia('(min-width: 550px)').matches ? '594' : '360'}
+                  scrolling="no"
+                  frameBorder="0" />
               </figure>
             </article>
 
             <article className="seccion-datos infogram">
               <h3>Ejecución del Presupuesto Participativo 2016-2017</h3>
               <figure className="graph-box">
-              {
-                window.matchMedia("(min-width: 550px)").matches ?
-                (
-                  <iframe src="//e.infogram.com/dd7e5f37-0ef2-4392-9171-13c6d97ca489?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="550" height="578" scrolling="no" frameBorder="0">
-                  </iframe>
-                ) : (
-                  <iframe src="//e.infogram.com/dd7e5f37-0ef2-4392-9171-13c6d97ca489?src=embed" title="Ejecución del Presupuesto Participativo 2016-2017" width="360" height="578" scrolling="no" frameBorder="0">
-                  </iframe>
-                )
-              }
+                <iframe
+                  src="https://e.infogram.com/58c318ca-86b9-4d29-8793-8dc412551f54?src=embed"
+                  title="Distribución de proyectos por área temática por año"
+                  width={window.matchMedia('(min-width: 550px)').matches ? '550' : '360'}
+                  height={window.matchMedia('(min-width: 550px)').matches ? '594' : '360'}
+                  scrolling="no"
+                  frameBorder="0" />
               </figure>
             </article>
 
             <div className='descargas'>
               <h4>DESCARGAS</h4>
               <div className="btns-descargas">
-                <a href='https://cldup.com/8tzw4YWwst.xlsx' className='boton-azul'>Proyectos 2012-2017 por tipo (cantidad e inversión)</a>
-                <a href='https://cldup.com/cGHsAU6aG4.xlsx' className='boton-azul'>Información sobre participación</a>
+                <a href='https://s3.amazonaws.com/forosvecinales/proyectos-2013-2018_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2018 por tipo (cantidad e inversión)</a>
+                <a href='https://s3.amazonaws.com/forosvecinales/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación</a>
+                <a href='https://s3.amazonaws.com/forosvecinales/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
               </div>
             </div>
           </div>

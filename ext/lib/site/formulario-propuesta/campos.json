@@ -1,0 +1,146 @@
+[
+  {
+    "name" : "state", 
+    "title" : "Estado", 
+    "description" : "Agregar una descripción del estado del proyecto", 
+    "mandatory" : true, 
+    "kind" : "Enum", 
+    "options" : [
+        {
+            "name" : "pendiente", 
+            "title" : "Pendiente"
+        }, 
+        {
+            "name" : "factible", 
+            "title" : "Factible"
+        }, 
+        {
+            "name" : "rechazado", 
+            "title" : "Rechazado"
+        }
+    ]
+  }, 
+  {
+    "name" : "admin-comment", 
+    "title" : "Comentario del Moderador", 
+    "description" : "Escribir aquí un comentario en el caso que se cambie el estado a \"Factible\" o \"Rechazado\"", 
+    "mandatory" : true, 
+    "kind" : "String"
+  },
+  {
+      "name" : "nombre", 
+      "title" : "Nombre y Apellido", 
+      "mandatory" : true, 
+      "kind" : "String", 
+      "max" : 128, 
+      "min" : 0
+  },
+  {
+      "name" : "domicilio", 
+      "title" : "Domicilio", 
+      "mandatory" : true, 
+      "kind" : "String", 
+      "max" : 200, 
+      "min" : 0
+  },
+  {
+      "name" : "documento", 
+      "title" : "DNI", 
+      "mandatory" : true, 
+      "kind" : "String", 
+      "max" : 50, 
+      "min" : 0
+  },
+  {
+      "name" : "telefono", 
+      "title" : "Teléfono", 
+      "mandatory" : true, 
+      "kind" : "String", 
+      "max" : 50, 
+      "min" : 0
+  },
+  {
+      "name" : "email", 
+      "title" : "Email", 
+      "mandatory" : true, 
+      "kind" : "String", 
+      "max" : 128, 
+      "min" : 0
+  },
+  {
+      "name" : "titulo", 
+      "title" : "Titulo", 
+      "mandatory" : true, 
+      "kind" : "String", 
+      "max" : 128, 
+      "min" : 0
+  },
+  {
+      "name" : "barrio", 
+      "title" : "Barrio", 
+      "mandatory" : true, 
+      "kind" : "Enum", 
+      "options" : [
+          {
+              "name": "villa-martelli",
+              "title": "Villa Marteli"
+          },
+          {
+              "name": "villa-adelina",
+              "title": "Villa Adelina"
+          },
+          {
+              "name": "vicente-lopez",
+              "title": "Vicente Lopez"
+          },
+          {
+              "name": "olivos",
+              "title": "Olivos"
+          },
+          {
+              "name": "munro",
+              "title": "Munro"
+          },
+          {
+              "name": "la-lucila",
+              "title": "La Lucila"
+          },
+          {
+              "name": "florida-oeste",
+              "title": "Florida Oeste"
+          },
+          {
+              "name": "florida-este",
+              "title": "Florida Este"
+          },
+          {
+              "name": "carapachay",
+              "title": "Carapachay"
+          }
+      ]
+  },
+  {
+    "name" : "problema", 
+    "title" : "Problema o necesidad existente", 
+    "mandatory" : true, 
+    "kind" : "String", 
+    "max" : 1000, 
+    "min" : 0
+  },
+  {
+    "name" : "solucion", 
+    "title" : "Propuesta para solucionar el problema", 
+    "mandatory" : true, 
+    "kind" : "String", 
+    "max" : 1000, 
+    "min" : 0
+  },
+  {
+    "name" : "beneficios", 
+    "title" : "Beneficios que brindará el proyecto al barrio", 
+    "mandatory" : true, 
+    "kind" : "String", 
+    "max" : 1000, 
+    "min" : 0
+  }
+]

@@ -11,12 +11,12 @@ export default ({ topic, forum }) => {
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl})` }}>
-          {topic.attrs && topic.attrs.budget && (
-            <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
-          )}
-          {topic.attrs && topic.attrs.state && topic.attrs.state === 'proyectado' && (
-            <p className='winner'>Proyecto ganador</p>
-          )}
+        {topic.attrs && topic.attrs.budget && (
+          <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
+        )}
+        {topic.attrs && topic.attrs.state && topic.attrs.state === 'proyectado' && (
+          <p className='winner'>Proyecto ganador</p>
+        )}
       </div>
       <div className='topic-card-info'>
         <div className='topic-card-body'>

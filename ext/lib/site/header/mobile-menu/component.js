@@ -43,6 +43,14 @@ class MobileMenu extends Component {
                 <div className="header-item mobile-link">
                   <ProyectosLink />
                 </div>
+                <div className="header-item">
+                  <Link
+                    to='/propuestas'
+                    className='header-link'
+                    activeStyle={{ color: '#8C1E81' }}>
+                    Propuestas
+                  </Link>
+                </div>
                 <div className="header-item mobile-link">
                   <Link
                     to='/s/datos'
