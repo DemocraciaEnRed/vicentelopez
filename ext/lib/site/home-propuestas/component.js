@@ -11,19 +11,19 @@ const filters = {
     text: 'Más Nuevas',
     sort: '-createdAt',
     filter: (topic) => topic.status === 'open',
-    emptyMsg: 'No se encontraron ideas.'
+    emptyMsg: 'No se encontraron propuestas.'
   },
   pop: {
     text: 'Más Populares',
     sort: '-action.count',
     filter: (topic) => topic.status === 'open',
-    emptyMsg: 'No se encontraron ideas.'
+    emptyMsg: 'No se encontraron propuestas.'
   },
   closed: {
     text: 'Archivadas',
     sort: '-action.count',
     filter: (topic) => topic.status === 'closed',
-    emptyMsg: 'No se encontraron ideas.'
+    emptyMsg: 'No se encontraron propuestas.'
   }
 }
 
