@@ -31,16 +31,17 @@ export class Comments extends Component {
       <div className='topic-comments'>
         <div className='topic-article-content'>
           <h2 className='topic-comments-title'>
-            Comentarios
+            {t('comments.arguments')}
             <CommentsOrderBy onSort={this.props.handleSort} />
           </h2>
           <CommentsForm
-            forum={this.props.forum}
+            topic={this.props.topic}
             onSubmit={this.props.handleCreate}
             commentsCreating={this.props.commentsCreating} />
           {!commentsFetch.rejected && (
             <CommentsList
               forum={this.props.forum}
+              topic={this.props.topic}
               loading={commentsFetch.pending}
               comments={this.state.comments}
               onReply={this.props.handleReply}

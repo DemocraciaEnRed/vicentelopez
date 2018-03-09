@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 import t from 't-component'
 import userConnector from 'lib/site/connectors/user'
 import AutoGrowTextarea from './autogrow-textarea'
@@ -39,11 +39,11 @@ class CommentsForm extends Component {
   }
 
   handleFocus = () => {
-    this.setState({focused: true})
+    this.setState({ focused: true })
   }
 
   handleBlur = () => {
-    this.setState({focused: !!this.state.text})
+    this.setState({ focused: !!this.state.text })
   }
 
   handleTextChange = (evt) => {
@@ -63,24 +63,21 @@ class CommentsForm extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    this.setState({error: ''})
+    this.setState({ error: '' })
 
     const text = this.state.text.trim()
 
     if (text === '') return
 
-    this.props.onSubmit({text})
+    this.props.onSubmit({ text })
   }
 
   render () {
-    const {
-      forum,
-      user
-    } = this.props
+    const { topic, user } = this.props
 
     if (user.state.pending) return null
 
-    if (user.state.fulfilled && !forum.privileges.canVoteAndComment) {
+    if (user.state.fulfilled && !topic.privileges.canComment) {
       return <NotAllowed />
     }
 
@@ -109,7 +106,7 @@ class CommentsForm extends Component {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
-          placeholder='Escribir un comentario...'
+          placeholder={t('comments.create.placeholder')}
           maxLength='4096'
           minLength='1'
           rows='1'
@@ -137,7 +134,7 @@ class CommentsForm extends Component {
 function NotAllowed () {
   return (
     <div className='alert alert-warning' role='alert'>
-      {t('privileges-alert.not-can-vote-and-comment')}
+      Los comentarios a esta propuesta están cerrados.
     </div>
   )
 }
@@ -148,12 +145,12 @@ function NeedsLogin () {
   return (
     <div className='alert alert-info' role='alert'>
       <span className='icon-bubble' />{' '}
-      Debés estar registrado para poder comentar aquí.{' '}
-      <Link to={{pathname: '/signin', query: {ref}}}>
+      {t('comments.sign-in-required')}.{' '}
+      <Link to={{ pathname: '/signin', query: { ref } }}>
         {t('signin.login')}
       </Link>
       {' '}{t('common.or')}{' '}
-      <Link to={{pathname: '/signup', query: {ref}}}>
+      <Link to={{ pathname: '/signup', query: { ref } }}>
         {t('signin.signup')}
       </Link>
     </div>

@@ -1,19 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import t from 't-component'
 import ReactOutsideEvent from 'react-outside-event'
 
 export class CommentsOrderBy extends Component {
-  static sorts = [
-    {id: '-score', label: 'Relevancia'},
-    {id: '-createdAt', label: 'Más recientes'},
-    {id: 'createdAt', label: 'Más antiguos'}
-  ]
-
-  static getSortLabel (id) {
-    const sort = CommentsOrderBy.sorts.find((s) => s.id === id)
-    return sort ? sort.label : null
-  }
-
   constructor (props) {
     super(props)
 
@@ -21,10 +10,21 @@ export class CommentsOrderBy extends Component {
       sortsVisibility: false,
       active: '-score'
     }
+
+    this.sorts = [
+      { id: '-score', label: t('comments.sorts.score') },
+      { id: '-createdAt', label: t('comments.sorts.newest-first') },
+      { id: 'createdAt', label: t('comments.sorts.oldest-first') }
+    ]
+  }
+
+  getSortLabel = (id) => {
+    const sort = this.sorts.find((s) => s.id === id)
+    return sort ? sort.label : null
   }
 
   handleShowSorts = () => {
-    this.setState({sortsVisibility: !this.state.sortsVisibility})
+    this.setState({ sortsVisibility: !this.state.sortsVisibility })
   }
 
   handleSort = (id) => () => {
@@ -38,25 +38,22 @@ export class CommentsOrderBy extends Component {
 
   onOutsideEvent = () => {
     if (!this.state.sortsVisibility) return
-    this.setState({sortsVisibility: false})
+    this.setState({ sortsVisibility: false })
   }
 
   render () {
-    const sorts = this.constructor.sorts
-    const getSortLabel = this.constructor.getSortLabel
-
     return (
       <div className='comments-sort'>
         <button className='comments-sort-btn btn btn-link btn-sm' onClick={this.handleShowSorts}>
           {t('comments.ordered-by')}
-          <strong>&nbsp;{getSortLabel(this.state.active)}</strong>
+          <strong>&nbsp;{this.getSortLabel(this.state.active)}</strong>
           <span className='caret'></span>
         </button>
         {
           this.state.sortsVisibility && (
             <div className='comments-dropdown'>
               {
-                sorts.map((sort) => (
+                this.sorts.map((sort) => (
                   <button
                     type='button'
                     key={sort.id}
