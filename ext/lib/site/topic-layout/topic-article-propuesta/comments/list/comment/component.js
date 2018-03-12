@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 import t from 't-component'
 import config from 'lib/config'
 import userConnector from 'lib/site/connectors/user'
@@ -33,7 +33,7 @@ export class Comment extends Component {
           overlayVisibility: true
         })
       } else if (!props.commentDeleting.pending) {
-        this.setState({commentDeletingPending: false})
+        this.setState({ commentDeletingPending: false })
       }
     }
   }
@@ -81,11 +81,11 @@ export class Comment extends Component {
   }
 
   handleToggleReplies = () => {
-    this.setState({repliesVisibility: !this.state.repliesVisibility})
+    this.setState({ repliesVisibility: !this.state.repliesVisibility })
   }
 
   handleToggleOptionsMenu = () => {
-    this.setState({showOptionsMenu: !this.state.showOptionsMenu})
+    this.setState({ showOptionsMenu: !this.state.showOptionsMenu })
   }
 
   handleHideOverlay = () => {
@@ -106,30 +106,31 @@ export class Comment extends Component {
       overlayVisibility: false,
       commentDeletingPending: true
     })
-    this.props.onDelete({id: this.props.comment.id})
+    this.props.onDelete({ id: this.props.comment.id })
   }
 
   handleEditShow = (bool) => () => {
-    this.setState({editing: bool})
+    this.setState({ editing: bool })
   }
 
   handleEdit = (e) => {
     e.preventDefault()
     const text = e.target[0].value
     this.props.onEdit(this.props.comment.id, text)
-    this.setState({editing: false})
+    this.setState({ editing: false })
   }
 
   render () {
     const {
       comment,
       user,
-      forum
+      forum,
+      topic
     } = this.props
 
     if (user.state.pending) return null
 
-    const {upvoted, downvoted} = (comment.currentUser || {})
+    const { upvoted, downvoted } = (comment.currentUser || {})
     const userAttrs = user.state.value || {}
     const isOwner = userAttrs.id === comment.author.id
 
@@ -187,6 +188,7 @@ export class Comment extends Component {
           commentId={comment.id}
           replies={comment.replies}
           forum={forum}
+          topic={topic}
           user={user}
           repliesVisibility={this.state.repliesVisibility}
           onReply={this.props.onReply}
@@ -199,7 +201,7 @@ export class Comment extends Component {
           this.state.overlayActive === 'NEEDS_LOGIN' &&
           (
             <div className='comment-overlay' onClick={this.handleHideOverlay}>
-              <NeedsLogin comment={comment}/>
+              <NeedsLogin comment={comment} />
             </div>
           )
         }
@@ -255,11 +257,11 @@ function NeedsLogin ({ comment }) {
   return (
     <div className='needs-login'>
       {t('comments.sign-in-required')}.{' '}
-      <Link to={{pathname: '/signin', query: {ref}}}>
+      <Link to={{ pathname: '/signin', query: { ref } }}>
         {t('signin.login')}
       </Link>
       {' '}{t('common.or')}{' '}
-      <Link to={{pathname: '/signup', query: {ref}}}>
+      <Link to={{ pathname: '/signup', query: { ref } }}>
         {t('signin.signup')}
       </Link>
     </div>

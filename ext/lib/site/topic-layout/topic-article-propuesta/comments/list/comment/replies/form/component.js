@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 import t from 't-component'
 import userConnector from 'lib/site/connectors/user'
 import AutoGrowTextarea from 'lib/site/topic-layout/topic-article/comments/form/autogrow-textarea'
@@ -39,11 +39,11 @@ class RepliesForm extends Component {
   }
 
   handleFocus = () => {
-    this.setState({focused: true})
+    this.setState({ focused: true })
   }
 
   handleBlur = () => {
-    this.setState({focused: !!this.state.text})
+    this.setState({ focused: !!this.state.text })
   }
 
   handleTextChange = (evt) => {
@@ -63,19 +63,19 @@ class RepliesForm extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    this.setState({error: ''})
-    this.props.onSubmit({text: this.state.text, id: this.props.commentId})
+    this.setState({ error: '' })
+    this.props.onSubmit({ text: this.state.text, id: this.props.commentId })
   }
 
   render () {
     const {
-      forum,
+      topic,
       user
     } = this.props
 
     if (user.state.pending) return null
 
-    if (user.state.fulfilled && !forum.privileges.canVoteAndComment) {
+    if (user.state.fulfilled && !topic.privileges.canComment) {
       return <NotAllowed />
     }
 
@@ -132,7 +132,7 @@ class RepliesForm extends Component {
 function NotAllowed () {
   return (
     <div className='alert alert-warning' role='alert'>
-      {t('privileges-alert.not-can-vote-and-comment')}
+      Los comentarios a esta propuesta están cerrados.
     </div>
   )
 }
@@ -144,11 +144,11 @@ function NeedsLogin () {
     <div className='alert alert-info' role='alert'>
       <span className='icon-bubble' />{' '}
       {t('comments.sign-in-required')}.{' '}
-      <Link to={{pathname: '/signin', query: {ref}}}>
+      <Link to={{ pathname: '/signin', query: { ref } }}>
         {t('signin.login')}
       </Link>
       {' '}{t('common.or')}{' '}
-      <Link to={{pathname: '/signup', query: {ref}}}>
+      <Link to={{ pathname: '/signup', query: { ref } }}>
         {t('signin.signup')}
       </Link>
     </div>
