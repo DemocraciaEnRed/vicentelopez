@@ -101,7 +101,6 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
-        <div className="banner"></div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
