@@ -102,17 +102,18 @@ class TopicArticle extends Component {
             <div onClick={hideSidebar} className='topic-overlay' />
         }
         <div className="banner">
-        
-        <Header
-          closingAt={topic.closingAt}
-          closed={topic.closed}
-          author={topic.author}
-          authorUrl={topic.authorUrl}
-          tags={topic.tags}
-          forumName={forum.name}
-          mediaTitle={topic.mediaTitle} />
-        
+
+          <Header
+            closingAt={topic.closingAt}
+            closed={topic.closed}
+            author={topic.author}
+            authorUrl={topic.authorUrl}
+            tags={topic.tags}
+            forumName={forum.name}
+            mediaTitle={topic.mediaTitle} />
+
         </div>
+        <div className='topic-article-status'>Proyecto {topic.attrs.state} </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
@@ -150,12 +151,7 @@ class TopicArticle extends Component {
               )
         }
 
-        <div className='topic-article-status'>Proyecto {topic.attrs.state} </div>
-
-      
-
         <div className='topic-article-content entry-content'>
-          {console.log(topic.attrs)}
           <div className='topic-article-nombre'>{topic.attrs.nombre}</div>
           <h2 className='topic-article-subtitulo'>subtítulo de la propuesta</h2>
           <h3 className='topic-article-barrio'>{topic.attrs.barrio}</h3>
