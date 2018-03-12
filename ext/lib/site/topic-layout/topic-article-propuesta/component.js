@@ -101,6 +101,18 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
+        <div className="banner">
+        
+        <Header
+          closingAt={topic.closingAt}
+          closed={topic.closed}
+          author={topic.author}
+          authorUrl={topic.authorUrl}
+          tags={topic.tags}
+          forumName={forum.name}
+          mediaTitle={topic.mediaTitle} />
+        
+        </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
@@ -140,14 +152,7 @@ class TopicArticle extends Component {
 
         <div className='topic-article-status'>Proyecto {topic.attrs.state} </div>
 
-        <Header
-          closingAt={topic.closingAt}
-          closed={topic.closed}
-          author={topic.author}
-          authorUrl={topic.authorUrl}
-          tags={topic.tags}
-          forumName={forum.name}
-          mediaTitle={topic.mediaTitle} />
+      
 
         <div className='topic-article-content entry-content'>
           {console.log(topic.attrs)}
