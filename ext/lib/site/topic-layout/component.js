@@ -46,7 +46,7 @@ export class TopicLayout extends Component {
   }
 
   goTop () {
-    Anchor.goTo('container')
+    Anchor.goTo('containerProyectos')
   }
 
   render () {
@@ -60,11 +60,11 @@ export class TopicLayout extends Component {
     if (!topic || !forum) return null
     return (
       <div>
-        <Anchor id='container'>
+        <Anchor id='containerProyectos'>
           <div id='topic-wrapper'>
             {
               forum.name === 'propuestas'
-                ? <TopicArticlePropuesta topic={topic} forum={forum} />
+                ? <TopicArticlePropuesta topic={topic} forum={forum}/>
                 : <TopicArticleProyecto topic={topic} forum={forum} />
             }
           </div>
