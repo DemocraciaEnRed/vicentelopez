@@ -14,7 +14,6 @@ import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import { Link } from 'react-router'
-import topicStore from 'lib/stores/topic-store/topic-store'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -102,11 +101,12 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
+        <div className="banner"></div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
-          ? (
-            <div className='topic-article-content topic-admin-actions'>
+            ? (
+              <div className='topic-article-content topic-admin-actions'>
                 <a
                   href={urlBuilder.for('admin.topics.id', {
                     forum: forum.name,
@@ -117,27 +117,29 @@ class TopicArticle extends Component {
                   &nbsp;
                   {t('proposal-article.edit')}
                 </a>
-            </div>
-          )
-          : (topic.privileges && topic.privileges.canEdit)
-            ? (
+              </div>
+            )
+            : (topic.privileges && topic.privileges.canEdit)
+              ? (
                 <div className='topic-article-content topic-admin-actions'>
-                    <a
-                      href={`/formulario-propuesta/${topic.id}`}
-                      className='btn btn-default btn-sm'>
-                      <i className='icon-pencil' />
+                  <a
+                    href={`/formulario-propuesta/${topic.id}`}
+                    className='btn btn-default btn-sm'>
+                    <i className='icon-pencil' />
                       &nbsp;
-                      {t('proposal-article.edit')}
-                    </a>
+                    {t('proposal-article.edit')}
+                  </a>
                 </div>
               )
-            : (user.state.value && topic.owner.id === user.state.value.id) &&
+              : (user.state.value && topic.owner.id === user.state.value.id) &&
               (
-                <p className='alert alert-warning'>
+                <p className='alert alert-info alert-propuesta'>
                   El estado de ésta propuesta fue cambiado a {topic.attrs.state}, por lo tanto ya no puede ser editada por su autor/a.
                 </p>
               )
-          }
+        }
+
+        <div className='topic-article-status'>Proyecto {topic.attrs.state} </div>
 
         <Header
           closingAt={topic.closingAt}
@@ -148,58 +150,36 @@ class TopicArticle extends Component {
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
 
-        <div className='topic-card-body'>
-          <div className='topic-article-content entry-content'>
-            {topic.attrs.problema &&
-          <p><span>Problema:</span> {topic.attrs.problema} </p>
-            }
-            {topic.attrs.problema &&
-          <p><span>Solución:</span>  {topic.attrs.solucion} </p>
-            }
-            {topic.attrs.problema &&
-          <p><span>Beneficios: </span> {topic.attrs.beneficios} </p>
-            }
+        <div className='topic-article-content entry-content'>
+          {console.log(topic.attrs)}
+          <div className='topic-article-nombre'>{topic.attrs.nombre}</div>
+          <h2 className='topic-article-subtitulo'>subtítulo de la propuesta</h2>
+          <h3 className='topic-article-barrio'>{topic.attrs.barrio}</h3>
 
-            { /*  <div className='topic-card-footer'>
-              <div className='participants'>
-                {topic.action.count}
-                <span className='icon-like' />
-              </div>
-              {topic.voted && (
-                <button disabled className='btn btn-primary'>
-          Te gusta
-                </button>
-              )}
-              {!topic.voted && (
-                <button
-                  onClick={() => onVote(topic.id)}
-                  className='btn btn-primary'>
-          Me gusta
-                </button>
-              )}
-            </div> */ }
+          <span className='topic-article-span'>Propuesta</span>
+          {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.problema} </p> }
 
-          </div>
+          <span className='topic-article-span'>Solución</span>
+          {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.solucion} </p> }
+
+          <span className='topic-article-span'>Beneficios</span>
+          {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
 
-        {
-          topic.links && (
-            <Footer
-              source={topic.source}
-              links={topic.links}
-              socialUrl={topic.url}
-              title={topic.mediaTitle} />
-          )
-        }
-        <Social
-          topic={topic}
-          twitterText={twitterText}
-          socialLinksUrl={socialLinksUrl} />
         <div className='topic-tags topic-article-content'>
           {
-            this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
+            this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a className='topic-article-tag' href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>{ tag } </a>)
           }
         </div>
+        {
+          (topic.attrs.state && topic.attrs.state === 'rechazado') &&
+              (
+                <div className='alert alert-info alert-propuesta' role='alert'>
+                  <span>Esta propuesta ha sido rechazada por la Municipalidad de Vicente Lopez.</span>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti dolorem cumque, delectus placeat nulla. Aspernatur fugit asperiores eum placeat, incidunt omnis alias enim rem, iste soluta aut doloribus molestias.</p>
+                  <p>Subsecretaría de Participación Ciudadana</p>
+                </div>)}
+
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
@@ -213,39 +193,3 @@ export default userConnector(TopicArticle)
 function hideSidebar () {
   bus.emit('sidebar:show', false)
 }
-
-function createClauses ({ attrs, clauses }) {
-  let div = document.createElement('div')
-  let content
-  if (!attrs) {
-    content = clauses
-      .sort(function (a, b) {
-        return a.position > b.position ? 1 : -1
-      })
-      .map(function (clause) {
-        return clause.markup
-      })
-      .join('')
-  } else {
-    const { problema, solucion, beneficios } = attrs
-    content = `${problema} \n\n ${solucion} \n\n ${beneficios}`
-  }
-  div.innerHTML = content
-  return div.textContent
-}
-
-/*
-handleVote = (id) => {
-  const { user } = this.props
-
-  if (user.state.rejected) {
-    return browserHistory.push({
-      pathname: ‘/signin’,
-      query: { ref: window.location.pathname }
-    })
-  }
-
-    topicStore.vote(id, ‘apoyo-idea’)
-    .then((res) => res.json())
-    .then((res) => console.log(res))
-    .catch((err) => { throw err }) */
