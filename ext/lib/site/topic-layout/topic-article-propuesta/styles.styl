@@ -55,6 +55,8 @@
     font-size: 20px
     a
       margin-right: 10px
+   span
+     font-weight: bold
 
 .votar-este
   text-align: center
@@ -225,3 +227,111 @@ topicColor2 = #999
         topicBoxSize*-1px topicBoxSize*-1px topicColor2
       }
     }
+
+.topic-article-nombre
+  color: #ccc
+  font-size: .9em
+  padding: 5px
+
+.topic-article-subtitulo
+  color: #1D9DC1
+  font-size: 1.5em
+  margin-top:20px
+  margin-bottom: 10px
+  
+.topic-article-barrio
+  font-size: 1.2em
+  color:#1D9DC1
+  font-weight: normal
+  text-transform: capitalize
+  margin-top:10px
+
+.topic-article-span
+  font-size: .9em
+  font-weight: normal
+
+.topic-article-p
+  font-size: .9em
+  font-weight: normal  
+
+.topic-article-status
+  font-size: .9em
+  color:#fff
+  background-color:#444444
+  font-weight: bold
+  padding:5px 15px 5px 5px
+  display: inline-block
+  float:right
+  margin-right:0
+  position:relative
+  right: 0px
+  top: 100px
+  
+.topic-tags
+  &.topic-article-content
+    a
+      background-color: #1D9DC1
+      font-size: .7em
+      border-radius: 35px
+      color: #fff
+      padding:10px
+      font-weight: light !important
+      text-decoration: none !important
+    a:hover
+      text-decoration: none !important
+      color: #fff !important
+
+.alert
+  &.alert-info
+    &.alert-propuesta
+      background-color: #FEF8DC
+      color: #F2B631
+      max-width: 70%
+      border-color: #F2B631
+      max-width 820px
+      margin 0 auto
+      padding-left 15px
+      padding-right 15px
+      margin-top:60px
+      margin-bottom:30px
+      p
+        padding-top:20px
+      p:last-child
+        text-align: right  
+      span 
+        font-weight: bold
+
+.topic-article-header
+  &.topic-article-content
+    header
+      margin-top:0px !important
+
+.banner
+    width: 100%
+    display: block
+    margin: 0 auto
+    margin-bottom:50px
+    height: 180px
+    background-size: cover
+    background-image: unquote("url('ext/lib/site/topic-layout/topic-article-propuesta/header.jpg')") 
+    background-repeat: no-repeat
+    padding: 0
+    @media(max-width: 768px)
+      height: 150px
+    header
+      margin-top:0px !important
+      margin-bottom: 50px !important
+      padding-top:145px !important
+
+
+.topic-article-content
+  &.topic-admin-actions
+  
+    @media screen and (max-width: 1000px)
+      display: inline-block
+      float: right
+      margin-right: 0
+      position: relative
+      right: -150px
+      top: 20px
+      
