@@ -30,7 +30,8 @@ export default ({ topic, onVote }) => (
         topic.tags && topic.tags.length > 0 && (
           <div className='topic-card-tags'>
             {topic.tags.slice(0, 12).map((tag) => (
-              <span key={tag} className='badge badge-default'>{tag}</span>
+              <a href={ `${window.location.origin + '/propuestas?tag=' + tag}`} key={tag} className='badge badge-default'>{tag}</a>
+
             ))}
           </div>
         )
@@ -58,7 +59,7 @@ export default ({ topic, onVote }) => (
   </div>
 )
 
-function createClauses ({ attrs, clauses}) {
+function createClauses ({ attrs, clauses }) {
   let div = document.createElement('div')
   let content
   if (!attrs) {

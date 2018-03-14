@@ -13,8 +13,7 @@ import Cause from './cause/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
-import {Link} from 'react-router'
-
+import { Link } from 'react-router'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -52,13 +51,13 @@ class TopicArticle extends Component {
   twitText = () => {
     switch (this.props.topic.attrs && this.props.topic.attrs.state) {
       case 'pendiente':
-      return encodeURIComponent('Apoyemos este proyecto para mejorar Vicente López. ')
+        return encodeURIComponent('Apoyemos este proyecto para mejorar Vicente López. ')
       case 'perdedor':
-      return encodeURIComponent(this.props.topic.mediaTitle)
+        return encodeURIComponent(this.props.topic.mediaTitle)
       case 'proyectado':
-      return encodeURIComponent('Este proyecto se va a realizar gracias a la participación de los vecinos. ')
+        return encodeURIComponent('Este proyecto se va a realizar gracias a la participación de los vecinos. ')
       default:
-      return ''
+        return ''
     }
   }
 
@@ -102,11 +101,24 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
+        <div className="banner">
+
+          <Header
+            closingAt={topic.closingAt}
+            closed={topic.closed}
+            author={topic.author}
+            authorUrl={topic.authorUrl}
+            tags={topic.tags}
+            forumName={forum.name}
+            mediaTitle={topic.mediaTitle} />
+
+        </div>
+        <div className='topic-article-status'>Proyecto {topic.attrs.state} </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
-          ? (
-            <div className='topic-article-content topic-admin-actions'>
+            ? (
+              <div className='topic-article-content topic-admin-actions'>
                 <a
                   href={urlBuilder.for('admin.topics.id', {
                     forum: forum.name,
@@ -117,59 +129,60 @@ class TopicArticle extends Component {
                   &nbsp;
                   {t('proposal-article.edit')}
                 </a>
-            </div>
-          )
-          : (topic.privileges && topic.privileges.canEdit)
-            ? (
-                <div className='topic-article-content topic-admin-actions'>
-                    <a
-                      href={`/formulario-propuesta/${topic.id}`}
-                      className='btn btn-default btn-sm'>
-                      <i className='icon-pencil' />
+              </div>
+            )
+            : (topic.privileges && topic.privileges.canEdit) &&
+               (
+                 <div className='topic-article-content topic-admin-actions'>
+                   <a
+                     href={`/formulario-propuesta/${topic.id}`}
+                     className='btn btn-default btn-sm'>
+                     <i className='icon-pencil' />
                       &nbsp;
-                      {t('proposal-article.edit')}
-                    </a>
-                </div>
-              )
-            : (user.state.value && topic.owner.id === user.state.value.id) &&
-              (
-                <p className='alert alert-warning'>
-                  El estado de ésta propuesta fue cambiado a {topic.attrs.state}, por lo tanto ya no puede ser editada por su autor/a.
-                </p>
-              )
-          }
+                     {t('proposal-article.edit')}
+                   </a>
+                 </div>
+               )
 
-        <Header
-          closingAt={topic.closingAt}
-          closed={topic.closed}
-          author={topic.author}
-          authorUrl={topic.authorUrl}
-          tags={topic.tags}
-          forumName={forum.name}
-          mediaTitle={topic.mediaTitle} />
+        }
 
         <div className='topic-article-content entry-content'>
-          {createClauses(topic)}
+          <div className='topic-article-nombre'>Autor: {topic.attrs.nombre}</div>
+          { /* <h2 className='topic-article-subtitulo'>subtítulo de la propuesta</h2> */ }
+          <h3 className='topic-article-barrio'>{topic.attrs.barrio}</h3>
+
+          <span className='topic-article-span'>Problema o necesidad existente</span>
+          {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.problema} </p> }
+
+          <span className='topic-article-span'>Propuesta para solucionar el problema</span>
+          {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.solucion} </p> }
+
+          <span className='topic-article-span'>Beneficios que brindará el proyecto al barrio</span>
+          {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
 
-        {
-          topic.links && (
-            <Footer
-              source={topic.source}
-              links={topic.links}
-              socialUrl={topic.url}
-              title={topic.mediaTitle} />
-          )
-        }
-        <Social
-          topic={topic}
-          twitterText={twitterText}
-          socialLinksUrl={socialLinksUrl} />
         <div className='topic-tags topic-article-content'>
           {
-            this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
+            this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a className='topic-article-tag' href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>{ tag } </a>)
           }
-        </div>  
+        </div>
+
+        { (user.state.value && topic.owner.id === user.state.value.id) &&
+              (
+                <p className='alert alert-info alert-propuesta'>
+                  El estado de ésta propuesta fue cambiado a {topic.attrs.state}, por lo tanto ya no puede ser editada por su autor/a.
+                </p>
+              ) }
+
+        {
+          (topic.attrs.state && topic.attrs.state === 'rechazado') &&
+              (
+                <div className='alert alert-info alert-propuesta' role='alert'>
+                  <span>Esta propuesta ha sido rechazada por la Municipalidad de Vicente Lopez.</span>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti dolorem cumque, delectus placeat nulla. Aspernatur fugit asperiores eum placeat, incidunt omnis alias enim rem, iste soluta aut doloribus molestias.</p>
+                  <p>Subsecretaría de Participación Ciudadana</p>
+                </div>)}
+
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
@@ -182,24 +195,4 @@ export default userConnector(TopicArticle)
 
 function hideSidebar () {
   bus.emit('sidebar:show', false)
-}
-
-function createClauses ({ attrs, clauses}) {
-  let div = document.createElement('div')
-  let content
-  if (!attrs) {
-    content = clauses
-      .sort(function (a, b) {
-        return a.position > b.position ? 1 : -1
-      })
-      .map(function (clause) {
-        return clause.markup
-      })
-      .join('')
-  } else {
-    const { problema, solucion, beneficios } = attrs
-    content = `${problema} \n\n ${solucion} \n\n ${beneficios}`
-  }
-  div.innerHTML = content
-  return div.textContent
 }
