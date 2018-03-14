@@ -131,38 +131,33 @@ class TopicArticle extends Component {
                 </a>
               </div>
             )
-            : (topic.privileges && topic.privileges.canEdit)
-              ? (
-                <div className='topic-article-content topic-admin-actions'>
-                  <a
-                    href={`/formulario-propuesta/${topic.id}`}
-                    className='btn btn-default btn-sm'>
-                    <i className='icon-pencil' />
+            : (topic.privileges && topic.privileges.canEdit) &&
+               (
+                 <div className='topic-article-content topic-admin-actions'>
+                   <a
+                     href={`/formulario-propuesta/${topic.id}`}
+                     className='btn btn-default btn-sm'>
+                     <i className='icon-pencil' />
                       &nbsp;
-                    {t('proposal-article.edit')}
-                  </a>
-                </div>
-              )
-              : (user.state.value && topic.owner.id === user.state.value.id) &&
-              (
-                <p className='alert alert-info alert-propuesta'>
-                  El estado de ésta propuesta fue cambiado a {topic.attrs.state}, por lo tanto ya no puede ser editada por su autor/a.
-                </p>
-              )
+                     {t('proposal-article.edit')}
+                   </a>
+                 </div>
+               )
+
         }
 
         <div className='topic-article-content entry-content'>
-          <div className='topic-article-nombre'>{topic.attrs.nombre}</div>
-          <h2 className='topic-article-subtitulo'>subtítulo de la propuesta</h2>
+          <div className='topic-article-nombre'>Autor: {topic.attrs.nombre}</div>
+          { /* <h2 className='topic-article-subtitulo'>subtítulo de la propuesta</h2> */ }
           <h3 className='topic-article-barrio'>{topic.attrs.barrio}</h3>
 
-          <span className='topic-article-span'>Propuesta</span>
+          <span className='topic-article-span'>Problema o necesidad existente</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.problema} </p> }
 
-          <span className='topic-article-span'>Solución</span>
+          <span className='topic-article-span'>Propuesta para solucionar el problema</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.solucion} </p> }
 
-          <span className='topic-article-span'>Beneficios</span>
+          <span className='topic-article-span'>Beneficios que brindará el proyecto al barrio</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
 
@@ -171,6 +166,14 @@ class TopicArticle extends Component {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a className='topic-article-tag' href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>{ tag } </a>)
           }
         </div>
+
+        { (user.state.value && topic.owner.id === user.state.value.id) &&
+              (
+                <p className='alert alert-info alert-propuesta'>
+                  El estado de ésta propuesta fue cambiado a {topic.attrs.state}, por lo tanto ya no puede ser editada por su autor/a.
+                </p>
+              ) }
+
         {
           (topic.attrs.state && topic.attrs.state === 'rechazado') &&
               (

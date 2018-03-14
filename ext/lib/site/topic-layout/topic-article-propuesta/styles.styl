@@ -240,7 +240,7 @@ topicColor2 = #999
   margin-bottom: 10px
   
 .topic-article-barrio
-  font-size: 1em
+  font-size: 1.2em
   color:#1D9DC1
   font-weight: normal
   text-transform: capitalize
@@ -306,39 +306,6 @@ topicColor2 = #999
     header
       margin-top:0px !important
 
-
-.banner-static
-  padding: 0
-  height: 270px
-  position: relative
-  @media(max-width: 768px)
-    height: 210px
-  .banner
-    width: 100%
-    display: block
-    margin: 0 auto
-    height: 180px
-    background-size: cover
-    background-image: unquote("url('ext/lib/site/topic-layout/topic-article-propuesta/header.jpg')") 
-    background-repeat: no-repeat
-    padding: 0
-    @media(max-width: 768px)
-      height: 150px
-    header
-      margin-top:0px !important  
-  .contenedor
-    top: 140px
-    position: absolute
-    display: block
-    left: 0
-    right: 0
-    @media(max-width: 768px)
-      top: 127px
-    @media(max-width: 420px)
-      top: 127px
-      width: 75%
-      margin: 0 auto
-
 .banner
     width: 100%
     display: block
@@ -355,3 +322,16 @@ topicColor2 = #999
       margin-top:0px !important
       margin-bottom: 50px !important
       padding-top:145px !important
+
+
+.topic-article-content
+  &.topic-admin-actions
+  
+    @media screen and (max-width: 1000px)
+      display: inline-block
+      float: right
+      margin-right: 0
+      position: relative
+      right: -150px
+      top: 20px
+      
