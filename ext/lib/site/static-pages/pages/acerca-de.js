@@ -41,7 +41,7 @@ export default class Page extends Component {
                       <div className="que-son"></div>
                     </div>
                     <h2>¿Qué son?</h2>
-                    <br/>
+                   
                   </div>
                 </div>
                 <div className="cols col-2">

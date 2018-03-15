@@ -175,7 +175,7 @@ class TopicArticle extends Component {
               ) }
 
         {
-          (topic.attrs.state && topic.attrs.state === 'rechazado') &&
+          (topic.attrs.state && topic.attrs.state === 'no factible') &&
               (
                 <div className='alert alert-info alert-propuesta' role='alert'>
                   <span>Esta propuesta ha sido rechazada por la Municipalidad de Vicente Lopez.</span>
