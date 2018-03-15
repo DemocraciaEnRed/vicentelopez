@@ -41,7 +41,7 @@ export default class Page extends Component {
                       <div className="que-son"></div>
                     </div>
                     <h2>¿Qué son?</h2>
-                   
+
                   </div>
                 </div>
                 <div className="cols col-2">
@@ -80,7 +80,7 @@ export default class Page extends Component {
               </div>
               <div className="fila faq">
                 <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>
-                <p>La partida, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 36 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 39 millones se distribuirán según la cantidad de habitantes de cada barrio.</p>
+                <p>’La partida de $75 millones, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 36 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 39 millones se distribuirán según la cantidad de habitantes de cada barrio.</p>
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
                 <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{ display: 'inline' }} to='/formulario-propuesta'>aquí</Link>
                 </p>
@@ -100,6 +100,7 @@ export default class Page extends Component {
                 <Anchor id='cronograma'>
                   <div className='table-responsive'>
                     <h3>Cronograma de reuniones por barrio</h3>
+                    <div>El horario de las reuniones de presentación de propuestas es de 19 a 21 hs</div>
                     <table className='table tabla-reuniones'>
                       <tbody>
                         <tr>
