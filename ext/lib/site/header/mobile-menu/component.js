@@ -47,7 +47,8 @@ class MobileMenu extends Component {
                   <Link
                     to='/propuestas'
                     className='header-link'
-                    activeStyle={{ color: '#8C1E81' }}>
+                    activeStyle={{ color: '#8C1E81' }}
+                    onClick={this.toggleOnClick}>
                     Propuestas
                   </Link>
                 </div>
