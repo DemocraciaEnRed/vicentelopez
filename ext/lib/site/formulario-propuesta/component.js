@@ -293,6 +293,8 @@ class FormularioPropuesta extends Component {
             <label className='required' htmlFor='problema'>
               Problema o necesidad existente
             </label>
+            <span className='help-text requerido'>Requerido</span>
+
             <textarea
               className='form-control'
               required
@@ -307,6 +309,7 @@ class FormularioPropuesta extends Component {
             <label className='required' htmlFor='solucion' >
               Propuesta para solucionar el problema
             </label>
+            <span className='help-text requerido'>Requerido</span>
             <textarea
               className='form-control'
               required
@@ -318,9 +321,10 @@ class FormularioPropuesta extends Component {
             </textarea>
           </div>
           <div className='form-group'>
-            <label className='required' htmlFor='beneficios'  >
+            <label className='required' htmlFor='beneficios'>
               Beneficios que brindará el proyecto al barrio
             </label>
+            <span className='help-text requerido'>Requerido</span>
             <textarea
               className='form-control'
               required
