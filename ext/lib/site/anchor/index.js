@@ -23,11 +23,6 @@ export default class Anchor extends Component {
         duration: 400,
         offset: -250
       })
-    } else if (id === 'containerProyectos') {
-      jump(this.anchors[id], {
-        duration: 400,
-        offset: 350
-      })
     } else {
       jump(this.anchors[id], {
         duration: 400,

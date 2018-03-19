@@ -62,7 +62,7 @@ export default class Header extends Component {
         { this.props.children }
         {learnMore}
         {closingAt}
-        <h1>{this.props.mediaTitle}</h1>
+        <h1 className='header-title'>{this.props.mediaTitle}</h1>
         {author}
 
       </header>

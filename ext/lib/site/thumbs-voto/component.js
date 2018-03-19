@@ -38,7 +38,7 @@ export default function ThumbsVoto (props) {
             </div>
             <h2 className="text-center">¿Cómo se distribuye el dinero por barrio?</h2>
             <p>
-            La partida, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 39 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 36 millones se distribuirán según la cantidad de habitantes de cada barrio.
+            La partida de $75 millones, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 39 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 36 millones se distribuirán según la cantidad de habitantes de cada barrio.
             </p>
 
           </div>

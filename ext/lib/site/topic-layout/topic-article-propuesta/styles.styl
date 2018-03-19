@@ -232,6 +232,8 @@ topicColor2 = #999
   color: #ccc
   font-size: .9em
   padding: 5px
+  @media(max-width: 768px)
+      padding: px
 
 .topic-article-subtitulo
   color: #1D9DC1
@@ -265,17 +267,17 @@ topicColor2 = #999
   margin-right:0
   position:relative
   right: 0px
-  top: 100px
+  top: 93px
   
 .topic-tags
   &.topic-article-content
     a
       background-color: #1D9DC1
-      font-size: .7em
+      font-size: .65em
       border-radius: 35px
       color: #fff
-      padding:10px
-      font-weight: light !important
+      padding:6px 10px 6px 10px
+      font-weight: normal
       text-decoration: none !important
     a:hover
       text-decoration: none !important
@@ -310,7 +312,7 @@ topicColor2 = #999
     width: 100%
     display: block
     margin: 0 auto
-    margin-bottom:50px
+    margin-bottom:90px
     height: 180px
     background-size: cover
     background-image: unquote("url('ext/lib/site/topic-layout/topic-article-propuesta/header.jpg')") 
@@ -321,8 +323,11 @@ topicColor2 = #999
     header
       margin-top:0px !important
       margin-bottom: 50px !important
-      padding-top:145px !important
-
+      padding-top:9rem !important
+      @media(max-width: 768px)
+        padding-top:7rem !important
+      @media(max-width: 399px)
+        padding-top:8rem !important
 
 .topic-article-content
   &.topic-admin-actions

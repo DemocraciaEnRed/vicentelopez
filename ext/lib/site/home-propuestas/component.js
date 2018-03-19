@@ -18,13 +18,14 @@ const filters = {
     sort: '-action.count',
     filter: (topic) => topic.status === 'open',
     emptyMsg: 'No se encontraron propuestas.'
-  },
+  }
+  /*,
   closed: {
     text: 'Archivadas',
     sort: '-action.count',
     filter: (topic) => topic.status === 'closed',
     emptyMsg: 'No se encontraron propuestas.'
-  }
+  } */
 }
 
 const filter = (key, items = []) => items.filter(filters[key].filter)
@@ -45,7 +46,7 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
         </div>
         <a
           href='/formulario-propuesta'
-          className='boton-azul btn'>
+          className='boton-azul btn propuesta'>
           Mandá tu propuesta
         </a>
       </div>

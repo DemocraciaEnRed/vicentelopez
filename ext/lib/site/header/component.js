@@ -84,7 +84,7 @@ class Header extends Component {
             <img
               src={config.logo}
               className='d-inline-block align-top'
-              height='30' />
+               />
           </Link>
 
           <ul className='nav navbar-nav'>
