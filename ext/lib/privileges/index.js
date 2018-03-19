@@ -21,15 +21,13 @@ const { isCitizenOnProposal, isAdminOnProposal } = require('../proposals')
   }
 })
 
-// Not allow to create new comments nor "likes" by citizens
+// Not allow to create new comments nor "likes" by anyone
 // when the Proposal state is "rejected"
 ;(() => {
   const originalCanVote = topicPrivileges.canVote
 
   topicPrivileges.canVote = (forum, user, topic) => {
-    if (isCitizenOnProposal(user, forum)) {
-      if (topic.attrs && topic.attrs.state === 'rechazado') return false
-    }
+    if (topic.attrs && topic.attrs.state === 'rechazado') return false
 
     return originalCanVote(forum, user, topic)
   }
@@ -37,9 +35,7 @@ const { isCitizenOnProposal, isAdminOnProposal } = require('../proposals')
   const originalCanComment = topicPrivileges.canComment
 
   topicPrivileges.canComment = (forum, user, topic) => {
-    if (isCitizenOnProposal(user, forum)) {
-      if (topic.attrs && topic.attrs.state === 'rechazado') return false
-    }
+    if (topic.attrs && topic.attrs.state === 'rechazado') return false
 
     return originalCanComment(forum, user, topic)
   }

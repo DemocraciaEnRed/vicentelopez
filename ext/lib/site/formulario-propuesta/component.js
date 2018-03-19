@@ -66,6 +66,9 @@ class FormularioPropuesta extends Component {
     }
 
     forumStore.findOneByName(PROPOSALS_FORUM_NAME).then((forum) => {
+      if (forum.privileges.canChangeTopics) {
+        return browserHistory.push('/propuestas/admin/topics/create')
+      }
       this.setState({ forum })
     }).catch((err) => { console.error(err) })
   }
@@ -133,7 +136,7 @@ class FormularioPropuesta extends Component {
       })
   }
 
-  componentWillUpdate (props) {
+  componentWillUpdate (props, state) {
     if (this.props.user.state.rejected) {
       browserHistory.push('/signin?ref=/formulario-propuesta')
     }
