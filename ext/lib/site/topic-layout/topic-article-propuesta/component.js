@@ -48,6 +48,28 @@ class TopicArticle extends Component {
     })
   }
 
+  handleBarrio = (barrio) => {
+    const barrios = {
+      'vicente-lopez': 'Vicente Lopez',
+      'carapachay': 'Carapachay',
+      'florida-oeste': 'Florida Oeste',
+      'villa-martelli': 'Villa Martelli',
+      'florida-este': 'Florida Este',
+      'la-lucila': 'La Lucila',
+      'munro': 'munro',
+      'villa-adelina': 'Villa Adelina',
+      'olivos': 'Olivos'
+
+    }
+    let barrioName = ''
+    Object.keys(barrios).find((key) => {
+      if (barrio === key) {
+        barrioName = barrios[key]
+      }
+    })
+    return barrioName
+  }
+
   twitText = () => {
     switch (this.props.topic.attrs && this.props.topic.attrs.state) {
       case 'pendiente':
@@ -149,7 +171,7 @@ class TopicArticle extends Component {
         <div className='topic-article-content entry-content'>
           <div className='topic-article-nombre'>Autor: {topic.attrs.nombre}</div>
           { /* <h2 className='topic-article-subtitulo'>subtítulo de la propuesta</h2> */ }
-          <h3 className='topic-article-barrio'>{topic.attrs.barrio}</h3>
+          <h3 className='topic-article-barrio'>{this.handleBarrio(topic.attrs.barrio)}</h3>
 
           <span className='topic-article-span'>Problema o necesidad existente</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.problema} </p> }
