@@ -80,11 +80,11 @@ export default class Page extends Component {
               </div>
               <div className="fila faq">
                 <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>
-                <table className='table tabla-reuniones'>
+                <table className='table tabla-reuniones alinear'>
                   <tbody>
                     <tr>
-                      <th>OLIVOS</th>
-                      <th>$ 9.833.333</th>
+                      <td>OLIVOS</td>
+                      <td>$ 9.833.333</td>
                     </tr>
                     <tr>
                       <td>MUNRO</td>
