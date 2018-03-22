@@ -84,6 +84,7 @@ export default class Page extends Component {
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
                 <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{ display: 'inline' }} to='/formulario-propuesta'>aquí</Link>
                 </p>
+                <p>Tenés tiempo hasta el 31 de mayo inclusive</p>
                 <h3>¿CÓMO SE DECIDE QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
                 <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasa a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se termina de definir la factibilidad del proyecto y los costos estimados del mismo.</p>
                 <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
