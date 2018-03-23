@@ -25,143 +25,273 @@ export default class Page extends Component {
         </section>
           <Anchor id='container'>
             <div className='ext-reglamento'>  
-              <p><span className="articulo">Art. 1° ELECCIÓN PROYECTOS 2018 PRESUPUESTO PARTICIPATIVO.</span> El presente Reglamento regula el proceso de elección de los proyectos del Presupuesto Participativo propuestos en los Foros Vecinales Barriales 2017 para ser ejecutados en el año 2018 en el Partido de Vicente López.</p>
-              <p><span className="articulo">Art. 2° FECHA Y LUGAR.</span> La Votación de Proyectos 2018 se realizará durante 14 días consecutivos desde el lunes 18 DE SEPTIEMBRE hasta el domingo 1° de OCTUBRE de 2017 en los lugares y horarios que serán publicados en el sitio WWW.FOROSVECINALES.ORG. Por razones de fuerza mayor, la Subsecretaría de Participación Ciudadana podrá extender el período de votación y deberá comunicarlo a través del sitio de internet antes mencionado.</p>
-              <p><span className="articulo">Art. 3° QUIÉNES PUEDEN VOTAR.</span> Podrán emitir su voto: a) los mayores de 16 años con domicilio en cualquiera de los 9 barrios en que se divide el Partido de Vicente López (Villa Martelli, Florida Oeste, Munro, Carapachay, Villa Adelina, Florida Este, Vicente López, Olivos y La Lucila), b) aquéllos que trabajen en alguno de los mencionados barrios, c) Alumnos mayores de 16 años y los padres o encargados de alumnos menores de 16 años (uno por alumno) de los Establecimientos Educativos Públicos tanto Provinciales como Municipales del Partido, aunque no tengan domicilio en el barrio en que se encuentra ubicada la escuela ni en el Partido de Vicente López, siempre que el Establecimiento Educativo haya presentado propuesta y el sufragante se encuentre inscripto en el padrón especial al que se refiere el art. 11 del presente reglamento, d) las personas vinculadas a las entidades intermedias que hayan presentado propuestas, entendiendo por tal a: directivos, asociados, inscriptos en actividades y talleres brindados por la entidad, aunque no tengan domicilio en el barrio en que se encuentra ubicada la entidad ni en el Partido de Vicente López y siempre que los sufragantes se encuentren inscriptos en el padrón especial al que se refiere el art. 12 del presente reglamento.</p>
-              <p><span className="articulo">Art. 4° SE PUEDE VOTAR EN MÁS DE UN BARRIO.</span> Un vecino podrá votar una vez en el barrio donde tiene domicilio personal o podrá votar hasta 4 veces en barrios distintos si resulta, por ejemplo, que es vecino de un barrio, comerciante en otro, profesional en un tercero y empresario en un cuarto. En todos los casos, será necesario acreditar domicilio como se indica en el art. 5°.</p>
-              <p><span className="articulo">Art. 5° ACREDITACIÓN DE DOMICILIO.</span>. Para emitir el voto, las personas deberán acercarse a los centros de votación y presentar su DNI/LE/LC. En el caso de votar en carácter de comerciantes, empresarios o profesionales, deberán presentar una factura de servicio de su actividad comercial, empresarial o profesional establecida en el municipio o cualquier otro documento o constancia que acredite su actividad en alguno de los 9 barrios del Partido de Vicente López. En caso de tener actividad laboral en relación de dependencia en alguno de los barrios deberá presentar un recibo de sueldo donde conste el domicilio de la empresa para la que trabaja y podrá votar en el barrio donde la misma tenga su sede.</p>
-              <p><span className="articulo">Art. 6° VOTO NOMINAL:</span> El voto será nominal y en carácter de declaración jurada. Cada elector deberá consignar en el formulario que contiene la boleta los siguientes datos: apellido y nombre, domicilio personal o laboral -según corresponda-, tipo y N° de documento, correo electrónico y firma.</p>
-              <p><span className="articulo">Art. 7° BOLETAS.</span> Cada uno de los 9 barrios del municipio tendrá una boleta única en la que figuran todos los proyectos factibles en condiciones de ser elegidos por los vecinos. Los vecinos pueden utilizar las boletas disponibles en los lugares de votación o pueden optar por imprimir las publicadas en el sitio web WWW.FOROSVECINALES.ORG en la sección ¿Qué votar?</p>
-              <p><span className="articulo">Art. 8° VOTOS POR ELECTOR. </span> Los vecinos podrán votar hasta 3 (tres) proyectos tildando el casillero de aquellos que son de su preferencia. El voto de cada proyecto tendrá el mismo valor. En el caso de los votantes señalados en el art. 3 inc. c) y d) sólo podrán votar por el proyecto de la Escuela o Entidad a la que pertenecen y, para que el voto sea válido, deberán figurar en el padrón correspondiente.</p>
-              <p><span className="articulo">Art. 9° VOTOS EN BLANCO.</span> Las boletas sin ningún proyecto marcado serán contabilizadas como votos en blanco, como así también los casilleros de un total de 3 (tres) que no contengan voto.</p>
-              <p><span className="articulo">Art. 10° VOTOS NULOS. </span> Al momento del escrutinio, se considerarán nulos: a) todos los votos de una persona que hubiese votado utilizando más de 1 (una) boleta para un mismo barrio; b) todos los votos de una persona que hubiese votado por más de 3 (tres) proyectos en la misma boleta; c) todos los votos de una persona que no sea vecina del barrio y que no haya sido incluida en ningún padrón especial de escuela o entidad, de acuerdo a lo establecido en los artículos 11 y 12; d) todos los votos de una persona inscripta en el padrón especial de una escuela o entidad mencionado en los art. 11 y 12 que hubiese votado por otro proyecto que no sea el de la Escuela o Entidad con la que está vinculado.</p>
-              <p><span className="articulo">Art. 11° PROYECTOS DE ENTIDADES EDUCATIVAS PÚBLICAS PROVINCIALES Y MUNICIPALES - PADRÓN ESPECIAL.</span>  En el caso de los proyectos de las escuelas públicas provinciales y municipales, las autoridades de las mismas deberán elaborar un padrón que incluya a los alumnos mayores de 16 años cumplidos al 1° de octubre de 2017 y a los padres o encargados de los alumnos menores de 16 años (un adulto por alumno) que no se domicilien en el barrio en el que se encuentra la escuela. El listado deberá contener por orden alfabético: 1) Apellido y Nombre, 2) N° de Documento, 3) correo electrónico, 4) Apellido y Nombre del alumno con el que posee el vínculo, y deberá enviarse por correo electrónico a: <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> en formato de planilla de cálculo excel utilizando el archivo modelo que se les indicará oportunamente. Los votos de las personas que no sean vecinas del barrio y que no hayan sido incluidas en este padrón especial serán considerados nulos.</p>
-              <p><span className="articulo">Art. 12° PROYECTOS DE ENTIDADES INTERMEDIAS - PADRÓN ESPECIAL.</span> En el caso de los proyectos de entidades intermedias, las autoridades de las mismas podrán elaborar un padrón especial que incluya a directivos, asociados, inscriptos en actividades y talleres brindados por la entidad. En todos los casos mencionados, sólo deberán incluirse aquellas personas que no tengan domicilio particular o laboral en el barrio o en el Partido de Vicente López. El listado deberá contener por orden alfabético: 1) Apellido y Nombre, 2) N° de Documento, 3) correo electrónico, 4) tipo de participación (directivo, socio, alumno) y deberá enviarse por correo electrónico a: <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> en formato de planilla de cálculo excel utilizando el archivo modelo que se les indicará oportunamente. Los votos de las personas que no sean vecinas del barrio y que no hayan sido incluidas en este padrón especial serán considerados nulos.</p>
-              <p><span className="articulo">Art. 13° EJECUCIÓN DE PROYECTOS - PRESUPUESTO.</span> Cada proyecto sujeto a votación tiene un enunciado o título y un presupuesto asignado (que es un monto estimado de acuerdo al proyecto en cuestión). Los proyectos que resulten electos se ejecutan aplicando fondos hasta el monto del presupuesto que tienen asignado, siendo el enunciado o título del proyecto una referencia general del mismo. En el caso de instituciones educativas y/o entidades intermedias (sociedades de fomento, clubes, asociaciones civiles, etc.) las autoridades de las mismas determinarán por escrito el orden de prioridades de los componentes o partes de su proyecto al efecto de la aplicación del monto asignado al proyecto en cuestión.</p>
-              <p><span className="articulo">Art. 14° AUTORIDADES DE MESA - FISCALES.</span> Las autoridades de los puntos de votación serán designadas por la Subsecretaría de Participación Ciudadana. Podrán participar, como auxiliares de autoridades de mesa y como fiscales veedores del proceso electoral, vecinos y miembros de entidades de cada uno de los nueve barrios.</p>
-              <p><span className="articulo">Art. 15° ESCRUTINIO.</span> El escrutinio de los votos de los 9 barrios se realizará los días 2, 3 y 4 de octubre de 2017 a partir de las 10 hs en lugar a designar por la Subsecretaría de Participación Ciudadana. Podrán ser veedores del proceso de escrutinio vecinos y representantes de entidades intermedias y de escuelas, para lo cual deberán informarlo al 4851-2000 int. 203 o por correo electrónico a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> hasta el miércoles 27 de septiembre de 2017. Por razones de fuerza mayor, la Subsecretaría podrá extender y/o modificar fecha y horario del escrutinio.</p>
-              <p><span className="articulo">Art. 16° ORDEN DE LOS PROYECTOS VOTADOS.</span> Los proyectos barriales elegidos para ser ejecutados en 2018 serán aquellos que por cantidad de votos recibidos cubran el total del presupuesto participativo destinado a cada uno de los barrios, según el detalle expresado en el Anexo 1. Puede ocurrir que por orden de prioridad de votos, un proyecto supere por presupuesto el monto total establecido para el barrio. En ese caso, se pasará al proyecto que le siga en cantidad de votos, hasta cubrir el total del monto asignado a cada barrio.</p>
-              <p><span className="articulo">Art. 17° PROYECTOS DE ESTABLECIMIENTOS EDUCATIVOS PÚBLICOS PROVINCIALES - CARACTERÍSTICAS DEL SUBLÍMITE BARRIAL: </span> En 2017, se incluye en el presupuesto participativo para 2018, una suma de hasta $ 3.000.000 (pesos tres millones) por barrio y de hasta $2.000.000 (pesos dos millones) por escuela, para ser destinada a mejoras edilicias o de equipamiento en establecimientos educativos públicos dependientes de la Provincia de Buenos Aires. Para ser realizados, estos proyectos tendrán que ganar esa prioridad por el voto en idéntica situación que cualquier otro proyecto vecinal incluido en la boleta del barrio correspondiente.</p>
+              <p><span>Reglamento para la Elecci&oacute;n de Proyectos a ser ejecutados en el 2019</span></p>
+              <p><span>Art. 1&ordm; ALCANCE: </span><span>El presente reglamento regula el proceso de elecci&oacute;n de los Proyectos del Presupuesto Participativo del Municipio de Vicente L&oacute;pez, propuestos en el per&iacute;odo establecido para la presentaci&oacute;n de los mismos durante el 2018 y para ser ejecutados en el 2019.</span></p>
+              <p><span>Art. 2&ordm; FECHA Y LUGAR DE LA VOTACI&Oacute;N: </span><span>La votaci&oacute;n de proyectos para ejecutar en el 2019 se realizara durante 14 (catorce) d&iacute;as consecutivos a partir del </span><span>lunes 24 de septiembre y hasta el domingo 7 de octubre de 2018</span><span>; en los lugares y horarios que ser&aacute;n publicados en el sitio </span><span><a href="https://www.google.com/url?q=https://forosvecinales.vicentelopez.gov.ar&amp;sa=D&amp;ust=1521676895493000&amp;usg=AFQjCNHEsKIr9g84ek_PQZO7f-TAwsGI7A">https://forosvecinales.vicentelopez.gov.ar</a></span><span>. Por razones de fuerza mayor la Subsecretar&iacute;a de Participaci&oacute;n Ciudadana, en adelante &ldquo;la Subsecretar&iacute;a&rdquo;, &nbsp;podr&aacute; extender el periodo de votaci&oacute;n, en cuyo caso lo comunicar&aacute; en el sitio antes mencionado.</span></p>
+              <p><span>Art. 3&ordm; QUI&Eacute;NES EST&Aacute;N HABILITADOS A VOTAR: </span></p>
+              <ol start="1">
+                  <li><span>Los mayores de 16 a&ntilde;os (cumplidos al 7 de octubre de 2018) con domicilio en cualquiera de los 9 barrios en que se divide el Partido de Vicente L&oacute;pez (Villa Martelli, Florida Oeste, Munro, Carapachay, Villa Adelina, Florida Este, La Lucila, Olivos y Vicente L&oacute;pez).</span></li>
+                  <li><span>Aqu&eacute;llos que trabajen en alguno de los mencionados barrios.</span></li>
+                  <li><span>Alumnos mayores de 16 a&ntilde;os (cumplidos al 7 de Octubre de 2018) y los padres o encargados de alumnos menores de 16 a&ntilde;os (uno por alumno) de los Establecimientos Educativos P&uacute;blicos tanto Provinciales como Municipales del Partido, aunque no tengan domicilio en el barrio en que se encuentra ubicada la escuela ni en el Partido de Vicente L&oacute;pez; siempre que el Establecimiento Educativo haya presentado propuesta y el votante se encuentre inscripto en el padr&oacute;n especial al que se refiere el art. 11 del presente reglamento.</span></li>
+                  <li><span>Las personas vinculadas a las entidades que hayan presentado propuestas, entendiendo por tales a: directivos, asociados e inscriptos en actividades y talleres brindados por la entidad; aunque no tengan domicilio en el barrio en que se encuentra ubicada la entidad ni en el Partido de Vicente L&oacute;pez y siempre que los sufragantes se encuentren inscriptos en el padr&oacute;n especial al que refiere el art. 12 del presente reglamento.</span></li>
+              </ol>
+              <p><span>Art. 4&ordm; CU&Aacute;NTAS VECES SE PUEDE VOTAR: </span><span>Una persona puede votar solo una vez por barrio. Tambi&eacute;n puede votar en otro u otros barrios si resulta ser comerciante, &nbsp;profesional o trabajador. En todos los casos es necesario acreditar domicilio como se indica en el art. 5.</span></p>
+              <p><span>Art 5&ordm; ACREDITACI&Oacute;N DE DOMICILIO: </span><span>Para emitir el voto las personas deben presentar su DNI/LC/LE y, en el caso de que no tenga actualizado el domicilio en el mismo, deber&aacute; presentar un servicio a su nombre donde figure el domicilio que se corresponda con el barrio donde quiere votar. En el caso de comerciante, profesional o trabajador deber&aacute; acreditar el domicilio con un servicio a su &nbsp;nombre o habilitaci&oacute;n municipal donde figure un domicilio que se corresponda con el barrio donde quiere votar. En caso de ser empleado en relaci&oacute;n de dependencia podr&aacute; acreditar domicilio con su recibo de sueldo siempre que en el mismo figure el domicilio de su actividad laboral y se corresponda con el barrio donde quiere votar.</span></p>
+              <p><span>Art. 6&ordm; VOTO NOMINAL: </span><span>El voto ser&aacute; nominal y tendr&aacute; el car&aacute;cter de declaraci&oacute;n jurada. Cada elector deber&aacute; consignar en la boleta de votaci&oacute;n los siguientes datos: apellido y nombre, domicilio particular o laboral (seg&uacute;n corresponda), tipo y numero de documento de identidad, correo electr&oacute;nico (si tiene) y firma.</span></p>
+              <p><span>Art. 7&ordm; BOLETAS:</span><span>&nbsp;Cada uno de los 9 barrios del municipio tendr&aacute; una boleta &uacute;nica en la que estar&aacute;n todos los proyectos del referido barrio en condiciones de ser elegidos por los vecinos. El elector podr&aacute; utilizar las boletas disponibles en los puntos de votaci&oacute;n o descargar e imprimir la boleta desde el sitio </span><span><a href="https://www.google.com/url?q=https://forosvecinales.vicentelopez.gov.ar&amp;sa=D&amp;ust=1521676895494000&amp;usg=AFQjCNHgtR341hKY9LcYkEYYNGgbM6vStA">https://forosvecinales.vicentelopez.gov.ar</a></span><span>&nbsp;</span></p>
+              <p><span>Art. 8&ordm; VOTOS POR ELECTOR: </span><span>Los vecinos podr&aacute;n votar hasta 3 (tres) proyectos tildando el casillero de aquellos que son de su preferencia. El voto de cada proyecto tendr&aacute; el mismo valor. En el caso de los votantes se&ntilde;alados en el art. 3 inc. c y d, s&oacute;lo podr&aacute;n votar por el proyecto de la Escuela o Entidad a la que est&aacute;n relacionados y, para que el voto sea v&aacute;lido, deber&aacute;n figurar en el padr&oacute;n especial correspondiente.</span></p>
+              <p><span>Art. 9&ordm; VOTOS EN BLANCO: </span><span>En caso de que en la boleta se tilde (elija) menos de 3 (tres) proyectos, la diferencia a ese n&uacute;mero se consideran votos en blanco. </span></p>
               <p><span></span></p>
-              <div className="ejemplo">
-                <h4>Ejemplo</h4>
-                <p><span></span></p>
-                <p>Supongamos, como de hecho existe en más de un barrio, que hay más de 1 proyecto para escuelas provinciales:</p>
-                <ul>
-                  <li>Proyecto A para Escuela Pública Provincial 1 por $ 1.500.000</li>
-                  <li>Proyecto B para Escuela Pública Provincial 2 por $ 2.000.000</li>
-                  <li>Proyecto C para Escuela Pública Provincial 3 por $ 850.000</li>
-                </ul>
-                <p>Y que el Presupuesto para el Barrio que actúa como límite total es de $ 8.500.000 en general para todos los proyectos y con el sublímite de $ 3.000.000 para la totalidad de los proyectos destinados a escuelas provinciales y el tope de $2.000.000 por escuela.</p>
-                <p><span></span></p>
-                <p>Y que el resultado de la votación final de los vecinos sea la siguiente de mayor a menor cantidad de votos sea:</p>
-                <ol>
-                  <li>690 votos: Proyecto C para Escuela Provincial 3 por $ 850.000 <span className="underline">(ENTRA EN EL SUBLÍMITE ESCUELAS PROVINCIALES, SE HACE)</span></li>
-                  <li>630 votos: Proyecto A para Escuela Provincial 1 $ 1.500.000 <span className="underline">(ENTRA EN EL SUBLÍMITE ESCUELAS PROVINCIALES, SE HACE)</span></li>
-                  <li>480 votos: Proyecto B para Escuela Provincial 2 $ 2.000.000 <span className="underline">(EXCEDE EL SUBLÍMITE ESCUELAS PROVINCIALES, NO SE HACE)</span></li>
-                  <li>350 votos: Mejoras y equipamiento para el Jardín Maternal Municipal N° X $1.250.000</li>
-                  <li>330 votos: Instalación de un ascensor para la Sociedad de Fomento XX $2.500.000</li>
-                  <li>325 votos: Iluminación de la cancha de fútbol de la Sociedad de Fomento ZZ $900.000</li>
-                  <li>315 votos: Pintura interior para la Fundación XX $650.000</li>
-                  <li>310 votos: Cámaras de vigilancia urbana $ 700.000</li>
-                  <li>280 votos: Equipamiento para Centro de Capacitación Municipal $ 250.000 <span className="underline">(EXCEDE LÍMITE DEL BARRIO, NO SE HACE)</span></li>
-                  <li>270 votos: Reducidores de velocidad en varios puntos $ 100.000</li>
-                  <li>255 votos: Mejoras en iluminación $ 280.000 <span className="underline">(EXCEDE LÍMITE DEL BARRIO, NO SE HACE)</span></li>
-                </ol>
-                <p><span></span></p>
-                <p><span className="underline">Hasta acá los proyectos agotan el límite barrial de $ 8.500.000</span></p>
-              </div>
-              <p><span></span></p>
-              <p><span className="articulo">Art. 18° PROYECTOS EXCLUYENTES:</span> En los casos de los barrios que en sus boletas presenten 2 (dos) opciones para instalar cámaras de vigilancia urbana, se realizará sólo uno de los proyectos: el que obtenga mayor cantidad de votos.</p>
-              <p><span className="articulo">Art. 19° PROYECTOS NO ELEGIDOS:</span> Los proyectos que no resulten elegidos podrán volver a ponerse en consideración al año siguiente y deberán volver a pasar por el proceso de análisis de factibilidad y por la votación.</p>
-              <p><span className="articulo">Art. 20° La Subsecretaría de Participación Ciudadana es autoridad para la interpretación del presente reglamento.</span></p>
-              <h4 className="underline">Anexo 1 - Partidas presupuestarias propuestas para 2018 por barrio</h4>
-              <p><span></span></p>
-              <table className="tabla-presupuestos">
-                <tbody>
-                  <tr>
-                    <td>
-                      CARAPACHAY
-                    </td>
-                    <td>
-                      $ 6.000.000
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      FLORIDA ESTE
-                    </td>
-                    <td>
-                      $ 8.500.000
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      FLORIDA OESTE
-                    </td>
-                    <td>
-                      $ 7.166.666
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      LA LUCILA
-                    </td>
-                    <td>
-                      $ 6.000.000
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      MUNRO
-                    </td>
-                    <td>
-                      $ 8.500.000
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      OLIVOS
-                    </td>
-                    <td>
-                      $ 8.500.000
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      VICENTE LÓPEZ
-                    </td>
-                    <td>
-                      $ 7.166.666
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      VILLA ADELINA
-                    </td>
-                    <td>
-                      $ 6.000.000
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      VILLA MARTELLI
-                    </td>
-                    <td>
-                      $ 7.166.666
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Total
-                    </td>
-                    <td>
-                      <strong>$65.000.000</strong>
-                    </td>
-                  </tr>
-                </tbody>
+              <p><span>Art. 10&ordm; VOTOS NULOS: </span><span>Al momento del escrutinio, se considerar&aacute;n nulos:</span></p>
+              <ol start="1">
+                  <li><span>todos los votos de una persona que hubiese votado utilizando m&aacute;s de una boleta para un mismo barrio</span></li>
+                  <li><span>todos los votos de una persona que hubiese votado por m&aacute;s de tres proyectos en la misma boleta</span></li>
+                  <li><span>todos los votos de una persona que no sea vecina del barrio y que no haya sido incluida en ning&uacute;n padr&oacute;n especial de escuela o entidad, de acuerdo a lo establecido en los art&iacute;culos 11 y 12</span></li>
+                  <li><span>todos los votos de una persona inscripta en el padr&oacute;n especial de una escuela o entidad mencionado en los art. 11 y 12 que hubiese votado por otro proyecto que no sea el de la Escuela o Entidad con la que est&aacute; vinculado</span></li>
+              </ol>
+              <p><span>Art. 11&ordm; PROYECTOS DE ENTIDADES EDUCATIVAS P&Uacute;BLICAS PROVINCIALES Y MUNICIPALES &ndash; PADR&Oacute;N ESPECIAL:</span><span>&nbsp;En el caso de los proyectos de las escuelas p&uacute;blicas provinciales y municipales, las autoridades de las mismas deber&aacute;n elaborar un padr&oacute;n &nbsp;que incluya a los alumnos mayores de 16 a&ntilde;os (cumplidos al 7 de Octubre de 2018) y a los padres o encargados de los alumnos menores de 16 a&ntilde;os (un adulto por alumno) que no se domicilien en el barrio donde se encuentra la escuela. El listado deber&aacute; contener por orden alfab&eacute;tico: apellido y nombre, n&uacute;mero de documento, correo electr&oacute;nico, apellido y nombre del alumno con el cual posee el v&iacute;nculo. Deber&aacute; estar en formato Excel (seg&uacute;n el modelo que se indicar&aacute;) y ser enviado a </span><span><a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a></span><span>&nbsp;antes del 24 de septiembre de 2018. Los votos de las personas que no sean vecinos del barrio y que no hayan sido incluidas en este padr&oacute;n especial ser&aacute;n considerados nulos.</span></p>
+              <p><span>Art. 12&ordm; PROYECTOS DE ENTIDADES INTERMEDIAS &ndash; PADR&Oacute;N ESPECIAL: </span><span>En el caso de proyectos de entidades las autoridades de las mismas deber&aacute;n elaborar un padr&oacute;n que incluya a directivos, asociados e inscriptos en actividades y talleres brindados por la entidad. En todos los casos mencionados, solo deber&aacute;n incluirse aquellas personas que no tengan domicilio particular o laboral en el barrio. El listado deber&aacute; contener por orden alfab&eacute;tico: apellido y nombre, n&uacute;mero de documento, correo electr&oacute;nico, tipo de participaci&oacute;n (directivo, socio, alumno). Deber&aacute; estar en formato Excel (seg&uacute;n el modelo que se indicar&aacute;) y ser enviado a </span><span><a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a></span><span>&nbsp;antes del 24 de septiembre de 2018. Los votos de las personas que no sean vecinos del barrio y que no hayan sido incluidas en este padr&oacute;n especial ser&aacute;n considerados nulos.</span></p>
+              <p><span>Art. 13&ordm; PROYECTOS DE ENTIDADES CON ACTIVIDAD EN M&Aacute;S DE UN BARRIO DEL MUNICIPIO:</span><span>&nbsp;Las entidades que desarrollen sus actividades en m&aacute;s de un barrio del Partido, podr&aacute;n presentar hasta un m&aacute;ximo de 2 (dos) proyectos, eligiendo 2 (dos) barrios en los que desarrollen actividades para presentarlos.</span></p>
+              <p><span>Art. 14&ordm; EJECUCI&Oacute;N DE PROYECTOS &ndash; PRESUPUESTO: </span><span>Cada proyecto sujeto a votaci&oacute;n tiene un enunciado o t&iacute;tulo y un presupuesto asignado (que es un monto estimado de acuerdo al proyecto en cuesti&oacute;n). Los proyectos que resulten electos se ejecutan aplicando fondos hasta el monto del presupuesto que tienen asignado, siendo el enunciado o t&iacute;tulo del proyecto una referencia general del mismo. En el caso de instituciones educativas y/o entidades (sociedades de fomento, clubes, asociaciones civiles, etc.) las autoridades de las mismas determinar&aacute;n (por escrito) el orden de prioridades de los componentes o partes de su proyecto al efecto de la aplicaci&oacute;n del monto asignado al referido proyecto. </span></p>
+              <p><span>Art. 15&ordm; AUTORIDADES DE MESA &ndash; FISCALES:</span><span>&nbsp;Las autoridades de los puntos de votaci&oacute;n ser&aacute;n designadas por la Subsecretar&iacute;a. Podr&aacute;n participar como auxiliares de autoridades de mesa y como veedores del proceso electoral vecinos y miembros de entidades de cada uno de los nueve barrios.</span></p>
+              <p><span>Art. 16&ordm; ESCRUTINIO: </span><span>El escrutinio de los votos de los nueve barrios se realizar&aacute; los d&iacute;as </span><span>8, 9 y 10 de octubre de 2018</span><span>&nbsp;</span><span>a partir de las 10 hs</span><span>. en lugar a designar por la Subsecretar&iacute;a. Podr&aacute;n ser veedores del proceso de escrutinio los vecinos y representantes de instituciones y escuelas, para lo cual deber&aacute;n informarlo antes del mi&eacute;rcoles 3 de octubre de 2018 por correo electr&oacute;nico a </span><span><a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a></span><span>&nbsp;o personalmente en las oficinas de la Subsecretar&iacute;a. La Subsecretar&iacute;a podr&aacute; extender y/o modificar las fechas y horario del escrutinio.</span></p>
+              <p><span>Art. 17&ordm; SUBL&Iacute;MITE BARRIAL APLICADO A LOS PROYECTOS DE ESTABLECIMIENTOS EDUCATIVOS PUBLICOS PROVINCIALES: </span><span>En 2018, se incluye en el Presupuesto Participativo una suma de hasta $3.000.000 (pesos tres millones) por barrio y de hasta $2.000.000 (pesos dos millones) por escuela, para ser destinada a mejoras edilicias o de equipamiento en establecimientos educativos p&uacute;blicos dependientes de la Provincia de Buenos Aires. Para ser realizados, estos proyectos tendr&aacute;n que ganar esa prioridad por el voto en id&eacute;ntica condici&oacute;n que el resto de los proyectos del barrio.</span></p>
+              <p><span>Art. 18&ordm; PROYECTO ELEGIDOS PARA SER EJECUTADOS: </span><span>Los proyectos elegidos para ser ejecutados en 2019 ser&aacute;n aquellos que en cada barrio por cantidad de votos recibidos cubran el total del presupuesto asignado al barrio. En el anexo 1 se encuentran los montos asignados a cada barrio. Puede ocurrir que por orden de &nbsp;prioridad de votos, un proyecto supere por presupuesto el monto total establecido &nbsp;para el barrio; en ese caso se pasar&aacute; al proyecto que siga en cantidad de votos hasta agotar el monto asignado al barrio.</span></p>
+              <p><span>Ejemplo: El Barrio A tiene un monto asignado $ 9.000.000 y el resultado de la votaci&oacute;n determin&oacute; el siguiente orden:</span></p>
+              <a></a><a></a>
+              <table>
+                  <tbody>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>910 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Escuela Prov. 4. Refacciones en ba&ntilde;os</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>2.000.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Se va a ejecutar </span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>895 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Club Atl&eacute;tico AA. Remodelaci&oacute;n de vestuario </span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>3.000.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Se va a ejecutar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>878 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Jard&iacute;n Maternal Municipal 19. Ba&ntilde;o para personas con discapacidad</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>1.500.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Se va a ejecutar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>800 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Soc. Fom. EE. Refacci&oacute;n en Buffet</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>&nbsp;400.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Se va a ejecutar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>720 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Escuela Prov. 98. Reparaci&oacute;n pisos aulas</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>1.500.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>No se ejecuta porque supera el monto l&iacute;mite para Escuelas Provinciales</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>690 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>C&aacute;maras de seguridad</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>4.500.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>No se ejecuta porque supera el monto asignado al barrio</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>665 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Escuela Prov. 123. Pintura gral.</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>&nbsp;950.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Se va a ejecutar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>530 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Centro de Jubilados FFF. Reformas en el SUM</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>&nbsp;400.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Se va a ejecutar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>500 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Estac. para personas con discapacidad en &hellip;</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>730.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Se va a ejecutar</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>325 votos</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Campa&ntilde;a para promover el reciclado en. . . . .</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>150.000</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>No se ejecuta porque supera el monto asignado al Barrio</span></p>
+                        </td>
+                    </tr>
+                  </tbody>
               </table>
-
+              <p><span></span></p>
+              <p><span>Art. 19&ordm;: </span><span>La Subsecretar&iacute;a de Participaci&oacute;n Ciudadana es autoridad para la interpretaci&oacute;n del presente reglamento.</span></p>
+              <p><span>ANEXO 1 &ndash; Partidas asignadas por barrio (presupuesto 2019)</span></p>
+              <p><span></span></p>
+              <a></a><a></a>
+              <table>
+                  <tbody>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>OLIVOS</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 9.833.333 </span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>MUNRO</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 9.833.333</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>FLORIDA ESTE</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 9.833.333</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>VILLA MARTELLI</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 8.266.666</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>FLORIDA OESTE</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 8.266.666</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>VICENTE L&Oacute;PEZ</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 8.266.666</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>CARAPACHAY</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 6.900.000</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>VILLA ADELINA</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 6.900.000</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>LA LUCILA</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 6.900.000</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" rowspan="1">
+                          <p><span>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                        </td>
+                        <td colspan="1" rowspan="1">
+                          <p><span>$ 75.000.000</span></p>
+                        </td>
+                    </tr>
+                  </tbody>
+              </table>
             </div>
           </Anchor>
           <Jump goTop={this.goTop} />
