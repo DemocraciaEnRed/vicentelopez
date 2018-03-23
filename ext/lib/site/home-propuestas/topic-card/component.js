@@ -11,7 +11,7 @@ export default ({ topic, onVote }) => (
           style={{
             backgroundImage: `url(${topic.owner.avatar})`
           }}></div>
-        <span>{topic.owner.fullName}</span>
+        <span>{topic.attrs.nombre}</span>
         <span className='date'>
           {moment(topic.createdAt).format('D/M/YY')}
         </span>

@@ -132,7 +132,7 @@ export default class Page extends Component {
             </article>
 
             <article className="seccion-datos infogram">
-              <h3>Ejecución del Presupuesto Participativo 2016-2017</h3>
+              <h3 className='h3-tittle-spacing'>Ejecución % del Presupuesto por área temática por año</h3>
               <figure className="graph-box">
                 <iframe
                   src="https://e.infogram.com/58c318ca-86b9-4d29-8793-8dc412551f54?src=embed"

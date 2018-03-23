@@ -50,6 +50,7 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
           Mandá tu propuesta
         </a>
       </div>
+      <span className='alert-duedate'>*Tenés tiempo hasta el 31 de mayo inclusive.</span>
     </div>
   </div>
 )

@@ -27,7 +27,7 @@ const { isCitizenOnProposal, isAdminOnProposal } = require('../proposals')
   const originalCanVote = topicPrivileges.canVote
 
   topicPrivileges.canVote = (forum, user, topic) => {
-    if (topic.attrs && topic.attrs.state === 'rechazado') return false
+    if (topic.attrs && topic.attrs.state === 'no-factible') return false
 
     return originalCanVote(forum, user, topic)
   }
@@ -35,7 +35,7 @@ const { isCitizenOnProposal, isAdminOnProposal } = require('../proposals')
   const originalCanComment = topicPrivileges.canComment
 
   topicPrivileges.canComment = (forum, user, topic) => {
-    if (topic.attrs && topic.attrs.state === 'rechazado') return false
+    if (topic.attrs && topic.attrs.state === 'no-factible') return false
 
     return originalCanComment(forum, user, topic)
   }
