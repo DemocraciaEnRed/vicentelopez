@@ -15,17 +15,17 @@
             "title" : "Factible"
         }, 
         {
-            "name" : "rechazado", 
-            "title" : "Rechazado"
+            "name" : "no-factible", 
+            "title" : "No factible"
         }
     ]
   }, 
   {
     "name" : "admin-comment", 
     "title" : "Comentario del Moderador", 
-    "description" : "Escribir aquí un comentario en el caso que se cambie el estado a \"Factible\" o \"Rechazado\"", 
+    "description" : "Escribir aquí un comentario en el caso que se cambie el estado a \"Factible\" o \"No factible\"", 
     "mandatory" : true, 
-    "kind" : "String"
+    "kind" : "LongString"
   },
   {
       "name" : "nombre", 

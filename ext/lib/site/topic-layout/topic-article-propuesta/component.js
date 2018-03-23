@@ -70,6 +70,26 @@ class TopicArticle extends Component {
     return barrioName
   }
 
+  getEstado (name) {
+    const estados = [
+      {
+          "name" : "pendiente", 
+          "title" : "Pendiente"
+      }, 
+      {
+          "name" : "factible", 
+          "title" : "Factible"
+      }, 
+      {
+          "name" : "no-factible", 
+          "title" : "No factible"
+      }
+    ]
+    const estado = estados.find(e => e.name === name)
+    if (!estado) return 'Pendiente'
+    return estado.title.toLowerCase()
+  }
+
   twitText = () => {
     switch (this.props.topic.attrs && this.props.topic.attrs.state) {
       case 'pendiente':
@@ -135,7 +155,7 @@ class TopicArticle extends Component {
             mediaTitle={topic.mediaTitle} />
 
         </div>
-        <div className='topic-article-status'>Proyecto {topic.attrs.state} </div>
+        <div className='topic-article-status'>Proyecto {this.getEstado(topic.attrs.state)} </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
@@ -192,17 +212,15 @@ class TopicArticle extends Component {
         { (user.state.value && topic.owner.id === user.state.value.id) &&
               (
                 <p className='alert alert-info alert-propuesta'>
-                  El estado de ésta propuesta fue cambiado a {topic.attrs.state}, por lo tanto ya no puede ser editada por su autor/a.
+                  El estado de ésta propuesta fue cambiado a {this.getEstado(topic.attrs.state)}, por lo tanto ya no puede ser editada por su autor/a.
                 </p>
               ) }
 
         {
-          (topic.attrs.state && topic.attrs.state === 'no factible') &&
+          (topic.attrs.state && topic.attrs.state === 'no-factible') &&
               (
                 <div className='alert alert-info alert-propuesta' role='alert'>
-                  <span>Esta propuesta ha sido rechazada por la Municipalidad de Vicente Lopez.</span>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti dolorem cumque, delectus placeat nulla. Aspernatur fugit asperiores eum placeat, incidunt omnis alias enim rem, iste soluta aut doloribus molestias.</p>
-                  <p>Subsecretaría de Participación Ciudadana</p>
+                  <p>{topic.attrs['admin-comment']}</p>
                 </div>)}
 
         {
