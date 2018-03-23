@@ -80,10 +80,56 @@ export default class Page extends Component {
               </div>
               <div className="fila faq">
                 <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>
-                <p>’La partida de $75 millones, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 36 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 39 millones se distribuirán según la cantidad de habitantes de cada barrio.</p>
+                <table className='table tabla-reuniones alinear'>
+                  <tbody>
+                    <tr>
+                      <td>OLIVOS</td>
+                      <td>$ 9.833.333</td>
+                    </tr>
+                    <tr>
+                      <td>MUNRO</td>
+                      <td>$ 9.833.333</td>
+                    </tr>
+                    <tr>
+                      <td>FLORIDA ESTE</td>
+                      <td>$ 9.833.333</td>
+                    </tr>
+                    <tr>
+                      <td>VILLA MARTELLI</td>
+                      <td>$ 8.266.666</td>
+                    </tr>
+                    <tr>
+                      <td>FLORIDA OESTE</td>
+                      <td>$ 8.266.666</td>
+                    </tr>
+                    <tr>
+                      <td>VICENTE LÓPEZ</td>
+                      <td>$ 8.266.666</td>
+                    </tr>
+                    <tr>
+                      <td>CARAPACHAY</td>
+                      <td>$ 6.900.000</td>
+                    </tr>
+                    <tr>
+                      <td>VILLA ADELINA</td>
+                      <td>$ 6.900.000</td>
+                    </tr>
+                    <tr>
+                      <td>LA LUCILA</td>
+                      <td>$ 6.900.000</td>
+                    </tr>
+                    <tr>
+                      <td>TOTAL</td>
+                      <td>$ 75.000.000</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p className='p-padding'>La partida de $75 millones, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 36 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 39 millones se distribuirán según la cantidad de habitantes de cada barrio.</p>
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
                 <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{ display: 'inline' }} to='/formulario-propuesta'>aquí</Link>
                 </p>
+                <p>Tenés tiempo hasta el 31 de mayo inclusive.</p>
                 <h3>¿CÓMO SE DECIDE QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
                 <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasa a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se termina de definir la factibilidad del proyecto y los costos estimados del mismo.</p>
                 <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
