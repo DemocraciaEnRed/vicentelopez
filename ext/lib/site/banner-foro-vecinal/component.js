@@ -3,6 +3,8 @@ import React from 'react'
 export default function BannerForoVecinal (props) {
   return (
     <section className='container-fluid banner-fv'>
+            <div className='blue-background'></div>
+
       <div className='banner'>
         {
         Math.random(1) > 0.5 ? (
