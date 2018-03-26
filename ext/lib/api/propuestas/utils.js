@@ -27,7 +27,7 @@ exports.findPropuestasForum = (req, res, next) => {
 
 const queryTopics = (opts) => {
   const {
-    state = 'pending',
+    state,
     forum,
     tags,
     barrio
