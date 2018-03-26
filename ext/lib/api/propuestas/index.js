@@ -22,8 +22,8 @@ validate({
     },
     state: {
       type: 'string',
-      enum: ['pending', 'accepted', 'rejected'],
-      default: 'pending'
+      enum: ['pendiente', 'factible', 'no-factible'],
+      default: 'pendiente'
     },
     barrio: {
       type: 'string',
