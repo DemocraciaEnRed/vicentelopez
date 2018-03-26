@@ -40,10 +40,8 @@ utils.parseTags,
 utils.findPropuestasForum,
 middlewares.forums.privileges.canView,
 (req, res, next) => {
-  const opts = {
-    forum: req.forum,
-    ...req.query
-  }
+  let opts = req.query
+  opts.forum = req.forum
 
   Promise.all([
     utils.findTopics(opts),
