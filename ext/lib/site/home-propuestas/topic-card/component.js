@@ -6,11 +6,6 @@ export default ({ topic, onVote }) => (
   <div className='ext-topic-card ideas-topic-card'>
     <div className='topic-card-info'>
       <div className='topic-creation'>
-        <div
-          className='avatar'
-          style={{
-            backgroundImage: `url(${topic.owner.avatar})`
-          }}></div>
         <span>{topic.attrs.nombre}</span>
         <span className='date'>
           {moment(topic.createdAt).format('D/M/YY')}
