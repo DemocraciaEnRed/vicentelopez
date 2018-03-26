@@ -1,20 +1,20 @@
 import React from 'react'
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 
 export default function ThumbsVoto (props) {
-
   return (
     <section className="thumbs info-landing">
       <div className="container-fluid">
-        <div className="row cont">
+        <div className="row cont fondo-azul">
           <div className="subtitulo">
             <h2>
-              Proponé ideas y soluciones para tu barrio.
+              Presupuesto participativo 2008
             </h2>
+            <h3>Envianos tu propuesta para la votación de este año. Tenés tiempo hasta el 31 de mayo inclusive.</h3>
             <Link
               to='/formulario-propuesta'
-              className="boton-azul">
-              Mandá tu propuesta
+              className="boton-azul boton-blanco">
+              Mandá tu idea
             </Link>
           </div>
         </div>
@@ -51,20 +51,19 @@ export default function ThumbsVoto (props) {
               ¿Cómo se elaboran los proyectos?
             </h2>
             <p className="donde-voto-cont">
-            En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{display: 'inline'}} to='/formulario-propuesta'>aquí</Link>
+            En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{ display: 'inline' }} to='/formulario-propuesta'>aquí</Link>
             </p>
           </div>
-
 
         </div>
 
         <div
           className='row'>
-            <div className='cont-boton-azul'>
-                <Link to='/s/acerca-de' className="boton-azul">
+          <div className='cont-boton-azul'>
+            <Link to='/s/acerca-de' className="boton-azul">
                     Más información
-                </Link>
-            </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
