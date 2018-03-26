@@ -46,7 +46,8 @@ const queryTopics = (opts) => {
 }
 
 const sortMap = {
-  newest: '-createdAt'
+  newest: '-createdAt',
+  popular: '-action.count'
 }
 
 exports.findTopics = (opts) => {
