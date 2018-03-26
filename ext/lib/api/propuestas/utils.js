@@ -40,7 +40,7 @@ const queryTopics = (opts) => {
   }
 
   if (barrio) query['attrs.barrio'] = barrio
-  if (tags) query.tags = { $in: tags }
+  if (tags.length > 0) query.tags = { $in: tags }
 
   return api.topics.find().where(query)
 }
