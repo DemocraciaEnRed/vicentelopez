@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "eslint": "3",
-    "eslint-config-democracyos": "1"
+    "eslint-config-democracyos": "1.2.1"
   }
 }

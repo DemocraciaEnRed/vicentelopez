@@ -8,7 +8,7 @@ export default function ThumbsVoto (props) {
         <div className="row cont fondo-azul">
           <div className="subtitulo">
             <h2>
-              Presupuesto participativo 2008
+              Presupuesto Participativo 2018
             </h2>
             <h3>Envianos tu propuesta para la votación de este año. Tenés tiempo hasta el 31 de mayo inclusive.</h3>
             <Link

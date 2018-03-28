@@ -12,12 +12,13 @@ app.all('*', function apiLog (req, res, next) {
 })
 
 app.use(require('./feed'))
+app.use(require('./propuestas'))
 
 app.use(function validationErrorHandler (err, req, res, next) {
   if (res.headersSent) return next(err)
   if (!(err instanceof validate.SchemaValidationError)) return next(err)
 
-  res.json(400, {
+  res.status(400).json({
     status: 400,
     error: {
       code: 'INVALID_REQUEST_PARAMS',
@@ -40,7 +41,7 @@ app.use(function apiError (err, req, res, next) {
     log(`ERROR ${method} ${req.url}`, err)
   }
 
-  res.json(status, {
+  res.status(status).json({
     status: status,
     error: {
       code: code,
