@@ -5,7 +5,7 @@ export default class Page extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      anioDeBoton: '2012',
+      anio: '2012',
       barrio: 'Villa Marteli'
     // coloca un estado inicial del mensaje
     }
@@ -23,6 +23,7 @@ export default class Page extends Component {
       const { target: { value, name } } = evt
 
       this.setState({ [name]: value })
+      console.log(this.state.barrio)
     }
 
     render () {
@@ -56,18 +57,17 @@ export default class Page extends Component {
               </select>
 
             </div>
+            <div className='timeline-line'></div>
             <div className='timeline'>
-              <button onClick={this.changeAnio('2012')} >2012</button>
-              <button onClick={this.changeAnio('2013')} >2013</button>
-              <button onClick={this.changeAnio('2014')} >2014</button>
-              <button onClick={this.changeAnio('2015')} >2015</button>
-              <button onClick={this.changeAnio('2016')} >2016</button>
-              <button onClick={this.changeAnio('2017')} >2017</button>
-              <button onClick={this.changeAnio('2018')} >2018</button>
-
-              <div className='timeline-line'> { this.state.anio} { this.state.barrio}</div>
-
+              <button className='pointer is-active' onClick={this.changeAnio('2012')} ></button>
+              <button className='pointer' onClick={this.changeAnio('2013')} ></button>
+              <button className='pointer' onClick={this.changeAnio('2014')} ></button>
+              <button className='pointer' onClick={this.changeAnio('2015')} ></button>
+              <button className='pointer' onClick={this.changeAnio('2016')} ></button>
+              <button className='pointer' onClick={this.changeAnio('2017')} ></button>
+              <button className='pointer' onClick={this.changeAnio('2018')} ></button>
             </div>
+            <div className='padding'> { this.state.anio + this.state.barrio}</div>
 
             <div className='card'>
               <div className='navbar-seccion'>
