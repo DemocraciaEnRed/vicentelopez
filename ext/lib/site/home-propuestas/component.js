@@ -65,11 +65,33 @@ class HomePropuestas extends Component {
       forum: null,
       topics: null,
       tags: null,
-      filter: 'pop'
+      filter: 'pop',
+      barrio: ''
     }
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  componentDidMount = () => {
+  handleInputChange (evt) {
+    evt.preventDefault()
+    const { value, name } = evt.target
+    this.setState({
+      [name]: value,
+      page: 1
+    }, () => this.changeTopics())
+  }
+
+  changeTopics () {
+    this.fetchTopics(this.state.page)
+      .then((res) => {
+        this.setState(
+          { topics: res
+          }
+        )
+      })
+      .catch((err) => { console.error(err) })
+  }
+
+  componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
     if (u.get('sort') === 'new') this.setState({ filter: 'new' })
     forumStore.findOneByName('propuestas')
@@ -79,11 +101,12 @@ class HomePropuestas extends Component {
 
         return Promise.all([
           forum,
-          this.fetchTopics(this.state.page, forum.id),
+          this.fetchTopics(this.state.page),
           tags
         ])
       })
       .then(([forum, topics, tags]) => {
+        console.log(topics)
         this.setState({
           forum,
           topics: filter(this.state.filter, topics),
@@ -94,24 +117,24 @@ class HomePropuestas extends Component {
       .catch((err) => { throw err })
   }
 
-  fetchTopics = (page, forumId) => {
+  fetchTopics = (page) => {
     const query = {
-      forum: forumId,
-      page,
-      limit: 20,
-      sort: filters[this.state.filter].sort
+      sort: filters[this.state.filter].sort,
+      barrio: this.state.barrio
     }
 
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tag')) query.tag = u.get('tag')
 
-    return topicStore.findAll(query).then(([topics, pagination]) => topics)
+    return window.fetch(`/ext/api/propuestas?barrio=${this.state.barrio}`)
+      .then((res) => res.json())
+      .then((res) => res.results.topics)
   }
 
   paginateForward = () => {
     const page = this.state.page + 1
 
-    this.fetchTopics(page, this.state.forum.id)
+    this.fetchTopics(page)
       .then((topics) => {
         this.setState({
           topics: this.state.topics.concat(topics),
@@ -124,7 +147,7 @@ class HomePropuestas extends Component {
 
   handleFilterChange = (key) => {
     this.setState({ filter: key }, () => {
-      this.fetchTopics(1, this.state.forum.id)
+      this.fetchTopics(1)
         .then((topics) => {
           this.setState({
             topics,
@@ -163,6 +186,31 @@ class HomePropuestas extends Component {
           activeFilter={this.state.filter}
           onChangeFilter={this.handleFilterChange} />
         <div className='container topics-container'>
+          <div className='row'>
+            <div className='col-md-4 push-md-8 etiquetas'>
+              <div className='form-group'>
+                <label className='required' htmlFor='barrio'>
+                    Barrio
+                </label>
+                <select
+                  className='form-control'
+                  required
+                  name='barrio'
+                  value={this.state['barrio']}
+                  onChange={this.handleInputChange}>
+                  <option value=''>Seleccione un barrio</option>
+                  <option value='villa-martelli'>Villa Marteli</option>
+                  <option value='villa-adelina'>Villa Adelina</option>
+                  <option value='vicente-lopez'>Vicente Lopez</option>
+                  <option value='olivos'>Olivos</option>
+                  <option value='munro'>Munro</option>
+                  <option value='la-lucila'>La Lucila</option>
+                  <option value='florida-oeste'>Florida Oeste</option>
+                  <option value='florida-este'>Florida Este</option>
+                  <option value='carapachay'>Carapachay</option>
+                </select>
+              </div>
+            </div></div>
           <div className='row'>
             <div className='col-md-4 push-md-8 etiquetas'>
               <h3>Temas</h3>
