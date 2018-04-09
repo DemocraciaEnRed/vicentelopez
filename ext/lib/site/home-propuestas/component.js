@@ -96,7 +96,7 @@ class HomePropuestas extends Component {
     if (u.get('sort') === 'new') this.setState({ filter: 'new' })
     forumStore.findOneByName('propuestas')
       .then((forum) => {
-        const tags = window.fetch(`/api/v2/forums/${forum.id}/tags`)
+        const tags = window.fetch(`ext/api/v2/topics/tags`)
           .then((res) => res.json())
 
         return Promise.all([
@@ -106,7 +106,6 @@ class HomePropuestas extends Component {
         ])
       })
       .then(([forum, topics, tags]) => {
-        console.log(topics)
         this.setState({
           forum,
           topics: filter(this.state.filter, topics),
@@ -119,14 +118,14 @@ class HomePropuestas extends Component {
 
   fetchTopics = (page) => {
     const query = {
-      sort: filters[this.state.filter].sort,
+      sort: this.state.filter === 'new' ? 'newest' : 'popular',
       barrio: this.state.barrio
     }
 
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tag')) query.tag = u.get('tag')
+    return window.fetch(`/ext/api/propuestas?barrio=${query.barrio}&sort=${query.sort}`)
 
-    return window.fetch(`/ext/api/propuestas?barrio=${this.state.barrio}`)
       .then((res) => res.json())
       .then((res) => res.results.topics)
   }
@@ -154,7 +153,7 @@ class HomePropuestas extends Component {
             noMore: topics.length === 0 || topics.length < 20,
             page: 1
           })
-        })
+        }, () => console.log('pase'))
         .catch((err) => { console.error(err) })
     })
   }
