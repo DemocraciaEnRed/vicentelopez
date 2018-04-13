@@ -110,8 +110,8 @@ class HomePropuestas extends Component {
         this.setState({
           forum,
           topics: filter(this.state.filter, topics),
-          tags: tags.results.tags.filter((tag) => tag.count > 1)
-            .map((tag) => tag.tag)
+          tags: tags.tags.filter((tag) => tag.count > 1)
+            .map((tag) => tag.text)
         })
       })
       .catch((err) => { throw err })
@@ -179,7 +179,7 @@ class HomePropuestas extends Component {
 
   render () {
     const { forum, topics, tags } = this.state
-
+    console.log(this.state.tags)
     return (
       <div className='ext-home-ideas'>
         <ListTools
@@ -188,33 +188,36 @@ class HomePropuestas extends Component {
         <div className='container topics-container'>
           <div className='row'>
             <div className='col-md-4 push-md-8 etiquetas'>
-              <div className='form-group'>
-                <label className='required' htmlFor='barrio'>
-                    Barrio
-                </label>
-                <select
-                  className='form-control'
-                  required
-                  name='barrio'
-                  value={this.state['barrio']}
-                  onChange={this.handleInputChange}>
-                  <option value=''>Seleccione un barrio</option>
-                  <option value='villa-martelli'>Villa Marteli</option>
-                  <option value='villa-adelina'>Villa Adelina</option>
-                  <option value='vicente-lopez'>Vicente Lopez</option>
-                  <option value='olivos'>Olivos</option>
-                  <option value='munro'>Munro</option>
-                  <option value='la-lucila'>La Lucila</option>
-                  <option value='florida-oeste'>Florida Oeste</option>
-                  <option value='florida-este'>Florida Este</option>
-                  <option value='carapachay'>Carapachay</option>
-                </select>
+
+              <div className='row'>
+                <div className='col-md-12'>
+                  <div className='form-group'>
+                    <h3>Barrio</h3>
+                    <select
+                      className='form-control'
+                      required
+                      name='barrio'
+                      value={this.state['barrio']}
+                      onChange={this.handleInputChange}>
+                      <option value=''>Seleccione un barrio</option>
+                      <option value='villa-martelli'>Villa Marteli</option>
+                      <option value='villa-adelina'>Villa Adelina</option>
+                      <option value='vicente-lopez'>Vicente Lopez</option>
+                      <option value='olivos'>Olivos</option>
+                      <option value='munro'>Munro</option>
+                      <option value='la-lucila'>La Lucila</option>
+                      <option value='florida-oeste'>Florida Oeste</option>
+                      <option value='florida-este'>Florida Este</option>
+                      <option value='carapachay'>Carapachay</option>
+                    </select>
+                  </div>
+                </div>
+                <div className='col-md-12'>
+                  <h3>Temas</h3>
+                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
+                </div>
               </div>
-            </div></div>
-          <div className='row'>
-            <div className='col-md-4 push-md-8 etiquetas'>
-              <h3>Temas</h3>
-              {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
+
             </div>
             <div className='col-md-8 pull-md-4'>
               {topics && topics.length === 0 && (
