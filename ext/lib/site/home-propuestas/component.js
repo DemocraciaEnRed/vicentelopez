@@ -96,7 +96,8 @@ class HomePropuestas extends Component {
     if (u.get('sort') === 'new') this.setState({ filter: 'new' })
     forumStore.findOneByName('propuestas')
       .then((forum) => {
-        const tags = window.fetch(`ext/api/v2/topics/tags`)
+        console.log(forum)
+        const tags = window.fetch(`/api/v2/topics/tags?forum=${forum.id}`)
           .then((res) => res.json())
 
         return Promise.all([
