@@ -1,6 +1,7 @@
 const debug = require('debug')
 const express = require('express')
 const validate = require('lib/api-v2/validate')
+const errorsMiddleware = require('./errors/middleware')
 
 const log = debug('democracyos:ext:api')
 
@@ -27,6 +28,8 @@ app.use(function validationErrorHandler (err, req, res, next) {
     }
   })
 })
+
+app.use(errorsMiddleware)
 
 app.use(function apiError (err, req, res, next) {
   if (res.headersSent) return next(err)

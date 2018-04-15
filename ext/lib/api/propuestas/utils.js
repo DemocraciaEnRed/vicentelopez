@@ -1,5 +1,6 @@
 const api = require('lib/api-v2/db-api')
 const topicScopes = require('lib/api-v2/db-api/topics/scopes')
+const { notFound } = require('../../errors')
 
 exports.parseTags = (req, res, next) => {
   req.query.tags = req.query.tags.split(',').filter((t) => !!t)
@@ -11,12 +12,7 @@ exports.findPropuestasForum = (req, res, next) => {
     .findOne()
     .exec()
     .then((forum) => {
-      if (!forum) {
-        const err = new Error('Forum "propuestas" not found.')
-        err.status = 404
-        err.code = 'FORUM_NOT_FOUND'
-        return next(err)
-      }
+      if (!forum) throw notFound('FORUM_NOT_FOUND')
 
       req.forum = forum
 
@@ -40,7 +36,7 @@ const queryTopics = (opts) => {
   }
 
   if (barrio) query['attrs.barrio'] = barrio
-  if (tags.length > 0) query.tags = { $in: tags }
+  if (tags && tags.length > 0) query.tags = { $in: tags }
 
   return api.topics.find().where(query)
 }
