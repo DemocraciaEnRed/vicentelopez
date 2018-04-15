@@ -7,8 +7,8 @@ exports.parseTags = (req, res, next) => {
   next()
 }
 
-exports.findPropuestasForum = (req, res, next) => {
-  api.forums.find({ name: 'propuestas' })
+exports.findForum = (req, res, next) => {
+  api.forums.find({ name: req.query.forumName })
     .findOne()
     .exec()
     .then((forum) => {
@@ -26,7 +26,8 @@ const queryTopics = (opts) => {
     state,
     forum,
     tags,
-    barrio
+    barrio,
+    ano
   } = opts
 
   const query = {
@@ -36,6 +37,7 @@ const queryTopics = (opts) => {
   }
 
   if (barrio) query['attrs.barrio'] = barrio
+  if (ano) query['attrs.ano'] = ano
   if (tags && tags.length > 0) query.tags = { $in: tags }
 
   return api.topics.find().where(query)
