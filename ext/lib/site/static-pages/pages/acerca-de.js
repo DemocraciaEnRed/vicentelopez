@@ -187,7 +187,7 @@ export default class Page extends Component {
                         </tr>
                         <tr>
                           <td>Vicente López</td>
-                          <td>Jueves 16 de abril</td>
+                          <td>Jueves 19 de abril</td>
                           <td>Colegio Saint Gregory</td>
                           <td>Melo 948</td>
                         </tr>

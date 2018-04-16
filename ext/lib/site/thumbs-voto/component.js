@@ -14,7 +14,7 @@ export default function ThumbsVoto (props) {
             <Link
               to='/formulario-propuesta'
               className="boton-azul boton-blanco">
-              Mandá tu idea
+              Mandá tu propuesta
             </Link>
           </div>
         </div>
