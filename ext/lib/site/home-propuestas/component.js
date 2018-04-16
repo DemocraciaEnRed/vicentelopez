@@ -65,21 +65,43 @@ class HomePropuestas extends Component {
       forum: null,
       topics: null,
       tags: null,
-      filter: 'pop'
+      filter: 'pop',
+      barrio: ''
     }
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  componentDidMount = () => {
+  handleInputChange (evt) {
+    evt.preventDefault()
+    const { value, name } = evt.target
+    this.setState({
+      [name]: value,
+      page: 1
+    }, () => this.changeTopics())
+  }
+
+  changeTopics () {
+    this.fetchTopics(this.state.page)
+      .then((res) => {
+        this.setState(
+          { topics: res
+          }
+        )
+      })
+      .catch((err) => { console.error(err) })
+  }
+
+  componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
     if (u.get('sort') === 'new') this.setState({ filter: 'new' })
     forumStore.findOneByName('propuestas')
       .then((forum) => {
-        const tags = window.fetch(`/api/v2/forums/${forum.id}/tags`)
+        const tags = window.fetch(`/api/v2/topics/tags?forum=${forum.id}`)
           .then((res) => res.json())
 
         return Promise.all([
           forum,
-          this.fetchTopics(this.state.page, forum.id),
+          this.fetchTopics(this.state.page),
           tags
         ])
       })
@@ -87,31 +109,34 @@ class HomePropuestas extends Component {
         this.setState({
           forum,
           topics: filter(this.state.filter, topics),
-          tags: tags.results.tags.filter((tag) => tag.count > 1)
-            .map((tag) => tag.tag)
+          tags: tags.tags.filter((tag) => tag.count > 1)
+            .map((tag) => tag.text)
         })
       })
       .catch((err) => { throw err })
   }
 
-  fetchTopics = (page, forumId) => {
+  fetchTopics = (page) => {
     const query = {
-      forum: forumId,
-      page,
-      limit: 20,
-      sort: filters[this.state.filter].sort
+      sort: this.state.filter === 'new' ? 'newest' : 'popular'
     }
-
     const u = new window.URLSearchParams(window.location.search)
-    if (u.has('tag')) query.tag = u.get('tag')
+    if (u.has('tags')) query.tags = u.get('tags')
+    if (this.state.barrio !== '') query.barrio = this.state.barrio
+    let queryToArray = Object.keys(query).map((key) => {
+      return `${key}=${query[key]}`
+    }).join('&')
 
-    return topicStore.findAll(query).then(([topics, pagination]) => topics)
+    return window.fetch(`/ext/api/propuestas?${queryToArray}`)
+
+      .then((res) => res.json())
+      .then((res) => res.results.topics)
   }
 
   paginateForward = () => {
     const page = this.state.page + 1
 
-    this.fetchTopics(page, this.state.forum.id)
+    this.fetchTopics(page)
       .then((topics) => {
         this.setState({
           topics: this.state.topics.concat(topics),
@@ -124,7 +149,7 @@ class HomePropuestas extends Component {
 
   handleFilterChange = (key) => {
     this.setState({ filter: key }, () => {
-      this.fetchTopics(1, this.state.forum.id)
+      this.fetchTopics(1)
         .then((topics) => {
           this.setState({
             topics,
@@ -156,7 +181,6 @@ class HomePropuestas extends Component {
 
   render () {
     const { forum, topics, tags } = this.state
-
     return (
       <div className='ext-home-ideas'>
         <ListTools
@@ -165,8 +189,36 @@ class HomePropuestas extends Component {
         <div className='container topics-container'>
           <div className='row'>
             <div className='col-md-4 push-md-8 etiquetas'>
-              <h3>Temas</h3>
-              {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
+
+              <div className='row'>
+                <div className='col-md-12'>
+                  <div className='form-group'>
+                    <h3>Barrio</h3>
+                    <select
+                      className='form-control'
+                      required
+                      name='barrio'
+                      value={this.state['barrio']}
+                      onChange={this.handleInputChange}>
+                      <option value=''>Seleccione un barrio</option>
+                      <option value='villa-martelli'>Villa Marteli</option>
+                      <option value='villa-adelina'>Villa Adelina</option>
+                      <option value='vicente-lopez'>Vicente Lopez</option>
+                      <option value='olivos'>Olivos</option>
+                      <option value='munro'>Munro</option>
+                      <option value='la-lucila'>La Lucila</option>
+                      <option value='florida-oeste'>Florida Oeste</option>
+                      <option value='florida-este'>Florida Este</option>
+                      <option value='carapachay'>Carapachay</option>
+                    </select>
+                  </div>
+                </div>
+                <div className='col-md-12'>
+                  <h3>Temas</h3>
+                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
+                </div>
+              </div>
+
             </div>
             <div className='col-md-8 pull-md-4'>
               {topics && topics.length === 0 && (
@@ -196,17 +248,16 @@ class HomePropuestas extends Component {
   }
 }
 
-const TagsList = tagsConnector(({ tags, forumName, without }) => {
+const TagsList = ({ tags, forumName, without }) => {
   const u = new window.URLSearchParams(window.location.search)
   if (without) tags = tags.filter((t) => !~without.indexOf(t))
-
   return tags && tags.length > 0 && (
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        let url = `${window.location.origin}/${forumName}?tag=${tag}`
+        let url = `${window.location.origin}/${forumName}?tags=${tag}`
 
-        if (u.has('tag') && u.get('tag') === tag) {
+        if (u.has('tags') && u.get('tags') === tag) {
           active = 'active'
           url = `${window.location.origin}/${forumName}`
         }
@@ -222,6 +273,6 @@ const TagsList = tagsConnector(({ tags, forumName, without }) => {
       })}
     </div>
   )
-})
+}
 
 export default userConnector(HomePropuestas)
