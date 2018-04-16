@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import t from 't-component'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 
@@ -33,7 +33,10 @@ export class Cause extends Component {
     if (this.state.showResults) return
 
     if (!this.props.user.state.fulfilled) {
-      return this.setState({ showLoginMessage: true })
+      return browserHistory.push({
+        pathname: '/signin',
+        query: { ref: window.location.pathname }
+      })
     }
 
     topicStore.vote(this.props.topic.id, 'support')
@@ -45,7 +48,7 @@ export class Cause extends Component {
 
     if (user.state.pending) return null
 
-    const { supported, showResults, showLoginMessage } = this.state
+    const { supported, showResults } = this.state
     if (user.state.fulfilled && !topic.privileges.canVote) return null
     return (
       <div className='topics-cause-propuesta'>
@@ -57,8 +60,9 @@ export class Cause extends Component {
             Te gusta
           </button>
         )}
-        {!showLoginMessage && !showResults && (
+        {!showResults && (
           <button
+            disabled={!topic.privileges.canVote}
             className='btn btn-primary'
             onClick={this.handleSupport}>
             &nbsp;
@@ -70,9 +74,6 @@ export class Cause extends Component {
           &nbsp;
           <span className='icon-like' />
         </div>
-        {this.state.showLoginMessage && (
-          <LoginMessage />
-        )}
         {user.state.fulfilled && !topic.privileges.canVote && (
           <p className='text-mute overlay-vote'>
             <span className='icon-lock' />
