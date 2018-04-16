@@ -22,11 +22,11 @@ export default ({ topic, onVote }) => (
         }
       </div>
       <h1 className='topic-card-title'>
-        <Link to={topic.url}>
+        <Link to={`/propuestas/topic/${topic.id}`}>
           {topic.mediaTitle}
         </Link>
         <p className='topic-card-description'>
-          <Link to={topic.url}>
+          <Link to={`/propuestas/topic/${topic.id}`}>
             {createClauses(topic)}
           </Link>
         </p>
