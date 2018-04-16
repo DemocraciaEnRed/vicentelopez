@@ -257,7 +257,7 @@ class FormularioPropuesta extends Component {
               value={this.state['barrio']}
               onChange={this.handleInputChange}>
               <option value=''>Seleccione un barrio</option>
-              <option value='villa-martelli'>Villa Marteli</option>
+              <option value='villa-martelli'>Villa Martelli</option>
               <option value='villa-adelina'>Villa Adelina</option>
               <option value='vicente-lopez'>Vicente Lopez</option>
               <option value='olivos'>Olivos</option>
