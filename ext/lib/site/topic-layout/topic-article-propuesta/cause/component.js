@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import t from 't-component'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 
@@ -24,8 +24,8 @@ export class Cause extends Component {
 
     return this.setState({
       showLoginMessage: false,
-      showResults: topic.closed || topic.currentUser.action.supported,
-      supported: topic.currentUser.action.supported
+      showResults: topic.closed || !!topic.voted,
+      supported: !!topic.voted
     })
   }
 
@@ -33,47 +33,52 @@ export class Cause extends Component {
     if (this.state.showResults) return
 
     if (!this.props.user.state.fulfilled) {
-      return this.setState({ showLoginMessage: true })
+      return browserHistory.push({
+        pathname: '/signin',
+        query: { ref: window.location.pathname }
+      })
     }
 
-    topicStore.support(this.props.topic.id)
+    topicStore.vote(this.props.topic.id, 'support')
       .catch((err) => { throw err })
   }
 
   render () {
-    if (this.props.user.state.pending) return null
+    const { user, topic } = this.props
 
-    const { user } = this.props
-    const { supported, showResults, showLoginMessage } = this.state
+    if (user.state.pending) return null
 
+    const { supported, showResults } = this.state
+    if (user.state.fulfilled && !topic.privileges.canVote) return null
     return (
-      <div className='topics-cause'>
+      <div className='topics-cause-propuesta'>
         {supported && (
           <button
             className='btn btn-primary'
             disabled='true'>
-            <i className='icon-heart' />
             &nbsp;
-            {t('topics.actions.cause.done')}
+            Te gusta
           </button>
         )}
-        {!showLoginMessage && !showResults && (
+        {!showResults && (
           <button
+            disabled={!topic.privileges.canVote}
             className='btn btn-primary'
             onClick={this.handleSupport}>
-            <i className='icon-heart' />
             &nbsp;
-            {t('topics.actions.cause.do')}
+            Me gusta
           </button>
         )}
-        {this.state.showLoginMessage && (
-          <LoginMessage />
-        )}
-        {user.state.fulfilled && !this.props.canVoteAndComment && (
+        <div className='likes-total'>
+          {topic.action.count}
+          &nbsp;
+          <span className='icon-like' />
+        </div>
+        {user.state.fulfilled && !topic.privileges.canVote && (
           <p className='text-mute overlay-vote'>
             <span className='icon-lock' />
             <span className='text'>
-              {t('privileges-alert.not-can-vote-and-comment')}
+              
             </span>
           </p>
         )}
