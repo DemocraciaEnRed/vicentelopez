@@ -46,9 +46,9 @@ export class Cause extends Component {
     if (user.state.pending) return null
 
     const { supported, showResults, showLoginMessage } = this.state
-
+    if (user.state.fulfilled && !topic.privileges.canVote) return null
     return (
-      <div className='topics-cause'>
+      <div className='topics-cause-propuesta'>
         {supported && (
           <button
             className='btn btn-primary'
@@ -77,7 +77,7 @@ export class Cause extends Component {
           <p className='text-mute overlay-vote'>
             <span className='icon-lock' />
             <span className='text'>
-              {t('privileges-alert.not-can-vote-and-comment')}
+              
             </span>
           </p>
         )}
