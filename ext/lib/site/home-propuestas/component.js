@@ -96,7 +96,6 @@ class HomePropuestas extends Component {
     if (u.get('sort') === 'new') this.setState({ filter: 'new' })
     forumStore.findOneByName('propuestas')
       .then((forum) => {
-        console.log(forum)
         const tags = window.fetch(`/api/v2/topics/tags?forum=${forum.id}`)
           .then((res) => res.json())
 
@@ -119,13 +118,17 @@ class HomePropuestas extends Component {
 
   fetchTopics = (page) => {
     const query = {
-      sort: this.state.filter === 'new' ? 'newest' : 'popular',
-      barrio: this.state.barrio
+      sort: this.state.filter === 'new' ? 'newest' : 'popular'
     }
-
     const u = new window.URLSearchParams(window.location.search)
-    if (u.has('tag')) query.tag = u.get('tag')
-    return window.fetch(`/ext/api/propuestas?barrio=${query.barrio}&sort=${query.sort}`)
+    if (u.has('tags')) query.tags = u.get('tags')
+    if (this.state.barrio !== '') query.barrio = this.state.barrio
+    let queryToArray = Object.keys(query).map((key) => {
+      return `${key}=${query[key]}`
+    }).join('&')
+    console.log(queryToArray)
+
+    return window.fetch(`/ext/api/propuestas?${queryToArray}`)
 
       .then((res) => res.json())
       .then((res) => res.results.topics)
@@ -154,7 +157,7 @@ class HomePropuestas extends Component {
             noMore: topics.length === 0 || topics.length < 20,
             page: 1
           })
-        }, () => console.log('pase'))
+        })
         .catch((err) => { console.error(err) })
     })
   }
@@ -179,7 +182,6 @@ class HomePropuestas extends Component {
 
   render () {
     const { forum, topics, tags } = this.state
-    console.log(this.state.tags)
     return (
       <div className='ext-home-ideas'>
         <ListTools
@@ -250,12 +252,12 @@ class HomePropuestas extends Component {
 const TagsList = tagsConnector(({ tags, forumName, without }) => {
   const u = new window.URLSearchParams(window.location.search)
   if (without) tags = tags.filter((t) => !~without.indexOf(t))
-
   return tags && tags.length > 0 && (
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        let url = `${window.location.origin}/${forumName}?tag=${tag}`
+        console.log(tag)
+        let url = `${window.location.origin}/${forumName}?tags=${tag}`
 
         if (u.has('tag') && u.get('tag') === tag) {
           active = 'active'
