@@ -299,7 +299,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               rows='6'
-              max='1000'
+              max='5000'
               name='problema'
               value={this.state['problema']}
               onChange={this.handleInputChange}>
@@ -314,7 +314,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               rows='6'
-              max='1000'
+              max='5000'
               name='solucion'
               value={this.state['solucion']}
               onChange={this.handleInputChange}>
@@ -329,7 +329,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               rows='6'
-              max='1000'
+              max='5000'
               name='beneficios'
               value={this.state['beneficios']}
               onChange={this.handleInputChange}>
