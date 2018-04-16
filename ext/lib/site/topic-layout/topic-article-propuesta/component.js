@@ -204,24 +204,33 @@ class TopicArticle extends Component {
         </div>
 
         <div className='topic-tags topic-article-content'>
+          <Cause
+            topic={topic}
+            canVoteAndComment={forum.privileges.canVoteAndComment} />
+        </div>
+
+        <div className='topic-tags topic-article-content'>
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a className='topic-article-tag' href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>{ tag } </a>)
           }
         </div>
 
-        { (user.state.value && topic.owner.id === user.state.value.id) &&
-              (
-                <p className='alert alert-info alert-propuesta'>
-                  El estado de ésta propuesta fue cambiado a {this.getEstado(topic.attrs.state)}, por lo tanto ya no puede ser editada por su autor/a.
-                </p>
-              ) }
+        { (topic.privileges && !topic.privileges.canEdit && user.state.value && topic.owner.id === user.state.value.id) &&
+            (
+              <p className='alert alert-info alert-propuesta'>
+                El estado de ésta propuesta fue cambiado a {this.getEstado(topic.attrs.state)}, por lo tanto ya no puede ser editada por su autor/a.
+              </p>
+            )
+        }
 
         {
-          (topic.attrs.state && topic.attrs.state === 'no-factible') &&
-              (
-                <div className='alert alert-info alert-propuesta' role='alert'>
-                  <p>{topic.attrs['admin-comment']}</p>
-                </div>)}
+          (topic.attrs['admin-comment'] && topic.attrs['admin-comment'] != '') &&
+            (
+              <div className='alert alert-info alert-propuesta' role='alert'>
+                <p>{topic.attrs['admin-comment']}</p>
+              </div>
+            )
+        }
 
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
