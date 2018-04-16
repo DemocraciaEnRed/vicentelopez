@@ -25,7 +25,7 @@ export default ({ topic, onVote }) => (
         topic.tags && topic.tags.length > 0 && (
           <div className='topic-card-tags'>
             {topic.tags.slice(0, 12).map((tag) => (
-              <a href={ `${window.location.origin + '/propuestas?tag=' + tag}`} key={tag} className='badge badge-default'>{tag}</a>
+              <a href={ `${window.location.origin + '/propuestas?tags=' + tag}`} key={tag} className='badge badge-default'>{tag}</a>
 
             ))}
           </div>

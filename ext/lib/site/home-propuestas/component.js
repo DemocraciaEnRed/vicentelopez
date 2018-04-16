@@ -126,7 +126,6 @@ class HomePropuestas extends Component {
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
-    console.log(queryToArray)
 
     return window.fetch(`/ext/api/propuestas?${queryToArray}`)
 
@@ -249,17 +248,16 @@ class HomePropuestas extends Component {
   }
 }
 
-const TagsList = tagsConnector(({ tags, forumName, without }) => {
+const TagsList = ({ tags, forumName, without }) => {
   const u = new window.URLSearchParams(window.location.search)
   if (without) tags = tags.filter((t) => !~without.indexOf(t))
   return tags && tags.length > 0 && (
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        console.log(tag)
         let url = `${window.location.origin}/${forumName}?tags=${tag}`
 
-        if (u.has('tag') && u.get('tag') === tag) {
+        if (u.has('tags') && u.get('tags') === tag) {
           active = 'active'
           url = `${window.location.origin}/${forumName}`
         }
@@ -275,6 +273,6 @@ const TagsList = tagsConnector(({ tags, forumName, without }) => {
       })}
     </div>
   )
-})
+}
 
 export default userConnector(HomePropuestas)
