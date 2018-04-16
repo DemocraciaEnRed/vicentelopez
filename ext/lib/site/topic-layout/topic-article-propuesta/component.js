@@ -204,6 +204,12 @@ class TopicArticle extends Component {
         </div>
 
         <div className='topic-tags topic-article-content'>
+          <Cause
+            topic={topic}
+            canVoteAndComment={forum.privileges.canVoteAndComment} />
+        </div>
+
+        <div className='topic-tags topic-article-content'>
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a className='topic-article-tag' href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>{ tag } </a>)
           }
