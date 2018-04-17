@@ -6,6 +6,11 @@ exports.parseTags = (req, res, next) => {
   next()
 }
 
+exports.parseStates = (req, res, next) => {
+  req.query.state = req.query.state.split(',').filter((t) => !!t)
+  next()
+}
+
 exports.findPropuestasForum = (req, res, next) => {
   api.forums.find({ name: 'propuestas' })
     .findOne()
@@ -35,12 +40,12 @@ const queryTopics = (opts) => {
 
   const query = {
     forum: forum._id,
-    publishedAt: { $ne: null },
-    'attrs.state': state
+    publishedAt: { $ne: null }
   }
 
   if (barrio) query['attrs.barrio'] = barrio
   if (tags.length > 0) query.tags = { $in: tags }
+  if (state.length > 0) query['attrs.state'] = { $in: state }
 
   return api.topics.find().where(query)
 }

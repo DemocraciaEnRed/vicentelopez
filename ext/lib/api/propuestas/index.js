@@ -22,8 +22,8 @@ validate({
     },
     state: {
       type: 'string',
-      enum: ['pendiente', 'factible', 'no-factible'],
-      default: 'pendiente'
+      format: 'states',
+      default: 'pendiente,factible,no-factible'
     },
     barrio: {
       type: 'string',
@@ -37,6 +37,7 @@ validate({
   })
 }, { formats }),
 utils.parseTags,
+utils.parseStates,
 utils.findPropuestasForum,
 middlewares.forums.privileges.canView,
 (req, res, next) => {
