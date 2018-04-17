@@ -6,11 +6,17 @@ export default class Page extends Component {
     super(props)
     this.state = {
       anio: '2012',
-      barrio: 'Villa Marteli'
-    // coloca un estado inicial del mensaje
+      barrio: 'Villa Marteli',
+      archivo: 'Minutas'
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   };
+
+  changeFile = (archivo) => () => {
+    this.setState({
+      archivo: archivo
+    }, () => console.log(this.state.archivo))
+  }
 
     changeAnio = (anio) => () => {
       this.setState({
@@ -67,13 +73,16 @@ export default class Page extends Component {
               <button className='pointer' onClick={this.changeAnio('2017')} ></button>
               <button className='pointer' onClick={this.changeAnio('2018')} ></button>
             </div>
-            <div className='padding'> { this.state.anio + this.state.barrio}</div>
+            <div className='padding'> { this.state.anio + this.state.barrio + this.state.archivo}</div>
 
             <div className='card'>
               <div className='navbar-seccion'>
-                <div className='seccion is-active'>Minutas</div>
-                <div className='seccion'>Boletas</div>
-                <div className='seccion'>Proyectos</div>
+                <button className={`seccion ${this.state.archivo === 'Minutas' ? 'active' : ''}`}
+                  onClick={this.changeFile('Minutas')}>Minutas</button>
+                <button className={`seccion ${this.state.archivo === 'Boletas' ? 'active' : ''}`}
+                  onClick={this.changeFile('Boletas')}>Boletas</button>
+                <button className={`seccion ${this.state.archivo === 'Proyectos' ? 'active' : ''}`}
+                  onClick={this.changeFile('Proyectos')}>Proyectos</button>
               </div>
               <div className='visualizador'></div>
             </div>
