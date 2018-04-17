@@ -41,12 +41,7 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
             onClick={ handleState }>
             Archivadas
           </button>
-
         </div>
-
-        {/* <div className='topics-filter'>
-
-        </div> */}
 
         <a
           href='/formulario-propuesta'
@@ -87,7 +82,6 @@ class HomePropuestas extends Component {
   }
 
   handleStateChange () {
-    console.log('hola estoy aca')
     this.setState({
       archivadas: !this.state.archivadas
     }, () => this.changeTopics())
@@ -140,7 +134,6 @@ class HomePropuestas extends Component {
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
-    console.log(query)
     return window.fetch(`/ext/api/propuestas?${queryToArray}`)
 
       .then((res) => res.json())
