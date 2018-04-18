@@ -92,7 +92,12 @@ export default class Page extends Component {
                 <button className={`seccion ${this.state.archivo === 'Proyectos' ? 'active' : ''}`}
                   onClick={this.changeFile('Proyectos')}>Proyectos</button>
               </div>
-              <div className='visualizador'></div>
+              <div className='visualizador'>
+                <div className='responsive-wrapper'>
+                  <iframe src="https://docs.google.com/document/d/1vcmIN1oK75UnelUO_JuHXGETutlZGgF_5aBN5AK57AA">
+                  </iframe>
+                </div>
+              </div>
             </div>
           </div>
 
