@@ -65,15 +65,23 @@ export default class Page extends Component {
             </div>
             <div className='timeline-line'></div>
             <div className='timeline'>
-              <button className='pointer is-active' onClick={this.changeAnio('2012')} ></button>
-              <button className='pointer' onClick={this.changeAnio('2013')} ></button>
-              <button className='pointer' onClick={this.changeAnio('2014')} ></button>
-              <button className='pointer' onClick={this.changeAnio('2015')} ></button>
-              <button className='pointer' onClick={this.changeAnio('2016')} ></button>
-              <button className='pointer' onClick={this.changeAnio('2017')} ></button>
-              <button className='pointer' onClick={this.changeAnio('2018')} ></button>
+              <button className={`pointer ${this.state.anio === '2012' ? 'active' : ''}`} onClick={this.changeAnio('2012')} ></button>
+              <button className={`pointer ${this.state.anio === '2013' ? 'active' : ''}`} onClick={this.changeAnio('2013')} ></button>
+              <button className={`pointer ${this.state.anio === '2014' ? 'active' : ''}`} onClick={this.changeAnio('2014')} ></button>
+              <button className={`pointer ${this.state.anio === '2015' ? 'active' : ''}`} onClick={this.changeAnio('2015')} ></button>
+              <button className={`pointer ${this.state.anio === '2016' ? 'active' : ''}`} onClick={this.changeAnio('2016')} ></button>
+              <button className={`pointer ${this.state.anio === '2017' ? 'active' : ''}`} onClick={this.changeAnio('2017')} ></button>
+              <button className={`pointer ${this.state.anio === '2018' ? 'active' : ''}`} onClick={this.changeAnio('2018')} ></button>
             </div>
-            <div className='padding'> { this.state.anio + this.state.barrio + this.state.archivo}</div>
+            <div className='timeline pointer-date-timeline'>
+              <button className={`pointer-date ${this.state.anio === '2012' ? 'active' : ''}`} onClick={this.changeAnio('2012')} >2012</button>
+              <button className={`pointer-date ${this.state.anio === '2013' ? 'active' : ''}`} onClick={this.changeAnio('2013')} >2013</button>
+              <button className={`pointer-date ${this.state.anio === '2014' ? 'active' : ''}`} onClick={this.changeAnio('2014')} >2014</button>
+              <button className={`pointer-date ${this.state.anio === '2015' ? 'active' : ''}`} onClick={this.changeAnio('2015')} >2015</button>
+              <button className={`pointer-date ${this.state.anio === '2016' ? 'active' : ''}`} onClick={this.changeAnio('2016')} >2016</button>
+              <button className={`pointer-date ${this.state.anio === '2017' ? 'active' : ''}`} onClick={this.changeAnio('2017')} >2017</button>
+              <button className={`pointer-date ${this.state.anio === '2018' ? 'active' : ''}`} onClick={this.changeAnio('2018')} >2018</button>
+            </div>
 
             <div className='card'>
               <div className='navbar-seccion'>

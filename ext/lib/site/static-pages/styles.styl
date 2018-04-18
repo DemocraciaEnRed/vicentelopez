@@ -538,7 +538,8 @@ table.table.tabla-reuniones.alinear
     justify-content: center
     align-items: center
     width:100%
-    height:72px
+    height:70px
+    border-bottom: solid 1px rgba(153, 153, 153, 0.14)
 
 .select-barrio
   padding-top:5em
@@ -547,11 +548,17 @@ table.table.tabla-reuniones.alinear
   flex-direction: row
   justify-content: space-between
   align-items: center
+  flex-wrap: wrap
   p 
-    display: inline-block
-    @media(max-width: 468px)
-      display:block
-button  
+    margin-bottom:0
+    padding:1em 1em 1em 0em
+  &.form-control
+    margin-bottom:0  
+
+
+button
+  &:focus
+    outline: none    
   &.seccion
     border:none
     padding:none
@@ -560,19 +567,11 @@ button
       outline: none
       color: #0099c3
       border-bottom:3px solid #0099c3
-  &:focus
-    outline: none
-    color: #0099c3
-    border-bottom:3px solid #0099c3
-  &.active
-    outline: none
-    color: #0099c3
-    border-bottom:3px solid #0099c3
 
 .seccion
   text-align: center
   width:33%
-  height: 50px
+  height: 63px
   display: inline-block
   cursor: pointer
   display: flex
@@ -585,7 +584,8 @@ button
     border-bottom:3px solid #0099c3
 
 .visualizador
-  border-top: solid 1px rgba(153, 153, 153, 0.14)
+
+  margin-top: 1em
   background-color: #D8D8D8
   width: 90%
   height: 985px
@@ -594,7 +594,7 @@ button
   display: block
   width:65%
   @media(max-width: 468px)
-    width:90%
+    width:70%
   border-bottom:4px solid transparent
   border-image-source: linear-gradient(to right, #0099c3, #8c1e81)
   -moz-border-image: -moz-linear-gradient(to right, #0099c3, #8c1e81)
@@ -604,14 +604,14 @@ button
   padding-top: 6em
 
 .timeline 
-  width: 65%
+  width: 66%
   @media(max-width: 468px)
-    width:90%
+    width:71%
   display: flex
   flex-direction: row
   justify-content: space-between
   align-items: center
-  margin:-10px
+  margin-top:-10px
 
 .pointer
   -webkit-appearance: none
@@ -622,9 +622,41 @@ button
   background: #d8d8d8
   cursor: pointer
   border: 1px solid #d8d8d8
-  &.is-active
+  &.active
+    outline: none
+    color: #0099c3
     background: #0099c3
     border: 1px solid #0099c3
-
+  &:focus
+    outline: none
+    color: #0099c3
+    background: #0099c3
+    border: 1px solid #0099c3
+.pointer-date-timeline
+  margin-top: 20px
+  margin-bottom:70px
+  width: 68%
+  @media(max-width: 468px)
+    width:80%
+.pointer-date
+  border: none
+  margin: 0
+  padding: 0
+  width: auto
+  overflow: visible
+  background: transparent
+  color: inherit
+  font: inherit
+  line-height: normal
+  -webkit-font-smoothing: inherit
+  -moz-osx-font-smoothing: inherit
+  -webkit-appearance: none
+  &:focus
+    outline: none
+    color: #0099c3
+  &.active
+      outline: none
+      color: #0099c3
+      border-bottom:0
 .padding  
   padding:80px
