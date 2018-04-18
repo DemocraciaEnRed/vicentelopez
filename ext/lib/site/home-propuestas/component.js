@@ -19,18 +19,11 @@ const filters = {
     filter: (topic) => topic.status === 'open',
     emptyMsg: 'No se encontraron propuestas.'
   }
-  /*,
-  closed: {
-    text: 'Archivadas',
-    sort: '-action.count',
-    filter: (topic) => topic.status === 'closed',
-    emptyMsg: 'No se encontraron propuestas.'
-  } */
 }
 
 const filter = (key, items = []) => items.filter(filters[key].filter)
 
-const ListTools = ({ onChangeFilter, activeFilter }) => (
+const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActive }) => (
   <div className='container'>
     <div className='row'>
       <div className='col-md-8 list-tools'>
@@ -43,7 +36,13 @@ const ListTools = ({ onChangeFilter, activeFilter }) => (
               {filters[key].text}
             </button>
           ))}
+          <button
+            className={`btn btn-secondary btn-sm ${archivadasIsActive ? 'active' : ''}`}
+            onClick={ handleState }>
+            Archivadas
+          </button>
         </div>
+
         <a
           href='/formulario-propuesta'
           className='boton-azul btn propuesta'>
@@ -66,9 +65,11 @@ class HomePropuestas extends Component {
       topics: null,
       tags: null,
       filter: 'pop',
-      barrio: ''
+      barrio: '',
+      archivadas: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleStateChange = this.handleStateChange.bind(this)
   }
 
   handleInputChange (evt) {
@@ -76,6 +77,14 @@ class HomePropuestas extends Component {
     const { value, name } = evt.target
     this.setState({
       [name]: value,
+      page: 1
+    }, () => this.changeTopics())
+  }
+
+  handleStateChange () {
+    console.log(this.state.archivadas, this.state.archivadas ? 1 : this.state.page)
+    this.setState({
+      archivadas: !this.state.archivadas,
       page: 1
     }, () => this.changeTopics())
   }
@@ -120,13 +129,14 @@ class HomePropuestas extends Component {
     const query = {
       sort: this.state.filter === 'new' ? 'newest' : 'popular'
     }
+    query.page = page
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
     if (this.state.barrio !== '') query.barrio = this.state.barrio
+    if (this.state.archivadas) query.state = 'no-factible'
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
-
     return window.fetch(`/ext/api/propuestas?${queryToArray}`)
 
       .then((res) => res.json())
@@ -184,6 +194,8 @@ class HomePropuestas extends Component {
     return (
       <div className='ext-home-ideas'>
         <ListTools
+          handleState={this.handleStateChange}
+          archivadasIsActive={this.state.archivadas}
           activeFilter={this.state.filter}
           onChangeFilter={this.handleFilterChange} />
         <div className='container topics-container'>
@@ -201,7 +213,7 @@ class HomePropuestas extends Component {
                       value={this.state['barrio']}
                       onChange={this.handleInputChange}>
                       <option value=''>Seleccione un barrio</option>
-                      <option value='villa-martelli'>Villa Marteli</option>
+                      <option value='villa-martelli'>Villa Martelli</option>
                       <option value='villa-adelina'>Villa Adelina</option>
                       <option value='vicente-lopez'>Vicente Lopez</option>
                       <option value='olivos'>Olivos</option>
