@@ -82,8 +82,10 @@ class HomePropuestas extends Component {
   }
 
   handleStateChange () {
+    console.log(this.state.archivadas, this.state.archivadas ? 1 : this.state.page)
     this.setState({
-      archivadas: !this.state.archivadas
+      archivadas: !this.state.archivadas,
+      page: 1
     }, () => this.changeTopics())
   }
 
@@ -127,6 +129,7 @@ class HomePropuestas extends Component {
     const query = {
       sort: this.state.filter === 'new' ? 'newest' : 'popular'
     }
+    query.page = page
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
     if (this.state.barrio !== '') query.barrio = this.state.barrio
