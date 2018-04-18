@@ -237,10 +237,10 @@ class HomePropuestas extends Component {
                   </div>
                 </div>
               )}
-              {topics && topics.map((topic) => (
+              {topics && topics.map((topic, i) => (
                 <TopicCard
                   onVote={this.handleVote}
-                  key={topic.id}
+                  key={`${topic.id}-${i}`}
                   forum={forum}
                   topic={topic} />
               ))}

@@ -22,11 +22,11 @@ export default ({ topic, onVote }) => (
         }
       </div>
       <h1 className='topic-card-title'>
-        <Link to={topic.url}>
+        <Link to={`/propuestas/topic/${topic.id}`}>
           {topic.mediaTitle}
         </Link>
         <p className='topic-card-description'>
-          <Link to={topic.url}>
+          <Link to={`/propuestas/topic/${topic.id}`}>
             {createClauses(topic)}
           </Link>
         </p>
@@ -34,8 +34,8 @@ export default ({ topic, onVote }) => (
       {
         topic.tags && topic.tags.length > 0 && (
           <div className='topic-card-tags'>
-            {topic.tags.slice(0, 12).map((tag) => (
-              <a href={ `${window.location.origin + '/propuestas?tags=' + tag}`} key={tag} className='badge badge-default'>{tag}</a>
+            {topic.tags.slice(0, 12).map((tag, i) => (
+              <a href={ `${window.location.origin + '/propuestas?tags=' + tag}`} key={`${tag}-${i}`} className='badge badge-default'>{tag}</a>
 
             ))}
           </div>
