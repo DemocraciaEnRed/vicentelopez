@@ -60,7 +60,8 @@ exports.findTopics = (opts) => {
     forum,
     limit = 30,
     page = 1,
-    sort
+    sort,
+    user
   } = opts
 
   return queryTopics(opts)
@@ -71,7 +72,7 @@ exports.findTopics = (opts) => {
     .sort(sortMap[sort])
     .exec()
     .then((topics) => Promise.all(topics.map((topic) => {
-      return topicScopes.ordinary.expose(topic, forum)
+      return topicScopes.ordinary.expose(topic, forum, user)
     })))
 }
 

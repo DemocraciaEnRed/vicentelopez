@@ -43,6 +43,7 @@ middlewares.forums.privileges.canView,
 (req, res, next) => {
   let opts = req.query
   opts.forum = req.forum
+  opts.user = req.user
 
   Promise.all([
     utils.findTopics(opts),
