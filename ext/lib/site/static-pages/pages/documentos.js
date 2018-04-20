@@ -17,13 +17,13 @@ export default class Page extends Component {
   changeFile = (archivo) => () => {
     this.setState({
       archivo: archivo
-    }, () => console.log(this.state.archivo))
+    })
   }
 
     changeAnio = (anio) => () => {
       this.setState({
         anio: anio
-      }, () => console.log(this.state.anio))
+      })
     }
 
     handleInputChange (evt) {
@@ -31,7 +31,6 @@ export default class Page extends Component {
       const { target: { value, name } } = evt
 
       this.setState({ [name]: value })
-      console.log(this.state.barrio)
     }
 
     render () {
