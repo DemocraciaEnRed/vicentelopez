@@ -5,9 +5,9 @@ export default class Page extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      anio: '2012',
-      barrio: 'Villa Marteli',
-      archivo: 'Minutas'
+      anio: '2016',
+      barrio: 'villa-adelina',
+      archivo: 'proyectos'
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   };
@@ -51,7 +51,7 @@ export default class Page extends Component {
                 value={this.state['barrio']}
                 onChange={this.handleInputChange}>
                 <option value=''>Barrio</option>
-                <option value='villa-martelli'>Villa Marteli</option>
+                <option value='villa-martelli'>Villa Martelli</option>
                 <option value='villa-adelina'>Villa Adelina</option>
                 <option value='vicente-lopez'>Vicente Lopez</option>
                 <option value='olivos'>Olivos</option>
@@ -94,7 +94,7 @@ export default class Page extends Component {
               </div>
               <div className='visualizador'>
                 <div className='responsive-wrapper'>
-                  <iframe src="https://docs.google.com/document/d/1vcmIN1oK75UnelUO_JuHXGETutlZGgF_5aBN5AK57AA">
+                  <iframe type='text/html' src={`//s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`}>
                   </iframe>
                 </div>
               </div>
