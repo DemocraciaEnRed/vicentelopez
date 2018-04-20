@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Footer from 'ext/lib/site/footer/component'
 
+const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018']
+
 export default class Page extends Component {
   constructor (props) {
     super(props)
@@ -65,32 +67,26 @@ export default class Page extends Component {
             </div>
             <div className='timeline-line'></div>
             <div className='timeline'>
-              <button className={`pointer ${this.state.anio === '2012' ? 'active' : ''}`} onClick={this.changeAnio('2012')} ></button>
-              <button className={`pointer ${this.state.anio === '2013' ? 'active' : ''}`} onClick={this.changeAnio('2013')} ></button>
-              <button className={`pointer ${this.state.anio === '2014' ? 'active' : ''}`} onClick={this.changeAnio('2014')} ></button>
-              <button className={`pointer ${this.state.anio === '2015' ? 'active' : ''}`} onClick={this.changeAnio('2015')} ></button>
-              <button className={`pointer ${this.state.anio === '2016' ? 'active' : ''}`} onClick={this.changeAnio('2016')} ></button>
-              <button className={`pointer ${this.state.anio === '2017' ? 'active' : ''}`} onClick={this.changeAnio('2017')} ></button>
-              <button className={`pointer ${this.state.anio === '2018' ? 'active' : ''}`} onClick={this.changeAnio('2018')} ></button>
+              {years.map((currentYear) => {
+                return <button className={`pointer ${this.state.anio === currentYear ? 'active' : ''}`} onClick={this.changeAnio(currentYear)} ></button>
+              })}
             </div>
             <div className='timeline pointer-date-timeline'>
-              <button className={`pointer-date ${this.state.anio === '2012' ? 'active' : ''}`} onClick={this.changeAnio('2012')} >2012</button>
-              <button className={`pointer-date ${this.state.anio === '2013' ? 'active' : ''}`} onClick={this.changeAnio('2013')} >2013</button>
-              <button className={`pointer-date ${this.state.anio === '2014' ? 'active' : ''}`} onClick={this.changeAnio('2014')} >2014</button>
-              <button className={`pointer-date ${this.state.anio === '2015' ? 'active' : ''}`} onClick={this.changeAnio('2015')} >2015</button>
-              <button className={`pointer-date ${this.state.anio === '2016' ? 'active' : ''}`} onClick={this.changeAnio('2016')} >2016</button>
-              <button className={`pointer-date ${this.state.anio === '2017' ? 'active' : ''}`} onClick={this.changeAnio('2017')} >2017</button>
-              <button className={`pointer-date ${this.state.anio === '2018' ? 'active' : ''}`} onClick={this.changeAnio('2018')} >2018</button>
+              {years.map((currentYear) => {
+                return <button className={`pointer-date ${this.state.anio === currentYear ? 'active' : ''}`} onClick={this.changeAnio(currentYear)} >
+                  {currentYear}
+                </button>
+              })}
             </div>
 
             <div className='card'>
               <div className='navbar-seccion'>
-                <button className={`seccion ${this.state.archivo === 'Minutas' ? 'active' : ''}`}
-                  onClick={this.changeFile('Minutas')}>Minutas</button>
-                <button className={`seccion ${this.state.archivo === 'Boletas' ? 'active' : ''}`}
-                  onClick={this.changeFile('Boletas')}>Boletas</button>
-                <button className={`seccion ${this.state.archivo === 'Proyectos' ? 'active' : ''}`}
-                  onClick={this.changeFile('Proyectos')}>Proyectos</button>
+                <button className={`seccion ${this.state.archivo === 'minuta' ? 'active' : ''}`}
+                  onClick={this.changeFile('minuta')}>Minutas</button>
+                <button className={`seccion ${this.state.archivo === 'boleta' ? 'active' : ''}`}
+                  onClick={this.changeFile('boleta')}>Boletas</button>
+                <button className={`seccion ${this.state.archivo === 'proyectos' ? 'active' : ''}`}
+                  onClick={this.changeFile('proyectos')}>Proyectos</button>
               </div>
               <div className='visualizador'>
                 <div className='responsive-wrapper'>
