@@ -77,6 +77,10 @@ export default class Page extends Component {
                 </button>
               })}
             </div>
+            <div className='download'>
+              <a target='_blank' href={`//s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul'>Descargar</a>
+
+            </div>
 
             <div className='card'>
               <div className='navbar-seccion'>
