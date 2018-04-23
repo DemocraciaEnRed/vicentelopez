@@ -93,8 +93,26 @@ export default class Page extends Component {
               </div>
               <div className='visualizador'>
                 <div className='responsive-wrapper'>
-                  <iframe type='text/html' src={`//s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`}>
-                  </iframe>
+                  {
+                    (
+                      (this.state.archivo === 'boleta' && this.state.anio === '2012') ||
+                      (this.state.archivo === 'proyectos' && this.state.anio === '2012') ||
+                      (this.state.anio === '2018')
+                    )
+                      ? (
+                        <div className='empty-msg'>
+                          <div className='alert alert-success' role='alert'>
+                            No se encuentra el archivo disponible
+                          </div>
+                        </div>
+                      )
+                      : (
+                        <iframe type='text/html' src={`//s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`}>
+                        </iframe>
+                      )
+
+                  }
+
                 </div>
               </div>
             </div>
