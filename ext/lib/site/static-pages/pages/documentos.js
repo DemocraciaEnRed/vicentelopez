@@ -66,13 +66,13 @@ export default class Page extends Component {
             </div>
             <div className='timeline-line'></div>
             <div className='timeline'>
-              {years.map((currentYear) => {
-                return <button className={`pointer ${this.state.anio === currentYear ? 'active' : ''}`} onClick={this.changeAnio(currentYear)} ></button>
+              {years.map((currentYear, index) => {
+                return <button className={`pointer ${this.state.anio === currentYear ? 'active' : ''}`} key={index} onClick={this.changeAnio(currentYear)} ></button>
               })}
             </div>
             <div className='timeline pointer-date-timeline'>
-              {years.map((currentYear) => {
-                return <button className={`pointer-date ${this.state.anio === currentYear ? 'active' : ''}`} onClick={this.changeAnio(currentYear)} >
+              {years.map((currentYear, index) => {
+                return <button className={`pointer-date ${this.state.anio === currentYear ? 'active' : ''}`} key={index} onClick={this.changeAnio(currentYear)} >
                   {currentYear}
                 </button>
               })}
@@ -93,7 +93,9 @@ export default class Page extends Component {
               </div>
               <div className='visualizador'>
                 <div className='responsive-wrapper'>
-                  {
+                  <iframe type='text/html' src={`//s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`}>
+                  </iframe>
+                  {/*
                     (
                       (this.state.archivo === 'boleta' && this.state.anio === '2012') ||
                       (this.state.archivo === 'proyectos' && this.state.anio === '2012') ||
@@ -111,7 +113,7 @@ export default class Page extends Component {
                         </iframe>
                       )
 
-                  }
+                    */ }
 
                 </div>
               </div>
