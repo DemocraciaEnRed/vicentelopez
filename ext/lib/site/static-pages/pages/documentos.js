@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Footer from 'ext/lib/site/footer/component'
-
+import MyPdfViewer from 'ext/lib/site/pdfviewer/component'
 const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018']
 
 export default class Page extends Component {
@@ -77,10 +77,6 @@ export default class Page extends Component {
                 </button>
               })}
             </div>
-            <div className='download'>
-              <a target='_blank' href={`//s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul'>Descargar</a>
-
-            </div>
 
             <div className='card'>
               <div className='navbar-seccion'>
@@ -107,8 +103,8 @@ export default class Page extends Component {
                         </div>
                       )
                       : (
-                        <iframe type='text/html' src={`//s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`}>
-                        </iframe>
+
+                        <MyPdfViewer/>
                       )
 
                   }
