@@ -104,7 +104,12 @@ export default class Page extends Component {
                       )
                       : (
 
-                        <MyPdfViewer/>
+                        <MyPdfViewer
+                        barrio={this.state.barrio}
+                        anio={this.state.anio}  
+                        archivo={this.state.archivo}
+
+                        />
                       )
 
                   }

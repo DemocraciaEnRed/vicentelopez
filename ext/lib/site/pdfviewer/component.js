@@ -1,8 +1,14 @@
 import React from 'react'
 import PDF from 'react-pdf-js'
 
-class MyPdfViewer extends React.Component {
-  state = {};
+export default class MyPdfViewer extends React.Component {
+  state = {
+    
+      anio: '2016',
+      barrio: 'villa-adelina',
+      archivo: 'proyectos'
+    
+  }
 
   onDocumentComplete = (pages) => {
     this.setState({ page: 1, pages })
@@ -29,14 +35,6 @@ class MyPdfViewer extends React.Component {
     if (page === pages) {
       nextButton = <li className="next disabled"><a href="#">Next <i className="fa fa-arrow-right"></i></a></li>
     }
-    return (
-      <nav>
-        <ul className="pager">
-          {previousButton}
-          {nextButton}
-        </ul>
-      </nav>
-    )
   }
 
   render () {
@@ -47,7 +45,7 @@ class MyPdfViewer extends React.Component {
     return (
       <div>
         <PDF
-          file="http://s3.amazonaws.com/forosvecinales/visualizador/proyectos_villa-adelina_2016.pdf"
+          file={`//s3.amazonaws.com/forosvecinales/visualizador/${this.props.archivo}_${this.props.barrio}_${this.props.anio}.pdf`}
           onDocumentComplete={this.onDocumentComplete}
           onPageComplete={this.onPageComplete}
           page={this.state.page}
@@ -58,4 +56,3 @@ class MyPdfViewer extends React.Component {
   }
 }
 
-module.exports = MyPdfViewer
