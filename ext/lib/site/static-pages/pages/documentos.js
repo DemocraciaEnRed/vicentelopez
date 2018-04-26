@@ -102,13 +102,13 @@ export default class Page extends Component {
                       </div>
                     )
                     : (
-
-                      <PdfViewer
-                        barrio={this.state.barrio}
-                        anio={this.state.anio}
-                        archivo={this.state.archivo}
-
-                      />
+                      <div className='pdf-wrapper'>  
+                        <PdfViewer
+                          barrio={this.state.barrio}
+                          anio={this.state.anio}
+                          archivo={this.state.archivo}
+                        />
+                      </div>
                     )
 
                 }
