@@ -1,17 +1,51 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PDF from 'react-pdf-js'
 
-export default class MyPdfViewer extends React.Component {
-  state = {
-    
+class Loader extends Component {
+  render () {
+    return (
+      <div className='spinner-circle'>
+        <div className='spinner-circle1 spinner-child' />
+        <div className='spinner-circle2 spinner-child' />
+        <div className='spinner-circle3 spinner-child' />
+        <div className='spinner-circle4 spinner-child' />
+        <div className='spinner-circle5 spinner-child' />
+        <div className='spinner-circle6 spinner-child' />
+        <div className='spinner-circle7 spinner-child' />
+        <div className='spinner-circle8 spinner-child' />
+        <div className='spinner-circle9 spinner-child' />
+        <div className='spinner-circle10 spinner-child' />
+        <div className='spinner-circle11 spinner-child' />
+        <div className='spinner-circle12 spinner-child' />
+      </div>
+    )
+  }
+}
+
+export default class PdfViewer extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
       anio: '2016',
       barrio: 'villa-adelina',
-      archivo: 'proyectos'
-    
+      archivo: 'proyectos',
+      loading: false
+    }
+  }
+
+  shouldComponentUpdate () {
+    this.setState({
+      loading: true
+    })
+    return true
   }
 
   onDocumentComplete = (pages) => {
-    this.setState({ page: 1, pages })
+    this.setState({
+      loading: false,
+      page: 1,
+      pages
+    })
   }
 
   onPageComplete = (page) => {
@@ -49,10 +83,10 @@ export default class MyPdfViewer extends React.Component {
           onDocumentComplete={this.onDocumentComplete}
           onPageComplete={this.onPageComplete}
           page={this.state.page}
+          loading={<Loader />}
         />
         {pagination}
       </div>
     )
   }
 }
-
