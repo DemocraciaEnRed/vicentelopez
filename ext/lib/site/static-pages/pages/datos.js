@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import Footer from 'ext/lib/site/footer/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
@@ -146,7 +147,12 @@ export default class Page extends Component {
 
             <div className='descargas'>
               <h4>DESCARGAS</h4>
-              <div className="btns-descargas">
+              <div className='btns-descargas'>
+                <Link href='/s/documentos'>
+                  <a className='boton-azul'>
+                    Historial de documentos
+                  </a>
+                </Link>
                 <a href='https://s3.amazonaws.com/forosvecinales/proyectos-2013-2018_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2018 por tipo (cantidad e inversión)</a>
                 <a href='https://s3.amazonaws.com/forosvecinales/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación</a>
                 <a href='https://s3.amazonaws.com/forosvecinales/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>

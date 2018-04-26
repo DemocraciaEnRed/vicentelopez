@@ -38,8 +38,8 @@ export default class Page extends Component {
         <div>
           <section className='banner-static'>
             <div className='banner gradient'>
-              <h1>Título de la sección</h1>
-              <h2>Descripción del contenido dentro de la sección</h2>
+              <h1>Historial de documentos</h1>
+              <h2>Aquí encontrarás las minutas, boletas y proyectos de todas las ediciones de Foros Vecinales</h2>
             </div>
           </section>
           <div className='documentos-body'>
