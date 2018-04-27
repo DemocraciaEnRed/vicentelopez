@@ -200,7 +200,7 @@ export default class Page extends Component {
                         <tr>
                           <td>Florida Oeste</td>
                           <td>Martes 8 de mayo</td>
-                          <td>Instituto FLorentino Ameghino</td>
+                          <td>Instituto Florentino Ameghino</td>
                           <td>C. De Alvear 1144</td>
                         </tr>
                         <tr>
