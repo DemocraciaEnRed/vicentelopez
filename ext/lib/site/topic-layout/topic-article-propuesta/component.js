@@ -222,6 +222,7 @@ class TopicArticle extends Component {
             (
               <div className='alert alert-info alert-propuesta' role='alert'>
                 <p>{topic.attrs['admin-comment']}</p>
+                <p className='font-weight-bold'>Subsecretaría de Participación Ciudadana</p>
               </div>
             )
         }
