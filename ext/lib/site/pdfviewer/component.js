@@ -28,9 +28,6 @@ export default class PdfViewer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      anio: '2016',
-      barrio: 'villa-adelina',
-      archivo: 'proyectos',
       loading: false
     }
   }
