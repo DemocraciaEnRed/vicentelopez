@@ -43,19 +43,19 @@ class Header extends Component {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
 
-        <Link
-          to={config.homeLink}
-          className='navbar-brand'>
-          <img
-            src='/ext/lib/site/header/mobile-menu/mobile-logo.svg'
-            className='d-inline-block align-top'
-            height='30' />
-        </Link>
+          <Link
+            to={config.homeLink}
+            className='navbar-brand'>
+            <img
+              src={config.logo}
+              className='d-inline-block align-top'
+              height='30' />
+          </Link>
 
-        <ul
-          className='nav navbar-nav nav-mobile'>
+          <ul
+            className='nav navbar-nav nav-mobile'>
 
-          {this.props.user.state.fulfilled && (
+            {this.props.user.state.fulfilled && (
               <li className='nav-item'>
                 <Link
                   to='/notifications'
@@ -63,16 +63,16 @@ class Header extends Component {
                   <span className='icon-bell' />
                 </Link>
               </li>
-          )}
+            )}
 
-          {this.props.user.state.fulfilled && (
-            <UserBadge />
-          )}
+            {this.props.user.state.fulfilled && (
+              <UserBadge />
+            )}
 
-          <MobileMenu form={this.state.userForm} />
+            <MobileMenu form={this.state.userForm} />
 
-        </ul>
-      </nav>
+          </ul>
+        </nav>
       )
     } else {
       return (
@@ -84,46 +84,46 @@ class Header extends Component {
             <img
               src={config.logo}
               className='d-inline-block align-top'
-               />
+            />
           </Link>
 
           <ul className='nav navbar-nav'>
 
-              <div className="header-item">
-                <Link
-                  to='/s/acerca-de'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+            <div className="header-item">
+              <Link
+                to='/s/acerca-de'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Acerca de
-                </Link>
-              </div>
-              <div className="header-item">
-                <ProyectosLink />
-              </div>
-              <div className="header-item">
-                <Link
-                  to='/propuestas'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+              </Link>
+            </div>
+            <div className="header-item">
+              <ProyectosLink />
+            </div>
+            <div className="header-item">
+              <Link
+                to='/propuestas'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Propuestas
-                </Link>
-              </div>
-              <div className="header-item">
-                <Link
-                  to='/s/datos'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+              </Link>
+            </div>
+            <div className="header-item">
+              <Link
+                to='/s/datos'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Datos
-                </Link>
-              </div>
-              <div className="header-item">
-                <Link
-                  to='/s/herramientas'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+              </Link>
+            </div>
+            <div className="header-item">
+              <Link
+                to='/s/herramientas'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Herramientas
-                </Link>
-              </div>
+              </Link>
+            </div>
 
             {this.props.user.state.fulfilled && (
               <li className='nav-item'>
@@ -144,7 +144,7 @@ class Header extends Component {
             )}
           </ul>
         </nav>
-    )
+      )
     }
 
 
