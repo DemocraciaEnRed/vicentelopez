@@ -32,11 +32,10 @@ export default class PdfViewer extends Component {
     }
   }
 
-  shouldComponentUpdate () {
+  componentWillReceiveProps () {
     this.setState({
       loading: true
     })
-    return true
   }
 
   onDocumentComplete = (pages) => {
@@ -77,6 +76,11 @@ export default class PdfViewer extends Component {
     }
     return (
       <div>
+        {this.state.loading &&
+          <div className='loader-container'>
+            <Loader />
+          </div>
+        }
         <PDF
           fullWidth
           file={`//s3.amazonaws.com/forosvecinales/visualizador/${this.props.archivo}_${this.props.barrio}_${this.props.anio}.pdf`}
