@@ -137,8 +137,9 @@ class HomePropuestas extends Component {
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
-    return window.fetch(`/ext/api/propuestas?${queryToArray}`)
-
+    return window.fetch(`/ext/api/propuestas?${queryToArray}`, {
+      credentials: 'include'
+    })
       .then((res) => res.json())
       .then((res) => res.results.topics)
   }
