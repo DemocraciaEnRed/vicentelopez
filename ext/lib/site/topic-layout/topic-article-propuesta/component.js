@@ -73,36 +73,27 @@ class TopicArticle extends Component {
   getEstado (name) {
     const estados = [
       {
-          "name" : "pendiente", 
-          "title" : "Pendiente"
-      }, 
+        'name': 'pendiente',
+        'title': 'Pendiente'
+      },
       {
-          "name" : "factible", 
-          "title" : "Factible"
-      }, 
+        'name': 'factible',
+        'title': 'Factible'
+      },
       {
-          "name" : "no-factible", 
-          "title" : "No factible"
+        'name': 'no-factible',
+        'title': 'No factible'
       }
     ]
-    const estado = estados.find(e => e.name === name)
+    const estado = estados.find((e) => e.name === name)
     if (!estado) return 'Pendiente'
     return estado.title.toLowerCase()
   }
 
   twitText = () => {
-    switch (this.props.topic.attrs && this.props.topic.attrs.state) {
-      case 'pendiente':
-        return encodeURIComponent('Apoyemos este proyecto para mejorar Vicente López. ')
-      case 'perdedor':
-        return encodeURIComponent(this.props.topic.mediaTitle)
-      case 'proyectado':
-        return encodeURIComponent('Este proyecto se va a realizar gracias a la participación de los vecinos. ')
-      default:
-        return ''
-    }
+    return encodeURIComponent('Apoyemos esta propuesta para mejorar Vicente López. ')
   }
-
+  
   render () {
     const {
       topic,
@@ -208,7 +199,10 @@ class TopicArticle extends Component {
             topic={topic}
             canVoteAndComment={forum.privileges.canVoteAndComment} />
         </div>
-
+        <Social
+          topic={topic}
+          twitterText={twitterText}
+          socialLinksUrl={socialLinksUrl} />
         <div className='topic-tags topic-article-content'>
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a className='topic-article-tag' href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>{ tag } </a>)
@@ -228,6 +222,7 @@ class TopicArticle extends Component {
             (
               <div className='alert alert-info alert-propuesta' role='alert'>
                 <p>{topic.attrs['admin-comment']}</p>
+                <p className='font-weight-bold'>Subsecretaría de Participación Ciudadana</p>
               </div>
             )
         }
