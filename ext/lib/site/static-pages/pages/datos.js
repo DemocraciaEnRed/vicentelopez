@@ -111,7 +111,7 @@ export default class Page extends Component {
               <h3>Evolución de la participación</h3>
               <figure className="graph-box">
                 <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
+                  <img src="/ext/lib/site/static-pages/evolucion-participacion1.svg" alt=""/>
                 </div>
                 <figcaption>
                   <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
