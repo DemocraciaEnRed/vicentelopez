@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 import bus from 'bus'
 import config from 'lib/config'
 import userConnector from 'lib/site/connectors/user'
@@ -41,7 +41,7 @@ class Header extends Component {
       })
     } else {
       this.setState({
-        mobileMenu: !this.state.mobileMenu 
+        mobileMenu: !this.state.mobileMenu
       })
     }
   }
@@ -179,8 +179,6 @@ class Header extends Component {
         </nav>
       )
     }
-
-
   }
 }
 

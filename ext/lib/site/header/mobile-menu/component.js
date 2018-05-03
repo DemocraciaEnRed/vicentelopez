@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import { Link } from 'react-router'
 import bus from 'bus'
 import userConnector from 'lib/site/connectors/user'
@@ -6,13 +7,27 @@ import AnonUser from 'ext/lib/site/header/anon-user/component'
 import ProyectosLink from 'ext/lib/site/header/proyectos-link'
 
 class MobileMenu extends Component {
+  componentWillMount () {
+    document.addEventListener('click', this.handleClick, false)
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('click', this.handleClick, false)
+  }
+
+  handleClick = (e) => {
+    if (!ReactDOM.findDOMNode(this).contains(e.target) && this.props.menuOn) {
+      this.props.toggleOnClick()
+    }
+  }
+
   render () {
     return (
       <nav className='mobile-nav'>
         <a
           id='mobile-menu'
           className='mobile-menu'
-          onClick={this.props.toggleOnClick}>
+          onClick={this.props.toggleOnClick} >
         </a>
         {
           this.props.menuOn && (
