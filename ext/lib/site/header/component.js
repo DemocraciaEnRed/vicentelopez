@@ -13,7 +13,9 @@ class Header extends Component {
     super(props)
 
     this.state = {
-      userForm: null
+      userForm: null,
+      mobileMenu: false,
+      userMenu: false
     }
   }
 
@@ -31,6 +33,30 @@ class Header extends Component {
     })
   }
 
+  toggleMobileMenu = () => {
+    if (this.state.userMenu) {
+      this.setState({
+        mobileMenu: !this.state.mobileMenu,
+        userMenu: false
+      })
+    } else {
+      this.setState({
+        mobileMenu: !this.state.mobileMenu 
+      })
+    }
+  }
+
+  toggleUserMenu = () => {
+    if (this.state.mobileMenu) {
+      this.setState({
+        mobileMenu: false,
+        userMenu: !this.state.userMenu
+      })
+    } else {
+      this.setState({ userMenu: !this.state.userMenu })
+    }
+  }
+
   render () {
     const styles = {
       color: config.headerFontColor,
@@ -39,7 +65,7 @@ class Header extends Component {
 
     // MEDIA QUERY - Si es menor al breakpoint muestra un menú, si es mayor, otro
 
-    if (window.matchMedia("(max-width: 975px)").matches) {
+    if (window.matchMedia('(max-width: 975px)').matches) {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
 
@@ -66,10 +92,15 @@ class Header extends Component {
             )}
 
             {this.props.user.state.fulfilled && (
-              <UserBadge />
+              <UserBadge
+                menuOn={this.state.userMenu}
+                toggleOnClick={this.toggleUserMenu} />
             )}
 
-            <MobileMenu form={this.state.userForm} />
+            <MobileMenu
+              form={this.state.userForm}
+              menuOn={this.state.mobileMenu}
+              toggleOnClick={this.toggleMobileMenu} />
 
           </ul>
         </nav>
@@ -136,7 +167,9 @@ class Header extends Component {
             )}
 
             {this.props.user.state.fulfilled && (
-              <UserBadge />
+              <UserBadge
+                menuOn={this.state.userMenu}
+                toggleOnClick={this.toggleUserMenu} />
             )}
 
             {this.props.user.state.rejected && (
