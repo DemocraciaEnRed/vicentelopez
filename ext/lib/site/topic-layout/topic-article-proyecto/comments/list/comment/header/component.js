@@ -25,7 +25,10 @@ export default ReactOutsideEvent(class CommentHeader extends Component {
           </div>
           {
             comment.author.badge && (
-              <span className='valid-badge'>{comment.author.badge}</span>
+              <div className='badge-container'>
+                <span className='icon-badge' />
+                <span className='valid-badge'>{comment.author.badge}</span>
+              </div>
             )
           }
         </h3>
