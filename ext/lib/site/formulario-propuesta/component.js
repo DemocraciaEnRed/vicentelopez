@@ -10,9 +10,8 @@ import { Link } from 'react-router'
 const PROPOSALS_FORUM_NAME = 'propuestas'
 
 class FormularioPropuesta extends Component {
-  constructor () {
-    super()
-
+  constructor (props) {
+    super(props)
     this.state = {
       forum: null,
       topic: null,
@@ -27,9 +26,10 @@ class FormularioPropuesta extends Component {
       problema: '',
       solucion: '',
       beneficios: '',
-      tags: null
+      tags: null,
+      adminComment: '',
+      state: ''
     }
-
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -37,7 +37,6 @@ class FormularioPropuesta extends Component {
   handleInputChange (evt) {
     evt.preventDefault()
     const { target: { value, name } } = evt
-
     this.setState({ [name]: value })
   }
 
@@ -46,7 +45,6 @@ class FormularioPropuesta extends Component {
       this.setState({ mode: 'edit' })
       topicStore.findOne(this.props.params.id)
         .then((topic) => {
-          console.log(topic.tags)
           this.setState({
             titulo: topic.mediaTitle,
             nombre: topic.attrs.nombre,
@@ -58,24 +56,23 @@ class FormularioPropuesta extends Component {
             problema: topic.attrs.problema,
             solucion: topic.attrs.solucion,
             beneficios: topic.attrs.beneficios,
-            tags: topic.tags
+            tags: topic.tags,
+            state: topic.attrs.state,
+            adminComment: topic.attrs['admin-comment']
           })
         })
+        .catch((err) => console.log(err))
     } else {
       this.setState({ mode: 'new' })
     }
 
     forumStore.findOneByName(PROPOSALS_FORUM_NAME).then((forum) => {
-      if (forum.privileges.canChangeTopics) {
-        return browserHistory.push('/propuestas/admin/topics/create')
-      }
       this.setState({ forum })
     }).catch((err) => { console.error(err) })
   }
 
   handleSubmit (e) {
     e.preventDefault()
-
     const formData = {
       forum: this.state.forum.id,
       mediaTitle: this.state.titulo,
@@ -90,7 +87,11 @@ class FormularioPropuesta extends Component {
       'attrs.beneficios': this.state.beneficios,
       tags: e.target.elements.tags.value.split(',')
     }
-
+    if (this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit') {
+      formData['attrs.admin-comment'] = this.state.adminComment
+      formData['attrs.state'] = this.state.state
+    }
+    console.log(formData)
     if (this.state.mode === 'new') {
       this.crearPropuesta(formData)
     } else {
@@ -148,7 +149,6 @@ class FormularioPropuesta extends Component {
     if (!forum) return null
 
     return (
-
       <div className='form-propuesta'>
         <div className='propuesta-header'>
           <h1 className='text-center'>Presupuesto Participativo 2018</h1>
@@ -235,7 +235,7 @@ class FormularioPropuesta extends Component {
           </span>
           <div className='form-group'>
             <label className='required' htmlFor='titulo'>
-              Titulo
+              Título
             </label>
             <input
               className='form-control'
@@ -273,7 +273,7 @@ class FormularioPropuesta extends Component {
                 Etiquetas
             </label>
             <span className='help-text'>Mencioná acá los Temas vinculados a tu idea. Por ejemplo, "Solidaridad", "Transporte" o "Ambiente".
-            <br/>
+              <br/>
               Escribí cada una y pulsá ENTER o TAB para que se convierta en una etiqueta.
             </span>
             {
@@ -294,7 +294,6 @@ class FormularioPropuesta extends Component {
               Problema o necesidad existente
             </label>
             <span className='help-text requerido'>Requerido</span>
-
             <textarea
               className='form-control'
               required
@@ -335,6 +334,35 @@ class FormularioPropuesta extends Component {
               onChange={this.handleInputChange}>
             </textarea>
           </div>
+          {this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit' && (
+            <div className='form-group'>
+              <label htmlFor='state'>Estado</label>
+              <span className='help-text requerido'>Agregar una descripción del estado del proyecto</span>
+              <select
+                className='form-control'
+                name='state'
+                value={this.state['state']}
+                onChange={this.handleInputChange}>
+                <option value='pendiente'>Pendiente</option>
+                <option value='factible'>Factible</option>
+                <option value='no-factible'>No factible</option>
+              </select>
+            </div>
+          )}
+          {this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit' && (
+            <div className='form-group'>
+              <label htmlFor='adminComment'>Comentario del moderador:</label>
+              <span className='help-text requerido'>Escribir aquí un comentario en el caso que se cambie el estado a "factible" o "rechazado"</span>
+              <textarea
+                className='form-control'
+                rows='6'
+                max='5000'
+                name='adminComment'
+                value={this.state['adminComment']}
+                onChange={this.handleInputChange}>
+              </textarea>
+            </div>
+          )}
           <div className='submit-div'>
             <button type='submit' className='submit-btn'>
               Enviar tu propuesta

@@ -152,16 +152,13 @@ class TopicArticle extends Component {
           (forum.privileges && forum.privileges.canChangeTopics)
             ? (
               <div className='topic-article-content topic-admin-actions'>
-                <a
-                  href={urlBuilder.for('admin.topics.id', {
-                    forum: forum.name,
-                    id: topic.id
-                  })}
-                  className='btn btn-default btn-sm'>
-                  <i className='icon-pencil' />
-                  &nbsp;
-                  {t('proposal-article.edit')}
-                </a>
+                <Link href={`/formulario-propuesta/${topic.id}`}>
+                  <a className='btn btn-default btn-sm'>
+                    <i className='icon-pencil' />
+                    &nbsp;
+                    {t('proposal-article.edit')}
+                  </a>
+                </Link>
               </div>
             )
             : (topic.privileges && topic.privileges.canEdit) &&
