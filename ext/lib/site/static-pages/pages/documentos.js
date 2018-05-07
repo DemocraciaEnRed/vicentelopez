@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from 'ext/lib/site/footer/component'
 import PdfViewer from 'ext/lib/site/pdfviewer/component'
-const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018']
+const years = ['2012', '2013', '2014', '2015', '2016', '2017']
 
 export default class Page extends Component {
   constructor (props) {
@@ -97,7 +97,7 @@ export default class Page extends Component {
                     ? (
                       <div className='empty-msg'>
                         <div className='alert alert-success' role='alert'>
-                            No se encuentra el archivo disponible
+                          {this.state.archivo === 'boleta' ? 'En 2012 no hubo votación, los proyectos se seleccionaron por consenso en las reuniones de los Foros Vecinales de cada barrio.' : 'EN 2012 no se ejecutaron proyectos del Presupuesto Participativo en Vicente López por ser el primer año de implementación en el que se eligieron proyectos.'}
                         </div>
                       </div>
                     )
