@@ -49,7 +49,7 @@ export default ({ topic, onVote }) => (
         <span className='icon-like' />
       </div>
       {topic.voted && (
-        <button disabled className='btn btn-primary'>
+        <button disabled className='btn btn-primary btn-filled'>
           Te gusta
         </button>
       )}
@@ -57,7 +57,7 @@ export default ({ topic, onVote }) => (
         <button
           disabled={!topic.privileges.canVote}
           onClick={() => onVote(topic.id)}
-          className='btn btn-primary'>
+          className='btn btn-primary btn-empty'>
           Me gusta
         </button>
       )}
