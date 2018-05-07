@@ -46,7 +46,7 @@ export default ({ topic, onVote }) => (
       <div className='participants'>
         {topic.action.count}
         &nbsp;
-        <span className='icon-like' />
+        <span className={`icon-like ${topic.voted ? 'blue' : 'gray'}`} />
       </div>
       {topic.voted && (
         <button disabled className='btn btn-primary btn-filled'>
