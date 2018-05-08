@@ -28,7 +28,9 @@ export default class PdfViewer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      loading: false
+      loading: false,
+      page: false,
+      pages: false
     }
   }
 
@@ -58,24 +60,9 @@ export default class PdfViewer extends Component {
     this.setState({ page: this.state.page + 1 })
   }
 
-  renderPagination = (page, pages) => {
-    let previousButton = <li className="previous" onClick={this.handlePrevious}><a href="#"><i className="fa fa-arrow-left"></i> Previous</a></li>
-    if (page === 1) {
-      previousButton = <li className="previous disabled"><a href="#"><i className="fa fa-arrow-left"></i> Previous</a></li>
-    }
-    let nextButton = <li className="next" onClick={this.handleNext}><a href="#">Next <i className="fa fa-arrow-right"></i></a></li>
-    if (page === pages) {
-      nextButton = <li className="next disabled"><a href="#">Next <i className="fa fa-arrow-right"></i></a></li>
-    }
-  }
-
   render () {
-    let pagination = null
-    if (this.state.pages) {
-      pagination = this.renderPagination(this.state.page, this.state.pages)
-    }
     return (
-      <div>
+      <div className='pdf-container'>
         {this.state.loading &&
           <div className='loader-container'>
             <Loader />
@@ -89,7 +76,26 @@ export default class PdfViewer extends Component {
           page={this.state.page}
           loading={<Loader />}
         />
-        {pagination}
+        {this.state.pages &&
+          <nav className='pagination'>
+            <div className='pagination-container'>
+              <button onClick={this.handlePrevious}
+                disabled={this.state.page === 1}
+                className='btn-pagination'>
+                <span className='icon-arrow-left' />
+              </button>
+              <span className='page-counter'>
+                Página {this.state.page} / {this.state.pages}
+              </span>
+              <button
+                onClick={this.handleNext}
+                disabled={this.state.page === this.state.pages}
+                className='btn-pagination'>
+                <span className='icon-arrow-right' />
+              </button>
+            </div>
+          </nav>
+        }
       </div>
     )
   }
