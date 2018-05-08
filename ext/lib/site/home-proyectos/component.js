@@ -114,41 +114,16 @@ export class HomeProyectos extends Component {
 
     return (
       <div id='forum-home'>
-        <section className='banner-proyectos'>
-          <div className='banner' />
-          <div className='contenedor'>
-            <div className='fondo-titulo'>
-              <h1>Proyectos</h1>
-            </div>
-          </div>
-        </section>
-        <Barrios forums={forums} />
+        <header className='banner-proyectos'>
+          <h1 className='proyectos-title'>Seguimiento de proyectos</h1>
+          <h2 className='proyectos-subtitle'>Acá podés encontrar los proyectos que fueron aprobados en votaciones anteriores y ver en qué estado de su ejecución se encuentran.</h2>
+        </header>
         <Anchor id='containerr'>
-          {this.props.params.forum !== 'proyectos' &&
-            <DatosPorForo forum={forum} />
-          }
-          {topics.length === 0 && (
-            <div className='no-topics'>
-              <p>{t('homepage.no-topics')}</p>
+          <section className='grid-container'>
+            <div className='grid'>
+              Acá va la grid
             </div>
-          )}
-          <div className='topics-container'>
-            {this.state.loading && (
-              <div className='loader-wrapper'>
-                <div className='topic-loader' />
-              </div>
-            )}
-            {topics.map((topic) => (
-              <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
-            ))}
-          </div>
-          <div className='btn-wrapper'>
-            {!this.state.noMore && forum.name === 'proyectos' && (
-              <button className='boton-azul' onClick={this.verMas}>
-                VER MAS
-              </button>
-            )}
-          </div>
+          </section>
         </Anchor>
         <Jump goTop={this.goTop} />
         <Footer />
