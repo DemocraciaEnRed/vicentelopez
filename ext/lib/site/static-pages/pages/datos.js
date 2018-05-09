@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import Footer from 'ext/lib/site/footer/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
@@ -110,7 +111,7 @@ export default class Page extends Component {
               <h3>Evolución de la participación</h3>
               <figure className="graph-box">
                 <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/evolucion-participacion.svg" alt=""/>
+                  <img src="/ext/lib/site/static-pages/evolucion-participacion1.svg" alt=""/>
                 </div>
                 <figcaption>
                   <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
@@ -145,8 +146,16 @@ export default class Page extends Component {
             </article>
 
             <div className='descargas'>
+              <h4>ARCHIVOS</h4>
+              <div className='btns-descargas btns-historial'>
+                <Link href='/s/documentos'>
+                  <button className='boton-azul'>
+                    Historial de documentos
+                  </button>
+                </Link>
+              </div>
               <h4>DESCARGAS</h4>
-              <div className="btns-descargas">
+              <div className='btns-descargas'>
                 <a href='https://s3.amazonaws.com/forosvecinales/proyectos-2013-2018_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2018 por tipo (cantidad e inversión)</a>
                 <a href='https://s3.amazonaws.com/forosvecinales/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación</a>
                 <a href='https://s3.amazonaws.com/forosvecinales/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
