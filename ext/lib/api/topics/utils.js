@@ -1,5 +1,6 @@
 const api = require('lib/api-v2/db-api')
 const topicScopes = require('lib/api-v2/db-api/topics/scopes')
+const { notFound } = require('../errors')
 
 exports.parseTags = (req, res, next) => {
   req.query.tags = req.query.tags.split(',').filter((t) => !!t)
@@ -11,17 +12,12 @@ exports.parseStates = (req, res, next) => {
   next()
 }
 
-exports.findPropuestasForum = (req, res, next) => {
-  api.forums.find({ name: 'propuestas' })
+exports.findForum = (req, res, next) => {
+  api.forums.find({ name: req.query.forumName })
     .findOne()
     .exec()
     .then((forum) => {
-      if (!forum) {
-        const err = new Error('Forum "propuestas" not found.')
-        err.status = 404
-        err.code = 'FORUM_NOT_FOUND'
-        return next(err)
-      }
+      if (!forum) throw notFound('FORUM_NOT_FOUND')
 
       req.forum = forum
 
@@ -35,7 +31,8 @@ const queryTopics = (opts) => {
     state,
     forum,
     tags,
-    barrio
+    barrio,
+    ano
   } = opts
 
   const query = {
@@ -44,7 +41,8 @@ const queryTopics = (opts) => {
   }
 
   if (barrio) query['attrs.barrio'] = barrio
-  if (tags.length > 0) query.tags = { $in: tags }
+  if (ano) query['attrs.ano'] = ano
+  if (tags && tags.length > 0) query.tags = { $in: tags }
   if (state.length > 0) query['attrs.state'] = { $in: state }
 
   return api.topics.find().where(query)

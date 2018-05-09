@@ -5,16 +5,24 @@ const utils = require('./utils')
 
 const app = Router()
 
+const allowedForums = ['propuestas', 'proyectos']
+
 const formats = {
   formats: {
     tags: /^([a-zA-Z0-9-_]+,?)+$/,
-    barrio: /^[a-z0-9-]+$/
+    barrio: /^[a-z0-9-]+$/,
+    ano: /[0-9]+/
   }
 }
 
-app.get('/propuestas',
+app.get('/topics',
 validate({
   query: Object.assign({}, validate.schemas.pagination, {
+    forumName: {
+      type: 'string',
+      enum: allowedForums,
+      required: true
+    },
     tags: {
       type: 'string',
       format: 'tags',
@@ -29,6 +37,10 @@ validate({
       type: 'string',
       format: 'barrio'
     },
+    ano: {
+      type: 'string',
+      format: 'ano'
+    },
     sort: {
       type: 'string',
       enum: ['newest', 'popular'],
@@ -37,11 +49,11 @@ validate({
   })
 }, { formats }),
 utils.parseTags,
+utils.findForum,
 utils.parseStates,
-utils.findPropuestasForum,
 middlewares.forums.privileges.canView,
 (req, res, next) => {
-  let opts = req.query
+  const opts = Object.assign({}, req.query)
   opts.forum = req.forum
   opts.user = req.user
 
