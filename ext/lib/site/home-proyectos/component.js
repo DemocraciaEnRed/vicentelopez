@@ -10,8 +10,8 @@ import Barrios from 'ext/lib/site/barrios/component'
 import DatosPorForo from 'ext/lib/site/datos-forum/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
-import TopicCard from '../proyectos/topic-card/component'
 import Filter from './filter/component'
+import TopicGrid from './TopicGrid/component'
 
 export class HomeProyectos extends Component {
   constructor () {
@@ -122,10 +122,7 @@ export class HomeProyectos extends Component {
         <Anchor id='containerr'>
           <section className='grid-container'>
             <Filter />
-            <div className='grid'>
-              {console.log(topics)}
-              Acá va la grid
-            </div>
+            <TopicGrid topics={topics} />
           </section>
         </Anchor>
         <Jump goTop={this.goTop} />

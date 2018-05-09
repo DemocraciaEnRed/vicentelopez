@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
 const barrios = [
   { 'name': 'Carapachay', 'value': 'carapachay' },
@@ -32,6 +33,14 @@ export default class Filter extends Component {
     }
   }
 
+  componentWillMount () {
+    document.addEventListener('click', this.handleClick, false)
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('click', this.handleClick, false)
+  }
+
   handleDropdown = (id) => (e) => {
     // Show or hide the options div
     e.preventDefault()
@@ -54,8 +63,17 @@ export default class Filter extends Component {
     }
   }
 
+  // Close dropdown if clicked outside
+  handleClick = (e) => {
+    if ((!ReactDOM.findDOMNode(this).contains(e.target)  || e.target.id === 'filter') && this.state.activeDropdown !== null) {
+      this.setState({
+        activeDropdown: null
+      })
+    }
+  }
+
+  // Clear all selected items from a filter
   clearFilter = (filter) => (e) => {
-    // Clear all selected items from a filter
     this.setState({
       activeDropdown: null,
       [filter]: []
@@ -64,7 +82,7 @@ export default class Filter extends Component {
 
   render () {
     return (
-      <nav className='filters-nav'>
+      <nav className='filters-nav' id='filter'>
         <div className='button-container'>
           <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
             <div>
