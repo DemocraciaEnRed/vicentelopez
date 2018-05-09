@@ -1,6 +1,6 @@
 const api = require('lib/api-v2/db-api')
 const topicScopes = require('lib/api-v2/db-api/topics/scopes')
-const { notFound } = require('../../errors')
+const { notFound } = require('../errors')
 
 exports.parseTags = (req, res, next) => {
   req.query.tags = req.query.tags.split(',').filter((t) => !!t)
