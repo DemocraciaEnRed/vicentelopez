@@ -130,6 +130,7 @@ class HomePropuestas extends Component {
       sort: this.state.filter === 'new' ? 'newest' : 'popular'
     }
     query.page = page
+    query.forumName = 'propuestas'
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
     if (this.state.barrio !== '') query.barrio = this.state.barrio
@@ -137,7 +138,7 @@ class HomePropuestas extends Component {
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
-    return window.fetch(`/ext/api/propuestas?${queryToArray}`, {
+    return window.fetch(`/ext/api/topics?${queryToArray}`, {
       credentials: 'include'
     })
       .then((res) => res.json())
