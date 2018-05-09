@@ -11,7 +11,7 @@ import DatosPorForo from 'ext/lib/site/datos-forum/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 import Filter from './filter/component'
-import TopicGrid from './TopicGrid/component'
+import TopicGrid from './grid/component'
 
 export class HomeProyectos extends Component {
   constructor () {
