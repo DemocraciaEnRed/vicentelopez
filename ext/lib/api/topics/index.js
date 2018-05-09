@@ -30,8 +30,9 @@ validate({
     },
     state: {
       type: 'string',
+      enum: ['pendiente', 'factible', 'no-factible'],
       format: 'states',
-      default: 'pendiente,factible,no-factible'
+      default: 'pendiente'
     },
     barrio: {
       type: 'string',
