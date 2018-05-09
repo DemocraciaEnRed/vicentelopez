@@ -2,21 +2,31 @@ import React from 'react'
 import { Link } from 'react-router'
 import moment from 'moment'
 
+const estados = {
+  'factible': 'Factible',
+  'no-factible': 'No factible'
+}
+
 export default ({ topic, onVote }) => (
   <div className='ext-topic-card ideas-topic-card'>
     <div className='topic-card-info'>
       <div className='topic-creation'>
         <span>{topic.attrs.nombre}</span>
-        <span className='date'>
+        <span
+          className={`date ${(topic.attrs.state === 'factible' || topic.attrs.state === 'no-factible') && 'space'}`}>
           {moment(topic.createdAt).format('D/M/YY')}
         </span>
+        { 
+          (topic.attrs.state === 'factible' || topic.attrs.state === 'no-factible') &&
+            (<span className='estado'>{estados[topic.attrs.state]}</span>)
+        }
       </div>
       <h1 className='topic-card-title'>
-        <Link to={topic.url}>
+        <Link to={`/propuestas/topic/${topic.id}`}>
           {topic.mediaTitle}
         </Link>
         <p className='topic-card-description'>
-          <Link to={topic.url}>
+          <Link to={`/propuestas/topic/${topic.id}`}>
             {createClauses(topic)}
           </Link>
         </p>
@@ -24,8 +34,8 @@ export default ({ topic, onVote }) => (
       {
         topic.tags && topic.tags.length > 0 && (
           <div className='topic-card-tags'>
-            {topic.tags.slice(0, 12).map((tag) => (
-              <a href={ `${window.location.origin + '/propuestas?tag=' + tag}`} key={tag} className='badge badge-default'>{tag}</a>
+            {topic.tags.slice(0, 12).map((tag, i) => (
+              <a href={ `${window.location.origin + '/propuestas?tags=' + tag}`} key={`${tag}-${i}`} className='badge badge-default'>{tag}</a>
 
             ))}
           </div>
@@ -36,17 +46,18 @@ export default ({ topic, onVote }) => (
       <div className='participants'>
         {topic.action.count}
         &nbsp;
-        <span className='icon-like' />
+        <span className={`icon-like ${topic.voted ? 'blue' : 'gray'}`} />
       </div>
       {topic.voted && (
-        <button disabled className='btn btn-primary'>
+        <button disabled className='btn btn-primary btn-filled'>
           Te gusta
         </button>
       )}
       {!topic.voted && (
         <button
+          disabled={!topic.privileges.canVote}
           onClick={() => onVote(topic.id)}
-          className='btn btn-primary'>
+          className='btn btn-primary btn-empty'>
           Me gusta
         </button>
       )}

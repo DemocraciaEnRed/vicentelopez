@@ -30,8 +30,8 @@ validate({
     },
     state: {
       type: 'string',
-      enum: ['pendiente', 'factible', 'no-factible'],
-      default: 'pendiente'
+      format: 'states',
+      default: 'pendiente,factible,no-factible'
     },
     barrio: {
       type: 'string',
@@ -50,10 +50,12 @@ validate({
 }, { formats }),
 utils.parseTags,
 utils.findForum,
+utils.parseStates,
 middlewares.forums.privileges.canView,
 (req, res, next) => {
   const opts = Object.assign({}, req.query)
   opts.forum = req.forum
+  opts.user = req.user
 
   Promise.all([
     utils.findTopics(opts),

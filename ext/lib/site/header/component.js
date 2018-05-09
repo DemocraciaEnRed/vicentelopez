@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 import bus from 'bus'
 import config from 'lib/config'
 import userConnector from 'lib/site/connectors/user'
@@ -13,7 +13,9 @@ class Header extends Component {
     super(props)
 
     this.state = {
-      userForm: null
+      userForm: null,
+      mobileMenu: false,
+      userMenu: false
     }
   }
 
@@ -31,6 +33,30 @@ class Header extends Component {
     })
   }
 
+  toggleMobileMenu = () => {
+    if (this.state.userMenu) {
+      this.setState({
+        mobileMenu: !this.state.mobileMenu,
+        userMenu: false
+      })
+    } else {
+      this.setState({
+        mobileMenu: !this.state.mobileMenu
+      })
+    }
+  }
+
+  toggleUserMenu = () => {
+    if (this.state.mobileMenu) {
+      this.setState({
+        mobileMenu: false,
+        userMenu: !this.state.userMenu
+      })
+    } else {
+      this.setState({ userMenu: !this.state.userMenu })
+    }
+  }
+
   render () {
     const styles = {
       color: config.headerFontColor,
@@ -39,23 +65,23 @@ class Header extends Component {
 
     // MEDIA QUERY - Si es menor al breakpoint muestra un menú, si es mayor, otro
 
-    if (window.matchMedia("(max-width: 975px)").matches) {
+    if (window.matchMedia('(max-width: 975px)').matches) {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
 
-        <Link
-          to={config.homeLink}
-          className='navbar-brand'>
-          <img
-            src='/ext/lib/site/header/mobile-menu/mobile-logo.svg'
-            className='d-inline-block align-top'
-            height='30' />
-        </Link>
+          <Link
+            to={config.homeLink}
+            className='navbar-brand'>
+            <img
+              src={config.logo}
+              className='d-inline-block align-top'
+              height='30' />
+          </Link>
 
-        <ul
-          className='nav navbar-nav nav-mobile'>
+          <ul
+            className='nav navbar-nav nav-mobile'>
 
-          {this.props.user.state.fulfilled && (
+            {this.props.user.state.fulfilled && (
               <li className='nav-item'>
                 <Link
                   to='/notifications'
@@ -63,16 +89,21 @@ class Header extends Component {
                   <span className='icon-bell' />
                 </Link>
               </li>
-          )}
+            )}
 
-          {this.props.user.state.fulfilled && (
-            <UserBadge />
-          )}
+            {this.props.user.state.fulfilled && (
+              <UserBadge
+                menuOn={this.state.userMenu}
+                toggleOnClick={this.toggleUserMenu} />
+            )}
 
-          <MobileMenu form={this.state.userForm} />
+            <MobileMenu
+              form={this.state.userForm}
+              menuOn={this.state.mobileMenu}
+              toggleOnClick={this.toggleMobileMenu} />
 
-        </ul>
-      </nav>
+          </ul>
+        </nav>
       )
     } else {
       return (
@@ -84,46 +115,46 @@ class Header extends Component {
             <img
               src={config.logo}
               className='d-inline-block align-top'
-               />
+            />
           </Link>
 
           <ul className='nav navbar-nav'>
 
-              <div className="header-item">
-                <Link
-                  to='/s/acerca-de'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+            <div className="header-item">
+              <Link
+                to='/s/acerca-de'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Acerca de
-                </Link>
-              </div>
-              <div className="header-item">
-                <ProyectosLink />
-              </div>
-              <div className="header-item">
-                <Link
-                  to='/propuestas'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+              </Link>
+            </div>
+            <div className="header-item">
+              <ProyectosLink />
+            </div>
+            <div className="header-item">
+              <Link
+                to='/propuestas'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Propuestas
-                </Link>
-              </div>
-              <div className="header-item">
-                <Link
-                  to='/s/datos'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+              </Link>
+            </div>
+            <div className="header-item">
+              <Link
+                to='/s/datos'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Datos
-                </Link>
-              </div>
-              <div className="header-item">
-                <Link
-                  to='/s/herramientas'
-                  className='header-link'
-                  activeStyle={{ color: '#8C1E81' }}>
+              </Link>
+            </div>
+            <div className="header-item">
+              <Link
+                to='/s/herramientas'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
                   Herramientas
-                </Link>
-              </div>
+              </Link>
+            </div>
 
             {this.props.user.state.fulfilled && (
               <li className='nav-item'>
@@ -136,7 +167,9 @@ class Header extends Component {
             )}
 
             {this.props.user.state.fulfilled && (
-              <UserBadge />
+              <UserBadge
+                menuOn={this.state.userMenu}
+                toggleOnClick={this.toggleUserMenu} />
             )}
 
             {this.props.user.state.rejected && (
@@ -144,10 +177,8 @@ class Header extends Component {
             )}
           </ul>
         </nav>
-    )
+      )
     }
-
-
   }
 }
 

@@ -7,6 +7,11 @@ exports.parseTags = (req, res, next) => {
   next()
 }
 
+exports.parseStates = (req, res, next) => {
+  req.query.state = req.query.state.split(',').filter((t) => !!t)
+  next()
+}
+
 exports.findForum = (req, res, next) => {
   api.forums.find({ name: req.query.forumName })
     .findOne()
@@ -32,13 +37,13 @@ const queryTopics = (opts) => {
 
   const query = {
     forum: forum._id,
-    publishedAt: { $ne: null },
-    'attrs.state': state
+    publishedAt: { $ne: null }
   }
 
   if (barrio) query['attrs.barrio'] = barrio
   if (ano) query['attrs.ano'] = ano
   if (tags && tags.length > 0) query.tags = { $in: tags }
+  if (state.length > 0) query['attrs.state'] = { $in: state }
 
   return api.topics.find().where(query)
 }
@@ -53,7 +58,8 @@ exports.findTopics = (opts) => {
     forum,
     limit = 30,
     page = 1,
-    sort
+    sort,
+    user
   } = opts
 
   return queryTopics(opts)
@@ -64,7 +70,7 @@ exports.findTopics = (opts) => {
     .sort(sortMap[sort])
     .exec()
     .then((topics) => Promise.all(topics.map((topic) => {
-      return topicScopes.ordinary.expose(topic, forum)
+      return topicScopes.ordinary.expose(topic, forum, user)
     })))
 }
 

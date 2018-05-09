@@ -1,6 +1,6 @@
 {
   "name": "ext",
-  "version": "1.2.7",
+  "version": "1.2.11",
   "description": "Presupuesto participativo Vicente Lopez",
   "main": "lib/boot",
   "scripts": {
@@ -15,7 +15,8 @@
     "flickity": "2.0.8",
     "jump.js": "1.0.2",
     "lodash.debounce": "4.0.8",
-    "lodash.pick": "4.4.0"
+    "lodash.pick": "4.4.0",
+    "react-pdf-js": "^3.0.7"
   },
   "devDependencies": {
     "eslint": "3",

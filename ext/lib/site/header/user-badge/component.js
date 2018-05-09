@@ -17,7 +17,6 @@ export class UserBadge extends Component {
     super(props)
 
     this.state = {
-      menuUserBadge: false,
       canChangeTopics: false
     }
   }
@@ -33,12 +32,6 @@ export class UserBadge extends Component {
   setChangeTopicsPermission = (forum) => {
     this.setState({
       canChangeTopics: (forum && forum.privileges.canChangeTopics)
-    })
-  }
-
-  toggleMenu = (e) => {
-    this.setState({
-      menuUserBadge: !this.state.menuUserBadge
     })
   }
 
@@ -68,10 +61,10 @@ export class UserBadge extends Component {
 
     const classes = ['header-item', 'user-badge', 'user-badge-helper']
 
-    if (this.state.menuUserBadge) classes.push('active')
+    if (this.props.menuOn) classes.push('active')
 
     return (
-      <div className={classes.join(' ')} onClick={this.toggleMenu}>
+      <div className={classes.join(' ')} onClick={this.props.toggleOnClick}>
         <button className='header-link'>
           <img src={userAttrs.avatar} alt='' />
         </button>
