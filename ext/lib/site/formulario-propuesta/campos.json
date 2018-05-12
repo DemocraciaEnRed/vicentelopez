@@ -1,4 +1,12 @@
-[
+[ 
+    {
+        "name" : "anio", 
+        "title" : "Año", 
+        "mandatory" : false, 
+        "kind" : "String", 
+        "max" : 128, 
+        "min" : 0
+    },
   {
     "name" : "state", 
     "title" : "Estado", 
@@ -17,6 +25,49 @@
         {
             "name" : "no-factible", 
             "title" : "No factible"
+        },
+        {
+            "name" : "ganador", 
+            "title" : "Ganador"
+        }, 
+        {
+            "name" : "no-ganador", 
+            "title" : "No ganador"
+        }, 
+        {
+            "name" : "preparacion", 
+            "title" : "En Preparación"
+        }, 
+        {
+            "name" : "compra", 
+            "title" : "En Proceso de Compra"
+        }, 
+        {
+            "name" : "ejecucion", 
+            "title" : "En Ejecución"
+        },
+        {
+            "name" : "presentado",
+            "title" : "Presentado"
+        }
+        {
+            "name" : "pendiente", 
+            "title" : "Pendiente", 
+            "_id" : ObjectId("59d4e011ec1b98003b80bf09")
+        }, 
+        {
+            "name" : "proyectado", 
+            "title" : "Proyectado", 
+            "_id" : ObjectId("59d4e011ec1b98003b80bf08")
+        }, 
+        {
+            "name" : "ejecutandose", 
+            "title" : "En Ejecución", 
+            "_id" : ObjectId("59d4e011ec1b98003b80bf07")
+        }, 
+        {
+            "name" : "terminado", 
+            "title" : "Terminado"
         }
     ]
   }, 
