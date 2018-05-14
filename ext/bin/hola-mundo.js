@@ -24,18 +24,20 @@ Promise.all(forumsArray)
       })
   })
   .then(({ topics, barrios, proyectos }) => {
+    proyectosId = proyectos[0].id
     topics.map((topic) => {
-      console.log(topic.forum)
-      console.log(typeof(topic.forum))
       const barrioName = barrios.find((barrio) => {
-        console.log(barrio.id)
-        console.log(typeof(barrio.id))
-        if (barrio.id === topic.forum) return barrio })
+        if (barrio.id === topic.forum.toString()) return barrio
+      }).name
+      console.log('estado')
+      console.log(topic.attrs.state)
+      console.log('nombre barrio')
       console.log(barrioName)
-      // topic.set('attrs.barrio', barrioName)
-      //   .set('forum', proyectos.id)
-      // console.log(topic.attrs.barrio, topic.forum)
-      // return topic.save()
+      console.log('id de forum proyectos')
+      console.log(proyectosId)
+      topic.set('attrs.barrio', barrioName)
+      topic.set('forum', proyectosId)
+      return topic.save()
     })
   })
   .catch((err) => console.log(err))
