@@ -30,7 +30,7 @@ validate({
     },
     state: {
       type: 'string',
-      enum: ['pendiente', 'factible', 'no-factible'],
+      enum: ['pendiente', 'factible', 'no-factible', 'ganador', 'no-ganador'],
       format: 'states',
       default: 'pendiente'
     },
@@ -62,6 +62,7 @@ middlewares.forums.privileges.canView,
     utils.findTopics(opts),
     utils.findTopicsCount(opts)
   ]).then(([topics, count]) => {
+    console.log(topics)
     res.status(200).json({
       status: 200,
       pagination: {

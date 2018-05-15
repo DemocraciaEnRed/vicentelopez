@@ -27,8 +27,18 @@ export class HomeProyectos extends Component {
     }
   }
 
-  componentWillMount () {
-    this.fetchAll()
+  componentDidMount () {
+    window.fetch(`/ext/api/topics?forumName=proyectos&state=ganador`, {
+      credentials: 'include'
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          topics: res.results.topics,
+          page: res.page
+        }, () => console.log(this.state.topics))
+      })
+      .catch((err) => console.error(err))
   }
 
   fetchAll = () => {
@@ -70,7 +80,7 @@ export class HomeProyectos extends Component {
 
   getFeed = () => {
     const opts = { credentials: 'include' }
-    return window.fetch(`/ext/api/feed?s=${this.state.feedCount}`, opts)
+    return window.fetch(`/ext/api/topics?forumName=proyectos&s=${this.state.feedCount}`, opts)
       .then((res) => res.json())
       .then((res) => {
         if (res.result) {
@@ -115,6 +125,7 @@ export class HomeProyectos extends Component {
 
     return (
       <div id='forum-home'>
+
         <header className='banner-proyectos'>
           <h1 className='proyectos-title'>Seguimiento de proyectos</h1>
           <h2 className='proyectos-subtitle'>Acá podés encontrar los proyectos que fueron aprobados en votaciones anteriores y ver en qué estado de su ejecución se encuentran.</h2>
@@ -122,7 +133,7 @@ export class HomeProyectos extends Component {
         <Anchor id='containerr'>
           <section className='grid-container'>
             <Filter />
-            <TopicGrid topics={topics} />
+            <TopicGrid topics={topics} forum={forum} />
           </section>
         </Anchor>
         <Jump goTop={this.goTop} />
