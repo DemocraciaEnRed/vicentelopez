@@ -6,13 +6,13 @@ const ObjectID = require('mongodb').ObjectID
 const Forum = models.Forum
 const Topic = models.Topic
 
-const forumsArray = [
-  Forum.find({ 'name': { $in: barrios } }).exec(),
-  Forum.find({ 'name': 'proyectos' }).exec()
-]
+// const forumsArray = [
+//   Forum.find({ 'name': { $in: barrios } }).exec(),
+//   Forum.find({ 'name': 'proyectos' }).exec()
+// ]
 
 // Promise.all(forumsArray)
-//   .then(([barrios, proyectos]) => {
+//   .then(([barrios, [ proyectos ]]) => {
 //     const barriosIds = barrios.map((b) => b.id)
 //     return Topic.find({ forum: { $in: barriosIds } })
 //       .then((topics) => {
@@ -24,8 +24,9 @@ const forumsArray = [
 //       })
 //   })
 //   .then(({ topics, barrios, proyectos }) => {
-//     const proyectosId = proyectos[0].id
 //     topics.map((topic) => {
+//       console.log(topic.attrs.description)
+//       console.log(typeof (topic.attrs.description))
 //       const barrioName = barrios.find((barrio) => {
 //         if (barrio.id === topic.forum.toString()) return barrio
 //       }).name
@@ -44,17 +45,47 @@ const forumsArray = [
 //         return newState
 //       }
 //       topic.set('attrs.barrio', barrioName)
-//       topic.set('forum', proyectosId)
+//       topic.set('forum', proyectos.id)
 //       topic.set('attrs.state', changeState(topic.attrs.state))
 //       return topic.save()
 //     })
 //   })
 //   .catch((err) => console.log(err))
 
-Forum.find({ 'name': 'propuestas' }).exec()
-  .then(([forum]) => {
-    console.log(forum)
-    Topic.find({'forum': forum.id})
-      .then((topics) =>{ console.log(topics) })
+const forums = [
+  Forum.find({ 'name': 'proyectos' }).exec(),
+  Forum.find({ 'name': 'propuestas' }).exec()
+]
+
+Promise.all(forums)
+  .then(([[ proyectos ], [ propuestas ]]) => {
+    return Topic.find({ 'forum': propuestas.id, 'attrs.state': 'factible' })
+      .then((topics) => {
+        return {
+          topics: topics,
+          forum: proyectos
+        }
+      })
+  })
+  .then(({ topics, forum }) => {
+    topics.map((topic) => {
+      const newDescription = () => {
+        if (topic.attrs.solucion === undefined) {
+          return topic.attrs.problema
+        } else if (topic.attrs.solucion.length > 512) {
+          return topic.attrs.solucion.substring(0, 509).concat('...')
+        } else {
+          return topic.attrs.solcuion
+        }
+      }
+      topic.set('forum', forum.id)
+      topic.set('attrs.anio', 2018)
+      topic.set('attrs.budget', 0)
+      topic.set('attrs.votes', 0)
+      topic.set('attrs.description', newDescription())
+      console.log(topic.attrs.description)
+      console.log(typeof (topic.attrs.description))
+      return topic.save()
+    })
   })
   .catch((err) => { console.log(err) })
