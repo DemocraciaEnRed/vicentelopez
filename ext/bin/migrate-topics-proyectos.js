@@ -2,11 +2,10 @@
 
 const barrios = ['villa-martelli', 'villa-adelina', 'vicente-lopez', 'olivos', 'munro', 'la-lucila', 'florida-oeste', 'florida-este', 'carapachay']
 const models = require('lib/models')()
-const ObjectID = require('mongodb').ObjectID
 const Forum = models.Forum
 const Topic = models.Topic
 
-Promise.all([ Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'name': 'proyectos' }).exec()])
+Promise.all([Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'name': 'proyectos' }).exec()])
   .then(([barrios, [ proyectos ]]) => {
     const barriosIds = barrios.map((b) => b.id)
     return Topic.find({ forum: { $in: barriosIds } })
@@ -19,12 +18,8 @@ Promise.all([ Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'nam
       })
   })
   .then(({ topics, barrios, proyectos }) => {
-    topics.map((topic) => {
-      console.log(topic.attrs.description)
-      console.log(typeof (topic.attrs.description))
-      const barrioName = barrios.find((barrio) => {
-        if (barrio.id === topic.forum.toString()) return barrio
-      }).name
+    const changedTopics = topics.map((topic) => {
+      const barrioName = barrios.find((barrio) => barrio.id === topic.forum.toString()).name
       const changeState = (state) => {
         let newState = null
         switch (state) {
@@ -44,8 +39,11 @@ Promise.all([ Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'nam
       topic.set('attrs.state', changeState(topic.attrs.state))
       return topic.save()
     })
+    return Promise.all(changedTopics)
   })
-  
+  .then((changedTopics) => { console.log('Proyectos actualizados!') })
+  .catch((err) => { console.log(err) })
+
 Promise.all([
   Forum.find({ 'name': 'proyectos' }).exec(),
   Forum.find({ 'name': 'propuestas' }).exec()
@@ -60,12 +58,8 @@ Promise.all([
       })
   })
   .then(({ topics, forum }) => {
-    topics.map((topic) => {
-      topic.set('forum', forum.id)
-      topic.set('attrs.anio', 2018)
-      topic.set('attrs.budget', 0)
-      topic.set('attrs.votes', 0)
-      topic.set('attrs.description', () => {
+    const savedTopics = topics.map((topic) => {
+      const topicDescription = () => {
         if (topic.attrs.solucion === undefined) {
           return topic.attrs.problema
         } else if (topic.attrs.solucion.length > 512) {
@@ -73,8 +67,20 @@ Promise.all([
         } else {
           return topic.attrs.solucion
         }
-      })
+      }
+      const topicContenido = () => {
+        const clauses = [topic.attrs.problema, topic.attrs.solucion, topic.attrs.beneficios].filter((attr) => attr !== undefined)
+        return clauses.join('')
+      }
+      topic.set('forum', forum.id)
+      topic.set('attrs.anio', 2018)
+      topic.set('attrs.budget', 0)
+      topic.set('attrs.votes', 0)
+      topic.set('attrs.description', topicDescription())
+      topic.set('attrs.contenido', topicContenido())
       return topic.save()
     })
+    return Promise.all(savedTopics)
   })
+  .then((savedTopics) => { console.log('Propuestas actualizadas!') })
   .catch((err) => { console.log(err) })
