@@ -13,7 +13,7 @@ const barrios = [
   { 'name': 'Villa Martelli', 'value': 'villa-martelli' }
 ]
 
-const estados = [
+const states = [
   { 'name': 'En preparación', 'value': 'en-preparacion' },
   { 'name': 'Contratación', 'value': 'contratacion' },
   { 'name': 'En ejecución', 'value': 'en-ejecucion' },
@@ -28,7 +28,7 @@ export default class Filter extends Component {
     this.state = {
       activeDropdown: null,
       barrio: [],
-      estado: [],
+      state: [],
       ano: []
     }
   }
@@ -54,12 +54,12 @@ export default class Filter extends Component {
     if (!this.state[filter].includes(e.target.value)) {
       this.setState({
         [filter]: [...this.state[filter], e.target.value]
-      })
+      }, () => this.sendFilters())
     // If it's already included erase it
     } else {
       this.setState({
         [filter]: [...this.state[filter]].filter((item) => item !== e.target.value)
-      })
+      }, () => this.sendFilters())
     }
   }
 
@@ -77,6 +77,15 @@ export default class Filter extends Component {
     this.setState({
       activeDropdown: null,
       [filter]: []
+    }, () => this.sendFilters())
+  }
+
+  // Expose filters to parent funtions
+  sendFilters = () => {
+    this.props.handleFilters({
+      ano: this.state.ano,
+      barrio: this.state.barrio,
+      state: this.state.state
     })
   }
 
@@ -114,30 +123,30 @@ export default class Filter extends Component {
           }
         </div>
         <div className='button-container'>
-          <button className='dropdown-button' onClick={this.handleDropdown('estado')}>
+          <button className='dropdown-button' onClick={this.handleDropdown('state')}>
             <div>
-              <span className={`button-label ${this.state.estado.length > 0 ? 'active' : ''}`}>Estado</span>
-              {this.state.estado.length > 0 &&
-                <span className='badge'>{this.state.estado.length}</span>
+              <span className={`button-label ${this.state.state.length > 0 ? 'active' : ''}`}>Estado</span>
+              {this.state.state.length > 0 &&
+                <span className='badge'>{this.state.state.length}</span>
               }
             </div>
             <span className='caret-down'>▾</span>
           </button>
-          {this.state.activeDropdown === 'estado' &&
+          {this.state.activeDropdown === 'state' &&
           <div className='dropdown-options'>
             <div className='options-container'>
-              {estados.map((e, i) => (
+              {states.map((s, i) => (
                 <label className='option-label' key={i}>
                   <input
                     type='checkbox'
-                    value={e.value}
-                    onChange={this.handleFilter('estado')}
-                    checked={this.state.estado.includes(e.value)} />
-                  <span className='checkbox-label'>{e.name}</span>
+                    value={s.value}
+                    onChange={this.handleFilter('state')}
+                    checked={this.state.state.includes(s.value)} />
+                  <span className='checkbox-label'>{s.name}</span>
                 </label>
               ))}
             </div>
-            <button className='clear-filters' onClick={this.clearFilter('estado')}>
+            <button className='clear-filters' onClick={this.clearFilter('state')}>
               <span>Borrar filtros</span>
             </button>
           </div>

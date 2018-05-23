@@ -64,6 +64,8 @@ exports.findTopics = (opts) => {
 
   return queryTopics(opts)
     .populate(topicScopes.ordinary.populate)
+    .sort('attrs.barrio')
+    .sort(sortMap[sort])
     .select(topicScopes.ordinary.select)
     .sort(sortMap[sort])
     .limit(limit)
