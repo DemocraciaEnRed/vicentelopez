@@ -23,17 +23,22 @@ export class HomeProyectos extends Component {
       noMore: false,
       ano: [],
       barrio: [],
-      state: []
+      state: [],
+      stage: 'seguimiento'
     }
   }
 
   componentDidMount () {
-    window.fetch(`/ext/api/topics?forumName=proyectos&state=ganador`, {
+    let initialFilters = {}
+    if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
+    const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
+    window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
     })
       .then((res) => res.json())
       .then((res) => {
         this.setState({
+          barrio: initialFilters.barrio ? initialFilters.barrio : [],
           topics: res.results.topics,
           page: res.pagination.page,
           noMore: this.state.page >= res.pagination.pageCount
@@ -147,10 +152,10 @@ export class HomeProyectos extends Component {
   // }
 
   render () {
-    if (config.visibility === 'hidden' && this.props.user.state.rejected) {
-      browserHistory.push('/signin')
-      return null
-    }
+    // if (config.visibility === 'hidden' && this.props.user.state.rejected) {
+    //   browserHistory.push('/signin')
+    //   return null
+    // }
     // if (!this.state.forum) return null
     // const { forum } = this.state
     let { topics } = this.state
