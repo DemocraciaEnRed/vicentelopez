@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import t from 't-component'
 import config from 'lib/config'
+import { sharerFacebook } from 'ext/lib/site/sharer'
 
 export default (props) => {
   const { topic, twitterText, socialLinksUrl } = props
   const { url, mediaTitle, participants } = topic
   const messageWp = `Apoyemos esta propuesta para mejorar Vicente López: ${mediaTitle} ` + socialLinksUrl
-
   return (
     <div className='topic-article-content topic-social-vilo'>
       <div className='share-links'>
