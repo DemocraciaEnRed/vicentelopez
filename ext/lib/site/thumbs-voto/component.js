@@ -10,12 +10,7 @@ export default function ThumbsVoto (props) {
             <h2>
               Presupuesto Participativo 2018
             </h2>
-            <h3>Envianos tu propuesta para la votación de este año. Tenés tiempo hasta el 31 de mayo inclusive.</h3>
-            <Link
-              to='/formulario-propuesta'
-              className="boton-azul boton-blanco">
-              Mandá tu propuesta
-            </Link>
+            <h3>Gracias a la participación de vecinos e instituciones, recibimos XXX propuestas para los 9 barrios de Vicente López. Durante junio y julio analizaremos cuáles de ellas son posibles de realizar. En agosto, les informaremos cuáles de ellas participarán de la votación que se realizará entre el 24 de septiembre y el 7 de octubre de este año.</h3>
           </div>
         </div>
         <div className="row cont">
