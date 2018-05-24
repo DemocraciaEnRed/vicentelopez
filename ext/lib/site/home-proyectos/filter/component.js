@@ -26,10 +26,7 @@ export default class Filter extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      activeDropdown: null,
-      barrio: [],
-      state: [],
-      ano: []
+      activeDropdown: null
     }
   }
 
@@ -49,23 +46,14 @@ export default class Filter extends Component {
     })
   }
 
+  // Send filter to parent component
   handleFilter = (filter) => (e) => {
-    // If the value is not included in the filter array, add it
-    if (!this.state[filter].includes(e.target.value)) {
-      this.setState({
-        [filter]: [...this.state[filter], e.target.value]
-      }, () => this.sendFilters())
-    // If it's already included erase it
-    } else {
-      this.setState({
-        [filter]: [...this.state[filter]].filter((item) => item !== e.target.value)
-      }, () => this.sendFilters())
-    }
+    this.props.handleFilter(filter, e.target.value)
   }
 
   // Close dropdown if clicked outside
   handleClick = (e) => {
-    if ((!ReactDOM.findDOMNode(this).contains(e.target)  || e.target.id === 'filter') && this.state.activeDropdown !== null) {
+    if ((!ReactDOM.findDOMNode(this).contains(e.target) || e.target.id === 'filter') && this.state.activeDropdown !== null) {
       this.setState({
         activeDropdown: null
       })
@@ -74,19 +62,7 @@ export default class Filter extends Component {
 
   // Clear all selected items from a filter
   clearFilter = (filter) => (e) => {
-    this.setState({
-      activeDropdown: null,
-      [filter]: []
-    }, () => this.sendFilters())
-  }
-
-  // Expose filters to parent funtions
-  sendFilters = () => {
-    this.props.handleFilters({
-      ano: this.state.ano,
-      barrio: this.state.barrio,
-      state: this.state.state
-    })
+    this.props.clearFilter(filter)
   }
 
   render () {
@@ -95,9 +71,9 @@ export default class Filter extends Component {
         <div className='button-container'>
           <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
             <div>
-              <span className={`button-label ${this.state.barrio.length > 0 ? 'active' : ''}`}>Barrio</span>
-              {this.state.barrio.length > 0 &&
-                <span className='badge'>{this.state.barrio.length}</span>
+              <span className={`button-label ${this.props.barrio.length > 0 ? 'active' : ''}`}>Barrio</span>
+              {this.props.barrio.length > 0 &&
+                <span className='badge'>{this.props.barrio.length}</span>
               }
             </div>
             <span className='caret-down'>▾</span>
@@ -111,7 +87,7 @@ export default class Filter extends Component {
                       type='checkbox'
                       value={b.value}
                       onChange={this.handleFilter('barrio')}
-                      checked={this.state.barrio.includes(b.value)} />
+                      checked={this.props.barrio.includes(b.value)} />
                     <span className='checkbox-label'>{b.name}</span>
                   </label>
                 ))}
@@ -125,9 +101,9 @@ export default class Filter extends Component {
         <div className='button-container'>
           <button className='dropdown-button' onClick={this.handleDropdown('state')}>
             <div>
-              <span className={`button-label ${this.state.state.length > 0 ? 'active' : ''}`}>Estado</span>
-              {this.state.state.length > 0 &&
-                <span className='badge'>{this.state.state.length}</span>
+              <span className={`button-label ${this.props.state.length > 0 ? 'active' : ''}`}>Estado</span>
+              {this.props.state.length > 0 &&
+                <span className='badge'>{this.props.state.length}</span>
               }
             </div>
             <span className='caret-down'>▾</span>
@@ -141,7 +117,7 @@ export default class Filter extends Component {
                     type='checkbox'
                     value={s.value}
                     onChange={this.handleFilter('state')}
-                    checked={this.state.state.includes(s.value)} />
+                    checked={this.props.state.includes(s.value)} />
                   <span className='checkbox-label'>{s.name}</span>
                 </label>
               ))}
@@ -155,9 +131,9 @@ export default class Filter extends Component {
         <div className='button-container'>
           <button className='dropdown-button' onClick={this.handleDropdown('ano')}>
             <div>
-              <span className={`button-label ${this.state.ano.length > 0 ? 'active' : ''}`}>Año</span>
-              {this.state.ano.length > 0 &&
-                <span className='badge'>{this.state.ano.length}</span>
+              <span className={`button-label ${this.props.ano.length > 0 ? 'active' : ''}`}>Año</span>
+              {this.props.ano.length > 0 &&
+                <span className='badge'>{this.props.ano.length}</span>
               }
             </div>
             <span className='caret-down'>▾</span>
@@ -171,7 +147,7 @@ export default class Filter extends Component {
                     type='checkbox'
                     value={a}
                     onChange={this.handleFilter('ano')}
-                    checked={this.state.ano.includes(a)} />
+                    checked={this.props.ano.includes(a)} />
                   <span className='checkbox-label'>{a}</span>
                 </label>
               ))}

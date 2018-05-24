@@ -31,6 +31,8 @@ export class HomeProyectos extends Component {
   componentDidMount () {
     let initialFilters = {}
     if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
+    if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
+    initialFilters.state = 'ganador,no-ganador'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -47,15 +49,29 @@ export class HomeProyectos extends Component {
       .catch((err) => console.error(err))
   }
 
-  handleFilters = ({ ano, barrio, state }) => {
-    this.setState({
-      ano,
-      barrio,
-      state
-    }, () => this.fetchTopics())
+  handleFilter = (filter, value) => {
+    // If the value is not included in the filter array, add it
+    if (!this.state[filter].includes(value)) {
+      this.setState({
+        [filter]: [...this.state[filter], value]
+      }, () => this.fetchTopics())
+    // If it's already included erase it
+    } else {
+      this.setState({
+        [filter]: [...this.state[filter]].filter((item) => item !== value)
+      }, () => this.fetchTopics())
+    }
   }
 
+    // Clear all selected items from a filter
+    clearFilter = (filter) => {
+      this.setState({
+        [filter]: []
+      }, () => this.fetchTopics())
+    }
+
   fetchTopics = () => {
+    console.log(this.state)
     let queryString = ['ano', 'barrio', 'state']
       .filter((k) => this.state[k].length > 0)
       .map((k) => `${k}=${this.state[k].join()}`).join('&')
@@ -177,15 +193,19 @@ export class HomeProyectos extends Component {
         </header>
         <Anchor id='containerr'>
           <section className='grid-container'>
-            <Filter handleFilters={this.handleFilters} />
+            <Filter
+              handleFilter={this.handleFilter}
+              ano={this.state.ano}
+              state={this.state.state}
+              barrio={this.state.barrio} />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>
-            {!this.state.noMore ?
-              <button className='boton-azul btn' onClick={this.seeMore}>
+            {this.state.noMore || topics.length === 0
+              ? <span>No hay más proyectos que coincidan con la búsqueda</span>
+              : <button className='boton-azul btn' onClick={this.seeMore}>
                 Ver más
               </button>
-              : <span>No hay más proyectos que coincidan con la búsqueda</span>
             }
           </div>
         </Anchor>
