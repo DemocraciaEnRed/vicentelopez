@@ -42,7 +42,6 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
             Archivadas
           </button>
         </div>
-
         <a
           href='/formulario-propuesta'
           className='boton-azul btn propuesta'>
@@ -203,7 +202,6 @@ class HomePropuestas extends Component {
         <div className='container topics-container'>
           <div className='row'>
             <div className='col-md-4 push-md-8 etiquetas'>
-
               <div className='row'>
                 <div className='col-md-12'>
                   <div className='form-group'>

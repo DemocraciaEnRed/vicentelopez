@@ -156,7 +156,7 @@ class FormularioPropuesta extends Component {
         </div>
         <alert className='alert alert-info cronograma'>
           <Link style={{ display: 'inline' }} to='/s/acerca-de?scroll=cronograma'>
-            Consultá el cronograma de reuniones por barrio aquí
+            La etapa de envío de propuestas ya ha sido cerrada. ¡Muchas gracias por participar!
           </Link>
         </alert>
         <form className='wrapper' onSubmit={this.handleSubmit}>
