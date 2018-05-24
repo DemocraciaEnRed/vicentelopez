@@ -150,7 +150,7 @@ export default class Page extends Component {
               <div className='btns-descargas btns-historial'>
                 <Link href='/s/documentos'>
                   <button className='boton-azul'>
-                    Historial de documentos
+                    Visualizador de archivos
                   </button>
                 </Link>
               </div>
