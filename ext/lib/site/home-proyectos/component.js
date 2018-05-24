@@ -81,7 +81,7 @@ export class HomeProyectos extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          topics: this.state.topics.concat(res.results.topics),
+          topics: [...this.state.topics].concat(res.results.topics),
           page: res.pagination.page,
           noMore: this.state.page >= res.pagination.pageCount
         })
