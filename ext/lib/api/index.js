@@ -12,6 +12,7 @@ app.all('*', function apiLog (req, res, next) {
   next()
 })
 
+app.use(require('./feed'))
 app.use(require('./topics'))
 
 app.use(function validationErrorHandler (err, req, res, next) {

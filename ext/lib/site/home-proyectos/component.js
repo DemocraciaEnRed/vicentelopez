@@ -69,7 +69,6 @@ export class HomeProyectos extends Component {
 
   getFeed = () => {
     const opts = { credentials: 'include' }
-
     return window.fetch(`/ext/api/feed?s=${this.state.feedCount}`, opts)
       .then((res) => res.json())
       .then((res) => {

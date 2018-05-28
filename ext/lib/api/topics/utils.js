@@ -65,9 +65,9 @@ exports.findTopics = (opts) => {
   return queryTopics(opts)
     .populate(topicScopes.ordinary.populate)
     .select(topicScopes.ordinary.select)
+    .sort(sortMap[sort])
     .limit(limit)
     .skip((page - 1) * limit)
-    .sort(sortMap[sort])
     .exec()
     .then((topics) => Promise.all(topics.map((topic) => {
       return topicScopes.ordinary.expose(topic, forum, user)
