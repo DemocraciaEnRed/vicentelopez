@@ -9,8 +9,8 @@ export default (props) => {
 
   return (
     <div className='topic-article-content topic-social-vilo'>
-      {console.log(socialLinksUrl)}
       <div className='share-links'>
+        {console.log(messageWp)}
         <a target='_blank' href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`} rel='noopener noreferrer' className='facebook-icon'></a>
         <a target='_blank' href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`} rel='noopener noreferrer' className='twitter-icon'></a>
         {

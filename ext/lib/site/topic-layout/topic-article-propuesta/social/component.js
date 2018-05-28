@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import t from 't-component'
 import config from 'lib/config'
-import { sharerFacebook } from 'ext/lib/site/sharer'
 
 export default (props) => {
   const { topic, twitterText, socialLinksUrl } = props
