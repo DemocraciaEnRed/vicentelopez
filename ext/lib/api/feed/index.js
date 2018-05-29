@@ -1,11 +1,11 @@
-const express = require('express')
+const { Router } = require('express')
 const { ObjectID } = require('mongodb')
 const { Topic } = require('lib/models')
 const dbApi = require('lib/api-v2/db-api')
 const scopes = require('lib/api-v2/db-api/topics/scopes')
 const privileges = require('lib/privileges/forum')
 
-const app = module.exports = express()
+const app = Router()
 
 const forumsNames = [
   'villa-martelli',
@@ -62,3 +62,5 @@ function getFeed (req, res, next) {
     res.json({ result: null, error: err })
   })
 })
+
+module.exports = app
