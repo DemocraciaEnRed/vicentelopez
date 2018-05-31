@@ -42,14 +42,13 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
             Archivadas
           </button>
         </div>
-
         <a
           href='/formulario-propuesta'
           className='boton-azul btn propuesta'>
           Mandá tu propuesta
         </a>
       </div>
-      <span className='alert-duedate'>*Tenés tiempo hasta el 31 de mayo inclusive.</span>
+      <span className='alert-duedate'>Propuestas presentadas en el Presupuesto Participativo 2018</span>
     </div>
   </div>
 )
@@ -82,7 +81,6 @@ class HomePropuestas extends Component {
   }
 
   handleStateChange () {
-    console.log(this.state.archivadas, this.state.archivadas ? 1 : this.state.page)
     this.setState({
       archivadas: !this.state.archivadas,
       page: 1
@@ -203,7 +201,6 @@ class HomePropuestas extends Component {
         <div className='container topics-container'>
           <div className='row'>
             <div className='col-md-4 push-md-8 etiquetas'>
-
               <div className='row'>
                 <div className='col-md-12'>
                   <div className='form-group'>

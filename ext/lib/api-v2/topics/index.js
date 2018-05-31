@@ -20,6 +20,14 @@ const EDITABLE_KEYS = [
   'attrs.beneficios',
 ]
 
+class CantUploadProposal extends Error {
+  constructor () {
+    super('User can not upload proposal.')
+    this.status = 403
+    this.code = 'UPLOAD_TOPIC_FORBIDDEN'
+  }
+}
+
 const defaultValues = () => ({
   'attrs.state': 'pendiente',
   'action.method': 'cause',
@@ -30,12 +38,12 @@ const defaultValues = () => ({
 // and the users doesn't have forum privileges.
 const purgeBody = (req, res, next) => {
   if (isCitizenOnProposal(req.user, req.forum)) {
-    req.body = Object.assign(
-      defaultValues(),
-      pick(req.body, EDITABLE_KEYS)
-    )
+    return next(new CantUploadProposal())
+    // req.body = Object.assign(
+    // defaultValues(),
+    // pick(req.body, EDITABLE_KEYS)
+  // )
   }
-
   return next()
 }
 
