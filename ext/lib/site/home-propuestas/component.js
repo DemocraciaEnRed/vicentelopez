@@ -48,7 +48,7 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
           Mandá tu propuesta
         </a>
       </div>
-      <span className='alert-duedate'>*Tenés tiempo hasta el 31 de mayo inclusive.</span>
+      <span className='alert-duedate'>Propuestas presentadas en el Presupuesto Participativo 2018</span>
     </div>
   </div>
 )
