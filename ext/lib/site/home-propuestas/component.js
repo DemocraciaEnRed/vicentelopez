@@ -81,7 +81,6 @@ class HomePropuestas extends Component {
   }
 
   handleStateChange () {
-    console.log(this.state.archivadas, this.state.archivadas ? 1 : this.state.page)
     this.setState({
       archivadas: !this.state.archivadas,
       page: 1

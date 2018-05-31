@@ -91,7 +91,6 @@ class FormularioPropuesta extends Component {
       formData['attrs.admin-comment'] = this.state.adminComment
       formData['attrs.state'] = this.state.state
     }
-    console.log(formData)
     if (this.state.mode === 'new') {
       this.crearPropuesta(formData)
     } else {
