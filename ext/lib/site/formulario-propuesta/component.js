@@ -91,7 +91,6 @@ class FormularioPropuesta extends Component {
       formData['attrs.admin-comment'] = this.state.adminComment
       formData['attrs.state'] = this.state.state
     }
-    console.log(formData)
     if (this.state.mode === 'new') {
       this.crearPropuesta(formData)
     } else {
@@ -156,7 +155,7 @@ class FormularioPropuesta extends Component {
         </div>
         <alert className='alert alert-info cronograma'>
           <Link style={{ display: 'inline' }} to='/s/acerca-de?scroll=cronograma'>
-            Consultá el cronograma de reuniones por barrio aquí
+            La etapa de envío de propuestas ya ha sido cerrada. ¡Muchas gracias por participar!
           </Link>
         </alert>
         <form className='wrapper' onSubmit={this.handleSubmit}>
