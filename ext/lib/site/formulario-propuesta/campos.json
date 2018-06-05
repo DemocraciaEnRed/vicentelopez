@@ -27,10 +27,6 @@
             "title" : "No factible"
         },
         {
-            "name" : "ganador", 
-            "title" : "Ganador"
-        }, 
-        {
             "name" : "no-ganador", 
             "title" : "No ganador"
         }, 
@@ -47,27 +43,8 @@
             "title" : "En Ejecución"
         },
         {
-            "name" : "presentado",
-            "title" : "Presentado"
-        }
-        {
-            "name" : "pendiente", 
-            "title" : "Pendiente", 
-            "_id" : ObjectId("59d4e011ec1b98003b80bf09")
-        }, 
-        {
-            "name" : "proyectado", 
-            "title" : "Proyectado", 
-            "_id" : ObjectId("59d4e011ec1b98003b80bf08")
-        }, 
-        {
-            "name" : "ejecutandose", 
-            "title" : "En Ejecución", 
-            "_id" : ObjectId("59d4e011ec1b98003b80bf07")
-        }, 
-        {
-            "name" : "terminado", 
-            "title" : "Terminado"
+            "name" : "finalizado",
+            "title" : "Finalizado"
         }
     ]
   }, 

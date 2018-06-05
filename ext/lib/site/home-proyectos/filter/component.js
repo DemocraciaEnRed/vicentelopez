@@ -14,13 +14,11 @@ const barrios = [
 ]
 
 const states = [
-  { 'name': 'En preparación', 'value': 'en-preparacion' },
-  { 'name': 'Contratación', 'value': 'contratacion' },
-  { 'name': 'En ejecución', 'value': 'en-ejecucion' },
-  { 'name': 'Ejecutado', 'value': 'ejecutado' }
+  { 'name': 'Ganador', 'value': 'ganador' },
+  { 'name': 'No ganador', 'value': 'no-ganador' }
 ]
 
-const anos = ['2015', '2016', '2017']
+const anos = ['2017', '2018']
 
 export default class Filter extends Component {
   constructor (props) {

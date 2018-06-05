@@ -73,7 +73,7 @@ class HomePropuestas extends Component {
 
   componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
-    if (u.get('sort') === 'new') this.setState({ filter: 'new' })
+    if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
     forumStore.findOneByName('proyectos')
       .then((forum) => {
         const tags = window.fetch(`/api/v2/topics/tags?forum=${forum.id}`)
@@ -125,7 +125,7 @@ class HomePropuestas extends Component {
       forumName: 'proyectos',
       sort: this.state.filter === 'newest' ? 'newest' : 'popular',
       page: page,
-      state: this.state.archivadas ? 'no-factible' : 'factible, pendiente, no-factible'
+      state: this.state.archivadas ? 'no-factible' : 'factible,pendiente,no-factible'
     }
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')

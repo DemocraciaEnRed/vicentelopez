@@ -41,7 +41,7 @@ const queryTopics = (opts) => {
   }
 
   if (barrio) query['attrs.barrio'] = barrio
-  if (ano) query['attrs.ano'] = ano
+  if (ano) query['attrs.anio'] = ano
   if (tags && tags.length > 0) query.tags = { $in: tags }
   if (state.length > 0) query['attrs.state'] = { $in: state }
 

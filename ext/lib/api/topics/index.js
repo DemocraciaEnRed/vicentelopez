@@ -43,7 +43,7 @@ app.get('/topics',
       },
       sort: {
         type: 'string',
-        enum: ['newest', 'popular'],
+        enum: ['newest', 'popular', 'barrio'],
         default: 'newest'
       }
     })

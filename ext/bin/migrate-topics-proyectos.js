@@ -73,7 +73,7 @@ Promise.all([
         return clauses.join('')
       }
       topic.set('forum', forum.id)
-      topic.set('attrs.anio', 2018)
+      topic.set('attrs.anio', '2018')
       topic.set('attrs.budget', 0)
       topic.set('attrs.votes', 0)
       topic.set('attrs.description', topicDescription())

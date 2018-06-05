@@ -25,7 +25,7 @@ export class HomeProyectos extends Component {
       barrio: [],
       state: [],
       stage: 'seguimiento',
-      sort: 'barrio'
+      sort: ['barrio']
     }
   }
 
@@ -72,9 +72,15 @@ export class HomeProyectos extends Component {
     }
 
   fetchTopics = () => {
-    let queryString = ['ano', 'barrio', 'state', 'sort']
-      .filter((k) => this.state[k].length > 0)
-      .map((k) => `${k}=${this.state[k].join()}`).join('&')
+    let query = {
+      ano: this.state.ano,
+      barrio: this.state.barrio,
+      state: this.state.state.length > 0 ? this.state.state : ['ganador', 'no-ganador'],
+      sort: this.state.sort
+    }
+    let queryString = Object.keys(query)
+      .filter((k) => query[k].length > 0)
+      .map((k) => `${k}=${query[k].join()}`).join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
       .then((res) => res.json())
       .then((res) => {

@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router'
 import userConnector from 'lib/site/connectors/user'
 import { Link } from 'react-router'
 
-const PROPOSALS_FORUM_NAME = 'propuestas'
+// const PROPOSALS_FORUM_NAME = 'propuestas'
 
 class FormularioPropuesta extends Component {
   constructor (props) {
@@ -66,7 +66,7 @@ class FormularioPropuesta extends Component {
       this.setState({ mode: 'new' })
     }
 
-    forumStore.findOneByName(PROPOSALS_FORUM_NAME).then((forum) => {
+    forumStore.findOneByName('proyectos').then((forum) => {
       this.setState({ forum })
     }).catch((err) => { console.error(err) })
   }
@@ -109,7 +109,7 @@ class FormularioPropuesta extends Component {
     })
       .then((res) => {
         if (res.status === 200) {
-          browserHistory.push('/propuestas?sort=new')
+          browserHistory.push('/propuestas?sort=newest')
         }
       })
       .catch((err) => {
@@ -128,7 +128,7 @@ class FormularioPropuesta extends Component {
     })
       .then((res) => {
         if (res.status === 200) {
-          browserHistory.push('/propuestas?sort=new')
+          browserHistory.push('/propuestas?sort=newest')
         }
       })
       .catch((err) => {
