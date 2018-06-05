@@ -49,6 +49,7 @@ const queryTopics = (opts) => {
 }
 
 const sortMap = {
+  barrio: 'attrs.barrio',
   newest: '-createdAt',
   popular: '-action.count'
 }
@@ -61,13 +62,10 @@ exports.findTopics = (opts) => {
     sort,
     user
   } = opts
-
   return queryTopics(opts)
     .populate(topicScopes.ordinary.populate)
-    .sort('attrs.barrio')
     .sort(sortMap[sort])
     .select(topicScopes.ordinary.select)
-    .sort(sortMap[sort])
     .limit(limit)
     .skip((page - 1) * limit)
     .exec()

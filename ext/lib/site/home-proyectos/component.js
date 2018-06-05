@@ -24,7 +24,8 @@ export class HomeProyectos extends Component {
       ano: [],
       barrio: [],
       state: [],
-      stage: 'seguimiento'
+      stage: 'seguimiento',
+      sort: 'barrio'
     }
   }
 
@@ -71,8 +72,7 @@ export class HomeProyectos extends Component {
     }
 
   fetchTopics = () => {
-    console.log(this.state)
-    let queryString = ['ano', 'barrio', 'state']
+    let queryString = ['ano', 'barrio', 'state', 'sort']
       .filter((k) => this.state[k].length > 0)
       .map((k) => `${k}=${this.state[k].join()}`).join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
