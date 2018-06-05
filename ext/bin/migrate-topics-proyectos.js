@@ -49,7 +49,7 @@ Promise.all([
   Forum.find({ 'name': 'propuestas' }).exec()
 ])
   .then(([[ proyectos ], [ propuestas ]]) => {
-    return Topic.find({ 'forum': propuestas.id, 'attrs.state': 'factible' })
+    return Topic.find({ 'forum': propuestas.id })
       .then((topics) => {
         return {
           topics: topics,
