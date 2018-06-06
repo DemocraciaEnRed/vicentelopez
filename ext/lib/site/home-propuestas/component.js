@@ -96,7 +96,7 @@ class HomePropuestas extends Component {
       .catch((err) => { throw err })
   }
 
-  handleInputChange (evt) {
+  handleInputChange = (evt) => {
     evt.preventDefault()
     const { value, name } = evt.target
     this.setState({

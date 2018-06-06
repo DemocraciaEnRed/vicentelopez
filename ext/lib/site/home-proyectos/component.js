@@ -115,6 +115,12 @@ export class HomeProyectos extends Component {
     Anchor.goTo('containerr')
   }
 
+  changeStage = () => {
+    this.setState((prevState) => {
+      return { stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento' }
+    }, () => console.log(this.state.stage))
+  }
+
   // fetchAll = () => {
   //   const { forum: name } = this.props.params
 
@@ -203,7 +209,9 @@ export class HomeProyectos extends Component {
               handleFilter={this.handleFilter}
               ano={this.state.ano}
               state={this.state.state}
-              barrio={this.state.barrio} />
+              barrio={this.state.barrio}
+              changeStage={this.changeStage} />
+            <p>{this.state.stage}</p>
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>

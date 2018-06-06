@@ -35,7 +35,8 @@ app.get('/topics',
       },
       barrio: {
         type: 'string',
-        format: 'barrio'
+        format: 'barrio',
+        default: ''
       },
       ano: {
         type: 'string',
@@ -51,6 +52,7 @@ app.get('/topics',
   utils.parseTags,
   utils.findForum,
   utils.parseStates,
+  utils.parseBarrios,
   middlewares.forums.privileges.canView,
   (req, res, next) => {
     const opts = Object.assign({}, req.query)
