@@ -24,7 +24,8 @@ export default class Filter extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      activeDropdown: null
+      activeDropdown: null,
+      defaultFilters: true
     }
   }
 
@@ -34,6 +35,10 @@ export default class Filter extends Component {
 
   componentWillUnmount () {
     document.removeEventListener('click', this.handleClick, false)
+  }
+
+  componentWillReceiveProps (newProps) {
+    if (this.props.stage !== newProps.stage) this.setState({ defaultFilters: true })
   }
 
   handleDropdown = (id) => (e) => {
@@ -46,7 +51,9 @@ export default class Filter extends Component {
 
   // Send filter to parent component
   handleFilter = (filter) => (e) => {
-    this.props.handleFilter(filter, e.target.value)
+    this.setState({
+      defaultFilters: false
+    }, this.props.handleFilter(filter, e.target.value))
   }
 
   // Close dropdown if clicked outside
@@ -72,77 +79,77 @@ export default class Filter extends Component {
           </a>
         </div>
         <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>
-        <div className='button-container'>
-          <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
-            <div>
-              <span className={`button-label ${this.props.barrio.length > 0 ? 'active' : ''}`}>Barrio</span>
-              {this.props.barrio.length > 0 &&
-                <span className='badge'>{this.props.barrio.length}</span>
-              }
-            </div>
-            <span className='caret-down'>▾</span>
-          </button>
-          {this.state.activeDropdown === 'barrio' &&
-            <div className='dropdown-options'>
-              <div className='options-container'>
-                {barrios.map((b, i) => (
-                  <label className='option-label' key={i}>
-                    <input
-                      type='checkbox'
-                      value={b.value}
-                      onChange={this.handleFilter('barrio')}
-                      checked={this.props.barrio.includes(b.value)} />
-                    <span className='checkbox-label'>{b.name}</span>
-                  </label>
-                ))}
+          <div className='button-container'>
+            <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
+              <div>
+                <span className={`button-label ${this.props.barrio.length > 0 ? 'active' : ''}`}>Barrio</span>
+                {this.props.barrio.length > 0 &&
+                  <span className='badge'>{this.props.barrio.length}</span>
+                }
               </div>
-              <button className='clear-filters' onClick={this.clearFilter('barrio')}>
-                <span>Borrar filtros</span>
-              </button>
-            </div>
-          }
-        </div>
-        {this.props.stage === 'seguimiento' &&
-        <div className='button-container'>
-          <button className='dropdown-button' onClick={this.handleDropdown('state')}>
-            <div>
-              <span className={`button-label ${this.props.state.length > 0 ? 'active' : ''}`}>Estado</span>
-              {this.props.state.length > 0 &&
-                <span className='badge'>{this.props.state.length}</span>
-              }
-            </div>
-            <span className='caret-down'>▾</span>
-          </button>
-          {this.state.activeDropdown === 'state' &&
-          <div className='dropdown-options'>
-            <div className='options-container'>
-              {states.map((s, i) => (
-                <label className='option-label' key={i}>
-                  <input
-                    type='checkbox'
-                    value={s.value}
-                    onChange={this.handleFilter('state')}
-                    checked={this.props.state.includes(s.value)} />
-                  <span className='checkbox-label'>{s.name}</span>
-                </label>
-              ))}
-            </div>
-            <button className='clear-filters' onClick={this.clearFilter('state')}>
-              <span>Borrar filtros</span>
+              <span className='caret-down'>▾</span>
             </button>
+            {this.state.activeDropdown === 'barrio' &&
+              <div className='dropdown-options'>
+                <div className='options-container'>
+                  {barrios.map((b, i) => (
+                    <label className='option-label' key={i}>
+                      <input
+                        type='checkbox'
+                        value={b.value}
+                        onChange={this.handleFilter('barrio')}
+                        checked={this.props.barrio.includes(b.value)} />
+                      <span className='checkbox-label'>{b.name}</span>
+                    </label>
+                  ))}
+                </div>
+                <button className='clear-filters' onClick={this.clearFilter('barrio')}>
+                  <span>Borrar filtros</span>
+                </button>
+              </div>
+            }
+          </div>
+          {this.props.stage === 'seguimiento' &&
+          <div className='button-container'>
+            <button className='dropdown-button' onClick={this.handleDropdown('state')}>
+              <div>
+                <span className={`button-label ${this.props.state.length > 0 ? 'active' : ''}`}>Estado</span>
+                {!this.state.defaultFilters && this.props.state.length > 0 &&
+                  <span className='badge'>{this.props.state.length}</span>
+                }
+              </div>
+              <span className='caret-down'>▾</span>
+            </button>
+            {this.state.activeDropdown === 'state' &&
+              <div className='dropdown-options'>
+                <div className='options-container'>
+                  {states.map((s, i) => (
+                    <label className='option-label' key={i}>
+                      <input
+                        type='checkbox'
+                        value={s.value}
+                        onChange={this.handleFilter('state')}
+                        checked={!this.state.defaultFilters && this.props.state.includes(s.value)} />
+                      <span className='checkbox-label'>{s.name}</span>
+                    </label>
+                  ))}
+                </div>
+                <button className='clear-filters' onClick={this.clearFilter('state')}>
+                  <span>Borrar filtros</span>
+                </button>
+              </div>
+            }
           </div>
           }
-        </div>
-        }
-        {this.props.stage === 'seguimiento' &&
-        <div className='button-container'>
-          <button className='dropdown-button' onClick={this.handleDropdown('ano')}>
-            <div>
-              <span className={`button-label ${this.props.ano.length > 0 ? 'active' : ''}`}>Año</span>
-              {this.props.ano.length > 0 &&
-                <span className='badge'>{this.props.ano.length}</span>
-              }
-            </div>
+          {this.props.stage === 'seguimiento' &&
+            <div className='button-container'>
+              <button className='dropdown-button' onClick={this.handleDropdown('ano')}>
+                <div>
+                  <span className={`button-label ${this.props.ano.length > 0 ? 'active' : ''}`}>Año</span>
+                  {this.props.ano.length > 0 &&
+                    <span className='badge'>{this.props.ano.length}</span>
+                  }
+                </div>
             <span className='caret-down'>▾</span>
           </button>
           {this.state.activeDropdown === 'ano' &&

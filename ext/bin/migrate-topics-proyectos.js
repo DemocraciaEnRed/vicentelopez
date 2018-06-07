@@ -5,6 +5,16 @@ const models = require('lib/models')()
 const Forum = models.Forum
 const Topic = models.Topic
 
+const topicDescription = (topic) => {
+  if (topic.attrs.solucion === undefined) {
+    return topic.attrs.problema
+  } else if (topic.attrs.solucion.length > 512) {
+    return topic.attrs.solucion.substring(0, 509).concat('...')
+  } else {
+    return topic.attrs.solucion
+  }
+}
+
 Promise.all([Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'name': 'proyectos' }).exec()])
   .then(([barrios, [ proyectos ]]) => {
     const barriosIds = barrios.map((b) => b.id)
@@ -27,7 +37,7 @@ Promise.all([Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'name
             newState = 'factible'
             break
           case 'proyectado':
-            newState = 'ganador'
+            newState = 'preparacion'
             break
           case 'perdedor':
             newState = 'no-ganador'
@@ -59,25 +69,17 @@ Promise.all([
   })
   .then(({ topics, forum }) => {
     const savedTopics = topics.map((topic) => {
-      const topicDescription = () => {
-        if (topic.attrs.solucion === undefined) {
-          return topic.attrs.problema
-        } else if (topic.attrs.solucion.length > 512) {
-          return topic.attrs.solucion.substring(0, 509).concat('...')
-        } else {
-          return topic.attrs.solucion
-        }
-      }
-      const topicContenido = () => {
-        const clauses = [topic.attrs.problema, topic.attrs.solucion, topic.attrs.beneficios].filter((attr) => attr !== undefined)
-        return clauses.join('')
-      }
+
+      // const topicContenido = () => {
+      //   const clauses = [topic.attrs.problema, topic.attrs.solucion, topic.attrs.beneficios].filter((attr) => attr !== undefined)
+      //   return clauses.join('')
+      // }
       topic.set('forum', forum.id)
       topic.set('attrs.anio', '2018')
       topic.set('attrs.budget', 0)
       topic.set('attrs.votes', 0)
-      topic.set('attrs.description', topicDescription())
-      topic.set('attrs.contenido', topicContenido())
+      topic.set('attrs.description', topicDescription(topic))
+      // topic.set('attrs.contenido', topicContenido())
       return topic.save()
     })
     return Promise.all(savedTopics)
