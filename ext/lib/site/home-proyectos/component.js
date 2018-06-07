@@ -48,7 +48,7 @@ export class HomeProyectos extends Component {
           ano: ['2018'],
           topics: res.results.topics,
           page: res.pagination.page,
-          noMore: this.state.page >= res.pagination.pageCount
+          noMore: res.results.topics < 20
         })
       })
       .catch((err) => console.error(err))
@@ -109,7 +109,7 @@ export class HomeProyectos extends Component {
         this.setState({
           topics: [...this.state.topics].concat(res.results.topics),
           page: res.pagination.page,
-          noMore: this.state.page >= res.pagination.pageCount
+          noMore: res.results.topics.length < 20
         })
       })
       .catch((err) => console.error(err))
