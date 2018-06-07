@@ -41,7 +41,7 @@ export class HomeProyectos extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          barrio: initialFilters.barrio ? initialFilters.barrio : [],
+          barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
           topics: res.results.topics,
           page: res.pagination.page,
           noMore: this.state.page >= res.pagination.pageCount
@@ -210,8 +210,8 @@ export class HomeProyectos extends Component {
               ano={this.state.ano}
               state={this.state.state}
               barrio={this.state.barrio}
-              changeStage={this.changeStage} />
-            <p>{this.state.stage}</p>
+              changeStage={this.changeStage}
+              stage={this.state.stage} />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>

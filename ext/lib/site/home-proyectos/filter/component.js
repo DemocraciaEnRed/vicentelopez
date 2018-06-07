@@ -65,7 +65,13 @@ export default class Filter extends Component {
 
   render () {
     return (
-      <nav className='filters-nav' id='filter'>
+      <nav id='filter'>
+        <div className='stage-container'>
+          <a className='stage-changer' onClick={this.props.changeStage}>
+            {this.props.stage === 'seguimiento' ? 'Volver a votación actual >' : '< Ver seguimiento de proyectos'}
+          </a>
+        </div>
+        <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>
         <div className='button-container'>
           <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
             <div>
@@ -96,6 +102,7 @@ export default class Filter extends Component {
             </div>
           }
         </div>
+        {this.props.stage === 'seguimiento' &&
         <div className='button-container'>
           <button className='dropdown-button' onClick={this.handleDropdown('state')}>
             <div>
@@ -126,6 +133,8 @@ export default class Filter extends Component {
           </div>
           }
         </div>
+        }
+        {this.props.stage === 'seguimiento' &&
         <div className='button-container'>
           <button className='dropdown-button' onClick={this.handleDropdown('ano')}>
             <div>
@@ -137,12 +146,12 @@ export default class Filter extends Component {
             <span className='caret-down'>▾</span>
           </button>
           {this.state.activeDropdown === 'ano' &&
-          <div className='dropdown-options'>
-            <div className='options-container'>
-              {anos.map((a, i) => (
-                <label className='option-label' key={i}>
-                  <input
-                    type='checkbox'
+            <div className='dropdown-options'>
+              <div className='options-container'>
+                {anos.map((a, i) => (
+                  <label className='option-label' key={i}>
+                    <input
+                      type='checkbox'
                     value={a}
                     onChange={this.handleFilter('ano')}
                     checked={this.props.ano.includes(a)} />
@@ -154,8 +163,10 @@ export default class Filter extends Component {
               <span>Borrar filtros</span>
             </button>
           </div>
+            }
+          </div>
           }
-        </div>
+          </div>
       </nav>
     )
   }
