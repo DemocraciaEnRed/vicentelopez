@@ -121,14 +121,13 @@ export class HomeProyectos extends Component {
 
   changeStage = () => {
     this.setState((prevState) => {
-      console.log(prevState)
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
         ano: prevState.stage === 'seguimiento' ? ['2018'] : ['2017'],
         barrio: [],
         state: prevState.stage === 'seguimiento' ? ['factible'] : ['ganador', 'no-ganador']
       }
-    }, this.fetchTopics())
+    }, () => this.fetchTopics())
   }
 
   render () {
