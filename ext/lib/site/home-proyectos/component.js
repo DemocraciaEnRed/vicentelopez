@@ -14,6 +14,19 @@ import Header from './header/component'
 import Filter from './filter/component'
 import TopicGrid from './grid/component'
 
+const defaultValues = {
+  'votacion': {
+    barrio: [],
+    ano: ['2018'],
+    state: ['factible']
+  },
+  'seguimiento': {
+    barrio: [],
+    ano: ['2017'],
+    state: ['ganador', 'no-ganador']
+  }
+}
+
 export class HomeProyectos extends Component {
   constructor () {
     super()
@@ -56,7 +69,13 @@ export class HomeProyectos extends Component {
 
   handleFilter = (filter, value) => {
     // If the value is not included in the filter array, add it
-    if (!this.state[filter].includes(value)) {
+    // Acá hay que agregar logica por si el value es el default
+    if (this.state[filter] === defaultValues[this.state.stage][filter]) {
+      console.log('soy default')
+      // this.setState({
+      //   [filter]: [value]
+      // }, () => this.fetchTopics())
+    } else if (!this.state[filter].includes(value)) {
       this.setState({
         [filter]: [...this.state[filter], value]
       }, () => this.fetchTopics())
@@ -68,18 +87,18 @@ export class HomeProyectos extends Component {
     }
   }
 
-    // Clear all selected items from a filter
-    clearFilter = (filter) => {
-      this.setState({
-        [filter]: []
-      }, () => this.fetchTopics())
-    }
+  // Clear all selected items from a filter
+  clearFilter = (filter) => {
+    this.setState({
+      [filter]: defaultValues[this.state.stage][filter]
+    }, () => this.fetchTopics())
+  }
 
   fetchTopics = () => {
     let query = {
       ano: this.state.ano,
       barrio: this.state.barrio,
-      state: this.state.state.length > 0 ? this.state.state : ['ganador', 'no-ganador'],
+      state: this.state.state,
       sort: this.state.sort
     }
     let queryString = Object.keys(query)
@@ -143,7 +162,8 @@ export class HomeProyectos extends Component {
               state={this.state.state}
               barrio={this.state.barrio}
               changeStage={this.changeStage}
-              stage={this.state.stage} />
+              stage={this.state.stage}
+              clearFilter={this.clearFilter} />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>
