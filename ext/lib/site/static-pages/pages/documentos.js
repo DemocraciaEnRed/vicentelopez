@@ -118,7 +118,7 @@ export default class Page extends Component {
                   (this.state.archivo === 'proyectos' && this.state.anio === '2012') ||
                   (this.state.anio === '2018')
               ) &&
-              <a href={`https://s3.amazonaws.com/forosvecinales/visualizador/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul boton-dwl' target='_blank' download>
+              <a href={`https://forosvecinales.blob.core.windows.net/historial-documentos/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul boton-dwl' target='_blank' download>
                 <div className='icon-boleta'/>
                 Descargar
               </a>

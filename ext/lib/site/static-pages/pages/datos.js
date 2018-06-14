@@ -156,9 +156,9 @@ export default class Page extends Component {
               </div>
               <h4>DESCARGAS</h4>
               <div className='btns-descargas'>
-                <a href='https://s3.amazonaws.com/forosvecinales/proyectos-2013-2018_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2018 por tipo (cantidad e inversión)</a>
-                <a href='https://s3.amazonaws.com/forosvecinales/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación</a>
-                <a href='https://s3.amazonaws.com/forosvecinales/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
+                <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2018_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2018 por tipo (cantidad e inversión)</a>
+                <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación</a>
+                <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
               </div>
             </div>
           </div>
