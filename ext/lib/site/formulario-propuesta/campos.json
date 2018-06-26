@@ -56,6 +56,13 @@
     "kind" : "LongString"
   },
   {
+    "name" : "admin-comment-referencia", 
+    "title" : "Link a propuesta", 
+    "description" : "Colocar aquí el link a la propuesta factible, en el caso que esta propuesta esté duplicada o sea similar", 
+    "mandatory" : true, 
+    "kind" : "LongString"
+  },
+  {
       "name" : "nombre", 
       "title" : "Nombre y Apellido", 
       "mandatory" : true, 
