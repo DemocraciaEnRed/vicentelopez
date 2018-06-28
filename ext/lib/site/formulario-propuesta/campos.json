@@ -1,4 +1,12 @@
-[
+[ 
+    {
+        "name" : "anio", 
+        "title" : "Año", 
+        "mandatory" : false, 
+        "kind" : "String", 
+        "max" : 128, 
+        "min" : 0
+    },
   {
     "name" : "state", 
     "title" : "Estado", 
@@ -17,6 +25,26 @@
         {
             "name" : "no-factible", 
             "title" : "No factible"
+        },
+        {
+            "name" : "no-ganador", 
+            "title" : "No ganador"
+        }, 
+        {
+            "name" : "preparacion", 
+            "title" : "En Preparación"
+        }, 
+        {
+            "name" : "compra", 
+            "title" : "En Proceso de Compra"
+        }, 
+        {
+            "name" : "ejecucion", 
+            "title" : "En Ejecución"
+        },
+        {
+            "name" : "finalizado",
+            "title" : "Finalizado"
         }
     ]
   }, 
@@ -24,6 +52,13 @@
     "name" : "admin-comment", 
     "title" : "Comentario del Moderador", 
     "description" : "Escribir aquí un comentario en el caso que se cambie el estado a \"Factible\" o \"No factible\"", 
+    "mandatory" : true, 
+    "kind" : "LongString"
+  },
+  {
+    "name" : "admin-comment-referencia", 
+    "title" : "Link a propuesta", 
+    "description" : "Colocar aquí el link a la propuesta factible, en el caso que esta propuesta esté duplicada o sea similar", 
     "mandatory" : true, 
     "kind" : "LongString"
   },

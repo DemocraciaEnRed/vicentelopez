@@ -1,28 +1,22 @@
 import React, { Component } from 'react'
-import topicStore from 'lib/stores/topic-store/topic-store'
-import forumStore from 'lib/stores/forum-store/forum-store'
-import TopicCard from './topic-card/component'
 import Flickity from 'flickity'
 import { Link } from 'react-router'
+import TopicCard from './topic-card/component'
 
 export default class Carrusel extends Component {
   constructor (props) {
     super(props)
     this.flkty = null
     this.state = {
-      forums: null,
       topics: null
     }
   }
 
-  componentWillMount () {
-    window.fetch(`/ext/api/feed`, { credentials: 'include' })
+  componentDidMount () {
+    window.fetch(`/ext/api/topics?forumName=proyectos&state=preparacion,compra,ejecucion,finalizado&limit=20&sort=popular`, { credentials: 'include' })
       .then((res) => res.json())
-      .then((res) => {
-        if (res.result) {
-          this.setState({ forums: res.result.forums, topics: res.result.topics.sort(() => 0.5 - Math.random()) })
-        }
-      })
+      .then((res) => this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }))
+      .catch((err) => console.error(err))
   }
 
   componentDidUpdate () {
@@ -43,7 +37,7 @@ export default class Carrusel extends Component {
   }
 
   render () {
-    const { forums, topics } = this.state
+    const { topics } = this.state
     return (
       <div className='seccion-proyectos container-fluid'>
         <div className="fondo-titulo">
@@ -51,7 +45,7 @@ export default class Carrusel extends Component {
         </div>
         <div ref='carrusel'>
           {topics && topics.map((topic, i) => (
-            <TopicCard key={topic.id} topic={topic} forum={forums.find((f) => f.id === topic.forum)} />
+            <TopicCard key={topic.id} topic={topic} forum={{ title: topic.attrs.barrio }} />
           ))}
         </div>
         <Link className='boton-azul' href='/proyectos'>

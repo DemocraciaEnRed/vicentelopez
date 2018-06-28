@@ -7,15 +7,15 @@ import tagsConnector from 'lib/site/connectors/tags'
 import TopicCard from './topic-card/component'
 
 const filters = {
-  new: {
+  newest: {
     text: 'Más Nuevas',
-    sort: '-createdAt',
+    sort: 'newest',
     filter: (topic) => topic.status === 'open',
     emptyMsg: 'No se encontraron propuestas.'
   },
-  pop: {
+  popular: {
     text: 'Más Populares',
-    sort: '-action.count',
+    sort: 'popular',
     filter: (topic) => topic.status === 'open',
     emptyMsg: 'No se encontraron propuestas.'
   }
@@ -32,7 +32,7 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
             <button
               key={key}
               className={`btn btn-secondary btn-sm ${activeFilter === key ? 'active' : ''}`}
-              onClick={() => onChangeFilter(key)}>
+              onClick={() => onChangeFilter(filters[key].sort)}>
               {filters[key].text}
             </button>
           ))}
@@ -63,7 +63,7 @@ class HomePropuestas extends Component {
       forum: null,
       topics: null,
       tags: null,
-      filter: 'pop',
+      filter: 'popular',
       barrio: '',
       archivadas: false
     }
@@ -71,37 +71,10 @@ class HomePropuestas extends Component {
     this.handleStateChange = this.handleStateChange.bind(this)
   }
 
-  handleInputChange (evt) {
-    evt.preventDefault()
-    const { value, name } = evt.target
-    this.setState({
-      [name]: value,
-      page: 1
-    }, () => this.changeTopics())
-  }
-
-  handleStateChange () {
-    this.setState({
-      archivadas: !this.state.archivadas,
-      page: 1
-    }, () => this.changeTopics())
-  }
-
-  changeTopics () {
-    this.fetchTopics(this.state.page)
-      .then((res) => {
-        this.setState(
-          { topics: res
-          }
-        )
-      })
-      .catch((err) => { console.error(err) })
-  }
-
   componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
-    if (u.get('sort') === 'new') this.setState({ filter: 'new' })
-    forumStore.findOneByName('propuestas')
+    if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
+    forumStore.findOneByName('proyectos')
       .then((forum) => {
         const tags = window.fetch(`/api/v2/topics/tags?forum=${forum.id}`)
           .then((res) => res.json())
@@ -123,16 +96,40 @@ class HomePropuestas extends Component {
       .catch((err) => { throw err })
   }
 
+  handleInputChange = (evt) => {
+    evt.preventDefault()
+    const { value, name } = evt.target
+    this.setState({
+      [name]: value,
+      page: 1
+    }, () => this.changeTopics())
+  }
+
+  handleStateChange () {
+    this.setState({
+      archivadas: !this.state.archivadas,
+      page: 1
+    }, () => this.changeTopics())
+  }
+
+  changeTopics () {
+    this.fetchTopics(this.state.page)
+      .then((res) => {
+        this.setState({ topics: res })
+      })
+      .catch((err) => { console.error(err) })
+  }
+
   fetchTopics = (page) => {
     const query = {
-      sort: this.state.filter === 'new' ? 'newest' : 'popular'
+      forumName: 'proyectos',
+      sort: this.state.filter === 'newest' ? 'newest' : 'popular',
+      page: page,
+      state: this.state.archivadas ? 'no-factible' : 'factible,pendiente,no-factible'
     }
-    query.page = page
-    query.forumName = 'propuestas'
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
     if (this.state.barrio !== '') query.barrio = this.state.barrio
-    if (this.state.archivadas) query.state = 'no-factible'
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
@@ -266,11 +263,11 @@ const TagsList = ({ tags, forumName, without }) => {
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        let url = `${window.location.origin}/${forumName}?tags=${tag}`
+        let url = `${window.location.origin}/propuestas?tags=${tag}`
 
         if (u.has('tags') && u.get('tags') === tag) {
           active = 'active'
-          url = `${window.location.origin}/${forumName}`
+          url = `${window.location.origin}/propuestas`
         }
 
         return (

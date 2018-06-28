@@ -124,39 +124,6 @@ class TopicArticle extends Component {
               title={topic.mediaTitle} />
           )
         }
-        {
-          topic.action.method && topic.action.method === 'vote' && (
-            <Vote
-              votes={{
-                positive: topic.upvotes || [],
-                negative: topic.downvotes || [],
-                neutral: topic.abstentions || []
-              }}
-              closed={topic.closed}
-              id={topic.id}
-              url={topic.url}
-              closingAt={topic.closingAt}
-              canVoteAndComment={forum.privileges.canVoteAndComment} />
-          )
-        }
-        {
-          topic.action.method && topic.action.method === 'poll' && (
-            <div className='topic-article-content'>
-              <Poll
-                topic={topic}
-                canVoteAndComment={forum.privileges.canVoteAndComment} />
-            </div>
-          )
-        }
-        {
-          topic.action.method && topic.action.method === 'cause' && (
-            <div className='topic-article-content'>
-              <Cause
-                topic={topic}
-                canVoteAndComment={forum.privileges.canVoteAndComment} />
-            </div>
-          )
-        }
         <Social
           topic={topic}
           twitterText={twitterText}
@@ -167,7 +134,7 @@ class TopicArticle extends Component {
           }
         </div>  
         {
-          topic.attrs.state === 'proyectado' && (
+          topic.attrs.state !== 'factible' && (
               <div className='topic-article-content proyecto-ganador'>
                 <div className='box-header'>
                   <span>Proyecto ganador</span>
