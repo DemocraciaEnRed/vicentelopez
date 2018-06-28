@@ -8,7 +8,7 @@
 .stage-container 
   width: 100%
   display: flex
-  justify-content: center
+  justify-content: flex-start
   a.stage-changer
     color: rgb(24, 145, 190)
     margin-bottom: 20px
@@ -17,8 +17,11 @@
     color: #8c1e81
 .filters-nav
   width: 100%
+  max-width: 1000px
   display: flex
   justify-content: space-between
+  margin-left: auto
+  margin-right: auto
   @media screen and (max-width: 970px)
     flex-direction:column
     margin-bottom: 20px
