@@ -134,7 +134,7 @@ class TopicArticle extends Component {
           }
         </div>  
         {
-          topic.attrs.state === 'proyectado' && (
+          topic.attrs.state !== 'factible' && (
               <div className='topic-article-content proyecto-ganador'>
                 <div className='box-header'>
                   <span>Proyecto ganador</span>

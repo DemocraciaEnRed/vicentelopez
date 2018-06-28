@@ -140,7 +140,7 @@ export default class Filter extends Component {
                         type='checkbox'
                         value={s.value}
                         onChange={this.handleFilter('state')}
-                        checked={![...this.state.defaultFilters.includes('state')] && this.props.state.includes(s.value)} />
+                        checked={![...this.state.defaultFilters].includes('state') && this.props.state.includes(s.value)} />
                       <span className='checkbox-label'>{s.name}</span>
                     </label>
                   ))}
