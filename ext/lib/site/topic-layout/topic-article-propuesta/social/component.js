@@ -94,7 +94,6 @@ function copyURLToClipboard(event) {
     var copied = document.execCommand('copy')
 
     if (copied) {
-      console.log('La URL se copió correctamente.')
       // renderiza la tooltip
       var tooltip = document.getElementById('copied')
       tooltip.style.display = 'inline-block'

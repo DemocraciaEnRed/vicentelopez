@@ -17,6 +17,13 @@ exports.parseBarrios = (req, res, next) => {
   next()
 }
 
+exports.parseAnos = (req, res, next) => {
+  if (req.query.ano) {
+    req.query.ano = req.query.ano.split(',').filter((t) => !!t)
+  }
+  next()
+}
+
 exports.findForum = (req, res, next) => {
   api.forums.find({ name: req.query.forumName })
     .findOne()
@@ -45,10 +52,9 @@ const queryTopics = (opts) => {
     publishedAt: { $ne: null }
   }
   if (barrio && barrio.length > 0) query['attrs.barrio'] = { $in: barrio }
-  if (ano && ano.length > 0) query['attrs.anio'] = ano
+  if (ano && ano.length > 0) query['attrs.anio'] = { $in: ano }
   if (tags && tags.length > 0) query.tags = { $in: tags }
   if (state && state.length > 0) query['attrs.state'] = { $in: state }
-
   return api.topics.find().where(query)
 }
 

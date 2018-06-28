@@ -86,7 +86,7 @@ export default ({ topic, forum }) => {
           </div>
           <div className='topic-tags'>
             {
-              topic.tags && topic.tags.map((tag, i) => <a onClick={linkTags('proyectos', tag)} key={i}>#{tag}</a>)
+              topic.tags && topic.tags.map((tag, i) => <a onClick={linkTags('proyectos', tag, topic.attrs.anio)} key={i}>#{tag}</a>)
             }
           </div>
         </div>
@@ -95,10 +95,12 @@ export default ({ topic, forum }) => {
   )
 }
 
-function linkTags (forum, tag) {
+function linkTags (forum, tag, anio) {
+  const currentAnio = '2018'
+  const url = anio === currentAnio ? `/${forum}?tag=${tag}` : `/${forum}?tag=${tag}&stage=seguimiento`
   return (e) => {
     e.stopPropagation()
-    window.location = `/${forum}?tag=${tag}`
+    window.location = url
   }
 }
 

@@ -22,8 +22,8 @@ const defaultValues = {
   },
   'seguimiento': {
     barrio: [],
-    ano: ['2017'],
-    state: ['ganador', 'no-ganador']
+    ano: ['2017', '2018'],
+    state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
 
@@ -47,8 +47,8 @@ export class HomeProyectos extends Component {
     let initialFilters = {}
     if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
     if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
-    initialFilters.state = 'factible'
-    initialFilters.ano = '2018'
+    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'factible'
+    initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2017,2018' : '2018'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -57,11 +57,12 @@ export class HomeProyectos extends Component {
       .then((res) => {
         this.setState({
           barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
-          state: ['factible'],
-          ano: ['2018'],
+          state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
+          ano: this.props.location.query.stage === 'seguimiento' ? ['2017', '2018'] : ['2018'],
+          stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
-          noMore: res.results.topics < 20
+          noMore: res.results.topics.length < 20
         })
       })
       .catch((err) => console.error(err))
@@ -69,13 +70,7 @@ export class HomeProyectos extends Component {
 
   handleFilter = (filter, value) => {
     // If the value is not included in the filter array, add it
-    // Acá hay que agregar logica por si el value es el default
-    if (this.state[filter] === defaultValues[this.state.stage][filter]) {
-      console.log('soy default')
-      // this.setState({
-      //   [filter]: [value]
-      // }, () => this.fetchTopics())
-    } else if (!this.state[filter].includes(value)) {
+    if (!this.state[filter].includes(value)) {
       this.setState({
         [filter]: [...this.state[filter], value]
       }, () => this.fetchTopics())
@@ -85,6 +80,12 @@ export class HomeProyectos extends Component {
         [filter]: [...this.state[filter]].filter((item) => item !== value)
       }, () => this.fetchTopics())
     }
+  }
+
+  handleDefaultFilter = (filter, value) => {
+    this.setState({
+      [filter]: [value]
+    }, () => this.fetchTopics())
   }
 
   // Clear all selected items from a filter
@@ -142,9 +143,9 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        ano: prevState.stage === 'seguimiento' ? ['2018'] : ['2017'],
+        ano: prevState.stage === 'seguimiento' ? ['2018'] : ['2017', '2018'],
         barrio: [],
-        state: prevState.stage === 'seguimiento' ? ['factible'] : ['ganador', 'no-ganador']
+        state: prevState.stage === 'seguimiento' ? ['factible'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
       }
     }, () => this.fetchTopics())
   }
@@ -158,6 +159,7 @@ export class HomeProyectos extends Component {
           <section className='grid-container'>
             <Filter
               handleFilter={this.handleFilter}
+              handleDefaultFilter={this.handleDefaultFilter}
               ano={this.state.ano}
               state={this.state.state}
               barrio={this.state.barrio}
@@ -167,7 +169,7 @@ export class HomeProyectos extends Component {
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>
-            {this.state.noMore || topics.length === 0
+            {this.state.noMore
               ? <span>No hay más proyectos que coincidan con la búsqueda</span>
               : <button className='boton-azul btn' onClick={this.seeMore}>
                 Ver más

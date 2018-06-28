@@ -162,7 +162,7 @@ class HomePropuestas extends Component {
             topics,
             noMore: topics.length === 0 || topics.length < 20,
             page: 1
-          }, () => console.log(this.state))
+          })
         })
         .catch((err) => { console.error(err) })
     })
