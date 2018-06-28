@@ -14,7 +14,6 @@ exports.parseStates = (req, res, next) => {
 
 exports.parseBarrios = (req, res, next) => {
   req.query.barrio = req.query.barrio.split(',').filter((t) => !!t)
-  console.log(req.query.barrio)
   next()
 }
 
