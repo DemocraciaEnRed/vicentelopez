@@ -14,6 +14,12 @@ exports.parseStates = (req, res, next) => {
 
 exports.parseBarrios = (req, res, next) => {
   req.query.barrio = req.query.barrio.split(',').filter((t) => !!t)
+  console.log(req.query.barrio)
+  next()
+}
+
+exports.parseAnos = (req, res, next) => {
+  req.query.ano = req.query.ano.split(',').filter((t) => !!t)
   next()
 }
 
@@ -45,10 +51,9 @@ const queryTopics = (opts) => {
     publishedAt: { $ne: null }
   }
   if (barrio && barrio.length > 0) query['attrs.barrio'] = { $in: barrio }
-  if (ano && ano.length > 0) query['attrs.anio'] = ano
+  if (ano && ano.length > 0) query['attrs.anio'] = { $in: ano }
   if (tags && tags.length > 0) query.tags = { $in: tags }
   if (state && state.length > 0) query['attrs.state'] = { $in: state }
-
   return api.topics.find().where(query)
 }
 

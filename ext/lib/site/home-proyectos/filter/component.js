@@ -14,11 +14,13 @@ const barrios = [
 ]
 
 const states = [
-  { 'name': 'Ganador', 'value': 'ganador' },
-  { 'name': 'No ganador', 'value': 'no-ganador' }
+  { 'name': 'En preparación', 'value': 'preparacion' },
+  { 'name': 'En proceso de compra', 'value': 'compra' },
+  { 'name': 'En ejecución', 'value': 'ejecucion' },
+  { 'name': 'Finalizado', 'value': 'finalizado' }
 ]
 
-const anos = ['2017']
+const anos = ['2017', '2018']
 
 export default class Filter extends Component {
   constructor (props) {
@@ -37,7 +39,6 @@ export default class Filter extends Component {
     document.removeEventListener('click', this.handleClick, false)
   }
 
-
   handleDropdown = (id) => (e) => {
     // Show or hide the options div
     e.preventDefault()
@@ -48,9 +49,17 @@ export default class Filter extends Component {
 
   // Send filter to parent component
   handleFilter = (filter) => (e) => {
-    this.setState({
-      defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
-    }, this.props.handleFilter(filter, e.target.value))
+    const value = e.target.value
+    const isDefault = [...this.state.defaultFilters].includes(filter)
+    if (isDefault) {
+      this.setState({
+        defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
+      }, this.props.handleDefaultFilter(filter, value))
+    } else {
+      this.setState({
+        defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
+      }, this.props.handleFilter(filter, value))
+    }
   }
 
   // Close dropdown if clicked outside
@@ -132,7 +141,7 @@ export default class Filter extends Component {
                         type='checkbox'
                         value={s.value}
                         onChange={this.handleFilter('state')}
-                        checked={!this.state.defaultFilters.includes('state') && this.props.state.includes(s.value)} />
+                        checked={![...this.state.defaultFilters.includes('state')] && this.props.state.includes(s.value)} />
                       <span className='checkbox-label'>{s.name}</span>
                     </label>
                   ))}
@@ -164,7 +173,7 @@ export default class Filter extends Component {
                         type='checkbox'
                         value={a}
                         onChange={this.handleFilter('ano')}
-                        checked={!this.state.defaultFilters.includes('state') && this.props.ano.includes(a)} />
+                        checked={![...this.state.defaultFilters].includes('ano') && this.props.ano.includes(a)} />
                       <span className='checkbox-label'>{a}</span>
                     </label>
                   ))}

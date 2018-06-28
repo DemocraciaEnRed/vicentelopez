@@ -53,9 +53,9 @@ export default class TopicGrid extends Component {
             <div className='cards-container'>
               {this.props.topics
                 .filter((topic) => topic.attrs.barrio === barrio.name)
-                .map((topic) => (
-                  <TopicCard key={topic.id} topic={topic} forum={{ title: topic.attrs.barrio }} />
-                ))
+                .map((topic) => {
+                  return <TopicCard key={topic.id} topic={topic} forum={{ title: topic.attrs.barrio }} />
+                })
               }
             </div>
           </div>

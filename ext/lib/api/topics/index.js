@@ -53,6 +53,7 @@ app.get('/topics',
   utils.findForum,
   utils.parseStates,
   utils.parseBarrios,
+  utils.parseAnos,
   middlewares.forums.privileges.canView,
   (req, res, next) => {
     const opts = Object.assign({}, req.query)
