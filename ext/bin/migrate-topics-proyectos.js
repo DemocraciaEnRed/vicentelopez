@@ -69,17 +69,11 @@ Promise.all([
   })
   .then(({ topics, forum }) => {
     const savedTopics = topics.map((topic) => {
-
-      // const topicContenido = () => {
-      //   const clauses = [topic.attrs.problema, topic.attrs.solucion, topic.attrs.beneficios].filter((attr) => attr !== undefined)
-      //   return clauses.join('')
-      // }
       topic.set('forum', forum.id)
       topic.set('attrs.anio', '2018')
       topic.set('attrs.budget', 0)
       topic.set('attrs.votes', 0)
       topic.set('attrs.description', topicDescription(topic))
-      // topic.set('attrs.contenido', topicContenido())
       return topic.save()
     })
     return Promise.all(savedTopics)

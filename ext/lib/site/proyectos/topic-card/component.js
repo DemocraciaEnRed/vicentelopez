@@ -41,6 +41,13 @@ const barrios = [
   }
 ]
 
+const states = [
+  { 'name': 'En preparación', 'value': 'preparacion' },
+  { 'name': 'En proceso de compra', 'value': 'compra' },
+  { 'name': 'En ejecución', 'value': 'ejecucion' },
+  { 'name': 'Finalizado', 'value': 'finalizado' }
+]
+
 export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
@@ -50,11 +57,11 @@ export default ({ topic, forum }) => {
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}>
-        {topic.attrs && topic.attrs.budget && topic.attrs.budget !== 0 && 
+        {topic.attrs && topic.attrs.budget && topic.attrs.budget !== 0 &&
           <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
         }
-        {topic.attrs && topic.attrs.state && topic.attrs.state === 'ganador' && (
-          <p className='winner'>Proyecto ganador</p>
+        {topic.attrs && topic.attrs.state && topic.attrs.anio !== '2018' && (
+          <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
         )}
       </div>
       <div className='topic-card-info'>
