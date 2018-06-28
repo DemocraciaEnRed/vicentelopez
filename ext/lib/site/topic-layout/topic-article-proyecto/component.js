@@ -124,39 +124,6 @@ class TopicArticle extends Component {
               title={topic.mediaTitle} />
           )
         }
-        {
-          topic.action.method && topic.action.method === 'vote' && (
-            <Vote
-              votes={{
-                positive: topic.upvotes || [],
-                negative: topic.downvotes || [],
-                neutral: topic.abstentions || []
-              }}
-              closed={topic.closed}
-              id={topic.id}
-              url={topic.url}
-              closingAt={topic.closingAt}
-              canVoteAndComment={forum.privileges.canVoteAndComment} />
-          )
-        }
-        {
-          topic.action.method && topic.action.method === 'poll' && (
-            <div className='topic-article-content'>
-              <Poll
-                topic={topic}
-                canVoteAndComment={forum.privileges.canVoteAndComment} />
-            </div>
-          )
-        }
-        {
-          topic.action.method && topic.action.method === 'cause' && (
-            <div className='topic-article-content'>
-              <Cause
-                topic={topic}
-                canVoteAndComment={forum.privileges.canVoteAndComment} />
-            </div>
-          )
-        }
         <Social
           topic={topic}
           twitterText={twitterText}
