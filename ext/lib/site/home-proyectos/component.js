@@ -47,8 +47,8 @@ export class HomeProyectos extends Component {
     let initialFilters = {}
     if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
     if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
-    initialFilters.state = 'factible'
-    initialFilters.ano = '2018'
+    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'factible'
+    initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2017,2018' : '2018'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -57,8 +57,9 @@ export class HomeProyectos extends Component {
       .then((res) => {
         this.setState({
           barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
-          state: ['factible'],
-          ano: ['2018'],
+          state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
+          ano: this.props.location.query.stage === 'seguimiento' ? ['2017', '2018'] : ['2018'],
+          stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
           noMore: res.results.topics.length < 20
@@ -142,7 +143,7 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        ano: prevState.stage === 'seguimiento' ? ['2018'] : ['2017'],
+        ano: prevState.stage === 'seguimiento' ? ['2018'] : ['2017', '2018'],
         barrio: [],
         state: prevState.stage === 'seguimiento' ? ['factible'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
       }

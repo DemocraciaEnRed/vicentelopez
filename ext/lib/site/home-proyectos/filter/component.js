@@ -84,7 +84,6 @@ export default class Filter extends Component {
   render () {
     return (
       <nav id='filter'>
-
         <div className='stage-container'>
           <a className='stage-changer' onClick={this.props.changeStage}>
             {this.props.stage === 'seguimiento' ? 'Volver a votación actual >' : '< Ver seguimiento de proyectos'}

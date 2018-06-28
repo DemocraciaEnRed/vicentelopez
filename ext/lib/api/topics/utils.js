@@ -18,7 +18,9 @@ exports.parseBarrios = (req, res, next) => {
 }
 
 exports.parseAnos = (req, res, next) => {
-  req.query.ano = req.query.ano.split(',').filter((t) => !!t)
+  if (req.query.ano) {
+    req.query.ano = req.query.ano.split(',').filter((t) => !!t)
+  }
   next()
 }
 
