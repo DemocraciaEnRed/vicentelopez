@@ -1,3 +1,10 @@
+#filter
+  margin-left:1.5em
+  @media screen and (max-width: 570px)
+      margin-left:0.6em
+  margin-right:1em
+  width: 96%
+
 .stage-container 
   width: 100%
   display: flex
@@ -12,7 +19,12 @@
   width: 100%
   display: flex
   justify-content: space-between
+  @media screen and (max-width: 970px)
+    flex-direction:column
+    margin-bottom: 20px
+    align-items:center
   margin-bottom: 83px
+  margin-top:20px
   &.center
     justify-content: center
   .button-container
