@@ -4,6 +4,7 @@ const barrios = ['villa-martelli', 'villa-adelina', 'vicente-lopez', 'olivos', '
 const models = require('lib/models')()
 const Forum = models.Forum
 const Topic = models.Topic
+const newTopicsAttrs = require('../lib/site/formulario-propuesta/campos.json')
 
 const topicDescription = (topic) => {
   if (topic.attrs.solucion === undefined) {
@@ -80,3 +81,11 @@ Promise.all([
   })
   .then((savedTopics) => { console.log('Propuestas actualizadas!') })
   .catch((err) => { console.log(err) })
+
+Forum.find({ 'name': 'proyectos' }).exec()
+  .then(([ forum ]) => {
+    forum.set('topicsAttrs', newTopicsAttrs)
+    return forum.save()
+  })
+  .then((forum) => { console.log('Foro proyectos actualizado!') })
+  .catch((err) => console.log(err))
