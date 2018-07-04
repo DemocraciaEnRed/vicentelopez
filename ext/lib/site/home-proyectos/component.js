@@ -38,7 +38,7 @@ export class HomeProyectos extends Component {
       ano: [],
       barrio: [],
       state: [],
-      stage: 'votacion',
+      stage: 'seguimiento',
       sort: ['barrio']
     }
   }
@@ -47,8 +47,12 @@ export class HomeProyectos extends Component {
     let initialFilters = {}
     if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
     if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
-    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'factible'
-    initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2017,2018' : '2018'
+    // This filters should be applied if seguimiento stage is active only
+    initialFilters.state = defaultValues.seguimiento.state
+    initialFilters.ano = defaultValues.seguimiento.ano
+    // This filters should be applied if Votacion Abierta stage is active only
+    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'factible'
+    // initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2017,2018' : '2018'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -57,9 +61,14 @@ export class HomeProyectos extends Component {
       .then((res) => {
         this.setState({
           barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
-          state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
-          ano: this.props.location.query.stage === 'seguimiento' ? ['2017', '2018'] : ['2018'],
-          stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
+          // This filters should be applied if seguimiento stage is active only
+          state: defaultValues.seguimiento.state,
+          ano: defaultValues.seguimiento.ano,
+          stage: 'seguimiento',
+          // This filters should be applied if Votacion Abierta stage is active only
+          // state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
+          // ano: this.props.location.query.stage === 'seguimiento' ? ['2017', '2018'] : ['2018'],
+          // stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
           noMore: res.results.topics.length < 20
@@ -74,7 +83,10 @@ export class HomeProyectos extends Component {
       this.setState({
         [filter]: [...this.state[filter], value]
       }, () => this.fetchTopics())
-    // If it's already included erase it
+      // If it's already included and it's the only filter applied, apply default filters
+    } else if (this.state[filter].length === 1) {
+      this.clearFilter(filter)
+      // If it's already included erase it
     } else {
       this.setState({
         [filter]: [...this.state[filter]].filter((item) => item !== value)
@@ -165,7 +177,8 @@ export class HomeProyectos extends Component {
               barrio={this.state.barrio}
               changeStage={this.changeStage}
               stage={this.state.stage}
-              clearFilter={this.clearFilter} />
+              clearFilter={this.clearFilter}
+              openVotation={false} />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>
