@@ -15,7 +15,8 @@ import Footer from 'ext/lib/site/footer/component'
 export class TopicLayout extends Component {
   state = {
     topics: null,
-    forum: null
+    forum: null,
+    name: null
   }
 
   componentWillReceiveProps (props) {
@@ -29,10 +30,11 @@ export class TopicLayout extends Component {
       name = config.defaultForum
     }
 
-    forumStore.findOneByName(name)
+    forumStore.findOneByName('proyectos')
       .then((forum) => {
         this.setState({
-          forum
+          forum: forum,
+          name: name
         })
       })
       .catch((err) => {
@@ -56,14 +58,14 @@ export class TopicLayout extends Component {
     }
 
     const { topic } = this.props
-    const { forum } = this.state
+    const { forum, name } = this.state
     if (!topic || !forum) return null
     return (
       <div>
         <Anchor id='container'>
           <div id='topic-wrapper'>
             {
-              forum.name === 'propuestas'
+              name === 'propuestas'
                 ? <TopicArticlePropuesta topic={topic} forum={forum}/>
                 : <TopicArticleProyecto topic={topic} forum={forum} />
             }
