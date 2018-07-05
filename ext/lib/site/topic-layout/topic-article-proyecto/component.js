@@ -43,6 +43,26 @@ class TopicArticle extends Component {
     })
   }
 
+  getEstado (name) {
+    const estados = [
+      {
+        'name': 'pendiente',
+        'title': 'Pendiente'
+      },
+      {
+        'name': 'factible',
+        'title': 'Factible'
+      },
+      {
+        'name': 'no-factible',
+        'title': 'No factible'
+      }
+    ]
+    const estado = estados.find((e) => e.name === name)
+    if (!estado) return 'Pendiente'
+    return estado.title.toLowerCase()
+  }
+
   handleCreateTopic = () => {
     window.location = urlBuilder.for('admin.topics.create', {
       forum: this.props.forum.name
@@ -114,7 +134,12 @@ class TopicArticle extends Component {
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
+          <div className='topic-article-status-container'>
+          <div className='topic-article-status'>Proyecto {this.getEstado(topic.attrs.state)} </div>
+          </div>
+
         {topic.clauses && <Content clauses={topic.clauses} />}
+ 
         {
           topic.links && (
             <Footer

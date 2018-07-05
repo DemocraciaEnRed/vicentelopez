@@ -141,9 +141,10 @@ class TopicArticle extends Component {
             tags={topic.tags}
             forumName={forum.name}
             mediaTitle={topic.mediaTitle} />
-
         </div>
-        <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
+        <div className='topic-article-status-container'>
+          <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
+        </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
@@ -159,6 +160,7 @@ class TopicArticle extends Component {
               </div>
             )
             : (topic.privileges && topic.privileges.canEdit) &&
+
                (
                  <div className='topic-article-content topic-admin-actions'>
                    <a
