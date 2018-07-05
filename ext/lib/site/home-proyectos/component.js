@@ -47,6 +47,7 @@ export class HomeProyectos extends Component {
     let initialFilters = {}
     if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
     if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
+    initialFilters.sort = 'barrio'
     // This filters should be applied if seguimiento stage is active only
     initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
     initialFilters.ano = '2017,2018'

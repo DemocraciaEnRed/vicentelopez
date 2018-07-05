@@ -46,12 +46,8 @@ export default class TopicGrid extends Component {
   render () {
     return (
       <div className='topic-grid'>
-        {this.barrios
-          .filter((barrio) => {
-            console.log(this.props.topics.filter((topic) => topic.attrs.barrio === barrio.name))
-            return this.props.topics.filter((topic) => topic.attrs.barrio === barrio.name).length > 0
-          })
-          .map((barrio, i) => (
+        {this.barrios.map((barrio, i) => (
+          this.props.topics.filter((topic) => topic.attrs.barrio === barrio.name).length > 0 &&
           <div className='barrio-wrapper' key={i}>
             <h2 className='barrio-title'>{barrio.title}</h2>
             <div className={`${this.props.topics.filter((topic) => topic.attrs.barrio === barrio.name).length  < 3 ? 'cards-container-shortItems' : 'cards-container'}` } >
