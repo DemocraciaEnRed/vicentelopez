@@ -23,7 +23,7 @@ const defaultValues = {
   'seguimiento': {
     barrio: [],
     ano: ['2017', '2018'],
-    state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
+    state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
 
@@ -47,11 +47,12 @@ export class HomeProyectos extends Component {
     let initialFilters = {}
     if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
     if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
+    initialFilters.sort = 'barrio'
     // This filters should be applied if seguimiento stage is active only
-    initialFilters.state = defaultValues.seguimiento.state
-    initialFilters.ano = defaultValues.seguimiento.ano
+    initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
+    initialFilters.ano = '2017,2018'
     // This filters should be applied if Votacion Abierta stage is active only
-    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'factible'
+    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
     // initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2017,2018' : '2018'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
@@ -66,7 +67,7 @@ export class HomeProyectos extends Component {
           ano: defaultValues.seguimiento.ano,
           stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
-          // state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
+          // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
           // ano: this.props.location.query.stage === 'seguimiento' ? ['2017', '2018'] : ['2018'],
           // stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
@@ -157,7 +158,7 @@ export class HomeProyectos extends Component {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
         ano: prevState.stage === 'seguimiento' ? ['2018'] : ['2017', '2018'],
         barrio: [],
-        state: prevState.stage === 'seguimiento' ? ['factible'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
+        state: prevState.stage === 'seguimiento' ? ['factible'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
       }
     }, () => this.fetchTopics())
   }
