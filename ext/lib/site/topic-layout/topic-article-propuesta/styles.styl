@@ -233,7 +233,6 @@ topicColor2 = #999
 .topic-article-nombre
   color: #ccc
   font-size: .9em
-  padding: 5px
   @media(max-width: 768px)
       padding: px
 
@@ -258,18 +257,23 @@ topicColor2 = #999
   font-size: .9em
   font-weight: normal  
 
+.topic-article-status-container 
+  @media(max-width: 1100px)
+    width:100%
+    display: flex
+    justify-content: flex-end
 .topic-article-status
   font-size: .9em
   color:#fff
   background-color:#444444
   font-weight: bold
   padding:5px 15px 5px 5px
-  display: inline-block
-  float:right
-  margin-right:0
-  position:relative
-  right: 0px
-  top: 70px
+  @media(min-width: 1100px)
+    float:right
+    margin-right:0
+    position:relative
+    right: 0px
+    top: 70px
   @media(max-width: 450px)
     font-size:.7em
   
@@ -333,14 +337,13 @@ topicColor2 = #999
 
 .topic-article-content
   &.topic-admin-actions
-  
-    @media screen and (max-width: 1000px)
-      display: inline-block
-      float: right
-      margin-right: 0
+    @media screen and (min-width: 1000px)
       position: relative
-      right: -150px
-      top: 20px
+    @media screen and (max-width: 1000px)
+      margin-right:0  
+      width: 80%
+      display: flex
+      justify-content: flex-end
       
 
 .admin-comment-referido      
