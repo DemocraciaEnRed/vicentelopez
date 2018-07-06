@@ -55,6 +55,10 @@ export default class Filter extends Component {
       this.setState({
         defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
       }, this.props.handleDefaultFilter(filter, value))
+    } else if (this.props[filter].length === 1 && this.props[filter].includes(value) && filter !== 'barrio') {
+      this.setState({
+        defaultFilters: [...this.state.defaultFilters, filter]
+      }, this.props.handleFilter(filter, value))
     } else {
       this.setState({
         defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
@@ -84,11 +88,13 @@ export default class Filter extends Component {
   render () {
     return (
       <nav id='filter'>
-        <div className='stage-container'>
-          <a className='stage-changer' onClick={this.props.changeStage}>
-            {this.props.stage === 'seguimiento' ? 'Volver a votación actual >' : '< Ver seguimiento de proyectos'}
-          </a>
-        </div>
+        {this.props.openVotation &&
+          <div className='stage-container'>
+            <a className='stage-changer' onClick={this.props.changeStage}>
+              {this.props.stage === 'seguimiento' ? 'Volver a votación actual >' : '< Ver seguimiento de proyectos'}
+            </a>
+          </div>
+        }
         <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>
           <div className='button-container'>
             <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
