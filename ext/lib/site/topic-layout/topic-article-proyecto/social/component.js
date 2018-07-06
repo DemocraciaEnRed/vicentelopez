@@ -10,6 +10,7 @@ export default (props) => {
   return (
     <div className='topic-article-content topic-social-vilo'>
       <div className='share-links'>
+      <a target='_blank' href={`http://www.instagram.com/sharer.php?u=${socialLinksUrl}`} rel='noopener noreferrer' className='instagram-icon'></a>
         <a target='_blank' href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`} rel='noopener noreferrer' className='facebook-icon'></a>
         <a target='_blank' href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`} rel='noopener noreferrer' className='twitter-icon'></a>
         {

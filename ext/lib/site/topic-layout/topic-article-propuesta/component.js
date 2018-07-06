@@ -83,7 +83,31 @@ class TopicArticle extends Component {
       {
         'name': 'no-factible',
         'title': 'No factible'
-      }
+      },
+      {
+        "name" : "no-ganador", 
+        "title" : "No ganador"
+    }, 
+    {
+        "name" : "preparacion", 
+        "title" : "En Preparación"
+    }, 
+    {
+        "name" : "compra", 
+        "title" : "En Proceso de Compra"
+    }, 
+    {
+        "name" : "ejecucion", 
+        "title" : "En Ejecución"
+    },
+    {
+        "name" : "finalizado",
+        "title" : "Finalizado"
+    },
+    {
+        "name" : "integrado",
+        "title" : "Integrado"
+    }
     ]
     const estado = estados.find((e) => e.name === name)
     if (!estado) return 'Pendiente'
@@ -144,9 +168,10 @@ class TopicArticle extends Component {
             tags={topic.tags}
             forumName={forum.name}
             mediaTitle={topic.mediaTitle} />
-
         </div>
+        <div className='topic-article-status-container'>
         <div className='topic-article-status'>Proyecto {this.getEstado(topic.attrs.state)} </div>
+        </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
@@ -161,7 +186,9 @@ class TopicArticle extends Component {
                 </Link>
               </div>
             )
-            : (topic.privileges && topic.privileges.canEdit) &&
+            : (topic.privileges) &&
+          //  : (topic.privileges && topic.privileges.canEdit) &&
+
                (
                  <div className='topic-article-content topic-admin-actions'>
                    <a
