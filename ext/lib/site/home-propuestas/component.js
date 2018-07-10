@@ -74,6 +74,7 @@ class HomePropuestas extends Component {
   componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
     if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
+    if (u.get('barrio')) this.setState({ barrio: u.get('barrio') })
     forumStore.findOneByName('proyectos')
       .then((forum) => {
         const tags = window.fetch(`/api/v2/topics/tags?forum=${forum.id}`)
@@ -115,7 +116,15 @@ class HomePropuestas extends Component {
   changeTopics () {
     this.fetchTopics(this.state.page)
       .then((res) => {
-        this.setState({ topics: res })
+        this.setState({ topics: res }, () => {
+          if (this.state.barrio !== '') {
+            const u = new window.URLSearchParams(window.location.search)
+            const link = u.get('tags')
+              ? `/propuestas?barrio=${this.state.barrio}&tags=${u.get('tags')}` 
+              : `/propuestas?barrio=${this.state.barrio}`
+            browserHistory.push(link)
+          }
+        })
       })
       .catch((err) => { console.error(err) })
   }
@@ -130,8 +139,6 @@ class HomePropuestas extends Component {
     }
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
-  //  const o = new window.URLSearchParams(window.location.search)
-   // console.log(query.barrio)
     if (this.state.barrio !== '') query.barrio = this.state.barrio
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
@@ -266,8 +273,8 @@ const TagsList = ({ tags, forumName, without, barrio }) => {
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        let url = (barrio == '') ? (`${window.location.origin}/propuestas?tags=${tag}`) :
-        (`${window.location.origin}/propuestas?barrio=${barrio}&tags=${tag}`)
+        let url = barrio === '' ? `${window.location.origin}/propuestas?tags=${tag}` :
+          `${window.location.origin}/propuestas?barrio=${barrio}&tags=${tag}`
 
         if (u.has('tags') && u.get('tags') === tag) {
           active = 'active'
