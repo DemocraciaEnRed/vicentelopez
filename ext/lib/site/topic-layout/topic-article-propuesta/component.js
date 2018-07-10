@@ -184,7 +184,11 @@ class TopicArticle extends Component {
           <span className='topic-article-span'>Beneficios que brindará el proyecto al barrio</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
-
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2018' &&
+          <div className='alert alert-success alert-proyecto' role='alert'>
+            Podés ver el proyecto final presentado en la votación <Link to={`/proyectos/topic/${topic.id}`} className='alert-link'>aquí</Link>.
+          </div>
+        }
         <div className='topic-tags topic-article-content'>
           <Cause
             topic={topic}
