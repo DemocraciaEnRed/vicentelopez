@@ -130,6 +130,8 @@ class HomePropuestas extends Component {
     }
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
+  //  const o = new window.URLSearchParams(window.location.search)
+   // console.log(query.barrio)
     if (this.state.barrio !== '') query.barrio = this.state.barrio
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
@@ -224,7 +226,7 @@ class HomePropuestas extends Component {
                 </div>
                 <div className='col-md-12'>
                   <h3>Temas</h3>
-                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
+                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} barrio={this.state.barrio}/>}
                 </div>
               </div>
 
@@ -257,14 +259,15 @@ class HomePropuestas extends Component {
   }
 }
 
-const TagsList = ({ tags, forumName, without }) => {
+const TagsList = ({ tags, forumName, without, barrio }) => {
   const u = new window.URLSearchParams(window.location.search)
   if (without) tags = tags.filter((t) => !~without.indexOf(t))
   return tags && tags.length > 0 && (
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        let url = `${window.location.origin}/propuestas?tags=${tag}`
+        let url = (barrio == '') ? (`${window.location.origin}/propuestas?tags=${tag}`) :
+        (`${window.location.origin}/propuestas?barrio=${barrio}&tags=${tag}`)
 
         if (u.has('tags') && u.get('tags') === tag) {
           active = 'active'
