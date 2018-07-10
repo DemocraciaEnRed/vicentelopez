@@ -27,6 +27,10 @@
             "title" : "No factible"
         },
         {
+            "name": "integrado",
+            "title": "Integrado"
+        },
+        {
             "name" : "no-ganador", 
             "title" : "No ganador"
         }, 

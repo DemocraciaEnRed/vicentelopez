@@ -71,23 +71,17 @@ class TopicArticle extends Component {
   }
 
   getEstado (name) {
-    const estados = [
-      {
-        'name': 'pendiente',
-        'title': 'Pendiente'
-      },
-      {
-        'name': 'factible',
-        'title': 'Factible'
-      },
-      {
-        'name': 'no-factible',
-        'title': 'No factible'
-      }
-    ]
-    const estado = estados.find((e) => e.name === name)
-    if (!estado) return 'Pendiente'
-    return estado.title.toLowerCase()
+    switch (name) {
+      case 'pendiente':
+        return 'pendiente'
+        break
+      case 'no-factible':
+        return 'no factible'
+        break
+      default:
+        return 'factible'
+        break
+    }
   }
 
   twitText = () => {
@@ -190,7 +184,11 @@ class TopicArticle extends Component {
           <span className='topic-article-span'>Beneficios que brindará el proyecto al barrio</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
-
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2018' &&
+          <div className='alert alert-success alert-proyecto' role='alert'>
+            Podés ver el proyecto final presentado en la votación <Link to={`/proyectos/topic/${topic.id}`} className='alert-link'>aquí</Link>.
+          </div>
+        }
         <div className='topic-tags topic-article-content'>
           <Cause
             topic={topic}
@@ -220,12 +218,9 @@ class TopicArticle extends Component {
               <div className='alert alert-info alert-propuesta' role='alert'>
                 <p>{topic.attrs['admin-comment']}</p>
 
-         {
-            (topic.attrs['admin-comment-referencia'] && topic.attrs['admin-comment-referencia'] != '') &&
-              ( <p className='admin-comment-referido'>Puede ver la propuesta final <a className='admin-comment-referido' href={topic.attrs['admin-comment-referencia']}>aquí</a>.</p>   
-              )
-          }
-
+                {topic.attrs['admin-comment-referencia'] && topic.attrs['admin-comment-referencia'] !== '' &&
+                  <p className='admin-comment-referido'>Puede ver la propuesta final <a className='admin-comment-referido' href={topic.attrs['admin-comment-referencia']}>aquí</a>.</p>
+                }
                 <p className='font-weight-bold'>Subsecretaría de Participación Ciudadana</p>
               </div>
             )

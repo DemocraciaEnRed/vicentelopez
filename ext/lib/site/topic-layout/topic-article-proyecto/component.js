@@ -124,6 +124,11 @@ class TopicArticle extends Component {
               title={topic.mediaTitle} />
           )
         }
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2018' &&
+          <div className='alert alert-success alert-proyecto' role='alert'>
+            Podés ver la propuesta original <Link to={`/propuestas/topic/${topic.id}`} className='alert-link'>aquí</Link>.
+          </div>
+        }
         <Social
           topic={topic}
           twitterText={twitterText}

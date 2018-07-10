@@ -125,7 +125,8 @@ class HomePropuestas extends Component {
       forumName: 'proyectos',
       sort: this.state.filter === 'newest' ? 'newest' : 'popular',
       page: page,
-      state: this.state.archivadas ? 'no-factible' : 'factible,pendiente,no-factible'
+      state: this.state.archivadas ? 'no-factible' : 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
+      ano: '2018'
     }
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
