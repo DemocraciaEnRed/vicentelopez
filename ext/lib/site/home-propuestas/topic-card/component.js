@@ -2,9 +2,15 @@ import React from 'react'
 import { Link } from 'react-router'
 import moment from 'moment'
 
-const estados = {
-  'factible': 'Factible',
-  'no-factible': 'No factible'
+const estados = (state) => {
+  switch (state) {
+    case 'no-factible':
+      return 'No factible'
+      break
+    default:
+      return 'Factible'
+      break
+  }
 }
 
 export default ({ topic, onVote }) => (
@@ -16,9 +22,8 @@ export default ({ topic, onVote }) => (
           className={`date ${(topic.attrs.state === 'factible' || topic.attrs.state === 'no-factible') && 'space'}`}>
           {moment(topic.createdAt).format('D/M/YY')}
         </span>
-        { 
-          (topic.attrs.state === 'factible' || topic.attrs.state === 'no-factible') &&
-            (<span className='estado'>{estados[topic.attrs.state]}</span>)
+        {topic.attrs.state !== 'pendiente' &&
+          <span className='estado'>{estados(topic.attrs.state)}</span>
         }
       </div>
       <h1 className='topic-card-title'>

@@ -86,7 +86,6 @@ class HomePropuestas extends Component {
         ])
       })
       .then(([forum, topics, tags]) => {
-        topics.map((t) => console.log(t.attrs.state))
         this.setState({
           forum,
           topics: filter(this.state.filter, topics),
