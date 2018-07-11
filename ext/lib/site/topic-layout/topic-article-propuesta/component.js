@@ -143,7 +143,7 @@ class TopicArticle extends Component {
             mediaTitle={topic.mediaTitle} />
 
         </div>
-        <div className='topic-article-status'>Proyecto {this.getEstado(topic.attrs.state)} </div>
+        <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
@@ -187,7 +187,7 @@ class TopicArticle extends Component {
           <span className='topic-article-span'>Beneficios que brindará el proyecto al barrio</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
-        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2018' &&
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.state !== 'integrado' && topic.attrs.anio === '2018' &&
           <div className='alert alert-success alert-proyecto' role='alert'>
             Podés ver el proyecto final presentado en la votación <Link to={`/proyectos/topic/${topic.id}`} className='alert-link'>aquí</Link>.
           </div>

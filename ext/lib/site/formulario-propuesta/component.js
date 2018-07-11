@@ -91,7 +91,7 @@ class FormularioPropuesta extends Component {
     }
     if (this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit') {
       formData['attrs.admin-comment'] = this.state.adminComment
-      formData['attrs.admin-comment-reference'] = this.state.adminCommentReference
+      formData['attrs.admin-comment-referencia'] = this.state.adminCommentReference
       formData['attrs.state'] = this.state.state
     }
     if (this.state.mode === 'new') {
