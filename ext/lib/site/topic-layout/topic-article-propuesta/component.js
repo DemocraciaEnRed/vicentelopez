@@ -78,6 +78,9 @@ class TopicArticle extends Component {
       case 'no-factible':
         return 'no factible'
         break
+      case 'integrado':
+        return 'integrada'
+        break
       default:
         return 'factible'
         break

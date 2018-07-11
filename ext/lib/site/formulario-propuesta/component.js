@@ -355,7 +355,7 @@ class FormularioPropuesta extends Component {
           {this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit' && (
             <div className='form-group'>
               <label htmlFor='adminComment'>Comentario del moderador:</label>
-              <span className='help-text requerido'>Escribir aquí un comentario en el caso que se cambie el estado a "factible" o "rechazado"</span>
+              <span className='help-text requerido'>Escribir aquí un comentario en el caso que se cambie el estado a "factible", "rechazado" o "integrado"</span>
               <textarea
                 className='form-control'
                 rows='6'
@@ -368,8 +368,8 @@ class FormularioPropuesta extends Component {
           )}
           {this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit' && (
             <div className='form-group'>
-              <label htmlFor='adminCommentReference'>Link a la propuesta integradora:</label>
-              <span className='help-text requerido'>Escribir aquí el link al proyecto vinculado, en caso de que la propuesta pase a ser "integrada"</span>
+              <label htmlFor='adminCommentReference'>Link a la propuesta definitiva:</label>
+              <span className='help-text requerido'>Escribir aquí el link al proyecto vinculado, en caso que se cambie el estado a "integrado"</span>
               <input
                 type='text'
                 className='form-control'
