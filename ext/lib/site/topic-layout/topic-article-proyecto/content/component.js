@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router'
 
+const states = [
+  { 'name': 'estimado', 'value': 'preparacion' },
+  { 'name': 'asignado', 'value': 'compra' },
+  { 'name': 'asignado', 'value': 'ejecucion' },
+  { 'name': 'ejecutado', 'value': 'finalizado' }
+]
+
 export default class Content extends Component {
   render () {
     function createClauses (clauses) {
@@ -28,7 +35,7 @@ export default class Content extends Component {
                 </div>
                 <div className='box-content'>
                   <div className='box-content-item'>
-                    <span className='box-content-title'>Presupuesto asignado:</span>
+                  <span className='box-content-title'>Presupuesto {states.find((st) => st.value === this.props.presupuesto).name}:</span>
                     <span className='box-content-title'>{this.props.budget}</span>
                   </div>
                   <div className='box-content-item'>

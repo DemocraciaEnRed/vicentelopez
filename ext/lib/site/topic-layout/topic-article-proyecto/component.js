@@ -15,7 +15,6 @@ import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import {Link} from 'react-router'
 
-
 class TopicArticle extends Component {
   constructor (props) {
     super(props)
@@ -114,7 +113,7 @@ class TopicArticle extends Component {
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
-        {topic.clauses && <Content clauses={topic.clauses} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/>}
+        {topic.clauses && <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/>}
         {
           topic.links && (
             <Footer
