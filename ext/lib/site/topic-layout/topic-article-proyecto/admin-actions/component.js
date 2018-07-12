@@ -3,6 +3,7 @@ import t from 't-component'
 import urlBuilder from 'lib/url-builder'
 
 export default ({ topic, forum }) => {
+  console.log(topic.privileges.canEdit)
   if (!topic.privileges.canEdit) return null
 
   return (
