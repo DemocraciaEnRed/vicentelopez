@@ -43,6 +43,29 @@ class TopicArticle extends Component {
     })
   }
 
+  getEstado (name) {
+    switch (name) {
+      case 'no-ganador':
+        return 'no gnador'
+        break
+      case 'preparacion':
+        return 'en preparación'
+        break
+      case 'compra':
+        return 'en proceso de compra'
+        break
+      case 'ejecucion':
+        return 'en ejecución'
+        break
+      case 'finalizado':
+        return 'finalizado'
+        break
+      default:
+        return 'factible'
+        break
+    }
+  }
+
   handleCreateTopic = () => {
     window.location = urlBuilder.for('admin.topics.create', {
       forum: this.props.forum.name
@@ -114,7 +137,12 @@ class TopicArticle extends Component {
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
+          <div className='topic-article-status-container'>
+          <div className='topic-article-status'>Proyecto {this.getEstado(topic.attrs.state)} </div>
+          </div>
+
         {topic.clauses && <Content clauses={topic.clauses} />}
+ 
         {
           topic.links && (
             <Footer
