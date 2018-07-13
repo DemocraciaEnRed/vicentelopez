@@ -74,6 +74,7 @@ class HomePropuestas extends Component {
   componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
     if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
+    if (u.get('barrio')) this.setState({ barrio: u.get('barrio') })
     forumStore.findOneByName('proyectos')
       .then((forum) => {
         const tags = window.fetch(`/api/v2/topics/tags?forum=${forum.id}`)
@@ -115,7 +116,15 @@ class HomePropuestas extends Component {
   changeTopics () {
     this.fetchTopics(this.state.page)
       .then((res) => {
-        this.setState({ topics: res })
+        this.setState({ topics: res }, () => {
+          if (this.state.barrio !== '') {
+            const u = new window.URLSearchParams(window.location.search)
+            const link = u.get('tags')
+              ? `/propuestas?barrio=${this.state.barrio}&tags=${u.get('tags')}` 
+              : `/propuestas?barrio=${this.state.barrio}`
+            browserHistory.push(link)
+          }
+        })
       })
       .catch((err) => { console.error(err) })
   }
@@ -224,7 +233,7 @@ class HomePropuestas extends Component {
                 </div>
                 <div className='col-md-12'>
                   <h3>Temas</h3>
-                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
+                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} barrio={this.state.barrio}/>}
                 </div>
               </div>
 
@@ -257,14 +266,15 @@ class HomePropuestas extends Component {
   }
 }
 
-const TagsList = ({ tags, forumName, without }) => {
+const TagsList = ({ tags, forumName, without, barrio }) => {
   const u = new window.URLSearchParams(window.location.search)
   if (without) tags = tags.filter((t) => !~without.indexOf(t))
   return tags && tags.length > 0 && (
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        let url = `${window.location.origin}/propuestas?tags=${tag}`
+        let url = barrio === '' ? `${window.location.origin}/propuestas?tags=${tag}` :
+          `${window.location.origin}/propuestas?barrio=${barrio}&tags=${tag}`
 
         if (u.has('tags') && u.get('tags') === tag) {
           active = 'active'
