@@ -28,6 +28,7 @@ class FormularioPropuesta extends Component {
       beneficios: '',
       tags: null,
       adminComment: '',
+      adminCommentReference: '',
       state: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -58,7 +59,8 @@ class FormularioPropuesta extends Component {
             beneficios: topic.attrs.beneficios,
             tags: topic.tags,
             state: topic.attrs.state,
-            adminComment: topic.attrs['admin-comment']
+            adminComment: topic.attrs['admin-comment'],
+            adminCommentReference: topic.attrs['admin-comment-reference']
           })
         })
         .catch((err) => console.log(err))
@@ -89,6 +91,7 @@ class FormularioPropuesta extends Component {
     }
     if (this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit') {
       formData['attrs.admin-comment'] = this.state.adminComment
+      formData['attrs.admin-comment-referencia'] = this.state.adminCommentReference
       formData['attrs.state'] = this.state.state
     }
     if (this.state.mode === 'new') {
@@ -345,13 +348,14 @@ class FormularioPropuesta extends Component {
                 <option value='pendiente'>Pendiente</option>
                 <option value='factible'>Factible</option>
                 <option value='no-factible'>No factible</option>
+                <option value='integrado'>Integrada</option>
               </select>
             </div>
           )}
           {this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit' && (
             <div className='form-group'>
               <label htmlFor='adminComment'>Comentario del moderador:</label>
-              <span className='help-text requerido'>Escribir aquí un comentario en el caso que se cambie el estado a "factible" o "rechazado"</span>
+              <span className='help-text requerido'>Escribir aquí un comentario en el caso que se cambie el estado a "factible", "rechazado" o "integrado"</span>
               <textarea
                 className='form-control'
                 rows='6'
@@ -362,9 +366,21 @@ class FormularioPropuesta extends Component {
               </textarea>
             </div>
           )}
+          {this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit' && (
+            <div className='form-group'>
+              <label htmlFor='adminCommentReference'>Link a la propuesta definitiva:</label>
+              <span className='help-text requerido'>Escribir aquí el link al proyecto vinculado, en caso que se cambie el estado a "integrado"</span>
+              <input
+                type='text'
+                className='form-control'
+                name='adminCommentReference'
+                value={this.state['adminCommentReference']}
+                onChange={this.handleInputChange} />
+            </div>
+          )}
           <div className='submit-div'>
             <button type='submit' className='submit-btn'>
-              Enviar tu propuesta
+              {this.state.mode === 'new' ? 'Enviar tu propuesta' : 'Editar tu propuesta'}
             </button>
           </div>
 
