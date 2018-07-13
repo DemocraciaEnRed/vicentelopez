@@ -90,7 +90,7 @@ class TopicArticle extends Component {
   twitText = () => {
     return encodeURIComponent('Apoyemos esta propuesta para mejorar Vicente López. ')
   }
-  
+
   render () {
     const {
       topic,
@@ -218,7 +218,7 @@ class TopicArticle extends Component {
         }
 
         {
-          (topic.attrs['admin-comment'] && topic.attrs['admin-comment'] != '') &&
+          (topic.attrs['admin-comment'] && topic.attrs['admin-comment'] !== '') &&
             (
               <div className='alert alert-info alert-propuesta' role='alert'>
                 <p>{topic.attrs['admin-comment']}</p>

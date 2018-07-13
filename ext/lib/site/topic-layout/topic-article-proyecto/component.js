@@ -44,23 +44,26 @@ class TopicArticle extends Component {
   }
 
   getEstado (name) {
-    const estados = [
-      {
-        'name': 'pendiente',
-        'title': 'Pendiente'
-      },
-      {
-        'name': 'factible',
-        'title': 'Factible'
-      },
-      {
-        'name': 'no-factible',
-        'title': 'No factible'
-      }
-    ]
-    const estado = estados.find((e) => e.name === name)
-    if (!estado) return 'Pendiente'
-    return estado.title.toLowerCase()
+    switch (name) {
+      case 'no-ganador':
+        return 'no gnador'
+        break
+      case 'preparacion':
+        return 'en preparación'
+        break
+      case 'compra':
+        return 'en proceso de compra'
+        break
+      case 'ejecucion':
+        return 'en ejecución'
+        break
+      case 'finalizado':
+        return 'finalizado'
+        break
+      default:
+        return 'factible'
+        break
+    }
   }
 
   handleCreateTopic = () => {
