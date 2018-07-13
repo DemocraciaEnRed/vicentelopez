@@ -136,8 +136,6 @@ class TopicArticle extends Component {
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
-          <div className='topic-article-status-container'>
-          <div className='topic-article-status'>Proyecto {this.getEstado(topic.attrs.state)} </div>
         {topic.clauses && <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/>}
         {
           topic.links && (
