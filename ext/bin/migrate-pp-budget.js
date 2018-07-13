@@ -23,7 +23,7 @@ Promise.all([
    }
    }  
    const newTopics = topics.map((topic) => {
-    topic.set(changeBudget(topic.attrs.state), topic.attrs.budget)
+    topic.set(newBudget(topic.attrs.state), topic.attrs.budget)
     return topic.save()
   })
 
