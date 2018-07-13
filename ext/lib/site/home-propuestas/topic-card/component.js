@@ -7,6 +7,9 @@ const estados = (state) => {
     case 'no-factible':
       return 'No factible'
       break
+    case 'integrado':
+      return 'Integrada'
+      break
     default:
       return 'Factible'
       break

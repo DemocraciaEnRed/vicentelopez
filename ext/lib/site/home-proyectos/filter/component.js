@@ -21,7 +21,7 @@ const states = [
   { 'name': 'Finalizado', 'value': 'finalizado' }
 ]
 
-const anos = ['2017', '2018']
+const anos = ['2018', '2019']
 
 export default class Filter extends Component {
   constructor (props) {

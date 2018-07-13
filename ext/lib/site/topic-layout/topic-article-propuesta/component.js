@@ -78,6 +78,9 @@ class TopicArticle extends Component {
       case 'no-factible':
         return 'no factible'
         break
+      case 'integrado':
+        return 'integrada'
+        break
       default:
         return 'factible'
         break
@@ -87,7 +90,7 @@ class TopicArticle extends Component {
   twitText = () => {
     return encodeURIComponent('Apoyemos esta propuesta para mejorar Vicente López. ')
   }
-  
+
   render () {
     const {
       topic,
@@ -138,9 +141,10 @@ class TopicArticle extends Component {
             tags={topic.tags}
             forumName={forum.name}
             mediaTitle={topic.mediaTitle} />
-
         </div>
-        <div className='topic-article-status'>Proyecto {this.getEstado(topic.attrs.state)} </div>
+        <div className='topic-article-status-container'>
+          <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
+        </div>
 
         {
           (forum.privileges && forum.privileges.canChangeTopics)
@@ -156,6 +160,7 @@ class TopicArticle extends Component {
               </div>
             )
             : (topic.privileges && topic.privileges.canEdit) &&
+
                (
                  <div className='topic-article-content topic-admin-actions'>
                    <a
@@ -184,7 +189,7 @@ class TopicArticle extends Component {
           <span className='topic-article-span'>Beneficios que brindará el proyecto al barrio</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
-        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2018' &&
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.state !== 'integrado' && topic.attrs.anio === '2019' &&
           <div className='alert alert-success alert-proyecto' role='alert'>
             Podés ver el proyecto final presentado en la votación <Link to={`/proyectos/topic/${topic.id}`} className='alert-link'>aquí</Link>.
           </div>
@@ -213,7 +218,7 @@ class TopicArticle extends Component {
         }
 
         {
-          (topic.attrs['admin-comment'] && topic.attrs['admin-comment'] != '') &&
+          (topic.attrs['admin-comment'] && topic.attrs['admin-comment'] !== '') &&
             (
               <div className='alert alert-info alert-propuesta' role='alert'>
                 <p>{topic.attrs['admin-comment']}</p>
