@@ -19,8 +19,13 @@ export class TopicLayout extends Component {
     name: null
   }
 
-  componentWillReceiveProps (props) {
-    if (props.topic) Anchor.goTo('container')
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.topic) Anchor.goTo('container')
+    if (nextProps.params.forum !== this.state.name) {
+      this.setState({
+        name: nextProps.params.forum
+      })
+    }
   }
 
   componentDidMount () {
