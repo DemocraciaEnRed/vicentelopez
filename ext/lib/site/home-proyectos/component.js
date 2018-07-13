@@ -17,12 +17,12 @@ import TopicGrid from './grid/component'
 const defaultValues = {
   'votacion': {
     barrio: [],
-    ano: ['2018'],
+    ano: ['2019'],
     state: ['factible']
   },
   'seguimiento': {
     barrio: [],
-    ano: ['2017', '2018'],
+    ano: ['2018', '2019'],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
@@ -50,10 +50,10 @@ export class HomeProyectos extends Component {
     initialFilters.sort = 'barrio'
     // This filters should be applied if seguimiento stage is active only
     initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
-    initialFilters.ano = '2017,2018'
+    initialFilters.ano = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
     // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
-    // initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2017,2018' : '2018'
+    // initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2018,2019' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -68,7 +68,7 @@ export class HomeProyectos extends Component {
           stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
           // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
-          // ano: this.props.location.query.stage === 'seguimiento' ? ['2017', '2018'] : ['2018'],
+          // ano: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019'] : ['2019'],
           // stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
@@ -156,7 +156,7 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        ano: prevState.stage === 'seguimiento' ? ['2018'] : ['2017', '2018'],
+        ano: prevState.stage === 'seguimiento' ? ['2019'] : ['2018', '2019'],
         barrio: [],
         state: prevState.stage === 'seguimiento' ? ['factible'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
       }

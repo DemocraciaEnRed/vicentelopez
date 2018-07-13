@@ -61,7 +61,7 @@ export default ({ topic, forum }) => {
         {topic.attrs && topic.attrs.budget && topic.attrs.budget !== 0 &&
           <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
         }
-        {topic.attrs && topic.attrs.state && topic.attrs.anio !== '2018' && (
+        {topic.attrs && topic.attrs.state && topic.attrs.anio !== '2019' && (
           <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
         )}
       </div>
@@ -104,7 +104,7 @@ export default ({ topic, forum }) => {
 }
 
 function linkTags (forum, tag, anio) {
-  const currentAnio = '2018'
+  const currentAnio = '2019'
   const url = anio === currentAnio ? `/${forum}?tag=${tag}` : `/${forum}?tag=${tag}&stage=seguimiento`
   return (e) => {
     e.stopPropagation()
