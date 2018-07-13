@@ -53,6 +53,34 @@
     ]
   }, 
   {
+    "name" : "project-budget-preparacion", 
+    "title" : "Presupuesto en estado de preparación", 
+    "description" : "Presupuesto estimado para estado de preparación", 
+    "mandatory" : true, 
+    "kind" : "LongString"
+  },
+  {
+    "name" : "project-budget-compra", 
+    "title" : "Presupuesto para estado de compra", 
+    "description" : "Presupuesto asignado al estado de compra", 
+    "mandatory" : true, 
+    "kind" : "LongString"
+  },
+  {
+    "name" : "project-budget-ejecucion", 
+    "title" : "Presupuesto en estado de ejecución", 
+    "description" : "Presupuesto asignado para el estado de ejecución", 
+    "mandatory" : true, 
+    "kind" : "LongString"
+  },
+  {
+    "name" : "project-budget-finalizado", 
+    "title" : "Presupuesto en estado finalizado", 
+    "description" : "Presupuesto ejecutado en el estado finalizado", 
+    "mandatory" : true, 
+    "kind" : "LongString"
+  },
+  {
     "name" : "admin-comment", 
     "title" : "Comentario del Moderador", 
     "description" : "Escribir aquí un comentario en el caso que se cambie el estado a \"Factible\" o \"No factible\"", 
