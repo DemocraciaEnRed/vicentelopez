@@ -3,29 +3,30 @@
 const models = require('lib/models')()
 const Topic = models.Topic
 
+
+const changeState = (state) => {
+  let newState = null
+  switch (state) {
+    case 'preparacion':
+    newState = 'project-budget-preparacion'
+    break
+    case 'compra':
+    newState = 'project-budget-compra'
+    break
+    case 'ejecucion':
+    newState = 'project-budget-ejecucion'
+    break
+    case 'finalizado':
+    newState = 'project-budget-finalizado'
+  }
+  return newState
+}
+
 Promise.all([
   Topic.find({ 'attrs.anio': '2018' }).exec()
 ])
 .then(([topics2018]) => {
   const newBudgetState = topics2018.map((topic) => {
-
-    const changeState = (state) => {
-      let newState = null
-      switch (state) {
-        case 'preparacion':
-        newState = 'project-budget-preparacion'
-        break
-        case 'compra':
-        newState = 'project-budget-compra'
-        break
-        case 'ejecucion':
-        newState = 'project-budget-ejecucion'
-        break
-        case 'finalizado':
-        newState = 'project-budget-finalizado'
-      }
-      return newState
-    }
     const newTopics = topics.map((topic) => {
       topic.set(changeState(topic.attrs.state), topic.attrs.budget)
       return topic.save()
