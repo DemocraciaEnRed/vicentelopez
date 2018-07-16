@@ -14,7 +14,6 @@ import Footer from 'ext/lib/site/footer/component'
 
 export class TopicLayout extends Component {
   state = {
-    topics: null,
     forum: null,
     name: null
   }

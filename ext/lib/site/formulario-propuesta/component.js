@@ -131,7 +131,7 @@ class FormularioPropuesta extends Component {
     })
       .then((res) => {
         if (res.status === 200) {
-          browserHistory.push(`/propuestas/topic/${this.props.params.id}`)
+          window.location.href = `/propuestas/topic/${this.props.params.id}`
         }
       })
       .catch((err) => {
