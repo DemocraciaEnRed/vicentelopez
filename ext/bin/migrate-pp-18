@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+node ./ext/bin/migrate-pp-18
+node ./ext/bin/migrate-attrs-anio
+node ./ext/bin/migrate-pp-budget
+

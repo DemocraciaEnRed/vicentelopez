@@ -87,5 +87,11 @@ Forum.find({ 'name': 'proyectos' }).exec()
     forum.set('topicsAttrs', newTopicsAttrs)
     return forum.save()
   })
-  .then((forum) => { console.log('Foro proyectos actualizado!') })
-  .catch((err) => console.log(err))
+  .then((forum) => { 
+    console.log('Foro proyectos actualizado!')
+    process.exit(0)
+ })
+ .catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
