@@ -24,11 +24,7 @@ const changeState = (state) => {
 Topic.find({ 'attrs.anio': '2018' }).exec()
 .then((topics) => {
     const newTopics = topics.map((topic) => {
-   
       const budgetField = changeState(topic.attrs.state)
-      console.log('////////////////////')
-      console.log(budgetField)
-      console.log('////////////////////')
       if (budgetField !='undefined'){
         topic.set(budgetField, topic.attrs.budget)
         return topic.save()
@@ -38,7 +34,6 @@ Topic.find({ 'attrs.anio': '2018' }).exec()
   return Promise.all(newTopics)
 })
 .then((newTopics) => {
-  console.log(newTopics)
   console.log('Topics actualizados!')
   process.exit(0)
 })
