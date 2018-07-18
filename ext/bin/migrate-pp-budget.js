@@ -17,7 +17,7 @@ const changeState = (state) => {
     case 'finalizado':
       return 'attrs.project-budget-finalizado'
     default:
-      return 'undefined'  
+      return false  
   }
 }
 
@@ -25,7 +25,7 @@ Topic.find({ 'attrs.anio': '2018' }).exec()
 .then((topics) => {
     const newTopics = topics.map((topic) => {
       const budgetField = changeState(topic.attrs.state)
-      if (budgetField !='undefined'){
+      if (budgetField != false){
         topic.set(budgetField, topic.attrs.budget)
         return topic.save()
       }
