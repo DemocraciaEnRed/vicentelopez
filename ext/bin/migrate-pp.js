@@ -16,7 +16,10 @@ const topicDescription = (topic) => {
   }
 }
 
-Promise.all([Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'name': 'proyectos' }).exec()])
+const migraProyectos = Promise.all([
+    Forum.find({ 'name': { $in: barrios } }).exec(),
+    Forum.find({ 'name': 'proyectos' }).exec()
+  ])
   .then(([barrios, [ proyectos ]]) => {
     const barriosIds = barrios.map((b) => b.id)
     return Topic.find({ forum: { $in: barriosIds } })
@@ -53,9 +56,8 @@ Promise.all([Forum.find({ 'name': { $in: barrios } }).exec(), Forum.find({ 'name
     return Promise.all(changedTopics)
   })
   .then((changedTopics) => { console.log('Proyectos actualizados!') })
-  .catch((err) => { console.log(err) })
 
-Promise.all([
+const mirgaPropuestas = Promise.all([
   Forum.find({ 'name': 'proyectos' }).exec(),
   Forum.find({ 'name': 'propuestas' }).exec()
 ])
@@ -80,18 +82,21 @@ Promise.all([
     return Promise.all(savedTopics)
   })
   .then((savedTopics) => { console.log('Propuestas actualizadas!') })
-  .catch((err) => { console.log(err) })
 
-Forum.find({ 'name': 'proyectos' }).exec()
+const nuevosCampos = Forum.find({ 'name': 'proyectos' }).exec()
   .then(([ forum ]) => {
     forum.set('topicsAttrs', newTopicsAttrs)
     return forum.save()
   })
   .then((forum) => { 
     console.log('Foro proyectos actualizado!')
-    process.exit(0)
  })
- .catch((err) => {
-  console.error(err)
-  process.exit(1)
-})
+
+ Promise.all([migraProyectos, mirgaPropuestas, nuevosCampos])
+  .then((newTopics) => {
+    process.exit(0)
+  })
+  .catch((err) => {
+    console.error(err)
+    process.exit(1)
+  })
