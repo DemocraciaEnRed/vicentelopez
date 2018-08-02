@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router'
 import bus from 'bus'
 import t from 't-component'
 import urlBuilder from 'lib/url-builder'
@@ -13,7 +14,8 @@ import Cause from './cause/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
-import {Link} from 'react-router'
+import DefaultContent from './default-content/component'
+
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -124,9 +126,7 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
-        {
-          topic.coverUrl && <div className="cover" style={{backgroundImage: 'url("' + topic.coverUrl + '")'}}></div>
-        }
+        <div className='cover' style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}></div>
         <AdminActions forum={forum} topic={topic} />
         <Header
           closingAt={topic.closingAt}
@@ -136,7 +136,14 @@ class TopicArticle extends Component {
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
-        {topic.clauses && <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/>}
+        {topic.clauses && topic.clauses.length > 0 ?
+          <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/> :
+          <DefaultContent
+            problema={topic.attrs.problema}
+            solucion={topic.attrs.solucion}
+            beneficios={topic.attrs.beneficios}
+          />
+        }
         {
           topic.links && (
             <Footer
