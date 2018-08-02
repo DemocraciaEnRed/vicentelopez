@@ -58,9 +58,9 @@ export default ({ topic, forum }) => {
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}>
-        {topic.attrs && topic.attrs.budget && topic.attrs.budget !== 0 &&
+        {topic.attrs && topic.attrs.budget && topic.attrs.budget !== 0 && (
           <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
-        }
+        )}
         {topic.attrs && topic.attrs.state && topic.attrs.anio !== '2019' && (
           <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
         )}
