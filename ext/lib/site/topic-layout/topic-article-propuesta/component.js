@@ -216,7 +216,6 @@ class TopicArticle extends Component {
               </p>
             )
         }
-
         {
           (topic.attrs['admin-comment'] && topic.attrs['admin-comment'] !== '') &&
             (
