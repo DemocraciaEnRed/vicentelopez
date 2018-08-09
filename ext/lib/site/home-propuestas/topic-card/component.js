@@ -26,7 +26,7 @@ export default ({ topic, onVote }) => (
           {moment(topic.createdAt).format('D/M/YY')}
         </span>
         {topic.attrs.state !== 'pendiente' &&
-          <span className='estado'>{estados(topic.attrs.state)}</span>
+          <span className={`estado ${topic.attrs.state == 'factible' && 'factible'}`}>{estados(topic.attrs.state)}</span>
         }
       </div>
       <h1 className='topic-card-title'>
