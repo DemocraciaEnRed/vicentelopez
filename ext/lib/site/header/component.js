@@ -62,7 +62,6 @@ class Header extends Component {
       color: config.headerFontColor,
       backgroundColor: config.headerBackgroundColor
     }
-
     // MEDIA QUERY - Si es menor al breakpoint muestra un menú, si es mayor, otro
 
     if (window.matchMedia('(max-width: 975px)').matches) {
@@ -129,15 +128,15 @@ class Header extends Component {
               </Link>
             </div>
             <div className="header-item">
-              <ProyectosLink />
-            </div>
-            <div className="header-item">
               <Link
                 to='/propuestas'
-                className='header-link'
+                className={`header-link ${!~window.location.pathname.indexOf('propuestas') ? '' : 'active'}`}
                 activeStyle={{ color: '#8C1E81' }}>
                   Propuestas
               </Link>
+            </div>
+            <div className="header-item">
+              <ProyectosLink />
             </div>
             <div className="header-item">
               <Link
