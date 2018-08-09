@@ -224,7 +224,9 @@ class TopicArticle extends Component {
                 <p>{topic.attrs['admin-comment']}</p>
 
                 {topic.attrs['admin-comment-referencia'] && topic.attrs['admin-comment-referencia'] !== '' &&
-                  <p className='admin-comment-referido'>Puede ver la propuesta final <a className='admin-comment-referido' href={topic.attrs['admin-comment-referencia']}>aquí</a>.</p>
+                  <p className='admin-comment-referido'>Puede ver 
+                  {topic.attrs.state == 'integrado' ? 'el proyecto' : 'la propuesta' }
+                  final <a className='admin-comment-referido' href={topic.attrs['admin-comment-referencia']}>aquí</a>.</p>
                 }
                 <p className='font-weight-bold'>Subsecretaría de Participación Ciudadana</p>
               </div>
