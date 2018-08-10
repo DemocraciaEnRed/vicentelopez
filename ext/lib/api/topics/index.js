@@ -46,6 +46,11 @@ app.get('/topics',
         type: 'string',
         enum: ['newest', 'popular', 'barrio'],
         default: 'newest'
+      },
+      related: {
+        type: 'string',
+        default: '',
+        format: 'barrio'
       }
     })
   }, { formats }),

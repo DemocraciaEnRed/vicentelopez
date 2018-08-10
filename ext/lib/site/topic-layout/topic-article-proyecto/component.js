@@ -159,7 +159,7 @@ class TopicArticle extends Component {
             Podés ver la propuesta original <Link to={`/propuestas/topic/${topic.id}`} className='alert-link'>aquí</Link>.
           </div>
         }
-        <RelatedProposals />
+        <RelatedProposals id={topic.id} />
         <Social
           topic={topic}
           twitterText={twitterText}

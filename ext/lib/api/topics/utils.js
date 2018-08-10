@@ -44,9 +44,9 @@ const queryTopics = (opts) => {
     forum,
     tags,
     barrio,
-    ano
+    ano,
+    related
   } = opts
-
   const query = {
     forum: forum._id,
     publishedAt: { $ne: null }
@@ -55,6 +55,8 @@ const queryTopics = (opts) => {
   if (ano && ano.length > 0) query['attrs.anio'] = { $in: ano }
   if (tags && tags.length > 0) query.tags = { $in: tags }
   if (state && state.length > 0) query['attrs.state'] = { $in: state }
+  if (related && related.length > 0) query['attrs.admin-comment-referencia'] = `http://localhost:3000/proyectos/topic/${related}`
+  console.log(query)
   return api.topics.find().where(query)
 }
 
