@@ -4,8 +4,9 @@ import config from 'lib/config'
 import Timeago from 'lib/site/timeago'
 import urlBuilder from 'lib/url-builder'
 
-export default class Header extends Component {
+export default class Header extends Component {  
   render () {
+    console.log(this.props.author)
     var learnMore = null
     if (config.learnMoreUrl) {
       learnMore = (
@@ -39,6 +40,7 @@ export default class Header extends Component {
     let author = null
     if (this.props.author) {
       let authorName
+      console.log('paso por 1')
       if (this.props.authorUrl) {
         authorName = (
           <a
@@ -48,8 +50,11 @@ export default class Header extends Component {
             {this.props.author}
           </a>
         )
+        console.log('paso por 2')
       } else {
         authorName = this.props.author
+        console.log('paso por 3')
+
       }
       author = (
         <h2 className='author'>{t('admin-topics-form.label.author')}:
@@ -64,7 +69,6 @@ export default class Header extends Component {
         {closingAt}
         <h1 className='header-title'>{this.props.mediaTitle}</h1>
         {author}
-
       </header>
     )
   }
