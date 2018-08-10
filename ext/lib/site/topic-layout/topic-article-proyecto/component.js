@@ -15,6 +15,7 @@ import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import DefaultContent from './default-content/component'
+import RelatedProposals from './related-proposals/component'
 
 
 class TopicArticle extends Component {
@@ -158,6 +159,7 @@ class TopicArticle extends Component {
             Podés ver la propuesta original <Link to={`/propuestas/topic/${topic.id}`} className='alert-link'>aquí</Link>.
           </div>
         }
+        <RelatedProposals />
         <Social
           topic={topic}
           twitterText={twitterText}
