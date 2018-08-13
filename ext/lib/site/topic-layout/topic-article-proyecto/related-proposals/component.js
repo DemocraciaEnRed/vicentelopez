@@ -14,7 +14,13 @@ export default class extends Component {
       credentials: 'include'
     })
       .then((res) => res.json())
-      .then((res) => this.setState({ relatedProposals: res.results.topics }, () => console.log(this.state.relatedProposals)))
+      .then((res) => {
+        if (res.results.topics.length > 0) {
+          this.setState({
+            relatedProposals: res.results.topics
+          })
+        }
+      })
       .catch((err) => console.error(err))
   }
 
@@ -22,6 +28,14 @@ export default class extends Component {
     return (
       <div className='alert alert-success alert-proyecto' role='alert'>
         Podés ver la propuesta original <Link to={`/propuestas/topic/${this.props.id}`} className='alert-link'>aquí</Link>.
+        {this.state.relatedProposals &&
+          <p>{`Podés ver ${this.state.relatedProposals.length > 1 ? 'las propuestas que fueron integradas' : 'la propuesta que fue integrada'} en este proyecto `}
+            {this.state.relatedProposals.map((p, i) => (
+              <Link to={`/propuestas/topic/${p.id}`} className='alert-link' key={i}>{i === this.state.relatedProposals.length - 1 ? 'aquí' : 'aquí, ' }</Link>
+            ))}
+            {'.'}
+          </p>
+        }
       </div>
     )
   }

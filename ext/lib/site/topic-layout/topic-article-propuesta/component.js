@@ -145,7 +145,6 @@ class TopicArticle extends Component {
         <div className='topic-article-status-container'>
           <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
         </div>
-
         {
           (forum.privileges && forum.privileges.canChangeTopics)
             ? (
