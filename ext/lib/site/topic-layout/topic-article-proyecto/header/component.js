@@ -65,7 +65,7 @@ export default class Header extends Component {
         <h1 className='header-title'>{this.props.mediaTitle}</h1>
         {author}
         {this.props.relatedAuthors &&
-            <h2 className='author related-authors'>{'Autores relacionados: '}
+            <h2 className='author related-authors'>{this.props.relatedAuthors.length > 1 ? 'Autores asociados: ' : 'Autor asociado: '}
               {this.props.relatedAuthors.map((author, i)=> (
                 <span className='related-author'
                   key={i}>
