@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 export default class extends Component {
   constructor (props) {
@@ -13,14 +14,14 @@ export default class extends Component {
       credentials: 'include'
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => this.setState({ relatedProposals: res.results.topics }, () => console.log(this.state.relatedProposals)))
       .catch((err) => console.error(err))
   }
 
   render () {
     return (
-      <div>
-        {this.props.id}
+      <div className='alert alert-success alert-proyecto' role='alert'>
+        Podés ver la propuesta original <Link to={`/propuestas/topic/${this.props.id}`} className='alert-link'>aquí</Link>.
       </div>
     )
   }

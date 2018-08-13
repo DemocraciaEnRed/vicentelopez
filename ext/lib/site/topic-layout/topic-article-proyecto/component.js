@@ -155,11 +155,9 @@ class TopicArticle extends Component {
           )
         }
         {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2019' &&
-          <div className='alert alert-success alert-proyecto' role='alert'>
-            Podés ver la propuesta original <Link to={`/propuestas/topic/${topic.id}`} className='alert-link'>aquí</Link>.
-          </div>
+          <RelatedProposals id={topic.id} />
         }
-        <RelatedProposals id={topic.id} />
+        
         <Social
           topic={topic}
           twitterText={twitterText}
