@@ -89,8 +89,8 @@
   },
   {
     "name" : "admin-comment-referencia", 
-    "title" : "Link a propuesta", 
-    "description" : "Colocar aquí el link a la propuesta factible, en el caso que esta propuesta esté duplicada o sea similar", 
+    "title" : "Link a proyecto", 
+    "description" : "Colocar aquí el link al proyecto final, en el caso que esta propuesta esté integrada junto con otra", 
     "mandatory" : true, 
     "kind" : "String"
   },
