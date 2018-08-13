@@ -12,6 +12,18 @@ exports.parseStates = (req, res, next) => {
   next()
 }
 
+exports.parseBarrios = (req, res, next) => {
+  req.query.barrio = req.query.barrio.split(',').filter((t) => !!t)
+  next()
+}
+
+exports.parseAnos = (req, res, next) => {
+  if (req.query.ano) {
+    req.query.ano = req.query.ano.split(',').filter((t) => !!t)
+  }
+  next()
+}
+
 exports.findForum = (req, res, next) => {
   api.forums.find({ name: req.query.forumName })
     .findOne()
@@ -39,16 +51,15 @@ const queryTopics = (opts) => {
     forum: forum._id,
     publishedAt: { $ne: null }
   }
-
-  if (barrio) query['attrs.barrio'] = barrio
-  if (ano) query['attrs.ano'] = ano
+  if (barrio && barrio.length > 0) query['attrs.barrio'] = { $in: barrio }
+  if (ano && ano.length > 0) query['attrs.anio'] = { $in: ano }
   if (tags && tags.length > 0) query.tags = { $in: tags }
-  if (state.length > 0) query['attrs.state'] = { $in: state }
-
+  if (state && state.length > 0) query['attrs.state'] = { $in: state }
   return api.topics.find().where(query)
 }
 
 const sortMap = {
+  barrio: 'attrs.barrio',
   newest: '-createdAt',
   popular: '-action.count'
 }
@@ -61,11 +72,10 @@ exports.findTopics = (opts) => {
     sort,
     user
   } = opts
-
   return queryTopics(opts)
     .populate(topicScopes.ordinary.populate)
-    .select(topicScopes.ordinary.select)
     .sort(sortMap[sort])
+    .select(topicScopes.ordinary.select)
     .limit(limit)
     .skip((page - 1) * limit)
     .exec()

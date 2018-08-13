@@ -13,19 +13,6 @@ import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 
 export default class HomeMultiforumOverride extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      forums: null
-    }
-  }
-
-  componentWillMount () {
-    forumStore.findAll().then((forums) => {
-      this.setState({ forums: forums })
-    })
-  }
-
   componentDidMount () {
     this.goTop()
   }
@@ -35,14 +22,13 @@ export default class HomeMultiforumOverride extends Component {
   }
 
   render () {
-    const { topics, forums } = this.state
     return (
       <div className='ext-home-multiforum'>
         <Anchor id='container'>
           <BannerForoVecinal />
           <ThumbsVoto />
           <Proyectos />
-          <Barrios forums={forums}/>
+          <Barrios />
           <ForosEnDatos />
           <Jump goTop={this.goTop} />
           <Footer />

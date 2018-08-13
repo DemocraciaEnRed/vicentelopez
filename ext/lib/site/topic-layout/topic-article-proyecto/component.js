@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router'
 import bus from 'bus'
 import t from 't-component'
 import urlBuilder from 'lib/url-builder'
@@ -13,7 +14,7 @@ import Cause from './cause/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
-import {Link} from 'react-router'
+import DefaultContent from './default-content/component'
 
 
 class TopicArticle extends Component {
@@ -41,6 +42,29 @@ class TopicArticle extends Component {
     this.setState({
       showSidebar: bool
     })
+  }
+
+  getEstado (name) {
+    switch (name) {
+      case 'no-ganador':
+        return 'no gnador'
+        break
+      case 'preparacion':
+        return 'en preparación'
+        break
+      case 'compra':
+        return 'en proceso de compra'
+        break
+      case 'ejecucion':
+        return 'en ejecución'
+        break
+      case 'finalizado':
+        return 'finalizado'
+        break
+      default:
+        return 'factible'
+        break
+    }
   }
 
   handleCreateTopic = () => {
@@ -102,9 +126,7 @@ class TopicArticle extends Component {
           this.state.showSidebar &&
             <div onClick={hideSidebar} className='topic-overlay' />
         }
-        {
-          topic.coverUrl && <div className="cover" style={{backgroundImage: 'url("' + topic.coverUrl + '")'}}></div>
-        }
+        <div className='cover' style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}></div>
         <AdminActions forum={forum} topic={topic} />
         <Header
           closingAt={topic.closingAt}
@@ -114,7 +136,14 @@ class TopicArticle extends Component {
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
-        {topic.clauses && <Content clauses={topic.clauses} />}
+        {topic.clauses && topic.clauses.length > 0 ?
+          <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/> :
+          <DefaultContent
+            problema={topic.attrs.problema}
+            solucion={topic.attrs.solucion}
+            beneficios={topic.attrs.beneficios}
+          />
+        }
         {
           topic.links && (
             <Footer
@@ -124,38 +153,10 @@ class TopicArticle extends Component {
               title={topic.mediaTitle} />
           )
         }
-        {
-          topic.action.method && topic.action.method === 'vote' && (
-            <Vote
-              votes={{
-                positive: topic.upvotes || [],
-                negative: topic.downvotes || [],
-                neutral: topic.abstentions || []
-              }}
-              closed={topic.closed}
-              id={topic.id}
-              url={topic.url}
-              closingAt={topic.closingAt}
-              canVoteAndComment={forum.privileges.canVoteAndComment} />
-          )
-        }
-        {
-          topic.action.method && topic.action.method === 'poll' && (
-            <div className='topic-article-content'>
-              <Poll
-                topic={topic}
-                canVoteAndComment={forum.privileges.canVoteAndComment} />
-            </div>
-          )
-        }
-        {
-          topic.action.method && topic.action.method === 'cause' && (
-            <div className='topic-article-content'>
-              <Cause
-                topic={topic}
-                canVoteAndComment={forum.privileges.canVoteAndComment} />
-            </div>
-          )
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2019' &&
+          <div className='alert alert-success alert-proyecto' role='alert'>
+            Podés ver la propuesta original <Link to={`/propuestas/topic/${topic.id}`} className='alert-link'>aquí</Link>.
+          </div>
         }
         <Social
           topic={topic}
@@ -166,35 +167,6 @@ class TopicArticle extends Component {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
           }
         </div>  
-        {
-          topic.attrs.state === 'proyectado' && (
-              <div className='topic-article-content proyecto-ganador'>
-                <div className='box-header'>
-                  <span>Proyecto ganador</span>
-                </div>
-                <div className='box-content'>
-                  <div className='box-content-item'>
-                    <span className='box-content-title'>Presupuesto asignado:</span>
-                    <span className='box-content-info'>{topic.attrs.budget}</span>
-                  </div>
-                  <div className='box-content-item'>
-                    <span className='box-content-title'>Cantidad de votos:</span>
-                    <span className='box-content-info'>{topic.attrs.votos}</span>
-                  </div>
-                </div>
-                <div className='box-footer'>
-                  <span className='hashtag'>#ForosVecinalesVteLopez</span>
-                    <a target='_blank' href={`http://www.facebook.com/sharer.php?u=${socialLinksUrl}`} rel='noopener noreferrer' className='fb'></a>
-                    <a target='_blank' href={`http://twitter.com/share?text=${twitterText}&url=${socialLinksUrl}`} rel='noopener noreferrer' className='tw'></a>
-                </div>
-                <Link
-                  to='/s/datos'
-                  className='ver-resu'>
-                  Ver los resultados de la votación aquí
-                  </Link>
-              </div>
-            )
-        }
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }

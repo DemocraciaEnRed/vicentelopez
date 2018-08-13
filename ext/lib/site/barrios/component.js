@@ -1,35 +1,69 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 
-export default function Barrios ({ forums }) {
-  if (!forums) return null
-  const validButtons = ["villa-martelli", "villa-adelina", "vicente-lopez", "olivos", "munro", "la-lucila", "florida-oeste", "florida-este", "carapachay", "proyectos"]
-  forums = forums.filter(f => validButtons.includes(f.name))
-  // ordena los botones alfabéticamente, dejando primero "Todos los proyectos"
-  forums && forums.sort((a, b) => {
-    const titleA = a.title.toLowerCase()
-    const titleB = b.title.toLowerCase()
+export default class Barrios extends Component {
+  constructor () {
+    super()
+    this.barrios = [
+      {
+        'name': 'carapachay',
+        'title': 'Carapachay'
+      },
+      {
+        'name': 'florida-este',
+        'title': 'Florida Este'
+      },
+      {
+        'name': 'florida-oeste',
+        'title': 'Florida Oeste'
+      },
+      {
+        'name': 'la-lucila',
+        'title': 'La Lucila'
+      },
+      {
+        'name': 'munro',
+        'title': 'Munro'
+      },
+      {
+        'name': 'olivos',
+        'title': 'Olivos'
+      },
+      {
+        'name': 'vicente-lopez',
+        'title': 'Vicente Lopez'
+      },
+      {
+        'name': 'villa-adelina',
+        'title': 'Villa Adelina'
+      },
+      {
+        'name': 'villa-martelli',
+        'title': 'Villa Martelli'
+      }
+    ]
+  }
 
-    return titleA === 'todos los proyectos'
-      ? -1 : (titleA < titleB)
-        ? -1 : (titleA > titleB)
-          ? 1 : 0
-  })
-
-  return (
-    <section className='seccion-barrios container'>
-      <div className='fondo-titulo'>
-        <h2 className='title'>Barrios</h2>
-      </div>
-      <div className='seccion-barrios-proyectos container'>
-        <div className='seccion-botones'>
-          {forums && forums.map((forum, i) => (
-            <a key={i} href={`/${forum.name}`}
-              className={`boton-azul btn ${forum.name === window.location.pathname.replace('/', '') ? 'active' : ''}`}>
-              { forum.title }
-            </a>
-          ))}
+  render () {
+    return (
+      <section className='seccion-barrios container'>
+        <div className='fondo-titulo'>
+          <h2 className='title'>Barrios</h2>
         </div>
-      </div>
-    </section>
-  )
+        <div className='seccion-barrios-proyectos container'>
+          <div className='seccion-botones'>
+            <Link to={`/proyectos`} className={`boton-azul btn`}>
+              Todos los proyectos
+            </Link>
+            {this.barrios.map((barrio, i) => (
+              <Link key={i} to={`/proyectos?barrio=${barrio.name}`}
+                className={`boton-azul btn`}>
+                { barrio.title }
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 }

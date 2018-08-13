@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+const models = require('lib/models')()
+const Topic = models.Topic
+
+Promise.all([
+  Topic.find({ 'attrs.anio': '2018' }).exec(),
+  Topic.find({ 'attrs.anio': '2017' }).exec()
+])
+.then(([topics2018, topics2017]) => {
+  const newTopics2019 = topics2018.map((topic) => {
+    topic.set('attrs.anio', '2019')
+    return topic.save()
+  })
+  const newTopics2018 = topics2017.map((topic) => {
+    topic.set('attrs.anio', '2018')
+    return topic.save()
+  })
+  return Promise.all([...newTopics2019, ...newTopics2018])
+})
+.then((newTopics) => {
+  console.log('Topics actualizados!')
+  process.exit(0)
+})
+.catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
