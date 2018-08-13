@@ -131,7 +131,7 @@ class TopicArticle extends Component {
         <Header
           closingAt={topic.closingAt}
           closed={topic.closed}
-          author={topic.attrs.nombre}
+          author={topic.author ? topic.author : topic.attrs.nombre}
           authorUrl={topic.authorUrl}
           tags={topic.tags}
           forumName={forum.name}
