@@ -38,7 +38,7 @@ export class HomeProyectos extends Component {
       ano: [],
       barrio: [],
       state: [],
-      stage: 'votacion',
+      stage: 'seguimiento',
       sort: ['barrio']
     }
   }
@@ -49,11 +49,11 @@ export class HomeProyectos extends Component {
     if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
     initialFilters.sort = 'barrio'
     // This filters should be applied if seguimiento stage is active only
-    // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
-    // initialFilters.ano = '2018,2019'
+    initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
+    initialFilters.ano = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
-    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
-    initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2018,2019' : '2019'
+    //initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    //initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2018,2019' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -63,13 +63,13 @@ export class HomeProyectos extends Component {
         this.setState({
           barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
           // This filters should be applied if seguimiento stage is active only
-          // state: defaultValues.seguimiento.state,
-          // ano: defaultValues.seguimiento.ano,
-          // stage: 'seguimiento',
+          state: defaultValues.seguimiento.state,
+          ano: defaultValues.seguimiento.ano,
+          stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
-          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
-          ano: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019'] : ['2019'],
-          stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
+          // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
+          // ano: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019'] : ['2019'],
+          // stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
           noMore: res.results.topics.length < 20
@@ -179,7 +179,7 @@ export class HomeProyectos extends Component {
               changeStage={this.changeStage}
               stage={this.state.stage}
               clearFilter={this.clearFilter}
-              openVotation={true} />
+              openVotation={false} />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>
