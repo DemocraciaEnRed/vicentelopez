@@ -380,7 +380,7 @@ class FormularioPropuesta extends Component {
           )}
           <div className='submit-div'>
             <button type='submit' className='submit-btn'>
-              {this.state.mode === 'new' ? 'Enviar tu propuesta' : 'Editar tu propuesta'}
+              {this.state.mode === 'new' ? 'Enviar tu propuesta' : 'Guardar propuesta'}
             </button>
           </div>
 
