@@ -15,6 +15,7 @@ import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import DefaultContent from './default-content/component'
+import RelatedProposals from './related-proposals/component'
 
 
 class TopicArticle extends Component {
@@ -154,10 +155,9 @@ class TopicArticle extends Component {
           )
         }
         {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2019' &&
-          <div className='alert alert-success alert-proyecto' role='alert'>
-            Podés ver la propuesta original <Link to={`/propuestas/topic/${topic.id}`} className='alert-link'>aquí</Link>.
-          </div>
+          <RelatedProposals id={topic.id} />
         }
+        
         <Social
           topic={topic}
           twitterText={twitterText}
