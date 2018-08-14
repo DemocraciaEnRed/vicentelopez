@@ -17,18 +17,33 @@ import Proyectos from 'ext/lib/site/proyectos/component'
 import DefaultContent from './default-content/component'
 import RelatedProposals from './related-proposals/component'
 
-
 class TopicArticle extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      showSidebar: false
+      showSidebar: false,
+      relatedProposals: null
     }
   }
 
   componentWillMount () {
     bus.on('sidebar:show', this.toggleSidebar)
+  }
+
+  componentDidMount () {
+    window.fetch(`/ext/api/topics?forumName=proyectos&related=${this.props.topic.id}&state=integrado`, {
+      credentials: 'include'
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.results.topics.length > 0) {
+          this.setState({
+            relatedProposals: res.results.topics
+          })
+        }
+      })
+      .catch((err) => console.error(err))
   }
 
   componentDidUpdate () {
@@ -48,7 +63,7 @@ class TopicArticle extends Component {
   getEstado (name) {
     switch (name) {
       case 'no-ganador':
-        return 'no gnador'
+        return 'no ganador'
         break
       case 'preparacion':
         return 'en preparación'
@@ -134,6 +149,7 @@ class TopicArticle extends Component {
           closed={topic.closed}
           author={topic.attrs.nombre ? topic.attrs.nombre : topic.author}
           authorUrl={topic.authorUrl}
+          relatedAuthors={this.state.relatedProposals && this.state.relatedProposals.map((p) => p.attrs.nombre)}
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
@@ -155,7 +171,7 @@ class TopicArticle extends Component {
           )
         }
         {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2019' &&
-          <RelatedProposals id={topic.id} />
+          <RelatedProposals id={topic.id} relatedProposals={this.state.relatedProposals}/>
         }
         
         <Social
