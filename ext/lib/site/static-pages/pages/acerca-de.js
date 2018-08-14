@@ -208,11 +208,6 @@ export default class Page extends Component {
                 <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
                 <p>Los proyectos ganadores de cada barrio, surgen de tu voto y el de tus vecinos. Los proyectos más votados, que no superen el monto asignado a cada barrio, serán realizados durante el año siguiente a la votación. Puede ocurrir que por orden de prioridad de votos, un proyecto supere por presupuesto el monto total establecido para el barrio; en ese caso, se pasará al proyecto que siga en cantidad de votos hasta agotar el monto asignado al barrio. Ver un ejemplo en <a href='https://forosvecinales.vicentelopez.gov.ar/s/reglamento'> https://forosvecinales.vicentelopez.gov.ar/s/reglamento</a></p>
 
-                <h3>¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?</h3>
-                <p>Te sugerimos que leas el REGLAMENTO completo publicado en nuestra plataforma web: <a href='https://forosvecinales.vicentelopez.gov.ar/s/reglamento'> https://forosvecinales.vicentelopez.gov.ar/s/reglamento</a></p>
-
-                <p>Si aun así te quedan dudas, llamanos al 4851-2000 interno 203 o envianos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
-
                 <h3>¿PUEDO VOTAR CON MÁS DE UNA BOLETA?</h3>
                 <p>Solo podés votar con más de una boleta si vivís en uno de los 9 barrios y trabajás en otro de los 9 barrios. Si vivís y trabajás en el mismo barrio, podés llenar una sola boleta de ese barrio. No está permitido votar más de una vez en un mismo barrio. Si alguien lo hiciera, se anulan todos los votos que haya realizado esa persona en ese barrio.</p>
 
@@ -231,6 +226,10 @@ export default class Page extends Component {
                 <h3>SI TENGO 3 HIJOS MENORES DE 16 AÑOS QUE CONCURREN A LA MISMA ESCUELA Y NO VIVIMOS NI TRABAJAMOS EN EL BARRIO DE LA ESCUELA ¿CÓMO VOTO?</h3>
                 <p>En ese caso, como no vivís ni trabajás en el barrio, tenés que solicitarle a la persona encargada de confeccionar el padrón de la escuela a la que concurren tus hijos que incluya a un adulto de tu familia por cada hijo menor de 16 años. Pueden ser madre, padre, abuela, tío, hermano mayor de 16 años, etc.</p>
 
+                <h3>¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?</h3>
+                <p>Te sugerimos que leas el REGLAMENTO completo publicado en nuestra plataforma web: <a href='https://forosvecinales.vicentelopez.gov.ar/s/reglamento'> https://forosvecinales.vicentelopez.gov.ar/s/reglamento</a></p>
+
+                <p>Si aun así te quedan dudas, llamanos al 4851-2000 interno 203 o envianos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
 {/*
 
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
