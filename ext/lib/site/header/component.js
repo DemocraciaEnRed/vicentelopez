@@ -63,7 +63,6 @@ class Header extends Component {
       backgroundColor: config.headerBackgroundColor
     }
     // MEDIA QUERY - Si es menor al breakpoint muestra un menú, si es mayor, otro
-
     if (window.matchMedia('(max-width: 975px)').matches) {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
@@ -107,7 +106,6 @@ class Header extends Component {
     } else {
       return (
         <nav className='navbar navbar-fixed-top navbar-vilo' style={styles}>
-
           <Link
             to={config.homeLink}
             className='navbar-brand'>
@@ -130,7 +128,7 @@ class Header extends Component {
             <div className="header-item">
               <Link
                 to='/propuestas'
-                className={`header-link ${!~window.location.pathname.indexOf('propuestas') ? '' : 'active'}`}
+                className={`header-link ${window.location.pathname.includes('propuesta') ? 'active' : ''}`}
                 activeStyle={{ color: '#8C1E81' }}>
                   Propuestas
               </Link>
