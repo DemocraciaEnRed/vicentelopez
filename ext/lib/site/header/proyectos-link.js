@@ -6,7 +6,7 @@ export default () => {
   return (
     <a
       href='/proyectos'
-      className='header-link'
+      className={`header-link ${!~window.location.pathname.indexOf('proyectos') ? '' : 'active'}`}
       style={{ color: isActive && '#8C1E81' }}>
       Proyectos
     </a>
