@@ -4,7 +4,7 @@ import config from 'lib/config'
 import Timeago from 'lib/site/timeago'
 import urlBuilder from 'lib/url-builder'
 
-export default class Header extends Component {
+export default class Header extends Component {  
   render () {
     var learnMore = null
     if (config.learnMoreUrl) {
@@ -64,7 +64,6 @@ export default class Header extends Component {
         {closingAt}
         <h1 className='header-title'>{this.props.mediaTitle}</h1>
         {author}
-
       </header>
     )
   }
