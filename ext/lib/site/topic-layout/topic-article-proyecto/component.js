@@ -83,6 +83,23 @@ class TopicArticle extends Component {
     }
   }
 
+  getBudget = (state) => {
+    switch (state) {
+      case 'preparacion':
+        return 'project-budget-preparacion'
+        break
+      case 'compra':
+        return 'project-budget-compra'
+        break
+      case 'ejecucion':
+        return 'project-budget-ejecucion'
+        break
+      case 'finalizado':
+        return 'project-budget-finalizado'
+      default:
+        return false  
+    }
+  }
   handleCreateTopic = () => {
     window.location = urlBuilder.for('admin.topics.create', {
       forum: this.props.forum.name
@@ -154,7 +171,7 @@ class TopicArticle extends Component {
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
         {topic.clauses && topic.clauses.length > 0 ?
-          <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/> :
+          <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs[this.getBudget(topic.attrs.state)]} votos={topic.attrs.votos}/> :
           <DefaultContent
             problema={topic.attrs.problema}
             solucion={topic.attrs.solucion}
