@@ -129,43 +129,34 @@ export default class Page extends Component {
                 </table>
                 <h3>¿QUIÉN PUEDE PRESENTAR PROPUESTAS?</h3>
                 <p>Cualquier persona mayor de 16 años que viva o trabaje en cualquiera de los 9 barrios de Vicente López. También pueden presentar propuestas las instituciones de bien público registradas en el Partido que tengan toda su documentación en regla.</p>
-                
                 <h3>¿CÓMO SE PRESENTAN LAS PROPUESTAS?</h3>
-                 <p>En una serie de reuniones programadas que ocurren entre marzo y mayo de cada año (Foros Vecinales Barriales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio. Para que sean tomadas en cuenta para el análisis, todas las propuestas deben cargarse en la plataforma web del Presupuesto Participativo de Vicente López: <a href='https://forosvecinales.vicentelopez.gov.ar'> https://forosvecinales.vicentelopez.gov.ar</a></p> 
-                
+                <p>En una serie de reuniones programadas que ocurren entre marzo y mayo de cada año (Foros Vecinales Barriales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio. Para que sean tomadas en cuenta para el análisis, todas las propuestas deben cargarse en la plataforma web del Presupuesto Participativo de Vicente López: <a href='https://forosvecinales.vicentelopez.gov.ar'> https://forosvecinales.vicentelopez.gov.ar</a></p> 
                 <h3>¿CUÁNTAS PROPUESTAS PUEDE PRESENTAR UNA ENTIDAD?</h3>
                 <p>Las entidades que desarrollen sus actividades en más de un barrio del Partido, podrán presentar hasta un máximo de 2 propuestas (en diferentes barrios).</p>
-                
                 <h3>¿POR QUÉ PUEDEN PARTICIPAR CON PROPUESTAS LAS ESCUELAS PÚBLICAS DE GESTIÓN PROVINCIAL EN EL PRESUPUESTO PARTICIPATIVO DE VICENTE LÓPEZ?</h3>
-                <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal habilitó la posibilidad de que dichas escuelas participen en el Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: </p>
-                <p>1) que la escuela presente la propuesta (a través de su equipo directivo y/o de su asociación cooperadora) y</p>
-                <p> 2) que los vecinos del barrio la elijan con su voto. Para 2019, el límite por barrio se estableció en $3 millones, con un tope de $2 millones por escuela. </p> 
-
+                <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal habilitó la posibilidad de que dichas escuelas participen en el Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto:</p>
+                <p>1) que la escuela presente la propuesta (a través de su equipo directivo y/o de su asociación cooperadora)</p>
+                <p>y 2) que los vecinos del barrio la elijan con su voto. Para 2019, el límite por barrio se estableció en $3 millones, con un tope de $2 millones por escuela.</p>
                 <h3>¿CÓMO SE DECIDE QUÉ PROPUESTAS VAN A VOTACIÓN?</h3>
-                <p>Para que una propuesta pueda participar en la votación, la Subsecretaría realiza el análisis legal, técnico y presupuestario en consulta con las distintas áreas de la Municipalidad. Puede ocurrir que una propuesta:</p> 
-                <p>a) se refiera a un tema que no dependa del nivel de gobierno municipal, </p>
-                <p>b) que haya dificultades técnicas para llevarla a cabo, </p>
+                <p>Para que una propuesta pueda participar en la votación, la Subsecretaría realiza el análisis legal, técnico y presupuestario en consulta con las distintas áreas de la Municipalidad. Puede ocurrir que una propuesta:</p>
+                <p>a) se refiera a un tema que no dependa del nivel de gobierno municipal,</p>
+                <p>b) que haya dificultades técnicas para llevarla a cabo,</p>
                 <p>c) que el costo estimado de la misma supere el presupuesto participativo del barrio,</p>
-                <p>d) que requiera gastos en recursos humanos que incrementarían el presupuesto de un área de gobierno. Para que la propuesta sea factible y pueda ir a votación, no se pueden dar ninguna de las situaciones anteriores.</p>
-
+                <p>d) que requiera gastos en recursos humanos que incrementarían el presupuesto de un área de gobierno.</p>
+                <p> Para que la propuesta sea factible y pueda ir a votación, no se pueden dar ninguna de las situaciones anteriores.</p>
                 <h3>¿QUIÉNES PUEDEN VOTAR?</h3>
-                <p>Cualquier persona mayor de 16 años que viva o trabaje en el Partido de Vicente López puede votar los proyectos. Para ello, tiene que acreditar domicilio particular o laboral en alguno de los 9 barrios del Partido.</p>	
+                <p>Cualquier persona mayor de 16 años que viva o trabaje en el Partido de Vicente López puede votar los proyectos. Para ello, tiene que acreditar domicilio particular o laboral en alguno de los 9 barrios del Partido.</p>
                 <p>También pueden votar los integrantes de una comunidad educativa o de una institución de Vicente López aunque no tengan domicilio laboral o particular en el barrio en la que está ubicada la entidad.</p>
-
                 <h3>¿EL VOTO ES SECRETO?</h3>
-
                 <p>No, el voto en el Presupuesto Participativo es nominal. Como no existe un empadronamiento previo para votar, necesitamos poder verificar 1) que no haya duplicaciones de DNI, 2) que el domicilio que acredita la persona es del barrio.</p>
-
                 <h3>¿BAJO QUÉ CONDICIONES PUEDEN VOTAR LOS INTEGRANTES DE LAS COMUNIDADES EDUCATIVAS?</h3>
-
-                  <p>Se entiende por comunidad educativa a los alumnos que concurren a una determinada escuela y a sus familias. En Vicente López hay muchas escuelas y no siempre sus alumnos viven en el mismo barrio donde está ubicada la misma. Es por eso que, en el caso de que no vivan en el barrio, igual les damos la posibilidad de poder votar el proyecto de su escuela a:</p>
-                  <ul className='faqs-list'>
+                <p>Se entiende por comunidad educativa a los alumnos que concurren a una determinada escuela y a sus familias. En Vicente López hay muchas escuelas y no siempre sus alumnos viven en el mismo barrio donde está ubicada la misma. Es por eso que, en el caso de que no vivan en el barrio, igual les damos la posibilidad de poder votar el proyecto de su escuela a:</p>
+                <ul className='faqs-list'>
                   <li> Los alumnos mayores de 16 años.</li>
                   <li> Un mayor de 16 años por cada alumno menor de 16 años (puede ser madre, madre, tío, abuela, etc).</li>
-                  </ul>
-                  <p>Estas personas solo podrán hacerlo por el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela.</p> 
-
-                  <h3>¿BAJO QUÉ CONDICIONES PUEDEN VOTAR LOS INTEGRANTES DE UNA ENTIDAD INTERMEDIA?</h3>
+                </ul>
+                <p>Estas personas solo podrán hacerlo por el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela.</p> 
+                <h3>¿BAJO QUÉ CONDICIONES PUEDEN VOTAR LOS INTEGRANTES DE UNA ENTIDAD INTERMEDIA?</h3>
 
                 <p>En muchos casos, las entidades intermedias están integradas por personas que viven en diferentes barrios.  Es por eso que, aunque no vivan en el barrio, igual les damos la posibilidad de poder apoyar con su voto el proyecto de la entidad donde participan a:</p>
                 <ul className='faqs-list'>
@@ -189,18 +180,28 @@ export default class Page extends Component {
                 <h3>¿CON QUÉ BOLETAS PUEDO VOTAR?</h3>
                 <p>Las boletas habilitadas para votar son:</p>
                 <ul className='faqs-list'>
-                <li>Las que se entregan en los puntos de votación</li>
-                <li>Las que se pueden descargar e imprimir desde la plataforma web</li>
-                <li>Fotocopias de cualquiera de las dos anteriores (simple faz o doble faz)</li>
+                  <li>Las que se entregan en los puntos de votación</li>
+                  <li>Las que se pueden descargar e imprimir desde la plataforma web</li>
+                  <li>Fotocopias de cualquiera de las dos anteriores (simple faz o doble faz)</li>
                 </ul>
-
-                <p>El escrutinio de la votación 2018 se realizará los días 9, 10 y 11 de octubre a partir de las 9 hs en el Círculo de la Fuerza Aérea ubicado en Av. del Libertador 661, Vicente López. </p>
-                <p>Cada uno de esos días se contarán los votos de 3 barrios, a saber:</p>
+                <h3>¿CÓMO EVITO QUE MI VOTO SEA NULO?</h3>
+                <p>Para que tu voto NO SEA NULO, tené en cuenta lo siguiente:</p>
                 <ul className='faqs-list'>
-                <li>	MARTES 9 OCTUBRE: Villa Adelina - Olivos - La Lucila </li>
-                <li>MIÉRCOLES 10 OCTUBRE: Carapachay - Vicente López - Munro</li>
-                <li>JUEVES 11 DE OCTUBRE: Villa Martelli - Florida Este - Florida Oeste</li>
+                  <li>Es obligatorio que escribas tu DNI y tu domicilio (laboral o particular)</li>
+                  <li>Tu domicilio (laboral o particular) debe estar ubicado en el barrio al que corresponde la boleta.</li>
+                  <li>No podés marcar más de 3 proyectos en la boleta.</li>
+                  <li>Si sos parte de la comunidad educativa de una escuela que tiene proyecto y no vivís ni trabajás en el barrio de la escuela, tenés que pedir que te inscriban en el padrón especial de la misma antes del 21 de septiembre de 2018 y sólo podés votar por el proyecto de la escuela.</li>
+                  <li>Si sos parte de una entidad intermedia que tiene proyecto y no vivís ni trabajás en el barrio de la entidad, tenés que pedir que te inscriban en el padrón especial de la misma antes del 21 de septiembre de 2018 y sólo podés votar por el proyecto de la entidad.</li>
                 </ul>
+                <h3>¿CUÁNDO SE REALIZA EL ESCRUTINIO DE LOS VOTOS?</h3>
+                <p>El escrutinio de la votación 2018 se realizará los días 9, 10 y 11 de octubre a partir de las 9 hs en el Círculo de la Fuerza Aérea ubicado en Av. del Libertador 661, Vicente López. 
+                Cada uno de esos días se contarán los votos de 3 barrios, a saber:</p>
+                <ul className='faqs-list'>
+                  <li>MARTES 9 OCTUBRE: Villa Adelina - Olivos - La Lucila </li>
+                  <li>MIÉRCOLES 10 OCTUBRE: Carapachay - Vicente López - Munro</li>
+                  <li>JUEVES 11 DE OCTUBRE: Villa Martelli - Florida Este - Florida Oeste</li>
+                </ul>
+               
                 <h3>¿SE PUEDE PRESENCIAR EL ESCRUTINIO?</h3>
 
                 <p>Por supuesto. El escrutinio es público y abierto a todos los vecinos de Vicente López. Si te interesa presenciarlo, mandanos un mail con tu nombre y apellido y DNI a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> para agilizar el ingreso a las instalaciones.</p>
@@ -208,6 +209,11 @@ export default class Page extends Component {
                 <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
                 <p>Los proyectos ganadores de cada barrio, surgen de tu voto y el de tus vecinos. Los proyectos más votados, que no superen el monto asignado a cada barrio, serán realizados durante el año siguiente a la votación. Puede ocurrir que por orden de prioridad de votos, un proyecto supere por presupuesto el monto total establecido para el barrio; en ese caso, se pasará al proyecto que siga en cantidad de votos hasta agotar el monto asignado al barrio. Ver un ejemplo en <a href='https://forosvecinales.vicentelopez.gov.ar/s/reglamento'> https://forosvecinales.vicentelopez.gov.ar/s/reglamento</a></p>
 
+                <h3>¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?</h3>
+                <p>Te sugerimos que leas el REGLAMENTO completo publicado en nuestra plataforma web: <a href='https://forosvecinales.vicentelopez.gov.ar/s/reglamento'> https://forosvecinales.vicentelopez.gov.ar/s/reglamento</a></p>
+
+                <p>Si aun así te quedan dudas, llamanos al 4851-2000 interno 203 o envianos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
+                <h3 className='underline'>Ejemplos de situaciones especiales durante la votación</h3>
                 <h3>¿PUEDO VOTAR CON MÁS DE UNA BOLETA?</h3>
                 <p>Solo podés votar con más de una boleta si vivís en uno de los 9 barrios y trabajás en otro de los 9 barrios. Si vivís y trabajás en el mismo barrio, podés llenar una sola boleta de ese barrio. No está permitido votar más de una vez en un mismo barrio. Si alguien lo hiciera, se anulan todos los votos que haya realizado esa persona en ese barrio.</p>
 
@@ -226,10 +232,7 @@ export default class Page extends Component {
                 <h3>SI TENGO 3 HIJOS MENORES DE 16 AÑOS QUE CONCURREN A LA MISMA ESCUELA Y NO VIVIMOS NI TRABAJAMOS EN EL BARRIO DE LA ESCUELA ¿CÓMO VOTO?</h3>
                 <p>En ese caso, como no vivís ni trabajás en el barrio, tenés que solicitarle a la persona encargada de confeccionar el padrón de la escuela a la que concurren tus hijos que incluya a un adulto de tu familia por cada hijo menor de 16 años. Pueden ser madre, padre, abuela, tío, hermano mayor de 16 años, etc.</p>
 
-                <h3>¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?</h3>
-                <p>Te sugerimos que leas el REGLAMENTO completo publicado en nuestra plataforma web: <a href='https://forosvecinales.vicentelopez.gov.ar/s/reglamento'> https://forosvecinales.vicentelopez.gov.ar/s/reglamento</a></p>
-
-                <p>Si aun así te quedan dudas, llamanos al 4851-2000 interno 203 o envianos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
+                
 {/*
 
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
@@ -266,7 +269,7 @@ export default class Page extends Component {
                 <p>Te sugerimos que leas el <Link to='/s/reglamento'>reglamento</Link>. Si aún así te quedan dudas, llamanos al 4851-2000 interno 203 o envianos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
 */}
                 </div>
-              <div className="fila no-bg">
+              <div className="fila no-bg hidden">
                 <Anchor id='mapa'>
                   <div className="map-box">
                     <div className='mapa'>
