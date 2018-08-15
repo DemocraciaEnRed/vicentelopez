@@ -266,7 +266,7 @@ export default class Page extends Component {
                 <p>Te sugerimos que leas el <Link to='/s/reglamento'>reglamento</Link>. Si aún así te quedan dudas, llamanos al 4851-2000 interno 203 o envianos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
 */}
                 </div>
-              <div className="fila no-bg">
+              <div className="fila no-bg hidden">
                 <Anchor id='mapa'>
                   <div className="map-box">
                     <div className='mapa'>
