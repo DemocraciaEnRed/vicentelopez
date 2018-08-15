@@ -13,9 +13,12 @@ export default class Carrusel extends Component {
   }
 
   componentDidMount () {
-    window.fetch(`/ext/api/topics?forumName=proyectos&ano=2018&state=preparacion,compra,ejecucion,finalizado&limit=20&sort=popular`, { credentials: 'include' })
+    window.fetch(`/ext/api/topics?forumName=proyectos&state=preparacion,compra,ejecucion,finalizado&limit=20&sort=popular`, { credentials: 'include' })
       .then((res) => res.json())
-      .then((res) => this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }))
+      .then((res) => {
+        console.log(res)
+        this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }
+      )})
       .catch((err) => console.error(err))
   }
 

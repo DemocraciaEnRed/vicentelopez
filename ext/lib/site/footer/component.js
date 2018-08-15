@@ -8,7 +8,7 @@ const Footer = () => (
         <h3>CONTACTO</h3>
         <p>
           <span>Subsecretaría de Participación Ciudadana</span>
-          <span>Secretaría de Gobierno y Asuntos Interjurisdiccionales</span>
+          <span>Secretaría de Gobierno y Legal y Técnica</span>
           <span>Juan B. Alberdi 830 </span>
           <span>CP1636, Olivos.</span>
           <span>(54.11) 4851-2000 Int. 203/207/208/209</span>
