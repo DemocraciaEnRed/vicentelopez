@@ -25,15 +25,15 @@ export default class Page extends Component {
         </section>
         <Anchor id='container'>
           <div className='ext-reglamento'>
-            <p><span>REGLAMENTO PARA LA ELECCIÓN DE PROYECTOS A SER EJECUTADOS EN EL 2019</span></p>
+            <p><span><strong>REGLAMENTO PARA LA ELECCIÓN DE PROYECTOS A SER EJECUTADOS EN EL 2019</strong></span></p>
             <p><span>Art. 1° ALCANCE:</span><span>El presente reglamento regula el proceso de elección de los Proyectos del
               Presupuesto Participativo del Municipio de Vicente López, propuestos en el período
               establecido para la presentación de los mismos durante el 2018 y para ser ejecutados en el
               2019.</span></p>
             <p><span>Art. 2° FECHA Y LUGAR DE LA VOTACIÓN:</span><span>La votación de proyectos para ejecutar en el 2019
-              se realizara durante 14 (catorce) días consecutivos a partir del lunes 24 de septiembre y hasta
-              el domingo 7 de octubre de 2018; en los lugares y horarios que serán publicados en el sitio
-              https://forosvecinales.vicentelopez.gov.ar. Por razones de fuerza mayor la Subsecretaría de
+              se realizara durante 14 (catorce) días consecutivos a partir del <strong>lunes 24 de septiembre y hasta
+              el domingo 7 de octubre de 2018</strong>; en los lugares y horarios que serán publicados en el sitio 
+              <a href='https://forosvecinales.vicentelopez.gov.ar' target='_blank'> https://forosvecinales.vicentelopez.gov.ar</a>. Por razones de fuerza mayor la Subsecretaría de
               Participación Ciudadana, en adelante “la Subsecretaría”, podrá extender el periodo de
               votación, en cuyo caso lo comunicará en el sitio antes mencionado.</span></p>
             <p><span>Art. 3° QUIÉNES ESTÁN HABILITADOS A VOTAR:</span></p>
@@ -72,7 +72,7 @@ correo electrónico (si tiene) y firma.</span></p>
             <p><span>Art. 7° BOLETAS:</span><span> Cada uno de los 9 barrios del municipio tendrá una boleta única en la que
             estarán todos los proyectos del referido barrio en condiciones de ser elegidos por los vecinos.
             El elector podrá utilizar las boletas disponibles en los puntos de votación o descargar e
-            imprimir la boleta desde el sitio https://forosvecinales.vicentelopez.gov.ar</span></p>
+            imprimir la boleta desde el sitio <a href='https://forosvecinales.vicentelopez.gov.ar' target='_blank'>https://forosvecinales.vicentelopez.gov.ar</a></span></p>
             <p><span>Art. 8° VOTOS POR ELECTOR:</span><span> Los vecinos podrán votar hasta 3 (tres) proyectos tildando el
 casillero de aquellos que son de su preferencia. El voto de cada proyecto tendrá el mismo
 valor. En el caso de los votantes señalados en el art. 3 inc. c y d, sólo podrán votar por el
@@ -103,8 +103,9 @@ de los alumnos menores de 16 años (un adulto por alumno) que no se domicilien e
 donde se encuentra la escuela. El listado deberá contener por orden alfabético: apellido y
 nombre, número de documento, correo electrónico, apellido y nombre del alumno con el cual
 posee el vínculo. Deberá estar en formato Excel (según el modelo que se indicará) y ser
-enviado a participacion.ciudadana@vicentelopez.gov.ar antes del 24 de septiembre de 2018.Los votos de las personas que no sean vecinos del barrio y que no hayan sido incluidas en
-este padrón especial serán considerados nulos.</span></p>
+enviado a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar' target='_blank'>participacion.ciudadana@vicentelopez.gov.ar</a> antes del 24 de septiembre de 2018.</span></p>
+            <p><span><strong>Los votos de las personas que no sean vecinos del barrio y que no hayan sido incluidas en
+este padrón especial serán considerados nulos.</strong></span></p>
             <p><span>Art. 12° PROYECTOS DE ENTIDADES INTERMEDIAS – PADRÓN ESPECIAL:</span><span> En el caso de
 proyectos de entidades, las autoridades de las mismas deberán elaborar un padrón que incluya
 a directivos, asociados e inscriptos en actividades y talleres brindados por la entidad. En todos
@@ -112,7 +113,7 @@ los casos mencionados, solo deberán incluirse aquellas personas que no tengan d
 particular o laboral en el barrio. El listado deberá contener por orden alfabético: apellido y
 nombre, número de documento, correo electrónico, tipo de participación (directivo, socio,
 alumno). Deberá estar en formato Excel (según el modelo que se indicará) y ser enviado a
-participacion.ciudadana@vicentelopez.gov.ar antes del 24 de septiembre de 2018. Los votos
+<a href='mailto:participacion.ciudadana@vicentelopez.gov.ar' target='_blank'> participacion.ciudadana@vicentelopez.gov.ar</a> antes del 24 de septiembre de 2018. Los votos
 de las personas que no sean vecinos del barrio y que no hayan sido incluidas en este padrón
 especial serán considerados nulos.</span></p>
             <p><span>Art. 13° PROYECTOS DE ENTIDADES CON ACTIVIDAD EN MÁS DE UN BARRIO DEL MUNICIPIO:</span><span>
@@ -131,11 +132,11 @@ aplicación del monto asignado al referido proyecto.</span></p>
 por la Subsecretaría. Podrán participar como auxiliares de autoridades de mesa y como
 veedores del proceso electoral vecinos y miembros de entidades de cada uno de los nueve
 barrios.</span></p>
-            <p><span>Art. 16° ESCRUTINIO:</span><span> El escrutinio de los votos de los nueve barrios se realizará los días 9, 10 y
-11 de octubre de 2018 a partir de las 10 hs. en lugar a designar por la Subsecretaría. Podrán
+            <p><span>Art. 16° ESCRUTINIO:</span><span> El escrutinio de los votos de los nueve barrios se realizará los días <strong>9, 10 y
+11 de octubre de 2018 a partir de las 10 hs.</strong> en lugar a designar por la Subsecretaría. Podrán
 ser veedores del proceso de escrutinio los vecinos y representantes de instituciones y escuelas,
 para lo cual deberán informarlo antes del viernes 5 de octubre de 2018 por correo electrónico
-a participacion.ciudadana@vicentelopez.gov.ar o personalmente en las oficinas de la
+a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar' target='_blank'>participacion.ciudadana@vicentelopez.gov.ar</a> o personalmente en las oficinas de la
 Subsecretaría. La Subsecretaría podrá extender y/o modificar las fechas y horario del
 escrutinio.</span></p>
             <p><span>Art. 17° SUBLÍMITE BARRIAL APLICADO A LOS PROYECTOS DE ESTABLECIMIENTOS
