@@ -4,7 +4,7 @@ import config from 'lib/config'
 import Timeago from 'lib/site/timeago'
 import urlBuilder from 'lib/url-builder'
 
-export default class Header extends Component {
+export default class Header extends Component {  
   render () {
     var learnMore = null
     if (config.learnMoreUrl) {
@@ -64,7 +64,16 @@ export default class Header extends Component {
         {closingAt}
         <h1 className='header-title'>{this.props.mediaTitle}</h1>
         {author}
-
+        {this.props.relatedAuthors &&
+            <h2 className='author related-authors'>{this.props.relatedAuthors.length > 1 ? 'Autores asociados: ' : 'Autor asociado: '}
+              {this.props.relatedAuthors.map((author, i)=> (
+                <span className='related-author'
+                  key={i}>
+                  {i < this.props.relatedAuthors.length - 1 ? `${author}, ` : `${author}.`}
+                </span>
+              ))}
+            </h2>
+        }
       </header>
     )
   }

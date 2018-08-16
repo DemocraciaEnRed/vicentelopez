@@ -15,19 +15,35 @@ import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import DefaultContent from './default-content/component'
-
+import RelatedProposals from './related-proposals/component'
 
 class TopicArticle extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      showSidebar: false
+      showSidebar: false,
+      relatedProposals: null
     }
   }
 
   componentWillMount () {
     bus.on('sidebar:show', this.toggleSidebar)
+  }
+
+  componentDidMount () {
+    window.fetch(`/ext/api/topics?forumName=proyectos&related=${this.props.topic.id}&state=integrado`, {
+      credentials: 'include'
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.results.topics.length > 0) {
+          this.setState({
+            relatedProposals: res.results.topics
+          })
+        }
+      })
+      .catch((err) => console.error(err))
   }
 
   componentDidUpdate () {
@@ -47,7 +63,7 @@ class TopicArticle extends Component {
   getEstado (name) {
     switch (name) {
       case 'no-ganador':
-        return 'no gnador'
+        return 'no ganador'
         break
       case 'preparacion':
         return 'en preparación'
@@ -67,6 +83,23 @@ class TopicArticle extends Component {
     }
   }
 
+  getBudget = (state) => {
+    switch (state) {
+      case 'preparacion':
+        return 'project-budget-preparacion'
+        break
+      case 'compra':
+        return 'project-budget-compra'
+        break
+      case 'ejecucion':
+        return 'project-budget-ejecucion'
+        break
+      case 'finalizado':
+        return 'project-budget-finalizado'
+      default:
+        return false  
+    }
+  }
   handleCreateTopic = () => {
     window.location = urlBuilder.for('admin.topics.create', {
       forum: this.props.forum.name
@@ -131,13 +164,14 @@ class TopicArticle extends Component {
         <Header
           closingAt={topic.closingAt}
           closed={topic.closed}
-          author={topic.author}
+          author={topic.attrs.nombre ? topic.attrs.nombre : topic.author}
           authorUrl={topic.authorUrl}
+          relatedAuthors={this.state.relatedProposals && this.state.relatedProposals.map((p) => p.attrs.nombre)}
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
         {topic.clauses && topic.clauses.length > 0 ?
-          <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs.budget} votos={topic.attrs.votos}/> :
+          <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs[this.getBudget(topic.attrs.state)]} votos={topic.attrs.votos}/> :
           <DefaultContent
             problema={topic.attrs.problema}
             solucion={topic.attrs.solucion}
@@ -154,10 +188,9 @@ class TopicArticle extends Component {
           )
         }
         {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2019' &&
-          <div className='alert alert-success alert-proyecto' role='alert'>
-            Podés ver la propuesta original <Link to={`/propuestas/topic/${topic.id}`} className='alert-link'>aquí</Link>.
-          </div>
+          <RelatedProposals id={topic.id} relatedProposals={this.state.relatedProposals}/>
         }
+        
         <Social
           topic={topic}
           twitterText={twitterText}

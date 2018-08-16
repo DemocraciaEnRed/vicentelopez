@@ -54,31 +54,31 @@
   }, 
   {
     "name" : "project-budget-preparacion", 
-    "title" : "Presupuesto en estado de preparación", 
+    "title" : "En estado de preparación", 
     "description" : "Presupuesto estimado para estado de preparación", 
     "mandatory" : true, 
-    "kind" : "LongString"
+    "kind" : "String"
   },
   {
     "name" : "project-budget-compra", 
-    "title" : "Presupuesto para estado de compra", 
+    "title" : "En estado de compra", 
     "description" : "Presupuesto asignado al estado de compra", 
     "mandatory" : true, 
-    "kind" : "LongString"
+    "kind" : "String"
   },
   {
     "name" : "project-budget-ejecucion", 
-    "title" : "Presupuesto en estado de ejecución", 
+    "title" : "En estado de ejecución", 
     "description" : "Presupuesto asignado para el estado de ejecución", 
     "mandatory" : true, 
-    "kind" : "LongString"
+    "kind" : "String"
   },
   {
     "name" : "project-budget-finalizado", 
-    "title" : "Presupuesto en estado finalizado", 
+    "title" : "En estado finalizado", 
     "description" : "Presupuesto ejecutado en el estado finalizado", 
     "mandatory" : true, 
-    "kind" : "LongString"
+    "kind" : "String"
   },
   {
     "name" : "admin-comment", 
@@ -89,10 +89,10 @@
   },
   {
     "name" : "admin-comment-referencia", 
-    "title" : "Link a propuesta", 
-    "description" : "Colocar aquí el link a la propuesta factible, en el caso que esta propuesta esté duplicada o sea similar", 
+    "title" : "Link a proyecto", 
+    "description" : "Colocar aquí el link al proyecto final, en el caso que esta propuesta esté integrada junto con otra", 
     "mandatory" : true, 
-    "kind" : "LongString"
+    "kind" : "String"
   },
   {
       "name" : "nombre", 

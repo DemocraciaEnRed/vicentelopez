@@ -145,7 +145,6 @@ class TopicArticle extends Component {
         <div className='topic-article-status-container'>
           <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
         </div>
-
         {
           (forum.privileges && forum.privileges.canChangeTopics)
             ? (
@@ -216,15 +215,14 @@ class TopicArticle extends Component {
               </p>
             )
         }
-
         {
           (topic.attrs['admin-comment'] && topic.attrs['admin-comment'] !== '') &&
             (
               <div className='alert alert-info alert-propuesta' role='alert'>
                 <p>{topic.attrs['admin-comment']}</p>
 
-                {topic.attrs['admin-comment-referencia'] && topic.attrs['admin-comment-referencia'] !== '' &&
-                  <p className='admin-comment-referido'>Puede ver la propuesta final <a className='admin-comment-referido' href={topic.attrs['admin-comment-referencia']}>aquí</a>.</p>
+                {topic.attrs.state === 'integrado' && topic.attrs['admin-comment-referencia'] && topic.attrs['admin-comment-referencia'] !== '' &&
+                  <p className='admin-comment-referido'>Podés ver el proyecto final <a className='admin-comment-referido' href={topic.attrs['admin-comment-referencia']}>aquí</a>.</p>
                 }
                 <p className='font-weight-bold'>Subsecretaría de Participación Ciudadana</p>
               </div>

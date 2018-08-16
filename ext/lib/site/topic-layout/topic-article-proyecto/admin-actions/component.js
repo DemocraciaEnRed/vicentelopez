@@ -16,7 +16,7 @@ export default ({ topic, forum }) => {
           className='btn btn-default btn-sm'>
           <i className='icon-pencil' />
           &nbsp;
-          {t('proposal-article.edit')}
+          {'Editar proyecto'}
         </a>
       )}
     </div>
