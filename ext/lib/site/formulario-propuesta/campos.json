@@ -209,5 +209,21 @@
     "kind" : "String", 
     "max" : 1000, 
     "min" : 0
+  },
+  {
+    "name" : "description", 
+    "title" : "Descripción", 
+    "mandatory" : false, 
+    "kind" : "String", 
+    "max" : NumberInt(512), 
+    "min" : NumberInt(0)
+  }, 
+  {
+    "name" : "votos", 
+    "title" : "Votos", 
+    "mandatory" : true, 
+    "kind" : "Number", 
+    "max" : NumberInt(999999999), 
+    "min" : NumberInt(1)
   }
 ]
