@@ -80,10 +80,6 @@ class CommentsForm extends Component {
 
     if (user.state.pending) return null
 
-    if (user.state.fulfilled && !forum.privileges.canVoteAndComment) {
-      return <NotAllowed />
-    }
-
     if (user.state.rejected) return <NeedsLogin />
 
     const userAttrs = user.state.value
