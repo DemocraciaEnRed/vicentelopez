@@ -131,7 +131,7 @@ export class HomeProyectos extends Component {
   }
 
   seeMore = () => {
-    let queryString = ['ano', 'barrio', 'state']
+    let queryString = ['ano', 'barrio', 'state', 'sort']
       .filter((k) => this.state[k].length > 0)
       .map((k) => `${k}=${this.state[k].join()}`)
       .concat([`page=${this.state.page + 1}`])
@@ -165,6 +165,7 @@ export class HomeProyectos extends Component {
 
   render () {
     let { topics } = this.state
+
     return (
       <div id='forum-home'>
         <Header stage={this.state.stage} />
