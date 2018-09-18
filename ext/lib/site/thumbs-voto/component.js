@@ -36,9 +36,9 @@ export default function ThumbsVoto (props) {
             <div
               className="como-voto img-responsive  ">
             </div>
-            <h2 className="text-center">¿Cómo se distribuye el dinero por barrio?</h2>
+            <h2 className="text-center">¿Cómo voto?</h2>
             <p>
-            La partida de $75 millones, que corresponderá al presupuesto 2019, se repartirá siguiendo dos criterios: los primeros 39 millones se repartieron por partes iguales a cada uno de los 9 barrios. Los siguientes 36 millones se distribuirán según la cantidad de habitantes de cada barrio.
+            Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar. Es muy fácil, te acercás a los puntos de votación, completás tus datos, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo.
             </p>
 
           </div>
@@ -48,10 +48,10 @@ export default function ThumbsVoto (props) {
               className=" donde-voto img-responsive  ">
             </div>
             <h2 className="text-center">
-              ¿Cómo se elaboran los proyectos?
+              ¿Dónde voto?
             </h2>
             <p className="donde-voto-cont">
-            En una serie de reuniones programadas (Foros Vecinales), los vecinos se encuentran con los funcionarios municipales de cada área para presentarles propuestas para cada barrio. También podés presentar tu propuesta <Link style={{ display: 'inline' }} to='/formulario-propuesta'>aquí</Link>
+            La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.
             </p>
           </div>
 
