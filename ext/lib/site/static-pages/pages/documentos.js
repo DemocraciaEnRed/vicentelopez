@@ -127,15 +127,12 @@ export default class Page extends Component {
                 }
               </div>
             </div>{
-              !(
-                (this.state.archivo === 'boleta' && this.state.anio === '2012') ||
-                  (this.state.archivo === 'proyectos' && this.state.anio === '2012') ||
-                  (this.state.anio === '2018')
-              ) &&
-              <a href={`https://forosvecinales.blob.core.windows.net/historial-documentos/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul boton-dwl' target='_blank' download>
-                <div className='icon-boleta'/>
-                Descargar
-              </a>
+              !((this.state.anio === '2012' && this.state.archivo !== 'minuta') || (this.state.anio === '2018' && this.state.archivo !== 'boleta')) && (
+                <a href={`https://forosvecinales.blob.core.windows.net/historial-documentos/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul boton-dwl' target='_blank' download>
+                  <div className='icon-boleta'/>
+                  Descargar
+                </a>
+              )
             }  
           </div>
         </div>
