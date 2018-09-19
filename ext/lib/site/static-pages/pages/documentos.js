@@ -85,7 +85,7 @@ export default class Page extends Component {
             })}
           </div>
 
-          <div className='card'>
+          <div className='visualizador-wrapper'>
             <div className='navbar-seccion'>
               <button className={`seccion ${this.state.archivo === 'minuta' ? 'active' : ''}`}
                 onClick={this.changeFile('minuta')}>Minutas</button>
