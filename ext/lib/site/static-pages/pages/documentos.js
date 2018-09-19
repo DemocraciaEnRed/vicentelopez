@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import Footer from 'ext/lib/site/footer/component'
 import PdfViewer from 'ext/lib/site/pdfviewer/component'
-const years = ['2012', '2013', '2014', '2015', '2016', '2017']
+const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018']
 
 export default class Page extends Component {
   constructor (props) {
@@ -12,6 +13,13 @@ export default class Page extends Component {
       archivo: 'proyectos'
     }
     this.handleInputChange = this.handleInputChange.bind(this)
+  }
+
+  componentDidMount () {
+    const u = new window.URLSearchParams(window.location.search)
+    if (u.has('anio')) this.setState({ anio: u.get('anio') })
+    if (u.has('barrio')) this.setState({ barrio: u.get('barrio') })
+    if (u.has('archivo')) this.setState({ archivo: u.get('archivo') })
   }
 
   changeFile = (archivo) => () => {
@@ -89,19 +97,25 @@ export default class Page extends Component {
             <div className='visualizador'>
               <div className='responsive-wrapper'>
                 {
-                  (
-                    (this.state.archivo === 'boleta' && this.state.anio === '2012') ||
-                      (this.state.archivo === 'proyectos' && this.state.anio === '2012') ||
-                      (this.state.anio === '2018')
-                  )
-                    ? (
+                  (this.state.anio === '2012' && this.state.archivo !== 'minuta') ? (
                       <div className='empty-msg'>
                         <div className='alert alert-success' role='alert'>
                           {this.state.archivo === 'boleta' ? 'En 2012 no hubo votación, los proyectos se seleccionaron por consenso en las reuniones de los Foros Vecinales de cada barrio.' : 'En 2012 no se ejecutaron proyectos del Presupuesto Participativo en Vicente López por ser el primer año de implementación en el que se eligieron proyectos.'}
                         </div>
                       </div>
-                    )
-                    : (
+                    ) : (this.state.anio === '2018' && this.state.archivo !== 'boleta') ? (
+                      <div className='empty-msg'>
+                        {
+                          this.state.archivo === 'proyectos' ? (
+                            <Link className='alert alert-success' to='/proyectos'>Mirá los proyectos del 2018!</Link>
+                          ) : (
+                            <div className='alert alert-success' role='alert'>
+                              No hay minutas para este año.
+                            </div>
+                          )
+                        }
+                      </div>
+                    ) : (
                       <div className='pdf-wrapper'>  
                         <PdfViewer
                           barrio={this.state.barrio}
