@@ -131,7 +131,7 @@ function linkTags (forum, tag, anio) {
 }
 
 function prettyPrice (number) {
-  if (!number) number = 1
+  if (!number) return ''
   return `$${prettyDecimals(number)}`
 }
 
