@@ -27,14 +27,9 @@ export default class Page extends Component {
         <Anchor id='container'>
           <div className='ext-herramientas'>
             <div className='instructivo'>
-              <p>
-                Si tenés dudas de cómo utilizar la plataforma de foros vecinales, podés seguir el instructivo en video o descargarlo en pdf.
-              </p>
-              <video controls className='video-instructivo'>
-                <source src="https://cldup.com/puxr4wF2a7.mp4" type="video/mp4" />
-              </video>
+              <img controls className='video-instructivo' src='https://forosvecinales.blob.core.windows.net/assets/mapa_vicente-lopez.jpg' />
               <div className="btns-descargas">
-                <a target='_blank' href='https://cloudup.com/cQDssht_3L9' className='boton-azul'>Descargar instructivo en PDF</a>
+                <Link to='/s/documentos?archivo=boleta&anio=2018&barrio=vicente-lopez' className='boton-azul'>Descargar boletas 2018</Link>
               </div>
             </div>
           </div>
