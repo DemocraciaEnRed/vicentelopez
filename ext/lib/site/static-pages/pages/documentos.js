@@ -20,6 +20,7 @@ export default class Page extends Component {
     if (u.has('anio')) this.setState({ anio: u.get('anio') })
     if (u.has('barrio')) this.setState({ barrio: u.get('barrio') })
     if (u.has('archivo')) this.setState({ archivo: u.get('archivo') })
+    document.body.scrollTop = 0
   }
 
   changeFile = (archivo) => () => {
