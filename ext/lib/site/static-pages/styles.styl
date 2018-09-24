@@ -120,7 +120,7 @@
         clear: both
 
   .map-box
-    margin-bottom: 50px
+    margin-bottom: 10px
     &:after
       content: ""
       display: table
@@ -302,7 +302,7 @@
       text-align: center
       a
         margin: 10px
-        &::before
+        &::beforebottom
           content: ''
           background-image: unquote("url('ext/lib/site/static-pages/DownloadFile.svg')")
           padding-left: 30px
@@ -860,3 +860,32 @@ h3.underline
   40%
     -webkit-transform: scale(1)
     transform: scale(1)
+
+.action-btns
+  display: flex
+  justify-content: center
+  margin-bottom: 20px
+  .boton-azul
+    font-size: 16px
+    padding: 10px 20px
+    span
+      font-size: 16px
+      padding: 0 20px 0 0
+
+  .btns-descargas
+  text-align: center
+  a
+    margin: 10px
+    &::before
+      content: ''
+      background-image: unquote("url('ext/lib/site/static-pages/DownloadFile.svg')")
+      padding-left: 30px
+      background-size: contain
+      background-repeat: no-repeat
+  .boton-azul
+    font-size: 16px
+    padding: 10px 20px
+
+.mapa-municipio
+  width: 100%
+  margin-top: 50px
