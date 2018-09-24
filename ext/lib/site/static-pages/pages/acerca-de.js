@@ -172,16 +172,16 @@ export default class Page extends Component {
                 <p>Estos padrones deberán confeccionarse según un modelo de planilla de cálculo (Excel) proporcionada por la Subsecretaría. </p>
 
                 <h3>¿CUÁNDO Y DÓNDE SE VOTA?</h3>
-                <p>La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Habrá urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. Consultá todos los puntos de votación disponibles en  <a href='https://forosvecinales.vicentelopez.gov.ar'> https://forosvecinales.vicentelopez.gov.ar</a> a partir del 14 de septiembre.</p>
+                <p>La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Habrá urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. Consultá todos los <Link to='/s/herramientas'>puntos de votación</Link> disponibles en https://forosvecinales.vicentelopez.gov.ar a partir del 14 de septiembre.</p>
 
                 <h3>¿CÓMO SE VOTA?</h3>
-                <p>Es muy fácil, te acercás a un punto de votación con tu DNI, completás tus datos en la boleta del barrio correspondiente, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo. Para que tu voto sea válido, no podés votar más de 3 proyectos y tenés que consignar tu DNI y tu domicilio. Si falta alguno de esos datos, tu voto se anula.</p>
+                <p>Es muy fácil, te acercás a un punto de votación con tu DNI, completás tus datos en <Link to='/s/documentos?archivo=boleta&anio=2018&barrio=vicente-lopez'>la boleta del barrio correspondiente</Link>, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo. Para que tu voto sea válido, no podés votar más de 3 proyectos y tenés que consignar tuDNI y tu domicilio. Si falta alguno de esos datos, tu voto se anula.</p>
 
                 <h3>¿CON QUÉ BOLETAS PUEDO VOTAR?</h3>
                 <p>Las boletas habilitadas para votar son:</p>
                 <ul className='faqs-list'>
                   <li>Las que se entregan en los puntos de votación</li>
-                  <li>Las que se pueden descargar e imprimir desde la plataforma web</li>
+                  <li><Link to='/s/documentos?archivo=boleta&anio=2018&barrio=vicente-lopez'>Las que se pueden descargar e imprimir desde la plataforma web</Link></li>
                   <li>Fotocopias de cualquiera de las dos anteriores (simple faz o doble faz)</li>
                 </ul>
                 <h3>¿CÓMO EVITO QUE MI VOTO SEA NULO?</h3>
