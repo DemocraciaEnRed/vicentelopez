@@ -8,13 +8,18 @@ export default function ThumbsVoto (props) {
         <div className="row cont fondo-azul">
           <div className="subtitulo">
             <h2>
-              Presupuesto Participativo 2018
+              Votación de proyectos para 2019
             </h2>
-            <h3>Gracias a la participación de vecinos e instituciones, recibimos 524 propuestas para los 9 barrios de Vicente López. Durante junio y julio analizaremos cuáles de ellas son posibles de realizar. En agosto, les informaremos cuáles de ellas participarán de la votación que se realizará entre el 24 de septiembre y el 7 de octubre de este año.</h3>
+            <h3>Desde el lunes 24 de septiembre hasta el domingo 7 de octubre te esperamos en los más de 140 puntos de votación para que decidas qué proyectos se van a realizar el año que viene con los $75.000.000 del Presupuesto Participativo de Vicente López.</h3>
             <Link
               to='/proyectos'
               className="boton-azul boton-blanco">
-              Mirá los proyectos para votar
+              ¿Qué proyectos puedo votar?
+            </Link>
+            <Link
+              to='/s/herramientas'
+              className="boton-azul boton-blanco">
+              ¿Dónde voto?
             </Link>
           </div>
         </div>
