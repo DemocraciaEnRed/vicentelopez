@@ -31,8 +31,6 @@ export default class Page extends Component {
             <div className="filas">
               <div className="subtitulo">
                 <h2>Presupuesto Participativo 2018-2019</h2>
-                <p> <Link style={{ display: 'inline' }} to='/formulario-propuesta'>Proponé proyectos para tu barrio</Link> y decidamos juntos cómo invertir $75 millones de pesos.
-                </p>
               </div>
               <div className="fila con-icono">
                 <div className="cols col-1">
@@ -172,16 +170,16 @@ export default class Page extends Component {
                 <p>Estos padrones deberán confeccionarse según un modelo de planilla de cálculo (Excel) proporcionada por la Subsecretaría. </p>
 
                 <h3>¿CUÁNDO Y DÓNDE SE VOTA?</h3>
-                <p>La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Habrá urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. Consultá todos los puntos de votación disponibles en  <a href='https://forosvecinales.vicentelopez.gov.ar'> https://forosvecinales.vicentelopez.gov.ar</a> a partir del 14 de septiembre.</p>
+                <p>La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Habrá urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. Consultá todos los <Link to='/s/herramientas'>puntos de votación</Link> disponibles en https://forosvecinales.vicentelopez.gov.ar a partir del 14 de septiembre.</p>
 
                 <h3>¿CÓMO SE VOTA?</h3>
-                <p>Es muy fácil, te acercás a un punto de votación con tu DNI, completás tus datos en la boleta del barrio correspondiente, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo. Para que tu voto sea válido, no podés votar más de 3 proyectos y tenés que consignar tu DNI y tu domicilio. Si falta alguno de esos datos, tu voto se anula.</p>
+                <p>Es muy fácil, te acercás a un punto de votación con tu DNI, completás tus datos en <Link to='/s/documentos?archivo=boleta&anio=2018&barrio=vicente-lopez'>la boleta del barrio correspondiente</Link>, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo. Para que tu voto sea válido, no podés votar más de 3 proyectos y tenés que consignar tuDNI y tu domicilio. Si falta alguno de esos datos, tu voto se anula.</p>
 
                 <h3>¿CON QUÉ BOLETAS PUEDO VOTAR?</h3>
                 <p>Las boletas habilitadas para votar son:</p>
                 <ul className='faqs-list'>
                   <li>Las que se entregan en los puntos de votación</li>
-                  <li>Las que se pueden descargar e imprimir desde la plataforma web</li>
+                  <li><Link to='/s/documentos?archivo=boleta&anio=2018&barrio=vicente-lopez'>Las que se pueden descargar e imprimir desde la plataforma web</Link></li>
                   <li>Fotocopias de cualquiera de las dos anteriores (simple faz o doble faz)</li>
                 </ul>
                 <h3>¿CÓMO EVITO QUE MI VOTO SEA NULO?</h3>
@@ -231,43 +229,6 @@ export default class Page extends Component {
 
                 <h3>SI TENGO 3 HIJOS MENORES DE 16 AÑOS QUE CONCURREN A LA MISMA ESCUELA Y NO VIVIMOS NI TRABAJAMOS EN EL BARRIO DE LA ESCUELA ¿CÓMO VOTO?</h3>
                 <p>En ese caso, como no vivís ni trabajás en el barrio, tenés que solicitarle a la persona encargada de confeccionar el padrón de la escuela a la que concurren tus hijos que incluya a un adulto de tu familia por cada hijo menor de 16 años. Pueden ser madre, padre, abuela, tío, hermano mayor de 16 años, etc.</p>
-
-                
-{/*
-
-                <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
-                <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio. También podés presentar tu propuesta en esta plataforma <Link href='/formulario-propuesta'>aquí</Link>. Este año 2018, tenés tiempo hasta el 31 de mayo inclusive.</p>
-                <h3>¿CÓMO SE DECIDE QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
-                <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasa a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se termina de definir la factibilidad del proyecto y los costos estimados del mismo.</p>
-                <h3>¿QUIÉN PUEDE VOTAR LOS PROYECTOS?</h3>
-                <p>Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar los proyectos. Para ello, tenés que acreditar domicilio particular o laboral en alguno de los 9 barrios del Partido.<br />
-                En el caso de los proyectos de escuelas públicas de gestión provincial o municipal, también pueden votar los alumnos mayores de 16 años y hasta un mayor de 16 años por cada alumno menor de 16 años inscriptos en la escuela respectiva, aunque no tengan domicilio en el barrio o en el partido de Vicente López. Estas personas solo podrán elegir el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela y enviar a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> antes de que comience la votación.<br />
-                En el caso de proyectos presentados por entidades intermedias, sus directivos, asociados e inscriptos en talleres brindados por las mismas que no tengan domicilio en el barrio donde esté ubicada la entidad o en el partido de Vicente López también podrán votar pero solo podrán elegir el proyecto de la entidad y deberán estar registrados en un padrón especial que debe confeccionar la entidad y enviar a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> antes de que comience la votación.</p>
-                <h3>¿CÓMO ACREDITO DOMICILIO?</h3>
-                <p>Tu domicilio particular se acredita presentando tu DNI en el puesto de votación. Si figura otro domicilio, podés acercar la factura de algún servicio que acredite tu domicilio real.<br />
-                Para acreditar tu domicilio laboral, tenés que presentar tu recibo de sueldo donde conste en el domicilio laboral en el barrio donde querés votar.</p>
-                <h3>¿PUEDO VOTAR MÁS DE UNA VEZ?</h3>
-                <p>Solo podés votar más de una vez si vivís en uno de los 9 barrios y trabajás en otro de los 9 barrios. Si vivís y trabajás en el mismo barrio, sólo podés votar una vez.<br />
-                No está permitido votar más de una vez en un mismo barrio. Si alguien lo hiciera, se anulan todos los votos que haya realizado esa persona en el mismo barrio.</p>
-                <h3>¿POR QUÉ PUEDEN PARTICIPAR CON PROPUESTAS LAS ESCUELAS PÚBLICAS DE GESTIÓN PROVINCIAL EN EL PRESUPUESTO PARTICIPATIVO?</h3>
-                <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto. Para 2019, el límite por barrio se estableció en $3 millones, con un tope de $2 millones por escuela.</p>
-                <h3>¿CUÁNDO Y DÓNDE VOTO?</h3>
-                <p>La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.</p>
-                <h3>¿CÓMO VOTO?</h3>
-                <p>Es muy fácil, te acercás a los puntos de votación, completás tus datos en la boleta del barrio correspondiente, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo. </p>
-                <h3>¿CUÁNTOS PROYECTOS PUEDO ELEGIR?</h3>
-                <p>Podés elegir hasta 3 proyectos, tildándolos en la boleta de votación del barrio correspondiente. Si elegís más de 3 proyectos, el voto es nulo.</p>
-                <h3>¿EL VOTO ES SECRETO?</h3>
-                <p>No, el voto en el Presupuesto Participativo es nominal. Como no existe un empadronamiento previo para votar, en el momento del escrutinio necesitamos poder verificar 1) que no haya duplicaciones de DNI, 2) que el domicilio que acredita la persona es del barrio, para que el voto sea válido.</p>
-                <h3>¿CUÁNDO SE REALIZA EL ESCRUTINIO DE LOS VOTOS?</h3>
-                <p>El escrutinio de la votación 2018 se realizará los días 8, 9 y 10 de octubre a partir de las 10 hs en lugar a designar por la Subsecretaría de Participación Ciudadana. Cada uno de esos días, se escrutarán los votos de 3 barrios. Esta información se dará 15 días antes del comienzo de la votación.</p>
-                <h3>¿SE PUEDE PRESENCIAR EL ESCRUTINIO?</h3>
-                <p>Por supuesto. El escrutinio es público y abierto a todos los vecinos de Vicente López. Si te interesa presenciar el escrutinio de un barrio en particular, mandanos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te avisamos qué día y en qué horario se escrutarán las urnas ubicadas en los puntos de votación de ese barrio.</p>
-                <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
-                <p>Los proyectos ganadores de cada barrio, surgen de tu voto y el de tus vecinos. Los proyectos más votados, que no superen el monto asignado a cada barrio, serán realizados durante el año siguiente a la votación. Puede ocurrir que por orden de prioridad de votos, un proyecto supere por presupuesto el monto total establecido para el barrio; en ese caso, se pasará al proyecto que siga en cantidad de votos hasta agotar el monto asignado al barrio.</p>
-                <h3>¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?</h3>
-                <p>Te sugerimos que leas el <Link to='/s/reglamento'>reglamento</Link>. Si aún así te quedan dudas, llamanos al 4851-2000 interno 203 o envianos un mail a <a href='mailto:participacion.ciudadana@vicentelopez.gov.ar'>participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
-*/}
                 </div>
               <div className="fila no-bg hidden">
                 <Anchor id='mapa'>
