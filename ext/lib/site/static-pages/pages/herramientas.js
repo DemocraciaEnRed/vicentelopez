@@ -37,12 +37,14 @@ export default class Page extends Component {
         <Anchor id='container'>
           <div className='ext-herramientas'>
             <div className='action-btns'>
-              <button
-                className='boton-azul'
-                onClick={() => this.setState({ showTable: !showTable })}>
-                <span>{ showTable ? String.fromCharCode(9650) : String.fromCharCode(9660) }</span>
-                Ver tabla de lugares y horarios de votación
-              </button>
+              {
+                // <button
+                //   className='boton-azul'
+                //   onClick={() => this.setState({ showTable: !showTable })}>
+                //   <span>{ showTable ? String.fromCharCode(9650) : String.fromCharCode(9660) }</span>
+                //   Ver tabla de lugares y horarios de votación
+                // </button>
+              }
               <div className="btns-descargas">
                 <Link to='/s/documentos?archivo=boleta&anio=2018&barrio=vicente-lopez' className='boton-azul'>Descargar boletas 2018</Link>
               </div>

@@ -8,19 +8,18 @@ export default function ThumbsVoto (props) {
         <div className="row cont fondo-azul">
           <div className="subtitulo">
             <h2>
-              Votación de proyectos para 2019
+              Resultados de la votación de proyectos 2019
             </h2>
-            <h3>Desde el lunes 24 de septiembre hasta el domingo 7 de octubre te esperamos en los más de 140 puntos de votación para que decidas qué proyectos se van a realizar el año que viene con los $75.000.000 del Presupuesto Participativo de Vicente López.</h3>
-            <Link
-              to='/proyectos'
-              className="boton-azul boton-blanco">
-              ¿Qué proyectos puedo votar?
-            </Link>
-            <Link
-              to='/s/herramientas'
-              className="boton-azul boton-blanco">
-              ¿Dónde voto?
-            </Link>
+            <h3>¡Estamos haciendo el recuento de votos!</h3>
+            <p>
+              MARTES 9 DE OCTUBRE: recuento de votos de Villa Adelina - Olivos - La Lucila
+              <br />
+              MIÉRCOLES 10 DE OCTUBRE: recuento de votos de Carapachay - Vicente López - Munro
+              <br />
+              JUEVES 11 DE OCTUBRE: recuento de votos de Villa Martelli - Florida Este - Florida Oeste
+              <br /><br />
+              Los resultados definitivos de la votación estarán disponibles A PARTIR DEL LUNES 22 DE OCTUBRE
+            </p>
           </div>
         </div>
         <div className="row cont">
