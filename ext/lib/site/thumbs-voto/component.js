@@ -7,19 +7,17 @@ export default function ThumbsVoto (props) {
       <div className="container-fluid">
         <div className="row cont fondo-azul">
           <div className="subtitulo">
-            <h2>
-              Resultados de la votación de proyectos 2019
-            </h2>
-            <h3>¡Estamos haciendo el recuento de votos!</h3>
             <p>
-              MARTES 9 DE OCTUBRE: recuento de votos de Villa Adelina - Olivos - La Lucila
-              <br />
-              MIÉRCOLES 10 DE OCTUBRE: recuento de votos de Carapachay - Vicente López - Munro
-              <br />
-              JUEVES 11 DE OCTUBRE: recuento de votos de Villa Martelli - Florida Este - Florida Oeste
-              <br /><br />
-              Los resultados definitivos de la votación estarán disponibles A PARTIR DEL LUNES 22 DE OCTUBRE
+              Muchas gracias a las 67.919 personas que con su voto decidieron
+              <br />en qué proyectos vamos a invertir el Presupuesto Participativo de Vicente López en 2019.
+              <br /><br />Aquí vas a encontrar los resultados de 7 barrios.
+              <br />Los resultados de los 2 barrios que faltan, estarán disponibles en breve.
             </p>
+            <a
+              href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx'
+              className="boton-azul boton-blanco">
+              Ver Resultados
+            </a>
           </div>
         </div>
         <div className="row cont">
