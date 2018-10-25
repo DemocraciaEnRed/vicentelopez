@@ -8,10 +8,8 @@ export default function ThumbsVoto (props) {
         <div className="row cont fondo-azul">
           <div className="subtitulo">
             <p>
-              Muchas gracias a las 67.919 personas que con su voto decidieron
-              <br />en qué proyectos vamos a invertir el Presupuesto Participativo de Vicente López en 2019.
-              <br /><br />Aquí vas a encontrar los resultados de 7 barrios.
-              <br />Los resultados de los 2 barrios que faltan, estarán disponibles en breve.
+              Muchas gracias a las 67.919 personas que con su voto decidieron los
+              <br />47 proyectos en los que vamos a invertir los $75.000.000 del Presupuesto Participativo en 2019.
             </p>
             <a
               href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx'
