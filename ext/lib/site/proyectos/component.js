@@ -16,7 +16,6 @@ export default class Carrusel extends Component {
     window.fetch(`/ext/api/topics?forumName=proyectos&state=preparacion,compra,ejecucion,finalizado&limit=20&sort=popular`, { credentials: 'include' })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
         this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }
       )})
       .catch((err) => console.error(err))
