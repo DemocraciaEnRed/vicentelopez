@@ -18,7 +18,7 @@ const defaultValues = {
   'votacion': {
     barrio: [],
     ano: ['2019'],
-    state: ['factible']
+    state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
   },
   'seguimiento': {
     barrio: [],
@@ -52,7 +52,7 @@ export class HomeProyectos extends Component {
     // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
     // initialFilters.ano = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
-    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
     initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2018,2019' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
@@ -67,7 +67,7 @@ export class HomeProyectos extends Component {
           // ano: defaultValues.seguimiento.ano,
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
-          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] :['factible'],
+          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
           ano: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019'] : ['2019'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
@@ -158,7 +158,7 @@ export class HomeProyectos extends Component {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
         ano: prevState.stage === 'seguimiento' ? ['2019'] : ['2018', '2019'],
         barrio: [],
-        state: prevState.stage === 'seguimiento' ? ['factible'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
+        state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
       }
     }, () => this.fetchTopics())
   }
