@@ -92,7 +92,7 @@ export default class Filter extends Component {
         {this.props.openVotation &&
           <div className='stage-container'>
             <a className='stage-changer' onClick={this.props.changeStage}>
-              {this.props.stage === 'seguimiento' ? 'Volver a votación actual >' : '< Ver seguimiento de proyectos'}
+              {this.props.stage === 'seguimiento' ? 'Ver ganadores >' : '< Ver seguimiento de proyectos'}
             </a>
           </div>
         }
