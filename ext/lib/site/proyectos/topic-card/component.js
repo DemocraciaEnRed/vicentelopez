@@ -49,6 +49,24 @@ const states = [
   { 'name': 'Finalizado', 'value': 'finalizado' }
 ]
 
+const getBudget = (state) => {
+  switch (state) {
+    case 'preparacion':
+      return 'project-budget-preparacion'
+      break
+    case 'compra':
+      return 'project-budget-compra'
+      break
+    case 'ejecucion':
+      return 'project-budget-ejecucion'
+      break
+    case 'finalizado':
+      return 'project-budget-finalizado'
+    default:
+      return false  
+  }
+}
+
 export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
@@ -59,7 +77,7 @@ export default ({ topic, forum }) => {
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}>
         {topic.attrs && topic.attrs.hasOwnProperty('budget') && topic.attrs.budget !== 0 &&
-          <p className='budget'>{prettyPrice(topic.attrs.budget)}</p>
+          <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
         }
         {topic.attrs && topic.attrs.state && !(topic.attrs.anio === '2019' && topic.attrs.state === 'factible') && (
           <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
@@ -113,7 +131,7 @@ function linkTags (forum, tag, anio) {
 }
 
 function prettyPrice (number) {
-  if (!number) number = 1
+  if (!number) return ''
   return `$${prettyDecimals(number)}`
 }
 
