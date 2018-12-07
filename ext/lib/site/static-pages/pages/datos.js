@@ -45,6 +45,8 @@ export default class Page extends Component {
                       <th>2015 - 2016</th>
                       <th>2016 - 2017</th>
                       <th>2017 - 2018</th>
+                      <th>2018 - 2019</th>
+
                     </tr>
                   </thead>
                   <tbody>
@@ -56,6 +58,8 @@ export default class Page extends Component {
                       <td>30 MM</td>
                       <td>45 MM</td>
                       <td>65 MM</td>
+                      <td>75 MM</td>
+
                     </tr>
                     <tr>
                       <td>Propuestas Presentadas</td>
@@ -65,6 +69,8 @@ export default class Page extends Component {
                       <td>465</td>
                       <td>348</td>
                       <td>350</td>
+                      <td>524</td>
+
                     </tr>
                     <tr>
                       <td>Proyectos Factibles</td>
@@ -74,6 +80,7 @@ export default class Page extends Component {
                       <td>152</td>
                       <td>148</td>
                       <td>145</td>
+                      <td>198</td>
                     </tr>
                     <tr>
                       <td>Proyectos Ganadores</td>
@@ -83,6 +90,8 @@ export default class Page extends Component {
                       <td>63</td>
                       <td>81</td>
                       <td>74</td>
+                      <td>47</td>
+
                     </tr>
                     <tr>
                       <td>Cantidad de Participantes</td>
@@ -92,6 +101,8 @@ export default class Page extends Component {
                       <td>18.880</td>
                       <td>26.537</td>
                       <td>45.010</td>
+                      <td>69.201</td>
+
                     </tr>
                     <tr>
                       <td>Proporción de Participantes</td>
@@ -101,8 +112,14 @@ export default class Page extends Component {
                       <td>1 cada 11</td>
                       <td>1 cada 8</td>
                       <td>1 cada 5</td>
+                      <td>1 cada 3</td>
                     </tr>
                   </tbody>
+                  <tfoot>
+                    <tr>
+                    <td colSpan={8}>Presupuesto asignado 2018 - 2019: $75 millones</td>
+                    </tr>
+                  </tfoot>
                 </table>
               </figure>
             </article>
@@ -111,7 +128,7 @@ export default class Page extends Component {
               <h3>Evolución de la participación</h3>
               <figure className="graph-box">
                 <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/evolucion-participacion1.svg" alt=""/>
+                  <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
                 </div>
                 <figcaption>
                   <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
@@ -157,7 +174,7 @@ export default class Page extends Component {
               <h4>DESCARGAS</h4>
               <div className='btns-descargas'>
                 <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2018_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2018 por tipo (cantidad e inversión)</a>
-                <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación</a>
+                <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación 2018</a>
                 <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
               </div>
             </div>
