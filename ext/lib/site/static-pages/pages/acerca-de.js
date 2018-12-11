@@ -68,11 +68,13 @@ export default class Page extends Component {
                   <div className="thumbs">
                     <div className="donde-voto"></div>
                   </div>
-                  <h2>¿Dónde voto?</h2>
+                  <h2 className='donde-voto'>¿CUÁNDO Y DÓNDE SE VOTA?</h2>
                 </div>
                 <div className="cols col-2">
                   <div>
-                    La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.
+                    La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. Consultá todos los puntos de votación disponibles en 
+                    <Link to='https://forosvecinales.vicentelopez.gov.ar '> https://forosvecinales.vicentelopez.gov.ar </Link>  a partir del 14 de septiembre.
+                    Consultá todos los puntos de votación disponibles en <Link to='https://forosvecinales.vicentelopez.gov.ar/s/herramientas'> https://forosvecinales.vicentelopez.gov.ar/s/herramientas</Link>
                   </div>
                 </div>
               </div>

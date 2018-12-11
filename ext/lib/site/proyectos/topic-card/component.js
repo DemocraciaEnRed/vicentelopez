@@ -72,6 +72,7 @@ export default ({ topic, forum }) => {
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
   const linkTopic = () => { browserHistory.push(`/proyectos/topic/${topic.id}`) }
   return (
+    <Link href={`/proyectos/topic/${topic.id}`}>
     <div className='ext-topic-card' onClick={linkTopic}>
       <div
         className='portada topic-card-cover'
@@ -118,6 +119,8 @@ export default ({ topic, forum }) => {
         </div>
       </div>
     </div>
+    </Link>
+
   )
 }
 
