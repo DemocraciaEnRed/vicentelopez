@@ -9,14 +9,14 @@ const Footer = () => (
         <p>
           <span>Subsecretaría de Participación Ciudadana</span>
           <span>Secretaría de Gobierno y Legal y Técnica</span>
-          <span>Juan B. Alberdi 830 </span>
+          <span>D. de Acassuso 1750</span>
           <span>CP1636, Olivos.</span>
           <span>(54.11) 4851-2000 Int. 203/207/208/209</span>
         </p>
       </div>
       <div className='mapa-box'>
         <div>
-          <iframe className='mapa' src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3287.7955547382676!2d-58.483951!3d-34.508067!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb14018ac8413%3A0x50b76f9f4f319407!2sJuan+Bautista+Alberdi+830%2C+Olivos%2C+Buenos+Aires%2C+Argentina!5e0!3m2!1ses!2sar!4v1501270118288' frameBorder='0' allowFullScreen />
+          <iframe className='mapa' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.856104315487!2d-58.49609055954085!3d-34.50653212820279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb117412a3aa9%3A0x5e58f5edeb71c832!2sDomingo+de+Acassuso+1750%2C+B1636ESF+Olivos%2C+Buenos+Aires!5e0!3m2!1ses!2sar!4v1552391953934" frameborder="0" allowfullscreen/>
         </div>
       </div>
       <div className='social-icon'>

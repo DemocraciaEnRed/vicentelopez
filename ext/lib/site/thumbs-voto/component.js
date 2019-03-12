@@ -8,8 +8,7 @@ export default function ThumbsVoto (props) {
         <div className="row cont fondo-azul">
           <div className="subtitulo">
             <p>
-              Muchas gracias a las 67.919 personas que con su voto decidieron los
-              <br />47 proyectos en los que vamos a invertir los $75.000.000 del Presupuesto Participativo en 2019.
+              Hasta el 31 de mayo tenés tiempo para presentar tus propuestas
             </p>
             <a
               href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx'
@@ -21,24 +20,25 @@ export default function ThumbsVoto (props) {
         <div className="row cont">
           <div className="col-md-4">
             <div
-              className="que-son img-responsive  ">
+              className="que-es img-responsive  ">
             </div>
             <h2
               className="text-center">
-                ¿Qué Son?
+                ¿Qué es?
             </h2>
             <p className="que-son-cont">
-            Los Foros Vecinales son espacios de participación ciudadana donde los vecinos deciden en qué invertir parte del presupuesto municipal. Todos los años, y desde hace 7 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos.
+            El Presupuesto Participativo es una iniciativa que permite a cada uno de los vecinos de los 9 barrios del municipio proponer, debatir y decidir a través del voto en qué utilizar una parte del presupuesto municipal de inversión.
             </p>
           </div>
 
           <div className="col-md-4">
             <div
-              className="como-voto img-responsive  ">
+              className="que-propongo img-responsive  ">
             </div>
-            <h2 className="text-center">¿Cómo voto?</h2>
+            <h2 className="text-center">¿Qué puedo proponer?</h2>
             <p>
-            Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar. Es muy fácil, te acercás a los puntos de votación, completás tus datos, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo.
+            Ideas para mejorar tu barrio, tu institución o asociación en temas de espacio público, seguridad, tránsito, salud, educación, cultura y deportes. Las propuestas pueden involucrar equipamiento o infraestructura pero no pueden incluir gastos en recursos humanos. 
+            Podés subir propuestas desde donde quieras haciendo click <Link to='https://forosvecinales.vicentelopez.gov.ar/proyectos' className="">acá</Link> y participar de las reuniones de vecinos para conocer mejor del presupuesto participativo!
             </p>
 
           </div>
@@ -48,11 +48,10 @@ export default function ThumbsVoto (props) {
               className=" donde-voto img-responsive  ">
             </div>
             <h2 className="text-center">
-              ¿Dónde voto?
+              ¿Cómo sigo los proyectos?
             </h2>
             <p className="donde-voto-cont">
-            La votación estará abierta desde el lunes 24 de septiembre hasta el domingo 7 de octubre de 2018. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.
-            Consultá todos los puntos de votación <Link to='https://forosvecinales.vicentelopez.gov.ar/s/herramientas' className=""> aquí. </Link>
+            Podés seguir de forma fácil la evolución de los proyectos ganadores del presupuesto participativo de 2017 y 2018 y conocer su ejecución entrando acá: <Link to='https://forosvecinales.vicentelopez.gov.ar/proyectos' className="">Seguimiento proyectos</Link>
             </p>
           </div>
 
