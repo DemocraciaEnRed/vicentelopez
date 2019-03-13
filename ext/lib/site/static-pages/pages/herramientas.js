@@ -45,15 +45,12 @@ export default class Page extends Component {
                 //   Ver tabla de lugares y horarios de votación
                 // </button>
               }
-              <div className="btns-descargas">
-                <Link to='/s/documentos?archivo=boleta&anio=2018&barrio=vicente-lopez' className='boton-azul'>Descargar boletas 2018</Link>
-              </div>
             </div>
             { showTable && <PuntosDeVotacion/> }
             <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>
-                  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1pMxGrUzA59m_9WlhXnkrs3YxUCAPZkoI" width="640" height="480"></iframe>
+                  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qhRpeylCuWIO7llVNSi5prF1JDBuI13b" width="640" height="480"></iframe>
                 </div>
               </div>
             </div>

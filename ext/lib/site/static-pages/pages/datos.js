@@ -21,7 +21,7 @@ export default class Page extends Component {
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
-              <h1>Los foros en datos</h1>
+              <h1>El presupuesto participativo en datos</h1>
             </div>
           </div>
         </section>
@@ -176,6 +176,7 @@ export default class Page extends Component {
                 <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2018_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2018 por tipo (cantidad e inversión)</a>
                 <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación 2018</a>
                 <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
+                <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx' className='boton-azul'>Resultados de la votación 2018</a>
               </div>
             </div>
           </div>
