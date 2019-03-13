@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 const ForosEnDatos = () => (
   <section className='seccion-foros-datos'>
     <div className='fondo-titulo'>
-      <h2 className='title'>Los foros en datos</h2>
+      <h2 className='title'>El Presupuesto Participativo en datos</h2>
     </div>
     <div className='datos'>
       <p>El Presupuesto Participativo de Vicente López se implementa de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de los Foros Vecinales.</p>

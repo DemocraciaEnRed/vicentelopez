@@ -25,7 +25,7 @@ export default class HomeMultiforumOverride extends Component {
     return (
       <div className='ext-home-multiforum'>
         <Anchor id='container'>
-          <BannerForoVecinal />
+          <BannerForoVecinal title="Presupuesto participativo"/>
           <ThumbsVoto />
           <Proyectos />
           <Barrios />
