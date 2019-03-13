@@ -20,7 +20,7 @@ export default function ThumbsVoto (props) {
         <div className="row cont">
           <div className="col-md-4">
             <div
-              className="que-es img-responsive  ">
+              className="que-son img-responsive  ">
             </div>
             <h2
               className="text-center">
@@ -36,7 +36,7 @@ export default function ThumbsVoto (props) {
               className="que-propongo img-responsive  ">
             </div>
             <h2 className="text-center">¿Qué puedo proponer?</h2>
-            <p>
+            <p className="que-propongo-cont">
             Ideas para mejorar tu barrio, tu institución o asociación en temas de espacio público, seguridad, tránsito, salud, educación, cultura y deportes. Las propuestas pueden involucrar equipamiento o infraestructura pero no pueden incluir gastos en recursos humanos. 
             Podés subir propuestas desde donde quieras haciendo click <Link to='https://forosvecinales.vicentelopez.gov.ar/proyectos' className="">acá</Link> y participar de las reuniones de vecinos para conocer mejor del presupuesto participativo!
             </p>
@@ -45,7 +45,7 @@ export default function ThumbsVoto (props) {
 
           <div className="col-md-4">
             <div
-              className=" donde-voto img-responsive  ">
+              className="como-sigo img-responsive  ">
             </div>
             <h2 className="text-center">
               ¿Cómo sigo los proyectos?
