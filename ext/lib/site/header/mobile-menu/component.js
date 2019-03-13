@@ -35,7 +35,7 @@ class MobileMenu extends Component {
               id='mobile-menu-display'
               className='mobile-menu-display'>
               <ul>
-                <div className='header-item mobile-link'>
+                {/* <div className='header-item mobile-link'>
                   <Link
                     to='/s/acerca-de'
                     className='header-link'
@@ -43,7 +43,7 @@ class MobileMenu extends Component {
                     onClick={this.props.toggleOnClick}>
                     Acerca de
                   </Link>
-                </div>
+                </div> */}
                 <div className='header-item'>
                   <Link
                     to='/propuestas'
