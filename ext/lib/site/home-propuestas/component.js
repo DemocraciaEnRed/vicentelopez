@@ -25,6 +25,11 @@ const filter = (key, items = []) => items.filter(filters[key].filter)
 
 const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActive }) => (
   <div className='container'>
+    <div className="row">
+      <div className='notice'>
+        <h1>A partir del 19 de Marzo vas a poder subir propuestas</h1>
+      </div>
+    </div>
     <div className='row'>
       <div className='col-md-8 list-tools'>
         <div className='topics-filter'>
@@ -48,7 +53,7 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
           Mandá tu propuesta
         </a>
       </div>
-      <span className='alert-duedate'>Propuestas presentadas en el Presupuesto Participativo 2018</span>
+      <span className='alert-duedate' >Estas viendo propuestas presentadas en el Presupuesto Participativo 2018</span>
     </div>
   </div>
 )
@@ -199,6 +204,7 @@ class HomePropuestas extends Component {
   render () {
     const { forum, topics, tags } = this.state
     return (
+      
       <div className='ext-home-ideas'>
         <ListTools
           handleState={this.handleStateChange}
