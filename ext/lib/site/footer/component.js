@@ -20,9 +20,9 @@ const Footer = () => (
         </div>
       </div>
       <div className='social-icon'>
-        <a className='social-facebook' href='https://www.facebook.com/VivamosVL/' />
-        <a className='social-instagram' href='https://www.instagram.com/presupuestoparticipativo_vl/' />
-        <a className='social-mail' href='mailto:participacion.ciudadana@vicentelopez.gov.ar' />
+        <a className='social-facebook' href='https://www.facebook.com/VivamosVL/' target="_blank"/>
+        <a className='social-instagram' href='https://www.instagram.com/presupuestoparticipativo_vl/' target="_blank" />
+        <a className='social-mail' href='mailto:participacion.ciudadana@vicentelopez.gov.ar' target="_blank"/>
       </div>
       <div className='logo'>
         <a href='http://www.vicentelopez.gov.ar/' />
