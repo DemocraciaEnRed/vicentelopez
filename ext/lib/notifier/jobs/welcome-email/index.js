@@ -2,7 +2,7 @@ const utils = require('democracyos-notifier/lib/utils')
 const template = require('./template')
 
 const jobName = 'welcome-email'
-const subject = 'Bienvenido a los FOROS VECINALES'
+const subject = 'Bienvenido al PRESUPUESTO PARTICIPATIVO'
 
 module.exports = function welcomeEmail (notifier) {
   const { db, agenda, mailer } = notifier

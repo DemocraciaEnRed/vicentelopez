@@ -153,20 +153,20 @@ class FormularioPropuesta extends Component {
     return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
-          <h1 className='text-center'>Presupuesto Participativo 2018</h1>
+          <h1 className='text-center'>Presupuesto Participativo 2019</h1>
           <p>Envianos tus propuestas para que sean presentadas en la votación de este año.</p>
         </div>
-        <alert className='alert alert-info cronograma'>
+        {/* <alert className='alert alert-info cronograma'>
           <Link style={{ display: 'inline' }} to='/s/acerca-de?scroll=cronograma'>
             La etapa de envío de propuestas ya ha sido cerrada. ¡Muchas gracias por participar!
           </Link>
-        </alert>
+        </alert> */}
         <form className='wrapper' onSubmit={this.handleSubmit}>
+          <div className="bar-section">
+            <p className="section-title">Tus datos personales</p>
+            <p className="section-subtitle">* todos estos datos son confidenciales</p>
+          </div>
           <input type='hidden' name='forum' value={forum.id} />
-          <span className='form-section-label'>
-            Datos personales
-          </span>
-          <p className='span-alert'>* todos estos datos son confidenciales</p>
           <div className='form-group'>
             <label className='required' htmlFor='nombre'>
               Nombre y apellido
@@ -232,9 +232,10 @@ class FormularioPropuesta extends Component {
               value={this.state['email']}
               onChange={this.handleInputChange} />
           </div>
-          <span className='form-section-label'>
-            Propuesta
-          </span>
+           <div className="bar-section">
+            <p className="section-title">Acerca de la propuesta</p>
+            <p className="section-subtitle">* todos estos datos son requeridos</p>
+          </div>
           <div className='form-group'>
             <label className='required' htmlFor='titulo'>
               Título
@@ -253,7 +254,7 @@ class FormularioPropuesta extends Component {
               Barrio
             </label>
             <select
-              className='form-control'
+              className='form-control special-height'
               required
               name='barrio'
               value={this.state['barrio']}
