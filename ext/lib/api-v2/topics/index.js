@@ -41,9 +41,14 @@ const purgeBody = (req, res, next) => {
   if (isCitizenOnProposal(req.user, req.forum)) {
     // return next(new CantUploadProposal())
     req.body = Object.assign(
-    defaultValues(),
-    pick(req.body, EDITABLE_KEYS)
-  )
+      defaultValues(),
+      pick(req.body, EDITABLE_KEYS)
+    )
+  } else {
+    req.body = Object.assign(
+      defaultValues(),
+      req.body
+    )
   }
   return next()
 }
