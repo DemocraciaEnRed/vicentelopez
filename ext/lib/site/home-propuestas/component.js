@@ -26,9 +26,9 @@ const filter = (key, items = []) => items.filter(filters[key].filter)
 const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActive }) => (
   <div className='container'>
     <div className="row">
-      <div className='notice'>
+      {/* <div className='notice'>
         <h1>A partir del 19 de Marzo vas a poder subir propuestas</h1>
-      </div>
+      </div> */}
     </div>
     <div className='row'>
       <div className='col-md-8 list-tools'>
