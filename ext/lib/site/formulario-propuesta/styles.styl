@@ -30,21 +30,46 @@
     width: 100%
     padding: 20px
     position: relative
-
+    
+    .bar-section
+      background-color: #1791be
+      padding: 1.6rem 1rem;
+      p
+        margin: 0
+        color: #FFF
+        text-align: center;
+        line-height: normal;
+      .section-title
+        font-size: 2.5rem;
+        font-weight: bold
+      .section-subtitle
+        font-size: 0.9rem
+    .required
+      color: #1791be
     label
-      color: rgba(0, 0, 0, 0.55)
-      margin: 10px 0 5px 0
+      // color: rgba(0, 0, 0, 0.55)
+      margin: 10px 0 10px 0;
+      font-size: 1.3em;
+      font-weight: bold;
     input
       width:100%
     .tags-input
       border-radius: 5px
-      border: 1px solid rgba(0, 0, 0, 0.15)
+      border: 1px solid #CACACA
       padding: 3px 10px
       width: 100%
 
     input, select, textarea
-      border-radius: 5px
-      border: 1px solid rgba(0, 0, 0, 0.15)
+      border-radius: 0px
+      border: 1px solid #CACACA
+      border-bottom: 2px solid #CACACA
+      font-size: 1.2rem
+      color: #000
+      &:focus
+        box-shadow: none;
+        // border-color: #1791be
+        border: 1px solid #1791be
+        border-bottom: 2px solid #1791be
     .submit-div
       text-align: center
       .submit-btn
@@ -52,8 +77,11 @@
         background: #1791be
         color: #fff
         border: none
-        padding: 5px 10px
+        padding: 10px 30px
+        font-weight: 600;
         font-size: 20px
+        &:hover
+          cursor: pointer
     .form-section-label
       color: #9e41b9
       font-size: 18px
@@ -64,6 +92,9 @@
         margin-top: 10px
         top: 30px
   
+  select.special-height
+    height: 3rem !important;
+
   .help-text
     display: block
     font-size: .8em
@@ -79,7 +110,7 @@
     font-size:.8em
     @media screen and (min-width: 1360px)
         position: relative
-        left: -240px
+        // left: -240px
         margin-top: 10px
         top: 30px  
   .cronograma-alert

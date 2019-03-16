@@ -18,7 +18,7 @@ module.exports = ({
   <br />
   <p>Muchas gracias,</p>
   <br />
-  <p>FOROS VECINALES</p>
+  <p>PRESUPUESTO PARTICIPATIVO DE VICENTE LOPEZ</p>
   <br />
   <p>PD: si no te diste de alta en forosvecinales.org podés ignorar este correo.</p>
 `.toString()
