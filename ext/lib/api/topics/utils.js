@@ -17,9 +17,9 @@ exports.parseBarrios = (req, res, next) => {
   next()
 }
 
-exports.parseAnos = (req, res, next) => {
-  if (req.query.ano) {
-    req.query.ano = req.query.ano.split(',').filter((t) => !!t)
+exports.parseAnios = (req, res, next) => {
+  if (req.query.anio) {
+    req.query.anio = req.query.anio.split(',').filter((t) => !!t)
   }
   next()
 }
@@ -44,7 +44,7 @@ const queryTopics = (opts) => {
     forum,
     tags,
     barrio,
-    ano,
+    anio,
     related
   } = opts
   const query = {
@@ -52,7 +52,7 @@ const queryTopics = (opts) => {
     publishedAt: { $ne: null }
   }
   if (barrio && barrio.length > 0) query['attrs.barrio'] = { $in: barrio }
-  if (ano && ano.length > 0) query['attrs.anio'] = { $in: ano }
+  if (anio && anio.length > 0) query['attrs.anio'] = { $in: anio }
   if (tags && tags.length > 0) query.tags = { $in: tags }
   if (state && state.length > 0) query['attrs.state'] = { $in: state }
   if (related && related.length > 0) query['attrs.admin-comment-referencia'] = { $regex: `.*${related}.*` }
