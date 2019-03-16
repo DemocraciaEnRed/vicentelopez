@@ -29,6 +29,7 @@ class CantUploadProposal extends Error {
 }
 
 const defaultValues = () => ({
+  'attrs.anio': '2020',
   'attrs.state': 'pendiente',
   'action.method': 'cause',
   tag: '59665fe8724f61003327eb2f'

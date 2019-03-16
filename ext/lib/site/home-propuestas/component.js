@@ -140,7 +140,7 @@ class HomePropuestas extends Component {
       sort: this.state.filter === 'newest' ? 'newest' : 'popular',
       page: page,
       state: this.state.archivadas ? 'no-factible' : 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
-      ano: '2019'
+      anio: '2020'
     }
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
