@@ -17,12 +17,12 @@ import TopicGrid from './grid/component'
 const defaultValues = {
   'votacion': {
     barrio: [],
-    ano: ['2019'],
+    anio: ['2019'],
     state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
   },
   'seguimiento': {
     barrio: [],
-    ano: ['2018', '2019'],
+    anio: ['2018', '2019'],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
@@ -35,7 +35,7 @@ export class HomeProyectos extends Component {
       forum: 'proyectos',
       page: null,
       noMore: false,
-      ano: [],
+      anio: [],
       barrio: [],
       state: [],
       stage: 'votacion',
@@ -50,10 +50,10 @@ export class HomeProyectos extends Component {
     initialFilters.sort = 'barrio'
     // This filters should be applied if seguimiento stage is active only
     // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
-    // initialFilters.ano = '2018,2019'
+    // initialFilters.anio = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    initialFilters.ano = this.props.location.query.stage === 'seguimiento' ? '2018,2019' : '2019'
+    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -64,11 +64,11 @@ export class HomeProyectos extends Component {
           barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
           // This filters should be applied if seguimiento stage is active only
           // state: defaultValues.seguimiento.state,
-          // ano: defaultValues.seguimiento.ano,
+          // anio: defaultValues.seguimiento.anio,
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
           state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-          ano: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019'] : ['2019'],
+          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019'] : ['2019'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
@@ -110,7 +110,7 @@ export class HomeProyectos extends Component {
 
   fetchTopics = () => {
     let query = {
-      ano: this.state.ano,
+      anio: this.state.anio,
       barrio: this.state.barrio,
       state: this.state.state,
       sort: this.state.sort
@@ -131,7 +131,7 @@ export class HomeProyectos extends Component {
   }
 
   seeMore = () => {
-    let queryString = ['ano', 'barrio', 'state', 'sort']
+    let queryString = ['anio', 'barrio', 'state', 'sort']
       .filter((k) => this.state[k].length > 0)
       .map((k) => `${k}=${this.state[k].join()}`)
       .concat([`page=${this.state.page + 1}`])
@@ -156,7 +156,7 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        ano: prevState.stage === 'seguimiento' ? ['2019'] : ['2018', '2019'],
+        anio: prevState.stage === 'seguimiento' ? ['2019'] : ['2018', '2019'],
         barrio: [],
         state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
       }
@@ -174,7 +174,7 @@ export class HomeProyectos extends Component {
             <Filter
               handleFilter={this.handleFilter}
               handleDefaultFilter={this.handleDefaultFilter}
-              ano={this.state.ano}
+              anio={this.state.anio}
               state={this.state.state}
               barrio={this.state.barrio}
               changeStage={this.changeStage}

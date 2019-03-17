@@ -250,32 +250,56 @@ topicColor2 = #999
   margin-top:10px
 
 .topic-article-span
-  font-size: .9em
-  font-weight: normal
+  font-size: 1.3em;
+  background-color: #7cbb42;
+  font-weight: bold;
+  padding: 4px 17px 4px 6px;
+  color: #FFF;
 
 .topic-article-p
   font-size: .9em
-  font-weight: normal  
+  font-weight: normal
+  white-space: pre-wrap
+  line-height: 1.5em
+  margin: 10px 0 30px;
 
-.topic-article-status-container 
-  @media(max-width: 1100px)
-    width:100%
-    display: flex
-    justify-content: flex-end
+// .topic-article-status-container 
+  // @media(max-width: 1100px)
+  //   width:100%
+.topic-article-status-container
+  position: relative
+  margin-bottom: 15px;
+
 .topic-article-status
-  font-size: .9em
-  color:#fff
-  background-color:#444444
-  font-weight: bold
-  padding:5px 15px 5px 5px
-  @media(min-width: 1100px)
-    float:right
-    margin-right:0
-    position:relative
-    right: 0px
-    top: 70px
-  @media(max-width: 450px)
-    font-size:.7em
+  background-color: #444;
+  position: relative;
+  left: 0;
+  display: inline-block;
+  font-size: 16px;
+  color: #FFF;
+  font-weight: bold;
+  line-height: normal;
+  padding: 4px 3px;
+  &::before
+    border-bottom: 14px solid transparent;
+    border-left: 13px solid #444;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: -13px;
+    top: 0;
+//   font-size: .9em
+//   color:#fff
+//   font-weight: bold
+//   padding:5px 15px 5px 5px
+//   // @media(min-width: 1100px)
+//   float:right
+//   margin-right:0
+//   position:relative
+//   right: 0px
+//   top: 0px
+//   @media(max-width: 450px)
+//     font-size:.7em
   
 .topic-tags
   &.topic-article-content
@@ -317,12 +341,18 @@ topicColor2 = #999
   &.topic-article-content
     header
       margin-top:0px !important
+ 
+.topic-article-wrapper
+  .topic-article-content
+    &.entry-content
+      display: block;
+      flex-direction: none;
 
 .banner
     width: 100%
     display: block
     margin: 0 auto
-    margin-bottom:90px
+    margin-bottom:50px
     height: 280px
     background-size: cover
     background-image: unquote("url('ext/lib/site/topic-layout/topic-article-propuesta/header.jpg')") 
@@ -339,22 +369,37 @@ topicColor2 = #999
 
 .topic-article-content
   &.topic-admin-actions
-    position: relative
-    right: 0px
-    top: 35px
-    z-index: 10
-    @media screen and (min-width: 1000px)
-      position: relative
-    @media screen and (max-width: 1000px)
-      display: inline-block
-      float: right
-      margin-right: 0
-      position: relative
-      right: 0px
-      top: 20px
-      width: 80%
-      display: flex
-      justify-content: flex-end
+    position: absolute;
+    top: 0;
+    right: 0;
+    .btn-default
+      color: #8c1e81;
+      background-color: #fff;
+      border: 1px solid #8c1e81
+      padding: 5px 8px;
+      border-radius: 3px;
+      @media(max-width: 768px)
+        padding: 3px 5px
+      &:hover
+        color: #FFF;
+        background-color: #8c1e81
+        text-decoration: none;
+    // position: relative
+    // right: 0px
+    // top: 35px
+    // z-index: 10
+    // @media screen and (min-width: 1000px)
+    //   position: relative
+    // @media screen and (max-width: 1000px)
+    //   display: inline-block
+    //   float: right
+    //   margin-right: 0
+    //   position: relative
+    //   right: 0px
+    //   top: 20px
+    //   width: 80%
+    //   display: flex
+    //   justify-content: flex-end
       
 
 .admin-comment-referido      

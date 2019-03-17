@@ -2,6 +2,9 @@ const express = require('express')
 const pick = require('lodash.pick')
 const middlewares = require('lib/api-v2/middlewares')
 const { isCitizenOnProposal } = require('../../proposals')
+const api = require('lib/db-api')
+var utils = require('lib/utils')
+var expose = utils.expose
 
 const app = module.exports = express.Router()
 
@@ -71,3 +74,15 @@ middlewares.forums.privileges.canCreateTopics,
 middlewares.topics.privileges.canEdit,
 purgeBody,
 goToNextRoute)
+
+app.get('/all-tags',
+(req, res, next) => {
+  try{
+    api.tag.all(function (err, tags) {
+    if (err) return _handleError(err, req, res)
+    res.status(200).json(tags.map(expose('id name')))
+    })
+  } catch(err){
+    next(err)
+  }
+})
