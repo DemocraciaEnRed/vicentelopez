@@ -11,7 +11,7 @@ const formats = {
   formats: {
     tags: /^([a-zA-Z0-9-_]+,?)+$/,
     barrio: /^[a-z0-9-]+$/,
-    ano: /[0-9]+/
+    anio: /[0-9]+/
   }
 }
 

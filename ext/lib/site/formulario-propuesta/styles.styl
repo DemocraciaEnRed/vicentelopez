@@ -8,7 +8,7 @@
   align-items: center
   .propuesta-header
     color: white
-    text-shadow: 0 1px 4px #555
+    // text-shadow: 0 1px 3px #333
     display: flex
     align-items: center
     flex-direction: column
@@ -21,16 +21,37 @@
     background-image: unquote("url('ext/lib/site/anfiteatro-1.jpg')")
     background-repeat: no-repeat
     h1
-      font-size: 40px
+      font-size: 32px
+      margin:0;
+      background-color: #7cbb42;
+      padding: 10px;
+      @media screen and (min-width: 764px)
+        font-size: 50px
     p
-      font-size: 24px
+      font-size: 16px
+      margin:0;
+      padding: 0 5px;
+      // margin-top:6px;
+      // background-color: rgba(23,145,190,0.6)
+      background-color: rgba(23,145,190,1)
+      @media screen and (min-width: 764px)
+        font-size: 20px
 
   .wrapper
     max-width:900px
     width: 100%
     padding: 20px
     position: relative
-    
+    .more-info
+      text-align: center;
+    .small-banner
+      background-color: #1791be
+      padding: 10px;
+      color: #FFF;
+      line-height: normal;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 40px;
     .bar-section
       background-color: #1791be
       padding: 1.6rem 1rem;
@@ -49,8 +70,9 @@
     label
       // color: rgba(0, 0, 0, 0.55)
       margin: 10px 0 10px 0;
-      font-size: 1.3em;
+      font-size: 1.4em;
       font-weight: bold;
+
     input
       width:100%
     .tags-input
@@ -74,12 +96,12 @@
       text-align: center
       .submit-btn
         border-radius: 10px
-        background: #1791be
+        background: #7cbb42
         color: #fff
         border: none
-        padding: 10px 30px
+        padding: 10px 40px
         font-weight: 600;
-        font-size: 20px
+        font-size: 25px
         &:hover
           cursor: pointer
     .form-section-label
@@ -95,6 +117,65 @@
   select.special-height
     height: 3rem !important;
 
+  ul.tags 
+    list-style: none;
+    margin: 20px 0;
+    overflow: hidden; 
+    padding: 0;
+  ul.tags li 
+    float: left; 
+
+  .tag 
+    background: #eee;
+    border-radius: 3px 0 0 3px;
+    color: #666;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    &::before 
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+      content: '';
+      height: 6px;
+      left: 10px;
+      position: absolute;
+      width: 6px;
+      top: 10px;
+    &::after 
+      background: #fff;
+      border-bottom: 13px solid transparent;
+      border-left: 10px solid #eee;
+      border-top: 13px solid transparent;
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+    &:hover 
+      background-color: 1791be;
+      color: white !important;
+      cursor: pointer;
+    &:hover::after 
+      border-left-color: 1791be; 
+    &.active
+      background-color: #7cbb42;
+      color: white;
+    &.active::after 
+      border-left-color: #7cbb42;
+    &.active
+      &:hover 
+        background-color: fff;
+        color: #666;
+      &:hover::after 
+        border-left-color: fff; 
+
+  .add-color
+    color: #1791be;
   .help-text
     display: block
     font-size: .8em

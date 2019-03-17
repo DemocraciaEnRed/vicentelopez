@@ -10,7 +10,7 @@ export default function ThumbsVoto (props) {
             <h2>
               Presupuesto Participativo 2019
             </h2>
-            <h3>Envianos tu propuesta para la votación de este año. Tenés tiempo hasta el 31 de mayo inclusive.</h3>
+            <h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3>
             <Link
               to='/formulario-propuesta'
               className="boton-azul boton-blanco">
