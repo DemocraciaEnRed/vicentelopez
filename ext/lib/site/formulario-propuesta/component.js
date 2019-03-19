@@ -124,7 +124,7 @@ class FormularioPropuesta extends Component {
       })
   }
 
-  getTags = async (formData) => {
+  getTags = () => {
     fetch(`/api/v2/all-tags`, {
       method: 'GET',
       headers: {
