@@ -7,15 +7,15 @@ export default function ThumbsVoto (props) {
       <div className="container-fluid">
         <div className="row cont fondo-azul">
           <div className="subtitulo">
-            <p>
-              A partir del 19 de marzo hasta el 31 de mayo tenés tiempo para presentar tus propuestas
-            </p>
-            <a
-              href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx'
-              target="_blank"
+            <h2>
+              Presupuesto Participativo 2019
+            </h2>
+            <h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3>
+            <Link
+              to='/formulario-propuesta'
               className="boton-azul boton-blanco">
-              Ver Resultados 2018
-            </a>
+              Mandá tu propuesta
+            </Link>
           </div>
         </div>
         <div className="row cont">

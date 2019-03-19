@@ -26,10 +26,12 @@ class FormularioPropuesta extends Component {
       problema: '',
       solucion: '',
       beneficios: '',
-      tags: null,
+      tags: [],
       adminComment: '',
       adminCommentReference: '',
-      state: ''
+      state: '',
+      availableTags: [],
+      selectedTag: '',
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -42,6 +44,7 @@ class FormularioPropuesta extends Component {
   }
 
   componentWillMount () {
+    this.getTags()
     if (this.props.params.id) {
       this.setState({ mode: 'edit' })
       topicStore.findOne(this.props.params.id)
@@ -87,7 +90,7 @@ class FormularioPropuesta extends Component {
       'attrs.problema': this.state.problema,
       'attrs.solucion': this.state.solucion,
       'attrs.beneficios': this.state.beneficios,
-      tags: e.target.elements.tags.value.split(',')
+      tags: this.state.tags
     }
     if (this.state.forum.privileges && this.state.forum.privileges.canChangeTopics && this.state.mode === 'edit') {
       formData['attrs.admin-comment'] = this.state.adminComment
@@ -110,10 +113,33 @@ class FormularioPropuesta extends Component {
         'Content-Type': 'application/json'
       }
     })
+      .then((res) => res.json())
       .then((res) => {
         if (res.status === 200) {
-          browserHistory.push('/propuestas?sort=newest')
+          window.location.href = `/propuestas/topic/${res.results.topic.id}`
         }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  getTags = () => {
+    fetch(`/api/v2/all-tags`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        let theTags = res.map(t => {
+          return t.name
+        })
+        theTags = theTags.filter(t => {
+          return t !== 'Default'
+        })
+        this.setState({ availableTags: theTags })
       })
       .catch((err) => {
         console.log(err)
@@ -139,6 +165,21 @@ class FormularioPropuesta extends Component {
       })
   }
 
+  toggleTag = (tag) => (e) => {
+    // If is inside state.tags, remove from there
+    this.setState((state) => {
+      let theTags = state.tags
+      if(theTags.includes(tag)){
+        return { tags: theTags.filter(t => t !== tag)}      
+      } 
+         theTags.push(tag)
+      return { tags: theTags }      
+    }, function () {
+    console.log(this.state.tags);
+})
+    return;   
+  }
+
   componentWillUpdate (props, state) {
     if (this.props.user.state.rejected) {
       browserHistory.push('/signin?ref=/formulario-propuesta')
@@ -153,20 +194,25 @@ class FormularioPropuesta extends Component {
     return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
-          <h1 className='text-center'>Presupuesto Participativo 2018</h1>
-          <p>Envianos tus propuestas para que sean presentadas en la votación de este año.</p>
+          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2019</h1>
+          <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p>
         </div>
-        <alert className='alert alert-info cronograma'>
+        {/* <alert className='alert alert-info cronograma'>
           <Link style={{ display: 'inline' }} to='/s/acerca-de?scroll=cronograma'>
             La etapa de envío de propuestas ya ha sido cerrada. ¡Muchas gracias por participar!
           </Link>
-        </alert>
+        </alert> */}
         <form className='wrapper' onSubmit={this.handleSubmit}>
+          <p className="more-info">Si querés conocer más del proceso y que propuestas se podes presentar hacé click <Link
+              to='/s/acerca-de'
+              className="">
+              AQUÍ
+            </Link></p>
+          <div className="bar-section">
+            <p className="section-title">Tus datos personales</p>
+            <p className="section-subtitle">Todos estos datos son confidenciales</p>
+          </div>
           <input type='hidden' name='forum' value={forum.id} />
-          <span className='form-section-label'>
-            Datos personales
-          </span>
-          <p className='span-alert'>* todos estos datos son confidenciales</p>
           <div className='form-group'>
             <label className='required' htmlFor='nombre'>
               Nombre y apellido
@@ -178,6 +224,7 @@ class FormularioPropuesta extends Component {
               max='128'
               name='nombre'
               value={this.state['nombre']}
+              placeholder=""
               onChange={this.handleInputChange} />
           </div>
           <div className='form-group'>
@@ -190,6 +237,7 @@ class FormularioPropuesta extends Component {
               type='text'
               max='200'
               name='domicilio'
+              placeholder=""
               value={this.state['domicilio']}
               onChange={this.handleInputChange} />
           </div>
@@ -203,6 +251,7 @@ class FormularioPropuesta extends Component {
               type='text'
               max='50'
               name='documento'
+              placeholder=""
               value={this.state['documento']}
               onChange={this.handleInputChange} />
           </div>
@@ -216,6 +265,7 @@ class FormularioPropuesta extends Component {
               type='text'
               max='50'
               name='telefono'
+              placeholder=""
               value={this.state['telefono']}
               onChange={this.handleInputChange} />
           </div>
@@ -229,16 +279,19 @@ class FormularioPropuesta extends Component {
               type='text'
               max='128'
               name='email'
+              placeholder=""
               value={this.state['email']}
               onChange={this.handleInputChange} />
           </div>
-          <span className='form-section-label'>
-            Propuesta
-          </span>
+           <div className="bar-section">
+            <p className="section-title">Acerca de la propuesta</p>
+            <p className="section-subtitle">(*) Todos estos datos son requeridos</p>
+          </div>
           <div className='form-group'>
             <label className='required' htmlFor='titulo'>
               Título
             </label>
+            <p className="help-text">Elegí un título que ayude a reconocer fácilmente el proyecto</p>
             <input
               className='form-control'
               required
@@ -252,8 +305,9 @@ class FormularioPropuesta extends Component {
             <label className='required' htmlFor='barrio'>
               Barrio
             </label>
+            <p className="help-text">¿En que barrio impacta el proyecto?</p>
             <select
-              className='form-control'
+              className='form-control special-height'
               required
               name='barrio'
               value={this.state['barrio']}
@@ -274,28 +328,37 @@ class FormularioPropuesta extends Component {
             <label className='required'>
                 Etiquetas
             </label>
-            <span className='help-text'>Mencioná acá los Temas vinculados a tu idea. Por ejemplo, "Solidaridad", "Transporte" o "Ambiente".
-              <br/>
-              Escribí cada una y pulsá ENTER o TAB para que se convierta en una etiqueta.
-            </span>
+            <p className='help-text'>Elegí los temas relacionados a tu propuesta </p>
             {
               this.state.mode === 'edit' && this.state.tags &&
-                  <Tags
-                    tags={this.state.tags}
-                    forum={forum.id} />
+                <ul className="tags">
+                {
+                  this.state.availableTags.map((t, index) => {
+                    return (
+                      <li key={index}><span onClick={this.toggleTag(t)} value={t} className={this.state.tags.includes(t) ? 'tag active' : 'tag'}>{t}</span></li>
+                    )
+                  })
+                }
+                </ul>
             }
             {
               this.state.mode === 'new' &&
-                  <Tags
-                    tags={this.state.tags}
-                    forum={forum.id} />
+                <ul className="tags">
+                {
+                  this.state.availableTags.map((t, index) => {
+                    return (
+                      <li key={index}><span onClick={this.toggleTag(t)} value={t} className={this.state.tags.includes(t) ? 'tag active' : 'tag'}>{t}</span></li>
+                    )
+                  })
+                }
+                </ul>
             }
           </div>
           <div className='form-group'>
             <label className='required' htmlFor='problema'>
               Problema o necesidad existente
             </label>
-            <span className='help-text requerido'>Requerido</span>
+            <p className='help-text'>¿Qué problemas querés resolver? ¿a quiénes afecta? ¿Cómo?</p>
             <textarea
               className='form-control'
               required
@@ -308,9 +371,9 @@ class FormularioPropuesta extends Component {
           </div>
           <div className='form-group'>
             <label className='required' htmlFor='solucion' >
-              Propuesta para solucionar el problema
+              La propuesta de solución
             </label>
-            <span className='help-text requerido'>Requerido</span>
+            <p className='help-text'>Describí la propuesta y cómo va a solucionar el problema</p>
             <textarea
               className='form-control'
               required
@@ -325,7 +388,7 @@ class FormularioPropuesta extends Component {
             <label className='required' htmlFor='beneficios'>
               Beneficios que brindará el proyecto al barrio
             </label>
-            <span className='help-text requerido'>Requerido</span>
+            <p className='help-text'>¿Como ayuda este proyecto al barrio? ¿Quiénes se benefician?</p>
             <textarea
               className='form-control'
               required
@@ -341,7 +404,7 @@ class FormularioPropuesta extends Component {
               <label htmlFor='state'>Estado</label>
               <span className='help-text requerido'>Agregar una descripción del estado del proyecto</span>
               <select
-                className='form-control'
+                className='form-control special-height'
                 name='state'
                 value={this.state['state']}
                 onChange={this.handleInputChange}>
@@ -378,12 +441,13 @@ class FormularioPropuesta extends Component {
                 onChange={this.handleInputChange} />
             </div>
           )}
+          <p className="small-banner">La propuesta va a ser revisada por el equipo de la municipalidad de presupuesto participativo que va a definir si el proyecto es factible o no. Si es factible pasará a la etapa de votación.</p>
           <div className='submit-div'>
             <button type='submit' className='submit-btn'>
-              {this.state.mode === 'new' ? 'Enviar tu propuesta' : 'Guardar propuesta'}
+              {this.state.mode === 'new' ? 'Enviar la propuesta' : 'Guardar la propuesta'}
             </button>
           </div>
-
+          <p className="more-info add-color">¡Luego de mandarla, podes volver a editarla!</p>
         </form>
       </div>
     )

@@ -2,6 +2,9 @@ const express = require('express')
 const pick = require('lodash.pick')
 const middlewares = require('lib/api-v2/middlewares')
 const { isCitizenOnProposal } = require('../../proposals')
+const api = require('lib/db-api')
+var utils = require('lib/utils')
+var expose = utils.expose
 
 const app = module.exports = express.Router()
 
@@ -29,6 +32,7 @@ class CantUploadProposal extends Error {
 }
 
 const defaultValues = () => ({
+  'attrs.anio': '2020',
   'attrs.state': 'pendiente',
   'action.method': 'cause',
   tag: '59665fe8724f61003327eb2f'
@@ -38,11 +42,16 @@ const defaultValues = () => ({
 // and the users doesn't have forum privileges.
 const purgeBody = (req, res, next) => {
   if (isCitizenOnProposal(req.user, req.forum)) {
-    return next(new CantUploadProposal())
-    // req.body = Object.assign(
-    // defaultValues(),
-    // pick(req.body, EDITABLE_KEYS)
-  // )
+    // return next(new CantUploadProposal())
+    req.body = Object.assign(
+      defaultValues(),
+      pick(req.body, EDITABLE_KEYS)
+    )
+  } else {
+    req.body = Object.assign(
+      defaultValues(),
+      req.body
+    )
   }
   return next()
 }
@@ -65,3 +74,15 @@ middlewares.forums.privileges.canCreateTopics,
 middlewares.topics.privileges.canEdit,
 purgeBody,
 goToNextRoute)
+
+app.get('/all-tags',
+(req, res, next) => {
+  try{
+    api.tag.all(function (err, tags) {
+    if (err) return _handleError(err, req, res)
+    res.status(200).json(tags.map(expose('id name')))
+    })
+  } catch(err){
+    next(err)
+  }
+})

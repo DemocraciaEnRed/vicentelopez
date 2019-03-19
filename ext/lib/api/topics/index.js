@@ -11,7 +11,7 @@ const formats = {
   formats: {
     tags: /^([a-zA-Z0-9-_]+,?)+$/,
     barrio: /^[a-z0-9-]+$/,
-    ano: /[0-9]+/
+    anio: /[0-9]+/
   }
 }
 
@@ -38,9 +38,9 @@ app.get('/topics',
         format: 'barrio',
         default: ''
       },
-      ano: {
+      anio: {
         type: 'string',
-        format: 'ano'
+        format: 'anio'
       },
       sort: {
         type: 'string',
@@ -58,7 +58,7 @@ app.get('/topics',
   utils.findForum,
   utils.parseStates,
   utils.parseBarrios,
-  utils.parseAnos,
+  utils.parseAnios,
   middlewares.forums.privileges.canView,
   (req, res, next) => {
     const opts = Object.assign({}, req.query)
