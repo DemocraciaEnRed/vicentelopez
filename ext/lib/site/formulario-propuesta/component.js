@@ -203,11 +203,11 @@ class FormularioPropuesta extends Component {
           </Link>
         </alert> */}
         <form className='wrapper' onSubmit={this.handleSubmit}>
-          <p className="more-info">Si querés conocer más del proceso y que propuestas se podes presentar hacé click <Link
+          {/* <p className="more-info">Si querés conocer más del proceso y que propuestas se podes presentar hacé click <Link
               to='/s/acerca-de'
               className="">
               AQUÍ
-            </Link></p>
+            </Link></p> */}
           <div className="bar-section">
             <p className="section-title">Tus datos personales</p>
             <p className="section-subtitle">Todos estos datos son confidenciales</p>
