@@ -117,14 +117,14 @@ class Header extends Component {
 
           <ul className='nav navbar-nav'>
 
-            {/* <div className="header-item">
+            <div className="header-item">
               <Link
                 to='/s/acerca-de'
                 className='header-link'
                 activeStyle={{ color: '#8C1E81' }}>
                   Acerca de
               </Link>
-            </div> */}
+            </div>
             <div className="header-item">
               <Link
                 to='/propuestas'
