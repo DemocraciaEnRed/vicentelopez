@@ -29,8 +29,9 @@ export default class Page extends Component {
         <Anchor id='container'>
           <div className='ext-acerca-de container'>
             <div className="filas">
-              
               <div className="fila faq">
+                <p className='p-padding'>Podés leer el reglamento completo haciendo click <a href="/s/reglamento">aquí</a></p>
+
                 <h3>¿QUÉ ES EL PRESUPUESTO PARTICIPATIVO DE VICENTE LÓPEZ?</h3>
                 <p className='p-padding'>El Presupuesto Participativo de Vicente López es un espacio de participación a través del cual los vecinos proponen y deciden en qué invertir una parte del presupuesto municipal. Todos los años, y desde hace 7 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos. La partida para el 2020 será de $110 millones.</p>
                 <h3>¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?</h3>

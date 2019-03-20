@@ -55,6 +55,8 @@ export default class Page extends Component {
               </div>
             </div>
 
+            <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp.jpg' />
+
             <img controls className='mapa-municipio' src='https://forosvecinales.blob.core.windows.net/assets/mapa_vicente-lopez.jpg' />
           </div>
         </Anchor>
