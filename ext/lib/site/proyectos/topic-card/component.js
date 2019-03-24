@@ -70,10 +70,10 @@ const getBudget = (state) => {
 export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
-  const linkTopic = () => { browserHistory.push(`/proyectos/topic/${topic.id}`) }
+  // const linkTopic = () => { browserHistory.push(`/proyectos/topic/${topic.id}`) }
   return (
-    <Link href={`/proyectos/topic/${topic.id}`} target="_blank">
-    <div className='ext-topic-card' onClick={linkTopic}>
+    <a href={`/proyectos/topic/${topic.id}`} target="_blank">
+    <div className='ext-topic-card'>
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}>
@@ -119,7 +119,7 @@ export default ({ topic, forum }) => {
         </div>
       </div>
     </div>
-    </Link>
+    </a>
 
   )
 }
