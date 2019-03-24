@@ -203,7 +203,7 @@ class FormularioPropuesta extends Component {
           </Link>
         </alert> */}
         <form className='wrapper' onSubmit={this.handleSubmit}>
-          <p className="more-info">Si querés conocer más del proceso y que propuestas se podes presentar hacé click <Link
+          <p className="more-info">Si querés conocer más sobre el proceso y qué propuestas podés presentar, hacé click <Link
               to='/s/acerca-de'
               className="">
               AQUÍ
