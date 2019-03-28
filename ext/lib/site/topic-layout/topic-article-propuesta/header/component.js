@@ -63,7 +63,7 @@ export default class Header extends Component {
         {learnMore}
         {closingAt}
         <h1>{this.props.mediaTitle}</h1>
-        {author}
+        
 
       </header>
     )

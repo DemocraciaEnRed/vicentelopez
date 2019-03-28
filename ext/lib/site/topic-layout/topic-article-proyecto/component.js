@@ -160,7 +160,6 @@ class TopicArticle extends Component {
             <div onClick={hideSidebar} className='topic-overlay' />
         }
         <div className='cover' style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}></div>
-        <AdminActions forum={forum} topic={topic} />
         <Header
           closingAt={topic.closingAt}
           closed={topic.closed}
@@ -170,6 +169,9 @@ class TopicArticle extends Component {
           tags={topic.tags}
           forumName={forum.name}
           mediaTitle={topic.mediaTitle} />
+          <div className='container-project-admin-actions'>
+        <AdminActions forum={forum} topic={topic} />
+          </div>
         {topic.clauses && topic.clauses.length > 0 ?
           <Content clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs[this.getBudget(topic.attrs.state)]} votos={topic.attrs.votos}/> :
           <DefaultContent
@@ -187,7 +189,7 @@ class TopicArticle extends Component {
               title={topic.mediaTitle} />
           )
         }
-        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.anio === '2019' &&
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && (topic.attrs.anio === '2019' || topic.attrs.anio === '2020') &&
           <RelatedProposals id={topic.id} relatedProposals={this.state.relatedProposals}/>
         }
         

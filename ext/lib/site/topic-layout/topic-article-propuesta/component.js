@@ -132,12 +132,11 @@ class TopicArticle extends Component {
             <div onClick={hideSidebar} className='topic-overlay' />
         }
         <div className="banner">
-
           <Header
             closingAt={topic.closingAt}
             closed={topic.closed}
-            author={topic.author}
-            authorUrl={topic.authorUrl}
+            author={null}
+            authorUrl={null}
             tags={topic.tags}
             forumName={forum.name}
             mediaTitle={topic.mediaTitle} />
@@ -145,13 +144,12 @@ class TopicArticle extends Component {
 
         <div className='topic-article-content entry-content'>
          <div className='topic-article-status-container'>
-          <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
         {
           (forum.privileges && forum.privileges.canChangeTopics)
             ? (
               <div className='topic-article-content topic-admin-actions'>
                 <Link href={`/formulario-propuesta/${topic.id}`}>
-                  <a className='btn btn-default btn-sm'>
+                  <a className='btn btn-default'>
                     <i className='icon-pencil' />
                     &nbsp;
                     {t('proposal-article.edit')}
@@ -165,7 +163,7 @@ class TopicArticle extends Component {
                  <div className='topic-article-content topic-admin-actions'>
                    <a
                      href={`/formulario-propuesta/${topic.id}`}
-                     className='btn btn-default btn-sm'>
+                     className='btn btn-default'>
                      <i className='icon-pencil' />
                       &nbsp;
                      {t('proposal-article.edit')}
@@ -174,6 +172,7 @@ class TopicArticle extends Component {
                )
 
         }
+          <div className='topic-article-status'>Propuesta {this.getEstado(topic.attrs.state)} </div>
         </div>
           <div className='topic-article-nombre'>Autor: {topic.attrs.nombre}</div>
           { /* <h2 className='topic-article-subtitulo'>subtítulo de la propuesta</h2> */ }
@@ -188,8 +187,8 @@ class TopicArticle extends Component {
           <span className='topic-article-span'>Beneficios que brindará el proyecto al barrio</span>
           {topic.attrs.problema && <p className='topic-article-p'>{topic.attrs.beneficios} </p> }
         </div>
-        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.state !== 'integrado' && topic.attrs.anio === '2019' &&
-          <div className='alert alert-success alert-proyecto' role='alert'>
+        {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.state !== 'integrado' && (topic.attrs.anio === '2019' || topic.attrs.anio === '2020')  &&
+          <div className='topic-article-content alert alert-success alert-proyecto' role='alert'>
             Podés ver el proyecto final presentado en la votación <Link to={`/proyectos/topic/${topic.id}`} className='alert-link'>aquí</Link>.
           </div>
         }

@@ -3,11 +3,14 @@ import t from 't-component'
 import urlBuilder from 'lib/url-builder'
 
 export default ({ topic, forum }) => {
-  if (!topic.privileges.canEdit) return null
+  // let hasPriviliges = topic.priviliges && topic.privileges.canEdit
+  let hasPriviliges = forum.privileges && forum.privileges.canChangeTopics
+  // if (!topic.privileges.canEdit) return null
+  if (!hasPriviliges) return null
 
   return (
     <div className='topic-article-content topic-admin-actions'>
-      {topic.privileges.canEdit && (
+      {hasPriviliges && (
         <a
           href={urlBuilder.for('admin.topics.id', {
             forum: forum.name,

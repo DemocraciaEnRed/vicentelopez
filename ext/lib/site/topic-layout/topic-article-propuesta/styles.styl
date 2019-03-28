@@ -271,7 +271,7 @@ topicColor2 = #999
   margin-bottom: 15px;
 
 .topic-article-status
-  background-color: #444;
+  background-color: #8c1e81;
   position: relative;
   left: 0;
   display: inline-block;
@@ -279,14 +279,14 @@ topicColor2 = #999
   color: #FFF;
   font-weight: bold;
   line-height: normal;
-  padding: 4px 3px;
+  padding: 8px 11px;
   &::before
-    border-bottom: 14px solid transparent;
-    border-left: 13px solid #444;
-    border-top: 13px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 15px solid #8c1e81;
+    border-top: 17px solid transparent;
     content: '';
     position: absolute;
-    right: -13px;
+    right: -15px;
     top: 0;
 //   font-size: .9em
 //   color:#fff
@@ -335,8 +335,9 @@ topicColor2 = #999
       span 
         font-weight: bold
   &.alert-proyecto
-    max-width: 65%
-    text-align: center
+    max-width: 848px;
+    margin-bottom: 10px;
+    text-align: left
 .topic-article-header
   &.topic-article-content
     header
@@ -352,14 +353,15 @@ topicColor2 = #999
     width: 100%
     display: block
     margin: 0 auto
-    margin-bottom:50px
+    margin-bottom:40px
     height: 280px
     background-size: cover
     background-image: unquote("url('ext/lib/site/topic-layout/topic-article-propuesta/header.jpg')") 
     background-repeat: no-repeat
     padding: 0
     @media(max-width: 768px)
-      height: 150px
+      height: auto
+      margin-bottom: 0;
     header
       padding-top:245px !important
       @media(max-width: 768px)
@@ -369,17 +371,17 @@ topicColor2 = #999
 
 .topic-article-content
   &.topic-admin-actions
-    position: absolute;
-    top: 0;
-    right: 0;
+    padding: 0;
+    margin: 10px 0 20px;
     .btn-default
       color: #8c1e81;
       background-color: #fff;
       border: 1px solid #8c1e81
-      padding: 5px 8px;
+      padding: 15px 5px;
       border-radius: 3px;
+      width: 100%;
       @media(max-width: 768px)
-        padding: 3px 5px
+        padding: 10px 5px
       &:hover
         color: #FFF;
         background-color: #8c1e81
