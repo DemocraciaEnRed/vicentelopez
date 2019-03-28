@@ -41,7 +41,7 @@ export default class Content extends Component {
               </div>
             </div>
             <div className='box-footer'>
-              <span className='hashtag'>#ForosVecinalesVteLopez</span>
+              <span className='hashtag'>#PresupuestoParticipativoVteLopez</span>
             </div>
             <Link
               to='/s/datos'

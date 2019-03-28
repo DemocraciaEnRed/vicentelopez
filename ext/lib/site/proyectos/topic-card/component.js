@@ -80,7 +80,10 @@ export default ({ topic, forum }) => {
         {topic.attrs && topic.attrs.hasOwnProperty('budget') && topic.attrs.budget !== 0 &&
           <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
         }
-        {topic.attrs && topic.attrs.state && !(topic.attrs.anio === '2019' && topic.attrs.state === 'factible') && (
+        {topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
+          <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
+        }
+        {topic.attrs && topic.attrs.state && !((topic.attrs.anio === '2019' || topic.attrs.anio === '2020') && topic.attrs.state === 'factible') && (
           <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
         )}
       </div>
