@@ -4,6 +4,9 @@ import Footer from 'ext/lib/site/footer/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
+import DonutChart from 'ext/lib/site/graphics/component'
+const distribucionProyectosData = require('./distribucion-proyectos.json')
+const ejecucionProyectosData = require('./ejecucion-proyectos.json')
 
 export default class Page extends Component {
   componentDidMount () {
@@ -137,29 +140,11 @@ export default class Page extends Component {
             </article>
 
             <article className="seccion-datos infogram">
-              <h3>Distribución de proyectos por área temática por año</h3>
-              <figure className="graph-box">
-                <iframe
-                  src="https://e.infogram.com/11f7f34e-4534-4569-80c2-7dc10920f923?src=embed"
-                  title="Distribución de proyectos por área temática por año"
-                  width={window.matchMedia('(min-width: 550px)').matches ? '550' : '360'}
-                  height={window.matchMedia('(min-width: 550px)').matches ? '594' : '360'}
-                  scrolling="no"
-                  frameBorder="0" />
-              </figure>
+              <DonutChart data={distribucionProyectosData} title="Distribución de proyectos por área temática por año"/>
             </article>
 
             <article className="seccion-datos infogram">
-              <h3 className='h3-tittle-spacing'>Ejecución % del Presupuesto por área temática por año</h3>
-              <figure className="graph-box">
-                <iframe
-                  src="https://e.infogram.com/58c318ca-86b9-4d29-8793-8dc412551f54?src=embed"
-                  title="Distribución de proyectos por área temática por año"
-                  width={window.matchMedia('(min-width: 550px)').matches ? '550' : '360'}
-                  height={window.matchMedia('(min-width: 550px)').matches ? '594' : '360'}
-                  scrolling="no"
-                  frameBorder="0" />
-              </figure>
+              <DonutChart data={ejecucionProyectosData} title="Ejecución % del Presupuesto por área temática por año"/>
             </article>
 
             <div className='descargas'>
