@@ -12,10 +12,12 @@
   },
   "license": "GPL-3.0",
   "dependencies": {
+    "chart.js": "^2.8.0",
     "flickity": "2.0.8",
     "jump.js": "1.0.2",
     "lodash.debounce": "4.0.8",
     "lodash.pick": "4.4.0",
+    "react-chartjs-2": "^2.7.6",
     "react-pdf-js": "^3.0.7"
   },
   "devDependencies": {
