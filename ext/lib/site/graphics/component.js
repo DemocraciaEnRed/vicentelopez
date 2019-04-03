@@ -48,9 +48,28 @@ export default class DonutChart extends Component {
         const chartWidth = window.matchMedia('(min-width: 550px)').matches ? 550 : 360;
         const chartHeight = window.matchMedia('(min-width: 550px)').matches ? 450 : 360;
         const legendOptions = {
-            position: 'bottom'
+            position: 'bottom',
+            labels: {
+                usePointStyle: true,
+                padding: 15,
+                fontSize: 12,
+                fontColor: '#4d4d4d',
+                fontStyle: 'bold'
+            }
         };
-        
+
+        const chartOptions = {
+            defaultFontFamily: "'Open Sans', 'Arial', sans-serif",
+            responsive: false, 
+            cutoutPercentage: 65,
+            tooltips: {
+                xPadding: 10,
+                yPadding: 10,
+                caretSize: 8,
+                bodyFontStyle: 'bold'
+            }
+        };
+
 		return (
             <div className="donut-chart-wrapper">
                 <h3>{this.props.title}</h3>
@@ -76,8 +95,9 @@ export default class DonutChart extends Component {
                         </div>
                     </div>
                 </div>
-                <Doughnut ref={(reference) => this.chartReference = reference} width={chartWidth} height={chartHeight} options={{responsive: false, cutoutPercentage: 65}}
-                data={chartData[this.state.yearSelected]} legend={legendOptions}/>
+                <Doughnut ref={(reference) => this.chartReference = reference} width={chartWidth} height={chartHeight} 
+                options={chartOptions} legend={legendOptions}
+                data={chartData[this.state.yearSelected]} />
             </div>
 		)
 	}
