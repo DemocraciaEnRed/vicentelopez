@@ -32,6 +32,7 @@ class FormularioPropuesta extends Component {
       state: '',
       availableTags: [],
       selectedTag: '',
+      acceptedTerms: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -63,7 +64,8 @@ class FormularioPropuesta extends Component {
             tags: topic.tags,
             state: topic.attrs.state,
             adminComment: topic.attrs['admin-comment'],
-            adminCommentReference: topic.attrs['admin-comment-reference']
+            adminCommentReference: topic.attrs['admin-comment-reference'],
+            acceptedTerms: true
           })
         })
         .catch((err) => console.log(err))
@@ -180,6 +182,42 @@ class FormularioPropuesta extends Component {
     return;   
   }
 
+  showWholeForm = ()  => {
+    this.setState({
+      acceptedTerms: true
+    })
+  }
+
+  hasErrors = () => {
+    if (this.state.nombre === '') return true
+    if (this.state.domicilio === '') return true
+    if (this.state.documento === '') return true
+    if (this.state.telefono === '') return true
+    if (this.state.email === '') return true
+    if (this.state.titulo === '') return true
+    if (this.state.barrio === '') return true
+    if (this.state.problema === '') return true
+    if (this.state.solucion === '') return true
+    if (this.state.beneficios === '') return true
+    return false;
+
+  }
+
+  hasErrorsField = (field) => {
+    if(this.state[field] === '') return true
+    return false;
+  }
+
+  handleCheckboxInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
   componentWillUpdate (props, state) {
     if (this.props.user.state.rejected) {
       browserHistory.push('/signin?ref=/formulario-propuesta')
@@ -285,8 +323,30 @@ class FormularioPropuesta extends Component {
           </div>
            <div className="bar-section">
             <p className="section-title">Acerca de la propuesta</p>
-            <p className="section-subtitle">(*) Todos estos datos son requeridos</p>
+            </div>
+            <div className="upload-info-container">
+              <p className="important">Requisitos para que los proyectos sean factibles:</p>
+              <ul>
+                <li>Serán factibles las propuestas de obras o equipamiento para entidades sin fines de lucro (polideportivos, sociedades de fomento,  centros de jubilados, espacios públicos, escuelas de gestión pública, centros de salud    municipales, etc).</li>
+                <li>Serán factibles campañas o talleres sobre un tema específico cuya ejecución sólo sea durante el 2020.</li>
+                <li>No serán factibles las propuestas que impliquen un gasto corriente (recursos humanos que incrementen la planta municipal).</li>
+                <li>Las propuestas deben ser presentadas para un barrio en concreto (No puede ser algo para el Municipio entero)</li>
+                <li>El presupuesto máximo de la propuesta no puede superar los $ 3.000.000.</li>
+              </ul>
+              <hr />
+            { !this.state.acceptedTerms ?
+              <section>
+              <p className="pre-fake-checkbox"><b>Para comenzar a completar el formulario, debe aceptar los términos y condiciones</b></p>
+               <div onClick={this.showWholeForm} className='fake-checkbox'>
+                Acepto los términos y condiciones
+              </div>
+              </section> :
+              <p className="acepted-terms"><b>¡Gracias por aceptar los términos y condiciones!</b></p>
+
+            }
           </div>
+          {this.state.acceptedTerms && 
+          <section>
           <div className='form-group'>
             <label className='required' htmlFor='titulo'>
               Título
@@ -442,12 +502,33 @@ class FormularioPropuesta extends Component {
             </div>
           )}
           <p className="small-banner">La propuesta va a ser revisada por el equipo de la municipalidad de presupuesto participativo que va a definir si el proyecto es factible o no. Si es factible pasará a la etapa de votación.</p>
+          {
+             this.hasErrors() && 
+             <div className="error-box">
+             <ul>
+                  {this.hasErrorsField('nombre') && <li className="error-li">El campo "Nombre y apellido" del representante no puede ser vacio</li> }
+                  {this.hasErrorsField('domicilio') && <li className="error-li">El campo "Domicilio" del representante no puede ser vacio</li> }
+                  {this.hasErrorsField('documento') && <li className="error-li">El campo "Documento" del representante no puede ser vacio</li> }
+                  {this.hasErrorsField('telefono') && <li className="error-li">El campo "Telefono" del representante no puede ser vacio</li> }
+                  {this.hasErrorsField('email') && <li className="error-li">El campo "Email" del representante no puede ser vacio</li> }
+                  {this.hasErrorsField('titulo') && <li className="error-li">El campo "Título" de la propuesta no puede ser vacio</li> }
+                  {this.hasErrorsField('barrio') && <li className="error-li">El campo "Barrio" de la propuesta no puede ser vacio</li> }
+                  {this.hasErrorsField('problema') && <li className="error-li">El campo "Problema" de la propuesta no puede ser vacio</li> }
+                  {this.hasErrorsField('solucion') && <li className="error-li">El campo "Solución" de la propuesta no puede ser vacio</li> }
+                  {this.hasErrorsField('beneficios') && <li className="error-li">El campo "Beneficios" de la propuesta no puede ser vacio</li> }
+             </ul>
+             </div>
+          }
           <div className='submit-div'>
-            <button type='submit' className='submit-btn'>
-              {this.state.mode === 'new' ? 'Enviar la propuesta' : 'Guardar la propuesta'}
-            </button>
+            { !this.hasErrors() && 
+              <button type='submit' className='submit-btn'>
+                {this.state.mode === 'new' ? 'Enviar la propuesta' : 'Guardar la propuesta'}
+              </button>
+            }
           </div>
           <p className="more-info add-color">¡Luego de mandarla, podes volver a editarla!</p>
+          </section>
+          }
         </form>
       </div>
     )

@@ -1,4 +1,5 @@
 const express = require('express')
+const notifier = require('democracyos-notifier')
 const pick = require('lodash.pick')
 const middlewares = require('lib/api-v2/middlewares')
 const { isCitizenOnProposal } = require('../../proposals')
@@ -56,6 +57,28 @@ const purgeBody = (req, res, next) => {
   return next()
 }
 
+const sendToAdmin = (req, res, next) => {
+  // console.log(req.body)
+  notifier.now('new-proposal', {
+    topic: {
+      mediaTitle: req.body.mediaTitle,
+      tags: req.body.tags,
+      nombre: req.body['attrs.nombre'],
+      domicilio: req.body['attrs.domicilio'],
+      documento: req.body['attrs.documento'],
+      telefono: req.body['attrs.telefono'],
+      email: req.body['attrs.email'],
+      barrio: req.body['attrs.barrio'],
+      problema: req.body['attrs.problema'],
+      solucion: req.body['attrs.solucion'],
+      beneficios: req.body['attrs.beneficios'],
+    }
+  }).then(() => {
+    next()
+  }).catch(next)
+}
+
+
 // continue to original DemocracyOS's Route
 const goToNextRoute = (req, res, next) => next('route')
 
@@ -64,6 +87,7 @@ middlewares.users.restrict,
 middlewares.forums.findFromBody,
 middlewares.forums.privileges.canCreateTopics,
 purgeBody,
+sendToAdmin,
 goToNextRoute)
 
 app.put('/topics/:id',

@@ -95,15 +95,18 @@
     .submit-div
       text-align: center
       .submit-btn
+        color: #7cbb42
+        font-weight: 800
+        border: 2px solid #7cbb42
+        background-color: #FFF;
         border-radius: 10px
-        background: #7cbb42
-        color: #fff
-        border: none
         padding: 10px 40px
-        font-weight: 600;
-        font-size: 25px
+        font-weight: 800;
+        font-size: 21px
+        cursor: pointer
         &:hover
-          cursor: pointer
+          background-color: #7cbb42;
+          color: #FFF
     .form-section-label
       color: #9e41b9
       font-size: 18px
@@ -200,3 +203,55 @@
   .cronograma
     tex-align:right
     margin-top: 40px
+
+  .upload-info-container
+    // margin-top: 0px;
+    // padding: 0px;
+    //border: 2px solid #000
+    //border-radius: 5px;
+    background-color: #FFF;
+    p.important
+      margin: 0px 0 10px;
+      padding: 10px;
+      color: #FFF
+      font-size:21px;
+      font-weight: 800;
+      background-color: #7cbb42
+      text-align: center;
+    p.question
+      color: #000
+      font-size:21px;
+    p.pre-fake-checkbox
+      text-align: center;
+      color: #9e41b9
+    p.acepted-terms
+      text-align: center;
+      color: #7cbb42;
+    .fake-checkbox
+      padding: 10px; 
+      font-size:20px;
+      color: #7cbb42
+      font-weight: 800
+      border: 2px solid #7cbb42
+      border-radius: 10px
+      cursor: pointer
+      text-align: center
+      @media screen and (min-width: 764px)
+        margin: 0 auto
+        width: 50%;
+      &:hover
+        background-color: #7cbb42;
+        color: #FFF
+  
+  .error-box
+    border: 2px solid red;
+    border-radius: 10px
+    padding: 15px;
+    margin-bottom: 10px
+    ul
+      margin-bottom: 0
+    li.error-li
+      color: red;
+
+
+
