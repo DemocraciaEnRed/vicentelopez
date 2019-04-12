@@ -2,8 +2,6 @@ FROM democracyos/democracyos:2.11.4
 
 MAINTAINER Francisco Pensa <francisco@democracyos.io>
 
-COPY migrations/* /usr/src/migrations
-
 ENV LOCALE=es \
   AVAILABLE_LOCALES=es,en \
   ENFORCE_LOCALE=true \
