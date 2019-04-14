@@ -9,7 +9,9 @@ const interval = setInterval(function () {
   notifier.init().then(() => {
     ;[
       require('./jobs/welcome-email'),
-      require('./jobs/new-proposal')
+      require('./jobs/new-proposal'),
+      require('./jobs/update-proposal'),
+      require('./jobs/update-project')
     ].forEach((job) => job(notifier))
   }).catch((err) => {
     console.error('Error loading ext/lib/notifier: ', err)
