@@ -78,6 +78,68 @@ const sendToAdmin = (req, res, next) => {
   }).catch(next)
 }
 
+// Los estados en los cuales se enviaria una notificacion al autor serian en los siguientes.
+// Pendiente -> Factible
+// Pendiente -> En proceso
+// Pendiente -> No Factible
+// Pendiente -> Integrado
+// Factible -> Integrada
+// Factible -> En preparacion
+// En preparacion -> En proceso de compra
+// En proceso de compra -> En Ejecucion
+// En ejecucion -> Finalizado
+// -------------------------------
+// Los estados son:
+// factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado
+const automata = {
+  pendiente: ['factible', 'no-factible', 'integrado', 'preparacion'],
+  factible: ['integrado', 'preparacion'],
+  preparacion: ['compra'],
+  compra: ['ejecucion'],
+  ejecucion: ['finalizado']
+}
+
+
+const sendToAuthor = (req, res, next) => {
+  if (automata[req.topic.attrs.state]){
+    if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])){
+      switch (req.body['attrs.state']) {
+        case 'pendiente':
+        case 'factible':
+        case 'no-factible':
+        case 'integrado':
+          notifier.now('update-proposal', {
+            topic: {
+              id: req.topic['_id'],
+              mediaTitle: req.body.mediaTitle,
+              authorName: req.body['attrs.nombre'],
+              authorEmail: req.body['attrs.email']
+            }
+          }).then(() => {
+            next()
+          }).catch(next)
+          break;
+        default:
+          notifier.now('update-project', {
+            topic: {
+              id: req.topic['_id'],
+              mediaTitle: req.body.mediaTitle,
+              authorName: req.body['attrs.nombre'],
+              authorEmail: req.body['attrs.email']
+            }
+          }).then(() => {
+            next()
+          }).catch(next)
+          break;
+      }
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+}
+
 
 // continue to original DemocracyOS's Route
 const goToNextRoute = (req, res, next) => next('route')
@@ -97,6 +159,7 @@ middlewares.forums.findFromTopic,
 middlewares.forums.privileges.canCreateTopics,
 middlewares.topics.privileges.canEdit,
 purgeBody,
+sendToAuthor,
 goToNextRoute)
 
 app.get('/all-tags',

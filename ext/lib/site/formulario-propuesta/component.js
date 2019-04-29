@@ -127,25 +127,66 @@ class FormularioPropuesta extends Component {
   }
 
   getTags = () => {
-    fetch(`/api/v2/all-tags`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        let theTags = res.map(t => {
-          return t.name
-        })
-        theTags = theTags.filter(t => {
-          return t !== 'Default'
-        })
-        this.setState({ availableTags: theTags })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    let theTags = [
+      'ACCESIBILIDAD',
+      'ADULTOS MAYORES',
+      'MEDIO AMBIENTE',
+      'ANIMALES',
+      'BARRIOS VULNERABLES',
+      'BASURA',
+      'CIUDADANÍA',
+      'CULTURA',
+      'DEPORTE',
+      'DISCAPACIDAD',
+      'EDUCACIÓN',
+      'EMPLEO',
+      'ESPACIO PÚBLICO',
+      'ESPACIOS VERDES',
+      'HABITAT',
+      'ILUMINACIÓN',
+      'INFRAESTRUCTURA',
+      'JÓVENES',
+      'OFICIOS',
+      'NIÑEZ',
+      'RAMPAS',
+      'RECICLAJE',
+      'SALUD',
+      'SEGURIDAD',
+      'SEMÁFOROS',
+      'SEÑALIZACIÓN',
+      'SUSTENTABILIDAD',
+      'TRANSPORTE',
+      'VEREDAS',
+      'CARAPACHAY',
+      'LA LUCILA',
+      'MUNRO',
+      'OLIVOS',
+      'VICENTE LOPEZ',
+      'VILLA ADELINA',
+      'VILLA MARTELLI',
+      'FLORIDA ESTE',
+      'FLORIDA OESTE',
+    ]
+    // fetch(`/api/v2/all-tags`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     let theTags = res.map(t => {
+    //       return t.name
+    //     })
+    //     theTags = theTags.filter(t => {
+    //       return t !== 'Default'
+    //     })
+    //     this.setState({ availableTags: theTags })
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
+    this.setState({ availableTags: theTags })
   }
 
   editarPropuesta (formData) {
