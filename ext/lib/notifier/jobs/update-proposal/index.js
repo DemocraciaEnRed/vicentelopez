@@ -2,7 +2,6 @@ const utils = require('democracyos-notifier/lib/utils')
 const template = require('./template')
 
 const jobName = 'update-proposal'
-const subject = 'Tu propuesta ha sido actualizada'
 
 module.exports = function updateProposal(notifier) {
   const { db, agenda, mailer } = notifier
@@ -17,7 +16,7 @@ module.exports = function updateProposal(notifier) {
       })
       mailer.send({
         to: data.topic.authorEmail,
-        subject,
+        subject: `${data.topic.mediaTitle}: ¡Tu propuesta ha sido actualizada!`,
         html
       })
       done()

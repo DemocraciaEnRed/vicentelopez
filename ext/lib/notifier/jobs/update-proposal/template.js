@@ -12,9 +12,13 @@ module.exports = ({
 }) => html`
   ${styles}
   <p>${topic.authorName},</p>
-  <p>La propuesta "${topic.mediaTitle}" ha sido actualizada.
-  <br>Para ver los cambios, lo invitamos a ingresar al siguiente link:
+  <p>¡El estado de tu propuesta "${topic.mediaTitle}" ha sido actualizada!
+  <br>Podrás ver los cambios haciendo click acá:
   <br><a href="https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/${topic.id}">https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/${topic.id}</a></p>
-  <p>Muchas gracias,</p>
-  <p>PRESUPUESTO PARTICIPATIVO DE VICENTE LOPEZ</p>
+  <p>Muchas gracias por tu aporte. ¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
+  <p>
+    PRESUPUESTO PARTICIPATIVO DE VICENTE LOPEZ<br>
+    #PresupuestoParticipativo #VLParticipa.<br>
+    <a href="https://presupuestoparticipativo.vicentelopez.gob.ar">https://presupuestoparticipativo.vicentelopez.gob.ar/</a>   
+  </p>
 `.toString()
