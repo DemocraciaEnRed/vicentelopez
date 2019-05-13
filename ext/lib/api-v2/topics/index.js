@@ -141,6 +141,45 @@ const sendToAuthor = (req, res, next) => {
 }
 
 
+const sendToUsers = (req, res, next) => {
+  if (automata[req.topic.attrs.state]){
+    if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])){
+      switch (req.body['attrs.state']) {
+        case 'pendiente':
+        case 'factible':
+        case 'no-factible':
+        case 'integrado':
+          notifier.now('subscriber-update-proposal', {
+            topic: {
+              id: req.topic['_id'],
+              mediaTitle: req.body.mediaTitle,
+              subscribers: req.topic.attrs.subscribers
+            }
+          }).then(() => {
+            next()
+          }).catch(next)
+          break;
+        default:
+          notifier.now('subscriber-update-project', {
+            topic: {
+              id: req.topic['_id'],
+              mediaTitle: req.body.mediaTitle,
+              subscribers: req.topic.attrs.subscribers
+            }
+          }).then(() => {
+            next()
+          }).catch(next)
+          break;
+      }
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+}
+
+
 // continue to original DemocracyOS's Route
 const goToNextRoute = (req, res, next) => next('route')
 
@@ -160,6 +199,7 @@ middlewares.forums.privileges.canCreateTopics,
 middlewares.topics.privileges.canEdit,
 purgeBody,
 sendToAuthor,
+sendToUsers,
 goToNextRoute)
 
 app.get('/all-tags',
