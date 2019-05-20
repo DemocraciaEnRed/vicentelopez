@@ -2,45 +2,27 @@ version: '3'
 
 services:
   app:
-    # image: democraciaenred/vicentelopez:latest
     build: .
     command: ["./node_modules/.bin/gulp", "bws"]
     environment:
       - NODE_ENV=development
       - DEBUG=democracyos*
-      # - MONGO_URL=mongodb://localhost:27017/forosvecinales-dev
-      - MONGO_URL=mongodb://localhost:27017/vl-development
-      # - MONGO_URL=mongodb://mongo/development
-      # - MONGO_URL=mongodb://f5SeN2B3m9NiFL:gA17L2QFhgI9f1@aws-us-east-1-portal.28.dblayer.com:21949/vl-forosvecinales-test?ssl=true
-      - ORGANIZATION_NAME=Presupuesto Participativo
+      - MONGO_URL=mongodb://mongo/development
+      - ORGANIZATION_NAME=DemocracyOS Fork
       # Add your email here!
-      - AUTH_FACEBOOK_CLIENT_ID=1714285248820062
-      - AUTH_FACEBOOK_CLIENT_SECRET=6c6f17a38c56488627cc6f3118c0e284
-      - FACEBOOK_SIGNIN=true
-      - HOST=localhost
-      # - HTTPS_REDIRECT=no-redirect
-      - JWT_SECRET=6BB8C00A05ECEA4C04E81BEFB13B9FBBC3175E47839644CCC1CCA1D4641FB980FBBC3175E47839644CCC1CCA1D4641FB980
-      # - NOTIFICATIONS_NODEMAILER={"host":"smtp.mailgun.org","port":465,"secure":true,"auth":{"user":"postmaster@mg.democracyos.org","pass":"9a3acf985c834e86a2b3acaf4778f887"}}
-      - NOTIFICATIONS_NODEMAILER={"host":"smtp.mailtrap.io","port":2525,"auth":{"user":"a25e4cb76d8eb0","pass":"f304115d9cf487"}}
-      - PORT=3000
-      # - PROTOCOL=https
-      - STAFF=guillermocroppi@gmail.com
-      - NOTIFICATIONS_MAILER_EMAIL=guillermocroppi@gmail.com
-    # links:
-    #   - mongo
+      - STAFF=email@example.com
+    links:
+      - mongo
     ports:
       - 3000:3000
-      # - 27017:27017
     volumes:
       - ./ext/lib:/usr/src/ext/lib
       - ./public:/usr/src/public
-      # - ./migrations/1554386241266-updateTags.js:/usr/src/migrations/1554386241266-updateTags.js
     tty: true
-    network_mode: "host"
 
-  # mongo:
-  #   image: mongo:3.2
-  #   ports:
-  #     - 27017:27017
-  #   volumes:
-  #     - ./tmp/db:/data/db
+  mongo:
+    image: mongo:3.2
+    ports:
+      - 27017:27017
+    volumes:
+      - ./tmp/db:/data/db
