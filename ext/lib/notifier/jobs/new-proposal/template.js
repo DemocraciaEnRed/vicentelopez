@@ -27,7 +27,7 @@ module.exports = ({
   <h1>Problema</h1>
   <p>${topic.problema}</p>
   <h1>Solución</h1>
-  <p>${topic.problema}</p>
+  <p>${topic.solucion}</p>
   <h1>Beneficios</h1>
   <p>${topic.beneficios}</p>
   <br />
