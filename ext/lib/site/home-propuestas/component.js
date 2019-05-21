@@ -201,6 +201,29 @@ class HomePropuestas extends Component {
     }).catch((err) => { throw err })
   }
 
+  handleSubscribe = (id) => {
+    const { user } = this.props
+
+    if (user.state.rejected) {
+      return browserHistory.push({
+        pathname: '/signin',
+        query: { ref: window.location.pathname }
+      })
+    }
+
+    // WIP
+    const subscribeURL =`/ext/api/topics/${id}/subscribe` // TO DO CONFIRM URL
+    window.fetch(subscribeURL, {
+      credentials: 'include',
+      method: 'POST',
+      body: {
+        userID: user.state.value.id
+      }
+    }).then((res) => {
+      //set state for reloading data
+    }).catch((err) => { throw err })
+  }
+
   render () {
     const { forum, topics, tags } = this.state
     return (
@@ -254,6 +277,7 @@ class HomePropuestas extends Component {
               )}
               {topics && topics.map((topic, i) => (
                 <TopicCard
+                  onSubscribe={this.handleSubscribe}
                   onVote={this.handleVote}
                   key={`${topic.id}-${i}`}
                   forum={forum}

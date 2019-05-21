@@ -47,8 +47,9 @@ export class Subscribe extends Component {
         body: {
           userID: this.props.user.state.value.id
         }
-      })
-      .catch((err) => { throw err })
+      }).then((res) => {
+        //set state for reloading data
+      }).catch((err) => { throw err })
   }
 
   render () {
