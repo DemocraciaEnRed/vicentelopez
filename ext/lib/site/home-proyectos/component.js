@@ -38,7 +38,7 @@ export class HomeProyectos extends Component {
       anio: [],
       barrio: [],
       state: [],
-      stage: 'votacion',
+      stage: 'seguimiento', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018. 
       sort: ['barrio']
     }
   }
@@ -154,7 +154,7 @@ export class HomeProyectos extends Component {
 
   changeStage = () => {
     this.setState((prevState) => {
-      return {
+      return {  
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
         anio: prevState.stage === 'seguimiento' ? ['2019'] : ['2018', '2019'],
         barrio: [],
