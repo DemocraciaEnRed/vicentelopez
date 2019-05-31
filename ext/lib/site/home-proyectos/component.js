@@ -38,7 +38,8 @@ export class HomeProyectos extends Component {
       anio: [],
       barrio: [],
       state: [],
-      stage: 'seguimiento', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018. 
+      // puede ser 'seguimiento' o 'votacion'
+      stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018. 
       sort: ['barrio']
     }
   }
