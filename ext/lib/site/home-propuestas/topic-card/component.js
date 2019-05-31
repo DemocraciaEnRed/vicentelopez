@@ -27,15 +27,21 @@ export class TopicCard extends Component {
   }
   setStateFromProps(props) {
     const { topic, user } = props
-    const userSuscribed = user.state.value ? topic.attrs.subscribers.find(user => user === user.state.value.id) : false;
+
+    let userAttrs = user.state.fulfilled && (user.state.value || {})
+
+    const userSuscribed = userAttrs && topic.attrs.subscribers ? topic.attrs.subscribers.find(user => user === userAttrs.id) : false;
+    // const userSuscribed = true
 
     return this.setState({
       subscribed: !!userSuscribed
     })
+    
   }
   render() {
     const { topic, onVote, onSubscribe } = this.props
     const { subscribed } = this.state
+    
     return (
       <div className='ext-topic-card ideas-topic-card'>
         <div className='topic-card-info'>
@@ -73,7 +79,7 @@ export class TopicCard extends Component {
         <div className='topic-card-footer'>
           <div className='subscribe-wrapper'>
             <div className='participants'>
-              {topic.attrs.subscribers.length}
+              {topic.attrs.subscribers && topic.attrs.subscribers.length || 0}
               &nbsp;
             <span className={`icon-bell ${subscribed ? 'blue' : 'gray'}`} />
             </div>

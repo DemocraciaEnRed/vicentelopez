@@ -215,12 +215,29 @@ class HomePropuestas extends Component {
     const subscribeURL =`/api/v2/topics/${id}/subscribe` // TO DO CONFIRM URL
     window.fetch(subscribeURL, {
       credentials: 'include',
-      method: 'POST',
-      body: {
-        userID: user.state.value.id
+      method: 'POST'
+    }).then((res) => res.json())
+    .then(res => {
+      let index = this.state.topics.findIndex(topic => {
+        return topic.id == id
+      })
+      let topicsCopy = this.state.topics
+      console.log(res)
+      if(res.message === 'Suscribed') {
+        if(topicsCopy[index].attrs.subscribers){
+          topicsCopy[index].attrs.subscribers.push(user.state.value.id)
+        } else {
+          topicsCopy[index].attrs.subscribers = [user.state.value.id]
+        }
       }
-    }).then((res) => {
-      //set state for reloading data
+      else {
+        if(topicsCopy[index].attrs.subscribers){
+          topicsCopy[index].attrs.subscribers = topicsCopy[index].attrs.subscribers.filter( s => s != user.state.value.id)
+        }
+      }
+      this.setState({
+        topics: topicsCopy
+      })
     }).catch((err) => { throw err })
   }
 

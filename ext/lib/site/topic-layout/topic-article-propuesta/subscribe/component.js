@@ -20,13 +20,16 @@ export class Subscribe extends Component {
 
   setStateFromProps (props) {
     const { topic, user } = props
-    const userId = user.state.value.id;
-    const userSuscribed = topic.attrs.subscribers.find( user => user === userId );
+    
+    let userAttrs = user.state.fulfilled && (user.state.value || {})
+
+    const userSuscribed = userAttrs && topic.attrs.subscribers ? topic.attrs.subscribers.find(user => user === userAttrs.id) : false;
  
     return this.setState({
       showLoginMessage: false,
       showResults: topic.closed, 
-      subscribed: !!userSuscribed
+      subscribed: !!userSuscribed,
+      subscribersCount: topic.attrs.subscribers ? topic.attrs.subscribers.length : 0
     })
   }
 
@@ -40,15 +43,24 @@ export class Subscribe extends Component {
       })
     }
     // WIP
-      const subscribeURL =`/ext/api/topics/${this.props.topic.id}/subscribe` // TO DO CONFIRM URL
+      const subscribeURL =`/api/v2/topics/${this.props.topic.id}/subscribe` // TO DO CONFIRM URL
       window.fetch(subscribeURL, {
         credentials: 'include',
         method: 'POST',
-        body: {
-          userID: this.props.user.state.value.id
-        }
-      }).then((res) => {
-        //set state for reloading data
+      }).then((res) => res.json())
+      .then(res => {
+        if(res.message === 'Suscribed') {
+        this.setState({
+          subscribed: !this.state.subscribed,
+          subscribersCount: this.state.subscribersCount + 1
+        })
+      }
+      else {
+        this.setState({
+          subscribed: !this.state.subscribed,
+          subscribersCount: this.state.subscribersCount - 1
+        })
+      }
       }).catch((err) => { throw err })
   }
 
@@ -57,7 +69,7 @@ export class Subscribe extends Component {
 
     if (user.state.pending) return null
 
-    const { subscribed, showResults } = this.state
+    const { subscribed, showResults, subscribersCount } = this.state
     if (user.state.fulfilled && !topic.privileges.canVote) return null
     return (
       <div className='topics-subscribe-propuesta'>
@@ -80,7 +92,7 @@ export class Subscribe extends Component {
         )}
         
         <div className='subscribers-total'>
-          {topic.attrs.subscribers.length}
+          {subscribersCount}
           &nbsp;
           <span className='icon-bell' />
         </div>
