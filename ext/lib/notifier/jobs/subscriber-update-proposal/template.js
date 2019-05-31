@@ -8,17 +8,18 @@ const styles = raw(`
 `)
 
 module.exports = ({
-  topic,
+  topic, userName
 }) => html`
   ${styles}
-  <p>${topic.authorName},</p>
-  <p>¡El estado de tu proyecto "${topic.mediaTitle}" ha sido actualizado!
+  <p>${userName},</p>
+  <p>La propuesta "${topic.mediaTitle}" ha sido actualizada.
   <br>Podrás ver los cambios haciendo click acá:
-  <br><a href="https://presupuestoparticipativo.vicentelopez.gob.ar/proyecto/topic/${topic.id}">https://presupuestoparticipativo.vicentelopez.gob.ar/proyecto/topic/${topic.id}</a></p>
-  <p>Muchas gracias por tu aporte. ¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
+  <br><a href="https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/topic/${topic.id}">https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/topic/${topic.id}</a></p>
+  <p>¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
   <p>
     PRESUPUESTO PARTICIPATIVO DE VICENTE LOPEZ<br>
     #PresupuestoParticipativo #VLParticipa.<br>
     <a href="https://presupuestoparticipativo.vicentelopez.gob.ar">https://presupuestoparticipativo.vicentelopez.gob.ar/</a>   
   </p>
+  <p><small>Usted está recibiendo este email porque se encuentra suscripto a los cambios del mismo</small></p>
 `.toString()

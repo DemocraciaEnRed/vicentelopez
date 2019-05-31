@@ -4,6 +4,7 @@ const pick = require('lodash.pick')
 const middlewares = require('lib/api-v2/middlewares')
 const { isCitizenOnProposal } = require('../../proposals')
 const api = require('lib/db-api')
+const apiv2 = require('lib/api-v2/db-api')
 var utils = require('lib/utils')
 var expose = utils.expose
 
@@ -25,7 +26,7 @@ const EDITABLE_KEYS = [
 ]
 
 class CantUploadProposal extends Error {
-  constructor () {
+  constructor() {
     super('User can not upload proposal.')
     this.status = 403
     this.code = 'UPLOAD_TOPIC_FORBIDDEN'
@@ -101,8 +102,8 @@ const automata = {
 
 
 const sendToAuthor = (req, res, next) => {
-  if (automata[req.topic.attrs.state]){
-    if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])){
+  if (automata[req.topic.attrs.state]) {
+    if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])) {
       switch (req.body['attrs.state']) {
         case 'pendiente':
         case 'factible':
@@ -141,35 +142,124 @@ const sendToAuthor = (req, res, next) => {
 }
 
 
+const sendToUsers = (req, res, next) => {
+  if (automata[req.topic.attrs.state]) {
+    if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])) {
+      switch (req.body['attrs.state']) {
+        case 'pendiente':
+        case 'factible':
+        case 'no-factible':
+        case 'integrado':
+          if (req.topic.attrs.subscribers && req.topic.attrs.subscribers.length > 0) {
+            let arrPromises = req.topic.attrs.subscribers.map(user => {
+              return notifier.now('subscriber-update-proposal', {
+                topic: {
+                  id: req.topic['_id'],
+                  mediaTitle: req.body.mediaTitle,
+                  subscriber: user
+                }
+              })
+            })
+            Promise.all(arrPromises).then(() => {
+              next()
+            }).catch(next)
+          }
+          break;
+        default:
+          if (req.topic.attrs.subscribers && req.topic.attrs.subscribers.length > 0) {
+            let arrPromises = req.topic.attrs.subscribers.map(user => {
+              return notifier.now('subscriber-update-project', {
+                topic: {
+                  id: req.topic['_id'],
+                  mediaTitle: req.body.mediaTitle,
+                  subscriber: user
+                }
+              })
+            })
+            Promise.all(arrPromises).then(() => {
+              next()
+            }).catch(next)
+          }
+          break;
+      }
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+}
+
+const subscribeUser = (req, res, next) => {
+  let arrayUpdated = req.topic.attrs.subscribers
+  let suscribed = false
+  if (arrayUpdated) {
+    if (arrayUpdated.includes(req.user.id)) {
+      arrayUpdated = arrayUpdated.filter(s => {
+        return s != req.user.id
+      })
+    } else {
+      arrayUpdated.push(req.user.id)
+      suscribed = true
+    }
+  } else {
+    arrayUpdated = [req.user.id]
+    suscribed = true
+  }
+  let keysToUpdate = {
+    attrs: req.topic.attrs
+  }
+  keysToUpdate.attrs.subscribers = arrayUpdated
+  apiv2.topics.edit({
+    id: req.params.id,
+    user: req.user,
+    forum: req.forum
+  }, keysToUpdate).then((topic) => {
+    res.status(200).json({
+      status: 200,
+      message: suscribed ? 'Suscribed' : 'Unsuscribed'
+    })
+  }).catch(next)
+}
+
+
 // continue to original DemocracyOS's Route
 const goToNextRoute = (req, res, next) => next('route')
 
 app.post('/topics',
-middlewares.users.restrict,
-middlewares.forums.findFromBody,
-middlewares.forums.privileges.canCreateTopics,
-purgeBody,
-sendToAdmin,
-goToNextRoute)
+  middlewares.users.restrict,
+  middlewares.forums.findFromBody,
+  middlewares.forums.privileges.canCreateTopics,
+  purgeBody,
+  sendToAdmin,
+  goToNextRoute)
 
 app.put('/topics/:id',
-middlewares.users.restrict,
-middlewares.topics.findById,
-middlewares.forums.findFromTopic,
-middlewares.forums.privileges.canCreateTopics,
-middlewares.topics.privileges.canEdit,
-purgeBody,
-sendToAuthor,
-goToNextRoute)
+  middlewares.users.restrict,
+  middlewares.topics.findById,
+  middlewares.forums.findFromTopic,
+  middlewares.forums.privileges.canCreateTopics,
+  middlewares.topics.privileges.canEdit,
+  purgeBody,
+  sendToAuthor,
+  sendToUsers,
+  goToNextRoute)
+
+app.post('/topics/:id/subscribe',
+  // middlewares.users.restrict,
+  middlewares.topics.findById,
+  middlewares.forums.findFromTopic,
+  subscribeUser)
 
 app.get('/all-tags',
-(req, res, next) => {
-  try{
-    api.tag.all(function (err, tags) {
-    if (err) return _handleError(err, req, res)
-    res.status(200).json(tags.map(expose('id name')))
-    })
-  } catch(err){
-    next(err)
-  }
-})
+  (req, res, next) => {
+    try {
+      api.tag.all(function (err, tags) {
+        if (err) return _handleError(err, req, res)
+        res.status(200).json(tags.map(expose('id name')))
+      })
+    } catch (err) {
+      next(err)
+    }
+  })
+

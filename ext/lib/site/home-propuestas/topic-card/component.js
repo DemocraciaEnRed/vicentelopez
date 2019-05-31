@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
 import moment from 'moment'
+import userConnector from 'lib/site/connectors/user'
 
 const estados = (state) => {
   switch (state) {
@@ -16,64 +17,117 @@ const estados = (state) => {
   }
 }
 
-export default ({ topic, onVote }) => (
-  <div className='ext-topic-card ideas-topic-card'>
-    <div className='topic-card-info'>
-      <div className='topic-creation'>
-        <span>{topic.attrs.nombre}</span>
-        <span
-          className={`date ${(topic.attrs.state === 'factible' || topic.attrs.state === 'no-factible') && 'space'}`}>
-          {moment(topic.createdAt).format('D/M/YY')}
-        </span>
-        {topic.attrs.state !== 'pendiente' &&
-          <span className={`estado ${topic.attrs.state === 'factible' ? 'factible' : ''}`}>{estados(topic.attrs.state)}</span>
-        }
-      </div>
-      <h1 className='topic-card-title'>
-        <Link to={`/propuestas/topic/${topic.id}`}>
-          {topic.mediaTitle}
-        </Link>
-        <p className='topic-card-description'>
-          <Link to={`/propuestas/topic/${topic.id}`}>
-            {createClauses(topic)}
-          </Link>
-        </p>
-      </h1>
-      {
-        topic.tags && topic.tags.length > 0 && (
-          <div className='topic-card-tags'>
-            {topic.tags.slice(0, 12).map((tag, i) => (
-              <a href={ `${window.location.origin + '/propuestas?tags=' + tag}`} key={`${tag}-${i}`} className='badge badge-default'>{tag}</a>
+export class TopicCard extends Component {
+  componentWillMount() {
+    this.setStateFromProps(this.props)
+  }
 
-            ))}
+  componentWillReceiveProps(props) {
+    this.setStateFromProps(props)
+  }
+  setStateFromProps(props) {
+    const { topic, user } = props
+
+    let userAttrs = user.state.fulfilled && (user.state.value || {})
+
+    const userSuscribed = userAttrs && topic.attrs.subscribers ? topic.attrs.subscribers.find(user => user === userAttrs.id) : false;
+    // const userSuscribed = true
+
+    return this.setState({
+      subscribed: !!userSuscribed
+    })
+    
+  }
+  render() {
+    const { topic, onVote, onSubscribe } = this.props
+    const { subscribed } = this.state
+    
+    return (
+      <div className='ext-topic-card ideas-topic-card'>
+        <div className='topic-card-info'>
+          <div className='topic-creation'>
+            <span>{topic.attrs.nombre}</span>
+            <span
+              className={`date ${(topic.attrs.state === 'factible' || topic.attrs.state === 'no-factible') && 'space'}`}>
+              {moment(topic.createdAt).format('D/M/YY')}
+            </span>
+            {topic.attrs.state !== 'pendiente' &&
+              <span className={`estado ${topic.attrs.state === 'factible' ? 'factible' : ''}`}>{estados(topic.attrs.state)}</span>
+            }
           </div>
-        )
-      }
-    </div>
-    <div className='topic-card-footer'>
-      <div className='participants'>
-        {topic.action.count}
-        &nbsp;
-        <span className={`icon-like ${topic.voted ? 'blue' : 'gray'}`} />
-      </div>
-      {topic.voted && (
-        <button disabled className='btn btn-primary btn-filled'>
-          Te gusta
-        </button>
-      )}
-      {!topic.voted && (
-        <button
-          disabled={!topic.privileges.canVote}
-          onClick={() => onVote(topic.id)}
-          className='btn btn-primary btn-empty'>
-          Me gusta
-        </button>
-      )}
-    </div>
-  </div>
-)
+          <h1 className='topic-card-title'>
+            <Link to={`/propuestas/topic/${topic.id}`}>
+              {topic.mediaTitle}
+            </Link>
+            <p className='topic-card-description'>
+              <Link to={`/propuestas/topic/${topic.id}`}>
+                {createClauses(topic)}
+              </Link>
+            </p>
+          </h1>
+          {
+            topic.tags && topic.tags.length > 0 && (
+              <div className='topic-card-tags'>
+                {topic.tags.slice(0, 12).map((tag, i) => (
+                  <a href={`${window.location.origin + '/propuestas?tags=' + tag}`} key={`${tag}-${i}`} className='badge badge-default'>{tag}</a>
 
-function createClauses ({ attrs, clauses }) {
+                ))}
+              </div>
+            )
+          }
+        </div>
+        <div className='topic-card-footer'>
+          <div className='subscribe-wrapper'>
+            <div className='participants'>
+              {topic.attrs.subscribers && topic.attrs.subscribers.length || 0}
+              &nbsp;
+            <span className={`icon-bell ${subscribed ? 'blue' : 'gray'}`} />
+            </div>
+            {subscribed && (
+              <button
+                className='btn btn-primary'
+                onClick={() => onSubscribe(topic.id)}>
+                &nbsp;
+                Desuscribirse
+              </button>
+            )}
+            {!subscribed && (
+              <button
+                disabled={!topic.privileges.canVote}
+                className='btn btn-primary btn-empty'
+                onClick={() => onSubscribe(topic.id)}>
+                &nbsp;
+                Suscribirse
+              </button>
+            )}
+          </div>
+          <div className='cause-wrapper'>
+            <div className='participants'>
+              {topic.action.count}
+              &nbsp;
+            <span className={`icon-like ${topic.voted ? 'blue' : 'gray'}`} />
+            </div>
+            {topic.voted && (
+              <button disabled className='btn btn-primary btn-filled'>
+                Te gusta
+              </button>
+            )}
+            {!topic.voted && (
+              <button
+                disabled={!topic.privileges.canVote}
+                onClick={() => onVote(topic.id)}
+                className='btn btn-primary btn-empty'>
+                Me gusta
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+function createClauses({ attrs, clauses }) {
   let div = document.createElement('div')
   let content
   if (!attrs) {
@@ -92,3 +146,5 @@ function createClauses ({ attrs, clauses }) {
   div.innerHTML = content
   return div.textContent.replace(/\r?\n|\r/g, '').slice(0, 140) + '...'
 }
+
+export default userConnector(TopicCard)

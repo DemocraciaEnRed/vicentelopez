@@ -10,6 +10,7 @@ import Social from './social/component'
 import Vote from './vote/component'
 import Poll from './poll/component'
 import Cause from './cause/component'
+import Subscribe from './subscribe/component'
 import Comments from './comments/component'
 import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
@@ -190,9 +191,11 @@ class TopicArticle extends Component {
         {/*topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && topic.attrs.state !== 'integrado' && (topic.attrs.anio === '2019' || topic.attrs.anio === '2020')  &&
           <div className='topic-article-content alert alert-success alert-proyecto' role='alert'>
             Podés ver el proyecto final presentado en la votación <Link to={`/proyectos/topic/${topic.id}`} className='alert-link'>aquí</Link>.
-          </div> 
-      */}
-        <div className='topic-tags topic-article-content'>
+          </div>
+        */}
+        <div className='topic-actions topic-article-content'>
+          <Subscribe
+            topic={topic}/>
           <Cause
             topic={topic}
             canVoteAndComment={forum.privileges.canVoteAndComment} />
