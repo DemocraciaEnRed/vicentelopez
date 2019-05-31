@@ -8,14 +8,14 @@ const styles = raw(`
 `)
 
 module.exports = ({
-  topic,
+  topic, userName
 }) => html`
   ${styles}
   <p>${userName},</p>
   <p>La propuesta "${topic.mediaTitle}" ha sido actualizada.
   <br>Podrás ver los cambios haciendo click acá:
-  <br><a href="https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/${topic.id}">https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/${topic.id}</a></p>
-  <p>Muchas gracias por tu aporte. ¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
+  <br><a href="https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/topic/${topic.id}">https://presupuestoparticipativo.vicentelopez.gob.ar/propuesta/topic/${topic.id}</a></p>
+  <p>¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
   <p>
     PRESUPUESTO PARTICIPATIVO DE VICENTE LOPEZ<br>
     #PresupuestoParticipativo #VLParticipa.<br>

@@ -1,17 +1,17 @@
 const utils = require('democracyos-notifier/lib/utils')
 const template = require('./template')
 
-const jobName = 'subscriber-update-proposal'
+const jobName = 'subscriber-update-project'
 
-module.exports = function subscriberUpdateProposal(notifier) {
+module.exports = function subscriberUpdateProject(notifier) {
   const { db, agenda, mailer } = notifier
   const users = db.get('users')
 
-  agenda.define(jobName, { priority: 'normal' }, subscriberUpdateProposal)
+  agenda.define(jobName, { priority: 'normal' }, subscriberUpdateProject)
 
-  function subscriberUpdateProposal(job, done) {
+  function subscriberUpdateProject(job, done) {
     const data = job.attrs.data
-
+    
     users.findOne({ "_id": data.topic.subscriber }).then((user) => {
       try {
         const html = template({
@@ -20,7 +20,7 @@ module.exports = function subscriberUpdateProposal(notifier) {
         })
         mailer.send({
           to: user.email, //TODO: change for subscribers
-          subject: `La propuesta "${data.topic.mediaTitle}" ha sido actualizada`,
+          subject: `El proyecto "${data.topic.mediaTitle}" ha sido actualizado`,
           html
         })
       } catch (err) {
