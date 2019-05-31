@@ -201,6 +201,46 @@ class HomePropuestas extends Component {
     }).catch((err) => { throw err })
   }
 
+  handleSubscribe = (id) => {
+    const { user } = this.props
+
+    if (user.state.rejected) {
+      return browserHistory.push({
+        pathname: '/signin',
+        query: { ref: window.location.pathname }
+      })
+    }
+
+    // WIP
+    const subscribeURL =`/api/v2/topics/${id}/subscribe` // TO DO CONFIRM URL
+    window.fetch(subscribeURL, {
+      credentials: 'include',
+      method: 'POST'
+    }).then((res) => res.json())
+    .then(res => {
+      let index = this.state.topics.findIndex(topic => {
+        return topic.id == id
+      })
+      let topicsCopy = this.state.topics
+      console.log(res)
+      if(res.message === 'Suscribed') {
+        if(topicsCopy[index].attrs.subscribers){
+          topicsCopy[index].attrs.subscribers.push(user.state.value.id)
+        } else {
+          topicsCopy[index].attrs.subscribers = [user.state.value.id]
+        }
+      }
+      else {
+        if(topicsCopy[index].attrs.subscribers){
+          topicsCopy[index].attrs.subscribers = topicsCopy[index].attrs.subscribers.filter( s => s != user.state.value.id)
+        }
+      }
+      this.setState({
+        topics: topicsCopy
+      })
+    }).catch((err) => { throw err })
+  }
+
   render () {
     const { forum, topics, tags } = this.state
     return (
@@ -254,6 +294,7 @@ class HomePropuestas extends Component {
               )}
               {topics && topics.map((topic, i) => (
                 <TopicCard
+                  onSubscribe={this.handleSubscribe}
                   onVote={this.handleVote}
                   key={`${topic.id}-${i}`}
                   forum={forum}
