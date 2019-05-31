@@ -212,7 +212,7 @@ class HomePropuestas extends Component {
     }
 
     // WIP
-    const subscribeURL =`/ext/api/topics/${id}/subscribe` // TO DO CONFIRM URL
+    const subscribeURL =`/api/v2/topics/${id}/subscribe` // TO DO CONFIRM URL
     window.fetch(subscribeURL, {
       credentials: 'include',
       method: 'POST',

@@ -4,6 +4,7 @@ const pick = require('lodash.pick')
 const middlewares = require('lib/api-v2/middlewares')
 const { isCitizenOnProposal } = require('../../proposals')
 const api = require('lib/db-api')
+const apiv2 = require('lib/api-v2/db-api')
 var utils = require('lib/utils')
 var expose = utils.expose
 
@@ -179,6 +180,38 @@ const sendToUsers = (req, res, next) => {
   }
 }
 
+const subscribeUser = (req, res, next) => {
+  let arrayUpdated = req.topic.attrs.subscribers
+  let suscribed = false
+  if(arrayUpdated){
+    if(arrayUpdated.includes(req.user.id)){
+      arrayUpdated = arrayUpdated.filter( s => {
+        return s != req.user.id
+      })
+    } else {
+      arrayUpdated.push(req.user.id)
+      suscribed = true
+    }
+  } else {
+    arrayUpdated = [req.user.id]
+    suscribed = true
+  }
+  let keysToUpdate = {
+    attrs: req.topic.attrs
+  }
+  keysToUpdate.attrs.subscribers = arrayUpdated
+  apiv2.topics.edit({
+    id: req.params.id,
+    user: req.user,
+    forum: req.forum
+  }, keysToUpdate).then((topic) => {
+    res.status(200).json({
+      status: 200,
+      message: suscribed ? 'Suscribed' : 'Unsuscribed'
+    })
+  }).catch(next)
+}
+
 
 // continue to original DemocracyOS's Route
 const goToNextRoute = (req, res, next) => next('route')
@@ -202,6 +235,12 @@ sendToAuthor,
 sendToUsers,
 goToNextRoute)
 
+app.post('/topics/:id/subscribe',
+// middlewares.users.restrict,
+middlewares.topics.findById,
+middlewares.forums.findFromTopic,
+subscribeUser)
+
 app.get('/all-tags',
 (req, res, next) => {
   try{
@@ -213,3 +252,4 @@ app.get('/all-tags',
     next(err)
   }
 })
+
