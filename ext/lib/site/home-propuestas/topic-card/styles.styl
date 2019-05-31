@@ -15,6 +15,7 @@
     font-weight: 400
     color: #a5a9aa
     display: inline-block
+    margin-right: 20px;
     span
       color: #099dc3
 
@@ -48,9 +49,14 @@
       white-space: normal
   .topic-card-footer
     padding: 20px 35px
-    display: flex
-    justify-content: space-between
-    align-items: flex-end
+    @media screen and (min-width: 769px)
+      display: flex;
+      justify-content: space-between;
+    .cause-wrapper, .subscribe-wrapper 
+      display: flex
+      align-items: center
+      margin-bottom: 15px;
+      justify-content: space-between;
     span.blue
       color: #099dc3
     span.gray
