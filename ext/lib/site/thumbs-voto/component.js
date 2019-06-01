@@ -8,13 +8,18 @@ export default function ThumbsVoto (props) {
         <div className="row cont fondo-azul">
           <div className="subtitulo">
             <h2>
-              Presupuesto Participativo 2019
+              {/* Presupuesto Participativo 2019 */}
+              Los proyectos de Vicente López los decidimos juntos.
             </h2>
-            <h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3>
+            {/* <h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
+            <h3> Terminó la etapa de presentacion de propuestas 2019.</h3>
+            <h3> Estamos evaluando su factibilidad.</h3>
             <Link
-              to='/formulario-propuesta'
+              // to='/formulario-propuesta'
+              to='/propuestas'
               className="boton-azul boton-blanco">
-              Mandá tu propuesta
+              {/* Mandá tu propuesta */}
+              Ver Propuestas
             </Link>
           </div>
         </div>

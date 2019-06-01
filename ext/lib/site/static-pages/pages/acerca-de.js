@@ -87,7 +87,7 @@ export default class Page extends Component {
                 <p>Las entidades que desarrollen sus actividades en más de un barrio del Partido, podrán presentar hasta un máximo de 2 proyectos en 2 barrios (es decir, 1 por cada barrio).</p> 
                
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
-                <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma <a href="/formulario-propuesta">aquí</a>. Este año 2019, tenés tiempo hasta el 31 de mayo inclusive.</p>
+                <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma. Este año 2019, tenés tiempo hasta el 31 de mayo inclusive.</p>
                
                 <h3>¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?</h3>
                 <p>Podés presentar:</p>
