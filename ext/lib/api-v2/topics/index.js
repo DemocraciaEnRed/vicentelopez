@@ -44,11 +44,13 @@ const defaultValues = () => ({
 // and the users doesn't have forum privileges.
 const purgeBody = (req, res, next) => {
   if (isCitizenOnProposal(req.user, req.forum)) {
-    // return next(new CantUploadProposal())
-    req.body = Object.assign(
-      defaultValues(),
-      pick(req.body, EDITABLE_KEYS)
-    )
+    // IF THE FORM UPLOAD IS CLOSED, A CITIZEN CANNOT CONTINUE
+    return next(new CantUploadProposal())
+    // IF THE FORM IS OPEN, RUN THIS
+    // req.body = Object.assign(
+    //   defaultValues(),
+    //   pick(req.body, EDITABLE_KEYS)
+    // )
   } else {
     req.body = Object.assign(
       defaultValues(),

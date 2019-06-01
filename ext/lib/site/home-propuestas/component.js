@@ -47,13 +47,14 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
             Archivadas
           </button>
         </div>
-        <a
+
+        {/* <a
           href='/formulario-propuesta'
           className='boton-azul btn propuesta'>
           Mandá tu propuesta
-        </a>
+        </a> */}
       </div>
-      {/* <span className='alert-duedate' >Estas viendo propuestas presentadas en el Presupuesto Participativo 2018</span> */}
+      <span className='alert-duedate' ><span className="text-info">Formulario cerrado, ¡Gracias por participar!</span> Estas viendo propuestas presentadas en el Presupuesto Participativo 2019</span>
     </div>
   </div>
 )
