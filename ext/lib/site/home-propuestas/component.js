@@ -226,14 +226,18 @@ class HomePropuestas extends Component {
       console.log(res)
       if(res.message === 'Suscribed') {
         if(topicsCopy[index].attrs.subscribers){
-          topicsCopy[index].attrs.subscribers.push(user.state.value.id)
+          let aux = topicsCopy[index].attrs.subscribers.split(',')
+          aux.push(user.state.value.id)
+          topicsCopy[index].attrs.subscribers = aux.join(',')
         } else {
-          topicsCopy[index].attrs.subscribers = [user.state.value.id]
+          topicsCopy[index].attrs.subscribers = user.state.value.id
         }
       }
       else {
         if(topicsCopy[index].attrs.subscribers){
-          topicsCopy[index].attrs.subscribers = topicsCopy[index].attrs.subscribers.filter( s => s != user.state.value.id)
+          let aux = topicsCopy[index].attrs.subscribers.split(',')
+          aux = aux.filter( s => s != user.state.value.id)
+          topicsCopy[index].attrs.subscribers = aux.join(',')
         }
       }
       this.setState({

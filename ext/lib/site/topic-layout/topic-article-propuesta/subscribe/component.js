@@ -22,14 +22,19 @@ export class Subscribe extends Component {
     const { topic, user } = props
     
     let userAttrs = user.state.fulfilled && (user.state.value || {})
-
-    const userSuscribed = userAttrs && topic.attrs.subscribers ? topic.attrs.subscribers.find(user => user === userAttrs.id) : false;
+    let userSuscribed = false
+    if(userAttrs && topic.attrs.subscribers){
+      let userSuscribers = topic.attrs.subscribers.split(',')
+      userSuscribed = userSuscribers.find(user => user === userAttrs.id);
+    } else {
+      userSuscribed = false
+    }
  
     return this.setState({
       showLoginMessage: false,
       showResults: topic.closed, 
       subscribed: !!userSuscribed,
-      subscribersCount: topic.attrs.subscribers ? topic.attrs.subscribers.length : 0
+      subscribersCount: topic.attrs.subscribers ? topic.attrs.subscribers.split(',').length : 0
     })
   }
 

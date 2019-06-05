@@ -23,6 +23,7 @@ const EDITABLE_KEYS = [
   'attrs.problema',
   'attrs.solucion',
   'attrs.beneficios',
+  'attrs.subscribers',
 ]
 
 class CantUploadProposal extends Error {
@@ -34,6 +35,7 @@ class CantUploadProposal extends Error {
 }
 
 const defaultValues = () => ({
+  'attrs.subscribers': '',
   'attrs.anio': '2020',
   'attrs.state': 'pendiente',
   'action.method': 'cause',
@@ -43,8 +45,11 @@ const defaultValues = () => ({
 // Only allow to edit specific keys when is a proposal
 // and the users doesn't have forum privileges.
 const purgeBody = (req, res, next) => {
+    console.log('Entre a purgeBody')
+  // beware with subscribers fields
   if (isCitizenOnProposal(req.user, req.forum)) {
     // IF THE FORM UPLOAD IS CLOSED, A CITIZEN CANNOT CONTINUE
+    console.log('Entre por true')
     return next(new CantUploadProposal())
     // IF THE FORM IS OPEN, RUN THIS
     // req.body = Object.assign(
@@ -52,6 +57,10 @@ const purgeBody = (req, res, next) => {
     //   pick(req.body, EDITABLE_KEYS)
     // )
   } else {
+    console.log('Entre por false')
+    console.log('=========================')
+    console.log(req.body)
+    console.log('=========================')
     req.body = Object.assign(
       defaultValues(),
       req.body
@@ -145,6 +154,12 @@ const sendToAuthor = (req, res, next) => {
 
 
 const sendToUsers = (req, res, next) => {
+  console.log('Entre a sendToUser')
+  console.log(req.topic)
+  console.log(req.topic.attrs)
+  console.log(req.topic.attrs.state)
+  console.log(automata[req.topic.attrs.state])
+  // console.log(`automata[req.topic.attrs.state].includes(req.body['attrs.state']) => ${automata[req.topic.attrs.state].includes(req.body['attrs.state'])}`)
   if (automata[req.topic.attrs.state]) {
     if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])) {
       switch (req.body['attrs.state']) {
@@ -153,7 +168,8 @@ const sendToUsers = (req, res, next) => {
         case 'no-factible':
         case 'integrado':
           if (req.topic.attrs.subscribers && req.topic.attrs.subscribers.length > 0) {
-            let arrPromises = req.topic.attrs.subscribers.map(user => {
+            let arrSubscribers = req.topic.attrs.subscribers.split(',')
+            let arrPromises = arrSubscribers.map(user => {
               return notifier.now('subscriber-update-proposal', {
                 topic: {
                   id: req.topic['_id'],
@@ -165,11 +181,14 @@ const sendToUsers = (req, res, next) => {
             Promise.all(arrPromises).then(() => {
               next()
             }).catch(next)
+          } else {
+            next()
           }
           break;
         default:
           if (req.topic.attrs.subscribers && req.topic.attrs.subscribers.length > 0) {
-            let arrPromises = req.topic.attrs.subscribers.map(user => {
+            let arrSubscribers = req.topic.attrs.subscribers.split(',')
+            let arrPromises = arrSubscribers.map(user => {
               return notifier.now('subscriber-update-project', {
                 topic: {
                   id: req.topic['_id'],
@@ -181,6 +200,8 @@ const sendToUsers = (req, res, next) => {
             Promise.all(arrPromises).then(() => {
               next()
             }).catch(next)
+          } else { 
+            next()
           }
           break;
       }
@@ -193,25 +214,28 @@ const sendToUsers = (req, res, next) => {
 }
 
 const subscribeUser = (req, res, next) => {
-  let arrayUpdated = req.topic.attrs.subscribers
+  let stringSubscribers = req.topic.attrs.subscribers
   let suscribed = false
-  if (arrayUpdated) {
-    if (arrayUpdated.includes(req.user.id)) {
-      arrayUpdated = arrayUpdated.filter(s => {
+  if (stringSubscribers) {
+    let auxArraySubscribers = stringSubscribers.split(',')
+    if (auxArraySubscribers.includes(req.user.id)) {
+      auxArraySubscribers = auxArraySubscribers.filter(s => {
         return s != req.user.id
       })
+      stringSubscribers = auxArraySubscribers.join(',')
     } else {
-      arrayUpdated.push(req.user.id)
+      auxArraySubscribers.push(req.user.id)
+      stringSubscribers = auxArraySubscribers.join(',')
       suscribed = true
     }
   } else {
-    arrayUpdated = [req.user.id]
+    stringSubscribers = req.user.id
     suscribed = true
   }
   let keysToUpdate = {
     attrs: req.topic.attrs
   }
-  keysToUpdate.attrs.subscribers = arrayUpdated
+  keysToUpdate.attrs.subscribers = stringSubscribers
   apiv2.topics.edit({
     id: req.params.id,
     user: req.user,
@@ -237,14 +261,26 @@ app.post('/topics',
   goToNextRoute)
 
 app.put('/topics/:id',
-  middlewares.users.restrict,
-  middlewares.topics.findById,
-  middlewares.forums.findFromTopic,
-  middlewares.forums.privileges.canCreateTopics,
-  middlewares.topics.privileges.canEdit,
-  purgeBody,
-  sendToAuthor,
-  sendToUsers,
+  middlewares.users.restrict, // restringe
+  middlewares.topics.findById, // cuentra por id => req.topic
+  middlewares.forums.findFromTopic, // encuentra el foro =>  req.forums
+  middlewares.forums.privileges.canCreateTopics, // restringe por privilegio
+  middlewares.topics.privileges.canEdit, // restringe por privilegio
+  purgeBody, // hace purge body, sea lo que sea 
+  function(req, res, next){
+    console.log('Llegue luego de purgeBody')
+    next()
+  },  
+  sendToAuthor, // Envia al autor
+  function(req, res, next){
+    console.log('Llegue luego de sendToAuthor')
+    next()
+  },  
+  sendToUsers, // envia a los otros plebeyos
+  function(req, res, next){
+    console.log('Llegue luego de sendToUsers')
+    next()
+  },  
   goToNextRoute)
 
 app.post('/topics/:id/subscribe',
