@@ -19,7 +19,7 @@ export default class Page extends Component {
           <div className="banner"></div>
           <div className='contenedor largo'>
             <div className='fondo-titulo'>
-              <h1>Reglamento Electoral</h1>
+              <h1>Reglamento</h1>
             </div>
           </div>
         </section>
