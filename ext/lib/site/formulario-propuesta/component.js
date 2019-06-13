@@ -269,7 +269,7 @@ class FormularioPropuesta extends Component {
     const { forum } = this.state
 
     if (!forum) return null
-
+    if(this.state.forum.privileges && this.state.forum.privileges.canChangeTopics) {
     return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
@@ -277,14 +277,8 @@ class FormularioPropuesta extends Component {
           {/* <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p> */}
           <p>¡Gracias a todos y todas por participar!</p>
         </div>
-        {/* ALERT PARA FIN DE ETAPA */}
-        <alert className='alert alert-info cronograma'>
-          <Link style={{ display: 'inline' }} to='/s/acerca-de?scroll=cronograma'>
-            La etapa de envío de propuestas ya ha sido cerrada. ¡Muchas gracias por participar!
-          </Link>
-        </alert>
         {/* FORMULARIO GOES BEHIND THIS */}
-        {/* <form className='wrapper' onSubmit={this.handleSubmit}>
+        <form className='wrapper' onSubmit={this.handleSubmit}>
           <p className="more-info">Si querés conocer más sobre el proceso y qué propuestas podés presentar, hacé click <Link
               to='/s/acerca-de'
               className="">
@@ -573,8 +567,24 @@ class FormularioPropuesta extends Component {
           <p className="more-info add-color">¡Luego de mandarla, podes volver a editarla!</p>
           </section>
           }
-        </form> */}
+        </form>
       </div>
+    )
+
+    } return (
+      <div className='form-propuesta'>
+        <div className='propuesta-header'>
+          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2019</h1>
+          {/* <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p> */}
+          <p>¡Gracias a todos y todas por participar!</p>
+        </div>
+        {/* ALERT PARA FIN DE ETAPA */}
+        <alert className='alert alert-info cronograma'>
+          <Link style={{ display: 'inline' }} to='/s/acerca-de?scroll=cronograma'>
+            La etapa de envío de propuestas ya ha sido cerrada. ¡Muchas gracias por participar!
+          </Link>
+        </alert>
+     </div>
     )
   }
 }
