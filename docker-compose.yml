@@ -7,12 +7,12 @@ services:
     environment:
       - NODE_ENV=development
       - DEBUG=democracyos*
-      - MONGO_URL=mongodb://mongo/development
+      - MONGO_URL=mongodb://mongo:27017/myDatabase
       - ORGANIZATION_NAME=DemocracyOS Fork
       # Add your email here!
       - STAFF=email@example.com
-    links:
-      - mongo
+    #links:
+     # - mongo
     ports:
       - 3000:3000
     volumes:
