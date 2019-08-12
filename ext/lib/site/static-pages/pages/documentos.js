@@ -47,7 +47,7 @@ export default class Page extends Component {
         <section className='banner-static'>
           <div className='banner gradient'>
             <h1>Historial de documentos</h1>
-            <h2>Aquí encontrarás las minutas, boletas y proyectos de todas las ediciones de Foros Vecinales</h2>
+            <h2>Aquí encontrarás las minutas, boletas y proyectos de todas las ediciones de Presupuesto Participativo</h2>
           </div>
         </section>
         <div className='documentos-body'>
