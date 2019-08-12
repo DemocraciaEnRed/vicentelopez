@@ -91,7 +91,6 @@ export class TopicCard extends Component {
               <button
                 className='btn btn-primary'
                 onClick={() => onSubscribe(topic.id)}>
-                &nbsp;
                 Desuscribirse
               </button>
             )}
@@ -100,7 +99,6 @@ export class TopicCard extends Component {
                 disabled={!topic.privileges.canVote}
                 className='btn btn-primary btn-empty'
                 onClick={() => onSubscribe(topic.id)}>
-                &nbsp;
                 Suscribirse
               </button>
             )}
