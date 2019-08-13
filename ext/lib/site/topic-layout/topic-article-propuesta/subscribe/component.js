@@ -82,7 +82,6 @@ export class Subscribe extends Component {
           <button
             className='btn btn-primary'
             onClick={this.handleSubscribe}>
-            &nbsp;
             Desuscribirse
           </button>
         )}
@@ -91,7 +90,6 @@ export class Subscribe extends Component {
             disabled={!topic.privileges.canVote}
             className='btn btn-primary'
             onClick={this.handleSubscribe}>
-            &nbsp;
             Suscribirse
           </button>
         )}
