@@ -43,9 +43,12 @@ export default function ThumbsVoto (props) {
             </div>
             <h2 className="text-center">¿Qué puedo proponer?</h2>
             <p className="que-propongo-cont">
-            Ideas para mejorar tu barrio, tu institución o asociación en temas de espacio público, seguridad, tránsito, salud, educación, cultura y deportes. 
-            {/* Podés subir propuestas desde donde quieras haciendo click <Link to='https://forosvecinales.vicentelopez.gov.ar/proyectos' className="">acá</Link> y participar de las reuniones de vecinos para conocer mejor del presupuesto participativo! */}
-            Las propuestas pueden involucrar equipamiento o infraestructura pero no pueden incluir gastos en recursos humanos. ¡Podés subir propuestas desde el 19 de marzo hasta el 31 de mayo y participar de las <Link to="https://forosvecinales.vicentelopez.gov.ar/s/herramientas">reuniones de vecinos</Link> para conocer mejor del presupuesto participativo!
+            Estamos evaluando todas las propuestas que recibimos de los vecinos. 
+            Las propuestas factibles se convertirán en proyectos que serán sometidos a una votación
+             desde el lunes 16 hasta el domingo 29 de septiembre de 2019. Puede votar cualquier mayor de 16 años que viva o trabaje en Vicente López en las urnas habilitadas en los 9 barrios de Vicente López. Los proyectos ganadores serán ejecutados en 2020.
+           {/*  Ideas para mejorar tu barrio, tu institución o asociación en temas de espacio público, seguridad, tránsito, salud, educación, cultura y deportes. 
+            * Podés subir propuestas desde donde quieras haciendo click <Link to='https://forosvecinales.vicentelopez.gov.ar/proyectos' className="">acá</Link> y participar de las reuniones de vecinos para conocer mejor del presupuesto participativo! */
+            /* Las propuestas pueden involucrar equipamiento o infraestructura pero no pueden incluir gastos en recursos humanos. ¡Podés subir propuestas desde el 19 de marzo hasta el 31 de mayo y participar de las <Link to="https://forosvecinales.vicentelopez.gov.ar/s/herramientas">reuniones de vecinos</Link> para conocer mejor del presupuesto participativo! */}
             </p>
 
           </div>
