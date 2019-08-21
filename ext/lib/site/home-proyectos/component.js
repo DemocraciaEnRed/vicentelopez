@@ -17,12 +17,12 @@ import TopicGrid from './grid/component'
 const defaultValues = {
   'votacion': {
     barrio: [],
-    anio: ['2019'],
+    anio: ['2020'],
     state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
   },
   'seguimiento': {
     barrio: [],
-    anio: ['2018', '2019'],
+    anio: ['2018', '2019', '2020'],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
@@ -54,7 +54,7 @@ export class HomeProyectos extends Component {
     // initialFilters.anio = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019' : '2019'
+    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2020'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -69,7 +69,7 @@ export class HomeProyectos extends Component {
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
           state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019'] : ['2019'],
+          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020'] : ['2020'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
@@ -157,7 +157,7 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {  
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        anio: prevState.stage === 'seguimiento' ? ['2019'] : ['2018', '2019'],
+        anio: prevState.stage === 'seguimiento' ? ['2020'] : ['2018', '2019', '2020'],
         barrio: [],
         state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
       }
