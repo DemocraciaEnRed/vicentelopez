@@ -54,7 +54,9 @@ export class HomeProyectos extends Component {
     // initialFilters.anio = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2020'
+    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2020'
+    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
       credentials: 'include'
@@ -68,6 +70,7 @@ export class HomeProyectos extends Component {
           // anio: defaultValues.seguimiento.anio,
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
+          // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
           state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
           anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020'] : ['2020'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
