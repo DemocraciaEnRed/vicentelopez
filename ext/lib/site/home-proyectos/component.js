@@ -18,11 +18,13 @@ const defaultValues = {
   'votacion': {
     barrio: [],
     anio: ['2020'],
-    state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
+    // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
+    state: ['factible']
   },
   'seguimiento': {
     barrio: [],
-    anio: ['2018', '2019', '2020'],
+    // anio: ['2018', '2019', '2020'],
+    anio: ['2018', '2019'],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
