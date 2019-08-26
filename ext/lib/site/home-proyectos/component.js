@@ -53,8 +53,8 @@ export class HomeProyectos extends Component {
     // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
     // initialFilters.anio = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
-    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
+    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
     // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2020'
     initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
