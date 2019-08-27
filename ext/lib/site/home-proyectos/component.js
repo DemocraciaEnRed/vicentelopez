@@ -60,9 +60,12 @@ export class HomeProyectos extends Component {
     initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2020'
     // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
-    window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
+    window.fetch(`/ext/api/topics?forumName=proyectos${queryString}&limit=100`, {
       credentials: 'include'
     })
+    // window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
+    //   credentials: 'include'
+    // })
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -73,7 +76,7 @@ export class HomeProyectos extends Component {
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
           // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
+          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
           anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020'] : ['2020'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
@@ -123,7 +126,8 @@ export class HomeProyectos extends Component {
     }
     let queryString = Object.keys(query)
       .filter((k) => query[k].length > 0)
-      .map((k) => `${k}=${query[k].join()}`).join('&')
+      .map((k) => `${k}=${query[k].join()}`)
+.join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
       .then((res) => res.json())
       .then((res) => {
@@ -141,6 +145,7 @@ export class HomeProyectos extends Component {
       .filter((k) => this.state[k].length > 0)
       .map((k) => `${k}=${this.state[k].join()}`)
       .concat([`page=${this.state.page + 1}`])
+      .concat([`limit=100`]) 
       .join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
       .then((res) => res.json())
@@ -176,7 +181,7 @@ export class HomeProyectos extends Component {
       <div id='forum-home'>
         <Header stage={this.state.stage} />
         
-     {/*    <Anchor id='containerr'>
+        <Anchor id='containerr'>
           <section className='grid-container'>
             <Filter
               handleFilter={this.handleFilter}
@@ -199,7 +204,7 @@ export class HomeProyectos extends Component {
             }
           </div>
         </Anchor>
-        <Jump goTop={this.goTop} /> */}
+        <Jump goTop={this.goTop} />
         <Footer />
       </div>
     )
