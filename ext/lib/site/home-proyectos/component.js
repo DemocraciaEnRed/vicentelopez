@@ -175,7 +175,8 @@ export class HomeProyectos extends Component {
     return (
       <div id='forum-home'>
         <Header stage={this.state.stage} />
-        <Anchor id='containerr'>
+        
+     {/*    <Anchor id='containerr'>
           <section className='grid-container'>
             <Filter
               handleFilter={this.handleFilter}
@@ -198,7 +199,7 @@ export class HomeProyectos extends Component {
             }
           </div>
         </Anchor>
-        <Jump goTop={this.goTop} />
+        <Jump goTop={this.goTop} /> */}
         <Footer />
       </div>
     )
