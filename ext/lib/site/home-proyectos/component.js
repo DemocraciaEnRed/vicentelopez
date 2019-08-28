@@ -82,6 +82,8 @@ export class HomeProyectos extends Component {
           topics: res.results.topics,
           page: res.pagination.page,
           noMore: res.results.topics.length < 20
+        }, () => {
+          this.seeMore()
         })
       })
       .catch((err) => console.error(err))
