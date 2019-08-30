@@ -129,7 +129,8 @@ export class HomeProyectos extends Component {
     let queryString = Object.keys(query)
       .filter((k) => query[k].length > 0)
       .map((k) => `${k}=${query[k].join()}`)
-.join('&')
+      .concat([`limit=100`])      
+      .join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
       .then((res) => res.json())
       .then((res) => {
