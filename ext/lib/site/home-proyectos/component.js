@@ -83,7 +83,7 @@ export class HomeProyectos extends Component {
           page: res.pagination.page,
           noMore: res.results.topics.length < 20
         }, () => {
-          this.seeMore()
+          this.firstSeeMore()
         })
       })
       .catch((err) => console.error(err))
@@ -157,6 +157,27 @@ export class HomeProyectos extends Component {
           topics: [...this.state.topics].concat(res.results.topics),
           page: res.pagination.page,
           noMore: res.results.topics.length < 20
+        })
+      })
+      .catch((err) => console.error(err))
+  }
+
+  firstSeeMore = () => {
+    let queryString = ['anio', 'barrio', 'state', 'sort']
+      .filter((k) => this.state[k].length > 0)
+      .map((k) => `${k}=${this.state[k].join()}`)
+      .concat([`page=${this.state.page + 1}`])
+      .concat([`limit=100`]) 
+      .join('&')
+    window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          topics: [...this.state.topics].concat(res.results.topics),
+          page: res.pagination.page,
+          noMore: res.results.topics.length < 20
+        },() => {
+          this.seeMore()
         })
       })
       .catch((err) => console.error(err))
