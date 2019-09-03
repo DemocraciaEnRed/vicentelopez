@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import Footer from 'ext/lib/site/footer/component'
 import PdfViewer from 'ext/lib/site/pdfviewer/component'
-const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018']
+const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019']
 
 export default class Page extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      anio: '2016',
+      anio: '2019',
       barrio: 'villa-adelina',
-      archivo: 'proyectos'
+      archivo: 'boleta'
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -104,14 +104,14 @@ export default class Page extends Component {
                           {this.state.archivo === 'boleta' ? 'En 2012 no hubo votación, los proyectos se seleccionaron por consenso en las reuniones de los Foros Vecinales de cada barrio.' : 'En 2012 no se ejecutaron proyectos del Presupuesto Participativo en Vicente López por ser el primer año de implementación en el que se eligieron proyectos.'}
                         </div>
                       </div>
-                    ) : (this.state.anio === '2018' && this.state.archivo !== 'boleta') ? (
+                    ) : ((this.state.anio === '2018' || this.state.anio === '2019') && this.state.archivo !== 'boleta') ? (
                       <div className='empty-msg'>
                         {
                           this.state.archivo === 'proyectos' ? (
-                            <Link className='alert alert-success' to='/proyectos'>Mirá los proyectos del 2018!</Link>
+                            <Link className='alert alert-success' to='/proyectos'>Mirá los proyectos de {this.state.anio === '2018' ? '2018' : '2019'}</Link>
                           ) : (
                             <div className='alert alert-success' role='alert'>
-                              No hay minutas para este año.
+                              {(this.state.anio === '2019') ? 'Todavía no hay minutas para este año.' : (this.state.anio === '2018' ? 'No hubo minutas este año.' : null)}
                             </div>
                           )
                         }
@@ -125,6 +125,8 @@ export default class Page extends Component {
                         />
                       </div>
                     )
+
+                    
                 }
               </div>
             </div>{

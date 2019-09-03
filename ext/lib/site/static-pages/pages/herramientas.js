@@ -45,6 +45,13 @@ export default class Page extends Component {
                 //   Ver tabla de lugares y horarios de votación
                 // </button>
               }
+              <div className='btns-descargas'>
+                <Link href='/s/documentos'>
+                  <button className='boton-azul'>
+                    Ver Boletas 2019
+                  </button>
+                </Link>
+              </div>
             </div>
             { showTable && <PuntosDeVotacion/> }
             <div className="fila no-bg">
