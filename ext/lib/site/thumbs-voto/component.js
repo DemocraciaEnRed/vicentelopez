@@ -12,14 +12,13 @@ export default function ThumbsVoto (props) {
               Los proyectos de Vicente López los decidimos juntos.
             </h2>
             {/* <h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
-            <h3> Terminó la etapa de presentacion de propuestas 2019.</h3>
-            <h3> Estamos evaluando su factibilidad.</h3>
+            <h3>Ya podés ver todos los proyectos que podrán ser votados desde el lunes 16 hasta el domingo 29 de septiembre de 2019 inclusive.</h3>
             <Link
               // to='/formulario-propuesta'
-              to='/propuestas'
+              to='/proyectos'
               className="boton-azul boton-blanco">
               {/* Mandá tu propuesta */}
-              Ver Propuestas
+              Ver Proyectos
             </Link>
           </div>
         </div>
