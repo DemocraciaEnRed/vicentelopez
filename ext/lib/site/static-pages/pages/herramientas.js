@@ -48,7 +48,7 @@ export default class Page extends Component {
               <div className='btns-descargas'>
                 <Link href='/s/documentos'>
                   <button className='boton-azul'>
-                    Ver Boletas 2019
+                    Descargá aquí las boletas de votación de tu barrio
                   </button>
                 </Link>
               </div>
@@ -62,9 +62,9 @@ export default class Page extends Component {
               </div>
             </div>
 
-            <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp.jpg' />
+           {/*  <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp.jpg' />
 
-            <img controls className='mapa-municipio' src='https://forosvecinales.blob.core.windows.net/assets/mapa_vicente-lopez.jpg' />
+            <img controls className='mapa-municipio' src='https://forosvecinales.blob.core.windows.net/assets/mapa_vicente-lopez.jpg' /> */}
           </div>
         </Anchor>
         <Jump goTop={this.goTop} />
