@@ -57,7 +57,7 @@ export default class Page extends Component {
             <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>
-                  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qhRpeylCuWIO7llVNSi5prF1JDBuI13b" width="640" height="480"></iframe>
+                  <iframe src="https://www.google.com/maps/d/embed?mid=1pMxGrUzA59m_9WlhXnkrs3YxUCAPZkoI" width="640" height="480"></iframe>
                 </div>
               </div>
             </div>
