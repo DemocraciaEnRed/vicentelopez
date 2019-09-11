@@ -16,6 +16,7 @@ import AdminActions from './admin-actions/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import DefaultContent from './default-content/component'
 import RelatedProposals from './related-proposals/component'
+import Subscribe from './subscribe/component'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -192,12 +193,13 @@ class TopicArticle extends Component {
         {topic.attrs.state !== 'pendiente' && topic.attrs.state !== 'no-factible' && (topic.attrs.anio === '2019' || topic.attrs.anio === '2020') &&
           <RelatedProposals id={topic.id} relatedProposals={this.state.relatedProposals}/>
         }
-        
+         <Subscribe
+            topic={topic}/>
         <Social
           topic={topic}
           twitterText={twitterText}
           socialLinksUrl={socialLinksUrl} />
-        <div className='topic-tags topic-article-content'>
+        <div className='topic-tags topic-article-content' style={{textAlign: 'center'}}>
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
           }
