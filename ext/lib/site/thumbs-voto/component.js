@@ -20,9 +20,9 @@ export default function ThumbsVoto (props) {
               {/* Mandá tu propuesta */}
               Ver Proyectos
             </Link>
-            <div className="btn-container-">
+            <div className="btn-container">
             <Link
-              to='/herramientas'
+              to='/s/herramientas'
               className="boton-azul boton-blanco">
               Ver puntos de votación
             </Link>
