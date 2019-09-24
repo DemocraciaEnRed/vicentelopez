@@ -14,7 +14,7 @@ $green = #93c01f
   transition: all .3s unquote('cubic-bezier(.25,.8,.25,1)')
   background-color: #fff
   width: 335px
-  height: 460px
+  min-height: 460px
   cursor: pointer
 
   &:hover
@@ -112,7 +112,8 @@ $green = #93c01f
     text-align: center
   .portada
     background-color: #93c01f
-    height: 430px
+    height: 210px
+    flex: 0 0 auto
     overflow: hidden
     &:before
       content: ''
