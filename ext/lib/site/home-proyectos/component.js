@@ -68,7 +68,6 @@ export class HomeProyectos extends Component {
     // })
       .then((res) => res.json())
       .then((res) => {
-        console.log('res', res);
         this.setState({
           barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
           // This filters should be applied if seguimiento stage is active only

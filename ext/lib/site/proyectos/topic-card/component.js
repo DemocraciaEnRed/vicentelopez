@@ -82,7 +82,7 @@ export default ({ topic, forum }) => {
         {topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
           <div>
             <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
-            <div className={'status status-active-' + topic.attrs.state}>
+            <div className={'topic-status status-active-' + topic.attrs.state}>
               <span>Estado: <b>{states.find((st) => st.value === topic.attrs.state).name}</b></span>
               <ul className='progress-bar'>
                 <li className='item-preparacion'></li>
