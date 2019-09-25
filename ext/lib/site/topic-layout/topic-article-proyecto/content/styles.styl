@@ -61,6 +61,15 @@ img
   .topic-location
     color: #0099c3
     text-decoration: underline
+    &:before
+      background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaLocation.png')")
+      display: inline-block
+      content: ''
+      width: 24px
+      height: 24px
+      background-repeat: no-repeat
+      background-size: cover
+      vertical-align: middle
   .topic-status
     font-size: 14px
     span
@@ -94,6 +103,7 @@ img
       align-items: center
       justify-content: center
       margin: 5px 10px
+      width: 100%
       .box-content-title
         font-weight: 500
         font-size: 16px
@@ -101,6 +111,38 @@ img
         color: #8c1e81
         font-weight: 900
         font-size: 30px
+    .box-content-social
+      text-align: center
+      margin: 0 0 10px
+      display: block
+      width: 100%
+      a
+        background-repeat: no-repeat
+        background-size: cover
+        width: 30px
+        height: 30px
+        margin: 0
+        display: inline-block
+        cursor: pointer
+        @media screen and (min-width: 500px)
+          width: 32px
+          height: 32px
+        @media screen and (min-width: 769px)
+          width: 32px
+          height: 32px
+      .social-facebook
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaFacebook.png')")
+      .social-twitter
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaTwitter.png')")
+      .social-mail
+        background-image: unquote("url('ext/lib/site/footer/email-c.svg')")
+        filter: brightness(0.1)
+        background-size: 84%
+        background-position: center
+      .social-instagram
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaInstagram.png')")
+      .social-linkedin
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaLinkedin.png')")
   .box-footer
     display: flex
     justify-content: center
