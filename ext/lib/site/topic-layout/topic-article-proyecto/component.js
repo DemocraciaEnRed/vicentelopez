@@ -174,7 +174,7 @@ class TopicArticle extends Component {
         <AdminActions forum={forum} topic={topic} />
           </div>
         {topic.clauses && topic.clauses.length > 0 ?
-          <Content barrio={topic.attrs.barrio} anio={topic.attrs.anio} clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs[this.getBudget(topic.attrs.state)]} votos={topic.attrs.votos}/> :
+          <Content twitterText={twitterText} socialLinksUrl={socialLinksUrl} lat={topic.attrs.lat} long={topic.attrs.long} barrio={topic.attrs.barrio} anio={topic.attrs.anio} clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs[this.getBudget(topic.attrs.state)]} votos={topic.attrs.votos}/> :
           <DefaultContent
             problema={topic.attrs.problema}
             solucion={topic.attrs.solucion}

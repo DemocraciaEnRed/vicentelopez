@@ -60,8 +60,11 @@ export default class Content extends Component {
             <div className='box-content'>
               <div className='topic-info'>
                 <span className='topic-year'><b>AÑO:</b> {this.props.anio}</span>
-                {/* TODO: ADD LINK TO MAPS */}
-                <a className='topic-location'><b>{this.props.barrio}</b></a>
+                { this.props.lat && this.props.long ? (
+                  <a href={`http://maps.google.com/maps?q=${this.props.lat},${this.props.long}`} target='_blank' className='topic-location'><b>{this.props.barrio}</b></a>
+                ) : (
+                  <span className='topic-location'><b>{this.props.barrio}</b></span>
+                )}
               </div>
               <div className='box-content-item'>
                 <span className='box-content-title'>Presupuesto {states.find((st) => st.value === this.props.presupuesto).name}:</span>
@@ -71,13 +74,12 @@ export default class Content extends Component {
                 <span className='box-content-title'>Cantidad de votos:</span>
                 <span className='box-content-info'>{this.props.votos}</span>
               </div>
-              {/* TODO: ADD LINK TO SHARE SOCIAL */}
               <div className='box-content-social'>
-                <a className='social-mail'></a>
-                <a className='social-facebook'></a>
-                <a className='social-twitter'></a>
-                <a className='social-instagram'></a>
-                <a className='social-linkedin'></a>
+                <a href={`mailto:?body=${this.props.socialLinksUrl}`} className='social-mail'></a>
+                <a target='_blank' href={`http://www.facebook.com/sharer.php?u=${this.props.socialLinksUrl}`} rel='noopener noreferrer' className='social-facebook'></a>
+                <a target='_blank' href={`http://twitter.com/share?text=${this.props.twitterText}&url=${this.props.socialLinksUrl}`} rel='noopener noreferrer' className='social-twitter'></a>
+                {/* <a className='social-instagram'></a> */}
+                <a target='_blank' href={`https://www.linkedin.com/shareArticle?url=${this.props.socialLinksUrl}`} className='social-linkedin'></a>
               </div>
             </div>
             <div className='box-footer'>
