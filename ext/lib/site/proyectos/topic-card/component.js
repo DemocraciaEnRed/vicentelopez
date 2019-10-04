@@ -72,8 +72,7 @@ export default ({ topic, forum }) => {
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
   // const linkTopic = () => { browserHistory.push(`/proyectos/topic/${topic.id}`) }
   return (
-    <a href={`/proyectos/topic/${topic.id}`} target="_blank">
-    <div className='ext-topic-card'>
+    <a href={`/proyectos/topic/${topic.id}`} target="_blank" className='ext-topic-card'>
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}>
@@ -81,11 +80,22 @@ export default ({ topic, forum }) => {
           <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
         }
         {topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
-          <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
+          <div>
+            <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
+            <div className={'topic-status status-active-' + topic.attrs.state}>
+              <span>Estado: <b>{states.find((st) => st.value === topic.attrs.state).name}</b></span>
+              <ul className='progress-bar'>
+                <li className='item-preparacion'></li>
+                <li className='item-compra'></li>
+                <li className='item-ejecucion'></li>
+                <li className='item-finalizado'><span>&#10004;</span></li>
+              </ul>
+            </div>
+          </div> 
         }
-        {topic.attrs && topic.attrs.state && !((topic.attrs.anio === '2019' || topic.attrs.anio === '2020') && topic.attrs.state === 'factible') && (
-          <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
-        )}
+        {topic.attrs && topic.attrs.state && topic.attrs.state === 'no-ganador' && (
+          <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>       
+        )} 
       </div>
       <div className='topic-card-info'>
         <div className='topic-card-body'>
@@ -121,7 +131,6 @@ export default ({ topic, forum }) => {
           </div>
         </div>
       </div>
-    </div>
     </a>
 
   )

@@ -38,16 +38,55 @@ img
     padding-left:30px
     @media screen and (max-width: 760px)
       padding-left:0px
-    padding-right:0
+      padding-right:0
   .ver-resu
     margin: 10px 0 30px
     display: block
     font-size:16px
+  .topic-info
+    width: 100%
+    text-align: center
+    background: #f9f9f9
+    padding: 15px 0
+  .topic-location,
+  .topic-year
+    text-transform: uppercase
+    color: black
+    display: inline-block
+    width: 50%
+    font-weight: 400
+    font-size: 14px
+  .topic-year
+    border-right: 1px solid #e9e9e9
+  .topic-location
+    color: #0099c3
+    text-decoration: underline
+    &.unavailable
+      color: black
+      text-decoration: none;
+    &:before
+      background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaLocation.png')")
+      display: inline-block
+      content: ''
+      width: 24px
+      height: 24px
+      background-repeat: no-repeat
+      background-size: cover
+      vertical-align: middle
+  .topic-status
+    font-size: 14px
+    span
+      font-weight: normal
+    .progress-bar
+      li:after
+        width: calc(100% - 19px)
+        left: -36%
+  
   .box-header
     display: flex
     justify-content: center
     align-items: center
-    padding: 7px 0
+    padding: 0
     background-color: #0099c3
     color: white
     font-weight: bold
@@ -59,7 +98,7 @@ img
     justify-content: space-evenly
     align-items: center
     flex-wrap: wrap
-    padding: 10px 0
+    padding: 0
     background-color: #e9e9e9
     .box-content-item
       display: flex
@@ -67,13 +106,46 @@ img
       align-items: center
       justify-content: center
       margin: 5px 10px
+      width: 100%
       .box-content-title
         font-weight: 500
-        font-size: 20px
+        font-size: 16px
       .box-content-info
         color: #8c1e81
         font-weight: 900
-        font-size: 35px
+        font-size: 30px
+    .box-content-social
+      text-align: center
+      margin: 0 0 10px
+      display: block
+      width: 100%
+      a
+        background-repeat: no-repeat
+        background-size: cover
+        width: 30px
+        height: 30px
+        margin: 0
+        display: inline-block
+        cursor: pointer
+        @media screen and (min-width: 500px)
+          width: 32px
+          height: 32px
+        @media screen and (min-width: 769px)
+          width: 32px
+          height: 32px
+      .social-facebook
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaFacebook.png')")
+      .social-twitter
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaTwitter.png')")
+      .social-mail
+        background-image: unquote("url('ext/lib/site/footer/email-c.svg')")
+        filter: brightness(0.1)
+        background-size: 84%
+        background-position: center
+      .social-instagram
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaInstagram.png')")
+      .social-linkedin
+        background-image: unquote("url('ext/lib/site/topic-layout/topic-article-proyecto/content/FichaLinkedin.png')")
   .box-footer
     display: flex
     justify-content: center
