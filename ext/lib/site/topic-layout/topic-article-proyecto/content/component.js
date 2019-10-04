@@ -63,7 +63,7 @@ export default class Content extends Component {
                 { this.props.lat && this.props.long ? (
                   <a href={`http://maps.google.com/maps?q=${this.props.lat},${this.props.long}`} target='_blank' className='topic-location'><b>{this.props.barrio}</b></a>
                 ) : (
-                  <span className='topic-location'><b>{this.props.barrio}</b></span>
+                  <span className='topic-location unavailable'><b>{this.props.barrio}</b></span>
                 )}
               </div>
               <div className='box-content-item'>
