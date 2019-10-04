@@ -181,6 +181,16 @@ class TopicArticle extends Component {
             beneficios={topic.attrs.beneficios}
           />
         }
+        { topic.attrs.album && topic.attrs.album.length > 0 && (
+            <div className='topic-album-wrapper'>
+              <div className='topic-album'>
+                <h4>Álbum de imágenes</h4>
+                  {
+                      topic.attrs.album.split(/\n/).map((url) => <a href={url} target='_blank'><img src={url}/></a>)
+                  }
+              </div>
+            </div>
+          )}
         {
           topic.links && (
             <Footer
