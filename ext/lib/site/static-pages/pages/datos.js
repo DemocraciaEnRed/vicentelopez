@@ -162,6 +162,7 @@ export default class Page extends Component {
                 <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación 2018</a>
                 <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
                 <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx' className='boton-azul'>Resultados de la votación 2018</a>
+                <a href='https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx' className='boton-azul'>Resultados de la votación 2019</a>
               </div>
             </div>
           </div>
