@@ -7,12 +7,13 @@ export default function ThumbsVoto (props) {
       <div className="container-fluid">
         <div className="row cont fondo-azul">
           <div className="subtitulo">
-            <h2>
-              {/* Presupuesto Participativo 2019 */}
-              Los proyectos de Vicente López los decidimos juntos.
+              <h2>
+              Muchas Gracias
             </h2>
-            {/* <h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
-            <h3>Ya podés ver todos los proyectos que podrán ser votados desde el lunes 16 hasta el domingo 29 de septiembre de 2019 inclusive.</h3>
+             {/*<h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
+            <h3>a las 76.477 personas que con su voto decidieron</h3>
+            <h3>los 66 proyectos en los que vamos a invertir $ 110.000.000<br/></h3>
+            <h3>del Presupuesto Participativo de Vicente López en 2020.</h3>
             <Link
               // to='/formulario-propuesta'
               to='/proyectos'
@@ -21,11 +22,9 @@ export default function ThumbsVoto (props) {
               Ver Proyectos
             </Link>
             <div className="btn-container">
-            <Link
-              to='/s/herramientas'
-              className="boton-azul boton-blanco">
-              Ver puntos de votación
-            </Link>
+            <div className="boton-azul boton-blanco">
+              <a href="https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
+            </div>
             </div>
           </div>
         </div>
