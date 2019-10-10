@@ -19,12 +19,12 @@ const defaultValues = {
     barrio: [],
     anio: ['2020'],
     // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
-    state: ['factible']
+    state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
   },
   'seguimiento': {
     barrio: [],
     // anio: ['2018', '2019', '2020'],
-    anio: ['2018', '2019'],
+    anio: ['2018', '2019', '2020'],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
@@ -55,8 +55,7 @@ export class HomeProyectos extends Component {
     // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
     // initialFilters.anio = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
-    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
     initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2020'
     // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
@@ -75,8 +74,7 @@ export class HomeProyectos extends Component {
           // anio: defaultValues.seguimiento.anio,
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
-          // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
+          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
           anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020'] : ['2020'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
@@ -193,7 +191,7 @@ export class HomeProyectos extends Component {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
         anio: prevState.stage === 'seguimiento' ? ['2020'] : ['2018', '2019', '2020'],
         barrio: [],
-        state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
+        state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
       }
     }, () => this.fetchTopics())
   }
