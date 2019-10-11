@@ -93,7 +93,7 @@ export default class Filter extends Component {
           <div className='stage-container'>
             <a className='stage-changer' onClick={this.props.changeStage}>
               {/* se oculta filtro de proyectos ganadores del año pasado hasta agosto. */}
-              {this.props.stage === 'seguimiento' ? 'Ver proyectos a votación >' : '< Ver seguimiento de proyectos'}
+              {this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores >' : '< Ver seguimiento de proyectos'}
             
             </a>
           </div>
