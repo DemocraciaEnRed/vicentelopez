@@ -2,6 +2,8 @@ FROM democracyos/democracyos:2.11.4
 
 MAINTAINER Francisco Pensa <francisco@democracyos.io>
 
+COPY ./dos-override/lib/api-v2/topics/csv.js /usr/src/lib/api-v2/topics/csv.js
+
 ENV LOCALE=es \
   AVAILABLE_LOCALES=es,en \
   ENFORCE_LOCALE=true \
