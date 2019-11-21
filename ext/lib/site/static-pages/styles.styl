@@ -323,24 +323,46 @@
   .descargas
     h4
       font-weight: bold
-      font-size: 24px
+      font-size: 22px
       text-align: center
-      color: #71bf44
-      margin-top: 0
+      color: #4d4d4d
+      margin-top: 40px
     .btns-descargas
       text-align: center
-      a
-        margin: 10px
-        &::before
-          content: ''
-          background-image: unquote("url('ext/lib/site/static-pages/file-icon-white.png')")
-          padding-left: 30px
-          background-size: contain
-          background-repeat: no-repeat
       .boton-azul
         color: #FFF
         font-size: 16px
         padding: 10px 20px
+    .descargas-info 
+      border-radius: 8px
+      box-shadow: 0 6px 4px -6px rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12)
+      text-align: left
+      padding: 15px 30px
+      margin-bottom: 20px
+      max-width: 800px
+      display: inline-block
+      border-right: 8px solid #1791be
+      h5
+        color: #1791be
+        font-weight: 600
+        margin-bottom: 10px
+      p
+        margin-bottom: 10px
+      .descarga-fecha
+        font-style: italic
+        font-size: 14px
+      .icon-descarga
+        display: inline-block
+        float: right
+        margin-top: -5px;
+        svg 
+          cursor: pointer
+          g, polygon 
+            fill: #1791be
+        &:hover
+          svg 
+            g, polygon 
+              fill: #7cbb42
     .btns-historial
       margin-bottom: 20px
 
