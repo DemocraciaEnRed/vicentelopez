@@ -199,6 +199,27 @@ export default class Page extends Component {
                   </a>
                 </div>
               </div>
+              <h4>PORTAL DE DATOS ABIERTOS DE VICENTE LOPEZ</h4>
+              <div className='portal-vl btns-descargas'>
+                <div className='portal-vl-datos'>
+                <div className='portal-vl-datos-num'>
+                  <span className='num'>+ 16</span>
+                  <img src="/ext/lib/site/static-pages/icon-bar.svg" alt=""/>
+                  <span className='leyenda'>Colecciones</span>
+                </div>
+                <div className='portal-vl-datos-num'>
+                  <span className='num'>+ 227</span>
+                  <img src="/ext/lib/site/static-pages/icon-folder.svg" alt=""/>
+                  <span className='leyenda'>Data Sets</span>
+                </div>
+                <Link href='http://vicentelopezdevo.opendata.junar.com/home'>
+                  <button className='boton-azul'>
+                    Ir al portal de datos abiertos
+                  </button>
+                </Link>
+                <p>La Municipalidad de Vicente López, en el marco de la Política de transparencia, participación y colaboración ciudadana, ha incorporado una plataforma de datos abiertos. La misma cuenta con una sección exclusiva del presupuesto participativo.</p>
+                </div>
+              </div>
             </div>
           </div>
         </Anchor>
