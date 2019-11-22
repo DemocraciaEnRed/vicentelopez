@@ -160,40 +160,40 @@ export default class Page extends Component {
               <div className='btns-descargas'>
                 <div className='descargas-info'>
                   <h5>Proyectos 2013-2019 por tipo (cantidad e inversión)</h5>
-                  <p>Descripcion del set de datos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id neque felis. Maecenas id fringilla lacus, eget luctus nisi. </p>
-                  <span className='descarga-fecha'>Publicado: 15 de abril de 2019</span>
+                  <p>Datos históricos de la cantidad de proyectos e inversión presupuestaria segmentado por temática.</p>
+                  <span className='descarga-fecha'>Publicado: 22 de Noviembre de 2019</span>
                   <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2019_tipo-cantidad-inversion.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
                 </div>
                 <div className='descargas-info'>
                   <h5>Información sobre participación 2018</h5>
-                  <p>Descripcion del set de datos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id neque felis. Maecenas id fringilla lacus, eget luctus nisi. </p>
-                  <span className='descarga-fecha'>Publicado: 15 de abril de 2019</span>
+                  <p>Datos de la cantidad de participantes, votantes por barrio y ratio con datos de población desde 2012 a 2018.</p>
+                  <span className='descarga-fecha'>Publicado: Diciembre de 2018</span>
                   <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
                 </div>
                 <div className='descargas-info'>
                   <h5>Resultados de la votación 2017</h5>
-                  <p>Descripcion del set de datos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id neque felis. Maecenas id fringilla lacus, eget luctus nisi. </p>
-                  <span className='descarga-fecha'>Publicado: 15 de abril de 2019</span>
+                  <p>Detalle de los proyectos ganadores en la votación de 2017. Incluye barrio, cantidad de votos, orden de votación y presupuesto estimado.</p>
+                  <span className='descarga-fecha'>Publicado: Octubre de 2017</span>
                   <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2017.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
                 </div>
                 <div className='descargas-info'>
                   <h5>Resultados de la votación 2018</h5>
-                  <p>Descripcion del set de datos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id neque felis. Maecenas id fringilla lacus, eget luctus nisi. </p>
-                  <span className='descarga-fecha'>Publicado: 15 de abril de 2019</span>
+                  <p>Detalle de los proyectos ganadores y no ganadores en la votación de 2018. Incluye barrio, cantidad de votos, orden de votación y presupuesto estimado.</p>
+                  <span className='descarga-fecha'>Publicado: Octubre de 2018</span>
                   <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
                 </div>
                 <div className='descargas-info'>
                   <h5>Resultados de la votación 2019</h5>
-                  <p>Descripcion del set de datos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id neque felis. Maecenas id fringilla lacus, eget luctus nisi. </p>
-                  <span className='descarga-fecha'>Publicado: 15 de abril de 2019</span>
+                  <p>Detalle de los proyectos ganadores y no ganadores en la votación de 2019. Incluye barrio, cantidad de votos, orden de votación y presupuesto estimado. </p>
+                  <span className='descarga-fecha'>Publicado: Noviembre de 2019</span>
                   <a href='https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
