@@ -148,21 +148,77 @@ export default class Page extends Component {
             </article>
 
             <div className='descargas'>
-              <h4>ARCHIVOS</h4>
+              <h4>HISTORIAL DE DOCUMENTOS DE PRESUPUESTO PARTICIPATIVO</h4>
               <div className='btns-descargas btns-historial'>
                 <Link href='/s/documentos'>
                   <button className='boton-azul'>
-                    Visualizador de archivos
+                    Visualizar historial de documentos
                   </button>
                 </Link>
               </div>
-              <h4>DESCARGAS</h4>
+              <h4>DATOS ABIERTOS</h4>
               <div className='btns-descargas'>
-                <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2019_tipo-cantidad-inversion.xlsx' className='boton-azul'>Proyectos 2013-2019 por tipo (cantidad e inversión)</a>
-                <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='boton-azul'>Información sobre participación 2018</a>
-                <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2017.xlsx' className='boton-azul'>Resultados de la votación 2017</a>
-                <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx' className='boton-azul'>Resultados de la votación 2018</a>
-                <a href='https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx' className='boton-azul'>Resultados de la votación 2019</a>
+                <div className='descargas-info'>
+                  <h5>Proyectos 2013-2019 por tipo (cantidad e inversión)</h5>
+                  <p>Datos históricos de la cantidad de proyectos e inversión presupuestaria segmentado por temática.</p>
+                  <span className='descarga-fecha'>Publicado: 22 de Noviembre de 2019</span>
+                  <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2019_tipo-cantidad-inversion.xlsx' className='icon-descarga'>
+                    <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
+                  </a>
+                </div>
+                <div className='descargas-info'>
+                  <h5>Información sobre participación 2018</h5>
+                  <p>Datos de la cantidad de participantes, votantes por barrio y ratio con datos de población desde 2012 a 2018.</p>
+                  <span className='descarga-fecha'>Publicado: Diciembre de 2018</span>
+                  <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='icon-descarga'>
+                    <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
+                  </a>
+                </div>
+                <div className='descargas-info'>
+                  <h5>Resultados de la votación 2017</h5>
+                  <p>Detalle de los proyectos ganadores en la votación de 2017. Incluye barrio, cantidad de votos, orden de votación y presupuesto estimado.</p>
+                  <span className='descarga-fecha'>Publicado: Octubre de 2017</span>
+                  <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2017.xlsx' className='icon-descarga'>
+                    <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
+                  </a>
+                </div>
+                <div className='descargas-info'>
+                  <h5>Resultados de la votación 2018</h5>
+                  <p>Detalle de los proyectos ganadores y no ganadores en la votación de 2018. Incluye barrio, cantidad de votos, orden de votación y presupuesto estimado.</p>
+                  <span className='descarga-fecha'>Publicado: Octubre de 2018</span>
+                  <a href='https://forosvecinales.blob.core.windows.net/informes/resultados-escrutinio-2018.xlsx' className='icon-descarga'>
+                    <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
+                  </a>
+                </div>
+                <div className='descargas-info'>
+                  <h5>Resultados de la votación 2019</h5>
+                  <p>Detalle de los proyectos ganadores y no ganadores en la votación de 2019. Incluye barrio, cantidad de votos, orden de votación y presupuesto estimado. </p>
+                  <span className='descarga-fecha'>Publicado: Noviembre de 2019</span>
+                  <a href='https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx' className='icon-descarga'>
+                    <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
+                  </a>
+                </div>
+              </div>
+              <h4>PORTAL DE DATOS ABIERTOS DE VICENTE LOPEZ</h4>
+              <div className='portal-vl btns-descargas'>
+                <div className='portal-vl-datos'>
+                <div className='portal-vl-datos-num'>
+                  <span className='num'>+ 16</span>
+                  <img src="/ext/lib/site/static-pages/icon-bar.svg" alt=""/>
+                  <span className='leyenda'>Colecciones</span>
+                </div>
+                <div className='portal-vl-datos-num'>
+                  <span className='num'>+ 227</span>
+                  <img src="/ext/lib/site/static-pages/icon-folder.svg" alt=""/>
+                  <span className='leyenda'>Data Sets</span>
+                </div>
+                <Link href='http://vicentelopezdevo.opendata.junar.com/home'>
+                  <button className='boton-azul'>
+                    Ir al portal de datos abiertos
+                  </button>
+                </Link>
+                <p>La Municipalidad de Vicente López, en el marco de la Política de transparencia, participación y colaboración ciudadana, ha incorporado una plataforma de datos abiertos. La misma cuenta con una sección exclusiva del presupuesto participativo.</p>
+                </div>
               </div>
             </div>
           </div>
