@@ -5,6 +5,7 @@ import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 import DonutChart from 'ext/lib/site/graphics/component'
+import Banner400Proyectos from '../../banner-400-proyectos/component.js'
 const distribucionProyectosData = require('./distribucion-proyectos.json')
 const ejecucionProyectosData = require('./ejecucion-proyectos.json')
 
@@ -28,6 +29,9 @@ export default class Page extends Component {
             </div>
           </div>
         </section>
+        <Banner400Proyectos/>
+        <br/>
+        <br/>
         <Anchor id='container'>
 
           <div className='ext-datos'>

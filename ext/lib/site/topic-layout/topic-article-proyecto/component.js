@@ -17,6 +17,7 @@ import Proyectos from 'ext/lib/site/proyectos/component'
 import DefaultContent from './default-content/component'
 import RelatedProposals from './related-proposals/component'
 import Subscribe from './subscribe/component'
+import Banner400Proyectos from '../../banner-400-proyectos/component'
 
 class TopicArticle extends Component {
   constructor (props) {
@@ -217,6 +218,7 @@ class TopicArticle extends Component {
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
+        <Banner400Proyectos/>
         <Proyectos />
       </div>
     )
