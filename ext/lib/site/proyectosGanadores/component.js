@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Flickity from 'flickity'
 import { Link } from 'react-router'
-import TopicCard from './topic-card/component'
+import TopicCard from '../proyectos/topic-card/component'
 
 export default class Carrusel extends Component {
   constructor (props) {
