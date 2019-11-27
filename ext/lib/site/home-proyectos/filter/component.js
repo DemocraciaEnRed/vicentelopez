@@ -14,7 +14,7 @@ const barrios = [
 ]
 
 const states = [
-  { 'name': 'Finalizado', 'value': 'finalizado' }
+  { 'name': 'Finalizado', 'value': 'finalizado' },
   { 'name': 'En proceso de compra', 'value': 'compra' },
   { 'name': 'En ejecución', 'value': 'ejecucion' },
   { 'name': 'En preparación', 'value': 'preparacion' },
