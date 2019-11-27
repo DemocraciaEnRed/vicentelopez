@@ -3,7 +3,7 @@ import React from 'react'
 export default ({ problema, solucion, beneficios }) => {
   if (!problema && !solucion && !beneficios) return null
   return (
-    <div className='topic-article-content entry-content'>
+    <div className='topic-article-content entry-content skeleton-propuesta'>
       { problema &&
         <div>
           <span className='topic-article-span'>Problema o necesidad existente</span>

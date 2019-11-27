@@ -360,7 +360,10 @@ topicColor2 = #999
     flex-shrink: 0;
     &.entry-content
       display: flex
-      flex-direction: row-reverse
+      &.skeleton-propuesta
+        flex-direction: column
+      $.skeleton-proyecto
+        flex-direction: row-reverse
       @media screen and (max-width: 760px)
         display: block
 

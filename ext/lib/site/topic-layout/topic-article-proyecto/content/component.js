@@ -43,7 +43,7 @@ export default class Content extends Component {
       }
     }
     return (
-      <div className='entry-content topic-article-content'>
+      <div className='entry-content topic-article-content skeleton-proyecto'>
         { this.props.topicState !== 'factible' && this.props.topicState !== 'no-ganador' && (
           <div className='topic-article-content proyecto-ganador'>
             <div className='box-header'>

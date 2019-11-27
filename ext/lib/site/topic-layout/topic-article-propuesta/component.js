@@ -143,7 +143,7 @@ class TopicArticle extends Component {
             mediaTitle={topic.mediaTitle} />
         </div>
 
-        <div className='topic-article-content entry-content'>
+        <div className='topic-article-content entry-content skeleton-propuesta'>
          <div className='topic-article-status-container'>
         {
           (forum.privileges && forum.privileges.canChangeTopics)
