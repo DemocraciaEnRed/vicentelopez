@@ -14,11 +14,11 @@ const barrios = [
 ]
 
 const states = [
-  { 'name': 'No ganador', 'value': 'no-ganador' },
-  { 'name': 'En preparación', 'value': 'preparacion' },
+  { 'name': 'Finalizado', 'value': 'finalizado' }
   { 'name': 'En proceso de compra', 'value': 'compra' },
   { 'name': 'En ejecución', 'value': 'ejecucion' },
-  { 'name': 'Finalizado', 'value': 'finalizado' }
+  { 'name': 'En preparación', 'value': 'preparacion' },
+  { 'name': 'No ganador', 'value': 'no-ganador' },
 ]
 
 const anios = ['2018', '2019','2020']
