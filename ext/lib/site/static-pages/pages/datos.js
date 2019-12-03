@@ -53,7 +53,7 @@ export default class Page extends Component {
                       <th>2016 - 2017</th>
                       <th>2017 - 2018</th>
                       <th>2018 - 2019</th>
-
+                      <th>2019 - 2020</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -66,7 +66,7 @@ export default class Page extends Component {
                       <td>45 MM</td>
                       <td>65 MM</td>
                       <td>75 MM</td>
-
+                      <td>108 MM</td>
                     </tr>
                     <tr>
                       <td>Propuestas Presentadas</td>
@@ -77,7 +77,7 @@ export default class Page extends Component {
                       <td>348</td>
                       <td>350</td>
                       <td>524</td>
-
+                      <td>507</td>
                     </tr>
                     <tr>
                       <td>Proyectos Factibles</td>
@@ -88,6 +88,7 @@ export default class Page extends Component {
                       <td>148</td>
                       <td>145</td>
                       <td>198</td>
+                      <td>300</td>
                     </tr>
                     <tr>
                       <td>Proyectos Ganadores</td>
@@ -98,7 +99,7 @@ export default class Page extends Component {
                       <td>81</td>
                       <td>74</td>
                       <td>47</td>
-
+                      <td>66</td>
                     </tr>
                     <tr>
                       <td>Cantidad de Participantes</td>
@@ -109,7 +110,7 @@ export default class Page extends Component {
                       <td>26.537</td>
                       <td>45.010</td>
                       <td>69.201</td>
-
+                      <td>78.310</td>
                     </tr>
                     <tr>
                       <td>Proporción de Participantes</td>
@@ -119,6 +120,7 @@ export default class Page extends Component {
                       <td>1 cada 11</td>
                       <td>1 cada 8</td>
                       <td>1 cada 5</td>
+                      <td>1 cada 3</td>
                       <td>1 cada 3</td>
                     </tr>
                   </tbody>
