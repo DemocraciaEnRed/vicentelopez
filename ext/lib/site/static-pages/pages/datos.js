@@ -40,12 +40,13 @@ export default class Page extends Component {
             </p>
 
             <article className="seccion-datos">
-              <h3>Evolución del Presupuesto Participativo 2012 - 2018</h3>
+              <h3>Evolución del Presupuesto Participativo 2012 - 2020</h3>
               <figure className="graph-box">
-                <table className="tabla-presupuestoparticipativo">
+                <div className="table-scroller">
+                  <table className="tabla-presupuestoparticipativo">
                   <thead>
                     <tr>
-                      <th>Edición</th>
+                      <th className="sticky-col">Edición</th>
                       <th>2012 - 2013</th>
                       <th>2013 - 2014</th>
                       <th>2014 - 2015</th>
@@ -58,7 +59,7 @@ export default class Page extends Component {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Presupuesto Asignado</td>
+                      <td className="sticky-col">Presupuesto Asignado</td>
                       <td>10 MM</td>
                       <td>15 MM</td>
                       <td>20 MM</td>
@@ -69,7 +70,7 @@ export default class Page extends Component {
                       <td>108 MM</td>
                     </tr>
                     <tr>
-                      <td>Propuestas Presentadas</td>
+                      <td className="sticky-col">Propuestas Presentadas</td>
                       <td>86</td>
                       <td>165</td>
                       <td>277</td>
@@ -80,7 +81,7 @@ export default class Page extends Component {
                       <td>507</td>
                     </tr>
                     <tr>
-                      <td>Proyectos Factibles</td>
+                      <td className="sticky-col">Proyectos Factibles</td>
                       <td>65</td>
                       <td>104</td>
                       <td>153</td>
@@ -91,7 +92,7 @@ export default class Page extends Component {
                       <td>300</td>
                     </tr>
                     <tr>
-                      <td>Proyectos Ganadores</td>
+                      <td className="sticky-col">Proyectos Ganadores</td>
                       <td>50</td>
                       <td>69</td>
                       <td>69</td>
@@ -102,7 +103,7 @@ export default class Page extends Component {
                       <td>66</td>
                     </tr>
                     <tr>
-                      <td>Cantidad de Participantes</td>
+                      <td className="sticky-col">Cantidad de Participantes</td>
                       <td>1.178</td>
                       <td>6.691</td>
                       <td>10.068</td>
@@ -113,7 +114,7 @@ export default class Page extends Component {
                       <td>78.310</td>
                     </tr>
                     <tr>
-                      <td>Proporción de Participantes</td>
+                      <td className="sticky-col">Proporción de Participantes</td>
                       <td>1 cada 156</td>
                       <td>1 cada 31</td>
                       <td>1 cada 20</td>
@@ -126,10 +127,11 @@ export default class Page extends Component {
                   </tbody>
                   <tfoot>
                     <tr>
-                    <td colSpan={8}>Presupuesto asignado 2018 - 2019: $75 millones</td>
+                    <td colSpan={9}>Presupuesto asignado 2019 - 2020: $108 millones</td>
                     </tr>
                   </tfoot>
                 </table>
+                </div>
               </figure>
             </article>
 
