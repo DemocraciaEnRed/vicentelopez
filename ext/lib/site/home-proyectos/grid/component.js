@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import TopicCard from '../../proyectos/topic-card/component'
+import indexOf from 'lodash.indexof'
+import sortBy from 'lodash.sortby'
 
 export default class TopicGrid extends Component {
   constructor (props) {
@@ -42,7 +44,25 @@ export default class TopicGrid extends Component {
         'title': 'Villa Martelli'
       }
     ]
+    this.states = [
+      'finalizado',
+      'ejecucion',
+      'compra',
+      'preparacion',
+      'no-ganador',
+    ]
   }
+
+  renderTopics = (barrio) => {
+    const topicsFiltered = this.props.topics.filter((topic) => topic.attrs.barrio === barrio.name);
+    const topicsSortByState = sortBy(topicsFiltered ,(topic) => { 
+      return indexOf(this.states, topic.attrs.state);
+    });
+    return topicsSortByState.map((topic, i) => (
+      <TopicCard key={i} topic={topic} forum={{ title: topic.attrs.barrio }} /> 
+    ))
+  }
+
   render () {
     return (
       <div className='topic-grid'>
@@ -51,12 +71,7 @@ export default class TopicGrid extends Component {
           <div className='barrio-wrapper' key={i}>
             <h2 className='barrio-title'>{barrio.title}</h2>
             <div className={`${this.props.topics.filter((topic) => topic.attrs.barrio === barrio.name).length  < 3 ? 'cards-container-shortItems' : 'cards-container'}` } >
-              {this.props.topics
-                .filter((topic) => topic.attrs.barrio === barrio.name)
-                .map((topic, i) => {
-                  return <TopicCard key={i} topic={topic} forum={{ title: topic.attrs.barrio }} />
-                })
-              }
+              {this.renderTopics(barrio)}
             </div>
           </div>
         ))}
