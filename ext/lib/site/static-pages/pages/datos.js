@@ -4,7 +4,8 @@ import Footer from 'ext/lib/site/footer/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
-import DonutChart from 'ext/lib/site/graphics/component'
+import DonutChart from 'ext/lib/site/graphics/donut-chart/component'
+import LineChart from 'ext/lib/site/graphics/line-chart/component'
 import Banner400Proyectos from '../../banner-400-proyectos/component.js'
 const distribucionProyectosData = require('./distribucion-proyectos.json')
 const ejecucionProyectosData = require('./ejecucion-proyectos.json')
@@ -139,8 +140,9 @@ export default class Page extends Component {
               <h3>Evolución de la participación</h3>
               <figure className="graph-box">
                 <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
-                </div>
+                  <LineChart />
+{/*                   <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
+ */}                </div>
                 <figcaption>
                   <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
                 </figcaption>
