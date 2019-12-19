@@ -24,10 +24,6 @@ function escapeTxt (text) {
 app.use(json2xls.middleware)
 
 app.get('/export/topics/xlsx',
-  function aaaa(req, res, next) {
-    log('=========================================================')
-    next()
-  },
   middlewares.users.restrict,
   middlewares.forums.findByName,
   middlewares.topics.findAllFromForum,
@@ -39,7 +35,6 @@ app.get('/export/topics/xlsx',
         log('error serving tags from DB:', err)
         return res.status(500).end()
       }
-      console.log(tags)
       tags.forEach(t => tagsName[t.id] = t.name)
       req.tagsName = tagsName
       next()
