@@ -127,3 +127,61 @@ function postCsv (req, res) {
       })
   }, { delimiter: { wrap: '"' } })
 })
+
+// app.get('/topics.xls',
+// middlewares.users.restrict,
+// middlewares.forums.findByName,
+// middlewares.topics.findAllFromForum,
+// middlewares.forums.privileges.canChangeTopics,
+// function getAllTags (req, res, next) {
+//   api.tag.all(function (err, tags) {
+//     let tagsName = {}
+//     if (err) {
+//       log('error serving tags from DB:', err)
+//       return res.status(500).end()
+//     }
+//     console.log(tags)
+//     tags.forEach(t => tagsName[t.id] = t.name)
+//     req.tagsName = tagsName
+//     next()
+//   })
+// },
+// function getCsv (req, res, next) {
+//   const infoTopics = [ titles.concat(req.forum.topicsAttrs.map((attr) => attr.name)) ]
+//   // console.log(req.forum.topicsAttrs)
+//   // console.log(infoTopics)
+//   const attrsNames = req.forum.topicsAttrs
+//     .map((attr) => attr.name)
+//   req.topics.forEach((topic) => {
+//     if (topic.attrs === undefined) {
+//       topic.attrs = {}
+//     }
+//     infoTopics.push([
+//       topic.id,
+//       `"${escapeTxt(topic.mediaTitle)}"`,
+//       req.tagsName[topic.tag.toString()]
+//     ].concat(attrsNames.map((name) => `"${escapeTxt(topic.attrs[name])}"` || '')))
+//   })
+
+
+//     try {
+//       var file = json2excel({
+//         infoTopics,
+//         name: 'user-info-data',
+//         formateDate: 'yyyy/mm/dd'
+//       });
+//       res.status(200)
+//       res.set({
+//         'Content-Encoding': 'UTF-8',
+//         'Content-Type': 'text/csv; charset=UTF-8',
+//         'Content-Disposition': `attachment; filename=excel-${req.forum.name.replace(/\s/g, '-')}-${Math.floor((new Date()) / 1000)}.csv`
+//       })
+//       res.write(file)
+//       res.end()
+//     } catch (err) {
+//         log('get csv: array to csv error', err)
+//         return res.status(500).end()
+//     }
+
+//   js
+// })

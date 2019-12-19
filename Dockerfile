@@ -3,6 +3,7 @@ FROM democracyos/democracyos:2.11.4
 MAINTAINER Francisco Pensa <francisco@democracyos.io>
 
 COPY ./dos-override/lib/api-v2/topics/csv.js /usr/src/lib/api-v2/topics/csv.js
+COPY ./dos-override/lib/admin/admin-topics/export-update/component.js /usr/src/lib/admin/admin-topics/export-update/component.js
 
 ENV LOCALE=es \
   AVAILABLE_LOCALES=es,en \
