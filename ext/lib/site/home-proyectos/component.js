@@ -94,8 +94,8 @@ export class HomeProyectos extends Component {
         [filter]: [...this.state[filter], value]
       }, () => this.fetchTopics())
       // If it's already included and it's the only filter applied, apply default filters
-    } else if (this.state[filter].length === 1) {
-      this.clearFilter(filter)
+    /* } else if (this.state[filter].length === 1) {
+      this.clearFilter(filter) */
       // If it's already included erase it
     } else {
       this.setState({
