@@ -52,11 +52,11 @@ export class TopicCard extends Component {
           <div className='topic-creation'>
             <span>{topic.attrs.nombre}</span>
             <span
-              className={`date ${(topic.attrs.state === 'factible' || topic.attrs.state === 'no-factible') && 'space'}`}>
+              className={`date ${(topic.attrs.state !== 'pendiente') && 'space'}`}>
               {moment(topic.createdAt).format('D/M/YY')}
             </span>
             {topic.attrs.state !== 'pendiente' &&
-              <span className={`estado ${topic.attrs.state === 'factible' ? 'factible' : ''}`}>{estados(topic.attrs.state)}</span>
+              <span className={`estado ${topic.attrs.state !== 'no-factible' && topic.attrs.state !== 'integrado' ? 'factible' : ''}`}>{estados(topic.attrs.state)}</span>
             }
           </div>
           <h1 className='topic-card-title'>
