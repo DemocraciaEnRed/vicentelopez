@@ -16,7 +16,9 @@
     "flickity": "2.0.8",
     "jump.js": "1.0.2",
     "lodash.debounce": "4.0.8",
+    "lodash.indexof": "^4.0.5",
     "lodash.pick": "4.4.0",
+    "lodash.sortby": "^4.7.0",
     "react-chartjs-2": "^2.7.6",
     "react-pdf-js": "^3.0.7"
   },

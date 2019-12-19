@@ -4,7 +4,8 @@ import Footer from 'ext/lib/site/footer/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
-import DonutChart from 'ext/lib/site/graphics/component'
+import DonutChart from 'ext/lib/site/graphics/donut-chart/component'
+import LineChart from 'ext/lib/site/graphics/line-chart/component'
 import Banner400Proyectos from '../../banner-400-proyectos/component.js'
 const distribucionProyectosData = require('./distribucion-proyectos.json')
 const ejecucionProyectosData = require('./ejecucion-proyectos.json')
@@ -40,12 +41,13 @@ export default class Page extends Component {
             </p>
 
             <article className="seccion-datos">
-              <h3>Evolución del Presupuesto Participativo 2012 - 2018</h3>
+              <h3>Evolución del Presupuesto Participativo 2012 - 2020</h3>
               <figure className="graph-box">
-                <table className="tabla-presupuestoparticipativo">
+                <div className="table-scroller">
+                  <table className="tabla-presupuestoparticipativo">
                   <thead>
                     <tr>
-                      <th>Edición</th>
+                      <th className="sticky-col">Edición</th>
                       <th>2012 - 2013</th>
                       <th>2013 - 2014</th>
                       <th>2014 - 2015</th>
@@ -53,12 +55,12 @@ export default class Page extends Component {
                       <th>2016 - 2017</th>
                       <th>2017 - 2018</th>
                       <th>2018 - 2019</th>
-
+                      <th>2019 - 2020</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Presupuesto Asignado</td>
+                      <td className="sticky-col">Presupuesto Asignado</td>
                       <td>10 MM</td>
                       <td>15 MM</td>
                       <td>20 MM</td>
@@ -66,10 +68,10 @@ export default class Page extends Component {
                       <td>45 MM</td>
                       <td>65 MM</td>
                       <td>75 MM</td>
-
+                      <td>108 MM</td>
                     </tr>
                     <tr>
-                      <td>Propuestas Presentadas</td>
+                      <td className="sticky-col">Propuestas Presentadas</td>
                       <td>86</td>
                       <td>165</td>
                       <td>277</td>
@@ -77,10 +79,10 @@ export default class Page extends Component {
                       <td>348</td>
                       <td>350</td>
                       <td>524</td>
-
+                      <td>507</td>
                     </tr>
                     <tr>
-                      <td>Proyectos Factibles</td>
+                      <td className="sticky-col">Proyectos Factibles</td>
                       <td>65</td>
                       <td>104</td>
                       <td>153</td>
@@ -88,9 +90,10 @@ export default class Page extends Component {
                       <td>148</td>
                       <td>145</td>
                       <td>198</td>
+                      <td>300</td>
                     </tr>
                     <tr>
-                      <td>Proyectos Ganadores</td>
+                      <td className="sticky-col">Proyectos Ganadores</td>
                       <td>50</td>
                       <td>69</td>
                       <td>69</td>
@@ -98,10 +101,10 @@ export default class Page extends Component {
                       <td>81</td>
                       <td>74</td>
                       <td>47</td>
-
+                      <td>66</td>
                     </tr>
                     <tr>
-                      <td>Cantidad de Participantes</td>
+                      <td className="sticky-col">Cantidad de Participantes</td>
                       <td>1.178</td>
                       <td>6.691</td>
                       <td>10.068</td>
@@ -109,10 +112,10 @@ export default class Page extends Component {
                       <td>26.537</td>
                       <td>45.010</td>
                       <td>69.201</td>
-
+                      <td>78.310</td>
                     </tr>
                     <tr>
-                      <td>Proporción de Participantes</td>
+                      <td className="sticky-col">Proporción de Participantes</td>
                       <td>1 cada 156</td>
                       <td>1 cada 31</td>
                       <td>1 cada 20</td>
@@ -120,14 +123,16 @@ export default class Page extends Component {
                       <td>1 cada 8</td>
                       <td>1 cada 5</td>
                       <td>1 cada 3</td>
+                      <td>1 cada 3</td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr>
-                    <td colSpan={8}>Presupuesto asignado 2018 - 2019: $75 millones</td>
+                    <td colSpan={9}>Presupuesto asignado 2019 - 2020: $108 millones</td>
                     </tr>
                   </tfoot>
                 </table>
+                </div>
               </figure>
             </article>
 
@@ -135,8 +140,9 @@ export default class Page extends Component {
               <h3>Evolución de la participación</h3>
               <figure className="graph-box">
                 <div className="graph-img">
-                  <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
-                </div>
+                  <LineChart />
+{/*                   <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
+ */}                </div>
                 <figcaption>
                   <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
                 </figcaption>

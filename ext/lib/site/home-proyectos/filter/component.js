@@ -28,7 +28,9 @@ export default class Filter extends Component {
     super(props)
     this.state = {
       activeDropdown: null,
-      defaultFilters: ['anio', 'state']
+      //defaultFilters: ['anio', 'state']
+      defaultFilters: [], // empty to show active filters on init
+      showWinnersLabel: true,
     }
   }
 
@@ -65,6 +67,9 @@ export default class Filter extends Component {
         defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
       }, this.props.handleFilter(filter, value))
     }
+    this.setState({
+      showWinnersLabel: false
+    });
   }
 
   // Close dropdown if clicked outside
@@ -81,7 +86,8 @@ export default class Filter extends Component {
     this.props.clearFilter(filter)
     if (filter !== 'barrio') {
       this.setState({
-        defaultFilters: [...this.state.defaultFilters, filter]
+        defaultFilters: [...this.state.defaultFilters, filter],
+        showWinnersLabel: false
       })
     }
   }
@@ -89,15 +95,15 @@ export default class Filter extends Component {
   render () {
     return (
       <nav id='filter'>
-        {this.props.openVotation &&
+        {/* se oculta filtro de proyectos ganadores del año pasado hasta agosto. */}
+        {/* {this.props.openVotation &&
           <div className='stage-container'>
             <a className='stage-changer' onClick={this.props.changeStage}>
-              {/* se oculta filtro de proyectos ganadores del año pasado hasta agosto. */}
               {this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores >' : '< Ver seguimiento de proyectos'}
             
             </a>
           </div>
-        }
+        } */}
         <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>
           <div className='button-container'>
             <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
@@ -129,7 +135,7 @@ export default class Filter extends Component {
               </div>
             }
           </div>
-          {this.props.stage === 'seguimiento' &&
+          {/* {this.props.stage === 'seguimiento' && */}
           <div className='button-container'>
             <button className='dropdown-button' onClick={this.handleDropdown('state')}>
               <div>
@@ -160,8 +166,8 @@ export default class Filter extends Component {
               </div>
             }
           </div>
-          }
-          {this.props.stage === 'seguimiento' &&
+         {/* }*/}
+          {/* {this.props.stage === 'seguimiento' && */}
             <div className='button-container'>
               <button className='dropdown-button' onClick={this.handleDropdown('anio')}>
                 <div>
@@ -192,8 +198,11 @@ export default class Filter extends Component {
               </div>
               }
             </div>
-          }
+          {/* } */}
         </div>
+        {this.state.showWinnersLabel && 
+          <div className='winners-label'>Proyectos ganadores para ejecutarse en 2020</div>
+        }
       </nav>
     )
   }
