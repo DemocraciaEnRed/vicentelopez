@@ -9,10 +9,11 @@ services:
       - DEBUG=democracyos*
       - MONGO_URL=mongodb://mongo:27017/myDatabase
       - ORGANIZATION_NAME=DemocracyOS Fork
+      - JWT_SECRET=
       # Add your email here!
       - STAFF=email@example.com
-    #links:
-     # - mongo
+    links:
+      - mongo
     ports:
       - 3000:3000
     volumes:
@@ -20,9 +21,9 @@ services:
       - ./public:/usr/src/public
     tty: true
 
- # mongo:
-  #  image: mongo:3.2
-   # ports:
-    #  - 27017:27017
-    #volumes:
-     # - ./tmp/db:/data/db
+  mongo:
+    image: mongo:3.2
+    ports:
+      - 27017:27017
+    volumes:
+      - ./tmp/db:/data/db
