@@ -18,6 +18,7 @@ This is an example demonstrating how to extend DemocracyOS using [Docker](https:
 * The complete documentation on overriding the default docker-compose.yml can be found here: https://docs.docker.com/compose/extends/
 * On your `docker-compose.override.yml` you can configure DemocracyOS using environment variables. All the available options are here: http://docs.democracyos.org/configuration.html
 * The port `27017` is exposed so you can connect to mongo from your machine using any mongo client such as [Robomongo](https://robomongo.org/).
+* If you already have a mongo 3.2 server running on your machine you can comment out the `mongo` service on `docker-compose.yml` and change the `MONGO_URL` environment variable
 * All the customized views/endpoints are located on the `/ext` folder. Following the same folders pattern as DemocracyOS/democracyos.
 * New frontend builds, which allows you to use your custom frontend code, are defined [here](https://github.com/DemocracyOS/extension-example/blob/master/ext/lib/build/entries.json).
 
