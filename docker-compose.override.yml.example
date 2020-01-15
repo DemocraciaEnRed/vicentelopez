@@ -4,3 +4,4 @@ services:
   app:
     environment:
       - STAFF=matias@democracyos.org
+      - FORUM_PROYECTOS=proyectos
