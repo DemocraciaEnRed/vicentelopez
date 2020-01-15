@@ -71,11 +71,6 @@ export class UserBadge extends Component {
         <ul
           className='dropdown-list'>
           {menuItemAdmin}
-          <li className='notifications-li'>
-            <Link to={urlBuilder.for('site.notifications')}>
-              {t('notifications.title')}
-            </Link>
-          </li>
           <li>
             <Link to={urlBuilder.for('settings')}>
               {t('header.settings')}
