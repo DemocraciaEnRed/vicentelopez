@@ -43,7 +43,7 @@ export class UserBadge extends Component {
       if (config.multiForum) {
         menuItemAdmin = (
           <li>
-            <Link to={urlBuilder.for('settings.forums')}>
+            <Link to={urlBuilder.for('admin.topics', { forum: 'a' })}>
               {t('header.forums')}
             </Link>
           </li>

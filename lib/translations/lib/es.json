@@ -241,7 +241,7 @@
   "forum.status.destroying": "Eliminando...",
   "forum.status.error": "Ha habido un error en esta comunidad, por favor intente más tarde.",
   "header.admin": "Admin",
-  "header.forums": "Mis Comunidades",
+  "header.forums": "Admin",
   "header.insecure-warning": "Atención: Estás usando una version insegura de DemocracyOS. Lee la documentación para mas detalles de como implementar SSL.",
   "header.logout": "Cerrar sesión",
   "header.settings": "Mi Cuenta",
