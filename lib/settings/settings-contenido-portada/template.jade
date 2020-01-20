@@ -1,0 +1,69 @@
+#contenido-portada-wrapper.hide(data-section=urlBuilder.for('settings.contenido-portada'))
+  .password-settings
+    .heading
+      .circle
+        i.icon-lock
+      h1= 'Contenido Portada'
+    form.form(action='/api/text', method='post', role='form', autocomplete='off', autovalidate='autovalidate', autosubmit='autosubmit')
+      ul.form-messages
+      .form-group
+        label= 'Subtitulo principal'
+        input.form-control(
+          type='text',
+          data-name='home-subtitle',
+          maxlength=100,
+          placeholder='',
+          value=''
+          validate='required'
+        )
+      .form-group
+        label= 'Texto subtitulo principal'
+        textarea.form-control(
+          data-name='home-subtitle-text',
+          rows=5,
+          maxlength=400,
+          placeholder='',
+          value=''
+          validate='required'
+        )
+      .form-group
+        label= 'Video (posibilidad 1)'
+        h6= 'Formato mp4:'
+        input.form-control(
+          type='text',
+          data-name='home-video1-mp4',
+          maxlength=200,
+          placeholder='',
+          value=''
+          validate='required url'
+        )
+        h6= 'Formato webm:'
+        input.form-control(
+          type='text',
+          data-name='home-video1-webm',
+          maxlength=200,
+          placeholder='',
+          value=''
+          validate='required url'
+        )
+      .form-group
+        label= 'Video (posibilidad 2)'
+        h6= 'Formato mp4:'
+        input.form-control(
+          type='text',
+          data-name='home-video2-mp4',
+          maxlength=200,
+          placeholder='',
+          value=''
+          validate='url'
+        )
+        h6= 'Formato webm:'
+        input.form-control(
+          type='text',
+          data-name='home-video2-webm',
+          maxlength=200,
+          placeholder='',
+          value=''
+          validate='url'
+        )
+      .form-group: button.btn.btn-success.btn-block.btn-lg= t('settings.save')
