@@ -24,3 +24,6 @@ pids
 public
 results
 ssl
+
+reqfuncs.sh
+curl-cookie
