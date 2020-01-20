@@ -13,8 +13,33 @@ import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
+import textStore from 'lib/stores/text-store'
 
 export default class HomeMultiforumOverride extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      texts: null
+    }
+  }
+
+  componentWillMount () {
+    textStore.findAll().then((texts) => {
+      let textsDict = {}
+      texts.forEach(function(text){
+        textsDict[text.name] = text.text
+      })
+      this.setState({
+        texts: textsDict
+      })
+    }).catch((err) => {
+      this.state = {
+        texts: null
+      }
+    })
+  }
+
   componentDidMount () {
     this.goTop()
   }
@@ -27,8 +52,8 @@ export default class HomeMultiforumOverride extends Component {
     return (
       <div className='ext-home-multiforum'>
         <Anchor id='container'>
-          <BannerForoVecinal title="Presupuesto participativo"/>
-          <ThumbsVoto />
+          <BannerForoVecinal title="Presupuesto participativo" texts={this.state.texts} />
+          <ThumbsVoto texts={this.state.texts} />
           {/* <Proyectos /> */}
           {/* <ProyectosFactibles /> */}
           <ProyectosGanadores />
