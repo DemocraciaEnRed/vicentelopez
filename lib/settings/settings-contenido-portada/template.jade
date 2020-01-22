@@ -12,8 +12,6 @@
           type='text',
           data-name='home-subtitle',
           maxlength=100,
-          placeholder='',
-          value=''
           validate='required'
         )
       .form-group
@@ -22,8 +20,6 @@
           data-name='home-subtitle-text',
           rows=5,
           maxlength=400,
-          placeholder='',
-          value=''
           validate='required'
         )
       .form-group
@@ -33,8 +29,6 @@
           type='text',
           data-name='home-video1-mp4',
           maxlength=200,
-          placeholder='',
-          value=''
           validate='required url'
         )
         h6= 'Formato webm:'
@@ -42,8 +36,6 @@
           type='text',
           data-name='home-video1-webm',
           maxlength=200,
-          placeholder='',
-          value=''
           validate='required url'
         )
       .form-group
@@ -53,8 +45,6 @@
           type='text',
           data-name='home-video2-mp4',
           maxlength=200,
-          placeholder='',
-          value=''
           validate='url'
         )
         h6= 'Formato webm:'
@@ -62,8 +52,76 @@
           type='text',
           data-name='home-video2-webm',
           maxlength=200,
-          placeholder='',
-          value=''
           validate='url'
+        )
+      h5= 'Íconos explicativos'
+      .form-group
+        label= 'Ícono 1'
+        h6= 'Imagen:'
+        input.form-control(
+          type='text',
+          data-name='home-icono1-imagen',
+          maxlength=200,
+          validate='required url'
+        )
+        h6= 'Título:'
+        input.form-control(
+          type='text',
+          data-name='home-icono1-titulo',
+          maxlength=200,
+          validate='required'
+        )
+        h6= 'Texto:'
+        textarea.form-control(
+          data-name='home-icono1-texto',
+          rows=5,
+          maxlength=800,
+          validate='required'
+        )
+      .form-group
+        label= 'Ícono 2'
+        h6= 'Imagen:'
+        input.form-control(
+          type='text',
+          data-name='home-icono2-imagen',
+          maxlength=200,
+          validate='required url'
+        )
+        h6= 'Título:'
+        input.form-control(
+          type='text',
+          data-name='home-icono2-titulo',
+          maxlength=200,
+          validate='required'
+        )
+        h6= 'Texto:'
+        textarea.form-control(
+          data-name='home-icono2-texto',
+          rows=5,
+          maxlength=800,
+          validate='required'
+        )
+      .form-group
+        label= 'Ícono 3'
+        h6= 'Imagen:'
+        input.form-control(
+          type='text',
+          data-name='home-icono3-imagen',
+          maxlength=200,
+          validate='required url'
+        )
+        h6= 'Título:'
+        input.form-control(
+          type='text',
+          data-name='home-icono3-titulo',
+          maxlength=200,
+          validate='required'
+        )
+        h6= 'Texto:'
+        textarea.form-control(
+          data-name='home-icono3-texto',
+          rows=5,
+          maxlength=800,
+          validate='required'
         )
       .form-group: button.btn.btn-success.btn-block.btn-lg= t('settings.save')

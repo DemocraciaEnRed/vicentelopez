@@ -20,22 +20,18 @@ export default class HomeMultiforumOverride extends Component {
     super(props)
 
     this.state = {
-      texts: null
+      texts: {}
     }
   }
 
   componentWillMount () {
-    textStore.findAll().then((texts) => {
-      let textsDict = {}
-      texts.forEach(function(text){
-        textsDict[text.name] = text.text
-      })
+    textStore.findAllDict().then((textsDict) => {
       this.setState({
         texts: textsDict
       })
     }).catch((err) => {
       this.state = {
-        texts: null
+        texts: {}
       }
     })
   }
