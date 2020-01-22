@@ -1,0 +1,12 @@
+db.texts.insert([
+	{ "name": "home-icono1-imagen", "text": "https://i.ibb.co/Fgf5xgb/foros-vecinales-icono.png" },
+	{ "name": "home-icono1-titulo", "text": "¿Qué es?" },
+	{ "name": "home-icono1-texto", "text": "El Presupuesto Participativo es una iniciativa que permite a cada uno de los vecinos de los 9 barrios del municipio proponer, debatir y decidir a través del voto en qué utilizar una parte del presupuesto municipal de inversión." },
+	{ "name": "home-icono2-imagen", "text": "https://i.ibb.co/9VjQQHy/icon-propuestas.png" },
+	{ "name": "home-icono2-titulo", "text": "¿Qué puedo proponer?" },
+	{ "name": "home-icono2-texto", "text": "Estamos evaluando todas las propuestas que recibimos de los vecinos. Las propuestas factibles se convertirán en proyectos que serán sometidos a una votación desde el lunes 16 hasta el domingo 29 de septiembre de 2019. Puede votar cualquier mayor de 16 años que viva o trabaje en Vicente López en las urnas habilitadas en los 9 barrios de Vicente López. Los proyectos ganadores serán ejecutados en 2020." },
+	{ "name": "home-icono3-imagen", "text": "https://i.ibb.co/BttPHbc/icon-seguimiento.png" },
+	{ "name": "home-icono3-titulo", "text": "¿Cómo sigo los proyectos?" },
+	{ "name": "home-icono3-texto", "text": "Podés seguir de forma fácil la evolución de los proyectos ganadores del presupuesto participativo de 2017 y 2018 y conocer su ejecución entrando acá: " },
+])
+
