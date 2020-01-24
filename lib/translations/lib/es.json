@@ -146,7 +146,7 @@
   "admin-topics.list.close.future": "Cierre",
   "admin-topics.list.close.past": "Cerrado",
   "admin-topics.list.search.placeholder": "Buscar un tema...",
-  "admin-topics.list.sort": "Ordenar",
+  "admin-topics.list.sort": "Ordenar por:",
   "admin-topics.list.title": "Temas del sistema",
   "admin-topics.update-from-csv": "Actualizar temas desde .csv",
   "admin-topics.update-from-csv.success": "Temas actualizados exitosamente",
