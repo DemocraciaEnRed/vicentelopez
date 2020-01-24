@@ -27,3 +27,6 @@ ssl
 
 reqfuncs.sh
 curl-cookie
+
+#scripts personales
+*.sh
