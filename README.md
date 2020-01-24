@@ -21,6 +21,7 @@ This is an example demonstrating how to extend DemocracyOS using [Docker](https:
 * If you already have a mongo 3.2 server running on your machine you can comment out the `mongo` service on `docker-compose.yml` and change the `MONGO_URL` environment variable
 * All the customized views/endpoints are located on the `/ext` folder. Following the same folders pattern as DemocracyOS/democracyos.
 * New frontend builds, which allows you to use your custom frontend code, are defined [here](https://github.com/DemocracyOS/extension-example/blob/master/ext/lib/build/entries.json).
+* To use the last version of topics (with attributes such as state, year or town, run `NODE_PATH=. DEBUG=democracyos* node ./ext/bin/migrate-pp.js`)
 
 ## Commands
 
