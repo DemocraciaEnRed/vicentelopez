@@ -7,9 +7,9 @@
           = ' ' + t('admin-topics.list.add-topic')
       .col-md-6.col-xs-12.text-center
         .input-group.input-group-md
-          span.input-group-addon
+          input.form-control(type='text', name='busqueda', placeholder='#{t("admin-topics.list.search.placeholder")}', autofocus, maxlength='100')
+          span.input-group-addon.buscar-tema
             i.glyphicon.glyphicon-search
-          input.form-control.search(type='text', placeholder='#{t("admin-topics.list.search.placeholder")}', autofocus, maxlength='100')
       .col-md-4.col-xs-12.text-center
         .btn-group
           span.sort-label.pull-left=t('admin-topics.list.sort')
