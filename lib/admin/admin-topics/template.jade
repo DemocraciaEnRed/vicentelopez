@@ -5,12 +5,12 @@
         a.btn.btn-success.btn-block.new(href=urlBuilder.for('admin.topics.create', {forum: forum.name}))
           span.glyphicon.glyphicon-plus
           = ' ' + t('admin-topics.list.add-topic')
-      .col-md-7.col-xs-12.text-center
+      .col-md-6.col-xs-12.text-center
         .input-group.input-group-md
           span.input-group-addon
             i.glyphicon.glyphicon-search
           input.form-control.search(type='text', placeholder='#{t("admin-topics.list.search.placeholder")}', autofocus, maxlength='100')
-      .col-md-3.col-xs-12.text-center
+      .col-md-4.col-xs-12.text-center
         .btn-group
           span.sort-label.pull-left=t('admin-topics.list.sort')
           button.btn.btn-primary.sort(data-sort='topic-date')
