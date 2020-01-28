@@ -1,22 +1,49 @@
 #topics-wrapper
   .topics-admin
     .well.well-lg.clearfix
-      .col-md-2.col-xs-12
-        a.btn.btn-success.btn-block.new(href=urlBuilder.for('admin.topics.create', {forum: forum.name}))
-          span.glyphicon.glyphicon-plus
-          = ' ' + t('admin-topics.list.add-topic')
-      .col-md-6.col-xs-12.text-center
-        .input-group.input-group-md
-          input.form-control(type='text', name='busqueda', placeholder='#{t("admin-topics.list.search.placeholder")}', autofocus, maxlength='100')
+      .row
+        .col-md-6.col-xs-12
+          a.btn.btn-success.btn-block.new(href=urlBuilder.for('admin.topics.create', {forum: forum.name}))
+            span.glyphicon.glyphicon-plus
+            = ' ' + t('admin-topics.list.add-topic')
+        .col-md-6.col-xs-12.text-center
+          .btn-group
+            span.sort-label.pull-left=t('admin-topics.list.sort')
+            button.btn.btn-primary.sort(data-sort='topic-date')
+              span.glyphicon.glyphicon-time
+            button.btn.btn-primary.sort(data-sort='topic-title')
+              span.glyphicon.glyphicon-font
+    .well.well-lg.clearfix
+      .row
+        .col-md-3.col-xs-12.text-center
+          .input-group.input-group-md
+            ='Año: '
+            select(name='anio')
+              option(value="") Todos
+              - each anio in uniqAttrs.anio
+                - if (anio != '')
+                  option(value="#{anio}") #{anio}
+        .col-md-5.col-xs-12.text-center
+          .input-group.input-group-md
+            ='Barrio: '
+            select(name='barrio')
+              option(value="") Todos
+              - each barrio in uniqAttrs.barrio
+                option(value="#{barrio}") #{toTitleCase(barrio.replace(/-/g,' '))}
+        .col-md-4.col-xs-12.text-center
+          .input-group.input-group-md
+            ='Estado: '
+            select(name='state')
+              option(value="") Todos
+              - each state in uniqAttrs.state
+                option(value="#{state}") #{toTitleCase(state)}
+      .row
+        .col-md-8.col-xs-12.text-center
+          .input-group.input-group-md
+            input.form-control(type='text', name='busqueda', placeholder='#{t("admin-topics.list.search.placeholder")}', autofocus, maxlength='100')
+        .col-md-4.col-xs-12.text-center
           span.input-group-addon.buscar-tema
             i.glyphicon.glyphicon-search
-      .col-md-4.col-xs-12.text-center
-        .btn-group
-          span.sort-label.pull-left=t('admin-topics.list.sort')
-          button.btn.btn-primary.sort(data-sort='topic-date')
-            span.glyphicon.glyphicon-time
-          button.btn.btn-primary.sort(data-sort='topic-title')
-            span.glyphicon.glyphicon-font
     .well.well-sm.clearfix.export-update
     .list.list-group.col-xs-12
       - each topic in topics
