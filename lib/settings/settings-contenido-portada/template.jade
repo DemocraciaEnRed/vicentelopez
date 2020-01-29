@@ -23,6 +23,10 @@
           validate='required'
         )
       .form-group
+        h5= 'Videos de fondo'
+        span.help-text= 'Cuando un usuario entra a la página se le muestra aleatoriamente uno de los dos posibles videos.'
+        span.help-text= 'El formato .webm es para celulares y el .mp4 para dispositivos más grandes.'
+      .form-group
         label= 'Video (posibilidad 1)'
         h6= 'Formato mp4:'
         input.form-control(
