@@ -45,13 +45,24 @@
           span.input-group-addon.buscar-tema
             i.glyphicon.glyphicon-search
     .well.well-sm.clearfix.export-update
-    .list.list-group.col-xs-12
+    #topic-list.list.list-group.col-xs-12
       - each topic in topics
         a.list-group-item(href=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}), data-topicid=topic.id)
-          button.btn.btn-default.pull-right.delete-topic
-            span.glyphicon.glyphicon-trash
+          .topic-buttons.pull-right
+            button.btn.btn-default
+              span.glyphicon.glyphicon-eye-open
+            button.btn.btn-default
+              span.glyphicon.glyphicon-pencil
+            - if (topic.public)
+              button.btn.btn-warning.unpublish-topic
+                span.glyphicon.glyphicon-download
+            - else
+              button.btn.btn-success.publish-topic
+                span.glyphicon.glyphicon-upload
+            button.btn.btn-danger
+              span.glyphicon.glyphicon-trash
           h4.topic-title=topic.mediaTitle
-            small=topic.topicId
+            span.text=topic.topicId
           - if (topic.author)
             span.glyphicon.glyphicon-user
             span.text=topic.author
@@ -61,7 +72,14 @@
             - var when = (date < Date.now()) ? 'past' : 'future'
             span.glyphicon.glyphicon-time
             span.text=t('admin-topics.list.close.' + when) + ' ' + relative
-          span.glyphicon.glyphicon-tag
-          span.text.topic-id=topic.tag.name
+          .topic-multi-tags
+            span.glyphicon.glyphicon-tag
+            span.text.topic-tag=topic.tag.name
+            span.text.topic-tags=topic.tags.map(toTitleCase).join(', ')
           span.topic-date.hide=topic.createdAt
+          .topic-status-data
+            - if (topic.attrs && topic.attrs.anio)
+              span.placa.text=topic.attrs.anio
+            - if (topic.attrs && topic.attrs.state)
+              span.placa.text=topic.attrs && toTitleCase(topic.attrs.state.replace(/-/g,' '))
     .topics-pagination
