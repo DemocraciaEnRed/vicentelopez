@@ -9,3 +9,5 @@ ul.admin-menu.nav.nav-pills.nav-stacked(class=forum.privileges.canChangeTopics ?
     li: a(href=urlBuilder.for('admin.permissions', {forum: forum.name}) data-section='permissions')=t('admin-sidebar.permissions.title')
   - if (config.usersWhitelist)
     li: a(href="/admin/users" data-section='users')=t('admin-sidebar.whitelists.title')
+  - if (user.staff)
+    li: a(href=urlBuilder.for('admin.contenido-portada', {forum: forum.name}) data-section='contenido-portada')= 'Portada'
