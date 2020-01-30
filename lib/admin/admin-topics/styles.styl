@@ -4,22 +4,39 @@
     > *
       margin 4px 0
 
-  .topics-pagination
-    text-align: center
+  .btn.new
+    width: 200px;
+    margin-bottom: 10px;
 
-  .buscar-tema
+  .export-update-wrapper
+    float: right;
+    .export-update
+      margin-top: 0px
+      .btn
+        margin-right: 0;
+
+  .busqueda-wrapper
+    width: 100%
+
+  button.buscar-tema
     cursor pointer
     color: white
     background-color: #337ab7
+    width: 100%;
 
     &:hover,&:focus
       background-color: #286090
 
-  .por-nombre
+  button.sort.por-nombre
     font-weight: bold;
     padding-left: 4px
     padding-right: 4px
     line-height: 1em
+
+  .row-filtros
+    margin-top: 10px;
+    .input-group
+      margin: 0 auto;
 
   #topic-list
     .placa
@@ -50,3 +67,6 @@
           margin-left: 0
         &:last-child
           margin-right: 0
+
+  .topics-pagination
+    text-align: center
