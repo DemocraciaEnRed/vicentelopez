@@ -45,17 +45,24 @@
                 option(value="#{state}") #{toTitleCase(state)}
     #topic-list.list.list-group.col-xs-12
       - each topic in topics
-        a.list-group-item(href=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}), rel="noopener noreferer", target="_blank", data-topicid=topic.id, data-topic-ispublic=topic.public)
+        .list-group-item(data-topicid=topic.id, data-topic-ispublic=topic.public)
           .topic-buttons.pull-right
-            button.btn.btn-default.ver-proyecto(data-topic-url=topic.url, data-toggle="tooltip" data-placement="top" title="Vista pública")
-              span.glyphicon.glyphicon-eye-open
-            button.btn.btn-default(data-toggle="tooltip" data-placement="top" title="Editar")
-              span.glyphicon.glyphicon-pencil
             button.btn.btn-warning.unpublish-topic(data-toggle="tooltip" data-placement="top" title="Despublicar")
               span.glyphicon.glyphicon-download
             button.btn.btn-success.publish-topic(data-toggle="tooltip" data-placement="top" title="Publicar")
               span.glyphicon.glyphicon-upload
-          h4.topic-title=topic.mediaTitle
+            button.btn.btn-default.edit-topic(data-topic-edit-url=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}), data-toggle="tooltip" data-placement="top" title="Editar")
+              span.glyphicon.glyphicon-pencil
+            button.btn.btn-default.ver-proyecto(data-topic-url=topic.url, data-toggle="tooltip" data-placement="top" title="Vista pública")
+              span.glyphicon.glyphicon-eye-open
+            select.mas-acciones(data-topic-edit-url=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}))
+              option(value="") Más acciones
+              option(value="anchor-cover") > Cambiar imagen
+              option(value="anchor-attrs.state") > Cambiar estado
+              option(value="anchor-fecha-cierre") > Cambiar fecha de cierre
+
+          h4.topic-title
+            a(href=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}), rel="noopener noreferer", target="_blank")=topic.mediaTitle
           - if (topic.author)
             span.glyphicon.glyphicon-user
             span.text=topic.author
