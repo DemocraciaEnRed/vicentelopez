@@ -6,7 +6,7 @@ const Tag = require('lib/models').Tag
 const dbReady = require('lib/models').ready
 
 const newTags = [
-{ name:'  ACCESIBILIDAD', hash: 'accesibilidad', image: 'people', color: '#091A33' },
+{ name:'ACCESIBILIDAD', hash: 'accesibilidad', image: 'people', color: '#091A33' },
 { name:'ADULTOS MAYORES', hash: 'adultos-mayores', image: 'people', color: '#091A33' },
 { name:'MEDIO AMBIENTE', hash: 'medio-ambiente', image: 'people', color: '#091A33' },
 { name:'ANIMALES', hash: 'animales', image: 'people', color: '#091A33' },
@@ -44,7 +44,7 @@ const newTags = [
 { name: 'VILLA MARTELLI', hash: 'villa-martelli', image: 'people', color: '#091A33' },
 { name: 'FLORIDA ESTE', hash: 'florida-este', image: 'people', color: '#091A33' },
 { name: 'FLORIDA OESTE', hash: 'florida-oeste', image: 'people', color: '#091A33' },
-] 
+]
 
 const mapPromises = (fn) => (array) => Promise.all( array.map(fn))
 /**
