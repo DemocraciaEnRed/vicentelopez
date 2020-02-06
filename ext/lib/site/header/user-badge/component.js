@@ -40,23 +40,13 @@ export class UserBadge extends Component {
     let menuItemAdmin = null
 
     if (userAttrs.privileges && userAttrs.privileges.canManage) {
-      if (config.multiForum) {
-        menuItemAdmin = (
-          <li>
-            <Link to={urlBuilder.for('admin.topics', { forum: config.forumProyectos })}>
-              {t('header.forums')}
-            </Link>
-          </li>
-        )
-      } else {
-        menuItemAdmin = (
-          <li>
-            <Link to={urlBuilder.for('admin')}>
-              {t('header.admin')}
-            </Link>
-          </li>
-        )
-      }
+      menuItemAdmin = (
+        <li>
+          <Link to={urlBuilder.for('admin.topics', { forum: config.forumProyectos })}>
+            {t('header.forums')}
+          </Link>
+        </li>
+      )
     }
 
     const classes = ['header-item', 'user-badge', 'user-badge-helper']
