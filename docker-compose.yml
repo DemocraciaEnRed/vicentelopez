@@ -8,10 +8,10 @@ services:
       - NODE_ENV=development
       - DEBUG=democracyos*
       - MONGO_URL=mongodb://mongo:27017/myDatabase
-      - ORGANIZATION_NAME=DemocracyOS Fork
-      - JWT_SECRET=
-      # Add your email here!
-      - STAFF=email@example.com
+      - ADMIN_MAIL=it@democracyos.org
+      - ADMIN_PASS=123123
+      # Mails del staff. Se debe poner el del Admin! (como mínimo). Para más, separar con comas.
+      - STAFF=it@democracyos.org,email@example.com
     links:
       - mongo
     ports:

@@ -11,7 +11,7 @@
   "signinUrl": "",
   "signupUrl": "",
   "settingsUrl": "",
-  "staff": [],
+  "staff": ["it@democracyos.org"],
   "allowEmailAliases": true,
   "facebookSignin": false,
   "publicEmails": false,
@@ -152,5 +152,7 @@
     "zh_TW"
   ],
   "enforceLocale": false,
-  "forumProyectos": ""
+  "forumProyectos": "proyectos",
+  "adminMail": "it@democracyos.org",
+  "adminPass": "123123"
 }

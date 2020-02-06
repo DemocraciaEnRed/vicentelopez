@@ -1,0 +1,13 @@
+{
+	"publicPort": 3000,
+	"multiForum": true,
+	"locale": "es",
+	"enforceLocale": true,
+	"staff": ["it@democracyos.org"],
+	"forumProyectos": "proyectos",
+	"headerBackgroundColor":"#ffffff",
+	"header_font_color":"#4a4949",
+	"logo":"/ext/lib/boot/logo.png",
+  "adminMail": "it@democracyos.org",
+  "adminPass": "123123"
+}

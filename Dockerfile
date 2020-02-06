@@ -27,11 +27,13 @@ COPY ./dos-override/lib/api-v2/topics/csv.js /usr/src/lib/api-v2/topics/csv.js
 COPY ./dos-override/lib/admin/admin-topics/export-update/component.js /usr/src/lib/admin/admin-topics/export-update/component.js
 
 ENV LOCALE=es \
-  AVAILABLE_LOCALES=es,en \
   ENFORCE_LOCALE=true \
+  AVAILABLE_LOCALES=es,en \
+  JWT_SECRET= \
   MODERATOR_ENABLED=true \
   MULTI_FORUM=true \
   RESTRICT_FORUM_CREATION=true \
+  FORUM_PROYECTOS=proyectos \
   FAVICON=/ext/lib/boot/favicon.ico \
   LOGO=/ext/lib/boot/logo.png \
   LOGO_MOBILE=/ext/lib/boot/logo.png \
