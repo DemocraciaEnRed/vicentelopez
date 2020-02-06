@@ -13,30 +13,35 @@ const adminData = {
   email: adminMail,
   username: adminMail,
   firstName: 'Admin',
-  //lastName: 'Apellido',
   password: adminPass,
   re_password: adminPass,
   locale: 'es'
-  //reference: null,
 }
 const forumProyectosData = {
   name: forumProyectos,
   title: 'Proyectos',
-  owner: null,
-  //permissions: null,
-  //body: null,
-  //summary: null,
-  //coverUrl: null
+  owner: null
 }
-//new Forum().save(err => {})
-//owner: req.user._id,
 
-const mapPromises = (fn) => (array) => Promise.all( array.map(fn))
 /**
  * Make any changes you need to make to the database here
  */
+class SaltearPromises { }
 exports.up = function up (done) {
   dbReady()
+    // Primero chequear si ya no hay cosas cargadas
+    .then(() => {
+      return new Promise((resolve, reject) => {
+        User.collection.count({}, (err, count) => {
+          if (err) reject(new Error(err))
+          if (count) {
+            console.log('Ya hay usuarixs cargados (%s), salteando migración', count)
+            reject(new SaltearPromises())
+          }
+          resolve()
+        })
+      })
+    })
     // Agregamos admin user a partir de variables de config/compose
     .then(() => {
       let adminUser = new User(adminData)
@@ -73,11 +78,15 @@ exports.up = function up (done) {
     // Devolvemos al Migrator (de lib/migrations)
     .then(() => {
       console.log(`-- Agregados admin user y forum proyectos`)
-      done();
+      done()
     })
     .catch((err) => {
-      console.log('-- Actualizacion de admin user y forum proyectos no funcionó! Error: ', err)
-      done(err);
+      if (err instanceof SaltearPromises)
+        done()
+      else{
+        console.log('-- Actualizacion de admin user y forum proyectos no funcionó! Error: ', err)
+        done(err)
+      }
     })
 }
 
