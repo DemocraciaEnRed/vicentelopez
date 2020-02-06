@@ -8,9 +8,10 @@ services:
       - NODE_ENV=development
       - DEBUG=democracyos*
       - MONGO_URL=mongodb://mongo:27017/myDatabase
+      # Variables admin solo utilizadas para migration inicial
       - ADMIN_MAIL=it@democracyos.org 
       - ADMIN_PASS=123123
-      # Mails del staff. Se debe poner el del Admin! (como mínimo). Para más, separar con comas.
+      # Mails del staff. La del admin no se agrega sola. Para más, separar con comas.
       - STAFF=it@democracyos.org,email@example.com
     links:
       - mongo
