@@ -7,6 +7,8 @@
         h2= 'Contenido Portada'
       form.form(action='/api/text', method='post', role='form', autocomplete='off', autovalidate='autovalidate', autosubmit='autosubmit')
         ul.form-messages
+
+        h5= 'Títulos'
         .form-group
           label= 'Subtitulo principal'
           input.form-control(
@@ -23,8 +25,9 @@
             maxlength=400,
             validate='required'
           )
+
+        h5= 'Videos de fondo'
         .form-group
-          h5= 'Videos de fondo'
           span.help-text= 'Cuando un usuario entra a la página se le muestra aleatoriamente uno de los dos posibles videos.'
           span.help-text= 'El formato .webm es para celulares y el .mp4 para dispositivos más grandes.'
         .form-group
@@ -59,9 +62,9 @@
             maxlength=200,
             validate='url'
           )
-        .form-group
-          h5= 'Íconos explicativos'
-          span.help-text= 'Las imágenes se acomodan a un tamaño de 200 x 200 píxeles'
+
+        h5= 'Íconos explicativos'
+        span.help-text= 'Las imágenes se acomodan a un tamaño de 200 x 200 píxeles'
         .form-group
           label= 'Ícono 1'
           h6= 'Imagen:'
