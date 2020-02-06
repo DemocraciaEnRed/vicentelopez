@@ -1,9 +1,7 @@
-
-require('lib/models')()
-
 const config = require('lib/config')
 const ObjectID = require('mongoose').Types.ObjectId
 const dbReady = require('lib/models').ready
+
 const User = require('lib/models').User
 const Forum = require('lib/models').Forum
 
@@ -13,6 +11,7 @@ const adminData = {
   email: adminMail,
   username: adminMail,
   firstName: 'Admin',
+  lastName: '',
   password: adminPass,
   re_password: adminPass,
   locale: 'es'
