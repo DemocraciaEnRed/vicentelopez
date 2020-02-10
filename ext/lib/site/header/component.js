@@ -46,7 +46,7 @@ class Header extends Component {
     }
   }
 
-  toggleUserMenu = () => {
+  toggleUserMenu = (ev, evFromDocument) => {
     if (this.state.mobileMenu) {
       this.setState({
         mobileMenu: false,
@@ -54,6 +54,16 @@ class Header extends Component {
       })
     } else {
       this.setState({ userMenu: !this.state.userMenu })
+    }
+
+    // fix bug que el menú queda abierto siempre; con esto al clickear afuera se cierra
+    if (!evFromDocument && !this.state.userMenu){
+      let fun = this.toggleUserMenu
+      let listener = () => {
+        fun(null, true)
+        document.removeEventListener('click', listener)
+      }
+      document.addEventListener('click', listener)
     }
   }
 
