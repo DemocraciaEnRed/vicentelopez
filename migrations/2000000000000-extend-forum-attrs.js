@@ -33,7 +33,7 @@ exports.up = function up (done) {
 							updTopicAttr[field.name] = field.defaultValue || null
 						})
 						updTopicAttr["order"] = i
-						//updatedAttrs.push(updTopicAttr)
+
 						//console.log(updTopicAttr)
 						forumProyecto.topicsAttrs[i] = updTopicAttr
 					})
