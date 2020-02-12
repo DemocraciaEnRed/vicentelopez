@@ -18,13 +18,12 @@ COPY ["ext/package.json", "ext"]
 
 RUN mkdir bin
 COPY ["bin/dos-ext-install", "bin"]
- 
+
 RUN bin/dos-ext-install --quiet
 
 COPY [".", "/usr/src/"]
 
 COPY ./dos-override/lib/api-v2/topics/csv.js /usr/src/lib/api-v2/topics/csv.js
-COPY ./dos-override/lib/admin/admin-topics/export-update/component.js /usr/src/lib/admin/admin-topics/export-update/component.js
 
 ENV LOCALE=es \
   ENFORCE_LOCALE=true \
