@@ -47,9 +47,17 @@ Use as reference the repo [DemocracyOS/onpremises](https://github.com/DemocracyO
 
 ## Nueva versión
 ### Formulario de proyectos personalizado
-El formulario de proyectos/propuestas tiene campos personalizados (`lib/admin/admin-topics-form/attrs/component.js`) que se toman de la BBDD de la tabla `forum`, del único registro, de su campo `topicsAttrs`.
+El formulario de carga de proyectos/propuestas tiene campos personalizados (`lib/admin/admin-topics-form/attrs/component.js`) que se toman de la BBDD. Estos están en la tabla `forum`, en su único registro, en el campo `topicsAttrs`.
 
-Algunos comandos útiles de la consola mongo para manipular estos campos son:
+Para conectarnos a la consola:
+
+```
+// docker exec -it <nombre_container> mongo <nombre_base_de_datos>
+// por ejemplo:
+docker exec -it mongodb-vl mongo DemocracyOS-dev
+```
+
+Algunos comandos útiles de la consola de mongo para manipular estos campos son:
 ```
 // ver todo el topicsAttrs
 db.forums.find({},{'topicsAttrs': 1}).pretty()
