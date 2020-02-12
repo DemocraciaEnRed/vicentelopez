@@ -49,7 +49,7 @@ Use as reference the repo [DemocracyOS/onpremises](https://github.com/DemocracyO
 ### Formulario de proyectos personalizado
 El formulario de carga de proyectos/propuestas tiene campos personalizados (`lib/admin/admin-topics-form/attrs/component.js`) que se toman de la BBDD. Estos están en la tabla `forum`, en su único registro, en el campo `topicsAttrs`.
 
-Para conectarnos a la consola:
+Para conectarnos a la consola de mongo:
 
 ```
 // docker exec -it <nombre_container> mongo <nombre_base_de_datos>
@@ -62,7 +62,7 @@ Algunos comandos útiles de la consola de mongo para manipular estos campos son:
 // ver todo el topicsAttrs
 db.forums.find({},{'topicsAttrs': 1}).pretty()
 
-// mostrar solo nombre y width
+// mostrar solo los campos nombre y width de topicsAttrs
 db.forums.find({},{'topicsAttrs.name': 1, 'topicsAttrs.width': 1}).pretty()
 
 // actualizar un ícono fitrando por nombre
@@ -73,5 +73,7 @@ db.migrations.remove({"name" : "extend-forum-attrs"})
 db.migrations.remove({"name" : "set-default-forum-attrs"})
 ```
 
-Esto solo se deberá hacer para testear cosas. Para cambios finales siembre usar **migrations** así se guardan los cambios realizados para futuras réplicas del sistema.
+Este tipo de modificaciones solo se debe hacer para testear cosas.
+
+Para cambios finales siembre usar **migrations** así se guardan los cambios realizados para futuras réplicas del sistema.
 
