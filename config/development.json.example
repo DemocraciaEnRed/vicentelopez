@@ -9,5 +9,8 @@
 	"header_font_color":"#4a4949",
 	"logo":"/ext/lib/boot/logo.png",
   "adminMail": "it@democracyos.org",
-  "adminPass": "123123"
+  "adminPass": "123123",
+  "propuestasAbiertas": true,
+  "propuestasTextoAbiertas": "A partir del 19 de Marzo vas a poder subir propuestas",
+  "propuestasTextoCerradas": "Estas viendo propuestas presentadas en el Presupuesto Participativo 2019"
 }

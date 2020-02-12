@@ -46,6 +46,14 @@ Use as reference the repo [DemocracyOS/onpremises](https://github.com/DemocracyO
 ---
 
 ## Nueva versión
+
+## Para crear variables de entorno nuevas
+Se deben crear primeramente en `config/defaults.json` con un valor por defecto. Si se quiere que sea accesible desde el frontend, agregarla al array de la llave `"client"`.
+
+Para probar valores distintos en desarrollo local editar `config/development.json`.
+
+Una vez registrada la variable nueva en `defaults.json` ya es configurable en el docker-compose/swarm, utilizando la forma traducida __variablesDeEntorno__ a __VARIABLE_DE_ENTORNO__.
+
 ### Formulario de proyectos personalizado
 El formulario de carga de proyectos/propuestas tiene campos personalizados (`lib/admin/admin-topics-form/attrs/component.js`) que se toman de la BBDD. Estos están en la tabla `forum`, en su único registro, en el campo `topicsAttrs`.
 

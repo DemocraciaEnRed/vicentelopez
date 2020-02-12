@@ -94,7 +94,10 @@
     "availableLocales",
     "warnHTTP",
     "recaptchaSite",
-    "forumProyectos"
+    "forumProyectos",
+    "propuestasAbiertas",
+    "propuestasTextoAbiertas",
+    "propuestasTextoCerradas"
   ],
   "socialshare": {
     "siteName": "DemocracyOS",
@@ -154,5 +157,8 @@
   "enforceLocale": false,
   "forumProyectos": "proyectos",
   "adminMail": "it@democracyos.org",
-  "adminPass": "123123"
+  "adminPass": "123123",
+  "propuestasAbiertas": true,
+  "propuestasTextoAbiertas": "",
+  "propuestasTextoCerradas": ""
 }
