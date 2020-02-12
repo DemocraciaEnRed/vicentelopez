@@ -17,16 +17,16 @@ const groups = [
 ]
 // group: X equivale al indice en el array anterior (p.ej. 2=Datos de titular)
 const attrsData = [
-	{name: 'anio', order: 0, group: 0, icon: ''},
-	{name: 'barrio', order: 1, group: 0, icon: ''},
-	{name: 'state', order: 2, group: 0, icon: ''},
-	{name: 'admin-comment-referencia', order: 3, group: 0, icon: ''},
-	{name: 'admin-comment', order: 4, group: 0, icon: ''},
+	{name: 'anio', order: 0, group: 0, icon: 'icono_año.png'},
+	{name: 'barrio', order: 1, group: 0, icon: 'icono_barrio.png'},
+	{name: 'state', order: 2, group: 0, icon: 'stop.png'},
+	{name: 'admin-comment-referencia', order: 3, group: 0, icon: 'icono_link.png'},
+	{name: 'admin-comment', order: 4, group: 0, icon: 'icono_comentario moderador.png'},
 
-	{name: 'project-budget-preparacion', order: 10, group: 1, icon: ''},
-	{name: 'project-budget-compra', order: 11, group: 1, icon: ''},
-	{name: 'project-budget-ejecucion', order: 12, group: 1, icon: ''},
-	{name: 'project-budget-finalizado', order: 13, group: 1, icon: ''},
+	{name: 'project-budget-preparacion', order: 10, group: 1, icon: 'icono_presupuesto.png'},
+	{name: 'project-budget-compra', order: 11, group: 1, icon: 'icono_presupuesto.png'},
+	{name: 'project-budget-ejecucion', order: 12, group: 1, icon: 'icono_presupuesto.png'},
+	{name: 'project-budget-finalizado', order: 13, group: 1, icon: 'icono_presupuesto.png'},
 
 	{name: 'nombre', order: 20, group: 2, icon: ''},
 	{name: 'documento', order: 21, group: 2, icon: ''},
