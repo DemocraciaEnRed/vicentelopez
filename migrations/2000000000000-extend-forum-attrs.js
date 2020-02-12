@@ -3,10 +3,10 @@ const dbReady = require('lib/models').ready
 const Forum = require('lib/models').Forum
 
 const newFields = [
-	{ "name": "order"},
-	{ "name": "group", "defaultValue": 'Atributos' },
+	{ "name": "order", "defaultValue": 0},
+	{ "name": "group", "defaultValue": 'Grupo 1' },
 	{ "name": "groupOrder", "defaultValue": 0 },
-	{ "name": "width", "defaultValue": 12 },
+	{ "name": "width", "defaultValue": 6 },
 	{ "name": "icon" }
 ]
 

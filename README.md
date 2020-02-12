@@ -42,3 +42,28 @@ docker exec -it dos bash
 
 ## Running on Production
 Use as reference the repo [DemocracyOS/onpremises](https://github.com/DemocracyOS/onpremises). It uses Ansible for provisioning, and Docker Compose to run the server, there you will find more detailed documentation.
+
+---
+
+## Nueva versión
+### Formulario de proyectos personalizado
+El formulario de proyectos/propuestas tiene campos personalizados (`lib/admin/admin-topics-form/attrs/component.js`) que se toman de la BBDD de la tabla `forum`, del único registro, de su campo `topicsAttrs`.
+
+Algunos comandos útiles de la consola mongo para manipular estos campos son:
+```
+// ver todo el topicsAttrs
+db.forums.find({},{'topicsAttrs': 1}).pretty()
+
+// mostrar solo nombre y width
+db.forums.find({},{'topicsAttrs.name': 1, 'topicsAttrs.width': 1}).pretty()
+
+// actualizar un ícono fitrando por nombre
+db.forums.update({'topicsAttrs.name': 'state'}, {$set:{ 'topicsAttrs.$.icon': 'stop.png' }})
+
+// borrar las migrations para que vuelvan a correr
+db.migrations.remove({"name" : "extend-forum-attrs"})
+db.migrations.remove({"name" : "set-default-forum-attrs"})
+```
+
+Esto solo se deberá hacer para testear cosas. Para cambios finales siembre usar **migrations** así se guardan los cambios realizados para futuras réplicas del sistema.
+
