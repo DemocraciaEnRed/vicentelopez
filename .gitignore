@@ -3,3 +3,11 @@
 node_modules
 public
 tmp
+
+config/development.json
+
+# script personales (wencha)
+curl-cookie
+run.sh
+reqfuncs.sh
+pasos-instalacion-de-cero.txt
