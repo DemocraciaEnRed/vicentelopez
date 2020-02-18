@@ -169,10 +169,10 @@ export default class Page extends Component {
               <h4>DATOS ABIERTOS</h4>
               <div className='btns-descargas'>
                 <div className='descargas-info'>
-                  <h5>Proyectos 2013-2019 por tipo (cantidad e inversión)</h5>
+                  <h5>Proyectos 2013-2020 por tipo (cantidad e inversión)</h5>
                   <p>Datos históricos de la cantidad de proyectos e inversión presupuestaria segmentado por temática.</p>
-                  <span className='descarga-fecha'>Publicado: 22 de Noviembre de 2019</span>
-                  <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2019_tipo-cantidad-inversion.xlsx' className='icon-descarga'>
+                  <span className='descarga-fecha'>Publicado: 18 de Febrero de 2020</span>
+                  <a href='https://forosvecinales.blob.core.windows.net/informes/proyectos-2013-2020_tipo-cantidad-inversion.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
                 </div>
