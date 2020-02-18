@@ -89,6 +89,7 @@ export default class Page extends Component {
           <div className='visualizador-wrapper'>
             <div className='navbar-seccion'>
               <button className={`seccion ${this.state.archivo === 'minuta' ? 'active' : ''}`}
+                style={this.state.anio >= 2018 ? {display:'none'} : {}}
                 onClick={this.changeFile('minuta')}>Minutas</button>
               <button className={`seccion ${this.state.archivo === 'boleta' ? 'active' : ''}`}
                 onClick={this.changeFile('boleta')}>Boletas</button>
@@ -117,7 +118,7 @@ export default class Page extends Component {
                         }
                       </div>
                     ) : (
-                      <div className='pdf-wrapper'>  
+                      <div className='pdf-wrapper'>
                         <PdfViewer
                           barrio={this.state.barrio}
                           anio={this.state.anio}
@@ -126,7 +127,7 @@ export default class Page extends Component {
                       </div>
                     )
 
-                    
+
                 }
               </div>
             </div>{
@@ -136,7 +137,7 @@ export default class Page extends Component {
                   Descargar
                 </a>
               )
-            }  
+            }
           </div>
         </div>
 
