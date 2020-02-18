@@ -45,13 +45,15 @@ export default class Page extends Component {
                 //   Ver tabla de lugares y horarios de votación
                 // </button>
               }
-              <div className='btns-descargas'>
-                <Link href='/s/documentos'>
-                  <button className='boton-azul'>
-                    Descargá aquí las boletas de votación de tu barrio
-                  </button>
-                </Link>
-              </div>
+              {
+                // <div className='btns-descargas'>
+                //   <Link href='/s/documentos'>
+                //     <button className='boton-azul'>
+                //       Descargá aquí las boletas de votación de tu barrio
+                //     </button>
+                //   </Link>
+                // </div>
+              }
             </div>
             { showTable && <PuntosDeVotacion/> }
             <div className="fila no-bg">
