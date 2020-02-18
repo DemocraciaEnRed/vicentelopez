@@ -81,7 +81,7 @@ export default class Carrusel extends Component {
     return (
       <div className='seccion-proyectos-factibles container-fluid'>
         <div className="fondo-titulo">
-          <h2 className='title'>Proyectos ganadores</h2>
+          <h2 className='title'>Proyectos 2020</h2>
         </div>
         <section className='seccion-barrios-factibles container'>
           <div className='seccion-barrios-proyectos-factibles container'>
