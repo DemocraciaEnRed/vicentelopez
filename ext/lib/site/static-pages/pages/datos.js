@@ -61,14 +61,14 @@ export default class Page extends Component {
                   <tbody>
                     <tr>
                       <td className="sticky-col">Presupuesto Asignado</td>
-                      <td>10 MM</td>
-                      <td>15 MM</td>
-                      <td>20 MM</td>
-                      <td>30 MM</td>
-                      <td>45 MM</td>
-                      <td>65 MM</td>
-                      <td>75 MM</td>
-                      <td>108 MM</td>
+                      <td>10 M</td>
+                      <td>15 M</td>
+                      <td>20 M</td>
+                      <td>30 M</td>
+                      <td>45 M</td>
+                      <td>65 M</td>
+                      <td>75 M</td>
+                      <td>100 M</td>
                     </tr>
                     <tr>
                       <td className="sticky-col">Propuestas Presentadas</td>
