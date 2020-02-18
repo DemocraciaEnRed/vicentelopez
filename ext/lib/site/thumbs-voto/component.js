@@ -14,16 +14,18 @@ export default function ThumbsVoto(props) {
             {/*<h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
             <h3>A partir del 14 de marzo vas a poder presentar tus propuestas. Tenés tiempo hasta el 31 de mayo.</h3>
             <div className="btn-container">
-              <div className="boton-azul boton-blanco">
-                <a href="https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
-              </div>
-              <Link
-                // to='/formulario-propuesta'
-                to='/proyectos'
-                className="boton-azul boton-blanco">
-                {/* Mandá tu propuesta */}
-                Ver Proyectos
-            </Link>
+              {//<div className="boton-azul boton-blanco">
+              //  <a href="https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
+              //</div>
+              }
+              {//<Link
+              //  //to='/formulario-propuesta'
+              //  to='/proyectos'
+              //  className="boton-azul boton-blanco">
+              //  {/* Mandá tu propuesta */}
+              //  Ver Proyectos
+              //</Link>
+              }
             </div>
           </div>
         </div>
