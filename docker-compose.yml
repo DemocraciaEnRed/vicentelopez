@@ -7,13 +7,14 @@ services:
     environment:
       - NODE_ENV=development
       - DEBUG=democracyos*
-      - MONGO_URL=mongodb://mongo:27017/myDatabase
+#      - MONGO_URL=mongodb://mongo:27017/myDatabase
+      - MONGO_URL=mongodb://mongodb-vl:27017/DemocracyOS-dev
       - ORGANIZATION_NAME=DemocracyOS Fork
       - JWT_SECRET=
       # Add your email here!
       - STAFF=email@example.com
-    links:
-      - mongo
+#    links:
+#      - mongo
     ports:
       - 3000:3000
     volumes:
@@ -21,9 +22,12 @@ services:
       - ./public:/usr/src/public
     tty: true
 
-  mongo:
-    image: mongo:3.2
-    ports:
-      - 27017:27017
-    volumes:
-      - ./tmp/db:/data/db
+# Como uso un mongo local comento esto (y el links anterior)
+# además hay que agregar al container de mongo local haciendo
+# `docker network connect vicentelopez_default <cont_mongo_local>`
+#  mongo:
+#    image: mongo:3.2
+#    ports:
+#      - 27017:27017
+#    volumes:
+#      - ./tmp/db:/data/db
