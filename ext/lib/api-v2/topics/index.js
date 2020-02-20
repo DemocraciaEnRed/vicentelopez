@@ -7,6 +7,7 @@ const middlewares = require('lib/api-v2/middlewares')
 const { isCitizenOnProposal } = require('../../proposals')
 const api = require('lib/db-api')
 const apiv2 = require('lib/api-v2/db-api')
+var config = require('lib/config')
 var utils = require('lib/utils')
 var expose = utils.expose
 
@@ -50,14 +51,17 @@ const purgeBody = (req, res, next) => {
     console.log('Entre a purgeBody')
   // beware with subscribers fields
   if (isCitizenOnProposal(req.user, req.forum)) {
-    // IF THE FORM UPLOAD IS CLOSED, A CITIZEN CANNOT CONTINUE
     console.log('Entre por true')
-    return next(new CantUploadProposal())
-    // IF THE FORM IS OPEN, RUN THIS
-    // req.body = Object.assign(
-    //   defaultValues(),
-    //   pick(req.body, EDITABLE_KEYS)
-    // )
+    if (config.propuestasAbiertas){
+      // IF THE FORM IS OPEN, RUN THIS
+      req.body = Object.assign(
+         defaultValues(),
+         pick(req.body, EDITABLE_KEYS)
+      )
+    }else{
+      // IF THE FORM UPLOAD IS CLOSED, A CITIZEN CANNOT CONTINUE
+      return next(new CantUploadProposal())
+    }
   } else {
     console.log('Entre por false')
     console.log('=========================')
@@ -256,7 +260,10 @@ const goToNextRoute = (req, res, next) => next('route')
 app.post('/topics',
   middlewares.users.restrict,
   middlewares.forums.findFromBody,
-  middlewares.forums.privileges.canCreateTopics,
+  (req, res, next) => {
+    if (req.forum.visibility == 'collaborative') next()
+    else return middlewares.forums.privileges.canCreateTopics(req, res, next)
+  },
   purgeBody,
   sendToAdmin,
   goToNextRoute)

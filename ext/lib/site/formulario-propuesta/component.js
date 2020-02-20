@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import Tags from 'lib/admin/admin-topics-form/tag-autocomplete/component'
@@ -213,14 +214,14 @@ class FormularioPropuesta extends Component {
     this.setState((state) => {
       let theTags = state.tags
       if(theTags.includes(tag)){
-        return { tags: theTags.filter(t => t !== tag)}      
-      } 
+        return { tags: theTags.filter(t => t !== tag)}
+      }
          theTags.push(tag)
-      return { tags: theTags }      
+      return { tags: theTags }
     }, function () {
     console.log(this.state.tags);
 })
-    return;   
+    return;
   }
 
   showWholeForm = ()  => {
@@ -269,7 +270,7 @@ class FormularioPropuesta extends Component {
     const { forum } = this.state
 
     if (!forum) return null
-    if(this.state.forum.privileges && this.state.forum.privileges.canChangeTopics) {
+    if(config.propuestasAbiertas || (this.state.forum.privileges && this.state.forum.privileges.canChangeTopics)) {
     return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
@@ -383,7 +384,7 @@ class FormularioPropuesta extends Component {
 
             }
           </div>
-          {this.state.acceptedTerms && 
+          {this.state.acceptedTerms &&
           <section>
           <div className='form-group'>
             <label className='required' htmlFor='titulo'>
@@ -541,7 +542,7 @@ class FormularioPropuesta extends Component {
           )}
           <p className="small-banner">La propuesta va a ser revisada por el equipo de la municipalidad de presupuesto participativo que va a definir si el proyecto es factible o no. Si es factible pasará a la etapa de votación.</p>
           {
-             this.hasErrors() && 
+             this.hasErrors() &&
              <div className="error-box">
              <ul>
                   {this.hasErrorsField('nombre') && <li className="error-li">El campo "Nombre y apellido" del representante no puede ser vacio</li> }
@@ -558,7 +559,7 @@ class FormularioPropuesta extends Component {
              </div>
           }
           <div className='submit-div'>
-            { !this.hasErrors() && 
+            { !this.hasErrors() &&
               <button type='submit' className='submit-btn'>
                 {this.state.mode === 'new' ? 'Enviar la propuesta' : 'Guardar la propuesta'}
               </button>
