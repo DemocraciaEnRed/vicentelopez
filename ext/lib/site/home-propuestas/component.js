@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
@@ -23,13 +24,16 @@ const filters = {
 
 const filter = (key, items = []) => items.filter(filters[key].filter)
 
+const propuestasAbiertas = config.propuestasAbiertas
 const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActive }) => (
   <div className='container'>
-    {/* <div className="row">
-      <div className='notice'>
-        <h1>A partir del 19 de Marzo vas a poder subir propuestas</h1>
+    { propuestasAbiertas &&
+      <div className="row">
+        <div className='notice'>
+          <h1>{config.propuestasTextoAbiertas}</h1>
+        </div>
       </div>
-    </div> */}
+    }
     <div className='row'>
       <div className='col-md-8 list-tools'>
         <div className='topics-filter'>
@@ -48,13 +52,20 @@ const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActi
           </button>
         </div>
 
-        {/* <a
-          href='/formulario-propuesta'
-          className='boton-azul btn propuesta'>
-          Mandá tu propuesta
-        </a> */}
+        { propuestasAbiertas &&
+          <a
+            href='/formulario-propuesta'
+            className='boton-azul btn propuesta'>
+            Mandá tu propuesta
+          </a>
+        }
       </div>
-      <span className='alert-duedate' ><span className="text-info">Formulario cerrado, ¡Gracias por participar!</span> Estas viendo propuestas presentadas en el Presupuesto Participativo 2019</span>
+      { !propuestasAbiertas &&
+        <span className='alert-duedate' >
+          <span className="text-info">Formulario cerrado, ¡Gracias por participar!</span><br />
+          {config.propuestasTextoCerradas}
+        </span>
+      }
     </div>
   </div>
 )
@@ -126,7 +137,7 @@ class HomePropuestas extends Component {
           if (this.state.barrio !== '') {
             const u = new window.URLSearchParams(window.location.search)
             const link = u.get('tags')
-              ? `/propuestas?barrio=${this.state.barrio}&tags=${u.get('tags')}` 
+              ? `/propuestas?barrio=${this.state.barrio}&tags=${u.get('tags')}`
               : `/propuestas?barrio=${this.state.barrio}`
             browserHistory.push(link)
           }
@@ -249,7 +260,7 @@ class HomePropuestas extends Component {
   render () {
     const { forum, topics, tags } = this.state
     return (
-      
+
       <div className='ext-home-ideas'>
         <ListTools
           handleState={this.handleStateChange}

@@ -1,0 +1,8 @@
+db.texts.insert([
+	{ "name": "home-subtitle", "text": "Muchas Gracias" },
+	{ "name": "home-subtitle-text", "text": "a las 76.477 personas que con su voto decidieron los 66 proyectos en los que vamos a invertir $ 110.000.000 del Presupuesto Participativo de Vicente López en 2020." },
+	{ "name": "home-video1-mp4", "text": "https://cldup.com/pQZlAEpzw0.mp4" },
+	{ "name": "home-video1-webm", "text": "https://cldup.com/b5-PScfd-V.webm" },
+	{ "name": "home-video2-mp4", "text": "https://cldup.com/w4RSGFJStA.mp4" },
+	{ "name": "home-video2-webm", "text": "https://cldup.com/0Cy2GaQ-cR.webm" }
+])

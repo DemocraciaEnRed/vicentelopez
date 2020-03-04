@@ -1,3 +1,5 @@
+const log = require('debug')('democracyos:ext:api-v2:topics')
+
 const express = require('express')
 const notifier = require('democracyos-notifier')
 const pick = require('lodash.pick')
@@ -5,6 +7,7 @@ const middlewares = require('lib/api-v2/middlewares')
 const { isCitizenOnProposal } = require('../../proposals')
 const api = require('lib/db-api')
 const apiv2 = require('lib/api-v2/db-api')
+var config = require('lib/config')
 var utils = require('lib/utils')
 var expose = utils.expose
 
@@ -48,14 +51,17 @@ const purgeBody = (req, res, next) => {
     console.log('Entre a purgeBody')
   // beware with subscribers fields
   if (isCitizenOnProposal(req.user, req.forum)) {
-    // IF THE FORM UPLOAD IS CLOSED, A CITIZEN CANNOT CONTINUE
     console.log('Entre por true')
-    return next(new CantUploadProposal())
-    // IF THE FORM IS OPEN, RUN THIS
-    // req.body = Object.assign(
-    //   defaultValues(),
-    //   pick(req.body, EDITABLE_KEYS)
-    // )
+    if (config.propuestasAbiertas){
+      // IF THE FORM IS OPEN, RUN THIS
+      req.body = Object.assign(
+         defaultValues(),
+         pick(req.body, EDITABLE_KEYS)
+      )
+    }else{
+      // IF THE FORM UPLOAD IS CLOSED, A CITIZEN CANNOT CONTINUE
+      return next(new CantUploadProposal())
+    }
   } else {
     console.log('Entre por false')
     console.log('=========================')
@@ -113,6 +119,7 @@ const automata = {
 
 
 const sendToAuthor = (req, res, next) => {
+  //console.log('sendToAuthor', req.topic.attrs.state, '-', req.body['attrs.state'])
   if (automata[req.topic.attrs.state]) {
     if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])) {
       switch (req.body['attrs.state']) {
@@ -154,11 +161,9 @@ const sendToAuthor = (req, res, next) => {
 
 
 const sendToUsers = (req, res, next) => {
-  console.log('Entre a sendToUser')
-  console.log(req.topic)
-  console.log(req.topic.attrs)
-  console.log(req.topic.attrs.state)
-  console.log(automata[req.topic.attrs.state])
+  //console.log('Entre a sendToUser')
+  //console.log(req.topic)
+  //console.log(req.topic.attrs)
   // console.log(`automata[req.topic.attrs.state].includes(req.body['attrs.state']) => ${automata[req.topic.attrs.state].includes(req.body['attrs.state'])}`)
   if (automata[req.topic.attrs.state]) {
     if (automata[req.topic.attrs.state].includes(req.body['attrs.state'])) {
@@ -200,7 +205,7 @@ const sendToUsers = (req, res, next) => {
             Promise.all(arrPromises).then(() => {
               next()
             }).catch(next)
-          } else { 
+          } else {
             next()
           }
           break;
@@ -255,7 +260,10 @@ const goToNextRoute = (req, res, next) => next('route')
 app.post('/topics',
   middlewares.users.restrict,
   middlewares.forums.findFromBody,
-  middlewares.forums.privileges.canCreateTopics,
+  (req, res, next) => {
+    if (req.forum.visibility == 'collaborative') next()
+    else return middlewares.forums.privileges.canCreateTopics(req, res, next)
+  },
   purgeBody,
   sendToAdmin,
   goToNextRoute)
@@ -266,21 +274,18 @@ app.put('/topics/:id',
   middlewares.forums.findFromTopic, // encuentra el foro =>  req.forums
   middlewares.forums.privileges.canCreateTopics, // restringe por privilegio
   middlewares.topics.privileges.canEdit, // restringe por privilegio
-  purgeBody, // hace purge body, sea lo que sea 
+  purgeBody, // hace purge body, sea lo que sea
   function(req, res, next){
-    console.log('Llegue luego de purgeBody')
+    let alarmasCambioEstado = automata[req.topic.attrs.state]
+    let nuevoEstado = req.body['attrs.state']
+    log('Estado previo:', req.topic.attrs.state)
+    log('Notificar si cambia a:', alarmasCambioEstado)
+    log('Estado nuevo:', nuevoEstado)
+    if (alarmasCambioEstado && alarmasCambioEstado.indexOf(nuevoEstado) > -1) log('¡Se enviarán notificaciones!')
     next()
-  },  
+  },
   sendToAuthor, // Envia al autor
-  function(req, res, next){
-    console.log('Llegue luego de sendToAuthor')
-    next()
-  },  
   sendToUsers, // envia a los otros plebeyos
-  function(req, res, next){
-    console.log('Llegue luego de sendToUsers')
-    next()
-  },  
   goToNextRoute)
 
 app.post('/topics/:id/subscribe',
@@ -300,4 +305,3 @@ app.get('/all-tags',
       next(err)
     }
   })
-

@@ -1,0 +1,74 @@
+- function te (str) { return t(str) !== str }
+
+#topic-wrapper(class=forum.visibility === 'collaborative' && !forum.privileges.canChangeTopics ? 'collaborative' : '')
+  - if (tags.length === 0)
+    if (user.staff)
+      p.alert.alert-danger.text-center
+        != t('admin-topics-form.alert.no-tags')
+      p.text-center
+        a.btn.btn-lg.btn-primary.create-tag(href=urlBuilder.for('admin.tags.create', {forum: forum.name}))
+          = t('admin-tags-form.title.create')
+    else
+      p.alert.alert-danger.text-center
+        = t('admin-topics-form.alert.no-tags.no-staff')
+  - else
+    h2
+      = t(form.title)
+      - if (form.type === 'edit')
+        a(class='btn btn-link btn-md', href=topic.url, target='_blank')
+          = t('admin-topics-form.title.preview')
+          | &nbsp;
+          i.icon-eye
+    include commands
+    .topic-admin
+      form(action=form.action, method=form.method, role='form', autocomplete='off', novalidate, autovalidate='autovalidate', autosubmit='autosubmit')
+        - if (topic.privileges && !topic.privileges.canEdit)
+          .block-overlay
+        - if (form.forum)
+          input(type='hidden', name='forum', value=form.forum)
+        ul.form-messages
+
+        .form-group
+          label= t('admin-topics-form.label.mediaTitle')
+          - if (te('admin-topics-form.description.mediaTitle'))
+            span.help-text= t('admin-topics-form.description.mediaTitle')
+          input.form-control(type='text', maxlength='200', id='mediaTitle', name='mediaTitle', placeholder=t('admin-topics-form.label.mediaTitle'), value=topic.mediaTitle, validate='required')
+
+        .form-group
+          label= t('admin-topics-form.label.tag')
+          - if (te('admin-topics-form.description.tag'))
+            span.help-text= t('admin-topics-form.description.tag')
+          select.form-control(name='tag', validate='required')
+            - var topicTag = typeof topic.tag === 'string' ? topic.tag : (topic.tag && topic.tag.id)
+            - each tag in tags
+              option(selected=tag.id === topicTag, value=tag.id)
+                = tag.name
+
+        .form-group
+          label= t('admin-topics-form.label.tags')
+          - if (te('admin-topics-form.description.tags'))
+            span.help-text= t('admin-topics-form.description.tags')
+          div.tags-autocomplete
+          - if (forum.initialTags && forum.initialTags.length > 0)
+            span.help-text= t('admin-topics-form.description.forum-tags')
+            - each tag in forum.initialTags
+              button.btn.btn-default.btn-sm.forum-tag(data-value=tag, type='button', disabled=(topic.tags && !!~topic.tags.indexOf(tag)))= tag
+
+        .form-group
+          label#anchor-cover= t('admin-topics-form.label.coverUrl')
+          - if (te('admin-topics-form.description.coverUrl'))
+            span.help-text= t('admin-topics-form.description.coverUrl')
+          input.form-control(type='text', maxlength='254', id='coverUrl', name='coverUrl', placeholder=t('admin-topics-form.placeholder.coverUrl'), value=topic.coverUrl, validate='url')
+
+        .form-group
+          label= t('admin-topics-form.label.summary')
+          - if (te('admin-topics-form.description.summary'))
+            span.help-text= t('admin-topics-form.description.summary')
+          textarea.form-control(name='body')= topic.body
+
+        - if (forum.topicsAttrs.length > 0)
+          fieldset.attrs-wrapper
+            div(data-attrs)
+
+        input.btn.btn-success.hide(type='submit', value=t('admin-topics-form.button.submit'))
+    include commands

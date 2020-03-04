@@ -40,23 +40,13 @@ export class UserBadge extends Component {
     let menuItemAdmin = null
 
     if (userAttrs.privileges && userAttrs.privileges.canManage) {
-      if (config.multiForum) {
-        menuItemAdmin = (
-          <li>
-            <Link to={urlBuilder.for('settings.forums')}>
-              {t('header.forums')}
-            </Link>
-          </li>
-        )
-      } else {
-        menuItemAdmin = (
-          <li>
-            <Link to={urlBuilder.for('admin')}>
-              {t('header.admin')}
-            </Link>
-          </li>
-        )
-      }
+      menuItemAdmin = (
+        <li>
+          <Link to={urlBuilder.for('admin.topics', { forum: config.forumProyectos })}>
+            {t('header.forums')}
+          </Link>
+        </li>
+      )
     }
 
     const classes = ['header-item', 'user-badge', 'user-badge-helper']
@@ -71,11 +61,6 @@ export class UserBadge extends Component {
         <ul
           className='dropdown-list'>
           {menuItemAdmin}
-          <li className='notifications-li'>
-            <Link to={urlBuilder.for('site.notifications')}>
-              {t('notifications.title')}
-            </Link>
-          </li>
           <li>
             <Link to={urlBuilder.for('settings')}>
               {t('header.settings')}

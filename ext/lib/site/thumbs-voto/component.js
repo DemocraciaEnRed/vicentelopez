@@ -3,16 +3,18 @@ import { Link } from 'react-router'
 import Banner400Proyectos from '../banner-400-proyectos/component'
 
 export default function ThumbsVoto(props) {
+  let
+    styleIcono1 = { backgroundImage: `url(${props.texts['home-icono1-imagen']})` },
+    styleIcono2 = { backgroundImage: `url(${props.texts['home-icono2-imagen']})` },
+    styleIcono3 = { backgroundImage: `url(${props.texts['home-icono3-imagen']})` };
   return (
     <section className="thumbs info-landing">
       <div className="container-fluid">
         <div className="row cont fondo-azul">
           <div className="subtitulo">
-            <h2>
-              Bienvenidos al Presupuesto Participativo 2020
-            </h2>
+            <h2>{ props.texts['home-subtitle'] }</h2>
             {/*<h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
-            <h3>A partir del 14 de marzo vas a poder presentar tus propuestas. Tenés tiempo hasta el 31 de mayo.</h3>
+            <h3>{ props.texts['home-subtitle-text'] }</h3>
             <div className="btn-container">
               {//<div className="boton-azul boton-blanco">
               //  <a href="https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
@@ -33,42 +35,40 @@ export default function ThumbsVoto(props) {
         <div className="row cont">
           <div className="col-md-4">
             <div
-              className="que-son img-responsive  ">
+              className="que-son img-responsive"
+              style={styleIcono1}>
             </div>
             <h2
               className="text-center">
-              ¿Qué es?
+              { props.texts['home-icono1-titulo']}
             </h2>
             <p className="que-son-cont">
-              El Presupuesto Participativo es una iniciativa que permite a cada vecino de los 9 barrios del municipio proponer y decidir a través del voto directo en qué utilizar una parte del presupuesto municipal de inversión.
+              { props.texts['home-icono1-texto']}
             </p>
           </div>
 
           <div className="col-md-4">
             <div
-              className="que-propongo img-responsive  ">
+              className="que-propongo img-responsive"
+              style={styleIcono2}>
             </div>
-            <h2 className="text-center">¿Qué puedo proponer?</h2>
+            <h2 className="text-center">{ props.texts['home-icono2-titulo']}</h2>
             <p className="que-propongo-cont">
-              Vas a poder proponer proyectos referidos al espacio público, seguridad, tránsito, educación, salud, cultura, deportes, entre otros temas. Las propuestas factibles (legal, técnica y presupuestariamente) se convertirán en proyectos que serán sometidos a una votación en el mes de septiembre. Los proyectos ganadores serán realizados en 2021.
-           {/*  Ideas para mejorar tu barrio, tu institución o asociación en temas de espacio público, seguridad, tránsito, salud, educación, cultura y deportes.
-            * Podés subir propuestas desde donde quieras haciendo click <Link to='https://forosvecinales.vicentelopez.gov.ar/proyectos' className="">acá</Link> y participar de las reuniones de vecinos para conocer mejor del presupuesto participativo! */
-            /* Las propuestas pueden involucrar equipamiento o infraestructura pero no pueden incluir gastos en recursos humanos. ¡Podés subir propuestas desde el 19 de marzo hasta el 31 de mayo y participar de las <Link to="https://forosvecinales.vicentelopez.gov.ar/s/herramientas">reuniones de vecinos</Link> para conocer mejor del presupuesto participativo! */}
+              { props.texts['home-icono2-texto']}
             </p>
 
           </div>
 
           <div className="col-md-4">
             <div
-              className="como-sigo img-responsive  ">
+              className="como-sigo img-responsive"
+              style={styleIcono3}>
             </div>
             <h2 className="text-center">
-              ¿Cómo sigo los proyectos?
+              { props.texts['home-icono3-titulo']}
             </h2>
             <p className="donde-voto-cont">
-              Podés seguir de forma fácil la evolución de los proyectos ganadores del presupuesto participativo de 2018, 2019 y 2020 y conocer el estado de su ejecución entrando acá: <Link to='/proyectos?stage=seguimiento' className="">Seguimiento proyectos</Link>
-
-              La información sobre los proyectos anteriores al 2017 la podés encontrar en la sección DATOS/Historial de Documentos.
+              { props.texts['home-icono3-texto']} <Link to='/proyectos?stage=seguimiento' className="">Seguimiento proyectos</Link>
             </p>
           </div>
 

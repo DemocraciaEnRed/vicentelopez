@@ -1,0 +1,76 @@
+#topics-wrapper
+  .topics-admin
+    .top-buttons
+      .export-update-wrapper
+      a.btn.btn-success.btn-block.new(href=urlBuilder.for('admin.topics.create', {forum: forum.name}))
+        span.glyphicon.glyphicon-plus
+        = ' ' + t('admin-topics.list.add-topic')
+    .well.well-lg.clearfix
+      .row
+        .col-md-6.col-xs-12.text-center
+          .input-group.input-group-md.busqueda-wrapper
+            input.form-control(type='text', name='busqueda', placeholder='#{t("admin-topics.list.search.placeholder")}', autofocus, maxlength='100')
+        .col-md-2.col-xs-12.text-center
+          button.input-group-addon.buscar-tema
+            i.glyphicon.glyphicon-search
+        .col-md-4.col-xs-12.text-center
+          .btn-group
+            span.sort-label.pull-left=t('admin-topics.list.sort')
+            button.btn.btn-primary.sort(data-sort='topic-date')
+              span.glyphicon.glyphicon-time
+            button.btn.btn-primary.sort.por-nombre(data-sort='topic-title')
+              span='A - Z'
+      .row.row-filtros
+        .col-md-4.col-xs-12
+          .input-group.input-group-md
+            ='Año: '
+            select(name='anio')
+              option(value="") Todos
+              - each anio in uniqAttrs.anio
+                - if (anio != '')
+                  option(value="#{anio}") #{anio}
+        .col-md-4.col-xs-12
+          .input-group.input-group-md
+            ='Barrio: '
+            select(name='barrio')
+              option(value="") Todos
+              - each barrio in uniqAttrs.barrio
+                option(value="#{barrio}") #{toTitleCase(barrio.replace(/-/g,' '))}
+        .col-md-4.col-xs-12
+          .input-group.input-group-md
+            ='Estado: '
+            select(name='state')
+              option(value="") Todos
+              - each state in uniqAttrs.state
+                option(value="#{state}") #{toTitleCase(state)}
+    #topic-list.list.list-group.col-xs-12
+      - each topic in topics
+        .list-group-item(data-topicid=topic.id, data-topic-ispublic=topic.public)
+          .topic-buttons.pull-right
+            button.btn.btn-warning.unpublish-topic(data-toggle="tooltip" data-placement="top" title="Despublicar")
+              span.glyphicon.glyphicon-download
+            button.btn.btn-success.publish-topic(data-toggle="tooltip" data-placement="top" title="Publicar")
+              span.glyphicon.glyphicon-upload
+            button.btn.btn-default.edit-topic(data-topic-edit-url=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}), data-toggle="tooltip" data-placement="top" title="Editar")
+              span.glyphicon.glyphicon-pencil
+            button.btn.btn-default.ver-proyecto(data-topic-url=topic.url, data-toggle="tooltip" data-placement="top" title="Vista pública")
+              span.glyphicon.glyphicon-eye-open
+            select.mas-acciones(data-topic-edit-url=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}))
+              option(value="") Más acciones
+              option(value="anchor-cover") > Cambiar imagen
+              option(value="anchor-attrs.state") > Cambiar estado
+              option(value="anchor-fecha-cierre") > Cambiar fecha de cierre
+
+          h4.topic-title
+            a(href=urlBuilder.for('admin.topics.id', {id: topic.id, forum: forum.name}), rel="noopener noreferer", target="_blank")=topic.mediaTitle
+          .topic-multi-tags
+            span.glyphicon.glyphicon-tag
+            span.text.topic-tag=topic.tag && topic.tag.name + ' - '
+            span.text.topic-tags=topic.tags.map(toTitleCase).join(', ')
+          span.topic-date.hide=topic.createdAt
+          .topic-status-data
+            - if (topic.attrs && topic.attrs.anio)
+              span.placa.text=topic.attrs.anio
+            - if (topic.attrs && topic.attrs.state)
+              span.placa.text=topic.attrs && toTitleCase(topic.attrs.state.replace(/-/g,' '))
+    .topics-pagination
