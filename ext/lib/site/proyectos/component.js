@@ -23,13 +23,14 @@ export default class Carrusel extends Component {
 
   componentDidUpdate () {
     if (this.flkty) this.flkty.destroy()
+    // https://www.npmjs.com/package/flickity
     const options = {
       // cellAlign: 'center',
       // draggable: true,
       // friction: 0.2,
-      // contain: true,
+      contain: this.state.topics.length <= 5,
       pageDots: false,
-      wrapAround: true
+      wrapAround: this.state.topics.length > 5
     }
     this.flkty = new Flickity(this.refs.carrusel, options)
   }
