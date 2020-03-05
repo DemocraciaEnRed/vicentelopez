@@ -13,8 +13,6 @@ services:
       - ADMIN_PASS=123123
       # Mails del staff. La del admin no se agrega sola. Para más, separar con comas.
       - STAFF=it@democracyos.org,email@example.com
-    links:
-      - mongo
     ports:
       - 3000:3000
     volumes:
@@ -22,9 +20,3 @@ services:
       - ./public:/usr/src/public
     tty: true
 
-  mongo:
-    image: mongo:3.2
-    ports:
-      - 27017:27017
-    volumes:
-      - ./tmp/db:/data/db
