@@ -89,7 +89,7 @@ class Header extends Component {
           <ul
             className='nav navbar-nav nav-mobile'>
 
-            {this.props.user.state.fulfilled && (
+            {/*this.props.user.state.fulfilled && (
               <li className='nav-item'>
                 <Link
                   to='/notifications'
@@ -97,7 +97,7 @@ class Header extends Component {
                   <span className='icon-bell' />
                 </Link>
               </li>
-            )}
+            )*/}
 
             {this.props.user.state.fulfilled && (
               <UserBadge
@@ -163,7 +163,7 @@ class Header extends Component {
               </Link>
             </div>
 
-            {this.props.user.state.fulfilled && (
+            {/*this.props.user.state.fulfilled && (
               <li className='nav-item'>
                 <Link
                   to='/notifications'
@@ -171,7 +171,7 @@ class Header extends Component {
                   <span className='icon-bell' />
                 </Link>
               </li>
-            )}
+            )*/}
 
             {this.props.user.state.fulfilled && (
               <UserBadge
