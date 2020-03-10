@@ -274,9 +274,10 @@ class FormularioPropuesta extends Component {
     return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
-          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2019</h1>
-          {/* <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p> */}
-          <p>¡Gracias a todos y todas por participar!</p>
+          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2020</h1>
+          <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p>
+          {//<p>¡Gracias a todos y todas por participar!</p>
+          }
         </div>
         {/* FORMULARIO GOES BEHIND THIS */}
         <form className='wrapper' onSubmit={this.handleSubmit}>
@@ -367,10 +368,10 @@ class FormularioPropuesta extends Component {
               <p className="important">Requisitos para que los proyectos sean factibles:</p>
               <ul>
                 <li>Serán factibles las propuestas de obras o equipamiento para entidades sin fines de lucro (polideportivos, sociedades de fomento,  centros de jubilados, espacios públicos, escuelas de gestión pública, centros de salud    municipales, etc).</li>
-                <li>Serán factibles campañas o talleres sobre un tema específico cuya ejecución sólo sea durante el 2020.</li>
+                <li>Serán factibles campañas o talleres sobre un tema específico cuya ejecución sólo sea durante el 2021.</li>
                 <li>No serán factibles las propuestas que impliquen un gasto corriente (recursos humanos que incrementen la planta municipal).</li>
                 <li>Las propuestas deben ser presentadas para un barrio en concreto (No puede ser algo para el Municipio entero)</li>
-                <li>El presupuesto máximo de la propuesta no puede superar los $ 3.000.000.</li>
+                <li>El presupuesto máximo de la propuesta no puede superar los $ 4.500.000.</li>
               </ul>
               <hr />
             { !this.state.acceptedTerms ?
@@ -540,21 +541,21 @@ class FormularioPropuesta extends Component {
                 onChange={this.handleInputChange} />
             </div>
           )}
-          <p className="small-banner">La propuesta va a ser revisada por el equipo de la municipalidad de presupuesto participativo que va a definir si el proyecto es factible o no. Si es factible pasará a la etapa de votación.</p>
+          <p className="small-banner">La propuesta será revisada por el equipo de la Municipalidad y notificará su factilibilidad a la brevedad. Si la propuesta es factible pasará a la etapa de votación.</p>
           {
              this.hasErrors() &&
              <div className="error-box">
              <ul>
-                  {this.hasErrorsField('nombre') && <li className="error-li">El campo "Nombre y apellido" del representante no puede ser vacio</li> }
-                  {this.hasErrorsField('domicilio') && <li className="error-li">El campo "Domicilio" del representante no puede ser vacio</li> }
-                  {this.hasErrorsField('documento') && <li className="error-li">El campo "Documento" del representante no puede ser vacio</li> }
-                  {this.hasErrorsField('telefono') && <li className="error-li">El campo "Telefono" del representante no puede ser vacio</li> }
-                  {this.hasErrorsField('email') && <li className="error-li">El campo "Email" del representante no puede ser vacio</li> }
-                  {this.hasErrorsField('titulo') && <li className="error-li">El campo "Título" de la propuesta no puede ser vacio</li> }
-                  {this.hasErrorsField('barrio') && <li className="error-li">El campo "Barrio" de la propuesta no puede ser vacio</li> }
-                  {this.hasErrorsField('problema') && <li className="error-li">El campo "Problema" de la propuesta no puede ser vacio</li> }
-                  {this.hasErrorsField('solucion') && <li className="error-li">El campo "Solución" de la propuesta no puede ser vacio</li> }
-                  {this.hasErrorsField('beneficios') && <li className="error-li">El campo "Beneficios" de la propuesta no puede ser vacio</li> }
+                  {this.hasErrorsField('nombre') && <li className="error-li">El campo "Nombre y apellido" del representante no puede quedar vacío</li> }
+                  {this.hasErrorsField('domicilio') && <li className="error-li">El campo "Domicilio" del representante no puede quedar vacío</li> }
+                  {this.hasErrorsField('documento') && <li className="error-li">El campo "Documento" del representante no puede quedar vacío</li> }
+                  {this.hasErrorsField('telefono') && <li className="error-li">El campo "Telefono" del representante no puede quedar vacío</li> }
+                  {this.hasErrorsField('email') && <li className="error-li">El campo "Email" del representante no puede quedar vacío</li> }
+                  {this.hasErrorsField('titulo') && <li className="error-li">El campo "Título" de la propuesta no puede quedar vacío</li> }
+                  {this.hasErrorsField('barrio') && <li className="error-li">El campo "Barrio" de la propuesta no puede quedar vacío</li> }
+                  {this.hasErrorsField('problema') && <li className="error-li">El campo "Problema" de la propuesta no puede quedar vacío</li> }
+                  {this.hasErrorsField('solucion') && <li className="error-li">El campo "Solución" de la propuesta no puede quedar vacío</li> }
+                  {this.hasErrorsField('beneficios') && <li className="error-li">El campo "Beneficios" de la propuesta no puede quedar vacío</li> }
              </ul>
              </div>
           }
@@ -575,7 +576,7 @@ class FormularioPropuesta extends Component {
     } return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
-          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2019</h1>
+          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2020</h1>
           {/* <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p> */}
           <p>¡Gracias a todos y todas por participar!</p>
         </div>

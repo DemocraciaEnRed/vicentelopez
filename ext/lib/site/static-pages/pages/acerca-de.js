@@ -82,25 +82,25 @@ export default class Page extends Component {
                 </table>
                 <h3>¿QUIÉN PUEDE PRESENTAR PROPUESTAS?</h3>
                 <p>Cualquier persona mayor de 16 años que viva o trabaje en cualquiera de los 9 barrios de Vicente López. También pueden presentar propuestas las instituciones de bien público registradas en el Partido.</p>
-                
+
                 <h3>¿CUÁNTOS PROYECTOS PUEDE PRESENTAR UNA ENTIDAD?</h3>
-                <p>Las entidades que desarrollen sus actividades en más de un barrio del Partido, podrán presentar hasta un máximo de 2 proyectos en 2 barrios (es decir, 1 por cada barrio).</p> 
-               
+                <p>Las entidades que desarrollen sus actividades en más de un barrio del Partido, podrán presentar hasta un máximo de 2 proyectos en 2 barrios (es decir, 1 por cada barrio).</p>
+
                 <h3>¿CÓMO SE ELABORAN LOS PROYECTOS?</h3>
                 <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma. Este año 2019, tenés tiempo hasta el 31 de mayo inclusive.</p>
-               
+
                 <h3>¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?</h3>
                 <p>Podés presentar:</p>
                 <p>1. Propuestas de obras o equipamiento para: espacios públicos, escuelas de gestión pública, centros de salud municipales, polideportivos, sociedades de fomento, centros de jubilados, sociedades de fomento, clubes, entre otros. La condición es que sean entidades sin fines de lucro.</p>
                 <p>2. También podés presentar propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución (2020), en caso de que los vecinos las elijan.</p>
                 <p>3. Las propuestas no pueden involucrar gastos en recursos humanos que incrementen la planta de empleados municipales.</p>
                 <p>4. Tenés que presentarla para un barrio en concreto. No puede ser una propuesta para todo el Municipio, o en todo caso, tenés que presentarla en todos los barrios.</p>
-                <p>5. El presupuesto máximo de la propuesta no puede superar los $ 3.000.000.</p>
+                <p>5. El presupuesto máximo de la propuesta no puede superar los $ 4.500.000.</p>
                 <p>6. La propuesta no puede referirse a un espacio que no esté en jurisdicción del Municipio de Vicente López, a excepción de las escuelas públicas de gestión provincial.</p>
-                
+
                 <h3>¿CÓMO SE DECIDE QUÉ PROYECTOS VAN A VOTACIÓN?</h3>
                 <p>Para que una propuesta pueda convertirse en un proyecto votable, luego del trabajo conjunto con funcionarios, se pasa a una etapa de verificación legal, técnica y presupuestaria. En esta instancia se termina de definir la factibilidad del proyecto y los costos estimados del mismo.</p>
-                
+
                 <h3>¿QUIÉN PUEDE VOTAR LOS PROYECTOS?</h3>
                 <p>Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar los proyectos. Para ello, tenés que acreditar domicilio particular o laboral en alguno de los 9 barrios del Partido.</p>
                 <p>En el caso de los proyectos de escuelas públicas de gestión provincial o municipal, también pueden votar los alumnos mayores de 16 años y hasta un mayor de 16 años por cada alumno menor de 16 años inscriptos en la escuela respectiva, aunque no tengan domicilio en el barrio o en el partido de Vicente López. Estas personas solo podrán elegir el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela y enviar a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> antes de que comience la votación. </p>
@@ -113,10 +113,10 @@ export default class Page extends Component {
                 <h3>¿PUEDO VOTAR MÁS DE UNA VEZ?</h3>
                 <p>Solo podés votar más de una vez si vivís en uno de los 9 barrios y trabajás en otro de los 9 barrios. Si vivís y trabajás en el mismo barrio, sólo podés votar una vez.</p>
                 <p>No está permitido votar más de una vez en un mismo barrio. Si alguien lo hiciera, se anulan todos los votos que haya realizado esa persona en el mismo barrio.</p>
-                
+
                 <h3>¿POR QUÉ PUEDEN PARTICIPAR CON PROPUESTAS LAS ESCUELAS PÚBLICAS DE GESTIÓN PROVINCIAL EN EL PRESUPUESTO PARTICIPATIVO?</h3>
                 <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto. Para 2019, el límite por barrio se estableció en $4.5 millones, con un tope de $ 3 millones por escuela.</p>
-                
+
 
                 <h3>¿CUÁNDO Y DÓNDE VOTO?</h3>
                 <p>La votación estará abierta desde el <b>lunes 16 hasta el domingo 29 de septiembre de 2019</b>. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.</p>
@@ -129,13 +129,13 @@ export default class Page extends Component {
 
                 <h3>¿EL VOTO ES SECRETO?</h3>
                 <p>No, el voto en el Presupuesto Participativo es nominal. Como no existe un empadronamiento previo para votar, en el momento del escrutinio necesitamos poder verificar 1) que no haya duplicaciones de DNI, 2) que el domicilio que acredita la persona es del barrio, para que el voto sea válido.</p>
-                
+
                 <h3>¿CUÁNDO SE CUENTAN LOS VOTOS?</h3>
                 <p>El escrutinio de la votación 2019 se realizará los días 1, 2 y 3 de octubre a partir de las 9 hs en lugar a designar por la Subsecretaría de Participación Ciudadana. Cada uno de esos días, se contarán los votos de 3 barrios. Esta información se dará 15 días antes del comienzo de la votación.</p>
-                
+
                 <h3>¿SE PUEDE PRESENCIAR EL ESCRUTINIO?</h3>
                 <p>Por supuesto. El escrutinio es público y abierto a todos los vecinos de Vicente López. Si te interesa presenciar el escrutinio de un barrio en particular, mandanos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te avisamos qué día y en qué horario se contarán los votos de las urnas ubicadas en los puntos de votación de ese barrio.</p>
-                
+
                 <h3>¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?</h3>
                 <p>Los proyectos ganadores de cada barrio, surgen de tu voto y el de tus vecinos. Los proyectos más votados, que no superen el monto asignado a cada barrio, serán realizados durante el año siguiente a la votación. Puede ocurrir que por orden de prioridad de votos, un proyecto supere por presupuesto el monto total establecido para el barrio; en ese caso, se pasará al proyecto que siga en cantidad de votos hasta agotar el monto asignado al barrio.</p>
 
