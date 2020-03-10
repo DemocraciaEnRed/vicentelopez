@@ -48,10 +48,10 @@ const defaultValues = () => ({
 // Only allow to edit specific keys when is a proposal
 // and the users doesn't have forum privileges.
 const purgeBody = (req, res, next) => {
-    console.log('Entre a purgeBody')
+  //console.log('Entre a purgeBody')
   // beware with subscribers fields
   if (isCitizenOnProposal(req.user, req.forum)) {
-    console.log('Entre por true')
+    //console.log('Entre por true')
     if (config.propuestasAbiertas){
       // IF THE FORM IS OPEN, RUN THIS
       req.body = Object.assign(
@@ -63,10 +63,10 @@ const purgeBody = (req, res, next) => {
       return next(new CantUploadProposal())
     }
   } else {
-    console.log('Entre por false')
-    console.log('=========================')
-    console.log(req.body)
-    console.log('=========================')
+    //console.log('Entre por false')
+    //console.log('=========================')
+    //console.log(req.body)
+    //console.log('=========================')
     req.body = Object.assign(
       defaultValues(),
       req.body
@@ -77,6 +77,7 @@ const purgeBody = (req, res, next) => {
 
 const sendToAdmin = (req, res, next) => {
   // console.log(req.body)
+  log('Mandando mail %s a admin %s', 'new-proposal', req.body['attrs.email'])
   notifier.now('new-proposal', {
     topic: {
       mediaTitle: req.body.mediaTitle,
@@ -127,6 +128,7 @@ const sendToAuthor = (req, res, next) => {
         case 'factible':
         case 'no-factible':
         case 'integrado':
+          log('Mandando mail %s a %s', 'update-proposal', req.body['attrs.email'])
           notifier.now('update-proposal', {
             topic: {
               id: req.topic['_id'],
@@ -139,6 +141,7 @@ const sendToAuthor = (req, res, next) => {
           }).catch(next)
           break;
         default:
+          log('Mandando mail %s a %s', 'update-project', req.body['attrs.email'])
           notifier.now('update-project', {
             topic: {
               id: req.topic['_id'],
