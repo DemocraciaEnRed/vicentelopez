@@ -5,6 +5,7 @@ import t from 't-component'
 import urlBuilder from 'lib/url-builder'
 import config from 'lib/config'
 import userConnector from 'lib/site/connectors/user'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 export class UserBadge extends Component {
   static links = [
@@ -17,8 +18,13 @@ export class UserBadge extends Component {
     super(props)
 
     this.state = {
-      canChangeTopics: false
+      canChangeTopics: false,
+      forumProyectos: null
     }
+
+    forumStore.findOneByName(config.forumProyectos).then(
+      forum => this.setState({ forumProyectos: forum })
+    )
   }
 
   componentDidMount () {
@@ -38,8 +44,9 @@ export class UserBadge extends Component {
   render () {
     const userAttrs = this.props.user.state.value
     let menuItemAdmin = null
+    let forumProyectos = this.state.forumProyectos
 
-    if (userAttrs.privileges && userAttrs.privileges.canManage) {
+    if (forumProyectos && forumProyectos.privileges && forumProyectos.privileges.canChangeTopics) {
       menuItemAdmin = (
         <li>
           <Link to={urlBuilder.for('admin.topics', { forum: config.forumProyectos })}>
