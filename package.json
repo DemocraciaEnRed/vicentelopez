@@ -159,6 +159,7 @@
     "prop-types": "~15.5.10",
     "react": "^15.3.0",
     "react-async-script": "^0.9.1",
+    "react-collapsible": "^2.7.0",
     "react-dom": "^15.3.0",
     "react-google-recaptcha": "^0.9.7",
     "react-outside-event": "~1.2.4",
