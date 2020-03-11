@@ -21,7 +21,9 @@
     "lodash.pick": "4.4.0",
     "lodash.sortby": "^4.7.0",
     "react-chartjs-2": "^2.7.6",
-    "react-pdf-js": "^3.0.7"
+    "react-collapsible": "^2.7.0",
+    "react-pdf-js": "^3.0.7",
+    "react-responsive-accordion": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "3",
