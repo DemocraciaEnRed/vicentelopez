@@ -182,6 +182,7 @@
         display: block
       span:first-child
         font-weight: bold
+
 .ext-herramientas
 .ext-reglamento
 .ext-datos
@@ -284,7 +285,7 @@
         tbody
           tr
             td
-              padding: 15px                
+              padding: 15px
               text-align: center
               &:not(:first-child)
                 padding: 15px 0
@@ -369,7 +370,7 @@
         color: #FFF
         font-size: 16px
         padding: 10px 20px
-    .descargas-info 
+    .descargas-info
       border-radius: 8px
       box-shadow: 0 6px 4px -6px rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12)
       text-align: left
@@ -391,17 +392,17 @@
         display: inline-block
         float: right
         margin-top: -5px;
-        svg 
+        svg
           cursor: pointer
-          g, polygon 
+          g, polygon
             fill: #1791be
         &:hover
-          svg 
-            g, polygon 
+          svg
+            g, polygon
               fill: #7cbb42
     .btns-historial
       margin-bottom: 20px
-    .portal-vl 
+    .portal-vl
       box-shadow: 0 6px 4px -2px rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12)
       background-image: unquote("url('ext/lib/site/static-pages/bgDatosVL.png')")
       background-size: cover
@@ -459,7 +460,7 @@
     margin: 0 auto
     height: 180px
     background-size: cover
-    background-image: unquote("url('ext/lib/site/VialCosteroVteLopezImgBanner.jpg')") 
+    background-image: unquote("url('ext/lib/site/VialCosteroVteLopezImgBanner.jpg')")
     background-repeat: no-repeat
     padding: 0
     &.gradient
@@ -504,7 +505,7 @@
       top: 127px
       width: 75%
       margin: 0 auto
-  
+
     .fondo-titulo
       display: inline-flex
       justify-content: center
@@ -553,7 +554,7 @@
     color: #7cbb42
   h4
     color: #444
-        
+
   .tabla-presupuestos
     tbody
       tr
@@ -561,7 +562,7 @@
           padding: 10px
         td:first-child
           font-weight: bold
-  
+
 .carousel-distribucion-proyectos
   max-width: 1000px
   width: 100%
@@ -608,10 +609,10 @@
   padding-top:3em
 
 .p-padding
-  padding-top:10px  
+  padding-top:10px
 
 .alinear
-  table 
+  table
     margin: 0 auto 20 !important
     width:380px !important
 
@@ -620,28 +621,30 @@
       font-weight: bold
   td
     &:nth-child(even)
-      text-align: right  
+      text-align: right
 
 table.table.tabla-reuniones.alinear
   margin: 0 auto 20 !important
   width:350px !important
     @media(max-width: 400px)
-      width:330px !important   
+      width:330px !important
 table.table.tabla-reglamento.alinear
   border-collapse: collapse;
   border: 1px solid #f0f0f0;
   &.tabla-presupuesto
-    width: 350px;     
+    width: 350px;
   td, th
-      border-right: 1px solid #f0f0f0;    
-  
-      
+      border-right: 1px solid #f0f0f0;
+
+
 //VISUALIZADOR DE DATOS
 
 .banner-static
-  height:280px
+  height:215px
+  @media(min-width: 768px)
+    height:280px
 
-.documentos-body 
+.documentos-body
   display: flex
   flex-direction: column
   justify-content: center
@@ -650,9 +653,9 @@ table.table.tabla-reglamento.alinear
     display:inline-block
   .form-control
     width: 300px
-    display: inline  
-  
-.visualizador-wrapper 
+    display: inline
+
+.visualizador-wrapper
   background: #fff
   border-radius: 2px
   display: inline-block
@@ -684,16 +687,16 @@ table.table.tabla-reglamento.alinear
   justify-content: space-between
   align-items: center
   flex-wrap: wrap
-  p 
+  p
     margin-bottom:0
     padding:1em 1em 1em 0em
   &.form-control
-    margin-bottom:0  
+    margin-bottom:0
 
 
 button
   &:focus
-    outline: none    
+    outline: none
   &.seccion
     border:none
     padding:none
@@ -746,7 +749,7 @@ button
   border-image-slice: 1
   padding-top: 6em
 
-.timeline 
+.timeline
   width: 66%
   @media(max-width: 468px)
     width:71%
@@ -833,7 +836,7 @@ button
   margin-right: 10px
 
 .alert&.alert-success
-  max-width: 300px  
+  max-width: 300px
   margin-top:20px
   margin-left:auto
   margin-right:auto
@@ -850,7 +853,7 @@ h3.underline
   text-decoration: underline
   text-transform: uppercase
 // Loader
-.spinner-circle 
+.spinner-circle
   margin: 100px auto
   position: relative
   width: 40px
@@ -866,7 +869,7 @@ h3.underline
   @media(max-width: 375px)
     margin: 50px 100px
 
-.spinner-circle .spinner-child 
+.spinner-circle .spinner-child
   width: 100%
   height: 100%
   position: absolute
@@ -971,7 +974,7 @@ h3.underline
     transform: scale(1)
 
 @keyframes spinner-circleBounceDelay
-  0%, 80%, 100% 
+  0%, 80%, 100%
     -webkit-transform: scale(0);
     transform: scale(0);
   40%
@@ -1007,3 +1010,13 @@ h3.underline
 .flyer-pp
   width: 100%
   margin-bottom: 50px
+
+.Collapsible
+  text-align: left;
+  margin-bottom: 10px;
+  border-top: 1px solid #7cbb42;
+  padding-top: 10px;
+
+.Collapsible__trigger
+  font-size: 1.2em;
+  font-weight: 700;
