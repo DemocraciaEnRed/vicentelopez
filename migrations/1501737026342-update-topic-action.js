@@ -35,7 +35,8 @@ exports.up = function up (done) {
 }
 
 exports.down = function down (done) {
-  dbReady()
+  done();
+  /*dbReady()
     .then(function () {
       return Topic.collection
         .find({})
@@ -60,5 +61,5 @@ exports.down = function down (done) {
     .catch(function (err) {
       console.log('update topics action failed at', err)
       done(err)
-    })
+    })*/
 }
