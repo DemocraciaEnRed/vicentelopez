@@ -37,7 +37,7 @@ export default class Page extends Component {
 
           <div className='ext-datos'>
             <p className="text">
-              El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de Foros Vecinales.
+              El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas sus ediciones.
             </p>
 
             <article className="seccion-datos">
@@ -68,7 +68,7 @@ export default class Page extends Component {
                       <td>45 M</td>
                       <td>65 M</td>
                       <td>75 M</td>
-                      <td>100 M</td>
+                      <td>110 M</td>
                     </tr>
                     <tr>
                       <td className="sticky-col">Propuestas Presentadas</td>
@@ -90,7 +90,7 @@ export default class Page extends Component {
                       <td>148</td>
                       <td>145</td>
                       <td>198</td>
-                      <td>300</td>
+                      <td>213</td>
                     </tr>
                     <tr>
                       <td className="sticky-col">Proyectos Ganadores</td>
@@ -128,7 +128,7 @@ export default class Page extends Component {
                   </tbody>
                   <tfoot>
                     <tr>
-                    <td colSpan={9}>Presupuesto asignado 2019 - 2020: $108 millones</td>
+                    <td colSpan={9}>Presupuesto asignado 2020 - 2021: a definir</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -144,7 +144,7 @@ export default class Page extends Component {
 {/*                   <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
  */}                </div>
                 <figcaption>
-                  <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
+                  <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en el presupuesto participativo de Vicente López.</p>
                 </figcaption>
               </figure>
             </article>
