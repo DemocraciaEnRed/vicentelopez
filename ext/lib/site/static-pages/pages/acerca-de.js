@@ -36,52 +36,52 @@ export default class Page extends Component {
 
                 <Accordion startPosition={-1}>
                   <div data-trigger="+ ¿QUÉ ES EL PRESUPUESTO PARTICIPATIVO DE VICENTE LÓPEZ?">
-                    <p className='p-padding'>El Presupuesto Participativo de Vicente López es un espacio de participación a través del cual los vecinos proponen y deciden en qué invertir una parte del presupuesto municipal. Todos los años, y desde hace 7 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos. La partida para el 2020 será de $110 millones.</p>
+                    <p className='p-padding'>El Presupuesto Participativo de Vicente López es un espacio de participación a través del cual los vecinos proponen y deciden en qué invertir una parte del presupuesto municipal. Todos los años, y desde hace 8 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos. La partida para el 2021 será de $165 millones.</p>
                   </div>
 
                    <div data-trigger="+ ¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?">
-                     <p className='p-padding'>La partida de $110 millones, que corresponderá al presupuesto 2020, se repartirá según dos criterios: los primeros 53 millones por partes iguales a cada uno de los 9 barrios. Y los siguientes 57 millones según la cantidad de habitantes de cada barrio. Así, los barrios con más población, reciben más partida presupuestaria.</p>
+                     <p className='p-padding'>La partida de $165 millones, que corresponderá al presupuesto 2021, se repartirá según dos criterios: los primeros 53 millones por partes iguales a cada uno de los 9 barrios. Y los siguientes 57 millones según la cantidad de habitantes de cada barrio. Así, los barrios con más población, reciben más partida presupuestaria.</p>
                      <table className='table tabla-reuniones alinear'>
                        <tbody>
                          <tr>
                            <td>OLIVOS</td>
-                           <td>$ 14.414.531</td>
+                           <td>$ 21.621.796</td>
                          </tr>
                          <tr>
                            <td>MUNRO</td>
-                           <td>$ 14.414.531</td>
+                           <td>$ 21.621.796</td>
                          </tr>
                          <tr>
                            <td>FLORIDA ESTE</td>
-                           <td>$ 14.414.531</td>
+                           <td>$ 21.621.796</td>
                          </tr>
                          <tr>
                            <td>VILLA MARTELLI</td>
-                           <td>$ 12.124.784</td>
+                           <td>$ 18.187.176</td>
                          </tr>
                          <tr>
                            <td>FLORIDA OESTE</td>
-                           <td>$ 12.124.784</td>
+                           <td>$ 18.187.176</td>
                          </tr>
                          <tr>
                            <td>VICENTE LÓPEZ</td>
-                           <td>$ 12.124.784</td>
+                           <td>$ 18.187.176</td>
                          </tr>
                          <tr>
                            <td>CARAPACHAY</td>
-                           <td>$ 10.127.352</td>
+                           <td>$ 15.191.028</td>
                          </tr>
                          <tr>
                            <td>VILLA ADELINA</td>
-                           <td>$ 10.127.352</td>
+                           <td>$ 15.191.028</td>
                          </tr>
                          <tr>
                            <td>LA LUCILA</td>
-                           <td>$ 10.127.352</td>
+                           <td>$ 15.191.028</td>
                          </tr>
                          <tr>
                            <td>TOTAL</td>
-                           <td>$ 110.000.000</td>
+                           <td>$ 165.000.000</td>
                          </tr>
                        </tbody>
                      </table>
@@ -96,13 +96,13 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿CÓMO SE ELABORAN LOS PROYECTOS?">
-                   <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma. Este año 2019, tenés tiempo hasta el 31 de mayo inclusive.</p>
+                   <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma. Este año 2020, tenés tiempo hasta el 31 de mayo inclusive.</p>
                    </div>
 
                    <div data-trigger="+ ¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?">
                    <p>Podés presentar:</p>
                    <p>1. Propuestas de obras o equipamiento para: espacios públicos, escuelas de gestión pública, centros de salud municipales, polideportivos, sociedades de fomento, centros de jubilados, sociedades de fomento, clubes, entre otros. La condición es que sean entidades sin fines de lucro.</p>
-                   <p>2. También podés presentar propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución (2020), en caso de que los vecinos las elijan.</p>
+                   <p>2. También podés presentar propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución (2021), en caso de que los vecinos las elijan.</p>
                    <p>3. Las propuestas no pueden involucrar gastos en recursos humanos que incrementen la planta de empleados municipales.</p>
                    <p>4. Tenés que presentarla para un barrio en concreto. No puede ser una propuesta para todo el Municipio, o en todo caso, tenés que presentarla en todos los barrios.</p>
                    <p>5. El presupuesto máximo de la propuesta no puede superar los $ 4.500.000.</p>
