@@ -21,7 +21,6 @@ exports.up = function up (done) {
 			)
 		)
     .then(promises => Promise.all(promises))
-    .then(() => {throw new Error('sd')})
     // Devolvemos al Migrator (de lib/migrations)
     .then(() => {
       console.log(`-- Agregados cambiar grupos campos`)
