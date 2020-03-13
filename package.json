@@ -192,7 +192,7 @@
   },
   "devDependencies": {
     "arr-diff": "~3.0.0",
-    "eslint": "~3.18.0",
+    "eslint": "~4.18.2",
     "eslint-config-democracyos": "~1.1.0",
     "google-translate": "~2.0.4",
     "gulp-jasmine": "^2.2.1",
