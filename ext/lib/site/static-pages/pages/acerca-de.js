@@ -130,11 +130,11 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿POR QUÉ PUEDEN PARTICIPAR CON PROPUESTAS LAS ESCUELAS PÚBLICAS DE GESTIÓN PROVINCIAL EN EL PRESUPUESTO PARTICIPATIVO?">
-                   <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto. Para 2019, el límite por barrio se estableció en $4.5 millones, con un tope de $ 3 millones por escuela.</p>
+                   <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto. Para 2020, el límite por barrio se estableció en $4.5 millones y de hasta $4.5 millones por escuela.</p>
                    </div>
 
                    <div data-trigger="+ ¿CUÁNDO Y DÓNDE VOTO?">
-                   <p>La votación estará abierta desde el <b>lunes 16 hasta el domingo 29 de septiembre de 2019</b>. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.</p>
+                   <p>La votación estará abierta desde el <b>lunes 28 de septiembre hasta el domingo 11 de octubre de 2020</b>. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.</p>
                    </div>
 
                    <div data-trigger="+ ¿CÓMO VOTO?">
@@ -150,7 +150,7 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿CUÁNDO SE CUENTAN LOS VOTOS?">
-                   <p>El escrutinio de la votación 2019 se realizará los días 1, 2 y 3 de octubre a partir de las 9 hs en lugar a designar por la Subsecretaría de Participación Ciudadana. Cada uno de esos días, se contarán los votos de 3 barrios. Esta información se dará 15 días antes del comienzo de la votación.</p>
+                   <p>El escrutinio de la votación 2020 se realizará los días 14, 15 y 16 de octubre de 2020 a partir de las 9 hs en lugar a designar por la Subsecretaría de Participación Ciudadana. Cada uno de esos días, se contarán los votos de 3 barrios. Esta información se dará 15 días antes del comienzo de la votación.</p>
                    </div>
 
                    <div data-trigger="+ ¿SE PUEDE PRESENCIAR EL ESCRUTINIO?">
