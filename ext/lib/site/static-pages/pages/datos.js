@@ -177,9 +177,9 @@ export default class Page extends Component {
                   </a>
                 </div>
                 <div className='descargas-info'>
-                  <h5>Información sobre participación 2018</h5>
-                  <p>Datos de la cantidad de participantes, votantes por barrio y ratio con datos de población desde 2012 a 2018.</p>
-                  <span className='descarga-fecha'>Publicado: Diciembre de 2018</span>
+                  <h5>Información sobre participación 2012-2019</h5>
+                  <p>Datos de la cantidad de participantes, votantes por barrio y ratio con datos de población desde 2012 a 2019.</p>
+                  <span className='descarga-fecha'>Publicado: Marzo 2020</span>
                   <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
