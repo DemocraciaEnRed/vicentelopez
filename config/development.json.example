@@ -3,6 +3,17 @@
 	"multiForum": true,
 	"locale": "es",
 	"enforceLocale": true,
+  "notifications": {
+    "nodemailer": {
+			"host": "smtp.mailgun.org",
+			"port": 465,
+			"secure": true,
+			"auth": {
+				"user": "CUENTA_123",
+				"pass": "CONTRA_123"
+			}
+		}
+  },
 	"staff": ["it@democracyos.org"],
 	"forumProyectos": "proyectos",
 	"headerBackgroundColor":"#ffffff",

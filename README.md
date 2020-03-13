@@ -22,6 +22,7 @@ This is an example demonstrating how to extend DemocracyOS using [Docker](https:
 * All the customized views/endpoints are located on the `/ext` folder. Following the same folders pattern as DemocracyOS/democracyos.
 * New frontend builds, which allows you to use your custom frontend code, are defined [here](https://github.com/DemocracyOS/extension-example/blob/master/ext/lib/build/entries.json).
 * To use the last version of topics (with attributes such as state, year or town, run `NODE_PATH=. DEBUG=democracyos* node ./ext/bin/migrate-pp.js`)
+* If you wish to debug node using de node built-in debugger pass the argument `NODE_DEBUGGER=1`. You can use the `debugger;` instruction in the code to create a breakpoint (this feature requires chromium/chrome).
 
 ## Commands
 

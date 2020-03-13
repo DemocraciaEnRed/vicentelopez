@@ -37,7 +37,7 @@ export default class Page extends Component {
 
           <div className='ext-datos'>
             <p className="text">
-              El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones de Foros Vecinales.
+              El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas sus ediciones.
             </p>
 
             <article className="seccion-datos">
@@ -68,7 +68,7 @@ export default class Page extends Component {
                       <td>45 M</td>
                       <td>65 M</td>
                       <td>75 M</td>
-                      <td>100 M</td>
+                      <td>110 M</td>
                     </tr>
                     <tr>
                       <td className="sticky-col">Propuestas Presentadas</td>
@@ -90,7 +90,7 @@ export default class Page extends Component {
                       <td>148</td>
                       <td>145</td>
                       <td>198</td>
-                      <td>300</td>
+                      <td>213</td>
                     </tr>
                     <tr>
                       <td className="sticky-col">Proyectos Ganadores</td>
@@ -128,7 +128,7 @@ export default class Page extends Component {
                   </tbody>
                   <tfoot>
                     <tr>
-                    <td colSpan={9}>Presupuesto asignado 2019 - 2020: $108 millones</td>
+                    <td colSpan={9}>Presupuesto asignado 2020 - 2021: a definir</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -144,7 +144,7 @@ export default class Page extends Component {
 {/*                   <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
  */}                </div>
                 <figcaption>
-                  <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en los foros vecinales de Vicente López.</p>
+                  <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en el presupuesto participativo de Vicente López.</p>
                 </figcaption>
               </figure>
             </article>
@@ -177,9 +177,9 @@ export default class Page extends Component {
                   </a>
                 </div>
                 <div className='descargas-info'>
-                  <h5>Información sobre participación 2018</h5>
-                  <p>Datos de la cantidad de participantes, votantes por barrio y ratio con datos de población desde 2012 a 2018.</p>
-                  <span className='descarga-fecha'>Publicado: Diciembre de 2018</span>
+                  <h5>Información sobre participación 2012-2019</h5>
+                  <p>Datos de la cantidad de participantes, votantes por barrio y ratio con datos de población desde 2012 a 2019.</p>
+                  <span className='descarga-fecha'>Publicado: Marzo 2020</span>
                   <a href='https://forosvecinales.blob.core.windows.net/informes/informacion_participacion.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
