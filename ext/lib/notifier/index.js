@@ -18,15 +18,49 @@ const interval = setInterval(function () {
     ].forEach((job) => job(notifier))
     log('Ext notifier email jobs loaded')
 
-    // send test mail
-    /*notifier.now('update-project', {
+    // esta línea saltéa el testeo y sigue con el programa normalmente
+    return
+
+    // puede ser una de: welcome-email, new-proposal, update-proposal, update-project,
+    // subscriber-update-proposal, subscriber-update-project, new-comment o comment-reply
+    const testMailJob = 'subscriber-update-proposal'
+    // cuenta a la cual le llegarán los emails
+    const testMailAccount = 'bungew@gmail.com'
+    // id usado para 'subscriber-update-X', tiene que estar en la DB
+    const testMailUserId = '5e6685f7024049422bb22074'
+    process.env.NOTIFICATIONS_MAILER_EMAIL = testMailAccount
+
+    log(`Mandando email de testeo a ${testMailAccount}`)
+    notifier.now(testMailJob, {
       topic: {
         id: '5e668613024049422bb22078',
-        mediaTitle: 'Topic title placeholder',
-        authorName: 'Authon name placeholder',
-        authorEmail: 'test@email.com'
-      }
-    })*/
+        mediaTitle: '<Título>',
+        authorName: '<Autorx>',
+        authorEmail: testMailAccount,
+        subscriber: testMailUserId,
+        // para new-proposal
+        nombre: '<Nombre y apellido>',
+        documento: '<Documento>',
+        telefono: '<Teléfono>',
+        email: '<Email>',
+        barrio: '<Barrio>',
+        tags: ['<Tag 1>', '<Tag 2>'],
+        problema: '<Problema>',
+        solucion: '<Solución>',
+        beneficios: '<Beneficios>'
+      },
+      userName: {
+        firstName:'<Suscriptorx>',
+        email: testMailAccount
+      },
+      // para welcome-email
+      to: testMailAccount,
+      validateUrl: 'https://validateUrl'
+    }).then(()=> {
+      // solo queremos testear el mail, no levantar el site
+      throw new Error('¡Error para que no continuar! Solo queremos probar los mails.')
+    })
+
   }).catch((err) => {
     console.error('Error loading ext/lib/notifier: ', err)
   })
