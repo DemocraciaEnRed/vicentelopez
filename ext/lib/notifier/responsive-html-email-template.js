@@ -404,7 +404,7 @@ module.exports = ({
                   </tr> -->
                   <tr>
                     <td class="content-block powered-by">
-                      Hecho con <3 por <a href="https://democraciaenred.org">Democracia en Red</a>.
+                      Hecho con <3 por <a href="https://democraciaenred.org">Democracia en Red</a>
                     </td>
                   </tr>
                 </table>
