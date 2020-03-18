@@ -17,7 +17,7 @@ module.exports = ({
 }) => emailTemplate({
   body: html`
     <p>Hola <strong>${userName}</strong></p>
-    <p>Por favor hacé click en el siguiente botón para terminar tu registro"</p>
+    <p>Por favor hacé click en el siguiente botón para terminar tu registro:</p>
     ${buttonTemplate({
       url: validateUrl,
       text: 'Validar cuenta'
