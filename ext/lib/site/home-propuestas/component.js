@@ -151,9 +151,10 @@ class HomePropuestas extends Component {
       forumName: 'proyectos',
       sort: this.state.filter === 'newest' ? 'newest' : 'popular',
       page: page,
-      state: this.state.archivadas ? 'no-factible' : 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
-      anio: '2021'
-    }
+      // A MEJORAR: con estos parámetros las no-factibles del 2021 no aparecen en ningún lado
+      state: (this.state.archivadas ? 'no-factible,' : '') + 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
+      anio: this.state.archivadas ? '2020,2019' : '2021'
+    };
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
     if (this.state.barrio !== '') query.barrio = this.state.barrio
