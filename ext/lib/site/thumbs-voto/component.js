@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Banner400Proyectos from '../banner-400-proyectos/component'
 
 export default function ThumbsVoto(props) {
   let
@@ -20,18 +19,19 @@ export default function ThumbsVoto(props) {
               //  <a href="https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
               //</div>
               }
-              {//<Link
-              //  //to='/formulario-propuesta'
-              //  to='/proyectos'
-              //  className="boton-azul boton-blanco">
-              //  {/* Mandá tu propuesta */}
-              //  Ver Proyectos
-              //</Link>
-              }
+              <Link
+                to='/formulario-propuesta'
+                className="boton-azul boton-blanco">
+                Mandá tu propuesta
+              </Link>
+              {/*<Link
+                to='/proyectos'
+                className="boton-azul boton-blanco">
+                Ver Proyectos
+              </Link>*/}
             </div>
           </div>
         </div>
-        <Banner400Proyectos/>
         <div className="row cont">
           <div className="col-md-4">
             <div

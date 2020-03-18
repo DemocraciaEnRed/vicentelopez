@@ -77,7 +77,7 @@ const purgeBody = (req, res, next) => {
 
 const sendToAdmin = (req, res, next) => {
   // console.log(req.body)
-  log('Mandando mail %s a admin %s', 'new-proposal', req.body['attrs.email'])
+  log('Mandando mail %s a admin %s', 'new-proposal', process.env.NOTIFICATIONS_MAILER_EMAIL)
   notifier.now('new-proposal', {
     topic: {
       mediaTitle: req.body.mediaTitle,

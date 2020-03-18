@@ -14,6 +14,7 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 import textStore from 'lib/stores/text-store'
+import Banner400Proyectos from 'ext/lib/site/banner-400-proyectos/component'
 
 export default class HomeMultiforumOverride extends Component {
   constructor (props) {
@@ -54,6 +55,7 @@ export default class HomeMultiforumOverride extends Component {
           {/* <ProyectosFactibles /> */}
           <ProyectosGanadores />
           {/* <Barrios /> */}
+          <Banner400Proyectos/>
           <ForosEnDatos />
           <Jump goTop={this.goTop} />
           <Footer />

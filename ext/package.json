@@ -15,6 +15,7 @@
     "chart.js": "^2.8.0",
     "flickity": "2.0.8",
     "json2xls": "^0.1.2",
+    "juice": "^6.0.0",
     "jump.js": "1.0.2",
     "lodash.debounce": "4.0.8",
     "lodash.indexof": "^4.0.5",

@@ -1,28 +1,26 @@
 const config = require('lib/config')
 const utils = require('lib/utils')
-const html = require('es6-string-html-template').html
-const raw = require('es6-string-html-template').raw
 
-const styles = raw(`
-  <style>
-    p { margin: 0; }
-  </style>
-`)
+const html = require('es6-string-html-template').html
+// para inline-ar estilos css - https://github.com/Automattic/juice
+const juice = require('juice');
+
+const emailTemplate = require('ext/lib/notifier/responsive-html-email-template');
+const buttonTemplate = require('ext/lib/notifier/responsize-email-button-template');
 
 const baseUrl = utils.buildUrl(config)
 
 module.exports = ({
   topic,
-}) => html`
-  ${styles}
-  <p>${topic.authorName},</p>
-  <p>¡El estado de tu propuesta "${topic.mediaTitle}" ha sido actualizada!
-  <br>Podrás ver los cambios haciendo click acá:
-  <br><a href="${baseUrl}/propuesta/topic/${topic.id}">${baseUrl}/propuesta/topic/${topic.id}</a></p>
-  <p>Muchas gracias por tu aporte. ¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
-  <p>
-    PRESUPUESTO PARTICIPATIVO DE VICENTE LOPEZ<br>
-    #PresupuestoParticipativo #VLParticipa.<br>
-    <a href="${baseUrl}">${baseUrl}/</a>
-  </p>
-`.toString()
+}) => emailTemplate({
+  body: html`
+    <p><strong>${topic.authorName},</strong></p>
+    <p>¡El estado de tu propuesta <strong>${topic.mediaTitle}</strong> ha sido actualizada!
+    ${buttonTemplate({
+      url: `${baseUrl}/propuesta/topic/${topic.id}`,
+      text: 'Ver los cambios'
+    })}
+    <p>Muchas gracias por tu aporte.</p>
+    <p>¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
+  `
+})
