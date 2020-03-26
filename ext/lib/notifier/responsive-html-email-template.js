@@ -382,7 +382,7 @@ module.exports = ({
                           </p>
                           <!-- When inserting images remember to include the following attributes or
                           risk them breaking in different clients: src, alt, width, height, border -->
-                          <a href="${baseUrl}"><img class="block-center" src="${baseUrl}/${config.logo}" alt="Useful alt text" width="358" height="66" border="0" style="border:0; outline:none; text-decoration:none; display:block;"></a>
+                          <a href="${baseUrl}"><img class="block-center" src="${baseUrl}/${config.logo}" alt="Useful alt text" width="239" height="44" border="0" style="border:0; outline:none; text-decoration:none; display:block;"></a>
                           <!-- <a href="${baseUrl}"><img class="block-center" src="https://presupuestoparticipativo.vicentelopez.gob.ar/ext/lib/boot/logo.png" alt="Logo" width="358" height="66" border="0" style="border:0; outline:none; text-decoration:none; display:block;"></a> -->
                         </td>
                       </tr>
