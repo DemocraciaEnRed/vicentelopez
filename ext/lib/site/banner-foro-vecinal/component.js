@@ -22,7 +22,7 @@ export default function BannerForoVecinal (props) {
             </video>
         )
       }
-      
+
       </div>
       <div className='contenedor'>
         <div className='fondo-titulo'>
@@ -34,5 +34,5 @@ export default function BannerForoVecinal (props) {
 }
 
 BannerForoVecinal.defaultProps = {
-  title: 'Foros vecinales'
+  title: 'Presupuesto participativo'
 }

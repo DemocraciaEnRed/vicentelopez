@@ -102,7 +102,7 @@ export default class Page extends Component {
                   (this.state.anio === '2012' && this.state.archivo !== 'minuta') ? (
                       <div className='empty-msg'>
                         <div className='alert alert-success' role='alert'>
-                          {this.state.archivo === 'boleta' ? 'En 2012 no hubo votación, los proyectos se seleccionaron por consenso en las reuniones de los Foros Vecinales de cada barrio.' : 'En 2012 no se ejecutaron proyectos del Presupuesto Participativo en Vicente López por ser el primer año de implementación en el que se eligieron proyectos.'}
+                          {this.state.archivo === 'boleta' ? 'En 2012 no hubo votación, los proyectos se seleccionaron por consenso en las reuniones informativas de cada barrio.' : 'En 2012 no se ejecutaron proyectos del Presupuesto Participativo en Vicente López por ser el primer año de implementación en el que se eligieron proyectos.'}
                         </div>
                       </div>
                     ) : ((this.state.anio === '2018' || this.state.anio === '2019') && this.state.archivo !== 'boleta') ? (

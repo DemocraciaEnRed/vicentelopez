@@ -96,7 +96,7 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿CÓMO SE ELABORAN LOS PROYECTOS?">
-                   <p>En una serie de reuniones programadas (Foros Vecinales), los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma. Este año 2020, tenés tiempo hasta el 31 de mayo inclusive.</p>
+                   <p>En una serie de reuniones informativas, los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma. Este año 2020, tenés tiempo hasta el 31 de mayo inclusive.</p>
                    </div>
 
                    <div data-trigger="+ ¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?">
