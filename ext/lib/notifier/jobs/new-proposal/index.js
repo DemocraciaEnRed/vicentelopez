@@ -2,7 +2,7 @@ const utils = require('democracyos-notifier/lib/utils')
 const template = require('./template')
 
 const jobName = 'new-proposal'
-const subject = 'Nueva propuesta cargada en Presupuesto Participativo VL'
+const subject = 'Nueva propuesta en Presupuesto Participativo'
 
 module.exports = function newProposal(notifier) {
   const { db, agenda, mailer } = notifier
@@ -14,7 +14,7 @@ module.exports = function newProposal(notifier) {
 
   function newProposalJob(job, done) {
     const data = job.attrs.data
-    try {  
+    try {
       const html = template({
         topic: data.topic,
       })
@@ -40,7 +40,7 @@ module.exports = function newProposal(notifier) {
     //     html
     //   })
     // }).then(() => { done() }).catch(done)
-  
+
 }
 
 }

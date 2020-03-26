@@ -23,11 +23,11 @@ const interval = setInterval(function () {
 
     // puede ser una de: welcome-email, new-proposal, update-proposal, update-project,
     // subscriber-update-proposal, subscriber-update-project, new-comment o comment-reply
-    const testMailJob = 'subscriber-update-proposal'
+    const testMailJob = 'new-proposal'
     // cuenta a la cual le llegarán los emails
     const testMailAccount = 'bungew@gmail.com'
     // id usado para 'subscriber-update-X', tiene que estar en la DB
-    const testMailUserId = '5e6685f7024049422bb22074'
+    const testMailUserId = '5e3c5cb34324aca40d6727d7'
     process.env.NOTIFICATIONS_MAILER_EMAIL = testMailAccount
 
     log(`Mandando email de testeo a ${testMailAccount}`)

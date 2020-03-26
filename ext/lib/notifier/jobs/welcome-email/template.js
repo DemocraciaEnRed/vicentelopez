@@ -17,10 +17,10 @@ module.exports = ({
 }) => emailTemplate({
   body: html`
     <p>Hola <strong>${userName}</strong></p>
-    <p>Por favor hacé click en el siguiente botón para terminar tu registro:</p>
+    <p>Hacé click acá para validar tu usuario y terminar de registrarte:</p>
     ${buttonTemplate({
       url: validateUrl,
-      text: 'Validar cuenta'
+      text: 'Validá tu cuenta'
     })}
     <p>Podrás informarte y comentar todos los proyectos del presupuesto participativo de Vicente López.</p>
     <p>Muchas gracias.</p>

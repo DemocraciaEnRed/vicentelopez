@@ -18,8 +18,8 @@ module.exports = ({
     <p>El proyecto <strong>${topic.mediaTitle}</strong> ha sido actualizado.
     ${buttonTemplate({
       url: `${baseUrl}/proyecto/topic/${topic.id}`,
-      text: 'Ver los cambios'
+      text: 'Mirá los cambios'
     })}
-    <p>¡Sigamos mejorando juntos cada barrio de Vicente López!</p>
+    <p>¡Sigamos mejorando juntos los barrios de Vicente López!</p>
   `
 })
