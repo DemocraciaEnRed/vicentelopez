@@ -14,7 +14,8 @@ const interval = setInterval(function () {
       require('./jobs/update-proposal'),
       require('./jobs/update-project'),
       require('./jobs/subscriber-update-project'),
-      require('./jobs/subscriber-update-proposal')
+      require('./jobs/subscriber-update-proposal'),
+      require('./jobs/new-comment')
     ].forEach((job) => job(notifier))
     log('Ext notifier email jobs loaded')
 
