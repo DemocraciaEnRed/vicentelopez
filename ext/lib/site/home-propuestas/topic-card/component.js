@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import moment from 'moment'
 import userConnector from 'lib/site/connectors/user'
 
@@ -40,14 +40,20 @@ export class TopicCard extends Component {
     return this.setState({
       subscribed: !!userSuscribed
     })
-    
+
+  }
+  handleWrapperClick = (e) => {
+    let targTag = e.target && e.target.tagName
+    // si hace click en cualquier lugar que no sea un botón o un link mandar a propuesta
+    if (targTag != 'BUTTON' && targTag != 'A')
+      browserHistory.push(`/propuestas/topic/${this.props.topic.id}`)
   }
   render() {
     const { topic, onVote, onSubscribe } = this.props
     const { subscribed } = this.state
-    
+
     return (
-      <div className='ext-topic-card ideas-topic-card'>
+      <div className='ext-topic-card ideas-topic-card' onClick={this.handleWrapperClick}>
         <div className='topic-card-info'>
           <div className='topic-creation'>
             <span>{topic.attrs.nombre}</span>
@@ -60,13 +66,9 @@ export class TopicCard extends Component {
             }
           </div>
           <h1 className='topic-card-title'>
-            <Link to={`/propuestas/topic/${topic.id}`}>
-              {topic.mediaTitle}
-            </Link>
+            {topic.mediaTitle}
             <p className='topic-card-description'>
-              <Link to={`/propuestas/topic/${topic.id}`}>
-                {createClauses(topic)}
-              </Link>
+              {createClauses(topic)}
             </p>
           </h1>
           {
