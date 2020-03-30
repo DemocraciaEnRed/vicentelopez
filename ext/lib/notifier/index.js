@@ -26,7 +26,9 @@ const interval = setInterval(function () {
 
     // puede ser una de: welcome-email, new-proposal, update-proposal, update-project,
     // subscriber-update-proposal, subscriber-update-project, new-comment o comment-reply
-    const testMailJob = 'new-proposal'
+    const testMailJobs = ['welcome-email', 'new-proposal', 'update-proposal', 'update-project',
+      'subscriber-update-proposal', 'subscriber-update-project', 'new-comment', 'comment-reply']
+    const testMailJob = testMailJobs[5]
     // cuenta a la cual le llegarán los emails
     const testMailAccount = 'bungew@gmail.com'
     // id usado para 'subscriber-update-X', tiene que estar en la DB
