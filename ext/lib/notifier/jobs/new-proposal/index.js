@@ -3,6 +3,7 @@ const template = require('./template')
 
 const jobName = 'new-proposal'
 const subject = 'Nueva propuesta en Presupuesto Participativo'
+const log = require('debug')(`democracyos:notifier:${jobName}`)
 
 module.exports = function newProposal(notifier) {
   const { db, agenda, mailer } = notifier
@@ -25,7 +26,8 @@ module.exports = function newProposal(notifier) {
       })
       done()
     } catch (err) {
-      done()
+      log('Error: %o', err)
+      done(err)
     }
     // topics.findOne({ mediaTitle: data.topic.mediaTitle }).then((topic) => {
     //   if (!topic) throw new Error(`Topic not found with mediaTitle "${data.topic.mediaTitle}"`)

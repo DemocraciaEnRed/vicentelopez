@@ -42,7 +42,10 @@ module.exports = function topicPublished (notifier) {
             resume()
           })
         })
-      }).then(() => { done() }).catch(done)
+      }).then(() => { done() }).catch(err => {
+        log('Error: %o', err)
+        done(err)
+      })
   })
 
   agenda.define(jobNameForSingleUser, (job, done) => {
@@ -68,6 +71,9 @@ module.exports = function topicPublished (notifier) {
       to,
       subject: t(`templates.${jobName}.subject`, { topicTitle }),
       html
-    }).then(() => { done() }).catch(done)
+    }).then(() => { done() }).catch(err => {
+      log('Error: %o', err)
+      done(err)
+    })
   })
 }

@@ -2,6 +2,7 @@ const utils = require('democracyos-notifier/lib/utils')
 const template = require('./template')
 
 const jobName = 'subscriber-update-project'
+const log = require('debug')(`democracyos:notifier:${jobName}`)
 
 module.exports = function subscriberUpdateProject(notifier) {
   const { db, agenda, mailer } = notifier
@@ -11,7 +12,7 @@ module.exports = function subscriberUpdateProject(notifier) {
 
   function subscriberUpdateProject(job, done) {
     const data = job.attrs.data
-    
+
     users.findOne({ "_id": data.topic.subscriber }).then((user) => {
       try {
         const html = template({
@@ -28,6 +29,9 @@ module.exports = function subscriberUpdateProject(notifier) {
       }
     }).then(() => {
       done()
-    }).catch(done)
+    }).catch(err => {
+      log('Error: %o', err)
+      done(err)
+    })
   }
 }

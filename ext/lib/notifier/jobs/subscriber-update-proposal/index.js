@@ -2,6 +2,7 @@ const utils = require('democracyos-notifier/lib/utils')
 const template = require('./template')
 
 const jobName = 'subscriber-update-proposal'
+const log = require('debug')(`democracyos:notifier:${jobName}`)
 
 module.exports = function subscriberUpdateProposal(notifier) {
   const { db, agenda, mailer } = notifier
@@ -28,6 +29,9 @@ module.exports = function subscriberUpdateProposal(notifier) {
       }
     }).then(() => {
       done()
-    }).catch(done)
+    }).catch(err => {
+      log('Error: %o', err)
+      done(err)
+    })
   }
 }

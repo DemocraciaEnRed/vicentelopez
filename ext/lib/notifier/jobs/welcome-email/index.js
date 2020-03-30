@@ -3,6 +3,7 @@ const template = require('./template')
 
 const jobName = 'welcome-email'
 const subject = 'Bienvenido al Presupuesto Participativo '
+const log = require('debug')(`democracyos:notifier:${jobName}`)
 
 module.exports = function welcomeEmail (notifier) {
   const { db, agenda, mailer } = notifier
@@ -28,6 +29,9 @@ module.exports = function welcomeEmail (notifier) {
         subject,
         html
       })
-    }).then(() => { done() }).catch(done)
+    }).then(() => { done() }).catch(err => {
+      log('Error: %o', err)
+      done(err)
+    })
   }
 }
