@@ -1,4 +1,5 @@
 {
+	"jwtSecret": "dejame_configurado_sino_se_deslogea_en_cada_restart",
 	"publicPort": 3000,
 	"multiForum": true,
 	"locale": "es",
