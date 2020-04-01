@@ -128,6 +128,9 @@ class HomePropuestas extends Component {
       archivadas: !this.state.archivadas,
       page: 1
     }, () => this.changeTopics())
+    // fix bug que el botón de "Archivadas" parecía como prendido (:focus/:active)
+    // después de desactivarlo/apagarlo
+    if (document.activeElement != document.body) document.activeElement.blur();
   }
 
   changeTopics () {
