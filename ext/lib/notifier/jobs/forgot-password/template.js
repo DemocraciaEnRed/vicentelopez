@@ -16,7 +16,7 @@ module.exports = ({
   lang
 }) => emailTemplate({
   body: html`
-    <p><strong>${userName},</strong></p>
+    <p>Hola <strong>${userName}</strong>,</p>
     <p>Recibimos una solicitud para reestablecer tu contraseña. Hacé click en el siguiente botón para terminar el proceso:</p>
     ${buttonTemplate({
       url: `${baseUrl}/${resetPasswordUrl}`,
