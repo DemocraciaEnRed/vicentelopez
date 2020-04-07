@@ -19,7 +19,7 @@ module.exports = ({
     <p><strong>${userName},</strong></p>
     <p>Recibimos una solicitud para reestablecer tu contraseña. Hacé click en el siguiente botón para terminar el proceso:</p>
     ${buttonTemplate({
-      url: `${baseUrl}/${resetPasswordUrl}`,
+      url: resetPasswordUrl,
       text: 'Reestablecer contraseña'
     })}
     <p><i>PD: si no solicitaste reestablecer tu contraseña podés ignorar este correo.</i></p>
