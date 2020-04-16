@@ -162,7 +162,7 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?">
-                   <p>Llamanos al 4851-2000 interno 203 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
+                   <p>Mandanos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
                    </div>
                 </Accordion>
 

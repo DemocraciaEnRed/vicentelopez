@@ -11,7 +11,7 @@ const Footer = () => (
           <span>Secretaría de Gobierno y Legal y Técnica</span>
           <span>D. de Acassuso 1750</span>
           <span>CP1636, Olivos.</span>
-          <span>(54.11) 4851-2000 Int. 203/207/208/209</span>
+          <span>WhatsApp para consultas: +5491162426741</span>
         </p>
       </div>
       <div className='mapa-box'>
