@@ -28,7 +28,7 @@ const interval = setInterval(function () {
     // subscriber-update-proposal, subscriber-update-project, new-comment o comment-reply
     const testMailJobs = ['welcome-email', 'new-proposal', 'update-proposal', 'update-project',
       'subscriber-update-proposal', 'subscriber-update-project', 'new-comment', 'comment-reply']
-    const testMailJob = testMailJobs[5]
+    const testMailJob = testMailJobs[2]
     // cuenta a la cual le llegarán los emails
     const testMailAccount = 'bungew@gmail.com'
     // id usado para 'subscriber-update-X', tiene que estar en la DB
@@ -39,8 +39,8 @@ const interval = setInterval(function () {
     notifier.now(testMailJob, {
       topic: {
         id: '5e668613024049422bb22078',
-        mediaTitle: '<Título>',
-        authorName: '<Autorx>',
+        mediaTitle: 'Direcciones y nombres de pasillos para el Barrio Las Flores',
+        authorName: 'Micaela Torres',
         authorEmail: testMailAccount,
         subscriber: testMailUserId,
         // para new-proposal

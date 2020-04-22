@@ -14,7 +14,7 @@ module.exports = ({
   topic, userName
 }) => emailTemplate({
   body: html`
-    <p><strong>${userName},</strong></p>
+    <p>Hola <strong>${userName}</strong>,</p>
     <p>El proyecto <strong>${topic.mediaTitle}</strong> ha sido actualizado.
     ${buttonTemplate({
       url: `${baseUrl}/proyecto/topic/${topic.id}`,

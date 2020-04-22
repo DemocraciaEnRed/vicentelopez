@@ -17,7 +17,7 @@ module.exports = ({
   lang
 }) => emailTemplate({
   body: html`
-    <p><strong>${userName}</strong>,</p>
+    <p>Hola <strong>${userName}</strong>,</p>
     <p>El usuario <strong>${reply.author.fullName}</strong> respondió un comentario en <strong>${topicTitle}</strong>.</p>
     <p>Comentario original por <strong>${comment.author.fullName}</strong>:</p>
     <div style='padding:15px;padding-top:10px;border-radius: 5px;'><i>${comment.text}</i></div>
