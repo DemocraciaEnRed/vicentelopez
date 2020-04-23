@@ -6,6 +6,7 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import tagsConnector from 'lib/site/connectors/tags'
 import TopicCard from './topic-card/component'
+import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 
 const filters = {
   newest: {
@@ -266,6 +267,10 @@ class HomePropuestas extends Component {
     return (
 
       <div className='ext-home-ideas'>
+        <BannerListadoTopics
+          btnText='Mandá tu propuesta'
+          title='Propuestas'
+          />
         <ListTools
           handleState={this.handleStateChange}
           archivadasIsActive={this.state.archivadas}

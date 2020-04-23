@@ -13,6 +13,7 @@ import Anchor from 'ext/lib/site/anchor'
 import Header from './header/component'
 import Filter from './filter/component'
 import TopicGrid from './grid/component'
+import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 
 const defaultValues = {
   'votacion': {
@@ -41,7 +42,7 @@ export class HomeProyectos extends Component {
       barrio: [],
       state: [],
       // puede ser 'seguimiento' o 'votacion'
-      stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018. 
+      stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
       sort: ['barrio']
     }
   }
@@ -127,7 +128,7 @@ export class HomeProyectos extends Component {
     let queryString = Object.keys(query)
       .filter((k) => query[k].length > 0)
       .map((k) => `${k}=${query[k].join()}`)
-      .concat([`limit=100`])      
+      .concat([`limit=100`])
       .join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
       .then((res) => res.json())
@@ -146,7 +147,7 @@ export class HomeProyectos extends Component {
       .filter((k) => this.state[k].length > 0)
       .map((k) => `${k}=${this.state[k].join()}`)
       .concat([`page=${this.state.page + 1}`])
-      .concat([`limit=100`]) 
+      .concat([`limit=100`])
       .join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
       .then((res) => res.json())
@@ -165,7 +166,7 @@ export class HomeProyectos extends Component {
       .filter((k) => this.state[k].length > 0)
       .map((k) => `${k}=${this.state[k].join()}`)
       .concat([`page=${this.state.page + 1}`])
-      .concat([`limit=100`]) 
+      .concat([`limit=100`])
       .join('&')
     window.fetch(`/ext/api/topics?forumName=proyectos&${queryString}`)
       .then((res) => res.json())
@@ -187,7 +188,7 @@ export class HomeProyectos extends Component {
 
   changeStage = () => {
     this.setState((prevState) => {
-      return {  
+      return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
         anio: prevState.stage === 'seguimiento' ? ['2020'] : ['2018', '2019', '2020'],
         barrio: [],
@@ -201,8 +202,11 @@ export class HomeProyectos extends Component {
 
     return (
       <div id='forum-home'>
-        <Header stage={this.state.stage} />
-        
+        <BannerListadoTopics
+          title='Seguimiento de Proyectos'
+          subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.'
+          />
+
         <Anchor id='containerr'>
           <section className='grid-container'>
             <Filter
