@@ -4,7 +4,6 @@ import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
-import tagsConnector from 'lib/site/connectors/tags'
 import TopicCard from './topic-card/component'
 import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 
@@ -80,7 +79,6 @@ class HomePropuestas extends Component {
       noMore: false,
       forum: null,
       topics: null,
-      tags: null,
       filter: 'popular',
       archivadas: false
     }
@@ -93,21 +91,15 @@ class HomePropuestas extends Component {
     if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
     forumStore.findOneByName('proyectos')
       .then((forum) => {
-        const tags = window.fetch(`/api/v2/all-tags`)
-          .then((res) => res.json())
-
         return Promise.all([
           forum,
-          this.fetchTopics(this.state.page),
-          tags
+          this.fetchTopics(this.state.page)
         ])
       })
-      .then(([forum, topics, tags]) => {
+      .then(([forum, topics]) => {
         this.setState({
           forum,
-          topics: filter(this.state.filter, topics),
-          tags: tags.filter((tag) => tag.name !== 'Default')
-            .map((tag) => tag.name)
+          topics: filter(this.state.filter, topics)
         })
       })
       .catch((err) => { throw err })
@@ -150,7 +142,6 @@ class HomePropuestas extends Component {
       anio: this.state.archivadas ? '2020,2019' : '2021'
     };
     const u = new window.URLSearchParams(window.location.search)
-    if (u.has('tags')) query.tags = u.get('tags')
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
@@ -252,7 +243,7 @@ class HomePropuestas extends Component {
   }
 
   render () {
-    const { forum, topics, tags } = this.state
+    const { forum, topics } = this.state
     return (
 
       <div className='ext-home-ideas'>
@@ -267,16 +258,7 @@ class HomePropuestas extends Component {
           onChangeFilter={this.handleFilterChange} />
         <div className='container topics-container'>
           <div className='row'>
-            <div className='col-md-4 push-md-8 etiquetas'>
-              <div className='row'>
-                <div className='col-md-12'>
-                  <h3>Temas</h3>
-                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
-                </div>
-              </div>
-
-            </div>
-            <div className='col-md-8 pull-md-4'>
+            <div className='col-md-12'>
               {topics && topics.length === 0 && (
                 <div className='empty-msg'>
                   <div className='alert alert-success' role='alert'>
@@ -303,33 +285,6 @@ class HomePropuestas extends Component {
       </div>
     )
   }
-}
-
-const TagsList = ({ tags, forumName, without }) => {
-  const u = new window.URLSearchParams(window.location.search)
-  if (without) tags = tags.filter((t) => !~without.indexOf(t))
-  return tags && tags.length > 0 && (
-    <div className='forum-tags'>
-      {tags.map((tag, i) => {
-        let active = ''
-        let url = `${window.location.origin}/propuestas?tags=${tag}`
-
-        if (u.has('tags') && u.get('tags') === tag) {
-          active = 'active'
-          url = `${window.location.origin}/propuestas`
-        }
-
-        return (
-          <a
-            className={`badge badge-default ${active}`}
-            href={url}
-            key={`${tag}-${i}`}>
-            {tag}
-          </a>
-        )
-      })}
-    </div>
-  )
 }
 
 export default userConnector(HomePropuestas)
