@@ -82,7 +82,6 @@ class HomePropuestas extends Component {
       topics: null,
       tags: null,
       filter: 'popular',
-      barrio: '',
       archivadas: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -92,7 +91,6 @@ class HomePropuestas extends Component {
   componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
     if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
-    if (u.get('barrio')) this.setState({ barrio: u.get('barrio') })
     forumStore.findOneByName('proyectos')
       .then((forum) => {
         const tags = window.fetch(`/api/v2/all-tags`)
@@ -137,15 +135,7 @@ class HomePropuestas extends Component {
   changeTopics () {
     this.fetchTopics(this.state.page)
       .then((res) => {
-        this.setState({ topics: res }, () => {
-          if (this.state.barrio !== '') {
-            const u = new window.URLSearchParams(window.location.search)
-            const link = u.get('tags')
-              ? `/propuestas?barrio=${this.state.barrio}&tags=${u.get('tags')}`
-              : `/propuestas?barrio=${this.state.barrio}`
-            browserHistory.push(link)
-          }
-        })
+        this.setState({ topics: res })
       })
       .catch((err) => { console.error(err) })
   }
@@ -161,7 +151,6 @@ class HomePropuestas extends Component {
     };
     const u = new window.URLSearchParams(window.location.search)
     if (u.has('tags')) query.tags = u.get('tags')
-    if (this.state.barrio !== '') query.barrio = this.state.barrio
     let queryToArray = Object.keys(query).map((key) => {
       return `${key}=${query[key]}`
     }).join('&')
@@ -281,30 +270,8 @@ class HomePropuestas extends Component {
             <div className='col-md-4 push-md-8 etiquetas'>
               <div className='row'>
                 <div className='col-md-12'>
-                  <div className='form-group'>
-                    <h3>Barrio</h3>
-                    <select
-                      className='form-control'
-                      required
-                      name='barrio'
-                      value={this.state['barrio']}
-                      onChange={this.handleInputChange}>
-                      <option value=''>Seleccione un barrio</option>
-                      <option value='villa-martelli'>Villa Martelli</option>
-                      <option value='villa-adelina'>Villa Adelina</option>
-                      <option value='vicente-lopez'>Vicente Lopez</option>
-                      <option value='olivos'>Olivos</option>
-                      <option value='munro'>Munro</option>
-                      <option value='la-lucila'>La Lucila</option>
-                      <option value='florida-oeste'>Florida Oeste</option>
-                      <option value='florida-este'>Florida Este</option>
-                      <option value='carapachay'>Carapachay</option>
-                    </select>
-                  </div>
-                </div>
-                <div className='col-md-12'>
                   <h3>Temas</h3>
-                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} barrio={this.state.barrio}/>}
+                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} />}
                 </div>
               </div>
 
@@ -338,15 +305,14 @@ class HomePropuestas extends Component {
   }
 }
 
-const TagsList = ({ tags, forumName, without, barrio }) => {
+const TagsList = ({ tags, forumName, without }) => {
   const u = new window.URLSearchParams(window.location.search)
   if (without) tags = tags.filter((t) => !~without.indexOf(t))
   return tags && tags.length > 0 && (
     <div className='forum-tags'>
       {tags.map((tag, i) => {
         let active = ''
-        let url = barrio === '' ? `${window.location.origin}/propuestas?tags=${tag}` :
-          `${window.location.origin}/propuestas?barrio=${barrio}&tags=${tag}`
+        let url = `${window.location.origin}/propuestas?tags=${tag}`
 
         if (u.has('tags') && u.get('tags') === tag) {
           active = 'active'
