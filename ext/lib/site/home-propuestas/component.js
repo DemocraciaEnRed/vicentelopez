@@ -7,68 +7,11 @@ import userConnector from 'lib/site/connectors/user'
 import TopicCard from './topic-card/component'
 import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 
-const filters = {
-  newest: {
-    text: 'Más Nuevas',
-    sort: 'newest',
-    filter: (topic) => topic.status === 'open',
-    emptyMsg: 'No se encontraron propuestas.'
-  },
-  popular: {
-    text: 'Más Populares',
-    sort: 'popular',
-    filter: (topic) => topic.status === 'open',
-    emptyMsg: 'No se encontraron propuestas.'
-  }
-}
-
-const filter = (key, items = []) => items.filter(filters[key].filter)
-
-const propuestasAbiertas = config.propuestasAbiertas
-const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActive }) => (
-  <div className='container'>
-    { propuestasAbiertas &&
-      <div className="row">
-        <div className='notice'>
-          <h1>{config.propuestasTextoAbiertas}</h1>
-        </div>
-      </div>
-    }
-    <div className='row'>
-      <div className='col-md-8 list-tools'>
-        <div className='topics-filter'>
-          {Object.keys(filters).map((key) => (
-            <button
-              key={key}
-              className={`btn btn-secondary btn-sm ${activeFilter === key ? 'active' : ''}`}
-              onClick={() => onChangeFilter(filters[key].sort)}>
-              {filters[key].text}
-            </button>
-          ))}
-          <button
-            className={`btn btn-secondary btn-sm ${archivadasIsActive ? 'active' : ''}`}
-            onClick={ handleState }>
-            Archivadas
-          </button>
-        </div>
-
-        { propuestasAbiertas &&
-          <a
-            href='/formulario-propuesta'
-            className='boton-azul btn propuesta'>
-            Mandá tu propuesta
-          </a>
-        }
-      </div>
-      { !propuestasAbiertas &&
-        <span className='alert-duedate' >
-          <span className="text-info">Formulario cerrado, ¡Gracias por participar!</span><br />
-          {config.propuestasTextoCerradas}
-        </span>
-      }
-    </div>
-  </div>
-)
+// Variables para fases de propuestas abiertas o cerrdas:
+// config.propuestasAbiertas
+// config.propuestasTextoAbiertas
+// config.propuestasTextoCerradas
+// Botón manda a: href='/formulario-propuesta'
 
 class HomePropuestas extends Component {
   constructor () {
@@ -79,16 +22,12 @@ class HomePropuestas extends Component {
       noMore: false,
       forum: null,
       topics: null,
-      filter: 'popular',
-      archivadas: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleStateChange = this.handleStateChange.bind(this)
   }
 
   componentDidMount () {
     const u = new window.URLSearchParams(window.location.search)
-    if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
     forumStore.findOneByName('proyectos')
       .then((forum) => {
         return Promise.all([
@@ -99,7 +38,7 @@ class HomePropuestas extends Component {
       .then(([forum, topics]) => {
         this.setState({
           forum,
-          topics: filter(this.state.filter, topics)
+          topics
         })
       })
       .catch((err) => { throw err })
@@ -114,16 +53,6 @@ class HomePropuestas extends Component {
     }, () => this.changeTopics())
   }
 
-  handleStateChange () {
-    this.setState({
-      archivadas: !this.state.archivadas,
-      page: 1
-    }, () => this.changeTopics())
-    // fix bug que el botón de "Archivadas" parecía como prendido (:focus/:active)
-    // después de desactivarlo/apagarlo
-    if (document.activeElement != document.body) document.activeElement.blur();
-  }
-
   changeTopics () {
     this.fetchTopics(this.state.page)
       .then((res) => {
@@ -135,11 +64,12 @@ class HomePropuestas extends Component {
   fetchTopics = (page) => {
     const query = {
       forumName: 'proyectos',
-      sort: this.state.filter === 'newest' ? 'newest' : 'popular',
+      sort: 'newest',
       page: page,
       // A MEJORAR: con estos parámetros las no-factibles del 2021 no aparecen en ningún lado
-      state: (this.state.archivadas ? 'no-factible,' : '') + 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
-      anio: this.state.archivadas ? '2020,2019' : '2021'
+      // solo falta no-factible, que es de las archivadas
+      state: 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
+      anio: '2021'
     };
     const u = new window.URLSearchParams(window.location.search)
     let queryToArray = Object.keys(query).map((key) => {
@@ -164,20 +94,6 @@ class HomePropuestas extends Component {
         })
       })
       .catch((err) => { console.error(err) })
-  }
-
-  handleFilterChange = (key) => {
-    this.setState({ filter: key }, () => {
-      this.fetchTopics(1)
-        .then((topics) => {
-          this.setState({
-            topics,
-            noMore: topics.length === 0 || topics.length < 20,
-            page: 1
-          })
-        })
-        .catch((err) => { console.error(err) })
-    })
   }
 
   handleVote = (id) => {
@@ -251,18 +167,31 @@ class HomePropuestas extends Component {
           btnText='Mandá tu propuesta'
           title='Propuestas'
           />
-        <ListTools
-          handleState={this.handleStateChange}
-          archivadasIsActive={this.state.archivadas}
-          activeFilter={this.state.filter}
-          onChangeFilter={this.handleFilterChange} />
+
+        <div className='container'>
+          <div className="row">
+            { config.propuestasAbiertas
+              ? (
+                  <div className='notice'>
+                    <h1>{config.propuestasTextoAbiertas}</h1>
+                  </div>
+              ) : (
+                <span className='alert-duedate' >
+                  <span className="text-info">Formulario cerrado, ¡Gracias por participar!</span><br />
+                  {config.propuestasTextoCerradas}
+                </span>
+              )
+            }
+          </div>
+        </div>
+
         <div className='container topics-container'>
           <div className='row'>
             <div className='col-md-12'>
               {topics && topics.length === 0 && (
                 <div className='empty-msg'>
                   <div className='alert alert-success' role='alert'>
-                    {filters[this.state.filter].emptyMsg}
+                    No se encontraron propuestas.
                   </div>
                 </div>
               )}
