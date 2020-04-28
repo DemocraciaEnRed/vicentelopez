@@ -6,6 +6,7 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import TopicCard from './topic-card/component'
 import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
+import FilterPropuestas from './filter-propuestas/component'
 
 // Variables para fases de propuestas abiertas o cerrdas:
 // config.propuestasAbiertas
@@ -13,35 +14,91 @@ import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 // config.propuestasTextoCerradas
 // Botón manda a: href='/formulario-propuesta'
 
+const defaultValues = {
+  limit: 2,
+  barrio: [],
+  anio: ['2020', '2021'],
+  state: ['pendiente', 'factible', 'no-factible', 'integrado'],
+  // 'barrio' o 'newest'
+  sort: 'newest'
+}
+
 class HomePropuestas extends Component {
   constructor () {
     super()
 
     this.state = {
-      page: 1,
-      noMore: false,
       forum: null,
       topics: null,
+
+      anio: defaultValues.anio,
+      barrio: defaultValues.barrio,
+      state: defaultValues.state,
+      sort: defaultValues.sort,
+
+      page: null,
+      noMore: null
     }
+
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   componentDidMount () {
-    const u = new window.URLSearchParams(window.location.search)
+    // traer forum al state
     forumStore.findOneByName('proyectos')
-      .then((forum) => {
-        return Promise.all([
-          forum,
-          this.fetchTopics(this.state.page)
-        ])
-      })
-      .then(([forum, topics]) => {
-        this.setState({
-          forum,
-          topics
-        })
-      })
+      .then((forum) => this.setState({ forum }))
       .catch((err) => { throw err })
+
+    // traer topics
+    this.fetchTopics()
+  }
+
+  fetchTopics = (page) => {
+    page = page || 1
+
+    let query = {
+      forumName: config.forumProyectos,
+      page: page.toString(),
+      limit: defaultValues.limit.toString(),
+
+      anio: this.state.anio,
+      barrio: this.state.barrio,
+      state: this.state.state,
+      sort: this.state.sort
+    }
+
+    let queryString = Object.keys(query)
+      .filter((k) => query[k] && query[k].length > 0)
+      .map((k) => `${k}=${ Array.isArray(query[k]) ?  query[k].join(',') : query[k] }`)
+      .join('&')
+
+    return window
+      .fetch(`/ext/api/topics?${queryString}`, {credentials: 'include'})
+      .then((res) => res.json())
+      .then((res) => {
+        // pagination contiene: count, page, pageCount, limit
+        this.setState({
+          topics: page == 1 ? res.results.topics : this.state.topics.concat(res.results.topics),
+          page: page,
+          noMore: page >= res.pagination.pageCount
+        })
+        return res.results.topics
+      })
+      .catch((err) => console.error(err))
+  }
+
+  // función cuando hacés click en "Ver Más"
+  paginateForward = () => {
+    const page = this.state.page + 1
+    this.fetchTopics(page)
+  }
+
+  changeTopics () {
+    this.fetchTopics(this.state.page)
+      .then((res) => {
+        this.setState({ topics: res })
+      })
+      .catch((err) => { console.error(err) })
   }
 
   handleInputChange = (evt) => {
@@ -53,47 +110,34 @@ class HomePropuestas extends Component {
     }, () => this.changeTopics())
   }
 
-  changeTopics () {
-    this.fetchTopics(this.state.page)
-      .then((res) => {
-        this.setState({ topics: res })
-      })
-      .catch((err) => { console.error(err) })
+  handleFilter = (filter, value) => {
+    // If the value is not included in the filter array, add it
+    if (!this.state[filter].includes(value)) {
+      this.setState({
+        [filter]: [...this.state[filter], value]
+      }, () => this.fetchTopics())
+      // If it's already included and it's the only filter applied, apply default filters
+    /* } else if (this.state[filter].length === 1) {
+      this.clearFilter(filter) */
+      // If it's already included erase it
+    } else {
+      this.setState({
+        [filter]: [...this.state[filter]].filter((item) => item !== value)
+      }, () => this.fetchTopics())
+    }
   }
 
-  fetchTopics = (page) => {
-    const query = {
-      forumName: 'proyectos',
-      sort: 'newest',
-      page: page,
-      // A MEJORAR: con estos parámetros las no-factibles del 2021 no aparecen en ningún lado
-      // solo falta no-factible, que es de las archivadas
-      state: 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
-      anio: '2021'
-    };
-    const u = new window.URLSearchParams(window.location.search)
-    let queryToArray = Object.keys(query).map((key) => {
-      return `${key}=${query[key]}`
-    }).join('&')
-    return window.fetch(`/ext/api/topics?${queryToArray}`, {
-      credentials: 'include'
-    })
-      .then((res) => res.json())
-      .then((res) => res.results.topics)
+  handleDefaultFilter = (filter, value) => {
+    this.setState({
+      [filter]: [value]
+    }, () => this.fetchTopics())
   }
 
-  paginateForward = () => {
-    const page = this.state.page + 1
-
-    this.fetchTopics(page)
-      .then((topics) => {
-        this.setState({
-          topics: this.state.topics.concat(topics),
-          noMore: topics.length === 0 || topics.length < 20,
-          page
-        })
-      })
-      .catch((err) => { console.error(err) })
+  // Clear all selected items from a filter
+  clearFilter = (filter) => {
+    this.setState({
+      [filter]: []
+    }, () => this.fetchTopics())
   }
 
   handleVote = (id) => {
@@ -186,6 +230,16 @@ class HomePropuestas extends Component {
         </div>
 
         <div className='container topics-container'>
+
+          <FilterPropuestas
+            anio={this.state.anio}
+            state={this.state.state}
+            barrio={this.state.barrio}
+            openVotation={true}
+            handleFilter={this.handleFilter}
+            handleDefaultFilter={this.handleDefaultFilter}
+            clearFilter={this.clearFilter} />
+
           <div className='row'>
             <div className='col-md-12'>
               {topics && topics.length === 0 && (
