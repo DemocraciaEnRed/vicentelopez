@@ -31,7 +31,7 @@ app.get('/topics',
       state: {
         type: 'string',
         format: 'states',
-        default: 'pendiente,factible,no-factible'
+        default: 'pendiente,factible,no-factible,integrado'
       },
       barrio: {
         type: 'string',

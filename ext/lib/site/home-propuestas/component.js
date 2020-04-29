@@ -20,7 +20,7 @@ const defaultValues = {
   anio: ['2020', '2021'],
   state: ['pendiente', 'factible', 'no-factible', 'integrado'],
   tag: [],
-  // 'barrio' o 'newest'
+  // 'barrio' o 'newest' o 'popular'
   sort: 'newest'
 }
 
