@@ -31,17 +31,10 @@ export default class FilterPropuestas extends Component {
 
     this.state = {
       activeDropdown: null,
-      //defaultFilters: ['anio', 'state']
-      defaultFilters: [], // empty to show active filters on init
-      showWinnersLabel: false,
+      clearedFilters: []
     }
 
-    let res = {}
-    findAllTags(res, () => {
-      let barriosKeys = barrios.map((b) => b.value)
-      let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
-      tags = tagsNoBarrio.map((t) => t.name)
-    })
+    this.getTags()
   }
 
   componentWillMount () {
@@ -52,34 +45,13 @@ export default class FilterPropuestas extends Component {
     document.removeEventListener('click', this.handleClick, false)
   }
 
-  handleDropdown = (id) => (e) => {
-    // Show or hide the options div
-    e.preventDefault()
-    this.setState({
-      activeDropdown: this.state.activeDropdown === id ? null : id
+  getTags = () => {
+    let res = {}
+    findAllTags(res, () => {
+      let barriosKeys = barrios.map((b) => b.value)
+      let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
+      tags = tagsNoBarrio.map((t) => t.name)
     })
-  }
-
-  // Send filter to parent component
-  handleFilter = (filter) => (e) => {
-    const value = e.target.value
-    const isDefault = [...this.state.defaultFilters].includes(filter)
-    if (isDefault) {
-      this.setState({
-        defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
-      }, this.props.handleDefaultFilter(filter, value))
-    } else if (this.props[filter].length === 1 && this.props[filter].includes(value) && filter !== 'barrio') {
-      this.setState({
-        defaultFilters: [...this.state.defaultFilters, filter]
-      }, this.props.handleFilter(filter, value))
-    } else {
-      this.setState({
-        defaultFilters: [...this.state.defaultFilters].filter((it) => it !== filter)
-      }, this.props.handleFilter(filter, value))
-    }
-    this.setState({
-      showWinnersLabel: false
-    });
   }
 
   // Close dropdown if clicked outside
@@ -91,13 +63,41 @@ export default class FilterPropuestas extends Component {
     }
   }
 
+  handleDropdown = (id) => (e) => {
+    // Show or hide the options div
+    e.preventDefault()
+    this.setState({
+      activeDropdown: this.state.activeDropdown === id ? null : id
+    })
+  }
+
+  // Send filter to parent component
+  // onClick en una opción; filter=state/barrio/etc.
+  handleFilter = (filter) => (e) => {
+    // key de la opción
+    const value = e.target.value
+    const isCleared = this.state.clearedFilters.includes(filter)
+    if (isCleared) {
+      this.setState({
+        clearedFilters: this.state.clearedFilters.filter((it) => it !== filter)
+      }, this.props.handleDefaultFilter(filter, value))
+    } else if (this.props[filter].length === 1 && this.props[filter].includes(value)) {
+      this.setState({
+        clearedFilters: this.state.clearedFilters.concat(filter)
+      }, this.props.handleFilter(filter, value))
+    } else {
+      this.setState({
+        clearedFilters: this.state.clearedFilters.filter((it) => it !== filter)
+      }, this.props.handleFilter(filter, value))
+    }
+  }
+
   // Clear all selected items from a filter
   clearFilter = (filter) => (e) => {
     this.props.clearFilter(filter)
-    if (filter !== 'barrio') {
+    if (!this.state.clearedFilters.includes(filter)){
       this.setState({
-        defaultFilters: [...this.state.defaultFilters, filter],
-        showWinnersLabel: false
+        clearedFilters: this.state.clearedFilters.concat(filter)
       })
     }
   }
@@ -105,147 +105,118 @@ export default class FilterPropuestas extends Component {
   render () {
     return (
       <nav id='filter-propuestas'>
-        {/* se oculta filtro de proyectos ganadores del año pasado hasta agosto. */}
-        {/* {this.props.openVotation &&
-          <div className='stage-container'>
-            <a className='stage-changer' onClick={this.props.changeStage}>
-              {this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores >' : '< Ver seguimiento de proyectos'}
+        <div className='filters-nav center'>
 
-            </a>
-          </div>
-        } */}
-        <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>
-          <div className='button-container barrio'>
-            <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
-              <div>
-                <span className={`button-label ${this.props.barrio.length > 0 ? 'active' : ''}`}>Barrio</span>
-                {this.props.barrio.length > 0 &&
-                  <span className='badge'>{this.props.barrio.length}</span>
-                }
-              </div>
-              <span className='caret-down'>▾</span>
-            </button>
-            {this.state.activeDropdown === 'barrio' &&
-              <div className='dropdown-options'>
-                <div className='options-container'>
-                  {barrios.map((b, i) => (
-                    <label className='option-label' key={i}>
-                      <input
-                        type='checkbox'
-                        value={b.value}
-                        onChange={this.handleFilter('barrio')}
-                        checked={this.props.barrio.includes(b.value)} />
-                      <span className='checkbox-label'>{b.name}</span>
-                    </label>
-                  ))}
-                </div>
-                <button className='clear-filters' onClick={this.clearFilter('barrio')}>
-                  <span>Borrar filtros</span>
-                </button>
-              </div>
-            }
-          </div>
-          {/* {this.props.stage === 'seguimiento' && */}
-          <div className='button-container state'>
-            <button className='dropdown-button' onClick={this.handleDropdown('state')}>
-              <div>
-                <span className={`button-label ${(this.props.state.length > 0 && !this.state.defaultFilters.includes('state')) ? 'active' : ''}`}>Estado</span>
-                {this.props.state.length > 0 && !this.state.defaultFilters.includes('state') &&
-                  <span className='badge'>{this.props.state.length}</span>
-                }
-              </div>
-              <span className='caret-down'>▾</span>
-            </button>
-            {this.state.activeDropdown === 'state' &&
-              <div className='dropdown-options'>
-                <div className='options-container'>
-                  {states.map((s, i) => (
-                    <label className='option-label' key={i}>
-                      <input
-                        type='checkbox'
-                        value={s.value}
-                        onChange={this.handleFilter('state')}
-                        checked={![...this.state.defaultFilters].includes('state') && this.props.state.includes(s.value)} />
-                      <span className='checkbox-label'>{s.name}</span>
-                    </label>
-                  ))}
-                </div>
-                <button className='clear-filters' onClick={this.clearFilter('state')}>
-                  <span>Borrar filtros</span>
-                </button>
-              </div>
-            }
-          </div>
-         {/* }*/}
-          {/* {this.props.stage === 'seguimiento' && */}
-            <div className='button-container anio'>
-              <button className='dropdown-button' onClick={this.handleDropdown('anio')}>
-                <div>
-                  <span className={`button-label ${(this.props.anio.length > 0 && !this.state.defaultFilters.includes('anio')) ? 'active' : ''}`}>Año</span>
-                  {this.props.anio.length > 0 && !this.state.defaultFilters.includes('anio') &&
-                    <span className='badge'>{this.props.anio.length}</span>
-                  }
-                </div>
-                <span className='caret-down'>▾</span>
-              </button>
-              {this.state.activeDropdown === 'anio' &&
-              <div className='dropdown-options'>
-                <div className='options-container'>
-                  {anios.map((a, i) => (
-                    <label className='option-label' key={i}>
-                      <input
-                        type='checkbox'
-                        value={a}
-                        onChange={this.handleFilter('anio')}
-                        checked={![...this.state.defaultFilters].includes('anio') && this.props.anio.includes(a)} />
-                      <span className='checkbox-label'>{a}</span>
-                    </label>
-                  ))}
-                </div>
-                <button className='clear-filters' onClick={this.clearFilter('anio')}>
-                  <span>Borrar filtros</span>
-                </button>
-              </div>
-              }
-            </div>
-          {/* } */}
-         {/* {this.props.stage === 'seguimiento' && */}
-           <div className='button-container tag'>
-             <button className='dropdown-button' onClick={this.handleDropdown('tag')}>
-               <div>
-                 <span className={`button-label ${(this.props.tag.length > 0 && !this.state.defaultFilters.includes('tag')) ? 'active' : ''}`}>Tema</span>
-                 {this.props.tag.length > 0 && !this.state.defaultFilters.includes('tag') &&
-                   <span className='badge'>{this.props.tag.length}</span>
-                 }
-               </div>
-               <span className='caret-down'>▾</span>
-             </button>
-             {this.state.activeDropdown === 'tag' &&
-             <div className='dropdown-options'>
-               <div className='options-container'>
-                 {tags.map((a, i) => (
-                   <label className='option-label' key={i}>
-                     <input
-                       type='checkbox'
-                       value={a}
-                       onChange={this.handleFilter('tag')}
-                       checked={![...this.state.defaultFilters].includes('tag') && this.props.tag.includes(a)} />
-                     <span className='checkbox-label'>{a}</span>
-                   </label>
-                 ))}
-               </div>
-               <button className='clear-filters' onClick={this.clearFilter('tag')}>
-                 <span>Borrar filtros</span>
-               </button>
-             </div>
-             }
-           </div>
-         {/* } */}
+          <FilterBox
+            name='barrio'
+            title='Barrio'
+            allOptions={barrios}
+            activeOptions={this.props.barrio}
+
+            activeDropdown={this.state.activeDropdown}
+            clearedFilters={this.state.clearedFilters}
+            handleDropdown={this.handleDropdown}
+            handleFilter={this.handleFilter}
+            clearFilter={this.clearFilter}
+            />
+
+          <FilterBox
+            name='state'
+            title='Estado'
+            allOptions={states}
+            activeOptions={this.props.state}
+
+            activeDropdown={this.state.activeDropdown}
+            clearedFilters={this.state.clearedFilters}
+            handleDropdown={this.handleDropdown}
+            handleFilter={this.handleFilter}
+            clearFilter={this.clearFilter}
+            />
+
+          <FilterBox
+            name='anio'
+            title='Año'
+            allOptions={anios}
+            activeOptions={this.props.anio}
+
+            activeDropdown={this.state.activeDropdown}
+            clearedFilters={this.state.clearedFilters}
+            handleDropdown={this.handleDropdown}
+            handleFilter={this.handleFilter}
+            clearFilter={this.clearFilter}
+            />
+
+          <FilterBox
+            name='tag'
+            title='Tema'
+            allOptions={tags}
+            activeOptions={this.props.tag}
+
+            activeDropdown={this.state.activeDropdown}
+            clearedFilters={this.state.clearedFilters}
+            handleDropdown={this.handleDropdown}
+            handleFilter={this.handleFilter}
+            clearFilter={this.clearFilter}
+            />
+
         </div>
-        {this.state.showWinnersLabel &&
-          <div className='winners-label'>Proyectos ganadores para ejecutarse en 2020</div>
-        }
       </nav>
+    )
+  }
+}
+
+class FilterBox extends Component {
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    const {
+      name, title, allOptions, activeOptions,
+      activeDropdown, clearedFilters,
+      handleDropdown, handleFilter, clearFilter
+    } = this.props
+
+    const hasSelection = !clearedFilters.includes(name)
+
+    return (
+      <div className={`button-container ${ name }`}>
+
+        <button className='dropdown-button' onClick={ handleDropdown(name) }>
+          <div>
+            <span className={`button-label ${ (activeOptions.length > 0 && hasSelection) ? 'active' : '' }`}>
+              { title }
+            </span>
+            { activeOptions.length > 0 && (
+              <span className='badge'>
+                { activeOptions.length }
+              </span>
+            ) }
+          </div>
+          <span className='caret-down'>▾</span>
+        </button>
+
+        { activeDropdown === name &&
+          <div className='dropdown-options'>
+            <div className='options-container'>
+              { allOptions.map((a, i) => (
+                <label className='option-label' key={ i }>
+                  <input
+                    type='checkbox'
+                    value={ a.value || a }
+                    onChange={ handleFilter(name) }
+                    checked={ hasSelection && activeOptions.includes(a.value || a) } />
+                  <span className='checkbox-label'>{ a.name || a }</span>
+                </label>
+              )) }
+            </div>
+            <button className='clear-filters' onClick={ clearFilter(name) }>
+              <span>Borrar filtros</span>
+            </button>
+          </div>
+        }
+
+      </div>
     )
   }
 }
