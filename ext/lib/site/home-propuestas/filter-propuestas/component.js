@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
 
 const barrios = [
   { 'name': 'Carapachay', 'value': 'carapachay' },
@@ -22,15 +23,25 @@ const states = [
 
 const anios = ['2018', '2019', '2020', '2021']
 
+let tags = []
+
 export default class FilterPropuestas extends Component {
   constructor (props) {
     super(props)
+
     this.state = {
       activeDropdown: null,
       //defaultFilters: ['anio', 'state']
       defaultFilters: [], // empty to show active filters on init
       showWinnersLabel: false,
     }
+
+    let res = {}
+    findAllTags(res, () => {
+      let barriosKeys = barrios.map((b) => b.value)
+      let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
+      tags = tagsNoBarrio.map((t) => t.name)
+    })
   }
 
   componentWillMount () {
@@ -104,7 +115,7 @@ export default class FilterPropuestas extends Component {
           </div>
         } */}
         <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>
-          <div className='button-container'>
+          <div className='button-container barrio'>
             <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
               <div>
                 <span className={`button-label ${this.props.barrio.length > 0 ? 'active' : ''}`}>Barrio</span>
@@ -135,7 +146,7 @@ export default class FilterPropuestas extends Component {
             }
           </div>
           {/* {this.props.stage === 'seguimiento' && */}
-          <div className='button-container'>
+          <div className='button-container state'>
             <button className='dropdown-button' onClick={this.handleDropdown('state')}>
               <div>
                 <span className={`button-label ${(this.props.state.length > 0 && !this.state.defaultFilters.includes('state')) ? 'active' : ''}`}>Estado</span>
@@ -167,7 +178,7 @@ export default class FilterPropuestas extends Component {
           </div>
          {/* }*/}
           {/* {this.props.stage === 'seguimiento' && */}
-            <div className='button-container'>
+            <div className='button-container anio'>
               <button className='dropdown-button' onClick={this.handleDropdown('anio')}>
                 <div>
                   <span className={`button-label ${(this.props.anio.length > 0 && !this.state.defaultFilters.includes('anio')) ? 'active' : ''}`}>Año</span>
@@ -198,6 +209,38 @@ export default class FilterPropuestas extends Component {
               }
             </div>
           {/* } */}
+         {/* {this.props.stage === 'seguimiento' && */}
+           <div className='button-container tag'>
+             <button className='dropdown-button' onClick={this.handleDropdown('tag')}>
+               <div>
+                 <span className={`button-label ${(this.props.tag.length > 0 && !this.state.defaultFilters.includes('tag')) ? 'active' : ''}`}>Tema</span>
+                 {this.props.tag.length > 0 && !this.state.defaultFilters.includes('tag') &&
+                   <span className='badge'>{this.props.tag.length}</span>
+                 }
+               </div>
+               <span className='caret-down'>▾</span>
+             </button>
+             {this.state.activeDropdown === 'tag' &&
+             <div className='dropdown-options'>
+               <div className='options-container'>
+                 {tags.map((a, i) => (
+                   <label className='option-label' key={i}>
+                     <input
+                       type='checkbox'
+                       value={a}
+                       onChange={this.handleFilter('tag')}
+                       checked={![...this.state.defaultFilters].includes('tag') && this.props.tag.includes(a)} />
+                     <span className='checkbox-label'>{a}</span>
+                   </label>
+                 ))}
+               </div>
+               <button className='clear-filters' onClick={this.clearFilter('tag')}>
+                 <span>Borrar filtros</span>
+               </button>
+             </div>
+             }
+           </div>
+         {/* } */}
         </div>
         {this.state.showWinnersLabel &&
           <div className='winners-label'>Proyectos ganadores para ejecutarse en 2020</div>

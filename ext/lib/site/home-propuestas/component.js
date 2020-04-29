@@ -19,6 +19,7 @@ const defaultValues = {
   barrio: [],
   anio: ['2020', '2021'],
   state: ['pendiente', 'factible', 'no-factible', 'integrado'],
+  tag: [],
   // 'barrio' o 'newest'
   sort: 'newest'
 }
@@ -34,6 +35,7 @@ class HomePropuestas extends Component {
       anio: defaultValues.anio,
       barrio: defaultValues.barrio,
       state: defaultValues.state,
+      tag: defaultValues.tag,
       sort: defaultValues.sort,
 
       page: null,
@@ -64,6 +66,7 @@ class HomePropuestas extends Component {
       anio: this.state.anio,
       barrio: this.state.barrio,
       state: this.state.state,
+      tags: this.state.tag,
       sort: this.state.sort
     }
 
@@ -235,6 +238,7 @@ class HomePropuestas extends Component {
             anio={this.state.anio}
             state={this.state.state}
             barrio={this.state.barrio}
+            tag={this.state.tag}
             openVotation={true}
             handleFilter={this.handleFilter}
             handleDefaultFilter={this.handleDefaultFilter}
