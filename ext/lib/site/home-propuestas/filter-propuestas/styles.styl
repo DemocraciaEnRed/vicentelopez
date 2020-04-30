@@ -42,12 +42,13 @@
     .button-container
       position: relative
       text-align: left
-      &.state
-        .dropdown-button, .dropdown-options
-          width: 200px
-      &.anio
-        .dropdown-button, .dropdown-options
-          width: 150px
+      @media screen and (min-width: 970px)
+        &.state
+          .dropdown-button, .dropdown-options
+            width: 200px
+        &.anio
+          .dropdown-button, .dropdown-options
+            width: 150px
       &.tag
         .dropdown-options .options-container .option-label
           margin-top: 10px
@@ -86,7 +87,9 @@
       .dropdown-options
         position: absolute
         padding: 0px 15px 14px 20px
-        margin-top: 14px
+        margin-top: 0
+        @media screen and (min-width: 970px)
+          margin-top: 14px
         width: 300px
         border-radius: 9px
         background-color: #ffffff
@@ -96,16 +99,24 @@
         align-items: flex-start
         z-index: 10
         .options-container
+          width: 100%
           display: flex
           flex-wrap: wrap
           flex-direction: column
           .option-label
+            width: 100%
+            position: relative;
             margin-top: 20px
             font-family: 'Lato', sans-serif
             font-size: 16px
             font-weight: 300
+            input
+              position: absolute;
+              top: 3px;
             .checkbox-label
-              margin-left: 21px
+              margin-left: 25px
+              display: block;
+              word-wrap: anywhere;
 
         .clear-filters
           background: none
