@@ -8,43 +8,30 @@
   &:hover
     box-shadow: 0 2px 5px #555
   .topic-card-title
+    color black
     margin-bottom: 5px
     &>a
       color: #444
-
-  .participants
-    font-weight: 400
-    color: #a5a9aa
-    display: inline-block
-    margin-right: 20px;
-    span
-      color: #099dc3
 
   .topic-card-info
     padding-bottom: 0
     height: auto
 
-  .topic-card-tags
-    margin-top: 10px
-    span
-      font-weight: 400
-      margin: 5px 5px 0 0
-    a
+  .topic-card-attrs
+    span.badge
       background-color: #1D9DC1
-      font-size: .65em
+      font-size: 14px
       border-radius: 35px
       color: #fff
-      padding:6px 10px 6px 10px
-      font-weight: normal
+      padding:6px 15px 6px 15px
+      font-weight: normal;
       text-decoration: none !important
-      margin-right:5px
+      margin-right:9px
       margin-bottom: 10px
-    a:hover
-      text-decoration: none !important
-      color: #fff !important  
 
   .topic-card-description
-    margin: 10px 0 0 0
+    margin: 13px 0 0 0
+    text-transform: none
     a
       font-size: 15px
       white-space: normal
@@ -53,30 +40,73 @@
     @media screen and (min-width: 769px)
       display: flex;
       justify-content: space-between;
-    .cause-wrapper, .subscribe-wrapper 
-      display: flex
-      align-items: center
+
+    .topic-card-tags
+      margin-bottom: 10px;
+      @media screen and (min-width: 769px)
+        margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      .glyphicon
+        margin-right: 10px;
+        top: 0px;
+      .tag-wrapper
+        font-size: 14px
+        margin-right: 15px
+        color: black;
+        font-weight: normal;
+        &:last-child
+          margin-right: 0
+        &:hover, &:focus, &:active
+          color: #3d699e;
+
+    .cause-wrapper
+      margin-right: 20px;
+    .subscribe-wrapperr
+      @media screen and (min-width: 769px)
+        margin-bottom: 0;
+    .cause-wrapper, .subscribe-wrapperr
+      float: left;
       margin-bottom: 15px;
-      justify-content: space-between;
-    span.blue
-      color: #099dc3
-    span.gray
-      color: #a5a9aa
-    .btn
-      background: #099dc3
-      margin: 0
-      &.btn-empty
-        background: #FFFFFF
-        color: #099dc3
-        border: 1px solid #099dc3
-      &.btn-filled
+      .btn
         background: #099dc3
-        color: #FFFFFF
+        margin: 0
+        &.btn-empty
+          background: #FFFFFF
+          color: #099dc3
+
+          border: 1px solid #099dc3
+        &.btn-filled
+          background: #099dc3
+          color: #FFFFFF
+
+        /*&[disabled]
+          $disabled-color = #656768
+          background: white
+          color: $disabled-color
+          border-color: $disabled-color
+          .participants.not-voted, .participants.voted
+            color: $disabled-color
+            .icon-like, .icon-bell
+              color: $disabled-color*/
+
+        .participants
+          font-weight: 400
+          display: inline-block
+          margin-left: 20px;
+          color: #a5a9aa
+          &.not-voted,&.not-subscribed
+            color: #a5a9aa
+            .icon-like, .icon-bell
+              color: #099dc3
+          &.voted,&.subscribed
+            color: white
 
   .topic-creation
-    color: #a5a9aa
-    font-size: 13px
+    font-size: 14px
     margin-bottom: 0.8em
+    margin-top: 0.8em
     display: flex
     align-items: center
 
@@ -86,8 +116,6 @@
     .date
       flex: 1
       text-align: right
-      &.space
-        margin-right: 60px 
 
     .avatar
       margin-right: 5px
@@ -96,17 +124,24 @@
       border-radius: 50%
       background-size: cover
       background-position: center center
-  
+
+    .topic-card-author
+      font-weight: bold
+
   .estado
-    font-size: 1em
-    color: #271356
-    background-color: #cfb8ed
-    &.factible
-      color: #145730
-      background-color: #b6efce
-    font-weight: bold
-    padding: 5px 50px
     position: absolute
-    right: -50px
-    top: 25px
-    transform: rotate(45deg)
+    right: 0
+    width: 130px;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 14px
+    font-weight: bold
+    &.factible
+      color: #356905
+      background-color: #dafbdc
+    &.integrado
+      color: #024057
+      background-color: #c2efff
+    &.no-factible
+      color: #8c1e80
+      background-color: #ffcbf9

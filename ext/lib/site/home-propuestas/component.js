@@ -195,7 +195,7 @@ class HomePropuestas extends Component {
         return topic.id == id
       })
       let topicsCopy = this.state.topics
-      console.log(res)
+
       if(res.message === 'Suscribed') {
         if(topicsCopy[index].attrs.subscribers){
           let aux = topicsCopy[index].attrs.subscribers.split(',')
@@ -259,7 +259,7 @@ class HomePropuestas extends Component {
             clearFilter={this.clearFilter} />
 
           <div className='row'>
-            <div className='col-md-12'>
+            <div className='col-md-10 offset-md-1'>
               {topics && topics.length === 0 && (
                 <div className='empty-msg'>
                   <div className='alert alert-success' role='alert'>

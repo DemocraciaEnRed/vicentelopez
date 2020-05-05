@@ -52,79 +52,112 @@ export class TopicCard extends Component {
     const { topic, onVote, onSubscribe } = this.props
     const { subscribed } = this.state
 
+    const likesCountDiv = (
+      <div className={`participants ${topic.voted ? 'voted' : 'not-voted'}`}>
+        <span className={`icon-like`} />
+        &nbsp;
+        {topic.action.count}
+      </div>
+    )
+    const subscribesCountDiv = (
+      <div className={`participants ${subscribed ? 'subscribed' : 'not-subscribed'}`}>
+        <span className={`icon-bell`} />
+        &nbsp;
+        {topic.attrs.subscribers && topic.attrs.subscribers.split(',').length || 0}
+      </div>
+    )
+
+    function capitalizeFirstLetter(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
     return (
       <div className='ext-topic-card ideas-topic-card' onClick={this.handleWrapperClick}>
         <div className='topic-card-info'>
-          <div className='topic-creation'>
-            <span>{topic.attrs.nombre}</span>
-            <span
-              className={`date ${(topic.attrs.state !== 'pendiente') && 'space'}`}>
-              {moment(topic.createdAt).format('D/M/YY')}
-            </span>
+          <div className='topic-card-attrs'>
+            {this.props.barrio &&
+              <span className='badge badge-default'>{this.props.barrio.name}</span>
+            }
+            {topic.attrs.anio &&
+              <span className='badge badge-default'>{topic.attrs.anio}</span>
+            }
             {topic.attrs.state !== 'pendiente' &&
-              <span className={`estado ${topic.attrs.state !== 'no-factible' && topic.attrs.state !== 'integrado' ? 'factible' : ''}`}>{estados(topic.attrs.state)}</span>
+              <span className={`estado ${topic.attrs.state}`}>{estados(topic.attrs.state)}</span>
             }
           </div>
+
+          <div className='topic-creation'>
+            <span>Creado por: <span className='topic-card-author'>{topic.attrs.nombre}</span></span>
+            <span
+              className={`date ${(topic.attrs.state !== 'pendiente') && 'space'}`}>
+              {moment(topic.createdAt).format('D-M-YYYY')}
+            </span>
+          </div>
+
           <h1 className='topic-card-title'>
             {topic.mediaTitle}
-            <p className='topic-card-description'>
-              {createClauses(topic)}
-            </p>
           </h1>
-          {
-            topic.tags && topic.tags.length > 0 && (
-              <div className='topic-card-tags'>
-                {topic.tags.slice(0, 12).map((tag, i) => (
-                  <a href={`${window.location.origin + '/propuestas?tags=' + tag}`} key={`${tag}-${i}`} className='badge badge-default'>{tag}</a>
+          <p className='topic-card-description'>
+            {createClauses(topic)}
+          </p>
 
+        </div>
+
+        <div className='topic-card-footer'>
+          { topic.tags && topic.tags.length > 0 && (
+              <div className='topic-card-tags'>
+                <span className="glyphicon glyphicon-tag"></span>
+                {topic.tags.slice(0, 12).map((tag, i) => (
+                  <a
+                    href={`${window.location.origin + '/propuestas?tags=' + tag}`}
+                    key={`${tag}-${i}`}
+                    className='tag-wrapper' >
+                    {capitalizeFirstLetter(tag)}
+                  </a>
                 ))}
               </div>
-            )
-          }
-        </div>
-        <div className='topic-card-footer'>
-          <div className='subscribe-wrapper'>
-            <div className='participants'>
-              {topic.attrs.subscribers && topic.attrs.subscribers.split(',').length || 0}
-              &nbsp;
-            <span className={`icon-bell ${subscribed ? 'blue' : 'gray'}`} />
+          ) }
+
+          <div className='buttons-wrapper'>
+            <div className='cause-wrapper'>
+              {topic.voted && (
+                <button disabled className='btn btn-primary btn-filled'>
+                  Te gusta
+                  {likesCountDiv}
+                </button>
+              )}
+              {!topic.voted && (
+                <button
+                  disabled={!topic.privileges.canVote}
+                  onClick={() => onVote(topic.id)}
+                  className='btn btn-primary btn-empty'>
+                  Me gusta
+                  {likesCountDiv}
+                </button>
+              )}
             </div>
-            {subscribed && (
-              <button
-                className='btn btn-primary'
-                onClick={() => onSubscribe(topic.id)}>
-                Desuscribirse
-              </button>
-            )}
-            {!subscribed && (
-              <button
-                disabled={!topic.privileges.canVote}
-                className='btn btn-primary btn-empty'
-                onClick={() => onSubscribe(topic.id)}>
-                Suscribirse
-              </button>
-            )}
-          </div>
-          <div className='cause-wrapper'>
-            <div className='participants'>
-              {topic.action.count}
-              &nbsp;
-            <span className={`icon-like ${topic.voted ? 'blue' : 'gray'}`} />
+
+            <div className='subscribe-wrapperr'>
+              {subscribed && (
+                <button
+                  className='btn btn-primary'
+                  onClick={() => onSubscribe(topic.id)}>
+                  Desuscribirse
+                  {subscribesCountDiv}
+                </button>
+              )}
+              {!subscribed && (
+                <button
+                  disabled={!topic.privileges.canVote}
+                  className='btn btn-primary btn-empty'
+                  onClick={() => onSubscribe(topic.id)}>
+                  Suscribirse
+                  {subscribesCountDiv}
+                </button>
+              )}
             </div>
-            {topic.voted && (
-              <button disabled className='btn btn-primary btn-filled'>
-                Te gusta
-              </button>
-            )}
-            {!topic.voted && (
-              <button
-                disabled={!topic.privileges.canVote}
-                onClick={() => onVote(topic.id)}
-                className='btn btn-primary btn-empty'>
-                Me gusta
-              </button>
-            )}
           </div>
+
         </div>
       </div>
     )
@@ -148,7 +181,7 @@ function createClauses({ attrs, clauses }) {
     content = `${problema} ${solucion} ${beneficios}`
   }
   div.innerHTML = content
-  return div.textContent.replace(/\r?\n|\r/g, '').slice(0, 140) + '...'
+  return div.textContent.replace(/\r?\n|\r/g, '').slice(0, 340) + '...'
 }
 
 export default userConnector(TopicCard)
