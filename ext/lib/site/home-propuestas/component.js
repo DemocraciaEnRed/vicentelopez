@@ -8,6 +8,19 @@ import TopicCard from './topic-card/component'
 import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 import FilterPropuestas from './filter-propuestas/component'
 
+const barrios = [
+  { 'name': 'Carapachay', 'value': 'carapachay' },
+  { 'name': 'Florida Este', 'value': 'florida-este' },
+  { 'name': 'Florida Oeste', 'value': 'florida-oeste' },
+  { 'name': 'La Lucila', 'value': 'la-lucila' },
+  { 'name': 'Munro', 'value': 'munro' },
+  { 'name': 'Olivos', 'value': 'olivos' },
+  { 'name': 'Vicente López', 'value': 'vicente-lopez' },
+  { 'name': 'Villa Adelina', 'value': 'villa-adelina' },
+  { 'name': 'Villa Martelli', 'value': 'villa-martelli' }
+]
+
+
 // Variables para fases de propuestas abiertas o cerrdas:
 // config.propuestasAbiertas
 // config.propuestasTextoAbiertas
@@ -235,6 +248,7 @@ class HomePropuestas extends Component {
         <div className='container topics-container'>
 
           <FilterPropuestas
+            barrios={barrios}
             anio={this.state.anio}
             state={this.state.state}
             barrio={this.state.barrio}
@@ -255,6 +269,7 @@ class HomePropuestas extends Component {
               )}
               {topics && topics.map((topic, i) => (
                 <TopicCard
+                  barrio={topic.attrs && barrios.find(b => b.value == topic.attrs.barrio)}
                   onSubscribe={this.handleSubscribe}
                   onVote={this.handleVote}
                   key={`${topic.id}-${i}`}

@@ -2,17 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
 
-const barrios = [
-  { 'name': 'Carapachay', 'value': 'carapachay' },
-  { 'name': 'Florida Este', 'value': 'florida-este' },
-  { 'name': 'Florida Oeste', 'value': 'florida-oeste' },
-  { 'name': 'La Lucila', 'value': 'la-lucila' },
-  { 'name': 'Munro', 'value': 'munro' },
-  { 'name': 'Olivos', 'value': 'olivos' },
-  { 'name': 'Vicente López', 'value': 'vicente-lopez' },
-  { 'name': 'Villa Adelina', 'value': 'villa-adelina' },
-  { 'name': 'Villa Martelli', 'value': 'villa-martelli' }
-]
+let barrios;
 
 const states = [
   { 'name': 'Pendiente', 'value': 'pendiente' },
@@ -28,6 +18,8 @@ let tags = []
 export default class FilterPropuestas extends Component {
   constructor (props) {
     super(props)
+
+    barrios = props.barrios
 
     this.state = {
       activeDropdown: null,
