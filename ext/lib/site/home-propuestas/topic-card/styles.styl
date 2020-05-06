@@ -81,16 +81,6 @@
           background: #099dc3
           color: #FFFFFF
 
-        /*&[disabled]
-          $disabled-color = #656768
-          background: white
-          color: $disabled-color
-          border-color: $disabled-color
-          .participants.not-voted, .participants.voted
-            color: $disabled-color
-            .icon-like, .icon-bell
-              color: $disabled-color*/
-
         .participants
           font-weight: 400
           display: inline-block
@@ -102,6 +92,18 @@
               color: #099dc3
           &.voted,&.subscribed
             color: white
+
+        &[disabled]
+          $disabled-color = #656768
+          background: white
+          color: $disabled-color
+          border-color: $disabled-color
+          .participants
+            &.voted, &.subscribed, &.not-voted, &.not-subscribed
+              color: $disabled-color
+              .icon-like, .icon-bell
+                color: $disabled-color
+
 
   .topic-creation
     font-size: 14px
