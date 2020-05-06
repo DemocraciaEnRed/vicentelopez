@@ -58,6 +58,11 @@ class HomePropuestas extends Component {
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
+  componentWillMount () {
+    if (this.props.location.query.tags)
+      defaultValues.tag.push(this.props.location.query.tags)
+  }
+
   componentDidMount () {
     // traer forum al state
     forumStore.findOneByName('proyectos')
