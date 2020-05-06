@@ -85,24 +85,27 @@
           font-weight: 400
           display: inline-block
           margin-left: 20px;
-          color: #a5a9aa
-          &.not-voted,&.not-subscribed
+
+        &.not-voted,&.not-subscribed
+          .participants
             color: #a5a9aa
             .icon-like, .icon-bell
               color: #099dc3
-          &.voted,&.subscribed
+
+        &.voted,&.subscribed
+          .participants
             color: white
 
-        &[disabled]
+      &.cant-vote,&.cant-subscribe
+        .btn
           $disabled-color = #656768
           background: white
           color: $disabled-color
           border-color: $disabled-color
           .participants
-            &.voted, &.subscribed, &.not-voted, &.not-subscribed
+            color: $disabled-color
+            .icon-like, .icon-bell
               color: $disabled-color
-              .icon-like, .icon-bell
-                color: $disabled-color
 
 
   .topic-creation

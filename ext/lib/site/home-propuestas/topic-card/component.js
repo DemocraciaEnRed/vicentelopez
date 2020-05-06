@@ -52,16 +52,23 @@ export class TopicCard extends Component {
     const { topic, onVote, onSubscribe } = this.props
     const { subscribed } = this.state
 
+    const likesCssClass = topic.voted ? 'voted' : (
+      topic.privileges.canVote ? 'not-voted' : 'cant-vote'
+    )
     const likesCountDiv = (
-      <div className={`participants ${topic.voted ? 'voted' : 'not-voted'}`}>
-        <span className={`icon-like`} />
+      <div className='participants'>
+        <span className='icon-like' />
         &nbsp;
         {topic.action.count}
       </div>
     )
+
+    const subscribeCssClass = subscribed ? 'subscribed' : (
+      topic.privileges.canVote ? 'not-subscribed' : 'cant-subscribe'
+    )
     const subscribesCountDiv = (
-      <div className={`participants ${subscribed ? 'subscribed' : 'not-subscribed'}`}>
-        <span className={`icon-bell`} />
+      <div className='participants'>
+        <span className='icon-bell' />
         &nbsp;
         {topic.attrs.subscribers && topic.attrs.subscribers.split(',').length || 0}
       </div>
@@ -119,7 +126,7 @@ export class TopicCard extends Component {
           ) }
 
           <div className='buttons-wrapper'>
-            <div className='cause-wrapper'>
+            <div className={`cause-wrapper ${likesCssClass}`}>
               {topic.voted && (
                 <button disabled className='btn btn-primary btn-filled'>
                   Te gusta
@@ -137,7 +144,7 @@ export class TopicCard extends Component {
               )}
             </div>
 
-            <div className='subscribe-wrapperr'>
+            <div className={`subscribe-wrapperr ${subscribeCssClass}`}>
               {subscribed && (
                 <button
                   className='btn btn-primary'
