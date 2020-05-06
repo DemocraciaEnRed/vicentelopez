@@ -87,6 +87,7 @@ export default class FilterPropuestas extends Component {
   // Clear all selected items from a filter
   clearFilter = (filter) => (e) => {
     this.props.clearFilter(filter)
+    this.setState({ activeDropdown: null })
     if (!this.state.clearedFilters.includes(filter)){
       this.setState({
         clearedFilters: this.state.clearedFilters.concat(filter)
@@ -203,7 +204,7 @@ class FilterBox extends Component {
               )) }
             </div>
             <button className='clear-filters' onClick={ clearFilter(name) }>
-              <span>Borrar filtros</span>
+              <span>Ver todos</span>
             </button>
           </div>
         }
