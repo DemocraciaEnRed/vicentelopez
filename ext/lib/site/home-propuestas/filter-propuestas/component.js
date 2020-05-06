@@ -42,7 +42,7 @@ export default class FilterPropuestas extends Component {
     findAllTags(res, () => {
       let barriosKeys = barrios.map((b) => b.value)
       let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
-      tags = tagsNoBarrio.map((t) => t.name)
+      tags = tagsNoBarrio.filter(t => t.name != 'Default').map((t) => t.name)
     })
   }
 
