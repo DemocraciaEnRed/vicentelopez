@@ -31,5 +31,4 @@ config/development.json
 #scripts personales
 reqfuncs.sh
 curl-cookie
-*.sh
 pasos-instalacion-de-cero.txt
