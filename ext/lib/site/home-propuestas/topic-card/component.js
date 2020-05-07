@@ -52,9 +52,9 @@ export class TopicCard extends Component {
       browserHistory.push(`/propuestas/topic/${this.props.topic.id}`)
   }
   render() {
-    const { topic, onVote, onSubscribe } = this.props
+    const { topic, onVote, onSubscribe, user } = this.props
     const { subscribed } = this.state
-    const isStaff = this.props.user.state.value.staff
+    const isStaff = !user.state.rejected && user.state.value.staff
 
     const likesCssClass = topic.voted ? 'voted' : (
       topic.privileges.canVote && !isStaff ? 'not-voted' : 'cant-vote'
