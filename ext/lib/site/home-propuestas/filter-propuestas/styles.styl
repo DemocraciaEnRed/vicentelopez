@@ -1,7 +1,12 @@
 #filter-propuestas
+  @import './badges/styles.styl'
+
   margin-left:1.5em
+  margin: 40px auto
   @media screen and (max-width: 570px)
-      margin-left:0.6em
+    margin-left:0.6em
+  @media screen and (max-width: 970px)
+    margin-bottom: 20px
   margin-right:1em
   width: 96%
   text-align: center
@@ -32,10 +37,9 @@
     max-width: 1000px
     display: flex
     justify-content: space-between
-    margin: 60px auto
+    margin-bottom: 0
     @media screen and (max-width: 970px)
       flex-direction:column
-      margin-bottom: 20px
       align-items:center
     &.center
       justify-content: center

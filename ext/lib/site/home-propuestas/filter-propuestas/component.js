@@ -1,32 +1,15 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
-
-let barrios;
-
-const states = [
-  { 'name': 'Pendiente', 'value': 'pendiente' },
-  { 'name': 'Factible', 'value': 'factible' },
-  { 'name': 'No factible', 'value': 'no-factible' },
-  { 'name': 'Integrado', 'value': 'integrado' },
-]
-
-const anios = ['2018', '2019', '2020', '2021']
-
-let tags = []
+import Badges from './badges/component'
 
 export default class FilterPropuestas extends Component {
   constructor (props) {
     super(props)
 
-    barrios = props.barrios
-
     this.state = {
       activeDropdown: null,
       clearedFilters: []
     }
-
-    this.getTags()
   }
 
   componentWillMount () {
@@ -35,15 +18,6 @@ export default class FilterPropuestas extends Component {
 
   componentWillUnmount () {
     document.removeEventListener('click', this.handleClick, false)
-  }
-
-  getTags = () => {
-    let res = {}
-    findAllTags(res, () => {
-      let barriosKeys = barrios.map((b) => b.value)
-      let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
-      tags = tagsNoBarrio.filter(t => t.name != 'Default').map((t) => t.name)
-    })
   }
 
   // Close dropdown if clicked outside
@@ -96,15 +70,42 @@ export default class FilterPropuestas extends Component {
   }
 
   render () {
+    const {
+      barrios, barrio,
+      states, state,
+      anios, anio,
+      tags, tag,
+      handleRemoveBadge
+    } = this.props
+
+    let allActiveOpts = []
+    // explicando un poco las operaciones que siguen:
+    // - los "..." expanden el array que devuelve el map, sino pushearía un
+    //   array adentro de un array, y no sus elementos
+    // - el .map(.find().name) hace la conversión de keys a values
+    //   p.ej. barrio contiene keys, y para mostrar su formato para humanos hay
+    //   que buscar la key dentro de barrios
+    if (barrio.length)
+      allActiveOpts.push(
+        ...barrio.sort().map(i => ({ value: i, name: barrios.find(j => j.value==i).name }))
+      )
+    if (state.length)
+      allActiveOpts.push(
+        ...state.sort().map(i => ({ value: i, name: states.find(j => j.value==i).name }))
+      )
+    if (anio.length)
+      allActiveOpts.push(...anio.sort().map(i => ({ value: i, name: i })))
+    if (tag.length)
+      allActiveOpts.push(...tag.sort().map(i => ({ value: i, name: i })))
+
     return (
       <nav id='filter-propuestas'>
         <div className='filters-nav center'>
-
           <FilterBox
             name='barrio'
             title='Barrio'
             allOptions={barrios}
-            activeOptions={this.props.barrio}
+            activeOptions={barrio}
 
             activeDropdown={this.state.activeDropdown}
             clearedFilters={this.state.clearedFilters}
@@ -117,7 +118,7 @@ export default class FilterPropuestas extends Component {
             name='state'
             title='Estado'
             allOptions={states}
-            activeOptions={this.props.state}
+            activeOptions={state}
 
             activeDropdown={this.state.activeDropdown}
             clearedFilters={this.state.clearedFilters}
@@ -130,7 +131,7 @@ export default class FilterPropuestas extends Component {
             name='anio'
             title='Año'
             allOptions={anios}
-            activeOptions={this.props.anio}
+            activeOptions={anio}
 
             activeDropdown={this.state.activeDropdown}
             clearedFilters={this.state.clearedFilters}
@@ -143,7 +144,7 @@ export default class FilterPropuestas extends Component {
             name='tag'
             title='Tema'
             allOptions={tags}
-            activeOptions={this.props.tag}
+            activeOptions={tag}
 
             activeDropdown={this.state.activeDropdown}
             clearedFilters={this.state.clearedFilters}
@@ -151,8 +152,12 @@ export default class FilterPropuestas extends Component {
             handleFilter={this.handleFilter}
             clearFilter={this.clearFilter}
             />
-
         </div>
+
+        {allActiveOpts.length != 0 &&
+          <Badges options={allActiveOpts} handleRemove={handleRemoveBadge} />
+        }
+
       </nav>
     )
   }

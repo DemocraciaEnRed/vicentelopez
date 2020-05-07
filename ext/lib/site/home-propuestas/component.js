@@ -4,6 +4,7 @@ import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
+import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
 import TopicCard from './topic-card/component'
 import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 import FilterPropuestas from './filter-propuestas/component'
@@ -20,6 +21,16 @@ const barrios = [
   { 'name': 'Villa Martelli', 'value': 'villa-martelli' }
 ]
 
+const states = [
+  { 'name': 'Pendiente', 'value': 'pendiente' },
+  { 'name': 'Factible', 'value': 'factible' },
+  { 'name': 'No factible', 'value': 'no-factible' },
+  { 'name': 'Integrado', 'value': 'integrado' },
+]
+
+const anios = ['2018', '2019', '2020', '2021']
+
+let tags = []
 
 // Variables para fases de propuestas abiertas o cerrdas:
 // config.propuestasAbiertas
@@ -56,6 +67,8 @@ class HomePropuestas extends Component {
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
+
+    this.getTags()
   }
 
   componentWillMount () {
@@ -71,6 +84,15 @@ class HomePropuestas extends Component {
 
     // traer topics
     this.fetchTopics()
+  }
+
+  getTags = () => {
+    let res = {}
+    findAllTags(res, () => {
+      let barriosKeys = barrios.map((b) => b.value)
+      let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
+      tags = tagsNoBarrio.filter(t => t.name != 'Default').map((t) => t.name)
+    })
   }
 
   fetchTopics = (page) => {
@@ -223,6 +245,19 @@ class HomePropuestas extends Component {
     }).catch((err) => { throw err })
   }
 
+  handleRemoveBadge = (option) => (e) => {
+    // feísimo, feísimo
+    if (this.state.anio.includes(option)){
+      this.setState({ anio: this.state.anio.filter(i => i != option) })
+    }else if (this.state.state.includes(option)){
+      this.setState({ state: this.state.state.filter(i => i != option) })
+    }else if (this.state.barrio.includes(option)){
+      this.setState({ barrio: this.state.barrio.filter(i => i != option) })
+    }else if (this.state.tag.includes(option)){
+      this.setState({ tag: this.state.tag.filter(i => i != option) })
+    }
+  }
+
   render () {
     const { forum, topics } = this.state
     return (
@@ -255,14 +290,18 @@ class HomePropuestas extends Component {
 
           <FilterPropuestas
             barrios={barrios}
-            anio={this.state.anio}
-            state={this.state.state}
             barrio={this.state.barrio}
+            states={states}
+            state={this.state.state}
+            anios={anios}
+            anio={this.state.anio}
+            tags={tags}
             tag={this.state.tag}
             openVotation={true}
             handleFilter={this.handleFilter}
             handleDefaultFilter={this.handleDefaultFilter}
-            clearFilter={this.clearFilter} />
+            clearFilter={this.clearFilter}
+            handleRemoveBadge={this.handleRemoveBadge} />
 
           <div className='row'>
             <div className='col-md-10 offset-md-1'>
