@@ -51,9 +51,10 @@ export class TopicCard extends Component {
   render() {
     const { topic, onVote, onSubscribe } = this.props
     const { subscribed } = this.state
+    const isStaff = this.props.user.state.value.staff
 
     const likesCssClass = topic.voted ? 'voted' : (
-      topic.privileges.canVote ? 'not-voted' : 'cant-vote'
+      topic.privileges.canVote && !isStaff ? 'not-voted' : 'cant-vote'
     )
     const likesCountDiv = (
       <div className='participants'>
@@ -64,7 +65,7 @@ export class TopicCard extends Component {
     )
 
     const subscribeCssClass = subscribed ? 'subscribed' : (
-      topic.privileges.canVote ? 'not-subscribed' : 'cant-subscribe'
+      topic.privileges.canVote && !isStaff ? 'not-subscribed' : 'cant-subscribe'
     )
     const subscribesCountDiv = (
       <div className='participants'>
@@ -135,7 +136,7 @@ export class TopicCard extends Component {
               )}
               {!topic.voted && (
                 <button
-                  disabled={!topic.privileges.canVote}
+                  disabled={!topic.privileges.canVote || isStaff}
                   onClick={() => onVote(topic.id)}
                   className='btn btn-primary btn-empty'>
                   Me gusta
@@ -155,7 +156,7 @@ export class TopicCard extends Component {
               )}
               {!subscribed && (
                 <button
-                  disabled={!topic.privileges.canVote}
+                  disabled={!topic.privileges.canVote || isStaff}
                   className='btn btn-primary btn-empty'
                   onClick={() => onSubscribe(topic.id)}>
                   Suscribirse
