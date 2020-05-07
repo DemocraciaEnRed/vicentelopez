@@ -11,6 +11,9 @@ const estados = (state) => {
     case 'integrado':
       return 'Integrada'
       break
+    case 'pendiente':
+      return 'Pendiente'
+      break
     default:
       return 'Factible'
       break
@@ -89,9 +92,7 @@ export class TopicCard extends Component {
             {topic.attrs.anio &&
               <span className='badge badge-default'>{topic.attrs.anio}</span>
             }
-            {topic.attrs.state !== 'pendiente' &&
-              <span className={`estado ${topic.attrs.state}`}>{estados(topic.attrs.state)}</span>
-            }
+            <span className={`estado ${topic.attrs.state}`}>{estados(topic.attrs.state)}</span>
           </div>
 
           <div className='topic-creation'>
