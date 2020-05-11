@@ -19,7 +19,7 @@ export default class Page extends Component {
   }
 
   goTop () {
-    Anchor.goTo('container')
+    window.scrollTo(0,0)
   }
 
   render () {
@@ -34,7 +34,7 @@ export default class Page extends Component {
             </div>
           </div>
         </section>
-        <Anchor id='container'>
+        <div id='container'>
           <div className='ext-herramientas'>
             <div className='action-btns'>
               {
@@ -74,7 +74,7 @@ export default class Page extends Component {
 
             {/* <img controls className='mapa-municipio' src='https://forosvecinales.blob.core.windows.net/assets/mapa_vicente-lopez.jpg' /> */}
           </div>
-        </Anchor>
+        </div>
         <Jump goTop={this.goTop} />
         <Footer />
       </div>

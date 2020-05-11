@@ -78,6 +78,8 @@ class HomePropuestas extends Component {
   }
 
   componentDidMount () {
+    window.scrollTo(0,0)
+
     // traer forum al state
     forumStore.findOneByName('proyectos')
       .then((forum) => this.setState({ forum }))

@@ -14,7 +14,7 @@ export default class Page extends Component {
   }
 
   goTop () {
-    Anchor.goTo('container')
+    window.scrollTo(0,0)
   }
 
   render () {
@@ -28,7 +28,7 @@ export default class Page extends Component {
             </div>
           </div>
         </section>
-        <Anchor id='container'>
+        <div id='container'>
           <div className='ext-acerca-de container'>
             <div className="filas">
               <div className="fila faq text-left">
@@ -262,7 +262,7 @@ export default class Page extends Component {
               </div>
             </div>
           </div>
-        </Anchor>
+        </div>
         <Jump goTop={this.goTop} />
         <Footer />
       </div>
