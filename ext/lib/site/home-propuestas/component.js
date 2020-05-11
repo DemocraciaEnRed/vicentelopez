@@ -42,7 +42,8 @@ const defaultValues = {
   limit: 20,
   barrio: [],
   anio: ['2020', '2021'],
-  state: ['pendiente', 'factible', 'no-factible', 'integrado'],
+  //state: ['pendiente', 'factible', 'no-factible', 'integrado'],
+  state: [],
   tag: [],
   // 'barrio' o 'newest' o 'popular'
   sort: 'newest'
