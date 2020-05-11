@@ -5,11 +5,12 @@
   padding: 0 !important
 nav.navbar
   box-shadow 1px 1px 1px -1px rgba(#000, .175)
-  padding: 13px 1rem 13px 32px
+  padding: 0 1rem 0 32px
   display: flex
   flex-wrap: wrap
   justify-content: space-between
   align-items: center
+  border-width: 0;
   &:before, &:after
     content: none
   .navbar-brand
@@ -47,13 +48,18 @@ nav.navbar
           @media screen and (min-width: 975px)
             font-weight: bold
   .header-item
-    margin-left 25px
+    height: 80px;
+    padding: 0 20px;
     font-weight: bold
+    display: flex;
+    align-items: center;
+    &:hover
+      background-color: rgb(0, 169, 206)
+      .header-link
+        color: white
     .header-link
       height: auto
       position: relative
-      &:hover
-        color: #8C1E81
   .user-badge-helper
     margin-left 10px
 
