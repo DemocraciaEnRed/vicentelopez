@@ -66,9 +66,9 @@ export default class Carrusel extends Component {
       // cellAlign: 'center',
       // draggable: true,
       // friction: 0.2,
-      contain: this.state.topics.length <= 5,
+      contain: this.state.topics && this.state.topics.length <= 5,
       pageDots: false,
-      wrapAround: this.state.topics.length > 5
+      wrapAround: this.state.topics && this.state.topics.length > 5
     }
     this.flkty = new Flickity(this.refs.carrusel, options)
   }
