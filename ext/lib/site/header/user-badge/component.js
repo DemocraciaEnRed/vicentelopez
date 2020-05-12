@@ -21,10 +21,6 @@ export class UserBadge extends Component {
       canChangeTopics: false,
       forumProyectos: null
     }
-
-    forumStore.findOneByName(config.forumProyectos).then(
-      forum => this.setState({ forumProyectos: forum })
-    )
   }
 
   componentDidMount () {
@@ -43,9 +39,9 @@ export class UserBadge extends Component {
 
   render () {
     const userAttrs = this.props.user.state.value
-    let menuItemAdmin = null
-    let forumProyectos = this.state.forumProyectos
 
+    /*let menuItemAdmin = null
+    let forumProyectos = this.state.forumProyectos
     if (forumProyectos && forumProyectos.privileges && forumProyectos.privileges.canChangeTopics) {
       menuItemAdmin = (
         <li>
@@ -54,7 +50,7 @@ export class UserBadge extends Component {
           </Link>
         </li>
       )
-    }
+    }*/
 
     const classes = ['header-item', 'user-badge', 'user-badge-helper']
 
@@ -69,7 +65,6 @@ export class UserBadge extends Component {
         </button>
         <ul
           className='dropdown-list'>
-          {menuItemAdmin}
           <li>
             <Link to={urlBuilder.for('settings')}>
               {t('header.settings')}

@@ -7,6 +7,7 @@ import UserBadge from 'ext/lib/site/header/user-badge/component'
 import MobileMenu from 'ext/lib/site/header/mobile-menu/component'
 import AnonUser from 'ext/lib/site/header/anon-user/component'
 import ProyectosLink from 'ext/lib/site/header/proyectos-link'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 class Header extends Component {
   constructor (props) {
@@ -15,8 +16,11 @@ class Header extends Component {
     this.state = {
       userForm: null,
       mobileMenu: false,
-      userMenu: false
+      userMenu: false,
+      userPrivileges: null
     }
+
+    props.user.onChange(this.onUserStateChange)
   }
 
   componentWillMount () {
@@ -67,11 +71,20 @@ class Header extends Component {
     }
   }
 
+  onUserStateChange = () => {
+    if (this.props.user.state.fulfilled){
+      forumStore.findOneByName(config.forumProyectos).then(
+        forum => this.setState({ userPrivileges: forum.privileges })
+      )
+    }
+  }
+
   render () {
     const styles = {
       color: config.headerFontColor,
       backgroundColor: config.headerBackgroundColor
     }
+    const showAdmin = this.state.userPrivileges && this.state.userPrivileges.canChangeTopics
     // MEDIA QUERY - Si es menor al breakpoint muestra un menú, si es mayor, otro
     if (window.matchMedia('(max-width: 975px)').matches) {
       return (
@@ -154,14 +167,24 @@ class Header extends Component {
                   Datos
               </Link>
             </div>
-            <div className="header-item">
+            { showAdmin &&
+              <div className="header-item">
+                <Link
+                  to='/proyectos/admin/topics'
+                  className={`header-link ${window.location.pathname.includes('/admin') ? 'active' : ''}`}
+                  activeStyle={{ color: '#8C1E81' }}>
+                    Admin
+                </Link>
+              </div>
+            }
+            {/*<div className="header-item">
               <Link
                 to='/s/herramientas'
                 className='header-link'
                 activeStyle={{ color: '#8C1E81' }}>
                   Herramientas
               </Link>
-            </div>
+            </div>*/}
 
             {/*this.props.user.state.fulfilled && (
               <li className='nav-item'>
