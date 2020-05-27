@@ -267,8 +267,8 @@ class HomePropuestas extends Component {
 
       <div className='ext-home-ideas'>
         <BannerListadoTopics
-          btnText='Mandá tu propuesta'
-          btnLink='/formulario-propuesta'
+          //btnText='Mandá tu propuesta'
+          //btnLink='/formulario-propuesta'
           title='Propuestas'
           />
 
