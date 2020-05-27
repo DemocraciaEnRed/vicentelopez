@@ -11,7 +11,6 @@
 .ext-acerca-de
 .ext-datos
 .ext-terminos-y-condiciones
-.ext-reglamento
 .ext-herramientas
   position: relative
   @media screen and (max-width: 500px)
@@ -170,6 +169,8 @@
     text-align: center
     h3
       font-size: 1.2em
+  div.fila.faq.text-left
+    border: none
   .delegaciones
     display: flex
     flex-wrap: wrap
@@ -184,7 +185,6 @@
         font-weight: bold
 
 .ext-herramientas
-.ext-reglamento
 .ext-datos
   color: #696969 !important
   padding-bottom: 20px
@@ -543,26 +543,6 @@
     padding: 0 15px
   h2
     color: #7cbb42
-.ext-reglamento
-  p, li
-    color: #555
-  .articulo
-    font-weight: bold
-  .underline
-    text-decoration: underline
-  h2
-    color: #7cbb42
-  h4
-    color: #444
-
-  .tabla-presupuestos
-    tbody
-      tr
-        td
-          padding: 10px
-        td:first-child
-          font-weight: bold
-
 .carousel-distribucion-proyectos
   max-width: 1000px
   width: 100%
@@ -628,15 +608,6 @@ table.table.tabla-reuniones.alinear
   width:350px !important
     @media(max-width: 400px)
       width:330px !important
-table.table.tabla-reglamento.alinear
-  border-collapse: collapse;
-  border: 1px solid #f0f0f0;
-  &.tabla-presupuesto
-    width: 350px;
-  td, th
-      border-right: 1px solid #f0f0f0;
-
-
 //VISUALIZADOR DE DATOS
 
 .banner-static

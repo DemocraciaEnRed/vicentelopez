@@ -32,8 +32,6 @@ export default class Page extends Component {
           <div className='ext-acerca-de container'>
             <div className="filas">
               <div className="fila faq text-left">
-                <p className='p-padding'>Podés leer el reglamento completo haciendo click <a href="/s/reglamento">aquí</a></p>
-
                 <Accordion startPosition={-1}>
                   <div data-trigger="+ ¿QUÉ ES EL PRESUPUESTO PARTICIPATIVO DE VICENTE LÓPEZ?">
                     <p className='p-padding'>El Presupuesto Participativo de Vicente López es un espacio de participación a través del cual los vecinos proponen y deciden en qué invertir una parte del presupuesto municipal. Todos los años, y desde hace 8 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos. La partida para el 2021 será de $165 millones.</p>
