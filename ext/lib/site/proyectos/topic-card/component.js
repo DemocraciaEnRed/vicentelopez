@@ -63,7 +63,7 @@ const getBudget = (state) => {
     case 'finalizado':
       return 'project-budget-finalizado'
     default:
-      return false  
+      return false
   }
 }
 
@@ -84,18 +84,18 @@ export default ({ topic, forum }) => {
             <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
             <div className={'topic-status status-active-' + topic.attrs.state}>
               <span>Estado: <b>{states.find((st) => st.value === topic.attrs.state).name}</b></span>
-              <ul className='progress-bar'>
+              <ul className='barra-de-progreso'>
                 <li className='item-preparacion'></li>
                 <li className='item-compra'></li>
                 <li className='item-ejecucion'></li>
                 <li className='item-finalizado'><span>&#10004;</span></li>
               </ul>
             </div>
-          </div> 
+          </div>
         }
         {topic.attrs && topic.attrs.state && topic.attrs.state === 'no-ganador' && (
-          <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>       
-        )} 
+          <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
+        )}
       </div>
       <div className='topic-card-info'>
         <div className='topic-card-body'>

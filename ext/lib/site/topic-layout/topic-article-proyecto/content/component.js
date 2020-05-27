@@ -49,7 +49,7 @@ export default class Content extends Component {
             <div className='box-header'>
               <div className={'topic-status status-active-' + this.props.topicState}>
                 <span>Estado: <b>{states.find((st) => st.value === this.props.presupuesto).title}</b></span>
-                <ul className='progress-bar'>
+                <ul className='barra-de-progreso'>
                   <li className='item-preparacion'></li>
                   <li className='item-compra'></li>
                   <li className='item-ejecucion'></li>
