@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Flickity from 'flickity'
 import { Link } from 'react-router'
 import TopicCard from '../proyectos/topic-card/component'
+import BannerCovidProyectos from 'ext/lib/site/banner-covid-proyectos/component'
 
 export default class Carrusel extends Component {
   constructor (props) {
@@ -84,6 +85,7 @@ export default class Carrusel extends Component {
         <div className="fondo-titulo">
           <h2 className='title'>Proyectos 2020</h2>
         </div>
+        <BannerCovidProyectos />
         <section className='seccion-barrios-factibles container'>
           <div className='seccion-barrios-proyectos-factibles container'>
             <div className='seccion-botones-factibles'>
