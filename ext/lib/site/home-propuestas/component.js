@@ -274,17 +274,15 @@ class HomePropuestas extends Component {
 
         <div className='container'>
           <div className="row">
-            { config.propuestasAbiertas
-              ? (
-                  <div className='notice'>
-                    <h1>{config.propuestasTextoAbiertas}</h1>
-                  </div>
-              ) : (
-                <span className='alert-duedate' >
-                  <span className="text-info">Formulario cerrado, ¡Gracias por participar!</span><br />
-                  {config.propuestasTextoCerradas}
-                </span>
-              )
+            { config.propuestasAbiertas && config.propuestasTextoAbiertas &&
+              <div className='notice'>
+                <h1>{config.propuestasTextoAbiertas}</h1>
+              </div>
+            }
+            { !config.propuestasAbiertas && config.propuestasTextoCerradas &&
+              <div className='notice'>
+                <h1>{config.propuestasTextoCerradas}</h1>
+              </div>
             }
           </div>
         </div>
