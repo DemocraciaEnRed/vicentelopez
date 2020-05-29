@@ -70,7 +70,9 @@ const getBudget = (state) => {
 export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
-  const mostrarMensajeCovid = topic.attrs && topic.attrs.anio == "2020" && ! ['ejecucion', 'finalizado'].includes(topic.attrs.state)
+  //por el momento desactivado el aviso
+  const mostrarMensajeCovid = false
+  //const mostrarMensajeCovid = topic.attrs && topic.attrs.anio == "2020" && ! ['ejecucion', 'finalizado'].includes(topic.attrs.state)
   // const linkTopic = () => { browserHistory.push(`/proyectos/topic/${topic.id}`) }
   return (
     <a href={`/proyectos/topic/${topic.id}`} target="_blank" className='ext-topic-card'>
