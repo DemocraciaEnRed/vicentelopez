@@ -84,6 +84,7 @@ export default class Filter extends Component {
   // Clear all selected items from a filter
   clearFilter = (filter) => (e) => {
     this.props.clearFilter(filter)
+    this.setState({ activeDropdown: null })
     if (filter !== 'barrio') {
       this.setState({
         defaultFilters: [...this.state.defaultFilters, filter],
@@ -100,7 +101,7 @@ export default class Filter extends Component {
           <div className='stage-container'>
             <a className='stage-changer' onClick={this.props.changeStage}>
               {this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores >' : '< Ver seguimiento de proyectos'}
-            
+
             </a>
           </div>
         } */}
@@ -130,7 +131,7 @@ export default class Filter extends Component {
                   ))}
                 </div>
                 <button className='clear-filters' onClick={this.clearFilter('barrio')}>
-                  <span>Borrar filtros</span>
+                  <span>Ver todos</span>
                 </button>
               </div>
             }
@@ -161,7 +162,7 @@ export default class Filter extends Component {
                   ))}
                 </div>
                 <button className='clear-filters' onClick={this.clearFilter('state')}>
-                  <span>Borrar filtros</span>
+                  <span>Ver todos</span>
                 </button>
               </div>
             }
@@ -193,14 +194,14 @@ export default class Filter extends Component {
                   ))}
                 </div>
                 <button className='clear-filters' onClick={this.clearFilter('anio')}>
-                  <span>Borrar filtros</span>
+                  <span>Ver todos</span>
                 </button>
               </div>
               }
             </div>
           {/* } */}
         </div>
-        {this.state.showWinnersLabel && 
+        {this.state.showWinnersLabel &&
           <div className='winners-label'>Proyectos ganadores para ejecutarse en 2020</div>
         }
       </nav>

@@ -4,114 +4,147 @@ import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
-import tagsConnector from 'lib/site/connectors/tags'
+import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
 import TopicCard from './topic-card/component'
+import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
+import FilterPropuestas from './filter-propuestas/component'
 
-const filters = {
-  newest: {
-    text: 'Más Nuevas',
-    sort: 'newest',
-    filter: (topic) => topic.status === 'open',
-    emptyMsg: 'No se encontraron propuestas.'
-  },
-  popular: {
-    text: 'Más Populares',
-    sort: 'popular',
-    filter: (topic) => topic.status === 'open',
-    emptyMsg: 'No se encontraron propuestas.'
-  }
+const barrios = [
+  { 'name': 'Carapachay', 'value': 'carapachay' },
+  { 'name': 'Florida Este', 'value': 'florida-este' },
+  { 'name': 'Florida Oeste', 'value': 'florida-oeste' },
+  { 'name': 'La Lucila', 'value': 'la-lucila' },
+  { 'name': 'Munro', 'value': 'munro' },
+  { 'name': 'Olivos', 'value': 'olivos' },
+  { 'name': 'Vicente López', 'value': 'vicente-lopez' },
+  { 'name': 'Villa Adelina', 'value': 'villa-adelina' },
+  { 'name': 'Villa Martelli', 'value': 'villa-martelli' }
+]
+
+const states = [
+  { 'name': 'Pendiente', 'value': 'pendiente' },
+  { 'name': 'Factible', 'value': 'factible' },
+  { 'name': 'No factible', 'value': 'no-factible' },
+  { 'name': 'Integrado', 'value': 'integrado' },
+]
+
+const anios = ['2018', '2019', '2020', '2021']
+
+let tags = []
+
+// Variables para fases de propuestas abiertas o cerrdas:
+// config.propuestasAbiertas
+// config.propuestasTextoAbiertas
+// config.propuestasTextoCerradas
+// Botón manda a: href='/formulario-propuesta'
+
+const defaultValues = {
+  limit: 20,
+  barrio: [],
+  anio: ['2021'],
+  //state: ['pendiente', 'factible', 'no-factible', 'integrado'],
+  state: [],
+  tag: [],
+  // 'barrio' o 'newest' o 'popular'
+  sort: 'newest'
 }
-
-const filter = (key, items = []) => items.filter(filters[key].filter)
-
-const propuestasAbiertas = config.propuestasAbiertas
-const ListTools = ({ onChangeFilter, activeFilter, handleState, archivadasIsActive }) => (
-  <div className='container'>
-    { propuestasAbiertas &&
-      <div className="row">
-        <div className='notice'>
-          <h1>{config.propuestasTextoAbiertas}</h1>
-        </div>
-      </div>
-    }
-    <div className='row'>
-      <div className='col-md-8 list-tools'>
-        <div className='topics-filter'>
-          {Object.keys(filters).map((key) => (
-            <button
-              key={key}
-              className={`btn btn-secondary btn-sm ${activeFilter === key ? 'active' : ''}`}
-              onClick={() => onChangeFilter(filters[key].sort)}>
-              {filters[key].text}
-            </button>
-          ))}
-          <button
-            className={`btn btn-secondary btn-sm ${archivadasIsActive ? 'active' : ''}`}
-            onClick={ handleState }>
-            Archivadas
-          </button>
-        </div>
-
-        { propuestasAbiertas &&
-          <a
-            href='/formulario-propuesta'
-            className='boton-azul btn propuesta'>
-            Mandá tu propuesta
-          </a>
-        }
-      </div>
-      { !propuestasAbiertas &&
-        <span className='alert-duedate' >
-          <span className="text-info">Formulario cerrado, ¡Gracias por participar!</span><br />
-          {config.propuestasTextoCerradas}
-        </span>
-      }
-    </div>
-  </div>
-)
 
 class HomePropuestas extends Component {
   constructor () {
     super()
 
     this.state = {
-      page: 1,
-      noMore: false,
       forum: null,
       topics: null,
-      tags: null,
-      filter: 'popular',
-      barrio: '',
-      archivadas: false
+
+      anio: defaultValues.anio,
+      barrio: defaultValues.barrio,
+      state: defaultValues.state,
+      tag: defaultValues.tag,
+      sort: defaultValues.sort,
+
+      page: null,
+      noMore: null
     }
+
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleStateChange = this.handleStateChange.bind(this)
+
+    this.getTags()
+  }
+
+  componentWillMount () {
+    if (this.props.location.query.tags)
+      defaultValues.tag.push(this.props.location.query.tags)
   }
 
   componentDidMount () {
-    const u = new window.URLSearchParams(window.location.search)
-    if (u.get('sort') === 'newest') this.setState({ filter: 'newest' })
-    if (u.get('barrio')) this.setState({ barrio: u.get('barrio') })
-    forumStore.findOneByName('proyectos')
-      .then((forum) => {
-        const tags = window.fetch(`/api/v2/all-tags`)
-          .then((res) => res.json())
+    window.scrollTo(0,0)
 
-        return Promise.all([
-          forum,
-          this.fetchTopics(this.state.page),
-          tags
-        ])
-      })
-      .then(([forum, topics, tags]) => {
-        this.setState({
-          forum,
-          topics: filter(this.state.filter, topics),
-          tags: tags.filter((tag) => tag.name !== 'Default')
-            .map((tag) => tag.name)
-        })
-      })
+    // traer forum al state
+    forumStore.findOneByName('proyectos')
+      .then((forum) => this.setState({ forum }))
       .catch((err) => { throw err })
+
+    // traer topics
+    this.fetchTopics()
+  }
+
+  getTags = () => {
+    let res = {}
+    findAllTags(res, () => {
+      let barriosKeys = barrios.map((b) => b.value)
+      let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
+      tags = tagsNoBarrio.filter(t => t.name != 'Default').map((t) => t.name)
+    })
+  }
+
+  fetchTopics = (page) => {
+    page = page || 1
+
+    let query = {
+      forumName: config.forumProyectos,
+      page: page.toString(),
+      limit: defaultValues.limit.toString(),
+
+      anio: this.state.anio,
+      barrio: this.state.barrio,
+      state: this.state.state,
+      tags: this.state.tag,
+      sort: this.state.sort
+    }
+
+    let queryString = Object.keys(query)
+      .filter((k) => query[k] && query[k].length > 0)
+      .map((k) => `${k}=${ Array.isArray(query[k]) ?  query[k].join(',') : query[k] }`)
+      .join('&')
+
+    return window
+      .fetch(`/ext/api/topics?${queryString}`, {credentials: 'include'})
+      .then((res) => res.json())
+      .then((res) => {
+        // pagination contiene: count, page, pageCount, limit
+        this.setState({
+          topics: page == 1 ? res.results.topics : this.state.topics.concat(res.results.topics),
+          page: page,
+          noMore: page >= res.pagination.pageCount
+        })
+        return res.results.topics
+      })
+      .catch((err) => console.error(err))
+  }
+
+  // función cuando hacés click en "Ver Más"
+  paginateForward = () => {
+    const page = this.state.page + 1
+    this.fetchTopics(page)
+  }
+
+  changeTopics () {
+    this.fetchTopics(this.state.page)
+      .then((res) => {
+        this.setState({ topics: res })
+      })
+      .catch((err) => { console.error(err) })
   }
 
   handleInputChange = (evt) => {
@@ -123,80 +156,34 @@ class HomePropuestas extends Component {
     }, () => this.changeTopics())
   }
 
-  handleStateChange () {
+  handleFilter = (filter, value) => {
+    // If the value is not included in the filter array, add it
+    if (!this.state[filter].includes(value)) {
+      this.setState({
+        [filter]: [...this.state[filter], value]
+      }, () => this.fetchTopics())
+      // If it's already included and it's the only filter applied, apply default filters
+    /* } else if (this.state[filter].length === 1) {
+      this.clearFilter(filter) */
+      // If it's already included erase it
+    } else {
+      this.setState({
+        [filter]: [...this.state[filter]].filter((item) => item !== value)
+      }, () => this.fetchTopics())
+    }
+  }
+
+  handleDefaultFilter = (filter, value) => {
     this.setState({
-      archivadas: !this.state.archivadas,
-      page: 1
-    }, () => this.changeTopics())
-    // fix bug que el botón de "Archivadas" parecía como prendido (:focus/:active)
-    // después de desactivarlo/apagarlo
-    if (document.activeElement != document.body) document.activeElement.blur();
+      [filter]: [value]
+    }, () => this.fetchTopics())
   }
 
-  changeTopics () {
-    this.fetchTopics(this.state.page)
-      .then((res) => {
-        this.setState({ topics: res }, () => {
-          if (this.state.barrio !== '') {
-            const u = new window.URLSearchParams(window.location.search)
-            const link = u.get('tags')
-              ? `/propuestas?barrio=${this.state.barrio}&tags=${u.get('tags')}`
-              : `/propuestas?barrio=${this.state.barrio}`
-            browserHistory.push(link)
-          }
-        })
-      })
-      .catch((err) => { console.error(err) })
-  }
-
-  fetchTopics = (page) => {
-    const query = {
-      forumName: 'proyectos',
-      sort: this.state.filter === 'newest' ? 'newest' : 'popular',
-      page: page,
-      // A MEJORAR: con estos parámetros las no-factibles del 2021 no aparecen en ningún lado
-      state: (this.state.archivadas ? 'no-factible,' : '') + 'factible,pendiente,no-factible,integrado,no-ganador,preparacion,compra,ejecucion,finalizado',
-      anio: this.state.archivadas ? '2020,2019' : '2021'
-    };
-    const u = new window.URLSearchParams(window.location.search)
-    if (u.has('tags')) query.tags = u.get('tags')
-    if (this.state.barrio !== '') query.barrio = this.state.barrio
-    let queryToArray = Object.keys(query).map((key) => {
-      return `${key}=${query[key]}`
-    }).join('&')
-    return window.fetch(`/ext/api/topics?${queryToArray}`, {
-      credentials: 'include'
-    })
-      .then((res) => res.json())
-      .then((res) => res.results.topics)
-  }
-
-  paginateForward = () => {
-    const page = this.state.page + 1
-
-    this.fetchTopics(page)
-      .then((topics) => {
-        this.setState({
-          topics: this.state.topics.concat(topics),
-          noMore: topics.length === 0 || topics.length < 20,
-          page
-        })
-      })
-      .catch((err) => { console.error(err) })
-  }
-
-  handleFilterChange = (key) => {
-    this.setState({ filter: key }, () => {
-      this.fetchTopics(1)
-        .then((topics) => {
-          this.setState({
-            topics,
-            noMore: topics.length === 0 || topics.length < 20,
-            page: 1
-          })
-        })
-        .catch((err) => { console.error(err) })
-    })
+  // Clear all selected items from a filter
+  clearFilter = (filter) => {
+    this.setState({
+      [filter]: []
+    }, () => this.fetchTopics())
   }
 
   handleVote = (id) => {
@@ -238,7 +225,7 @@ class HomePropuestas extends Component {
         return topic.id == id
       })
       let topicsCopy = this.state.topics
-      console.log(res)
+
       if(res.message === 'Suscribed') {
         if(topicsCopy[index].attrs.subscribers){
           let aux = topicsCopy[index].attrs.subscribers.split(',')
@@ -261,59 +248,74 @@ class HomePropuestas extends Component {
     }).catch((err) => { throw err })
   }
 
+  handleRemoveBadge = (option) => (e) => {
+    // feísimo, feísimo
+    if (this.state.anio.includes(option)){
+      this.setState({ anio: this.state.anio.filter(i => i != option) })
+    }else if (this.state.state.includes(option)){
+      this.setState({ state: this.state.state.filter(i => i != option) })
+    }else if (this.state.barrio.includes(option)){
+      this.setState({ barrio: this.state.barrio.filter(i => i != option) })
+    }else if (this.state.tag.includes(option)){
+      this.setState({ tag: this.state.tag.filter(i => i != option) })
+    }
+  }
+
   render () {
-    const { forum, topics, tags } = this.state
+    const { forum, topics } = this.state
     return (
 
       <div className='ext-home-ideas'>
-        <ListTools
-          handleState={this.handleStateChange}
-          archivadasIsActive={this.state.archivadas}
-          activeFilter={this.state.filter}
-          onChangeFilter={this.handleFilterChange} />
-        <div className='container topics-container'>
-          <div className='row'>
-            <div className='col-md-4 push-md-8 etiquetas'>
-              <div className='row'>
-                <div className='col-md-12'>
-                  <div className='form-group'>
-                    <h3>Barrio</h3>
-                    <select
-                      className='form-control'
-                      required
-                      name='barrio'
-                      value={this.state['barrio']}
-                      onChange={this.handleInputChange}>
-                      <option value=''>Seleccione un barrio</option>
-                      <option value='villa-martelli'>Villa Martelli</option>
-                      <option value='villa-adelina'>Villa Adelina</option>
-                      <option value='vicente-lopez'>Vicente Lopez</option>
-                      <option value='olivos'>Olivos</option>
-                      <option value='munro'>Munro</option>
-                      <option value='la-lucila'>La Lucila</option>
-                      <option value='florida-oeste'>Florida Oeste</option>
-                      <option value='florida-este'>Florida Este</option>
-                      <option value='carapachay'>Carapachay</option>
-                    </select>
-                  </div>
-                </div>
-                <div className='col-md-12'>
-                  <h3>Temas</h3>
-                  {forum && <TagsList tags={tags} forumName={forum.name} without={forum.initialTags} barrio={this.state.barrio}/>}
-                </div>
-              </div>
+        <BannerListadoTopics
+          //btnText='Mandá tu propuesta'
+          //btnLink='/formulario-propuesta'
+          title='Propuestas'
+          />
 
-            </div>
-            <div className='col-md-8 pull-md-4'>
+        <div className='container'>
+          <div className="row">
+            { config.propuestasAbiertas && config.propuestasTextoAbiertas &&
+              <div className='notice'>
+                <h1>{config.propuestasTextoAbiertas}</h1>
+              </div>
+            }
+            { !config.propuestasAbiertas && config.propuestasTextoCerradas &&
+              <div className='notice'>
+                <h1>{config.propuestasTextoCerradas}</h1>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div className='container topics-container'>
+
+          <FilterPropuestas
+            barrios={barrios}
+            barrio={this.state.barrio}
+            states={states}
+            state={this.state.state}
+            anios={anios}
+            anio={this.state.anio}
+            tags={tags}
+            tag={this.state.tag}
+            openVotation={true}
+            handleFilter={this.handleFilter}
+            handleDefaultFilter={this.handleDefaultFilter}
+            clearFilter={this.clearFilter}
+            handleRemoveBadge={this.handleRemoveBadge} />
+
+          <div className='row'>
+            <div className='col-md-10 offset-md-1'>
               {topics && topics.length === 0 && (
                 <div className='empty-msg'>
                   <div className='alert alert-success' role='alert'>
-                    {filters[this.state.filter].emptyMsg}
+                    No se encontraron propuestas.
                   </div>
                 </div>
               )}
               {topics && topics.map((topic, i) => (
                 <TopicCard
+                  barrio={topic.attrs && barrios.find(b => b.value == topic.attrs.barrio)}
                   onSubscribe={this.handleSubscribe}
                   onVote={this.handleVote}
                   key={`${topic.id}-${i}`}
@@ -331,34 +333,6 @@ class HomePropuestas extends Component {
       </div>
     )
   }
-}
-
-const TagsList = ({ tags, forumName, without, barrio }) => {
-  const u = new window.URLSearchParams(window.location.search)
-  if (without) tags = tags.filter((t) => !~without.indexOf(t))
-  return tags && tags.length > 0 && (
-    <div className='forum-tags'>
-      {tags.map((tag, i) => {
-        let active = ''
-        let url = barrio === '' ? `${window.location.origin}/propuestas?tags=${tag}` :
-          `${window.location.origin}/propuestas?barrio=${barrio}&tags=${tag}`
-
-        if (u.has('tags') && u.get('tags') === tag) {
-          active = 'active'
-          url = `${window.location.origin}/propuestas`
-        }
-
-        return (
-          <a
-            className={`badge badge-default ${active}`}
-            href={url}
-            key={`${tag}-${i}`}>
-            {tag}
-          </a>
-        )
-      })}
-    </div>
-  )
 }
 
 export default userConnector(HomePropuestas)

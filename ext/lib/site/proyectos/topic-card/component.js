@@ -63,39 +63,45 @@ const getBudget = (state) => {
     case 'finalizado':
       return 'project-budget-finalizado'
     default:
-      return false  
+      return false
   }
 }
 
 export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
+  //const mostrarMensajeCovid = topic.attrs && topic.attrs.anio == "2020" && ! ['ejecucion', 'finalizado'].includes(topic.attrs.state)
+  const mostrarMensajeCovid = topic.attrs && topic.attrs.anio == "2020" && topic.suspendido && topic.suspendido == true
   // const linkTopic = () => { browserHistory.push(`/proyectos/topic/${topic.id}`) }
   return (
     <a href={`/proyectos/topic/${topic.id}`} target="_blank" className='ext-topic-card'>
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}>
-        {topic.attrs && topic.attrs.hasOwnProperty('budget') && topic.attrs.budget !== 0 &&
+
+        {mostrarMensajeCovid &&
+          <div className='topic-status'>Ejecución postergada por emergencia sanitaria</div>
+        }
+        {!mostrarMensajeCovid && topic.attrs && topic.attrs.hasOwnProperty('budget') && topic.attrs.budget !== 0 &&
           <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
         }
-        {topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
+        {!mostrarMensajeCovid && topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
           <div>
             <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
             <div className={'topic-status status-active-' + topic.attrs.state}>
               <span>Estado: <b>{states.find((st) => st.value === topic.attrs.state).name}</b></span>
-              <ul className='progress-bar'>
+              <ul className='barra-de-progreso'>
                 <li className='item-preparacion'></li>
                 <li className='item-compra'></li>
                 <li className='item-ejecucion'></li>
                 <li className='item-finalizado'><span>&#10004;</span></li>
               </ul>
             </div>
-          </div> 
+          </div>
         }
-        {topic.attrs && topic.attrs.state && topic.attrs.state === 'no-ganador' && (
-          <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>       
-        )} 
+        {!mostrarMensajeCovid && topic.attrs && topic.attrs.state && topic.attrs.state === 'no-ganador' && (
+          <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
+        )}
       </div>
       <div className='topic-card-info'>
         <div className='topic-card-body'>

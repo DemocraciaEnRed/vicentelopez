@@ -3,12 +3,12 @@
 
   &.active
     button
-      background rgba(0,0,0,.1)
+      background inherit
     .dropdown-list
       display block
 
   button
-    color inherit
+    color black
     background none
     border none
     cursor pointer
@@ -28,6 +28,7 @@
 
     img
       margin 0
+      margin-right 10px
       width 32px
       height 32px
       border-radius 100px
@@ -35,7 +36,11 @@
         width 36px
         height 36px
 
-      
+    .glyphicon
+      margin-left 5px
+      top 1px
+      font-size 12px
+
   .dropdown-list
     display none
     position absolute
@@ -43,7 +48,7 @@
     right 0
     z-index 1000
     padding 0
-    width auto
+    width 100%
     font-size 14px
     white-space nowrap
     list-style none

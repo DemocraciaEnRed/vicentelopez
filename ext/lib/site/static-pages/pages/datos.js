@@ -16,7 +16,7 @@ export default class Page extends Component {
   }
 
   goTop () {
-    Anchor.goTo('container')
+    window.scrollTo(0,0)
   }
 
   render () {
@@ -33,7 +33,7 @@ export default class Page extends Component {
         <Banner400Proyectos/>
         <br/>
         <br/>
-        <Anchor id='container'>
+        <div id='container'>
 
           <div className='ext-datos'>
             <p className="text">
@@ -232,7 +232,7 @@ export default class Page extends Component {
               </div>
             </div>
           </div>
-        </Anchor>
+        </div>
         <Jump goTop={this.goTop} />
         <Footer />
       </div>

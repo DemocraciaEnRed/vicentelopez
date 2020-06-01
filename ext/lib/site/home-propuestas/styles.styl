@@ -1,52 +1,11 @@
 .ext-home-ideas
   @import './topic-card/styles'
-  .badge
-    background-color: #999
-  .etiquetas
-    h3
-      margin: 0 0 10px 0
-      font-size: 20px
-      color: #666
-      font-weight: 500
-
-    .forum-tags
-      font-size: 1.3em
-      margin-bottom: 15px
-      a
-        background-color: #1D9DC1
-        font-size: .65em
-        border-radius: 35px
-        color: #fff
-        padding:6px 10px 6px 10px
-        font-weight: normal
-        text-decoration: none !important
-      a:hover
-        text-decoration: none !important
-        color: #fff !important
-      .badge
-        margin: 0 .4em .4em 0
-        white-space: normal;
-
-        &.active
-          background: #ccc
-
-  .list-tools
-    display: flex
-    align-items: center
-    justify-content: space-between
-    margin: 2em 0 1em
-    a.boton-azul
-      font-size: 20px
-      padding: 10px
-
-  .topics-filter
-    display: inline-block
-    button
-      box-shadow: none
+  @import './filter-propuestas/styles'
 
   button
     border: none
     margin-right: .5em
+
   .more-topics
     width: 100%
     padding: 0 0 20px 0
@@ -63,45 +22,29 @@
       font-size: 20px
       text-transform: uppercase
 
+  .notice
+    h1
+      margin: 0;
+      font-size: 1.6rem;
+      @media screen and (min-width: 600px)
+        font-size: 2rem;
+    margin: -1.5em auto 0em
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7cbb42;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
 
-
-a.boton-azul.btn.propuesta
-  // display: none
-  font-size: 15px !important
-  background-color: #7cbb42
-  padding: 10px 20px;
-  box-shadow: none
-  border-radius: 8px;
-  &:hover
-    color: #FFF
-    background-color: #099dc3
-
-
-.alert-duedate
-  display: block
-  float:left
-  font-size: 0.9em
-  color: #666
-  margin: 15px
-  font-style: italic
-  max-width: 345px
-  @media screen and (min-width: 600px)
-    padding-top:30px
-
-.etiquetas&.barrio
-  padding-rop:20px !important
-
-.notice
-  h1
-    margin: 0;
-    font-size: 1.6rem;
+  .alert-duedate
+    display: block
+    float:left
+    font-size: 0.9em
+    color: #666
+    margin: 15px
+    font-style: italic
+    max-width: 345px
     @media screen and (min-width: 600px)
-      font-size: 2rem;
-  margin: 3em auto 0em
-  padding: 10px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #7cbb42;
-  color: #fff;
-  text-align: center;
+      padding-top:30px

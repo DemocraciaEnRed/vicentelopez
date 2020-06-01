@@ -4,12 +4,16 @@
       ul.settings-menu
         li.heading= t('settings.title')
         li: a(href=urlBuilder.for('settings.profile'))
+          span.glyphicon.glyphicon-user
           = t('settings.profile')
         li: a(href=urlBuilder.for('settings.password'))
+          span.glyphicon.glyphicon-asterisk
           = t('password')
         li: a(href=urlBuilder.for('settings.notifications'))
+          span.glyphicon.glyphicon-bullhorn
           = t('settings.notifications')
         - if (user.staff)
           li: a(href=urlBuilder.for('settings.user-badges'))
-            = t('settings.user-badges')
+            span.glyphicon.glyphicon-tags
+            span.menu-name= t('settings.user-badges')
     .settings-content

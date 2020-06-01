@@ -14,7 +14,7 @@ export default class Page extends Component {
   }
 
   goTop () {
-    Anchor.goTo('container')
+    window.scrollTo(0,0)
   }
 
   render () {
@@ -28,63 +28,17 @@ export default class Page extends Component {
             </div>
           </div>
         </section>
-        <Anchor id='container'>
+        <div id='container'>
           <div className='ext-acerca-de container'>
             <div className="filas">
               <div className="fila faq text-left">
-                <p className='p-padding'>Podés leer el reglamento completo haciendo click <a href="/s/reglamento">aquí</a></p>
-
                 <Accordion startPosition={-1}>
                   <div data-trigger="+ ¿QUÉ ES EL PRESUPUESTO PARTICIPATIVO DE VICENTE LÓPEZ?">
-                    <p className='p-padding'>El Presupuesto Participativo de Vicente López es un espacio de participación a través del cual los vecinos proponen y deciden en qué invertir una parte del presupuesto municipal. Todos los años, y desde hace 8 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos. La partida para el 2021 será de $165 millones.</p>
+                    <p className='p-padding'>El Presupuesto Participativo de Vicente López es un espacio de participación a través del cual los vecinos proponen y deciden en qué invertir una parte del presupuesto municipal. Todos los años, y desde hace 9 años, se asigna y comunica una partida por barrio para la ejecución de estos proyectos. </p>
                   </div>
 
                    <div data-trigger="+ ¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?">
-                     <p className='p-padding'>La partida de $165 millones, que corresponderá al presupuesto 2021, se repartirá según dos criterios: los primeros 53 millones por partes iguales a cada uno de los 9 barrios. Y los siguientes 57 millones según la cantidad de habitantes de cada barrio. Así, los barrios con más población, reciben más partida presupuestaria.</p>
-                     <table className='table tabla-reuniones alinear'>
-                       <tbody>
-                         <tr>
-                           <td>OLIVOS</td>
-                           <td>$ 21.621.796</td>
-                         </tr>
-                         <tr>
-                           <td>MUNRO</td>
-                           <td>$ 21.621.796</td>
-                         </tr>
-                         <tr>
-                           <td>FLORIDA ESTE</td>
-                           <td>$ 21.621.796</td>
-                         </tr>
-                         <tr>
-                           <td>VILLA MARTELLI</td>
-                           <td>$ 18.187.176</td>
-                         </tr>
-                         <tr>
-                           <td>FLORIDA OESTE</td>
-                           <td>$ 18.187.176</td>
-                         </tr>
-                         <tr>
-                           <td>VICENTE LÓPEZ</td>
-                           <td>$ 18.187.176</td>
-                         </tr>
-                         <tr>
-                           <td>CARAPACHAY</td>
-                           <td>$ 15.191.028</td>
-                         </tr>
-                         <tr>
-                           <td>VILLA ADELINA</td>
-                           <td>$ 15.191.028</td>
-                         </tr>
-                         <tr>
-                           <td>LA LUCILA</td>
-                           <td>$ 15.191.028</td>
-                         </tr>
-                         <tr>
-                           <td>TOTAL</td>
-                           <td>$ 165.000.000</td>
-                         </tr>
-                       </tbody>
-                     </table>
+                     <p className='p-padding'>La partida asignada al Programa se distribuye según dos criterios: el 50% por partes iguales a cada uno de los 9 barrios. Y el otro 50% según la cantidad de habitantes de cada barrio. Así, los barrios con más población, reciben más partida presupuestaria.</p>
                    </div>
 
                    <div data-trigger="+ ¿QUIÉN PUEDE PRESENTAR PROPUESTAS?">
@@ -96,16 +50,16 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿CÓMO SE ELABORAN LOS PROYECTOS?">
-                   <p>En una serie de reuniones informativas, los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio.También podés presentar tu propuesta en esta plataforma. Este año 2020, tenés tiempo hasta el 31 de mayo inclusive.</p>
+                   <p>En una serie de reuniones informativas, los vecinos y los representantes de las entidades se encuentran con funcionarios municipales para presentarles propuestas para cada barrio. Las propuestas luego se cargan en esta plataforma.</p>
                    </div>
 
                    <div data-trigger="+ ¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?">
                    <p>Podés presentar:</p>
                    <p>1. Propuestas de obras o equipamiento para: espacios públicos, escuelas de gestión pública, centros de salud municipales, polideportivos, sociedades de fomento, centros de jubilados, sociedades de fomento, clubes, entre otros. La condición es que sean entidades sin fines de lucro.</p>
-                   <p>2. También podés presentar propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución (2021), en caso de que los vecinos las elijan.</p>
+                   <p>2. También podés presentar propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución que le corresponda a esa propuesta, en caso de que los vecinos la elijan.</p>
                    <p>3. Las propuestas no pueden involucrar gastos en recursos humanos que incrementen la planta de empleados municipales.</p>
-                   <p>4. Tenés que presentarla para un barrio en concreto. No puede ser una propuesta para todo el Municipio, o en todo caso, tenés que presentarla en todos los barrios.</p>
-                   <p>5. El presupuesto máximo de la propuesta no puede superar los $ 4.500.000.</p>
+                   <p>4. Tenés que acotarla a un barrio (localidad) en concreto. No puede ser una propuesta para todo el Municipio.</p>
+                   <p>5. El presupuesto máximo de la propuesta no puede superar un monto determinado (para los proyectos a ejecutar en 2020 fue de $ 4.500.000).</p>
                    <p>6. La propuesta no puede referirse a un espacio que no esté en jurisdicción del Municipio de Vicente López, a excepción de las escuelas públicas de gestión provincial.</p>
                    </div>
 
@@ -130,11 +84,11 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿POR QUÉ PUEDEN PARTICIPAR CON PROPUESTAS LAS ESCUELAS PÚBLICAS DE GESTIÓN PROVINCIAL EN EL PRESUPUESTO PARTICIPATIVO?">
-                   <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto. Para 2020, el límite por barrio se estableció en $4.5 millones y de hasta $4.5 millones por escuela.</p>
+                   <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto. Para 2020, el límite por barrio se estableció en $4.5 millones y de hasta $3 millones por escuela.</p>
                    </div>
 
                    <div data-trigger="+ ¿CUÁNDO Y DÓNDE VOTO?">
-                   <p>La votación estará abierta desde el <b>lunes 28 de septiembre hasta el domingo 11 de octubre de 2020</b>. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.</p>
+                   <p>La votación se realiza entre los meses de septiembre y octubre de cada año. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.</p>
                    </div>
 
                    <div data-trigger="+ ¿CÓMO VOTO?">
@@ -150,7 +104,7 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿CUÁNDO SE CUENTAN LOS VOTOS?">
-                   <p>El escrutinio de la votación 2020 se realizará los días 14, 15 y 16 de octubre de 2020 a partir de las 9 hs en lugar a designar por la Subsecretaría de Participación Ciudadana. Cada uno de esos días, se contarán los votos de 3 barrios. Esta información se dará 15 días antes del comienzo de la votación.</p>
+                   <p>El escrutinio de cada votación se realiza durante los 4 subsiguientes a la finalización de la votación en lugar a designar por la Subsecretaría de Participación Ciudadana. </p>
                    </div>
 
                    <div data-trigger="+ ¿SE PUEDE PRESENCIAR EL ESCRUTINIO?">
@@ -262,7 +216,7 @@ export default class Page extends Component {
               </div>
             </div>
           </div>
-        </Anchor>
+        </div>
         <Jump goTop={this.goTop} />
         <Footer />
       </div>
