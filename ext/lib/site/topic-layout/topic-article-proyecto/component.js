@@ -99,7 +99,7 @@ class TopicArticle extends Component {
       case 'finalizado':
         return 'project-budget-finalizado'
       default:
-        return false  
+        return false
     }
   }
   handleCreateTopic = () => {
@@ -175,7 +175,20 @@ class TopicArticle extends Component {
         <AdminActions forum={forum} topic={topic} />
           </div>
         {topic.clauses && topic.clauses.length > 0 ?
-          <Content twitterText={twitterText} socialLinksUrl={socialLinksUrl} lat={topic.attrs.lat} long={topic.attrs.long} barrio={topic.attrs.barrio} anio={topic.attrs.anio} clauses={topic.clauses} presupuesto={topic.attrs.state} topicState={topic.attrs.state} budget={topic.attrs[this.getBudget(topic.attrs.state)]} votos={topic.attrs.votos}/> :
+          <Content
+            twitterText={twitterText}
+            socialLinksUrl={socialLinksUrl}
+            lat={topic.attrs.lat}
+            long={topic.attrs.long}
+            barrio={topic.attrs.barrio}
+            anio={topic.attrs.anio}
+            clauses={topic.clauses}
+            presupuesto={topic.attrs.state}
+            topicState={topic.attrs.state}
+            budget={topic.attrs[this.getBudget(topic.attrs.state)]}
+            votos={topic.attrs.votos}
+            topic={topic}/>
+          :
           <DefaultContent
             problema={topic.attrs.problema}
             solucion={topic.attrs.solucion}
@@ -214,7 +227,7 @@ class TopicArticle extends Component {
           {
             this.props.topic.tags && this.props.topic.tags.map((tag, i) => <a href={`${window.location.origin}${urlBuilder.for('site.forum', { forum: this.props.forum.name })}?tag=${tag}`} key={i}>#{tag}</a>)
           }
-        </div>  
+        </div>
         {
           !user.state.pending && <Comments forum={forum} topic={topic} />
         }
