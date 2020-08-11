@@ -118,6 +118,10 @@ export default class Page extends Component {
                    <div data-trigger="+ ¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?">
                    <p>Mandanos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
                    </div>
+
+                   <div data-trigger="+ ¿DÓNDE ENCUENTRO LOS TÉRMINOS Y CONDICIONES DE LA PLATAFORMA?">
+                   <p>Los términos y condiciones los podés encontrar haciendo <Link to='/s/terminos-y-condiciones'>click acá</Link>.</p>
+                   </div>
                 </Accordion>
 
               </div>
