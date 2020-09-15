@@ -13,7 +13,6 @@ import Anchor from 'ext/lib/site/anchor'
 import Filter from './filter/component'
 import TopicGrid from './grid/component'
 import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
-import BannerCovidProyectos from 'ext/lib/site/banner-covid-proyectos/component'
 
 const defaultValues = {
   'votacion': {
@@ -219,7 +218,6 @@ export class HomeProyectos extends Component {
               stage={this.state.stage}
               clearFilter={this.clearFilter}
               openVotation={true} />
-            <BannerCovidProyectos />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>
