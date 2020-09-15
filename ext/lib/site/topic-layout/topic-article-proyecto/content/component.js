@@ -42,26 +42,20 @@ export default class Content extends Component {
           .replace(/<a/g, '<a rel="noopener noreferer" target="_blank"')
       }
     }
-    const { topic } = this.props
-    const mostrarMensajeCovid = topic.attrs && topic.attrs.anio == "2020" && topic.suspendido && topic.suspendido == true
     return (
       <div className='entry-content topic-article-content skeleton-proyecto'>
         { this.props.topicState !== 'factible' && this.props.topicState !== 'no-ganador' && (
           <div className='topic-article-content proyecto-ganador'>
             <div className='box-header'>
-              {mostrarMensajeCovid ?
-                <div className='topic-status'>Ejecución postergada por emergencia sanitaria</div>
-                :
-                <div className={'topic-status status-active-' + this.props.topicState}>
-                  <span>Estado: <b>{states.find((st) => st.value === this.props.presupuesto).title}</b></span>
-                  <ul className='barra-de-progreso'>
-                    <li className='item-preparacion'></li>
-                    <li className='item-compra'></li>
-                    <li className='item-ejecucion'></li>
-                    <li className='item-finalizado'><span>&#10004;</span></li>
-                  </ul>
-                </div>
-              }
+              <div className={'topic-status status-active-' + this.props.topicState}>
+                <span>Estado: <b>{states.find((st) => st.value === this.props.presupuesto).title}</b></span>
+                <ul className='barra-de-progreso'>
+                  <li className='item-preparacion'></li>
+                  <li className='item-compra'></li>
+                  <li className='item-ejecucion'></li>
+                  <li className='item-finalizado'><span>&#10004;</span></li>
+                </ul>
+              </div>
             </div>
             <div className='box-content'>
               <div className='topic-info'>
