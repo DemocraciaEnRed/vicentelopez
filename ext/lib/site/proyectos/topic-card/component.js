@@ -70,21 +70,16 @@ const getBudget = (state) => {
 export default ({ topic, forum }) => {
   const topicUrl = `${window.location.origin}${topic.url}`
   const twitterDesc = encodeURIComponent(`Mirá el proyecto que quiero para mi barrio ${topicUrl}`)
-  const mostrarMensajeCovid = topic.attrs && topic.attrs.anio == "2020" && ! ['ejecucion', 'finalizado'].includes(topic.attrs.state)
   // const linkTopic = () => { browserHistory.push(`/proyectos/topic/${topic.id}`) }
   return (
     <a href={`/proyectos/topic/${topic.id}`} target="_blank" className='ext-topic-card'>
       <div
         className='portada topic-card-cover'
         style={{ backgroundImage: `url(${topic.coverUrl ? topic.coverUrl : 'ext/lib/site/VialCosteroVteLopezImgBanner.jpg'})` }}>
-
-        {mostrarMensajeCovid &&
-          <div className='topic-status'>Ejecución postergada por emergencia sanitaria</div>
-        }
-        {!mostrarMensajeCovid && topic.attrs && topic.attrs.hasOwnProperty('budget') && topic.attrs.budget !== 0 &&
+        {topic.attrs && topic.attrs.hasOwnProperty('budget') && topic.attrs.budget !== 0 &&
           <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
         }
-        {!mostrarMensajeCovid && topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
+        {topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
           <div>
             <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
             <div className={'topic-status status-active-' + topic.attrs.state}>
@@ -98,7 +93,7 @@ export default ({ topic, forum }) => {
             </div>
           </div>
         }
-        {!mostrarMensajeCovid && topic.attrs && topic.attrs.state && topic.attrs.state === 'no-ganador' && (
+        {topic.attrs && topic.attrs.state && topic.attrs.state === 'no-ganador' && (
           <p className='winner'>{states.find((st) => st.value === topic.attrs.state).name}</p>
         )}
       </div>
