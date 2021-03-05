@@ -65,6 +65,7 @@
           - if (te('admin-topics-form.description.summary'))
             span.help-text= t('admin-topics-form.description.summary')
           textarea.form-control(name='body')= topic.body
+          input(type='hidden', name='method.action', value=topic.action.method)
 
         - if (forum.topicsAttrs.length > 0)
           fieldset.attrs-wrapper
