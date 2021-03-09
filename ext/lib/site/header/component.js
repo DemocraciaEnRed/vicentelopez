@@ -167,6 +167,14 @@ class Header extends Component {
                   Datos
               </Link>
             </div>
+            <div className="header-item">
+              <Link
+                to='/s/herramientas'
+                className='header-link'
+                activeStyle={{ color: '#8C1E81' }}>
+                  Herramientas
+              </Link>
+            </div>
             { showAdmin &&
               <div className="header-item">
                 <Link
@@ -177,14 +185,6 @@ class Header extends Component {
                 </Link>
               </div>
             }
-            {/*<div className="header-item">
-              <Link
-                to='/s/herramientas'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                  Herramientas
-              </Link>
-            </div>*/}
 
             {/*this.props.user.state.fulfilled && (
               <li className='nav-item'>

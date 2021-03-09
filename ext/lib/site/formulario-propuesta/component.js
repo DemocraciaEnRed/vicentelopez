@@ -34,6 +34,7 @@ class FormularioPropuesta extends Component {
       availableTags: [],
       selectedTag: '',
       acceptedTerms: false,
+      tag: '',
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -55,6 +56,7 @@ class FormularioPropuesta extends Component {
             titulo: topic.mediaTitle,
             nombre: topic.attrs.nombre,
             domicilio: topic.attrs.domicilio,
+            tag: topic.tag,
             documento: topic.attrs.documento,
             telefono: topic.attrs.telefono,
             email: topic.attrs.email,
@@ -81,7 +83,7 @@ class FormularioPropuesta extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    const formData = {
+    let formData = {
       forum: this.state.forum.id,
       mediaTitle: this.state.titulo,
       'attrs.nombre': this.state.nombre,
@@ -103,6 +105,7 @@ class FormularioPropuesta extends Component {
     if (this.state.mode === 'new') {
       this.crearPropuesta(formData)
     } else {
+      formData.tag = this.state.tag.id
       this.editarPropuesta(formData)
     }
   }
@@ -274,7 +277,7 @@ class FormularioPropuesta extends Component {
     return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
-          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2020</h1>
+          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2021</h1>
           <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p>
           {//<p>¡Gracias a todos y todas por participar!</p>
           }
@@ -368,7 +371,7 @@ class FormularioPropuesta extends Component {
               <p className="important">Requisitos para que los proyectos sean factibles:</p>
               <ul>
                 <li>Serán factibles las propuestas de obras o equipamiento para entidades sin fines de lucro (polideportivos, sociedades de fomento,  centros de jubilados, espacios públicos, escuelas de gestión pública, centros de salud    municipales, etc).</li>
-                <li>Serán factibles campañas o talleres sobre un tema específico cuya ejecución sólo sea durante el 2021.</li>
+                <li>Serán factibles campañas o talleres sobre un tema específico cuya ejecución sólo sea durante el 2022.</li>
                 <li>No serán factibles las propuestas que impliquen un gasto corriente (recursos humanos que incrementen la planta municipal).</li>
                 <li>Cada propuesta se debe presentar para un solo barrio. (No se puede presentar una propuesta para todo el Municipio)</li>
                 <li>El presupuesto máximo de la propuesta no puede superar los $ 4.500.000.</li>

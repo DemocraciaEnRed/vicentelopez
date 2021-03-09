@@ -19,6 +19,12 @@ export default function ThumbsVoto(props) {
               //  <a href="https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
               //</div>
               }
+              {props.enablePropuestas && <Link
+                to='/formulario-propuesta'
+                className="boton-azul boton-blanco">
+                Mandá tu propuesta
+              </Link>
+              }
               {/*<Link
                 to='/proyectos'
                 className="boton-azul boton-blanco">
