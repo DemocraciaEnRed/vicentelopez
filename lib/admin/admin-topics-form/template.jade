@@ -15,8 +15,12 @@
     h2
       = t(form.title)
       - if (form.type === 'edit')
+        a(class='btn btn-link btn-md', href='/propuestas/topic/' + topic.id, target='_blank')
+          = 'Ver propuesta'
+          | &nbsp;
+          i.icon-eye
         a(class='btn btn-link btn-md', href=topic.url, target='_blank')
-          = t('admin-topics-form.title.preview')
+          = 'Ver proyecto'
           | &nbsp;
           i.icon-eye
     include commands

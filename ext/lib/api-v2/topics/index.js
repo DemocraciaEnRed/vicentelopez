@@ -10,6 +10,7 @@ const apiv2 = require('lib/api-v2/db-api')
 var config = require('lib/config')
 var utils = require('lib/utils')
 var expose = utils.expose
+const Tag = require('lib/models').Tag
 
 const app = module.exports = express.Router()
 
@@ -37,16 +38,68 @@ class CantUploadProposal extends Error {
   }
 }
 
-const defaultValues = () => ({
-  'attrs.subscribers': '',
-  'attrs.anio': '2021', //TODO Variable de entorno que se pueda setear el año
-  'attrs.state': 'pendiente',
-  'action.method': 'cause',
-  tag: '59665fe8724f61003327eb2f' //Esto debe ser un id de un document de la collection "tags" de la bd.
-})
+const defaultValues = (defaultTag) => {
+  if(defaultTag){
+      return {
+        'attrs.subscribers': '',
+        'attrs.anio': config.propuestasAnio, //TODO Variable de entorno que se pueda setear el año
+        'attrs.state': 'pendiente',
+        'action.method': 'cause',
+        tag: defaultTag.id //Esto debe ser un id de un document de la collection "tags" de la bd.
+      }
+    } 
+    else {
+      return {
+        'attrs.subscribers': '',
+        'attrs.anio': config.propuestasAnio, //TODO Variable de entorno que se pueda setear el año
+        'attrs.state': 'pendiente',
+        'action.method': 'cause'
+      }
+    }
+  }
+  // let theTag = null
+  // Tag.findOne({
+  //   name: 'Default',
+  // }).exec().then((tag) => {
+  //   Promise.resolve({
+  //     'attrs.subscribers': '',
+  //     'attrs.anio': '2021', //TODO Variable de entorno que se pueda setear el año
+  //     'attrs.state': 'pendiente',
+  //     'action.method': 'cause',
+  //     tag: theTag.id //Esto debe ser un id de un document de la collection "tags" de la bd.
+  //   })
+  // })
+
+  // return api.tag.search('default', function (err, tag) {
+  //   console.log(tag)
+  //   if (err) throw new CantUploadProposal()
+  //   return {
+  //     'attrs.subscribers': '',
+  //     'attrs.anio': '2021', //TODO Variable de entorno que se pueda setear el año
+  //     'attrs.state': 'pendiente',
+  //     'action.method': 'cause',
+  //     tag: tag.id //Esto debe ser un id de un document de la collection "tags" de la bd.
+  //   }
+  // })
+  // 'attrs.subscribers': '',
+  // 'attrs.anio': '2021', //TODO Variable de entorno que se pueda setear el año
+  // 'attrs.state': 'pendiente',
+  // 'action.method': 'cause',
+  // tag: '59665fe8724f61003327eb2f' //Esto debe ser un id de un document de la collection "tags" de la bd.
+// }
 
 // Only allow to edit specific keys when is a proposal
 // and the users doesn't have forum privileges.
+
+const getDefaultTag = (req, res, next) => {
+  Tag.findOne({
+    name: 'Default',
+  }).exec().then((tag) => {
+    req.defaultTag = tag
+    next()
+  })
+}
+
 const purgeBody = (req, res, next) => {
   //console.log('Entre a purgeBody')
   // beware with subscribers fields
@@ -55,9 +108,10 @@ const purgeBody = (req, res, next) => {
     if (config.propuestasAbiertas){
       // IF THE FORM IS OPEN, RUN THIS
       req.body = Object.assign(
-         defaultValues(),
+         defaultValues(req.defaultTag),
          pick(req.body, EDITABLE_KEYS)
       )
+      console.log(req.body)
     }else{
       // IF THE FORM UPLOAD IS CLOSED, A CITIZEN CANNOT CONTINUE
       return next(new CantUploadProposal())
@@ -67,8 +121,9 @@ const purgeBody = (req, res, next) => {
     //console.log('=========================')
     //console.log(req.body)
     //console.log('=========================')
+    console.log(req.body)
     req.body = Object.assign(
-      defaultValues(),
+      defaultValues(req.defaultTag),
       req.body
     )
   }
@@ -267,6 +322,7 @@ app.post('/topics',
     if (req.forum.visibility == 'collaborative') next()
     else return middlewares.forums.privileges.canCreateTopics(req, res, next)
   },
+  getDefaultTag,
   purgeBody,
   sendToAdmin,
   goToNextRoute)

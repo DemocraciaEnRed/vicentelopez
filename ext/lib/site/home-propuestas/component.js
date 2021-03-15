@@ -28,7 +28,7 @@ const states = [
   { 'name': 'Integrado', 'value': 'integrado' },
 ]
 
-const anios = ['2018', '2019', '2020', '2021']
+const anios = ['2018', '2019', '2020', '2021','2022']
 
 let tags = []
 
@@ -41,7 +41,7 @@ let tags = []
 const defaultValues = {
   limit: 20,
   barrio: [],
-  anio: ['2021'],
+  anio: ['2022'],
   //state: ['pendiente', 'factible', 'no-factible', 'integrado'],
   state: [],
   tag: [],
@@ -267,8 +267,8 @@ class HomePropuestas extends Component {
 
       <div className='ext-home-ideas'>
         <BannerListadoTopics
-          //btnText='Mandá tu propuesta'
-          //btnLink='/formulario-propuesta'
+          btnText='Mandá tu propuesta'
+          btnLink='/formulario-propuesta'
           title='Propuestas'
           />
 

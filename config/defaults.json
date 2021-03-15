@@ -160,5 +160,6 @@
   "adminPass": "123123",
   "propuestasAbiertas": true,
   "propuestasTextoAbiertas": "",
-  "propuestasTextoCerradas": ""
+  "propuestasTextoCerradas": "",
+  "propuestasAnio": "1900"
 }
