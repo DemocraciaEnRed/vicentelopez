@@ -21,10 +21,10 @@ router.childRoutes.unshift({
   component: TyC
 })
 
-router.childRoutes.unshift({
-  path: 's/herramientas',
-  component: Herramientas
-})
+// router.childRoutes.unshift({
+//   path: 's/herramientas',
+//   component: Herramientas
+// })
 
 router.childRoutes.unshift({
   path: 's/documentos',

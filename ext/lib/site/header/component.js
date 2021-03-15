@@ -167,14 +167,14 @@ class Header extends Component {
                   Datos
               </Link>
             </div>
-            <div className="header-item">
+            {/* <div className="header-item">
               <Link
                 to='/s/herramientas'
                 className='header-link'
                 activeStyle={{ color: '#8C1E81' }}>
                   Herramientas
               </Link>
-            </div>
+            </div> */}
             { showAdmin &&
               <div className="header-item">
                 <Link

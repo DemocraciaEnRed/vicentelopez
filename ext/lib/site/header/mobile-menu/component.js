@@ -65,7 +65,7 @@ class MobileMenu extends Component {
                     Datos
                   </Link>
                 </div>
-                <div className='header-item mobile-link'>
+                {/* <div className='header-item mobile-link'>
                   <Link
                     to='/s/herramientas'
                     className='header-link'
@@ -73,7 +73,7 @@ class MobileMenu extends Component {
                     onClick={this.props.toggleOnClick}>
                     Herramientas
                   </Link>
-                </div>
+                </div> */}
                 <div>
                   {this.props.user.state.rejected && (
                     <AnonUser form={this.props.form}
