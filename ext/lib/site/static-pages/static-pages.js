@@ -4,6 +4,7 @@ import AcercaDe from './pages/acerca-de'
 import Datos from './pages/datos'
 import TyC from './pages/terminos-y-condiciones'
 import Herramientas from './pages/herramientas'
+import Encuentros from './pages/encuentros'
 import Documentos from './pages/documentos'
 
 router.childRoutes.unshift({
@@ -19,6 +20,11 @@ router.childRoutes.unshift({
 router.childRoutes.unshift({
   path: 's/terminos-y-condiciones',
   component: TyC
+})
+
+router.childRoutes.unshift({
+  path: 's/encuentros',
+  component: Encuentros
 })
 
 // router.childRoutes.unshift({

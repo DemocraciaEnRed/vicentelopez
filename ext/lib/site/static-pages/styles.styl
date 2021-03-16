@@ -991,3 +991,50 @@ h3.underline
 .Collapsible__trigger
   font-size: 1.2em;
   font-weight: 700;
+
+.event-container{
+  display: flex;
+  padding: 20px;
+  border: 1px solid #CACACA; 
+  flex-direction: row;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto 15px;
+  .event-description{
+    text-align: left;
+    width: 100%;
+    color: #8C1E81;
+    p{
+      margin-bottom: 0;
+      color: #000;
+      font-size: 12px;
+    }
+  }  
+  .event-actions{
+    text-align: right;
+    margin-left: 10px;
+    .btn-inscripcion{
+      margin-bottom: 10px;
+    }
+  }
+  &.disabled{
+    .event-description{
+      text-align: center;
+      width: 100%;
+      color: #9c9c9c;
+      p{
+        margin-bottom: 0;
+        color: #b5b5b5;
+        font-size: 12px;
+      }
+    }  
+  }
+}
+.events-page{
+  .color-primary{
+    color: #8C1E81;
+  }
+  .color-black{
+    color: #000;
+  }
+}

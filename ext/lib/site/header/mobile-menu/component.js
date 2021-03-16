@@ -44,7 +44,16 @@ class MobileMenu extends Component {
                     Acerca de
                   </Link>
                 </div> 
-                <div className='header-item'>
+                <div className='header-item mobile-link'>
+                  <Link
+                    to='/s/encuentros'
+                    className='header-link'
+                    activeStyle={{ color: '#8C1E81' }}
+                    onClick={this.props.toggleOnClick}>
+                    Encuentros
+                  </Link>
+                </div>
+                <div className='header-item mobile-link'>
                   <Link
                     to='/propuestas'
                     className={`header-link ${!~window.location.pathname.includes('propuesta') ? 'active' : ''}`}

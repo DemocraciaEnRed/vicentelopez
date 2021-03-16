@@ -4,11 +4,13 @@ import config from 'lib/config'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
 import ForosEnDatos from 'ext/lib/site/foros-en-datos/component'
+import ThumbsAcerca from 'ext/lib/site/thumbs-acerca/component'
 import ThumbsVoto from 'ext/lib/site/thumbs-voto/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
 // import ProyectosFactibles from 'ext/lib/site/proyectosFactibles/component'
 import ProyectosGanadores from 'ext/lib/site/proyectosGanadores/component'
+import EncuentrosProximos from 'ext/lib/site/encuentrosProximos/component'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
 import Jump from 'ext/lib/site/jump-button/component'
@@ -51,7 +53,8 @@ export default class HomeMultiforumOverride extends Component {
         <Anchor id='container'>
           <BannerForoVecinal title="Presupuesto participativo" texts={this.state.texts} />
           <ThumbsVoto texts={this.state.texts} enablePropuestas={config.propuestasAbiertas}/>
-          {/* <Proyectos /> */}
+          <EncuentrosProximos />
+          <ThumbsAcerca texts={this.state.texts}/>
           {/* <ProyectosFactibles /> */}
           <ProyectosGanadores />
           {/* <Barrios /> */}
