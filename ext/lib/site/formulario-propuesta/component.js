@@ -374,7 +374,7 @@ class FormularioPropuesta extends Component {
                 <li>Serán factibles campañas o talleres sobre un tema específico cuya ejecución sólo sea durante el 2022.</li>
                 <li>No serán factibles las propuestas que impliquen un gasto corriente (recursos humanos que incrementen la planta municipal).</li>
                 <li>Cada propuesta se debe presentar para un solo barrio. (No se puede presentar una propuesta para todo el Municipio)</li>
-                <li>El presupuesto máximo de la propuesta no puede superar los $ 4.500.000.</li>
+                <li>El presupuesto máximo de la propuesta no puede superar los $ 5.000.000.</li>
               </ul>
               <hr />
             { !this.state.acceptedTerms ?
