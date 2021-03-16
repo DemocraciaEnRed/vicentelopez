@@ -93,7 +93,7 @@ export default class EncuentrosProximos extends Component {
         </div>
         <div className="container">
           <div className="row text-center">
-            <p className="text-white">Inscribite a la reunión de tu barrio y presentá propuestas para que mejoren el mismo. Este año, debido a la pandemia por el COVID19, todas las reuniones se realizarán de froma virtual a través de Zoom.  </p>
+            <p className="text-white">Inscribite en la reunión de tu barrio y presentá propuestas para mejorarlo. Este año, debido a la pandemia por el COVID19, todas las reuniones se realizarán de froma virtual a través de Zoom.  </p>
           </div>
           <div className="row">
             <a className='boton-azul text-center' href='https://forms.gle/XAzf28UUFYj4T7tS8' target="_blank">

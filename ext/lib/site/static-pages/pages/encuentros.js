@@ -100,7 +100,7 @@ export default class Page extends Component {
           <div className='ext-herramientas'>
             <div className="text-center">
               <h3 className="color-black">Calendario de reuniones</h3>
-              <p>Inscribite en las reuniones de tu barrio y presentá propuestas para que mejoren el mismo. Este año, debido a la pandemia por el COVID-19, todas las reuniones se realizarán de forma virtual a través de Zoom</p>
+              <p>Inscribite en la reunión de tu barrio y presentá propuestas para mejorarlo. Este año, debido a la pandemia por el COVID-19, todas las reuniones se realizarán de forma virtual a través de Zoom</p>
             </div> 
              <div className='action-btns'>
               {
