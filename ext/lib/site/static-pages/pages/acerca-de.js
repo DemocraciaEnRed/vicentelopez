@@ -54,13 +54,13 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?">
-                   <p>Podés presentar:</p>
-                   <p>1. Propuestas de obras o equipamiento para: espacios públicos, escuelas de gestión pública, centros de salud municipales, polideportivos, sociedades de fomento, centros de jubilados, sociedades de fomento, clubes, entre otros. La condición es que sean entidades sin fines de lucro.</p>
-                   <p>2. También podés presentar propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución que le corresponda a esa propuesta, en caso de que los vecinos la elijan.</p>
-                   <p>3. Las propuestas no pueden involucrar gastos en recursos humanos que incrementen la planta de empleados municipales.</p>
-                   <p>4. Tenés que acotarla a un barrio (localidad) en concreto. No puede ser una propuesta para todo el Municipio.</p>
-                   <p>5. El presupuesto máximo de la propuesta no puede superar un monto determinado (para los proyectos a ejecutar en 2020 fue de $ 4.500.000).</p>
-                   <p>6. La propuesta no puede referirse a un espacio que no esté en jurisdicción del Municipio de Vicente López, a excepción de las escuelas públicas de gestión provincial.</p>
+                    <p>Podés presentar:</p>
+                    <p>1. Propuestas de obras o equipamiento para: espacios públicos, escuelas de gestión pública, centros de salud municipales, polideportivos, sociedades de fomento, centros de jubilados, sociedades de fomento, clubes, entre otros. La condición es que sean entidades sin fines de lucro.</p>
+                    <p>2. También podés presentar propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución que le corresponda a esa propuesta, en caso de que los vecinos la elijan.</p>
+                    <p>3. Las propuestas no pueden involucrar gastos en recursos humanos que incrementen la planta de empleados municipales.</p>
+                    <p>4. Tenés que acotarla a un barrio (localidad) en concreto. No puede ser una propuesta para todo el Municipio.</p>
+                    <p>5. El presupuesto máximo de la propuesta no puede superar un monto determinado (para los proyectos a ejecutar en 2022 será de $ 5.000.000).</p>
+                    <p>6. La propuesta no puede referirse a un espacio que no esté en jurisdicción del Municipio de Vicente López, a excepción de las escuelas públicas de gestión provincial.</p>
                    </div>
 
                    <div data-trigger="+ ¿CÓMO SE DECIDE QUÉ PROYECTOS VAN A VOTACIÓN?">
@@ -68,14 +68,14 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿QUIÉN PUEDE VOTAR LOS PROYECTOS?">
-                   <p>Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar los proyectos. Para ello, tenés que acreditar domicilio particular o laboral en alguno de los 9 barrios del Partido.</p>
-                   <p>En el caso de los proyectos de escuelas públicas de gestión provincial o municipal, también pueden votar los alumnos mayores de 16 años y hasta un mayor de 16 años por cada alumno menor de 16 años inscriptos en la escuela respectiva, aunque no tengan domicilio en el barrio o en el partido de Vicente López. Estas personas solo podrán elegir el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela y enviar a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> antes de que comience la votación. </p>
-                   <p>En el caso de proyectos presentados por entidades intermedias, sus directivos, asociados e inscriptos en talleres brindados por las mismas que no tengan domicilio en el barrio donde esté ubicada la entidad o en el partido de Vicente López también podrán votar pero solo podrán elegir el proyecto de la entidad y deberán estar registrados en un padrón especial que debe confeccionar la entidad y enviar a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> antes de que comience la votación.</p>
+                     <p>Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar los proyectos. Para ello, tenés que acreditar domicilio particular o laboral en alguno de los 9 barrios del Partido.</p>
+                     <p>En el caso de los proyectos de escuelas públicas de gestión provincial o municipal, también pueden votar los alumnos mayores de 16 años y hasta un mayor de 16 años por cada alumno menor de 16 años inscriptos en la escuela respectiva, aunque no tengan domicilio en el barrio o en el partido de Vicente López. Estas personas solo podrán elegir el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela y y cargar en la plataforma que le indique la Subsecretaría de Participación Ciudadana oportunamente.</p>
+                     <p>En el caso de proyectos presentados por entidades intermedias, sus directivos, asociados e inscriptos en talleres brindados por las mismas que no tengan domicilio en el barrio donde esté ubicada la entidad o en el partido de Vicente López también podrán votar pero solo podrán elegir el proyecto de la entidad y deberán estar registrados en un padrón especial que debe confeccionar la entidad y y cargar en la plataforma que le indique la Subsecretaría de Participación Ciudadana oportunamente.</p>
                    </div>
 
                    <div data-trigger="+ ¿CÓMO ACREDITO DOMICILIO?">
-                   <p>Tu domicilio particular se acredita presentando tu DNI en el puesto de votación. Si figura otro domicilio, podés acercar la factura de algún servicio que acredite tu domicilio real.</p>
-                   <p>Para acreditar tu domicilio laboral, tenés que presentar tu recibo de sueldo donde conste en el domicilio laboral en el barrio donde querés votar.</p>
+                    <p>Tu domicilio particular se acredita presentando tu DNI en el puesto de votación. Si figura otro domicilio, podés acercar la factura de algún servicio que acredite tu domicilio real.</p>
+                    <p>Para acreditar tu domicilio laboral, tenés que presentar tu recibo de sueldo o un certificado de trabajo, donde conste en el domicilio laboral en el barrio donde querés votar.</p>
                    </div>
 
                    <div data-trigger="+ ¿PUEDO VOTAR MÁS DE UNA VEZ?">
@@ -84,15 +84,15 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿POR QUÉ PUEDEN PARTICIPAR CON PROPUESTAS LAS ESCUELAS PÚBLICAS DE GESTIÓN PROVINCIAL EN EL PRESUPUESTO PARTICIPATIVO?">
-                   <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto. Para 2020, el límite por barrio se estableció en $4.5 millones y de hasta $3 millones por escuela.</p>
+                    <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio y se plantearon 2 requisitos para acceder a este presupuesto: 1) que la escuela presente la propuesta y 2) que los vecinos del barrio la elijan con su voto.</p>
                    </div>
 
                    <div data-trigger="+ ¿CUÁNDO Y DÓNDE VOTO?">
-                   <p>La votación se realiza entre los meses de septiembre y octubre de cada año. Encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina.</p>
+                   <p>La votación se realiza entre los meses de septiembre y octubre de cada año. Si las condiciones sanitarias lo permiten, encontrarás urnas habilitadas para votar en los 9 barrios de Vicente López: Munro, Florida Oeste, Carapachay, La Lucila, Olivos, Villa Martelli, Florida Este, Vicente López y Villa Adelina. En 2021, incorporaremos la modalidad de voto online.</p>
                    </div>
 
                    <div data-trigger="+ ¿CÓMO VOTO?">
-                   <p>Es muy fácil, te acercás a los puntos de votación, completás tus datos en la boleta del barrio correspondiente, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo.</p>
+                   <p>Si podemos realizar votación presencial en 2021, te acercás a los puntos de votación, completás tus datos en la boleta del barrio correspondiente, marcás los 3 proyectos que considerás prioritarios para tu barrio y listo. También tendrás la posibilidad de votar online, registrándote en nuestra página web unas semanas antes de que comience la votación.</p>
                    </div>
 
                    <div data-trigger="+ ¿CUÁNTOS PROYECTOS PUEDO ELEGIR?">
