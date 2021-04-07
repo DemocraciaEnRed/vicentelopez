@@ -72,7 +72,7 @@ export default class Page extends Component {
               </div>
             </div>
 
-            <img controls className='mapa-municipio' src='https://forosvecinales.blob.core.windows.net/assets/mapa_vicente-lopez.jpg' />
+            <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' />
           </div>
         </div>
         <Jump goTop={this.goTop} />

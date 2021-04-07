@@ -12,7 +12,7 @@ export default function ThumbsVoto(props) {
             <h3>{ props.texts['home-subtitle-text'] }</h3>
             <div className="btn-container">
               {//<div className="boton-azul boton-blanco">
-              //  <a href="https://forosvecinales.blob.core.windows.net/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
+              //  <a href="https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
               //</div>
               }
               {props.enablePropuestas && <Link

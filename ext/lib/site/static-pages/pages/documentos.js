@@ -132,7 +132,7 @@ export default class Page extends Component {
               </div>
             </div>{
               !((this.state.anio === '2012' && this.state.archivo !== 'minuta') || (this.state.anio === '2018' && this.state.archivo !== 'boleta')) && (
-                <a href={`https://forosvecinales.blob.core.windows.net/historial-documentos/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul boton-dwl' target='_blank' download>
+                <a href={`https://celeste.blob.core.windows.net/pp-vicentelopez/historial-documentos/${this.state.archivo}_${this.state.barrio}_${this.state.anio}.pdf`} className='boton-azul boton-dwl' target='_blank' download>
                   <div className='icon-boleta'/>
                   Descargar
                 </a>

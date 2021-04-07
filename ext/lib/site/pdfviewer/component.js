@@ -70,7 +70,7 @@ export default class PdfViewer extends Component {
         }
         <PDF
           fullWidth
-          file={`https://forosvecinales.blob.core.windows.net/historial-documentos/${this.props.archivo}_${this.props.barrio}_${this.props.anio}.pdf`}
+          file={`https://celeste.blob.core.windows.net/pp-vicentelopez/historial-documentos/${this.props.archivo}_${this.props.barrio}_${this.props.anio}.pdf`}
           onDocumentComplete={this.onDocumentComplete}
           onPageComplete={this.onPageComplete}
           page={this.state.page}
