@@ -222,7 +222,7 @@ export default class Page extends Component {
                   <img src="/ext/lib/site/static-pages/icon-folder.svg" alt=""/>
                   <span className='leyenda'>Data Sets</span>
                 </div>
-                <Link href='http://vicentelopez.opendata.junar.com/dashboards/20165/presupuesto-participativo/'>
+                <Link href='http://vicentelopez.opendata.junar.com/dashboards/20165/presupuesto-participativo/' target="_blank">
                   <button className='boton-azul'>
                     Ir al portal de datos abiertos
                   </button>

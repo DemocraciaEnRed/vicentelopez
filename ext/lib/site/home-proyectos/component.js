@@ -56,7 +56,7 @@ export class HomeProyectos extends Component {
     // initialFilters.anio = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021' : '2021'
+    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021' : '2020'
     // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}&limit=100`, {
@@ -75,7 +75,7 @@ export class HomeProyectos extends Component {
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
           state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020','2021'] : ['2021'],
+          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020','2021'] : ['2020'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
@@ -189,7 +189,7 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        anio: prevState.stage === 'seguimiento' ? ['2021'] : ['2018', '2019', '2020','2021'],
+        anio: prevState.stage === 'seguimiento' ? ['2020'] : ['2018', '2019', '2020','2021'],
         barrio: [],
         state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
       }
