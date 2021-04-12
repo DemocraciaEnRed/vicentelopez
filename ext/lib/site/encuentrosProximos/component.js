@@ -24,7 +24,7 @@ export default class EncuentrosProximos extends Component {
         'finminuto',
         'fechadialegible',
         'fechahoralegible',
-        'linkzoom'
+        'cupolleno'
       ]
     }
   }
@@ -34,7 +34,7 @@ export default class EncuentrosProximos extends Component {
     window.fetch(`https://spreadsheets.google.com/feeds/list/1p9RHiHfD7PpLYmEI0_ofCbk-2TYi7eqbm2ey5-UQ6Mw/1/public/full?alt=json`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         this.extractData(res)
       })
       .catch((err) => console.error(err))
@@ -57,7 +57,7 @@ export default class EncuentrosProximos extends Component {
       this.state.keys.forEach((key) => {
         marker[key] = entry[`gsx$${key}`].$t !== '' ? entry[`gsx$${key}`].$t : null
       })
-      console.log(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
+      // console.log(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
       marker.fechaInicio = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
       marker.fechaFin = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.finhora}:${marker.finminuto}:00-0300`)
       marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=Encuentro+${marker.barrio}+-+PP+Vicente+Lopez+2021&details=Inscribite+en+las+reuniones+de+tu+barrio+y+present%C3%A1+propuestas+para+que+mejoren+el+mismo+Link+a+inscripcion+https://forms.gle/XAzf28UUFYj4T7tS8&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
@@ -66,7 +66,7 @@ export default class EncuentrosProximos extends Component {
     output.sort(function(a,b){
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
-      return new Date(b.date) - new Date(a.date);
+      return new Date(a.fechaInicio) - new Date(b.fechaInicio);
     });
     let count = 0;
     output.forEach( event => {
@@ -128,7 +128,11 @@ export default class EncuentrosProximos extends Component {
                   </div>
                   <div className="bottom">
                     <h3>{event.dia}/{event.mes}</h3>
-                    <p><b>{event.barrio}</b><br/>{event.iniciohora} a {event.finhora} Hrs</p>
+                    <p><b>{event.barrio}</b><br/>{
+                      event.cupolleno == 'FALSE' ? 
+                    `${event.iniciohora} a ${event.finhora} Hrs`
+                    : <span style={{fontWeight: 'bold', color: 'red', fontSize: '10px'}}>¡CUPO LLENO!</span>}
+                    </p>
                   </div>
                 </div>)
                 : <p className="text-center">

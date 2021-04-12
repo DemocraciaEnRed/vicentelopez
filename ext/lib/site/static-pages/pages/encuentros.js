@@ -28,7 +28,7 @@ export default class Page extends Component {
         'finminuto',
         'fechadialegible',
         'fechahoralegible',
-        'linkzoom'
+        'cupolleno'
       ]
     }
   }
@@ -38,7 +38,6 @@ export default class Page extends Component {
     window.fetch(`https://spreadsheets.google.com/feeds/list/1p9RHiHfD7PpLYmEI0_ofCbk-2TYi7eqbm2ey5-UQ6Mw/1/public/full?alt=json`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
         this.extractData(res)
       })
       .catch((err) => console.error(err))
@@ -60,7 +59,7 @@ export default class Page extends Component {
       this.state.keys.forEach((key) => {
         marker[key] = entry[`gsx$${key}`].$t !== '' ? entry[`gsx$${key}`].$t : null
       })
-      console.log(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
+      // console.log(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
       marker.fechaInicio = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
       marker.fechaFin = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.finhora}:${marker.finminuto}:00-0300`)
       // marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=Encuentro+${marker.barrio}+-+PP+Vicente+Lopez+2021&details=Inscribite+en+las+reuniones+de+tu+barrio+y+present%C3%A1+propuestas+para+que+mejoren+el+mismo.+Este+a%C3%B1o%2C+debido+a+la+pandemia+por+el+COVID-19%2C+todas+las+reuniones+se+realizar%C3%A1n+de+forma+virtual+a+trav%C3%A9s+de+Zoom&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
@@ -71,7 +70,7 @@ export default class Page extends Component {
     output.sort(function(a,b){
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
-      return new Date(b.date) - new Date(a.date);
+      return new Date(a.fechaInicio) - new Date(b.fechaInicio);
     });
     output.forEach( event => {
       if(this.state.now < event.fechaFin) {
@@ -125,8 +124,14 @@ export default class Page extends Component {
                         <p>{event.fechahoralegible}</p>
                       </div> 
                       <div className="event-actions">
-                        <a href="https://forms.gle/XAzf28UUFYj4T7tS8" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
-                        <a href={event.calendarURL} className="btn btn-default btn-sm" target="_blank" ><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</a>
+                        { event.cupolleno == 'FALSE' ? 
+                          <a href="https://forms.gle/XAzf28UUFYj4T7tS8" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
+                          : <div className="btn btn-danger btn-inscripcion" disabled>¡CUPO LLENO!</div>
+                        }
+                        { event.cupolleno == 'FALSE' ? 
+                          <a href={event.calendarURL} className="btn btn-default btn-sm" target="_blank" disabled={event.cupolleno == 'FALSE' ? false : true} ><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</a>
+                          : <div className="btn btn-default btn-sm" disabled><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</div>
+                        }
                       </div>
                       </div> )
                   }
