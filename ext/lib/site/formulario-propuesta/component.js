@@ -302,7 +302,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               type='text'
-              max='128'
+              maxLength='128'
               name='nombre'
               value={this.state['nombre']}
               placeholder=""
@@ -316,7 +316,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               type='text'
-              max='200'
+              maxLength='200'
               name='domicilio'
               placeholder=""
               value={this.state['domicilio']}
@@ -330,7 +330,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               type='text'
-              max='50'
+              maxLength='50'
               name='documento'
               placeholder=""
               value={this.state['documento']}
@@ -344,7 +344,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               type='text'
-              max='50'
+              maxLength='50'
               name='telefono'
               placeholder=""
               value={this.state['telefono']}
@@ -358,7 +358,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               type='text'
-              max='128'
+              maxLength='128'
               name='email'
               placeholder=""
               value={this.state['email']}
@@ -394,15 +394,18 @@ class FormularioPropuesta extends Component {
             <label className='required' htmlFor='titulo'>
               Título
             </label>
-            <p className="help-text">Elegí un título que ayude a reconocer fácilmente el proyecto</p>
+            <p className="help-text">Elegí un título que ayude a reconocer fácilmente el proyecto (Max. 220 caracteres)</p>
             <input
               className='form-control'
               required
               type='text'
-              max='128'
+              maxLength='220'
               name='titulo'
               value={this.state['titulo']}
               onChange={this.handleInputChange} />
+              {
+                this.state['titulo'].length > 220 && <p class="text-danger">¡El título es muy largo! Por favor, elija un título mas corto!</p>
+              }
           </div>
           <div className='form-group'>
             <label className='required' htmlFor='barrio'>
@@ -466,7 +469,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               rows='6'
-              max='5000'
+              maxLength='5000'
               name='problema'
               value={this.state['problema']}
               onChange={this.handleInputChange}>
@@ -481,7 +484,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               rows='6'
-              max='5000'
+              maxLength='5000'
               name='solucion'
               value={this.state['solucion']}
               onChange={this.handleInputChange}>
@@ -496,7 +499,7 @@ class FormularioPropuesta extends Component {
               className='form-control'
               required
               rows='6'
-              max='5000'
+              maxLength='5000'
               name='beneficios'
               value={this.state['beneficios']}
               onChange={this.handleInputChange}>
