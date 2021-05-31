@@ -8,25 +8,32 @@ export default function ThumbsVoto(props) {
         <div className="row cont fondo-azul">
           <div className="subtitulo">
             <h2>{ props.texts['home-subtitle'] }</h2>
-            {/*<h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
+            {/* <h3>Hasta el 31 de mayo inclusive tenés tiempo para presentar tus propuestas</h3> */}
             <h3>{ props.texts['home-subtitle-text'] }</h3>
-            <div className="btn-container">
-              {//<div className="boton-azul boton-blanco">
-              //  <a href="https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
-              //</div>
+              {/*
+                <div className="btn-container">
+                  <div className="boton-azul boton-blanco">
+                    <a href="https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2019.xlsx">Ver Resultados</a>
+                  </div>
+                </div>
+              */}
+              {props.enablePropuestas &&
+              <div className="btn-container">
+                <Link to='/formulario-propuesta'
+                  className="boton-azul boton-blanco">
+                  Mandá tu propuesta
+                </Link>
+              </div>
               }
-              {props.enablePropuestas && <Link
-                to='/formulario-propuesta'
-                className="boton-azul boton-blanco">
-                Mandá tu propuesta
-              </Link>
-              }
-              {/*<Link
-                to='/proyectos'
-                className="boton-azul boton-blanco">
-                Ver Proyectos
-              </Link>*/}
-            </div>
+              {/*
+               <div className="btn-container">
+                <Link
+                  to='/proyectos'
+                  className="boton-azul boton-blanco">
+                  Ver Proyectos
+                </Link>
+              </div>
+              */}
           </div>
         </div>
       </div>

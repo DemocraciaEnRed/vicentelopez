@@ -6,8 +6,9 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
 import TopicCard from './topic-card/component'
-import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
+// import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 import FilterPropuestas from './filter-propuestas/component'
+import BotonMandarPropuesta from './botonMandarPropuestas'
 
 const barrios = [
   { 'name': 'Carapachay', 'value': 'carapachay' },
@@ -266,12 +267,17 @@ class HomePropuestas extends Component {
     return (
 
       <div className='ext-home-ideas'>
-        <BannerListadoTopics
+        {/*<BannerListadoTopics
           btnText='Mandá tu propuesta'
           btnLink='/formulario-propuesta'
           title='Propuestas'
-          />
-
+          />*/}
+        {
+          config.propuestasAbiertas ? <BotonMandarPropuesta /> : 
+            <header className='banner-proyectos'>
+              <h1 className='proyectos-title'>Propuestas</h1>
+            </header>
+        }
         <div className='container'>
           <div className="row">
             { config.propuestasAbiertas && config.propuestasTextoAbiertas &&
