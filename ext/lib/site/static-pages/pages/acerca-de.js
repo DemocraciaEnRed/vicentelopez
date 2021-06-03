@@ -38,7 +38,19 @@ export default class Page extends Component {
                   </div>
 
                    <div data-trigger="+ ¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?">
-                     <p className='p-padding'>La partida asignada al Programa se distribuye según dos criterios: el 50% por partes iguales a cada uno de los 9 barrios. Y el otro 50% según la cantidad de habitantes de cada barrio. Así, los barrios con más población, reciben más partida presupuestaria.</p>
+                      <p className='p-padding'>La partida asignada al Programa se distribuye según dos criterios: el 50% por partes iguales a cada uno de los 9 barrios. Y el otro 50% según la cantidad de habitantes de cada barrio. Así, los barrios con más población, reciben más partida presupuestaria.</p>
+                      <p>Para el 2022, el presupuesto participativo será de $200.000.000 y se distribuye así: </p>
+                      <ul>
+                        <li><p><b>OLIVOS</b>: $ 26.208.378</p></li>
+                        <li><p><b>FLORIDA ESTE</b>: $ 26.208.378</p></li>
+                        <li><p><b>MUNRO</b>: $ 26.208.378</p></li>
+                        <li><p><b>FLORIDA OESTE</b>: $ 22.045.055</p></li>
+                        <li><p><b>VILLA MARTELL</b>: $ 22.045.055</p></li>
+                        <li><p><b>VICENTE LÓPEZ</b>: $ 22.045.055</p></li>
+                        <li><p><b>CARAPACHAY</b>: $ 18.413.233</p></li>
+                        <li><p><b>VILLA ADELINA</b>: $ 18.413.233</p></li>
+                        <li><p><b>LA LUCILA</b>: $ 18.413.233</p></li>
+                      </ul>
                    </div>
 
                    <div data-trigger="+ ¿QUIÉN PUEDE PRESENTAR PROPUESTAS?">
