@@ -35,7 +35,7 @@ exports.up = function up (done) {
 }
 
 exports.down = function down (done) {
-  done();
+  done()
   /*dbReady()
     .then(function () {
       return Topic.collection
