@@ -17,7 +17,7 @@ module.exports = ({
     <p>Hola <strong>${userName}</strong>,</p>
     <p>La propuesta <strong>${topic.mediaTitle}</strong> ha sido actualizada.
     ${buttonTemplate({
-      url: `${baseUrl}/propuesta/topic/${topic.id}`,
+      url: `${baseUrl}/propuestas/topic/${topic.id}`,
       text: 'Mirá los cambios'
     })}
     <p>¡Sigamos mejorando juntos los barrios de Vicente López!</p>
