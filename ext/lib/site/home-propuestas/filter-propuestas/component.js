@@ -96,7 +96,9 @@ export default class FilterPropuestas extends Component {
     if (anio.length)
       allActiveOpts.push(...anio.sort().map(i => ({ value: i, name: i })))
     if (tag.length)
-      allActiveOpts.push(...tag.sort().map(i => ({ value: i, name: i })))
+      allActiveOpts.push(
+        ...tag.sort().map(i => ({ value: i, name: tags.find(j => j.value == i).name }))
+      )
 
     return (
       <nav id='filter-propuestas'>

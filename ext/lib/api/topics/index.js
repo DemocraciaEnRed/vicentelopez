@@ -28,6 +28,11 @@ app.get('/topics',
         format: 'tags',
         default: ''
       },
+      tag: {
+        type: 'string',
+        format: 'tag',
+        default: ''
+      },
       state: {
         type: 'string',
         format: 'states',
@@ -55,6 +60,7 @@ app.get('/topics',
     })
   }, { formats }),
   utils.parseTags,
+  utils.parseTag,
   utils.findForum,
   utils.parseStates,
   utils.parseBarrios,

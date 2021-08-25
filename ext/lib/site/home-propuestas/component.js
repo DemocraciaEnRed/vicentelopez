@@ -95,7 +95,7 @@ class HomePropuestas extends Component {
     findAllTags(res, () => {
       let barriosKeys = barrios.map((b) => b.value)
       let tagsNoBarrio = res.tags.filter((t) => ! barriosKeys.includes(t.hash))
-      tags = tagsNoBarrio.filter(t => t.name != 'Default').map((t) => t.name)
+      tags = tagsNoBarrio.filter(t => t.name != 'Default').map((t) => ({name: t.name, value: t.id}))
     })
   }
 
@@ -110,7 +110,8 @@ class HomePropuestas extends Component {
       anio: this.state.anio,
       barrio: this.state.barrio,
       state: this.state.state,
-      tags: this.state.tag,
+      // tags: this.state.tag,
+      tag: this.state.tag,
       sort: this.state.sort
     }
 
