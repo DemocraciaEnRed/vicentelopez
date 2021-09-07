@@ -97,14 +97,14 @@ export default class Filter extends Component {
     return (
       <nav id='filter'>
         {/* se oculta filtro de proyectos ganadores del año pasado hasta agosto. */}
-        {/* {this.props.openVotation &&
+        {this.props.openVotation &&
           <div className='stage-container'>
             <a className='stage-changer' onClick={this.props.changeStage}>
-              {this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores >' : '< Ver seguimiento de proyectos'}
+            {this.props.stage === 'seguimiento' ? 'Ver proyectos a votar ▶️' : '◀️ Ver seguimiento de proyectos'}
 
             </a>
           </div>
-        } */}
+        }
         <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>
           <div className='button-container'>
             <button className='dropdown-button' onClick={this.handleDropdown('barrio')}>
@@ -136,7 +136,7 @@ export default class Filter extends Component {
               </div>
             }
           </div>
-          {/* {this.props.stage === 'seguimiento' && */}
+          {this.props.stage === 'seguimiento' &&
           <div className='button-container'>
             <button className='dropdown-button' onClick={this.handleDropdown('state')}>
               <div>
@@ -167,8 +167,8 @@ export default class Filter extends Component {
               </div>
             }
           </div>
-         {/* }*/}
-          {/* {this.props.stage === 'seguimiento' && */}
+         }
+          {this.props.stage === 'seguimiento' &&
             <div className='button-container'>
               <button className='dropdown-button' onClick={this.handleDropdown('anio')}>
                 <div>
@@ -199,11 +199,11 @@ export default class Filter extends Component {
               </div>
               }
             </div>
-          {/* } */}
+          }
         </div>
-        {this.state.showWinnersLabel &&
+        {/* {this.state.showWinnersLabel &&
           <div className='winners-label'>Proyectos ganadores para ejecutarse en 2020</div>
-        }
+        } */}
       </nav>
     )
   }

@@ -42,6 +42,7 @@ const barrios = [
 ]
 
 const states = [
+  { 'name': 'Factible', 'value': 'factible' },
   { 'name': 'No ganador', 'value': 'no-ganador' },
   { 'name': 'En preparación', 'value': 'preparacion' },
   { 'name': 'En proceso de compra', 'value': 'compra' },
@@ -51,6 +52,9 @@ const states = [
 
 const getBudget = (state) => {
   switch (state) {
+    case 'factible':
+      return 'project-budget-factible'
+      break
     case 'preparacion':
       return 'project-budget-preparacion'
       break
@@ -82,6 +86,19 @@ export default ({ topic, forum }) => {
         {topic.attrs && topic.attrs.hasOwnProperty(getBudget(topic.attrs.state)) && topic.attrs[getBudget(topic.attrs.state)] !== 0 &&
           <div>
             <p className='budget'>{prettyPrice(topic.attrs[getBudget(topic.attrs.state)])}</p>
+            <div className={'topic-status status-active-' + topic.attrs.state}>
+              <span>Estado: <b>{states.find((st) => st.value === topic.attrs.state).name}</b></span>
+              <ul className='barra-de-progreso'>
+                <li className='item-preparacion'></li>
+                <li className='item-compra'></li>
+                <li className='item-ejecucion'></li>
+                <li className='item-finalizado'><span>&#10004;</span></li>
+              </ul>
+            </div>
+          </div>
+        }
+        {topic.attrs && topic.attrs.state && topic.attrs.state === 'factible' &&
+          <div>
             <div className={'topic-status status-active-' + topic.attrs.state}>
               <span>Estado: <b>{states.find((st) => st.value === topic.attrs.state).name}</b></span>
               <ul className='barra-de-progreso'>

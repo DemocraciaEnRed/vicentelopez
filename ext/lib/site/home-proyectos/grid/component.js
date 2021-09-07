@@ -49,7 +49,8 @@ export default class TopicGrid extends Component {
       'ejecucion',
       'compra',
       'preparacion',
-      'no-ganador',
+      'factible',
+      'no-ganador'
     ]
   }
 

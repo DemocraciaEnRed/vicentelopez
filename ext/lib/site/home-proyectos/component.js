@@ -17,9 +17,10 @@ import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 const defaultValues = {
   'votacion': {
     barrio: [],
-    anio: ['2021'],
+    anio: ['2022'],
     // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
-    state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
+    // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
+    state: ['factible']
   },
   'seguimiento': {
     barrio: [],
@@ -55,8 +56,9 @@ export class HomeProyectos extends Component {
     // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
     // initialFilters.anio = '2018,2019'
     // This filters should be applied if Votacion Abierta stage is active only
-    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021' : '2020'
+    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
+    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021' : '2022'
     // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}&limit=100`, {
@@ -74,8 +76,8 @@ export class HomeProyectos extends Component {
           // anio: defaultValues.seguimiento.anio,
           // stage: 'seguimiento',
           // This filters should be applied if Votacion Abierta stage is active only
-          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020','2021'] : ['2020'],
+          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
+          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020','2021'] : ['2022'],
           stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
@@ -189,9 +191,9 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        anio: prevState.stage === 'seguimiento' ? ['2020'] : ['2018', '2019', '2020','2021'],
+        anio: prevState.stage === 'seguimiento' ? ['2022'] : ['2018', '2019', '2020','2021'],
         barrio: [],
-        state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
+        state: prevState.stage === 'seguimiento' ? ['factible'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
       }
     }, () => this.fetchTopics())
   }
@@ -201,10 +203,17 @@ export class HomeProyectos extends Component {
 
     return (
       <div id='forum-home'>
-        <BannerListadoTopics
-          title='Seguimiento de Proyectos'
-          subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.'
-          />
+        {
+          this.state.stage === 'seguimiento' ? 
+            <BannerListadoTopics
+              title='Seguimiento de Proyectos'
+              subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.'
+            />
+          : <BannerListadoTopics
+            title='Proyectos para votar'
+            subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP'
+            />
+        }
 
         <Anchor id='containerr'>
           <section className='grid-container'>
