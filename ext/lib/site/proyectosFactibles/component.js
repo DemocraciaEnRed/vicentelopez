@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Flickity from 'flickity'
 import { Link } from 'react-router'
-import TopicCard from './topic-card/component'
+// import TopicCard from './topic-card/component'
+import TopicCard from '../proyectos/topic-card/component'
 
 export default class Carrusel extends Component {
   constructor (props) {
@@ -51,7 +52,7 @@ export default class Carrusel extends Component {
   }
 
   componentDidMount () {
-    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2020&state=factible&limit=100&sort=popular`, { credentials: 'include' })
+    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2022&state=factible&limit=30&sort=popular`, { credentials: 'include' })
       .then((res) => res.json())
       .then((res) => {
         this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }
