@@ -108,7 +108,7 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿CÓMO VOTAR?">
-                   <p>Para poder votar los proyectos, antes tenés que registrarte en el mismo portal de votación: <a href="https://votacionpp.vicentelopez.gov.ar/pre-registro" target="_blank">https://votacionpp.vicentelopez.gov.ar/pre-registro</a>. La etapa de registración para votar estará habilitada al menos un mes antes de la votación. Las personas que vivan y/o trabajen en Vicente López podrán registrarse desde el 1 de septiembre de 2021 hasta el 31 de octubre de 2021.</p>
+                   <p>Para poder votar los proyectos, antes tenés que registrarte en el mismo portal de votación (<a href="https://votacionpp.vicentelopez.gov.ar" target="_blank">https://votacionpp.vicentelopez.gov.ar</a>). Las personas que vivan y/o trabajen en Vicente López podrán registrarse desde el 20 de septiembre de 2021 hasta el 31 de octubre de 2021.</p>
                    </div>
                    
                    <div data-trigger="+ ¿QUÉ DOCUMENTACIÓN NECESITO PARA REGISTRARME?">
@@ -124,7 +124,7 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿CUÁNDO SE CUENTAN LOS VOTOS?">
-                   <p>El escrutinio se realizará el lunes 1 de noviembre de 2021 en lugar a designar por la Subsecretaría de Participación Ciudadana.</p>
+                   <p>El escrutinio se realizará el Martes 2 de noviembre de 2021 en lugar a designar por la Subsecretaría de Participación Ciudadana</p>
                    </div>
 
                    <div data-trigger="+ ¿SE PUEDE PRESENCIAR EL ESCRUTINIO?">
