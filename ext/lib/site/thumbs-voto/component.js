@@ -26,7 +26,7 @@ export default function ThumbsVoto(props) {
               <strong>20 de SEPTIEMBRE al 31 OCTUBRE</strong>
             </p>
             <div className="btn-container">
-              <a href="https://votacionpp.vicentelopez.gov.ar/pre-registro" target='_blank' className="boton">
+              <a href="https://votacionpp.vicentelopez.gov.ar" target='_blank' className="boton">
                 QUIERO REGISTRARME
               </a>
             </div>
