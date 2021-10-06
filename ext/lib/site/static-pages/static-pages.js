@@ -3,6 +3,7 @@ import router from 'lib/site/boot/router'
 import AcercaDe from './pages/acerca-de'
 import Datos from './pages/datos'
 import TyC from './pages/terminos-y-condiciones'
+import PoliticaDatos from './pages/politica-datos'
 import Herramientas from './pages/herramientas'
 import Encuentros from './pages/encuentros'
 import Documentos from './pages/documentos'
@@ -20,6 +21,10 @@ router.childRoutes.unshift({
 router.childRoutes.unshift({
   path: 's/terminos-y-condiciones',
   component: TyC
+})
+router.childRoutes.unshift({
+  path: 's/politica-datos',
+  component: PoliticaDatos
 })
 
 router.childRoutes.unshift({

@@ -33,6 +33,10 @@ const Footer = () => (
         <Link to='/s/terminos-y-condiciones'> Términos y condiciones
         </Link>
       </div>
+      <div className='terminos'>
+        <Link to='/s/politica-datos'> Politica de Privacidad y Uso de Datos
+        </Link>
+      </div>
     </div>
   </footer>
 )
