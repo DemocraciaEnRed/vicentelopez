@@ -21,13 +21,24 @@ export default function ThumbsVoto(props) {
             <div className="icon">
               {icon}
             </div>
-            <p className="text-center">
+            {/* se cambio el texto porqeu se paso a etapa de votación */}
+            {/* <p className="text-center">
               podés registrarte del<br/>
               <strong>20 de SEPTIEMBRE al 31 OCTUBRE</strong>
             </p>
             <div className="btn-container">
               <a href="https://votacionpp.vicentelopez.gov.ar" target='_blank' className="boton">
                 QUIERO REGISTRARME
+              </a>
+            </div> */}
+
+            <p className="text-center">
+              podés votar del <br/>
+              <strong>18 de OCTUBRE al 31 OCTUBRE</strong>
+            </p>
+            <div className="btn-container">
+              <a href="https://votacionpp.vicentelopez.gov.ar" target='_blank' className="boton">
+              QUIERO VOTAR
               </a>
             </div>
           </div>
