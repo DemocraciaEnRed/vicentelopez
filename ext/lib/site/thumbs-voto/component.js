@@ -31,8 +31,11 @@ export default function ThumbsVoto(props) {
                 QUIERO REGISTRARME
               </a>
             </div> */}
+            {/* ------------------------ */}
+            {/* ------CIERRE VOTACION---- */}
+            {/* ------------------------ */}
 
-            <p className="text-center">
+            {/* <p className="text-center">
               podés votar del <br/>
               <strong>18 de OCTUBRE al 31 OCTUBRE</strong>
             </p>
@@ -40,7 +43,7 @@ export default function ThumbsVoto(props) {
               <a href="https://votacionpp.vicentelopez.gov.ar" target='_blank' className="boton">
               QUIERO VOTAR
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
