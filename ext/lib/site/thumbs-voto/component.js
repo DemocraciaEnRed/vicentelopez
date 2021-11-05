@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export default function ThumbsVoto(props) {
   let icon = <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,9 +19,15 @@ export default function ThumbsVoto(props) {
           <div className="subtitulo">
             <h3>{ props.texts['home-subtitle-text'] }</h3>
             <h2>{ props.texts['home-subtitle'] }</h2>
-            <div className="icon">
+            {/* <div className="icon">
               {icon}
+            </div> */}
+            <div className="btn-container">
+              <Link to='/s/datos' className="boton">
+              VER LOS RESULTADOS DE LA VOTACIÓN 2021
+              </Link>
             </div>
+
             {/* se cambio el texto porqeu se paso a etapa de votación */}
             {/* <p className="text-center">
               podés registrarte del<br/>

@@ -208,6 +208,14 @@ export default class Page extends Component {
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
                   </a>
                 </div>
+                <div className='descargas-info'>
+                  <h5>Resultados de la votación 2021</h5>
+                  <p>Detalle de los proyectos ganadores y no ganadores en la votación de 2021. Incluye barrio, cantidad de votos, orden de votación y presupuesto estimado.</p>
+                  <span className='descarga-fecha'>Publicado: Noviembre de 2021</span>
+                  <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2021.xlsx' className='icon-descarga'>
+                    <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="23"/><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5"/></g></g></svg>
+                  </a>
+                </div>
               </div>
               <h4>PORTAL DE DATOS ABIERTOS DE VICENTE LOPEZ</h4>
               <div className='portal-vl btns-descargas'>
