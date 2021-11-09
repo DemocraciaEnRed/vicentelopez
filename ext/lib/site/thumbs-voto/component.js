@@ -22,10 +22,13 @@ export default function ThumbsVoto(props) {
             {/* <div className="icon">
               {icon}
             </div> */}
-            <div className="btn-container">
-              <Link to='/s/datos' className="boton">
+            <div className="btn-container">3
+              <a  href='https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2021.xlsx' target="_blank" className="boton">
+              DESCARGAR LOS RESULTADOS DE LA VOTACIÓN 2021
+              </a>
+              {/* <Link to='/s/datos' className="boton">
               VER LOS RESULTADOS DE LA VOTACIÓN 2021
-              </Link>
+              </Link> */}
             </div>
 
             {/* se cambio el texto porqeu se paso a etapa de votación */}
