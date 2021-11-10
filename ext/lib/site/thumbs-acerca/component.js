@@ -8,13 +8,13 @@ export default function ThumbsVoto(props) {
     styleIcono3 = { backgroundImage: `url(${props.texts['home-icono3-imagen']})` };
   return (
     <section className="thumbs-acerca info-landing">
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-6 offset-md-3 ">
             <div style={{padding:"56.25% 0 0 0", position:"relative"}}>
             <iframe src="https://player.vimeo.com/video/624747283?h=90f9549df7&color=c9ff23&title=0&byline=0&portrait=0" style={{position:"absolute",top:0,left:0,width:"100%",height:"100%"}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
             <script src="https://player.vimeo.com/api/player.js"></script>
           </div>
-        </div>
+        </div> */}
       <div className="container-fluid">
         <div className="row cont">
           <div className="col-md-4">

@@ -51,7 +51,7 @@ export default class Carrusel extends Component {
   }
 
   componentDidMount () {
-    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2020&state=preparacion,compra,ejecucion,finalizado&limit=100&sort=popular`, { credentials: 'include' })
+    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2022&state=preparacion,compra,ejecucion,finalizado&limit=100&sort=popular`, { credentials: 'include' })
       .then((res) => res.json())
       .then((res) => {
         this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }
@@ -82,7 +82,7 @@ export default class Carrusel extends Component {
     return (
       <div className='seccion-proyectos-factibles container-fluid'>
         <div className="fondo-titulo">
-          <h2 className='title'>Proyectos 2020</h2>
+          <h2 className='title'>Proyectos Ganadores 2022</h2>
         </div>
         <section className='seccion-barrios-factibles container'>
           <div className='seccion-barrios-proyectos-factibles container'>
