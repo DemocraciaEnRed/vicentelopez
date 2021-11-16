@@ -21,7 +21,7 @@ const states = [
   { 'name': 'No ganador', 'value': 'no-ganador' },
 ]
 
-const anios = ['2018', '2019','2020','2021']
+const anios = ['2018', '2019','2020','2021', '2022']
 
 export default class Filter extends Component {
   constructor (props) {
@@ -100,7 +100,8 @@ export default class Filter extends Component {
         {this.props.openVotation &&
           <div className='stage-container'>
             <a className='stage-changer' onClick={this.props.changeStage}>
-            {this.props.stage === 'seguimiento' ? 'Ver proyectos a votar ▶️' : '◀️ Ver seguimiento de proyectos'}
+            {/* {this.props.stage === 'seguimiento' ? 'Ver proyectos a votar ▶️' : '◀️ Ver seguimiento de proyectos'} */}
+            {this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores ▶️' : '◀️ Ver seguimiento de proyectos'}
 
             </a>
           </div>
