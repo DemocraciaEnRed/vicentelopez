@@ -3,10 +3,10 @@ import { Line } from 'react-chartjs-2';
 import config from 'lib/config';
 
 const data = {
-    labels: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+    labels: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,2020,2021],
     datasets: [
         {
-            data: [1178, 6691, 10068, 18880, 26537, 45010, 69201, 78310],
+            data: [1178, 6691, 10068, 18880, 26537, 45010, 69201, 78310, 0, 14149],
             borderColor: '#7cbb42',
             backgroundColor: '#ffffff',
             pointBackgroundColor:  '#7cbb42',

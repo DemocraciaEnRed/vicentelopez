@@ -22,7 +22,7 @@ export default function ThumbsVoto(props) {
             {/* <div className="icon">
               {icon}
             </div> */}
-            <div className="btn-container">3
+            <div className="btn-container">
               <a  href='https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2021.xlsx' target="_blank" className="boton">
               DESCARGAR LOS RESULTADOS DE LA VOTACIÓN 2021
               </a>
