@@ -41,7 +41,7 @@ export default class Page extends Component {
             </p>
 
             <article className="seccion-datos">
-              <h3>Evolución del Presupuesto Participativo 2012 - 2020</h3>
+              <h3>Evolución del Presupuesto Participativo 2012 - 2022</h3>
               <figure className="graph-box">
                 <div className="table-scroller">
                   <table className="tabla-presupuestoparticipativo">
