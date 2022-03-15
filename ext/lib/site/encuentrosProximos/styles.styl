@@ -1,6 +1,7 @@
 .seccion-proximos-encuentros
   background-color: #8C1E80
-  margin-bottom: 30px;
+  //margin-bottom: 30px;
+  margin-top: 30px;
   padding-top: 0;
   padding-bottom: 30px;
   @media screen and (max-width: 764px)
@@ -57,10 +58,10 @@
     }
     .evento{
       margin: 0px 10px;
-      min-width: 110px; 
+      min-width: 200px; 
       .top {
         position: relative;
-        height: 25px;
+        height: 40px;
         background-color: #727272;
         border-top-left-radius: 10px;  
         border-top-right-radius: 10px;  
@@ -68,8 +69,8 @@
           background-color: #BFBFBF;
           position: absolute;
           width: 12px;
-          height: 20px;
-          top: -5px;
+          height: 25px;
+          top: -7px;
           left: 20%;
           border-radius: 20px;
         }
@@ -77,8 +78,8 @@
           background-color: #BFBFBF;
           position: absolute;
           width: 12px;
-          height: 20px;
-          top: -5px;
+          height: 25px;
+          top: -7px;
           right: 20%;
           border-radius: 20px;
         }
@@ -89,15 +90,25 @@
         background-color: #FFF;
         border-bottom-left-radius: 10px;  
         border-bottom-right-radius: 10px;
+        min-height: 185px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
         h3{
-          color : #8C1E80;
-          margin: 10px 0;
+          color : #879c12;
+          margin: 10px 0 3px;
           font-weight: 800;
+        }
+        h4{
+          color: #727272;
+          font-weight: 400;
+          font-size: 16px;
+          margin: 0 0 10px;
         }  
         p {
           color: #000;
           font-size: 12px;
-          margin: 0;
+          margin: 10px 0;
         }
       }
     }
