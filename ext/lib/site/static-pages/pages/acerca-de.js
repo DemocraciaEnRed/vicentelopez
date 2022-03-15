@@ -68,7 +68,7 @@ export default class Page extends Component {
                    <div data-trigger="+ ¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?">
                     <p>Podés presentar:</p>
                     <p>1. Propuestas de obras o equipamiento para: espacios públicos, escuelas de gestión pública, centros de salud municipales, polideportivos, sociedades de fomento, centros de jubilados, sociedades de fomento, clubes, entre otros. La condición es que sean entidades sin fines de lucro.</p>
-                    <p>2. También propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución que le corresponda a esa propuesta, en caso de que los vecinos la elijan.</p>
+                    <p>2. También propuestas de campaSñas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución que le corresponda a esa propuesta, en caso de que los vecinos la elijan.</p>
                     <p>3. Las propuestas no pueden involucrar gastos en recursos humanos que incrementen la planta de empleados municipales.</p>
                     <p>4. Tenés que acotarla a un barrio (localidad) en concreto. No puede ser una propuesta para todo el Municipio.</p>
                     <p>5. El presupuesto máximo de la propuesta no puede superar un monto determinado (para los proyectos a ejecutar en 2022 será de $5.000.000).</p>
@@ -136,7 +136,7 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?">
-                   <p>Consultá el reglamento del PPVL para 2021-2022 haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>, envianos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
+                   <p>Consultá el reglamento del PPVL para 2022-2023 haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>, envianos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
                    </div>
 {/* 
                    <div data-trigger="+ ¿DÓNDE ENCUENTRO EL REGLAMENTO DEL PRESPUESTO PARTICIPATIVO 2021?">
