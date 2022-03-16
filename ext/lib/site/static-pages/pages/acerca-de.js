@@ -139,7 +139,7 @@ export default class Page extends Component {
                    <p>Consultá el reglamento del PPVL para 2022-2023 haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>, envianos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
                    </div>
 {/* 
-                   <div data-trigger="+ ¿DÓNDE ENCUENTRO EL REGLAMENTO DEL PRESPUESTO PARTICIPATIVO 2021?">
+                   <div data-trigger="+ ¿DÓNDE ENCUENTRO EL REGLAMENTO DEL PRESPUESTO PARTICIPATIVO 2022?">
                    <p>El reglamento lo podés encontrar haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>.</p>
                    </div> */}
                    <div data-trigger="+ ¿DÓNDE ENCUENTRO LOS TÉRMINOS Y CONDICIONES DE LA PLATAFORMA?">
