@@ -17,19 +17,27 @@ export default function ThumbsVoto(props) {
       <div className="container-fluid">
         <div className="row cont fondo-cyan">
           <div className="subtitulo">
-            <h3>{ props.texts['home-subtitle-text'] }</h3>
             <h2>{ props.texts['home-subtitle'] }</h2>
+            <h3>{ props.texts['home-subtitle-text'] }</h3>
             {/* <div className="icon">
               {icon}
             </div> */}
-            <div className="btn-container">
+            {props.enablePropuestas &&
+              <div className="btn-container">
+                <Link to='/formulario-propuesta'
+                  className="boton-azul boton-blanco">
+                  Mandá tu propuesta
+                </Link>
+              </div>
+              }
+            {/* <div className="btn-container">
               <a  href='https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2021.xlsx' target="_blank" className="boton">
               DESCARGAR LOS RESULTADOS DE LA VOTACIÓN 2021
               </a>
-              {/* <Link to='/s/datos' className="boton">
+              <Link to='/s/datos' className="boton">
               VER LOS RESULTADOS DE LA VOTACIÓN 2021
-              </Link> */}
-            </div>
+              </Link>
+            </div> */}
 
             {/* se cambio el texto porqeu se paso a etapa de votación */}
             {/* <p className="text-center">

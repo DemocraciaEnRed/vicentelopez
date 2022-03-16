@@ -25,7 +25,7 @@ const defaultValues = {
   'seguimiento': {
     barrio: [],
     // anio: ['2018', '2019', '2020'],
-    anio: ['2018', '2019', '2020','2021','2'],
+    anio: ['2018', '2019', '2020','2021','2022'],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
@@ -43,7 +43,7 @@ export class HomeProyectos extends Component {
       state: [],
       // puede ser 'seguimiento' o 'votacion'
       // stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
-      stage: 'votacion', // anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
+      stage: 'seguimiento', // anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
       sort: ['barrio']
     }
   }
@@ -60,7 +60,7 @@ export class HomeProyectos extends Component {
     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
     // El siguiente se activa para cuando sea mostrar los proyectos a votar
     // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
-    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021' : '2022'
+    initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
     // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}&limit=100`, {
@@ -73,16 +73,22 @@ export class HomeProyectos extends Component {
       .then((res) => {
         this.setState({
           barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
+          // IMPORTANTE LEER
           // This filters should be applied if seguimiento stage is active only
           // state: defaultValues.seguimiento.state,
-          // anio: defaultValues.seguimiento.anio,
-          // stage: 'seguimiento',
+          state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
+          anio: defaultValues.seguimiento.anio,
+          stage: 'seguimiento',
+          // IMPORTANTE LEER
           // El siguiente se activa para mostrar los proyectos a votar
           // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
+          // IMPORTANTE LEER
           // Este se activa cuando paso la votacion y se muestran los gandores
-          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'] ,
-          anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020','2021'] : ['2022'],
-          stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
+          // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'] ,
+          // anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019','2020','2021','2022'] : ['2023'],
+          // IMPORTANTE LEER
+          // Activar cuando se pasa a votacion
+          // stage: this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
           topics: res.results.topics,
           page: res.pagination.page,
           noMore: res.results.topics.length < 20
@@ -235,7 +241,7 @@ export class HomeProyectos extends Component {
               changeStage={this.changeStage}
               stage={this.state.stage}
               clearFilter={this.clearFilter}
-              openVotation={true} />
+              openVotation={false} />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>

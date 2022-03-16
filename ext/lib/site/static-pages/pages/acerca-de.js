@@ -68,7 +68,7 @@ export default class Page extends Component {
                    <div data-trigger="+ ¿QUÉ TIPO DE PROYECTOS PUEDO PRESENTAR?">
                     <p>Podés presentar:</p>
                     <p>1. Propuestas de obras o equipamiento para: espacios públicos, escuelas de gestión pública, centros de salud municipales, polideportivos, sociedades de fomento, centros de jubilados, sociedades de fomento, clubes, entre otros. La condición es que sean entidades sin fines de lucro.</p>
-                    <p>2. También propuestas de campañas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución que le corresponda a esa propuesta, en caso de que los vecinos la elijan.</p>
+                    <p>2. También propuestas de campaSñas o talleres sobre un determinado tema. En ese caso, se limitarán exclusivamente al año de ejecución que le corresponda a esa propuesta, en caso de que los vecinos la elijan.</p>
                     <p>3. Las propuestas no pueden involucrar gastos en recursos humanos que incrementen la planta de empleados municipales.</p>
                     <p>4. Tenés que acotarla a un barrio (localidad) en concreto. No puede ser una propuesta para todo el Municipio.</p>
                     <p>5. El presupuesto máximo de la propuesta no puede superar un monto determinado (para los proyectos a ejecutar en 2022 será de $5.000.000).</p>
@@ -90,16 +90,16 @@ export default class Page extends Component {
                     <p>Para acreditar tu domicilio laboral, tenés que presentar tu recibo de sueldo o un certificado de trabajo, donde conste en el domicilio laboral en el barrio donde querés votar.</p>
                    </div>
 
-                   <div data-trigger="+ ¿PUEDO VOTAR MÁS DE UNA VEZ?">
+                   {/* <div data-trigger="+ ¿PUEDO VOTAR MÁS DE UNA VEZ?">
                    <p>Solo podés votar más de una vez si vivís en uno de los 9 barrios y trabajás en otro de los 9 barrios. Si vivís y trabajás en el mismo barrio, sólo podés votar una vez.</p>
                    <p>No está permitido votar más de una vez en un mismo barrio. Si alguien lo hiciera, se anulan todos los votos que haya realizado esa persona en el mismo barrio.</p>
-                   </div>
+                   </div> */}
 
                    <div data-trigger="+ ¿POR QUÉ PUEDEN PARTICIPAR CON PROPUESTAS LAS ESCUELAS PÚBLICAS DE GESTIÓN PROVINCIAL EN EL PRESUPUESTO PARTICIPATIVO?">
                     <p>Si bien las escuelas públicas de gestión provincial que funcionan en Vicente López dependen presupuestariamente de la Provincia de Buenos Aires, desde el año 2014 y dado el estado de las mismas, el Departamento Ejecutivo Municipal permite que dichas escuelas presenten propuestas al Presupuesto Participativo. Para ello, se estableció un monto límite por barrio ($5.000.000) y se plantearon 2 requisitos: Para presentar la propuesta, la escuela debe contar con la aprobación del Consejo Escolar y, de resultar un proyecto factible, debe ganarse el derecho a ser realizado en igualdad de condiciones que el resto de los proyectos, es decir, a través del voto directo de las personas habilitadas para votar.</p>
                    </div>
 
-                   <div data-trigger="+ ¿CUÁNDO Y DÓNDE VOTAR?">
+                   {/* <div data-trigger="+ ¿CUÁNDO Y DÓNDE VOTAR?">
                    <p>En 2021, la votación se realizará exclusivamente por modalidad online en un portal al que se accede por esta misma plataforma web. Las personas registradas y habilitadas para votar podrán hacerlo entre el lunes 18 de octubre a las 00.00 hs y el domingo 31 de octubre a las 23.59 hs</p>
                    </div>
 
@@ -129,19 +129,19 @@ export default class Page extends Component {
 
                    <div data-trigger="+ ¿SE PUEDE PRESENCIAR EL ESCRUTINIO?">
                    <p>Por supuesto. El escrutinio es público. Si te interesa presenciarlo, mandanos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a></p>
-                   </div>
+                   </div> */}
 
                    <div data-trigger="+ ¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?">
                    <p>Los proyectos ganadores de cada barrio, surgen de tu voto y el de tus vecinos. Los proyectos más votados, que no superen el monto asignado a cada barrio, serán realizados durante el año siguiente a la votación. Puede ocurrir que por orden de prioridad de votos, un proyecto supere por presupuesto el monto total establecido para el barrio; en ese caso, se pasará al proyecto que siga en cantidad de votos hasta agotar el monto asignado al barrio.</p>
                    </div>
 
                    <div data-trigger="+ ¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?">
-                   <p>Consultá el reglamento del PPVL para 2021-2022 haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>, envianos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
+                   <p>Consultá el reglamento del PPVL para 2022-2023 haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>, envianos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
                    </div>
-
+{/* 
                    <div data-trigger="+ ¿DÓNDE ENCUENTRO EL REGLAMENTO DEL PRESPUESTO PARTICIPATIVO 2021?">
                    <p>El reglamento lo podés encontrar haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>.</p>
-                   </div>
+                   </div> */}
                    <div data-trigger="+ ¿DÓNDE ENCUENTRO LOS TÉRMINOS Y CONDICIONES DE LA PLATAFORMA?">
                    <p>Los términos y condiciones los podés encontrar haciendo <Link to='/s/terminos-y-condiciones'>click acá</Link>.</p>
                    </div>

@@ -4,6 +4,8 @@ import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 import {Link} from 'react-router'
 import PuntosDeVotacion from '../assets/puntos-de-votacion'
+import config from 'lib/config'
+import makeAsyncScript from 'react-async-script'
 
 export default class Page extends Component {
   constructor (props) {
@@ -18,24 +20,26 @@ export default class Page extends Component {
       isLoading: true,
       keys: [
         'id',
+        'virtual',
+        'cupoLleno',
         'barrio',
+        'direccion',
         'dia',
         'mes',
         'anio',
-        'iniciohora',
-        'iniciominuto',
-        'finhora',
-        'finminuto',
-        'fechadialegible',
-        'fechahoralegible',
-        'cupolleno'
+        'inicioHora',
+        'inicioMinuto',
+        'finHora',
+        'finMinuto',
+        'fechaDiaLegible',
+        'fechaHoraLegible'
       ]
     }
   }
 
   componentDidMount () {
     this.goTop()
-    window.fetch(`https://spreadsheets.google.com/feeds/list/1p9RHiHfD7PpLYmEI0_ofCbk-2TYi7eqbm2ey5-UQ6Mw/1/public/full?alt=json`)
+    window.fetch(`https://sheets.googleapis.com/v4/spreadsheets/1p9RHiHfD7PpLYmEI0_ofCbk-2TYi7eqbm2ey5-UQ6Mw/values/Encuentros?key=${config.googleSheetApiKey}`)
       .then((res) => res.json())
       .then((res) => {
         this.extractData(res)
@@ -53,18 +57,19 @@ export default class Page extends Component {
     let available = []
     let availableId = []
     let unavailableEvents = []
-    data.feed.entry.forEach((entry) => {
-      // eslint-disable-next-line prefer-const
-      let marker = {}
-      this.state.keys.forEach((key) => {
-        marker[key] = entry[`gsx$${key}`].$t !== '' ? entry[`gsx$${key}`].$t : null
+    data.values.forEach((entry, i) => {
+      if (i === 0) return
+      const marker = {}
+      this.state.keys.forEach((k, i) => {
+        marker[k] = entry[i] !== '' ? entry[i] : null
       })
-      // console.log(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
-      marker.fechaInicio = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.iniciohora}:${marker.iniciominuto}:00-0300`)
-      marker.fechaFin = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.finhora}:${marker.finminuto}:00-0300`)
-      // marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=Encuentro+${marker.barrio}+-+PP+Vicente+Lopez+2021&details=Inscribite+en+las+reuniones+de+tu+barrio+y+present%C3%A1+propuestas+para+que+mejoren+el+mismo.+Este+a%C3%B1o%2C+debido+a+la+pandemia+por+el+COVID-19%2C+todas+las+reuniones+se+realizar%C3%A1n+de+forma+virtual+a+trav%C3%A9s+de+Zoom&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
-      marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=Encuentro+${marker.barrio}+-+PP+Vicente+Lopez+2021&details=Inscribite%20en%20las%20reuniones%20de%20tu%20barrio%20y%20present%C3%A1%20propuestas%20para%20que%20mejoren%20el%20mismo.%0ALink%20a%20inscripci%C3%B3n%3A%20https%3A%2F%2Fforms.gle%2FXAzf28UUFYj4T7tS8&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
-
+      marker.fechaInicio = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.inicioHora}:${marker.inicioMinuto}:00-0300`)
+      marker.fechaFin = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.finHora}:${marker.finMinuto}:00-0300`)
+      if(marker.virtual == 'TRUE'){
+        marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=PP+VL+-+Encuentro+VIRTUAL+${marker.barrio}&details=Te+invitamos+a+participar+colaborativamente+con+los+vecinos+de+${marker.barrio}+para+mejorar+nuestra+ciudad+juntos&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
+      } else {
+        marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=PP+VL+-+Encuentro+PRESENCIAL+${marker.barrio}&details=Te+invitamos+a+participar+colaborativamente+con+los+vecinos+de+${marker.barrio}+para+mejorar+nuestra+ciudad+juntos&location=${marker.direccion}&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
+      }
       output.push(marker)
     })
     output.sort(function(a,b){
@@ -80,6 +85,7 @@ export default class Page extends Component {
         unavailableEvents.push(event)
       }
     })
+    console.log(output)
     this.setState({ events: output, availableEvents: available, availableEventsId: availableId, unavailableEvents: unavailableEvents, isLoading: false })
   }
 
@@ -91,7 +97,7 @@ export default class Page extends Component {
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
-              <h1>Encuentros virtuales 2021</h1>
+              <h1>Encuentros 2022</h1>
             </div>
           </div>
         </section>
@@ -99,12 +105,12 @@ export default class Page extends Component {
           <div className='ext-herramientas'>
             <div className="text-center">
               <h3 className="color-black">Calendario de reuniones</h3>
-              <p>Inscribite en la reunión de tu barrio y presentá propuestas para mejorarlo. Este año, debido a la pandemia por el COVID-19, todas las reuniones se realizarán de forma virtual a través de Zoom</p>
+              <p>Inscribite en la reunión de tu barrio y presentá propuestas para mejorarlo.</p>
             </div> 
              <div className='action-btns'>
               {
                 <div className='btns-descargas'>
-                  <a className='boton-azul' href='https://forms.gle/XAzf28UUFYj4T7tS8' target="_blank">
+                  <a className='boton-azul' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform8' target="_blank">
                       Quiero participar
                   </a>
                 </div>
@@ -120,16 +126,17 @@ export default class Page extends Component {
                     availableEvents.map( event => <div className="event-container">
                       <div className="event-description">
                         <h5>{event.barrio}</h5>
-                        <p><b>{event.fechadialegible}</b></p>
-                        <p>{event.fechahoralegible}</p>
+                        <p><b>{event.fechaDiaLegible} - {event.fechaHoraLegible}</b></p>
+                        <p>{event.virtual == 'TRUE' ? <span style={{fontWeight: 'bold', color: '#348bd8', fontSize: '14px'}}><span className="glyphicon glyphicon-facetime-video"></span>&nbsp;¡EVENTO VIRTUAL!</span> : `Dirección: ${event.direccion}` } </p>
+                        <p>{event.descripcion}</p>
                       </div> 
                       <div className="event-actions">
-                        { event.cupolleno == 'FALSE' ? 
-                          <a href="https://forms.gle/XAzf28UUFYj4T7tS8" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
+                        { event.cupoLleno == 'FALSE' ? 
+                          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
                           : <div className="btn btn-danger btn-inscripcion" disabled>¡CUPO LLENO!</div>
                         }
-                        { event.cupolleno == 'FALSE' ? 
-                          <a href={event.calendarURL} className="btn btn-default btn-sm" target="_blank" disabled={event.cupolleno == 'FALSE' ? false : true} ><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</a>
+                        { event.cupoLleno == 'FALSE' ? 
+                          <a href={event.calendarURL} className="btn btn-default btn-sm" target="_blank" disabled={event.cupoLleno == 'FALSE' ? false : true} ><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</a>
                           : <div className="btn btn-default btn-sm" disabled><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</div>
                         }
                       </div>

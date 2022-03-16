@@ -29,7 +29,7 @@ const states = [
   { 'name': 'Integrado', 'value': 'integrado' },
 ]
 
-const anios = ['2018', '2019', '2020', '2021','2022']
+const anios = ['2018', '2019', '2020', '2021','2022','2023']
 
 let tags = []
 
@@ -42,7 +42,7 @@ let tags = []
 const defaultValues = {
   limit: 20,
   barrio: [],
-  anio: ['2022'],
+  anio: ['2023'],
   //state: ['pendiente', 'factible', 'no-factible', 'integrado'],
   state: [],
   tag: [],
@@ -315,7 +315,7 @@ class HomePropuestas extends Component {
             <div className='col-md-10 offset-md-1'>
               {topics && topics.length === 0 && (
                 <div className='empty-msg'>
-                  <div className='alert alert-success' role='alert'>
+                  <div className='alert alert-warning' role='alert'>
                     No se encontraron propuestas.
                   </div>
                 </div>
