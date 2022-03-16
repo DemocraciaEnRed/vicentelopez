@@ -99,7 +99,7 @@ export default class EncuentrosProximos extends Component {
         </div>
         <div className="row">
           <div className="btn-container">
-            <a className='boton-azul boton-blanco text-center' href='https://forms.gle/XAzf28UUFYj4T7tS8' target="_blank">
+            <a className='boton-azul boton-blanco text-center' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform' target="_blank">
               Quiero participar
             </a>
           </div>
@@ -125,6 +125,7 @@ export default class EncuentrosProximos extends Component {
                     <div className="poppi-left"></div>
                     <div className="poppi-right"></div>
                   </div>
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform" target="_blank">
                   <div className="bottom">
                     <h3>{event.barrio}</h3>
                     <h4>{event.fechaDiaLegible}<br/>{event.inicioHora}:{event.inicioMinuto} Hs</h4>
@@ -133,9 +134,10 @@ export default class EncuentrosProximos extends Component {
                         event.virtual == 'TRUE' && <span style={{fontWeight: 'bold', color: '#348bd8', fontSize: '14px'}}>¡EVENTO VIRTUAL!</span>
                       }
                       {event.direccion}<br/>{
-                      event.cupoLleno == 'TRUE' && <span style={{fontWeight: 'bold', color: 'red', fontSize: '10px'}}>¡CUPO LLENO!</span>}
+                        event.cupoLleno == 'TRUE' && <span style={{fontWeight: 'bold', color: 'red', fontSize: '10px'}}>¡CUPO LLENO!</span>}
                     </p>
                   </div>
+                  </a>
                 </div>)
                 : <p className="text-center">
                   No hay eventos disponibles

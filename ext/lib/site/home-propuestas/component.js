@@ -315,7 +315,7 @@ class HomePropuestas extends Component {
             <div className='col-md-10 offset-md-1'>
               {topics && topics.length === 0 && (
                 <div className='empty-msg'>
-                  <div className='alert alert-success' role='alert'>
+                  <div className='alert alert-warning' role='alert'>
                     No se encontraron propuestas.
                   </div>
                 </div>

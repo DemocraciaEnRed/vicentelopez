@@ -110,7 +110,7 @@ export default class Page extends Component {
              <div className='action-btns'>
               {
                 <div className='btns-descargas'>
-                  <a className='boton-azul' href='https://forms.gle/XAzf28UUFYj4T7tS8' target="_blank">
+                  <a className='boton-azul' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform8' target="_blank">
                       Quiero participar
                   </a>
                 </div>
@@ -132,11 +132,11 @@ export default class Page extends Component {
                       </div> 
                       <div className="event-actions">
                         { event.cupoLleno == 'FALSE' ? 
-                          <a href="https://forms.gle/XAzf28UUFYj4T7tS8" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
+                          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
                           : <div className="btn btn-danger btn-inscripcion" disabled>¡CUPO LLENO!</div>
                         }
                         { event.cupoLleno == 'FALSE' ? 
-                          <a href={event.calendarURL} className="btn btn-default btn-sm" target="_blank" disabled={event.cupolleno == 'FALSE' ? false : true} ><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</a>
+                          <a href={event.calendarURL} className="btn btn-default btn-sm" target="_blank" disabled={event.cupoLleno == 'FALSE' ? false : true} ><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</a>
                           : <div className="btn btn-default btn-sm" disabled><span className="glyphicon glyphicon-calendar"></span> <span className="glyphicon glyphicon-plus"></span> Google Calendar</div>
                         }
                       </div>
