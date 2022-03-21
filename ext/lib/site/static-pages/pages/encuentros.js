@@ -110,7 +110,7 @@ export default class Page extends Component {
              <div className='action-btns'>
               {
                 <div className='btns-descargas'>
-                  <a className='boton-azul' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform8' target="_blank">
+                  <a className='boton-azul' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform' target="_blank">
                       Quiero participar
                   </a>
                 </div>
