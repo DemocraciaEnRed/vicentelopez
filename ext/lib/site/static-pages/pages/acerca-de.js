@@ -39,17 +39,17 @@ export default class Page extends Component {
 
                    <div data-trigger="+ ¿CÓMO SE DISTRIBUYE EL DINERO POR BARRIO?">
                       <p className='p-padding'>La partida asignada al Programa se distribuye según dos criterios: aproximadamente el 50% por partes iguales a cada uno de los 9 barrios. Y el resto, según la cantidad de habitantes de cada barrio. Así, los barrios con más población, reciben más partida presupuestaria.</p>
-                      <p>Para el 2022, el presupuesto participativo será de $200.000.000 y se distribuye así: </p>
+                      <p>Para el 2023, el presupuesto participativo será de $290.000.000 y se distribuye así: </p>
                       <ul>
-                        <li><p><b>OLIVOS</b>: $ 26.208.378</p></li>
-                        <li><p><b>FLORIDA ESTE</b>: $ 26.208.378</p></li>
-                        <li><p><b>MUNRO</b>: $ 26.208.378</p></li>
-                        <li><p><b>FLORIDA OESTE</b>: $ 22.045.055</p></li>
-                        <li><p><b>VILLA MARTELL</b>: $ 22.045.055</p></li>
-                        <li><p><b>VICENTE LÓPEZ</b>: $ 22.045.055</p></li>
-                        <li><p><b>CARAPACHAY</b>: $ 18.413.233</p></li>
-                        <li><p><b>VILLA ADELINA</b>: $ 18.413.233</p></li>
-                        <li><p><b>LA LUCILA</b>: $ 18.413.233</p></li>
+                        <li><p><b>OLIVOS</b>: $38.002.148</p></li>
+                        <li><p><b>MUNRO</b>: $38.002.148</p></li>
+                        <li><p><b>FLORIDA ESTE</b>: $38.002.148</p></li>
+                        <li><p><b>VILLA MARTELLI</b>: $31.965.330</p></li>
+                        <li><p><b>VICENTE LÓPEZ</b>: $31.965.330</p></li>
+                        <li><p><b>FLORIDA OESTE</b>: $31.965.330</p></li>
+                        <li><p><b>CARAPACHAY</b>: $26.669.188</p></li>
+                        <li><p><b>LA LUCILA</b>: $26.669.188</p></li>
+                        <li><p><b>VILLA ADELINA</b>: $26.669.188</p></li>
                       </ul>
                    </div>
 
