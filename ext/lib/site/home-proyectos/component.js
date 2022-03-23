@@ -25,7 +25,8 @@ const defaultValues = {
   'seguimiento': {
     barrio: [],
     // anio: ['2018', '2019', '2020'],
-    anio: ['2018', '2019', '2020','2021','2022'],
+    // anio: ['2018', '2019', '2020','2021','2022'],
+    anio: ['2022'],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
@@ -60,6 +61,7 @@ export class HomeProyectos extends Component {
     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
     // El siguiente se activa para cuando sea mostrar los proyectos a votar
     // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
     initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
     // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
