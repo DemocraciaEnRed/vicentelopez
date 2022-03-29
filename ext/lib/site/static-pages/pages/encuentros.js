@@ -17,6 +17,7 @@ export default class Page extends Component {
       availableEvents: [],
       availableEventsId: [],
       unavailableEvents: [],
+      currentEvent: undefined,
       isLoading: true,
       keys: [
         'id',
@@ -32,7 +33,8 @@ export default class Page extends Component {
         'finHora',
         'finMinuto',
         'fechaDiaLegible',
-        'fechaHoraLegible'
+        'fechaHoraLegible',
+        'linkLlamada'
       ]
     }
   }
@@ -66,7 +68,7 @@ export default class Page extends Component {
       marker.fechaInicio = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.inicioHora}:${marker.inicioMinuto}:00-0300`)
       marker.fechaFin = new Date(`${marker.anio}-${marker.mes}-${marker.dia}T${marker.finHora}:${marker.finMinuto}:00-0300`)
       if(marker.virtual == 'TRUE'){
-        marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=PP+VL+-+Encuentro+VIRTUAL+${marker.barrio}&details=Te+invitamos+a+participar+colaborativamente+con+los+vecinos+de+${marker.barrio}+para+mejorar+nuestra+ciudad+juntos&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
+        marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=PP+VL+-+Encuentro+VIRTUAL+${marker.barrio}&details=Te+invitamos+a+participar+colaborativamente+con+los+vecinos+de+${marker.barrio}+para+mejorar+nuestra+ciudad+juntos%0A%0ALink+de+la+reuni%C3%B3n+por+Zoom%3A+${encodeURIComponent(marker.linkLlamada)}&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
       } else {
         marker.calendarURL = `https://www.google.com/calendar/render?action=TEMPLATE&text=PP+VL+-+Encuentro+PRESENCIAL+${marker.barrio}&details=Te+invitamos+a+participar+colaborativamente+con+los+vecinos+de+${marker.barrio}+para+mejorar+nuestra+ciudad+juntos&location=${marker.direccion}&dates=${marker.fechaInicio.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}%2F${marker.fechaFin.toISOString().replaceAll('-','').replaceAll(':','').replaceAll('.000','')}`
       }
@@ -85,12 +87,19 @@ export default class Page extends Component {
         unavailableEvents.push(event)
       }
     })
-    console.log(output)
-    this.setState({ events: output, availableEvents: available, availableEventsId: availableId, unavailableEvents: unavailableEvents, isLoading: false })
+    let currentEvent = available.find(event => {
+      const starts = event.fechaInicio
+      const ends = event.fechaFin
+      const now = new Date()
+      if (now > starts && now < ends) {
+        return event
+      }
+    })
+    this.setState({ events: output, availableEvents: available, availableEventsId: availableId, unavailableEvents: unavailableEvents, isLoading: false, currentEvent: currentEvent })
   }
 
   render () {
-    const { events, isLoading, availableEvents, availableEventsId, unavailableEvents } = this.state
+    const { events, isLoading, availableEvents, availableEventsId, unavailableEvents, currentEvent } = this.state
     return (
       <div>
         <section className="banner-static">
@@ -116,7 +125,29 @@ export default class Page extends Component {
                 </div>
               }
             </div>
-             <div className="text-center">
+             {
+              currentEvent && currentEvent.virtual == 'TRUE' && (
+                <div className="row">
+                  <div className="col-lg-8 col-lg-offset-2">
+                    <div className="panel panel-primary happening-now">
+                      <div className="panel-heading">
+                        <h3 className="panel-title">¡AHORA! REUNIÓN VIRTUAL - {currentEvent.barrio}</h3>
+                      </div>
+                      <div className="panel-body">
+                        <div className="flex-elements">
+                          <div><b>¡AHORA MISMO!</b><br/>
+                          <span style={{'fontSize': '22px'}}><b>{currentEvent.barrio}</b></span><br/>
+                          <span><i>{currentEvent.fechaDiaLegible} - {currentEvent.inicioHora}:{currentEvent.inicioMinuto} Hs</i></span><br/>
+                            Para acceder a la reunión haz clic en el botón <i className="glyphicon glyphicon-arrow-right"></i></div>
+                          <a href={currentEvent.linkLlamada} target="_blank" className="btn btn-primary"><i className="glyphicon glyphicon-facetime-video"></i>&nbsp;&nbsp;Ingresar a la reunión</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+              <div className="text-center">
               <h3 className="color-primary">Proximos encuentros</h3>
               {
                 isLoading 
@@ -127,7 +158,12 @@ export default class Page extends Component {
                       <div className="event-description">
                         <h5>{event.barrio}</h5>
                         <p><b>{event.fechaDiaLegible} - {event.fechaHoraLegible}</b></p>
-                        <p>{event.virtual == 'TRUE' ? <span style={{fontWeight: 'bold', color: '#348bd8', fontSize: '14px'}}><span className="glyphicon glyphicon-facetime-video"></span>&nbsp;¡EVENTO VIRTUAL!</span> : `Dirección: ${event.direccion}` } </p>
+                        <p>{event.virtual == 'TRUE' ? <span style={{fontWeight: 'bold', color: '#348bd8', fontSize: '16px'}}><span className="glyphicon glyphicon-facetime-video"></span>&nbsp;¡EVENTO VIRTUAL!</span> : `Dirección: ${event.direccion}` } </p>
+                        {
+                          event.virtual == 'TRUE' && (
+                            <p><a href={event.linkLlamada} target="_blank"><i className="glyphicon glyphicon-link"></i>&nbsp;&nbsp;<u>Hacé clic aquí</u></a> para ir al Zoom de la reunión</p>
+                          )
+                        }
                         <p>{event.descripcion}</p>
                       </div> 
                       <div className="event-actions">
@@ -150,8 +186,9 @@ export default class Page extends Component {
                     unavailableEvents.map( event => <div className="event-container disabled">
                       <div className="event-description">
                         <h5>{event.barrio}</h5>
-                        <p><b>{event.fechadialegible}</b></p>
-                        <p>{event.fechahoralegible}</p>
+                        <p>{event.virtual == 'TRUE' ? <span><span className="glyphicon glyphicon-facetime-video"></span>&nbsp;¡EVENTO VIRTUAL!</span> : `Dirección: ${event.direccion}` } </p>
+                        <p><b>{event.fechaDiaLegible}</b></p>
+                        <p>{event.fechaHoraLegible}</p>
                       </div> 
                       </div> )
                   }

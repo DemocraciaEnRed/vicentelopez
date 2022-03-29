@@ -12,6 +12,7 @@ export default class EncuentrosProximos extends Component {
       availableEvents: [],
       availableEventsId: [],
       unavailableEvents: [],
+      currentEvent: undefined,
       isLoading: true,
       keys: [
         'id',
@@ -27,7 +28,8 @@ export default class EncuentrosProximos extends Component {
         'finHora',
         'finMinuto',
         'fechaDiaLegible',
-        'fechaHoraLegible'
+        'fechaHoraLegible',
+        'linkLlamada'
       ]
     }
   }
@@ -77,12 +79,20 @@ export default class EncuentrosProximos extends Component {
         unavailableEvents.push(event)
       }
     })
-    console.log(output)
-    this.setState({ events: output, availableEvents: available, availableEventsId: availableId, unavailableEvents: unavailableEvents, isLoading: false })
+    let currentEvent = available.find(event => {
+      const starts = event.fechaInicio
+      const ends = event.fechaFin
+      const now = new Date()
+      if (now > starts && now < ends) {
+        return event
+      }
+    })
+
+    this.setState({ events: output, availableEvents: available, availableEventsId: availableId, unavailableEvents: unavailableEvents, isLoading: false, currentEvent: currentEvent })
   }
 
   render () {
-    const { isLoading, availableEvents } = this.state
+    const { isLoading, availableEvents, currentEvent } = this.state
     return (
       <div className='seccion-proximos-encuentros'>
         <div className="text-center">
@@ -104,6 +114,28 @@ export default class EncuentrosProximos extends Component {
             </a>
           </div>
         </div>
+            {
+              currentEvent && currentEvent.virtual == 'TRUE' && (
+                <div className="row">
+                  <div className="col-lg-8 col-lg-offset-2">
+                    <div className="panel panel-warning happening-now">
+                      <div className="panel-heading">
+                        <h3 className="panel-title">¡AHORA! REUNIÓN VIRTUAL - {currentEvent.barrio}</h3>
+                      </div>
+                      <div className="panel-body">
+                        <div className="flex-elements">
+                          <div><b>¡AHORA MISMO!</b><br/>
+                          <span style={{'fontSize': '22px'}}><b>{currentEvent.barrio}</b></span><br/>
+                          <span><i>{currentEvent.fechaDiaLegible} - {currentEvent.inicioHora}:{currentEvent.inicioMinuto} Hs</i></span><br/>
+                            Para acceder a la reunión haz clic en el botón <i className="glyphicon glyphicon-arrow-right"></i></div>
+                          <a href={currentEvent.linkLlamada} target="_blank" className="btn btn-primary"><i className="glyphicon glyphicon-facetime-video"></i>&nbsp;&nbsp;Ingresar a la reunión</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
         <div className="row ">
           <div className="eventos-container">
             <div className="the-label">
