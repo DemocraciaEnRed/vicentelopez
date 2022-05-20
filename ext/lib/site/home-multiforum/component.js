@@ -54,7 +54,7 @@ export default class HomeMultiforumOverride extends Component {
           <BannerForoVecinal title="Presupuesto participativo" texts={this.state.texts} />
           <ThumbsVoto texts={this.state.texts} enablePropuestas={config.propuestasAbiertas}/>
           <ThumbsAcerca texts={this.state.texts}/>
-          <EncuentrosProximos />
+          {/* <EncuentrosProximos /> */}
           {/* <ProyectosFactibles /> */}
           {/* <ProyectosGanadores /> */}
           {/* <Barrios /> */}
