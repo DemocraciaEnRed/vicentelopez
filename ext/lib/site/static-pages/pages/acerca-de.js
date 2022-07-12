@@ -80,15 +80,15 @@ export default class Page extends Component {
                    </div>
 
                    <div data-trigger="+ ¿QUIÉN PUEDE VOTAR LOS PROYECTOS?">
-                     <p>Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar los proyectos. Para ello, tenés que acreditar domicilio particular o laboral en alguno de los 9 barrios del Partido.</p>
-                     <p>En el caso de los proyectos de escuelas públicas de gestión provincial o municipal, también pueden votar los alumnos mayores de 16 años y hasta un mayor de 16 años por cada alumno menor de 16 años inscriptos en la escuela respectiva, aunque no tengan domicilio en el barrio o en el partido de Vicente López. Estas personas solo podrán elegir el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela y cargar en la plataforma que le indique la Subsecretaría de Participación Ciudadana oportunamente.</p>
-                     <p>En el caso de proyectos presentados por entidades intermedias, sus directivos, asociados e inscriptos en talleres brindados por las mismas que no tengan domicilio en el barrio donde esté ubicada la entidad o en el partido de Vicente López también podrán votar pero solo podrán elegir el proyecto de la entidad y deberán estar registrados en un padrón especial que debe confeccionar la entidad y cargar en la plataforma que le indique la Subsecretaría de Participación Ciudadana oportunamente.</p>
+                     <p>Cualquier mayor de 16 años que viva o trabaje en Vicente López puede votar los proyectos. Para ello, tenés que acreditar domicilio particular o laboral en el Partido de Vicente López.</p>
+                     <p>En el caso de los proyectos de escuelas públicas de gestión provincial o municipal, también pueden votar los alumnos mayores de 16 años y un mayor de 16 años por cada alumno menor de 16 años inscriptos en la escuela respectiva, que no tenga domicilio en el Partido de Vicente López. Estas personas solo podrán elegir el proyecto de la escuela y deberán estar registradas en un padrón especial que debe confeccionar la escuela y enviar a la Subsecretaría de Participación Ciudadana oportunamente.</p>
+                     <p>En el caso de proyectos presentados por entidades intermedias, sus directivos, asociados e inscriptos en talleres brindados por las mismas que no tengan domicilio en el Partido de Vicente López también podrán votar pero solo podrán elegir el proyecto de la entidad y deberán estar registrados en un padrón especial que debe confeccionar la entidad y enviar a la Subsecretaría de Participación Ciudadana oportunamente.</p>
                    </div>
 
-                   <div data-trigger="+ ¿CÓMO ACREDITO DOMICILIO?">
+                   {/* <div data-trigger="+ ¿CÓMO ACREDITO DOMICILIO?">
                     <p>Tu domicilio particular se acredita presentando tu DNI en el puesto de votación. Si figura otro domicilio, podés acercar la factura de algún servicio que acredite tu domicilio real.</p>
                     <p>Para acreditar tu domicilio laboral, tenés que presentar tu recibo de sueldo o un certificado de trabajo, donde conste en el domicilio laboral en el barrio donde querés votar.</p>
-                   </div>
+                   </div> */}
 
                    {/* <div data-trigger="+ ¿PUEDO VOTAR MÁS DE UNA VEZ?">
                    <p>Solo podés votar más de una vez si vivís en uno de los 9 barrios y trabajás en otro de los 9 barrios. Si vivís y trabajás en el mismo barrio, sólo podés votar una vez.</p>
@@ -131,12 +131,17 @@ export default class Page extends Component {
                    <p>Por supuesto. El escrutinio es público. Si te interesa presenciarlo, mandanos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a></p>
                    </div> */}
 
+                   <div data-trigger="+ ¿CUÁNDO Y CÓMO SE VOTA EN 2022?">
+                   <p>La votación de proyectos para ejecutar en 2023 se realizará únicamente a través de la modalidad online durante 31 (treinta y un) días consecutivos a partir del sábado 1 de octubre de 2022 a las 00 hs hasta el lunes 31 de octubre de 2022 a las 23.59 hs. Por razones de fuerza mayor la Subsecretaría podrá modificar el periodo de votación, en cuyo caso lo comunicará en la plataforma web <a href="https://presupuestoparticipativo.vicentelopez.gob.ar" target="_blank">https://presupuestoparticipativo.vicentelopez.gob.ar</a>.</p>
+                   <p>Las personas podrán emitir su voto a través de un dispositivo electrónico personal (computadora, tablet, teléfono celular con acceso a internet), en dispositivos instalados en las Delegaciones Municipales o en puntos móviles de votación en la vía pública.</p>
+                   </div>
+
                    <div data-trigger="+ ¿CÓMO SE DEFINEN LOS PROYECTOS GANADORES?">
                    <p>Los proyectos ganadores de cada barrio, surgen de tu voto y el de tus vecinos. Los proyectos más votados, que no superen el monto asignado a cada barrio, serán realizados durante el año siguiente a la votación. Puede ocurrir que por orden de prioridad de votos, un proyecto supere por presupuesto el monto total establecido para el barrio; en ese caso, se pasará al proyecto que siga en cantidad de votos hasta agotar el monto asignado al barrio.</p>
                    </div>
 
                    <div data-trigger="+ ¿QUÉ HAGO SI TENGO UNA PREGUNTA QUE NO SE HA RESPONDIDO AQUÍ?">
-                   <p>Consultá el reglamento del PPVL para 2022-2023 haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez.pdf' target='_blank'>click acá</a>, envianos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
+                   <p>Consultá el reglamento del PPVL para 2022-2023 haciendo <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez-2022.pdf' target='_blank'>click acá</a>, envianos un WhatsApp al +5491162426741 o envianos un mail a <a href="mailto:participacion.ciudadana@vicentelopez.gov.ar">participacion.ciudadana@vicentelopez.gov.ar</a> y te responderemos a la brevedad.</p>
                    </div>
 {/* 
                    <div data-trigger="+ ¿DÓNDE ENCUENTRO EL REGLAMENTO DEL PRESPUESTO PARTICIPATIVO 2022?">
