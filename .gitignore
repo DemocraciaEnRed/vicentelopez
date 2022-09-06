@@ -30,5 +30,6 @@ config/development.json
 
 #scripts personales
 reqfuncs.sh
+letsGoUp.sh
 curl-cookie
 pasos-instalacion-de-cero.txt

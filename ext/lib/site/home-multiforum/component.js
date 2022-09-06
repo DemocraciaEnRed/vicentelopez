@@ -23,6 +23,7 @@ export default class HomeMultiforumOverride extends Component {
     super(props)
 
     this.state = {
+      forum: null,
       texts: {}
     }
   }
@@ -37,6 +38,10 @@ export default class HomeMultiforumOverride extends Component {
         texts: {}
       }
     })
+
+    forumStore.findOneByName('proyectos').then((forum) => {
+      this.setState({ forum })
+    }).catch((err) => { console.error(err) })
   }
 
   componentDidMount () {
@@ -48,11 +53,12 @@ export default class HomeMultiforumOverride extends Component {
   }
 
   render () {
+    const forum = this.state.forum
     return (
       <div className='ext-home-multiforum'>
         <Anchor id='container'>
           <BannerForoVecinal title="Presupuesto participativo" texts={this.state.texts} />
-          <ThumbsVoto texts={this.state.texts} enablePropuestas={config.propuestasAbiertas}/>
+          <ThumbsVoto texts={this.state.texts} enablePropuestas={forum && forum.config.propuestasAbiertas}/>
           <ThumbsAcerca texts={this.state.texts}/>
           {/* <EncuentrosProximos /> */}
           {/* <ProyectosFactibles /> */}

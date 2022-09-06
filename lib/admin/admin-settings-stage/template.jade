@@ -1,0 +1,44 @@
+#topics-wrapper
+  .topics-admin
+    .password-settings
+      .heading
+        .circle
+          i.icon-lock
+        h2= 'Configuraciones'
+      form.form(action=form.action, method='post', role='form', autovalidate, autosubmit)
+        ul.form-messages
+        .container-fluid  
+          .row
+            h5= 'Estados de la plataforma'
+            .col-sm-6    
+              .form-group
+                label.switch= 'Estado de subida de propuestas'
+                  input.form(
+                    type='checkbox',
+                    data-name='propuestasAbiertas',
+                    id='checkboxProp'
+                  )
+                  .slider.round
+              .form-group.openProposal
+                label= 'Titulo sección propuestas'
+                input.form-control.form(
+                  type='text',
+                  data-name='propuestasTexto'
+                )
+            .col-sm-6    
+              .form-group
+                label.switch= 'Estado de votación de propuestas'
+                  input.form(
+                    type='checkbox',
+                    data-name='votacionesAbiertas',
+                    id='checkboxVot'
+                  )
+                  .slider.round
+              .form-group.linkVotation
+                label= 'link para votaciones'
+                input.form-control.form(
+                  type='text',
+                  data-name='linkVotaciones',
+                  validate='url'
+                )
+        .form-group: button.btn.btn-success.btn-block.btn-lg= t('settings.save')
