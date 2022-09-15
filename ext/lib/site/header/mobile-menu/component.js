@@ -5,10 +5,23 @@ import bus from 'bus'
 import userConnector from 'lib/site/connectors/user'
 import AnonUser from 'ext/lib/site/header/anon-user/component'
 import ProyectosLink from 'ext/lib/site/header/proyectos-link'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 class MobileMenu extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      forum: null
+    }
+  }
+
   componentWillMount () {
     document.addEventListener('click', this.handleClick, false)
+
+    forumStore.findOneByName('proyectos').then((forum) => {
+      this.setState({ forum })
+    }).catch((err) => { console.error(err) })
   }
 
   componentWillUnmount () {
@@ -22,6 +35,7 @@ class MobileMenu extends Component {
   }
 
   render () {
+    const { forum } = this.state
     return (
       <nav className='mobile-nav'>
         <a
@@ -74,7 +88,7 @@ class MobileMenu extends Component {
                     Datos
                   </Link>
                 </div>
-                {/* <div className='header-item mobile-link'>
+                { forum && forum.config.mostrarPuntosVotacion && <div className='header-item mobile-link'>
                   <Link
                     to='/s/herramientas'
                     className='header-link'
@@ -82,7 +96,7 @@ class MobileMenu extends Component {
                     onClick={this.props.toggleOnClick}>
                     Herramientas
                   </Link>
-                </div> */}
+                </div>}
                 <div>
                   {this.props.user.state.rejected && (
                     <AnonUser form={this.props.form}

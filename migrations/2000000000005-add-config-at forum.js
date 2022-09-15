@@ -16,7 +16,7 @@ exports.up = function up (done) {
         if (!forumProyecto) reject(new Error('No forum proyectos in it found'))
 
         forumProyecto.config = {}
-        forumProyecto.config.votacionAbierta = false
+        forumProyecto.config.votacionesAbiertas = false
         forumProyecto.config.linkVotaciones = ''
         forumProyecto.config.propuestasAbiertas = config.propuestasAbiertas
 
@@ -24,6 +24,7 @@ exports.up = function up (done) {
                                                 ? config.propuestasTextoAbiertas
                                                 : config.propuestasTextoCerradas
 
+        forumProyecto.config.mostrarPuntosVotacion = false
         forumProyecto.markModified('config')
 
         Forum.collection.save(forumProyecto, (err) => {

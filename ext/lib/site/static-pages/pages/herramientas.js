@@ -4,13 +4,15 @@ import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 import {Link} from 'react-router'
 import PuntosDeVotacion from '../assets/puntos-de-votacion'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 export default class Page extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      showTable: false
+      showTable: false,
+      forum: null
     }
   }
 
@@ -18,12 +20,18 @@ export default class Page extends Component {
     this.goTop()
   }
 
+  componentWillMount () {
+    forumStore.findOneByName('proyectos').then((forum) => {
+      this.setState({ forum })
+    }).catch((err) => { console.error(err) })
+  }
+
   goTop () {
     window.scrollTo(0,0)
   }
 
   render () {
-    const { showTable } = this.state
+    const { showTable, forum } = this.state
     return (
       <div>
         <section className="banner-static">
@@ -34,7 +42,7 @@ export default class Page extends Component {
             </div>
           </div>
         </section>
-        <div id='container'>
+        { forum && forum.config.mostrarPuntosVotacion && <div id='container'>
           <div className='ext-herramientas'>
             <div className='action-btns'>
               {
@@ -74,7 +82,7 @@ export default class Page extends Component {
 
             <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' />
           </div>
-        </div>
+        </div>}
         <Jump goTop={this.goTop} />
         <Footer />
       </div>

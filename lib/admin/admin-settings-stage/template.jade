@@ -41,4 +41,15 @@
                   data-name='linkVotaciones',
                   validate='url'
                 )
+          .row  
+            .col-sm-6
+              .form-group 
+                .form-group
+                label.switch= 'Mostrar puntos de votación'
+                  input.form(
+                    type='checkbox',
+                    data-name='mostrarPuntosVotacion',
+                    id='checkboxPoints'
+                  )
+                  .slider.round
         .form-group: button.btn.btn-success.btn-block.btn-lg= t('settings.save')
