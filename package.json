@@ -158,6 +158,7 @@
     "passport-local": "~1.0.0",
     "passport-local-mongoose": "~4.0.0",
     "prop-types": "~15.5.10",
+    "quill": "^1.3.6",
     "react": "^15.3.0",
     "react-async-script": "^0.9.1",
     "react-collapsible": "^2.7.0",

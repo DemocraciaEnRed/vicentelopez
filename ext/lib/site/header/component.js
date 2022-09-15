@@ -142,7 +142,7 @@ class Header extends Component {
 
             <div className="header-item">
               <Link
-                to='/s/acerca-de'
+                to='/acerca-de'
                 className='header-link'
                 activeStyle={{ color: '#8C1E81' }}>
                   Acerca de
