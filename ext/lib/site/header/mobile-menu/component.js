@@ -49,6 +49,15 @@ class MobileMenu extends Component {
               id='mobile-menu-display'
               className='mobile-menu-display'>
               <ul>
+              { forum && forum.config.mostrarPuntosVotacion && <div className='header-item mobile-link'>
+                <Link
+                  to='/s/herramientas'
+                  className='header-link info-votacion'
+                  activeStyle={{ color: '#8C1E81' }}
+                  onClick={this.props.toggleOnClick}>
+                  Info votación
+                </Link>
+                </div>}
                  <div className='header-item mobile-link'>
                   <Link
                     to='/s/acerca-de'
@@ -88,15 +97,6 @@ class MobileMenu extends Component {
                     Datos
                   </Link>
                 </div>
-                { forum && forum.config.mostrarPuntosVotacion && <div className='header-item mobile-link'>
-                  <Link
-                    to='/s/herramientas'
-                    className='header-link'
-                    activeStyle={{ color: '#8C1E81' }}
-                    onClick={this.props.toggleOnClick}>
-                    Herramientas
-                  </Link>
-                </div>}
                 <div>
                   {this.props.user.state.rejected && (
                     <AnonUser form={this.props.form}

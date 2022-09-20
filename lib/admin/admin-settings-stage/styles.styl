@@ -6,27 +6,27 @@ h5
   margin-top: 30px;
 
 
-switch {
+switch 
   display: inline-block;
   height: 34px;
   position: relative;
   width: 60px;
-}
 
-.switch input {
+
+.switch input 
   display:none;
-}
 
-.slider {
+
+.slider 
   margin-top:6px
   background-color: #ccc;
   width:60PX
   height:31px
   cursor: pointer;
   transition: .4s;
-}
 
-.slider:before {
+
+.slider:before 
   background-color: #fff;
   bottom: 13%;
   content: "";
@@ -35,20 +35,51 @@ switch {
   position: absolute;
   transition: .4s;
   width: 26px;
-}
 
-input:checked + .slider {
+
+input:checked + .slider 
   background-color: #66bb6a;
-}
 
-input:checked + .slider:before {
+
+input:checked + .slider:before 
   transform: translateX(26px);
-}
 
-.slider.round {
+
+.slider.round 
   border-radius: 34px;
-}
 
-.slider.round:before {
+
+.slider.round:before 
   border-radius: 50%;
-}
+
+.state-votation
+  border: 1px solid #ccc
+  border-radius: 20px
+  overflow: auto
+  display:flex
+  @media(max-width: 768px)
+    display: grid
+  .col-sm-4
+    border-left: 1px solid #ccc
+    padding: 0
+    @media(max-width: 768px)
+      border-top: 1px solid #ccc
+  .col-sm-4:first-child
+    border: none
+    @media(max-width: 768px)
+      border-top: none
+  label
+    cursor: pointer
+    text-align: center 
+    margin: 0!important
+    padding: 8px
+    width: 100%
+    height: 100%
+  .active
+    background-color: #66bb6a
+    color: white
+  
+.pseudo-radio
+  display: none
+
+

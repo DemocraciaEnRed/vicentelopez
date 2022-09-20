@@ -145,7 +145,14 @@ class Header extends Component {
           </Link>
 
           <ul className='nav navbar-nav'>
-
+            {forum && forum.config.mostrarPuntosVotacion && <div className="header-item">
+              <Link
+                to='/s/herramientas'
+                className='header-link info-votacion'
+                activeStyle={{ color: '#8C1E81' }}>
+                 Info votación
+              </Link>
+            </div> }
             <div className="header-item">
               <Link
                 to='/s/acerca-de'
@@ -181,14 +188,6 @@ class Header extends Component {
                   Datos
               </Link>
             </div>
-            {forum && forum.config.mostrarPuntosVotacion && <div className="header-item">
-              <Link
-                to='/s/herramientas'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                  Herramientas
-              </Link>
-            </div> }
             { showAdmin &&
               <div className="header-item">
                 <Link
@@ -220,7 +219,7 @@ class Header extends Component {
               <AnonUser form={this.state.userForm} />
             )}
           </ul>
-          {forum && forum.config.votacionesAbiertas && <div className='vot-button'>
+          {forum && forum.config.mostrarLinkVotaciones && <div className='vot-button'>
             <a href={forum.config.linkVotaciones}>vota</a>
           </div>}
         </nav>

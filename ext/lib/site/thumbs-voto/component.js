@@ -29,7 +29,7 @@ export default function ThumbsVoto(props) {
                 </Link>
               </div>
               }
-            {props.forum.config.votacionesAbiertas &&
+            {props.forum.config.mostrarLinkVotaciones &&
               <div className='btn-container-vote'>
                 <a href={props.forum.config.linkVotaciones}>vota aqui</a>
               </div>

@@ -16,7 +16,10 @@ exports.up = function up (done) {
         if (!forumProyecto) reject(new Error('No forum proyectos in it found'))
 
         forumProyecto.config = {}
-        forumProyecto.config.votacionesAbiertas = false
+        forumProyecto.config.preVotacion = false
+        forumProyecto.config.votacionFinalizada = false
+        forumProyecto.config.seguimientoNormal = true
+        forumProyecto.config.mostrarLinkVotaciones = false
         forumProyecto.config.linkVotaciones = ''
         forumProyecto.config.propuestasAbiertas = config.propuestasAbiertas
 
