@@ -8,7 +8,7 @@ import ThumbsAcerca from 'ext/lib/site/thumbs-acerca/component'
 import ThumbsVoto from 'ext/lib/site/thumbs-voto/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
-// import ProyectosFactibles from 'ext/lib/site/proyectosFactibles/component'
+import ProyectosFactibles from 'ext/lib/site/proyectosFactibles/component'
 import ProyectosGanadores from 'ext/lib/site/proyectosGanadores/component'
 import EncuentrosProximos from 'ext/lib/site/encuentrosProximos/component'
 import forumStore from 'lib/stores/forum-store/forum-store'
@@ -63,11 +63,11 @@ export default class HomeMultiforumOverride extends Component {
             forum={forum} />}
           <ThumbsAcerca texts={this.state.texts}/>
           {/* <EncuentrosProximos /> */}
-          {/* <ProyectosFactibles /> */}
-          {/* <ProyectosGanadores /> */}
+          {forum && forum.config.preVotacion && <ProyectosFactibles /> }
+          {forum && forum.config.votacionFinalizada && <ProyectosGanadores /> }
           {/* <Barrios /> */}
           <ForosEnDatos />
-          {/* <Banner400Proyectos/> */}
+          {/* <Banner400Proyectos/> */} 
           <Jump goTop={this.goTop} />
           <Footer />
         </Anchor>
