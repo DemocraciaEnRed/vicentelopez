@@ -55,35 +55,31 @@ export class HomeProyectos extends Component {
   }
 
   componentDidMount () {
-    forumStore.findOneByName('proyectos').then((forum) => {
-      this.setState({ forumConfig: forum.config })
-    }).then(() => {
+    const getInfo = async () => {
+      await forumStore.findOneByName('proyectos').then((forum) => {
+        this.setState({ forumConfig: forum.config })
+      })
+
       let initialFilters = {}
       if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
       if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
+
       if (this.state.forumConfig.preVotacion) {
+        // pre-votacion seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
+        // pre-votacion seccion votacion: muestra, 'factibles' de año de votacion
         initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+        initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
       } else if (this.state.forumConfig.votacionFinalizada) {
+        // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
+        // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
+        initialFilters.anio = '2018,2019,2020,2021,2022'
         initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
       } else {
+        // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
+        initialFilters.anio = '2018,2019,2020,2021,2022,2023'
         initialFilters.state = 'preparacion,compra,ejecucion,finalizado'
       }
       initialFilters.sort = 'barrio'
-      // This filters should be applied if seguimiento stage is active only
-      // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
-      // initialFilters.anio = '2018,2019'
-      // This filters should be applied if Votacion Abierta stage is active only
-      // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-      // El siguiente se activa para cuando sea mostrar los proyectos a votar
-      // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
-      initialFilters.anio = this.state.forumConfig.seguimientoNormal
-                              ? '2018,2019,2020,2021,2022,2023'
-                            : this.state.forumConfig.preVotacion
-                              ? this.props.location.query.stage === 'seguimiento'
-                                ? '2018,2019,2020,2021,2022'
-                                : '2023'
-                            : this.state.forumConfig.votacionFinalizada && '2018,2019,2020,2021,2022'
-      // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
       const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
       window.fetch(`/ext/api/topics?forumName=proyectos${queryString}&limit=100`, {
         credentials: 'include'
@@ -94,30 +90,25 @@ export class HomeProyectos extends Component {
         .then((res) => res.json())
         .then((res) => {
           if (this.state.forumConfig.preVotacion) {
-            this.setState({ state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'] })
+            // pre-votacion seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
+            // pre-votacion seccion votacion: muestra, 'factibles' de año de votacion
+            this.setState({
+              state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
+              anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023'] })
           } else if (this.state.forumConfig.votacionFinalizada) {
-            this.setState({ state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'] })
+            // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
+            // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
+            this.setState({
+              state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
+              anio: ['2018', '2019', '2020', '2021', '2022'] })
           } else {
-            this.setState({ state: ['preparacion', 'compra', 'ejecucion', 'finalizado'] })
+            // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
+            this.setState({
+              state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
+              anio: ['2018', '2019', '2020', '2021', '2022', '2023'] })
           }
           this.setState({
             barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
-            // IMPORTANTE LEER
-            // This filters should be applied if seguimiento stage is active only
-            // state: defaultValues.seguimiento.state,
-            // state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-            // anio: defaultValues.seguimiento.anio,
-            // stage: 'seguimiento',
-            // IMPORTANTE LEER
-            // El siguiente se activa para mostrar los proyectos a votar
-            // IMPORTANTE LEER
-            // Este se activa cuando paso la votacion y se muestran los gandores
-            // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'] ,
-            anio: this.state.forumConfig.seguimientoNormal ? ['2018', '2019', '2020', '2021', '2022', '2023']
-                : this.state.forumConfig.preVotacion ? this.props.location.query.stage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023']
-                : ['2018', '2019', '2020', '2021', '2022'],
-            // IMPORTANTE LEER
-            // Activar cuando se pasa a votacion
             stage: !this.state.forumConfig.preVotacion ? 'seguimiento' : this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
             topics: res.results.topics,
             page: res.pagination.page,
@@ -127,7 +118,9 @@ export class HomeProyectos extends Component {
           })
         })
         .catch((err) => console.error(err))
-    }).catch((err) => { console.error(err) })
+    }
+
+    getInfo()
   }
 
   handleFilter = (filter, value) => {
@@ -229,23 +222,21 @@ export class HomeProyectos extends Component {
   }
 
   changeStage = (newStage) => {
+    if (this.state.forumConfig.preVotacion) {
+      this.setState({
+        state: newStage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
+        anio: newStage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023']
+      })
+    } else if (this.state.forumConfig.votacionFinalizada) {
+      this.setState({
+        state: newStage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'],
+        anio: newStage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023']
+      })
+    }
     this.setState(() => {
       return {
         stage: newStage === 'seguimiento' ? 'seguimiento' : 'votacion',
-        anio: !this.state.forumConfig.seguimientoNormal
-                ? newStage === 'seguimiento'
-                  ? ['2018', '2019', '2020', '2021', '2022']
-                  : ['2023']
-              : ['2018', '2019', '2020', '2021', '2022', '2023'],
-        barrio: [],
-        state: this.state.forumConfig.preVotacion
-                ? newStage === 'seguimiento'
-                  ? ['preparacion', 'compra', 'ejecucion', 'finalizado']
-                  : ['factible']
-              : this.state.forumConfig.votacionFinalizada && newStage === 'seguimiento'
-                  ? ['preparacion', 'compra', 'ejecucion', 'finalizado']
-                  : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
-        //state: newStage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
+        barrio: []
       }
     }, () => this.fetchTopics())
   }
@@ -255,19 +246,17 @@ export class HomeProyectos extends Component {
     return (
       <div id='forum-home'>
         {
-          this.state.stage === 'seguimiento' ?
-            <BannerListadoTopics
-              title='Seguimiento de Proyectos'
-              subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.'
-            />
-            : <BannerListadoTopics
-              title='Proyectos Ganadores 2022'
-              subtitle='Acá podés encontrar los proyectos a ejecutar en 2022'
-              />
-          // : <BannerListadoTopics
-          //   title='Proyectos para votar'
-          //   subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP'
-          //   />
+          this.state.stage === 'seguimiento'
+          ? <BannerListadoTopics
+            title='Seguimiento de Proyectos'
+            subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.' />
+            : forumConfig.votacionFinalizada
+              ? <BannerListadoTopics
+                title='Proyectos Ganadores 2023'
+                subtitle='Acá podés encontrar los proyectos a ejecutar en 2023' />
+              : <BannerListadoTopics
+                title='Proyectos para votar'
+                subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP' />
         }
 
         <Anchor id='containerr'>
