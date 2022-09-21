@@ -43,8 +43,8 @@ export class HomeProyectos extends Component {
       barrio: [],
       state: [],
       // puede ser 'seguimiento' o 'votacion'
-      // stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
-      stage: 'seguimiento', // anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
+      stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
+      // stage: 'seguimiento', // anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
       sort: ['barrio']
     }
   }
@@ -54,16 +54,17 @@ export class HomeProyectos extends Component {
     if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
     if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
     initialFilters.sort = 'barrio'
+    // IMPORTANTE LEER
     // This filters should be applied if seguimiento stage is active only
     // initialFilters.state = 'no-ganador,preparacion,compra,ejecucion,finalizado'
-    // initialFilters.anio = '2018,2019'
+    // IMPORTANTE LEER
     // This filters should be applied if Votacion Abierta stage is active only
-    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
+    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
+    // IMPORTANTE LEER
     // El siguiente se activa para cuando sea mostrar los proyectos a votar
-    // initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
-    // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
+    initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
+    // -------------------
     initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
-    // initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020' : '2019'
     const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
     window.fetch(`/ext/api/topics?forumName=proyectos${queryString}&limit=100`, {
       credentials: 'include'
@@ -78,12 +79,12 @@ export class HomeProyectos extends Component {
           // IMPORTANTE LEER
           // This filters should be applied if seguimiento stage is active only
           // state: defaultValues.seguimiento.state,
-          state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-          anio: defaultValues.seguimiento.anio,
-          stage: 'seguimiento',
+          // state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
+          // anio: defaultValues.seguimiento.anio,
+          // stage: 'seguimiento',
           // IMPORTANTE LEER
           // El siguiente se activa para mostrar los proyectos a votar
-          // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
+          state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
           // IMPORTANTE LEER
           // Este se activa cuando paso la votacion y se muestran los gandores
           // state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'] ,
@@ -222,14 +223,14 @@ export class HomeProyectos extends Component {
               title='Seguimiento de Proyectos'
               subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.'
             />
-            : <BannerListadoTopics
-              title='Proyectos Ganadores 2022'
-              subtitle='Acá podés encontrar los proyectos a ejecutar en 2022'
-              />
-          // : <BannerListadoTopics
-          //   title='Proyectos para votar'
-          //   subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP'
-          //   />
+            // : <BannerListadoTopics
+            //   title='Proyectos Ganadores 2022'
+            //   subtitle='Acá podés encontrar los proyectos a ejecutar en 2022'
+            //   />
+          : <BannerListadoTopics
+            title='Proyectos para votar'
+            subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP'
+            />
         }
 
         <Anchor id='containerr'>
