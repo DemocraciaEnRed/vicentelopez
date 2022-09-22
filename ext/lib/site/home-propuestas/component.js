@@ -278,16 +278,15 @@ class HomePropuestas extends Component {
               <h1 className='proyectos-title'>Propuestas</h1>
             </header>
         }
+        { forum && forum.config.propuestasTexto &&
         <div className='container'>
-          <div className="row">
-            { forum && forum.config.propuestasTexto &&
-              <div className='notice'>
-                <h1>{forum.config.propuestasTexto}</h1>
-              </div>
-            }
+          <div className='row'>
+            <div className='notice'>
+              <h1>{forum.config.propuestasTexto}</h1>
+            </div>
           </div>
         </div>
-
+        }
         <div className='container topics-container'>
 
           <FilterPropuestas

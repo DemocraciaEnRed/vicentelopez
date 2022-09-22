@@ -22,8 +22,12 @@ export default class Page extends Component {
 
   componentWillMount () {
     forumStore.findOneByName('proyectos').then((forum) => {
-      this.setState({ forum })
-    }).catch((err) => { console.error(err) })
+      if (forum.config.mostrarPuntosVotacion) {
+        this.setState({ forum })
+        return
+      }
+      window.location = '/'
+    }).catch((err) => { console.log(err) })
   }
 
   goTop () {
@@ -42,7 +46,7 @@ export default class Page extends Component {
             </div>
           </div>
         </section>
-        { forum && forum.config.mostrarPuntosVotacion && <div id='container'>
+        <div id='container'>
           <div className='ext-herramientas'>
             <div className='action-btns'>
               {
@@ -82,7 +86,7 @@ export default class Page extends Component {
 
             <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' />
           </div>
-        </div>}
+        </div>
         <Jump goTop={this.goTop} />
         <Footer />
       </div>

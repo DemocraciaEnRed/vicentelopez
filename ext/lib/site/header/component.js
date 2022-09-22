@@ -220,7 +220,7 @@ class Header extends Component {
             )}
           </ul>
           {forum && forum.config.mostrarLinkVotaciones && <div className='vot-button'>
-            <a href={forum.config.linkVotaciones}>vota</a>
+            <a href={forum.config.linkVotaciones} target='_blank'>Votá</a>
           </div>}
         </nav>
       )
