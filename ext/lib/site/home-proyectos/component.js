@@ -204,10 +204,10 @@ export class HomeProyectos extends Component {
     this.setState((prevState) => {
       return {
         stage: prevState.stage === 'seguimiento' ? 'votacion' : 'seguimiento',
-        anio: prevState.stage === 'seguimiento' ? ['2022'] : ['2018', '2019', '2020','2021'],
+        anio: prevState.stage === 'seguimiento' ? ['2023'] : ['2018', '2019', '2020','2021','2022'],
         barrio: [],
-        // state: prevState.stage === 'seguimiento' ? ['factible'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
-        state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
+        state: prevState.stage === 'seguimiento' ? ['factible'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
+        // state: prevState.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado']
       }
     }, () => this.fetchTopics())
   }
@@ -244,7 +244,7 @@ export class HomeProyectos extends Component {
               changeStage={this.changeStage}
               stage={this.state.stage}
               clearFilter={this.clearFilter}
-              openVotation={false} />
+              openVotation={true} />
             <TopicGrid topics={topics} />
           </section>
           <div className='paginacion-container'>
