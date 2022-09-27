@@ -243,6 +243,7 @@ export class HomeProyectos extends Component {
 
   render () {
     let { topics, forumConfig } = this.state
+    if (!forumConfig) return null
     return (
       <div id='forum-home'>
         {
