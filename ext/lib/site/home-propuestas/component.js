@@ -35,8 +35,7 @@ let tags = []
 
 // Variables para fases de propuestas abiertas o cerrdas:
 // config.propuestasAbiertas
-// config.propuestasTextoAbiertas
-// config.propuestasTextoCerradas
+// config.propuestasTexto
 // Botón manda a: href='/formulario-propuesta'
 
 const defaultValues = {
@@ -274,26 +273,20 @@ class HomePropuestas extends Component {
           title='Propuestas'
           />*/}
         {
-          config.propuestasAbiertas ? <BotonMandarPropuesta /> : 
+          forum && forum.config.propuestasAbiertas ? <BotonMandarPropuesta /> : 
             <header className='banner-proyectos'>
               <h1 className='proyectos-title'>Propuestas</h1>
             </header>
         }
+        { forum && forum.config.propuestasTexto &&
         <div className='container'>
-          <div className="row">
-            { config.propuestasAbiertas && config.propuestasTextoAbiertas &&
-              <div className='notice'>
-                <h1>{config.propuestasTextoAbiertas}</h1>
-              </div>
-            }
-            { !config.propuestasAbiertas && config.propuestasTextoCerradas &&
-              <div className='notice'>
-                <h1>{config.propuestasTextoCerradas}</h1>
-              </div>
-            }
+          <div className='row'>
+            <div className='notice'>
+              <h1>{forum.config.propuestasTexto}</h1>
+            </div>
           </div>
         </div>
-
+        }
         <div className='container topics-container'>
 
           <FilterPropuestas
