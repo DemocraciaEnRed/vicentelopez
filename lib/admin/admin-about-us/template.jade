@@ -2,7 +2,14 @@
   .topics-admin
     .heading
       h2= 'Preguntas y respuestas'
-      .form-messages 
+      .row
+        .col-sm-8
+          .form-messages 
+        .col-sm-4
+          .action.text-right
+            button.btn.btn-info.createSortable="Ordenar"
+            button.btn.btn-danger.cancel-order.hidden="Cancelar"
+            button.btn.btn-success.save-order.hidden="Guardar"
 
       .template-panel-group 
         .panel.panel-default.template
@@ -27,7 +34,7 @@
         .form-group
           h5='Respuesta:'
           #editAnswer
-          input#answer(
+          input#answer.textArea(
             type='textarea'
             hidden
           )

@@ -26,11 +26,17 @@ app.delete('/about/:id',
   middlewares.about.findById,
   goToNextRoute)
 
+app.put('/about-update-order',
+  middlewares.users.restrict, // restringe
+  middlewares.forums.findFromBody,
+  goToNextRoute
+  )
+
 app.get('/about-all', (req, res, next) => {
   try {
     api.about.all(function (err, faqs) {
       if (err) return _handleError(err, req, res);
-      res.status(200).json(faqs.map(expose('id question answer createdAt')))
+      res.status(200).json(faqs.map(expose('id question answer createdAt order')))
     })
   } catch (err) {
     next(err)
