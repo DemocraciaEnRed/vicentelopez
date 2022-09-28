@@ -76,16 +76,23 @@ nav.navbar
 .vot-button
   position: absolute; /* Position them relative to the browser window */
   background-color: #7cbb42;
-  top: 50vh;
-  padding: 5px 2px;
-  right: 0; /* Position them outside of the screen */
+  top: 40vh;
+  right: -1; /* Position them outside of the screen */
   transition: 0.3s; /* Add transition on hover */
   text-decoration: none; /* Remove underline */
   font-size: 1.2em;
   font-weight: 700;
-  border-radius: 5px 0 0 5px;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+  border-radius: 5px 5px 0 0;
+  -moz-transform:rotate(-90deg);
+  -ms-transform:rotate(-90deg);
+  -o-transform:rotate(-90deg);
+  -webkit-transform:rotate(-90deg);
+  transform-origin: bottom right;
+
   a
     color: #fff!important
 
+.vot-button-mobile
+  background-color: #7cbb42
+  a
+    color: white !important

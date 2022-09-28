@@ -42,7 +42,7 @@ export default class Page extends Component {
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
-              <h1>Herramientas</h1>
+              <h1>Cómo y cuándo votar</h1>
             </div>
           </div>
         </section>
@@ -75,7 +75,7 @@ export default class Page extends Component {
                 </div>
               </div>
             </div>
-            <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp-2020.jpg' alt="Flyer reuniones del presupuesto participativo 2020"/>
+            {/* <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp-2020.jpg' alt="Flyer reuniones del presupuesto participativo 2020"/> */}
             <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>
@@ -84,7 +84,7 @@ export default class Page extends Component {
               </div>
             </div>
 
-            <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' />
+            {/* <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' /> */}
           </div>
         </div>
         <Jump goTop={this.goTop} />
