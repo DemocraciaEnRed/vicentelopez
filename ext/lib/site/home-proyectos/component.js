@@ -72,8 +72,8 @@ export class HomeProyectos extends Component {
       } else if (this.state.forumConfig.votacionFinalizada) {
         // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
         // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
-        initialFilters.anio = '2018,2019,2020,2021,2022'
-        initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
+        initialFilters.anio = '2023'
+        initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'no-ganador,preparacion,compra,ejecucion,finalizado'
       } else {
         // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
         initialFilters.anio = '2018,2019,2020,2021,2022,2023'
@@ -99,8 +99,8 @@ export class HomeProyectos extends Component {
             // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
             // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
             this.setState({
-              state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-              anio: ['2018', '2019', '2020', '2021', '2022'] })
+              state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'],
+              anio: ['2023'] })
           } else {
             // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
             this.setState({
@@ -109,7 +109,7 @@ export class HomeProyectos extends Component {
           }
           this.setState({
             barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
-            stage: !this.state.forumConfig.preVotacion ? 'seguimiento' : this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
+            stage: this.state.forumConfig.seguimientoNormal ? 'seguimiento' : this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
             topics: res.results.topics,
             page: res.pagination.page,
             noMore: res.results.topics.length < 20
