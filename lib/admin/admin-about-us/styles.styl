@@ -8,66 +8,62 @@ h5
 .panel-group 
   padding: 5px 30px
   background-color: #f5f5f5
-
-.panel-default
-  border: none
-  border-radius: 0px
-  box-shadow: none
-  border-top: 1px solid #7cbb42;
-
-
-.panel-title
-  font-size: 1.2em;
-  font-weight: 700;
-  color: #696969
-
-.panel-body
-  background-color: #f5f5f5
-  color: #696969
-
-.actions
-  background-color: #f5f5f5
-  padding: 8px
-
-.glyphicon-edit, .glyphicon-trash
-  margin-right: 16px
-  cursor: pointer
-
-.glyphicon-edit:after
-  display: none
-  position: absolute
-  top:-30px
-  left: -30px
-  content: 'Editar'
-  background-color: #ddd
-  padding: 5px 10px 
-  border-radius: 25px
-  font-size: 12px;
-  line-height: 1.4;
-  font-family: 'Open Sans', sans-serif;
-
-.glyphicon-edit:hover:after
-  display: block
-
-.glyphicon-trash:after
-  content: 'Borrar'
-  color: red
-  display: none
-  position: absolute
-  top:-30px
-  left: -30px
-  background-color: #ddd
-  padding: 5px 10px 
-  border-radius: 25px
-  font-size: 12px;
-  line-height: 1.4;
-  font-family: 'Open Sans', sans-serif;
-
-.glyphicon-trash:hover:after
-  display: block
-
-.ql-container
-  height: 50%!important;
+  .panel-default
+    border: none
+    border-radius: 0px
+    box-shadow: none
+    border-top: 1px solid #7cbb42;
+    .panel-heading
+      cursor: pointer
+      display: flex
+      justify-content: space-between;
+      .glyphicon-sort
+        margin-top: 4px
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #696969
+      .panel-title
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #696969
+    .panel-body
+      background-color: #f5f5f5
+      color: #696969
+    .actions
+      background-color: #f5f5f5
+      padding: 8px
+      .glyphicon-edit, .glyphicon-trash
+        margin-right: 16px
+        cursor: pointer
+      .glyphicon-edit:after
+        display: none
+        position: absolute
+        top:-30px
+        left: -30px
+        content: 'Editar'
+        background-color: #ddd
+        padding: 5px 10px 
+        border-radius: 25px
+        font-size: 12px;
+        line-height: 1.4;
+        font-family: 'Open Sans', sans-serif;
+      .glyphicon-edit:hover:after
+        display: block
+      .glyphicon-trash:after
+        content: 'Borrar'
+        color: red
+        display: none
+        position: absolute
+        top:-30px
+        left: -30px
+        background-color: #ddd
+        padding: 5px 10px 
+        border-radius: 25px
+        font-size: 12px;
+        line-height: 1.4;
+        font-family: 'Open Sans', sans-serif;
+      .glyphicon-trash:hover:after
+        display: block
 
 .actionsForm
   text-align: right 
