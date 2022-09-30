@@ -48,7 +48,7 @@ export default class Page extends Component {
         </section>
         <div id='container'>
           <div className='ext-herramientas'>
-            <div className='action-btns'>
+            {/* <div className='action-btns'>
               {
                 <button
                   className='boton-azul'
@@ -67,7 +67,7 @@ export default class Page extends Component {
                 </div>
               }
             </div>
-            { showTable && <PuntosDeVotacion/> }
+            { showTable && <PuntosDeVotacion/> } */}
             <div className='text-center documents'>
               <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez-2022.pdf' target='_blank'>Reglamento</a>
               <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/como-votar-ppvl-2022.pdf' target='_blank'>Cómo votar</a>
