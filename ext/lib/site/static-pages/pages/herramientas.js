@@ -76,15 +76,21 @@ export default class Page extends Component {
               </div>
             </div>
             {/* <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp-2020.jpg' alt="Flyer reuniones del presupuesto participativo 2020"/> */}
-            <div className="fila no-bg">
+            {/* <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>
                   <iframe src="https://www.google.com/maps/d/embed?mid=1qhRpeylCuWIO7llVNSi5prF1JDBuI13b" width="640" height="480"></iframe>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' /> */}
+            <hr />
+            <div className='text-center documents'>
+              <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez-2022.pdf' target='_blank'>Reglamento</a>
+              <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/como-votar-ppvl-2022.pdf' target='_blank'>Cómo votar</a>
+
+            </div>
           </div>
         </div>
         <Jump goTop={this.goTop} />
