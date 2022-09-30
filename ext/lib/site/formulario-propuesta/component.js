@@ -77,7 +77,11 @@ class FormularioPropuesta extends Component {
     }
 
     forumStore.findOneByName('proyectos').then((forum) => {
-      this.setState({ forum })
+      if (forum.config.propuestasAbiertas) {
+        this.setState({ forum })
+        return
+      }
+      window.location = '/'
     }).catch((err) => { console.error(err) })
   }
 

@@ -219,8 +219,8 @@ class Header extends Component {
               <AnonUser form={this.state.userForm} />
             )}
           </ul>
-          {forum && forum.config.mostrarLinkVotaciones && <div className='vot-button'>
-            <a href={forum.config.linkVotaciones} target='_blank'>Votá</a>
+          {forum && forum.config.mostrarLinkVotaciones && <div className='btn btn-success vot-button btn-lg'>
+            <a href={forum.config.linkVotaciones} target='_blank'>Vota los proyectos</a>
           </div>}
         </nav>
       )

@@ -103,6 +103,9 @@ class MobileMenu extends Component {
                       toggleOnClick={this.props.toggleOnClick} />
                   )}
                 </div>
+                {forum && forum.config.mostrarLinkVotaciones && <div className='btn btn-success vot-button-mobile btn-lg btn-block'>
+                  <a href={forum.config.linkVotaciones} target='_blank'>Vota los proyectos</a>
+                </div>}
               </ul>
             </div>
           )
