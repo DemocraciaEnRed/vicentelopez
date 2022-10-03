@@ -39,7 +39,12 @@
             type='textarea'
             hidden
           )
-
+        .alert.alert-warning.hidden(
+          role="alert"
+        )
+          span.glyphicon.glyphicon-alert
+          span.sr-only="alert:"
+          span.alertText
         .form-group.actionsForm
           button.btn.btn-success.btn-lg= t('settings.save')
           a.btn.btn-danger.btn-lg= t('common.cancel')
