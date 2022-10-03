@@ -4,8 +4,8 @@ const middlewares = require('lib/api-v2/middlewares')
 
 const api = require('lib/db-api')
 
-var utils = require('lib/utils')
-var expose = utils.expose
+const utils = require('lib/utils')
+const expose = utils.expose
 
 const app = (module.exports = express.Router())
 

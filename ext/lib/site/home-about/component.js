@@ -1,96 +1,95 @@
-import React, { Component } from "react";
-import { Link } from "react-router";
-import Footer from "ext/lib/site/footer/component";
-import Jump from "ext/lib/site/jump-button/component";
-import Anchor from "ext/lib/site/anchor";
-import forumStore from "lib/stores/forum-store/forum-store";
-
+import React, { Component } from 'react'
 // https://github.com/glennflanagan/react-responsive-accordion
-import Accordion from "react-responsive-accordion";
-import aboutStore from "lib/stores/about-store/about-store";
+import Accordion from 'react-responsive-accordion'
+
+import aboutStore from 'lib/stores/about-store/about-store'
+import Footer from 'ext/lib/site/footer/component'
+import Jump from 'ext/lib/site/jump-button/component'
+import Anchor from 'ext/lib/site/anchor'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 export default class HomeAbout extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
 
     this.state = {
       forum: null,
-      faqs: null,
-    };
+      faqs: null
+    }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     aboutStore
       .findAll()
-      .then((faqs) => this.setState({faqs}))
+      .then((faqs) => this.setState({ faqs }))
       .catch((err) => {
-        throw err;
-      });
-    const u = new window.URLSearchParams(window.location.search);
-    if (u.get("scroll") === "cronograma") return Anchor.goTo("cronograma");
-    this.goTop();
+        throw err
+      })
+    const u = new window.URLSearchParams(window.location.search)
+    if (u.get('scroll') === 'cronograma') return Anchor.goTo('cronograma')
+    this.goTop()
 
     // traer forum al state
     forumStore
-      .findOneByName("proyectos")
+      .findOneByName('proyectos')
       .then((forum) => this.setState({ forum }))
       .catch((err) => {
-        throw err;
-      });
+        throw err
+      })
   }
 
-  goTop() {
-    window.scrollTo(0, 0);
+  goTop () {
+    window.scrollTo(0, 0)
   }
 
-  render() {
-    const faqs = this.state.faqs;
-    const forum = this.state.forum;
+  render () {
+    const faqs = this.state.faqs
+
     return (
       <div>
-        <section className="banner-static">
-          <div className="banner"></div>
-          <div className="contenedor">
-            <div className="fondo-titulo">
+        <section className='banner-static'>
+          <div className='banner'></div>
+          <div className='contenedor'>
+            <div className='fondo-titulo'>
               <h1>Presupuesto Participativo</h1>
             </div>
           </div>
         </section>
-        <div id="container">
-          <div className="ext-acerca-de container">
-            <div className="filas">
-              <div className="fila faq text-left">
+        <div id='container'>
+          <div className='ext-acerca-de container'>
+            <div className='filas'>
+              <div className='fila faq text-left'>
                 {faqs && 
                   <Accordion startPosition={-1}>
                     {faqs.map((faq) => (
                       <div key={faq.id} data-trigger={`+ ${faq.question}`}>
-                        <p className="p-padding" dangerouslySetInnerHTML={{__html:faq.answer}} ></p>
+                        <p className='p-padding' dangerouslySetInnerHTML={{ __html: faq.answer }} ></p>
                       </div>
                     ))}
                   </Accordion>
                 }
               </div>
 
-              <div className="fila no-bg hidden">
-                <Anchor id="mapa">
-                  <div className="map-box">
-                    <div className="mapa">
+              <div className='fila no-bg hidden'>
+                <Anchor id='mapa'>
+                  <div className='map-box'>
+                    <div className='mapa'>
                       <iframe
-                        src="https://www.google.com/maps/d/u/0/embed?mid=1DEX8V6qaMQy-8NYKNPhsLH_xQnY&z=11&ll=-34.5174, -58.5026"
-                        width="640"
-                        height="480"
+                        src='https://www.google.com/maps/d/u/0/embed?mid=1DEX8V6qaMQy-8NYKNPhsLH_xQnY&z=11&ll=-34.5174, -58.5026'
+                        width='640'
+                        height='480'
                       ></iframe>
                     </div>
                   </div>
                 </Anchor>
-                <Anchor id="cronograma">
-                  <div className="table-responsive">
+                <Anchor id='cronograma'>
+                  <div className='table-responsive'>
                     <h3>Cronograma de reuniones por barrio</h3>
                     <div>
                       El horario de las reuniones de presentación de propuestas
                       es de 19 a 21 hs
                     </div>
-                    <table className="table tabla-reuniones">
+                    <table className='table tabla-reuniones'>
                       <tbody>
                         <tr>
                           <th>Olivos</th>
