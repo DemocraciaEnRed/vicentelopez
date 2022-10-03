@@ -5,10 +5,23 @@ import bus from 'bus'
 import userConnector from 'lib/site/connectors/user'
 import AnonUser from 'ext/lib/site/header/anon-user/component'
 import ProyectosLink from 'ext/lib/site/header/proyectos-link'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 class MobileMenu extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      forum: null
+    }
+  }
+
   componentWillMount () {
     document.addEventListener('click', this.handleClick, false)
+
+    forumStore.findOneByName('proyectos').then((forum) => {
+      this.setState({ forum })
+    }).catch((err) => { console.error(err) })
   }
 
   componentWillUnmount () {
@@ -22,6 +35,7 @@ class MobileMenu extends Component {
   }
 
   render () {
+    const { forum } = this.state
     return (
       <nav className='mobile-nav'>
         <a
@@ -35,6 +49,15 @@ class MobileMenu extends Component {
               id='mobile-menu-display'
               className='mobile-menu-display'>
               <ul>
+              { forum && forum.config.mostrarPuntosVotacion && <div className='header-item mobile-link'>
+                <Link
+                  to='/s/herramientas'
+                  className='header-link info-votacion'
+                  activeStyle={{ color: '#8C1E81' }}
+                  onClick={this.props.toggleOnClick}>
+                  Info votación
+                </Link>
+                </div>}
                  <div className='header-item mobile-link'>
                   <Link
                     to='/s/acerca-de'
@@ -74,21 +97,15 @@ class MobileMenu extends Component {
                     Datos
                   </Link>
                 </div>
-                {/* <div className='header-item mobile-link'>
-                  <Link
-                    to='/s/herramientas'
-                    className='header-link'
-                    activeStyle={{ color: '#8C1E81' }}
-                    onClick={this.props.toggleOnClick}>
-                    Herramientas
-                  </Link>
-                </div> */}
                 <div>
                   {this.props.user.state.rejected && (
                     <AnonUser form={this.props.form}
                       toggleOnClick={this.props.toggleOnClick} />
                   )}
                 </div>
+                {forum && forum.config.mostrarLinkVotaciones && <div className='btn btn-success vot-button-mobile btn-lg btn-block'>
+                  <a href={forum.config.linkVotaciones} target='_blank'>Vota los proyectos</a>
+                </div>}
               </ul>
             </div>
           )

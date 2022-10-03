@@ -52,7 +52,8 @@ export default function ThumbsVoto(props) {
               { props.texts['home-icono3-titulo']}
             </h2>
             <p className="donde-voto-cont">
-              { props.texts['home-icono3-texto']} <Link to='/proyectos?stage=seguimiento' className="">Seguimiento proyectos</Link>
+              { props.texts['home-icono3-texto']} 
+              {/* <Link to='/proyectos?stage=seguimiento' className="">Seguimiento proyectos</Link> */}
             </p>
           </div>
 

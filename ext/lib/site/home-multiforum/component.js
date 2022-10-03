@@ -8,7 +8,7 @@ import ThumbsAcerca from 'ext/lib/site/thumbs-acerca/component'
 import ThumbsVoto from 'ext/lib/site/thumbs-voto/component'
 import BannerForoVecinal from 'ext/lib/site/banner-foro-vecinal/component'
 import Proyectos from 'ext/lib/site/proyectos/component'
-// import ProyectosFactibles from 'ext/lib/site/proyectosFactibles/component'
+import ProyectosFactibles from 'ext/lib/site/proyectosFactibles/component'
 import ProyectosGanadores from 'ext/lib/site/proyectosGanadores/component'
 import EncuentrosProximos from 'ext/lib/site/encuentrosProximos/component'
 import forumStore from 'lib/stores/forum-store/forum-store'
@@ -23,6 +23,7 @@ export default class HomeMultiforumOverride extends Component {
     super(props)
 
     this.state = {
+      forum: null,
       texts: {}
     }
   }
@@ -37,6 +38,10 @@ export default class HomeMultiforumOverride extends Component {
         texts: {}
       }
     })
+
+    forumStore.findOneByName('proyectos').then((forum) => {
+      this.setState({ forum })
+    }).catch((err) => { console.error(err) })
   }
 
   componentDidMount () {
@@ -48,18 +53,21 @@ export default class HomeMultiforumOverride extends Component {
   }
 
   render () {
+    const forum = this.state.forum
     return (
       <div className='ext-home-multiforum'>
         <Anchor id='container'>
           <BannerForoVecinal title="Presupuesto participativo" texts={this.state.texts} />
-          <ThumbsVoto texts={this.state.texts} enablePropuestas={config.propuestasAbiertas}/>
+          {forum && <ThumbsVoto
+            texts={this.state.texts}
+            forum={forum} />}
           <ThumbsAcerca texts={this.state.texts}/>
           {/* <EncuentrosProximos /> */}
-          {/* <ProyectosFactibles /> */}
-          {/* <ProyectosGanadores /> */}
+          {forum && forum.config.preVotacion && <ProyectosFactibles /> }
+          {forum && forum.config.votacionFinalizada && <ProyectosGanadores /> }
           {/* <Barrios /> */}
           <ForosEnDatos />
-          {/* <Banner400Proyectos/> */}
+          {/* <Banner400Proyectos/> */} 
           <Jump goTop={this.goTop} />
           <Footer />
         </Anchor>
