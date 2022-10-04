@@ -99,15 +99,11 @@ export default class Filter extends Component {
         {/* se oculta filtro de proyectos ganadores del año pasado hasta agosto. */}
         {this.props.openVotation &&
           <div className='stage-container'>
-            <button className={this.props.stage === 'seguimiento' && 'active'} onClick={() => this.props.changeStage('seguimiento')}>
-            {/* this.props.stage === 'seguimiento' ? 'Ver proyectos a votar ▶️' : '◀️ Ver seguimiento de proyectos' */}
-            {/* this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores ▶️' : '◀️ Ver seguimiento de proyectos' */}
-            seguimiento de proyectos
-            </button>
-            <button className={this.props.stage !== 'seguimiento' && 'active'} onClick={() => this.props.changeStage('votacion')} >
-              { this.props.votacionFinalizada ? 'Ver proyectos ganadores' : 'Ver proyectos a votar' }
-            </button>
+            <a className='stage-changer' onClick={this.props.changeStage}>
+            {/* {this.props.stage === 'seguimiento' ? 'Ver proyectos a votar ▶️' : '◀️ Ver seguimiento de proyectos'} */}
+            {this.props.stage === 'seguimiento' ? 'Ver proyectos ganadores ▶️' : '◀️ Ver seguimiento de proyectos'}
 
+            </a>
           </div>
         }
         <div className={`filters-nav ${this.props.stage === 'votacion' ? 'center' : ''}`}>

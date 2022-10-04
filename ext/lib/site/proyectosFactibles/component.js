@@ -52,7 +52,7 @@ export default class Carrusel extends Component {
   }
 
   componentDidMount () {
-    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2023&state=factible&limit=30&sort=popular`, { credentials: 'include' })
+    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2022&state=factible&limit=30&sort=popular`, { credentials: 'include' })
       .then((res) => res.json())
       .then((res) => {
         this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }

@@ -11,6 +11,7 @@ export default function ThumbsVoto(props) {
   <rect x="17" y="25" width="7" height="7" fill="white"/>
   <rect x="8" y="25" width="7" height="7" fill="white"/>
   </svg>
+
   return (
     <section className="thumbs-voto info-landing">
       <div className="container-fluid">
@@ -21,17 +22,12 @@ export default function ThumbsVoto(props) {
             {/* <div className="icon">
               {icon}
             </div> */}
-            {props.forum.config.propuestasAbiertas &&
+            {props.enablePropuestas &&
               <div className="btn-container">
                 <Link to='/formulario-propuesta'
                   className="boton-azul boton-blanco">
                   Mandá tu propuesta
                 </Link>
-              </div>
-              }
-            {props.forum.config.mostrarLinkVotaciones &&
-              <div className='btn-container-vote'>
-                <a href={props.forum.config.linkVotaciones} target='_blank'>Votá aqui</a>
               </div>
               }
             {/* <div className="btn-container">

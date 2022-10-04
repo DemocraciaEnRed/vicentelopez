@@ -257,8 +257,7 @@ db.getCollection("forums").updateOne({"_id": ObjectId("59a6c123c58c9f1c43ed6e83"
         },
         {
             "name" : "album", 
-            "title" : "Album de imagenes",
-            "description": "Ingrese un link a una imagen -POR LINEA- (haga enter por cada imagen). Evite espacios innecesarios en lo posible",
+            "title" : "Album de imagenes, ingrese un link a una imagen -POR LINEA- (haga enter por cada imagen). Evite espacios innecesarios en lo posible", 
             "mandatory" : false, 
             "kind" : "LongString", 
             "max" : NumberInt(999999999), 

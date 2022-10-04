@@ -51,6 +51,7 @@ nav.navbar
             font-weight: bold
   .header-item
     height: 80px;
+    padding: 0 20px;
     font-weight: bold
     display: flex;
     align-items: center;
@@ -59,41 +60,10 @@ nav.navbar
       .header-link
         color: white
     .header-link
-      height: 100%
-      padding: 0 20px
-      display: flex
-      align-items: center
-      justify-content: center
+      height: auto
       position: relative
-    .info-votacion
-      color: #7cbb42
   .user-badge-helper
     margin-left 10px
 
  a.header-link.anon-user
   text-transform:lowercase
-
-.vot-button
-  position: absolute; /* Position them relative to the browser window */
-  background-color: #7cbb42;
-  top: 40vh;
-  right: -1; /* Position them outside of the screen */
-  padding: 15px 4px 5px;
-  transition: 0.3s; /* Add transition on hover */
-  text-decoration: none; /* Remove underline */
-  font-size: 1.2em;
-  font-weight: 700;
-  border-radius: 5px 5px 0 0;
-  -moz-transform:rotate(-90deg);
-  -ms-transform:rotate(-90deg);
-  -o-transform:rotate(-90deg);
-  -webkit-transform:rotate(-90deg);
-  transform-origin: bottom right;
-
-  a
-    color: #fff!important
-
-.vot-button-mobile
-  background-color: #7cbb42
-  a
-    color: white !important

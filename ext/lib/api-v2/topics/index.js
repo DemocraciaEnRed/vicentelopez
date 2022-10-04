@@ -105,7 +105,7 @@ const purgeBody = (req, res, next) => {
   // beware with subscribers fields
   if (isCitizenOnProposal(req.user, req.forum)) {
     //console.log('Entre por true')
-    if (req.forum.config.propuestasAbiertas) {
+    if (config.propuestasAbiertas){
       // IF THE FORM IS OPEN, RUN THIS
       req.body = Object.assign(
          defaultValues(req.defaultTag),

@@ -32,10 +32,10 @@ router.childRoutes.unshift({
   component: Encuentros
 })
 
-router.childRoutes.unshift({
-  path: 's/herramientas',
-  component: Herramientas
-})
+// router.childRoutes.unshift({
+//   path: 's/herramientas',
+//   component: Herramientas
+// })
 
 router.childRoutes.unshift({
   path: 's/documentos',
