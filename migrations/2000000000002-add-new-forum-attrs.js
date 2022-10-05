@@ -9,6 +9,20 @@ const groups = [
 	{ name: 'Información de la propuesta', order: 3}
 ]
 
+const albumField = {
+	"name" : "album", 
+	"title" : "Album de imagenes",
+	"description": "Ingrese un link a una imagen -POR LINEA- (haga enter por cada imagen). Evite espacios innecesarios en lo posible",
+	"mandatory" : false, 
+	"kind" : "LongString",
+	"width" : 12,
+	"groupOrder": 0,
+	"group": "",
+	"order": 8,
+	"max" : 999999999,
+	"min" : 0
+}
+
 const presentadoField = {
 	"name" : "presentado",
 	"title" : "Presentado por",
@@ -43,7 +57,7 @@ const benefisiarioField = {
 	"icon" : ""
 }
 
-const newFields = [presentadoField, benefisiarioField]
+const newFields = [albumField, presentadoField, benefisiarioField]
 
 const deepCopy = obj => {
 	return JSON.parse(JSON.stringify(obj))

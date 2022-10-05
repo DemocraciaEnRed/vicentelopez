@@ -14,6 +14,7 @@ class Header extends Component {
     super(props)
 
     this.state = {
+      forum: null,
       userForm: null,
       mobileMenu: false,
       userMenu: false,
@@ -25,6 +26,10 @@ class Header extends Component {
 
   componentWillMount () {
     bus.on('user-form:load', this.onLoadUserForm)
+
+    forumStore.findOneByName('proyectos').then((forum) => {
+      this.setState({ forum })
+    }).catch((err) => { console.error(err) })
   }
 
   componentWillUnmount () {
@@ -80,6 +85,7 @@ class Header extends Component {
   }
 
   render () {
+    const forum = this.state.forum
     const styles = {
       color: config.headerFontColor,
       backgroundColor: config.headerBackgroundColor
@@ -139,7 +145,14 @@ class Header extends Component {
           </Link>
 
           <ul className='nav navbar-nav'>
-
+            {forum && forum.config.mostrarPuntosVotacion && <div className="header-item">
+              <Link
+                to='/s/herramientas'
+                className='header-link info-votacion'
+                activeStyle={{ color: '#8C1E81' }}>
+                 Info votación
+              </Link>
+            </div> }
             <div className="header-item">
               <Link
                 to='/acerca-de'
@@ -175,14 +188,6 @@ class Header extends Component {
                   Datos
               </Link>
             </div>
-            {/* <div className="header-item">
-              <Link
-                to='/s/herramientas'
-                className='header-link'
-                activeStyle={{ color: '#8C1E81' }}>
-                  Herramientas
-              </Link>
-            </div> */}
             { showAdmin &&
               <div className="header-item">
                 <Link
@@ -214,6 +219,9 @@ class Header extends Component {
               <AnonUser form={this.state.userForm} />
             )}
           </ul>
+          {forum && forum.config.mostrarLinkVotaciones && <div className='btn btn-success vot-button btn-lg'>
+            <a href={forum.config.linkVotaciones} target='_blank'>Votá los proyectos</a>
+          </div>}
         </nav>
       )
     }

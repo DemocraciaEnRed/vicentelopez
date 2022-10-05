@@ -4,13 +4,15 @@ import Jump from 'ext/lib/site/jump-button/component'
 import Anchor from 'ext/lib/site/anchor'
 import {Link} from 'react-router'
 import PuntosDeVotacion from '../assets/puntos-de-votacion'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 export default class Page extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      showTable: false
+      showTable: false,
+      forum: null
     }
   }
 
@@ -18,25 +20,35 @@ export default class Page extends Component {
     this.goTop()
   }
 
+  componentWillMount () {
+    forumStore.findOneByName('proyectos').then((forum) => {
+      if (forum.config.mostrarPuntosVotacion) {
+        this.setState({ forum })
+        return
+      }
+      window.location = '/'
+    }).catch((err) => { console.log(err) })
+  }
+
   goTop () {
     window.scrollTo(0,0)
   }
 
   render () {
-    const { showTable } = this.state
+    const { showTable, forum } = this.state
     return (
       <div>
         <section className="banner-static">
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
-              <h1>Herramientas</h1>
+              <h1>Cómo y cuándo votar</h1>
             </div>
           </div>
         </section>
         <div id='container'>
           <div className='ext-herramientas'>
-            <div className='action-btns'>
+            {/* <div className='action-btns'>
               {
                 <button
                   className='boton-azul'
@@ -55,24 +67,30 @@ export default class Page extends Component {
                 </div>
               }
             </div>
-            { showTable && <PuntosDeVotacion/> }
+            { showTable && <PuntosDeVotacion/> } */}
+            <div className='text-center documents'>
+              <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez-2022.pdf' target='_blank'>Reglamento</a>
+              <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/como-votar-ppvl-2022.pdf' target='_blank'>Cómo votar</a>
+
+            </div>
             <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>
-                  <iframe src="https://www.google.com/maps/d/embed?mid=1pMxGrUzA59m_9WlhXnkrs3YxUCAPZkoI" width="640" height="480"></iframe>
+                  <iframe src="https://www.google.com/maps/d/embed?mid=1pMxGrUzA59m_9WlhXnkrs3YxUCAPZkoI&ehbc=2E312F"  width="640" height="480"></iframe>
                 </div>
               </div>
             </div>
-            <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp-2020.jpg' alt="Flyer reuniones del presupuesto participativo 2020"/>
-            <div className="fila no-bg">
+
+            <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp-2023.png' alt="Flyer reuniones del presupuesto participativo 2020"/>
+            {/* <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>
                   <iframe src="https://www.google.com/maps/d/embed?mid=1qhRpeylCuWIO7llVNSi5prF1JDBuI13b" width="640" height="480"></iframe>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' />
+            {/* <img controls className='mapa-municipio' src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/mapa_vicente-lopez.jpg' /> */}
           </div>
         </div>
         <Jump goTop={this.goTop} />

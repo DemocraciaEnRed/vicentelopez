@@ -49,6 +49,7 @@
   "admin-sidebar.topics.title": "Proyectos",
   "admin-sidebar.about-us.title":"Acerca de",
   "admin-sidebar.whitelists.title": "Usuarios habilitados",
+  "admin-sidebar.settings.title": "Configuración",
   "admin-tags-form.button.submit": "Guardar",
   "admin-tags-form.label.image": "Imagen",
   "admin-tags-form.label.name": "Nombre",
