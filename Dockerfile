@@ -71,7 +71,7 @@ COPY ["package-lock.json", "."]
 ENV NODE_ENV=production \
     NODE_PATH=/usr/src
 
-RUN npm install --quiet
+# RUN npm install --quiet
 RUN npm ci --quiet
 
 RUN mkdir ext
