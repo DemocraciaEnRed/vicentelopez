@@ -104,7 +104,7 @@ class MobileMenu extends Component {
                   )}
                 </div>
                 {forum && forum.config.mostrarLinkVotaciones && <div className='btn btn-success vot-button-mobile btn-lg btn-block'>
-                  <a href={forum.config.linkVotaciones} target='_blank'>Vota los proyectos</a>
+                  <a href={forum.config.linkVotaciones} target='_blank'>Votá los proyectos</a>
                 </div>}
               </ul>
             </div>
