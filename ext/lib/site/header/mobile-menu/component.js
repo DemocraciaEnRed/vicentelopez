@@ -60,7 +60,7 @@ class MobileMenu extends Component {
                 </div>}
                  <div className='header-item mobile-link'>
                   <Link
-                    to='/s/acerca-de'
+                    to='/acerca-de'
                     className='header-link'
                     activeStyle={{ color: '#8C1E81' }}
                     onClick={this.props.toggleOnClick}>
