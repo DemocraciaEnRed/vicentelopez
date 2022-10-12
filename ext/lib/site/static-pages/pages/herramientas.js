@@ -81,7 +81,7 @@ export default class Page extends Component {
               </div>
             </div>
 
-            <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp-2023.png' alt="Flyer reuniones del presupuesto participativo 2020"/>
+            <img className="flyer-pp" src='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/flyer-reuniones-pp.png' alt="Flyer reuniones del presupuesto participativo VL"/>
             {/* <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>
