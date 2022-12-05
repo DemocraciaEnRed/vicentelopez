@@ -118,7 +118,7 @@ class HomePropuestas extends Component {
       .filter((k) => query[k] && query[k].length > 0)
       .map((k) => `${k}=${ Array.isArray(query[k]) ?  query[k].join(',') : query[k] }`)
       .join('&')
-
+      
     return window
       .fetch(`/ext/api/topics?${queryString}`, {credentials: 'include'})
       .then((res) => res.json())
@@ -260,6 +260,8 @@ class HomePropuestas extends Component {
     }else if (this.state.tag.includes(option)){
       this.setState({ tag: this.state.tag.filter(i => i != option) })
     }
+
+    this.setState({topics:[]}, ()=>this.fetchTopics())
   }
 
   render () {

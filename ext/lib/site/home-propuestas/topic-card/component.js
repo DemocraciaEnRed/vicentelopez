@@ -14,6 +14,18 @@ const estados = (state) => {
     case 'pendiente':
       return 'Pendiente'
       break
+    case 'preparacion':
+      return 'En preparación'
+      break
+    case 'compra':
+      return 'En proceso de compra'
+      break
+    case 'ejecucion':
+      return 'En ejecución'
+      break
+    case 'finalizado':
+      return 'Finalizado'
+      break
     default:
       return 'Factible'
       break
