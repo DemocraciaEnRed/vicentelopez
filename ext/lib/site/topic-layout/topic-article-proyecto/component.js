@@ -154,7 +154,7 @@ class TopicArticle extends Component {
 
     const socialLinksUrl = window.location.origin + topic.url
     const twitterText = this.twitText()
-
+    
     return (
       <div className='topic-article-wrapper'>
         {
@@ -170,7 +170,8 @@ class TopicArticle extends Component {
           relatedAuthors={this.state.relatedProposals && this.state.relatedProposals.map((p) => p.attrs.nombre)}
           tags={topic.tags}
           forumName={forum.name}
-          mediaTitle={topic.mediaTitle} />
+          mediaTitle={topic.mediaTitle} 
+          topicTitle={topic.attrs.título}/>
           <div className='container-project-admin-actions'>
         <AdminActions forum={forum} topic={topic} />
           </div>

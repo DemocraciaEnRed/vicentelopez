@@ -62,7 +62,7 @@ export default class Header extends Component {
         { this.props.children }
         {learnMore}
         {closingAt}
-        <h1 className='header-title'>{this.props.mediaTitle}</h1>
+        <h1 className='header-title'>{this.props.topicTitle || this.props.mediaTitle}</h1>
         {author}
         {this.props.relatedAuthors &&
             <h2 className='author related-authors'>{this.props.relatedAuthors.length > 1 ? 'Autores asociados: ' : 'Autor asociado: '}

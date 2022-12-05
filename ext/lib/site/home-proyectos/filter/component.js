@@ -21,7 +21,7 @@ const states = [
   { 'name': 'No ganador', 'value': 'no-ganador' },
 ]
 
-const anios = ['2018', '2019','2020','2021', '2022']
+const anios = ['2018', '2019','2020','2021', '2022','2023']
 
 export default class Filter extends Component {
   constructor (props) {
