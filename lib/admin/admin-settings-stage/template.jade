@@ -25,6 +25,15 @@
                   type='text',
                   data-name='propuestasTexto'
                 )
+                .form-group
+                label.switch= 'Mostrar informacion sobre encuentros'
+                  input.form(
+                    type='checkbox',
+                    data-name='mostrarInfoEncuentros',
+                    id='checkboxMeeting'
+                  )
+                  .slider.round
+                  
             .col-sm-6
               h5="votación"
               .form-group.state-votation.row
