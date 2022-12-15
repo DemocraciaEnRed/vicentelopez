@@ -4,6 +4,7 @@ import t from 't-component'
 import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
+import textStore from 'lib/stores/text-store'
 import userConnector from 'lib/site/connectors/user'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
@@ -50,11 +51,22 @@ export class HomeProyectos extends Component {
       // puede ser 'seguimiento' o 'votacion'
       stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
       // stage: 'seguimiento', // anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
-      sort: ['barrio']
+      sort: ['barrio'],
+      texts:{}
     }
   }
 
   componentDidMount () {
+    textStore.findAllDict().then((textsDict) => {
+      this.setState({
+        texts: textsDict
+      })
+    }).catch((err) => {
+      this.state = {
+        texts: {}
+      }
+    })
+
     // async function getInfo (){
     //   await forumStore.findOneByName('proyectos').then((forum) => {
     //     this.setState({ forumConfig: forum.config })
@@ -305,7 +317,7 @@ export class HomeProyectos extends Component {
   }
 
   render () {
-    let { topics, forumConfig } = this.state
+    let { topics, forumConfig,texts } = this.state
     if (!forumConfig) return null
     return (
       <div id='forum-home'>
@@ -313,11 +325,11 @@ export class HomeProyectos extends Component {
           this.state.stage === 'seguimiento'
           ? <BannerListadoTopics
             title='Seguimiento de Proyectos'
-            subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.' />
+            subtitle='Acá podés encontrar los proyectos elegidos cada año por los vecinos y ver en qué estado de su ejecución se encuentran' />
             : forumConfig.votacionFinalizada
               ? <BannerListadoTopics
-                title='Proyectos Ganadores 2023'
-                subtitle='Acá podés encontrar los proyectos a ejecutar en 2023' />
+                title={texts['projects-titleVotFin-text']}
+                subtitle={texts['projects-subtitleVotFin-text']} />
               : <BannerListadoTopics
                 title='Proyectos para votar'
                 subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP' />

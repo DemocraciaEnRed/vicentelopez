@@ -106,7 +106,7 @@ export default class Page extends Component {
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
-              <h1>Encuentros 2022</h1>
+              <h1>Encuentros</h1>
             </div>
           </div>
         </section>

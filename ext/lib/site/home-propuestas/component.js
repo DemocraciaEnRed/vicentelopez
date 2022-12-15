@@ -27,6 +27,7 @@ const states = [
   { 'name': 'Factible', 'value': 'factible' },
   { 'name': 'No factible', 'value': 'no-factible' },
   { 'name': 'Integrado', 'value': 'integrado' },
+
 ]
 
 const anios = ['2018', '2019', '2020', '2021','2022','2023']
@@ -38,11 +39,13 @@ let tags = []
 // config.propuestasTexto
 // Botón manda a: href='/formulario-propuesta'
 
+const factibleStates= ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado', 'factible']
+
 const defaultValues = {
   limit: 20,
   barrio: [],
   anio: ['2023'],
-  //state: ['pendiente', 'factible', 'no-factible', 'integrado'],
+  //state: ['pendiente', 'factible', 'no-factible', 'integrado','preparacion', 'compra', 'ejecucion', 'finalizado'],
   state: [],
   tag: [],
   // 'barrio' o 'newest' o 'popular'
@@ -161,7 +164,7 @@ class HomePropuestas extends Component {
     // If the value is not included in the filter array, add it
     if (!this.state[filter].includes(value)) {
       this.setState({
-        [filter]: [...this.state[filter], value]
+        [filter]: value==='factible' ? [...this.state[filter], ...factibleStates] : [...this.state[filter], value]
       }, () => this.fetchTopics())
       // If it's already included and it's the only filter applied, apply default filters
     /* } else if (this.state[filter].length === 1) {
@@ -169,14 +172,14 @@ class HomePropuestas extends Component {
       // If it's already included erase it
     } else {
       this.setState({
-        [filter]: [...this.state[filter]].filter((item) => item !== value)
+        [filter]: value==='factible' ? [...this.state[filter].filter(item=>!factibleStates.includes(item))] : [...this.state[filter]].filter((item) => item !== value)
       }, () => this.fetchTopics())
     }
   }
 
   handleDefaultFilter = (filter, value) => {
     this.setState({
-      [filter]: [value]
+      [filter]: value==='factible' ? factibleStates : [value]
     }, () => this.fetchTopics())
   }
 
@@ -278,6 +281,7 @@ class HomePropuestas extends Component {
           forum && forum.config.propuestasAbiertas ? <BotonMandarPropuesta /> : 
             <header className='banner-proyectos'>
               <h1 className='proyectos-title'>Propuestas</h1>
+              <p>Acá podés encontrar las propuestas correspondientes al Presupuesto Participativo de Vicente López</p>
             </header>
         }
         { forum && forum.config.propuestasTexto &&

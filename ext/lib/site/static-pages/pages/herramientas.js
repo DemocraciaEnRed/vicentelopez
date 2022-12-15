@@ -5,6 +5,7 @@ import Anchor from 'ext/lib/site/anchor'
 import {Link} from 'react-router'
 import PuntosDeVotacion from '../assets/puntos-de-votacion'
 import forumStore from 'lib/stores/forum-store/forum-store'
+import textStore from 'lib/stores/text-store'
 
 export default class Page extends Component {
   constructor (props) {
@@ -12,7 +13,8 @@ export default class Page extends Component {
 
     this.state = {
       showTable: false,
-      forum: null
+      forum: null,
+      texts: {}
     }
   }
 
@@ -21,6 +23,16 @@ export default class Page extends Component {
   }
 
   componentWillMount () {
+    textStore.findAllDict().then((textsDict) => {
+      this.setState({
+        texts: textsDict
+      })
+    }).catch((err) => {
+      this.state = {
+        texts: {}
+      }
+    })
+    
     forumStore.findOneByName('proyectos').then((forum) => {
       if (forum.config.mostrarPuntosVotacion) {
         this.setState({ forum })
@@ -35,7 +47,7 @@ export default class Page extends Component {
   }
 
   render () {
-    const { showTable, forum } = this.state
+    const { showTable, forum, texts } = this.state
     return (
       <div>
         <section className="banner-static">
@@ -69,8 +81,8 @@ export default class Page extends Component {
             </div>
             { showTable && <PuntosDeVotacion/> } */}
             <div className='text-center documents'>
-              <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/reglamento-pp-vicente-lopez-2022.pdf' target='_blank'>Reglamento</a>
-              <a className='btn btn-lg' href='https://celeste.blob.core.windows.net/pp-vicentelopez/assets/como-votar-ppvl-2022.pdf' target='_blank'>Cómo votar</a>
+              <a className='btn btn-lg' href={texts['info-reglamento-pdf']} target='_blank'>Reglamento</a>
+              <a className='btn btn-lg' href={texts['info-votar-pdf']} target='_blank'>Cómo votar</a>
 
             </div>
             <div className="fila no-bg">
@@ -81,7 +93,7 @@ export default class Page extends Component {
               </div>
             </div>
 
-            <img className="flyer-pp" src='/ext/lib/site/static-pages/flyer-reuniones-pp-2023.png' alt="Flyer reuniones del presupuesto participativo 2020"/>
+            <img className="flyer-pp" src={texts['info-reuniones-pdf']} alt="Flyer reuniones del presupuesto participativo 2020"/>
             {/* <div className="fila no-bg">
               <div className="map-box">
                 <div className='mapa'>

@@ -90,8 +90,8 @@ export default class FilterPropuestas extends Component {
         ...barrio.sort().map(i => ({ value: i, name: barrios.find(j => j.value==i).name }))
       )
     if (state.length)
-      allActiveOpts.push(
-        ...state.sort().map(i => ({ value: i, name: states.find(j => j.value==i).name }))
+    allActiveOpts.push(
+        ...state.sort().map(i => {if (states.some(el=>el.value === i)) return ({ value: i, name: states.find(j => j.value==i).name })}).filter(notUndefined => notUndefined !== undefined)
       )
     if (anio.length)
       allActiveOpts.push(...anio.sort().map(i => ({ value: i, name: i })))
@@ -99,7 +99,6 @@ export default class FilterPropuestas extends Component {
       allActiveOpts.push(
         ...tag.sort().map(i => ({ value: i, name: tags.find(j => j.value == i).name }))
       )
-
     return (
       <nav id='filter-propuestas'>
         <div className='filters-nav center'>
@@ -189,7 +188,7 @@ class FilterBox extends Component {
             </span>
             { activeOptions.length > 0 && (
               <span className='badge'>
-                { activeOptions.length }
+                { activeOptions.includes('factible') ? activeOptions.length - 5 : activeOptions.length }
               </span>
             ) }
           </div>
