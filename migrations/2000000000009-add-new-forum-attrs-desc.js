@@ -2,12 +2,6 @@ const dbReady = require("lib/models").ready;
 
 const Forum = require("lib/models").Forum;
 
-const groups = [
-  { name: "", order: 0 },
-  { name: "Presupuestos", order: 1 },
-  { name: "Datos del autor", order: 2 },
-  { name: "Información de la propuesta", order: 3 },
-];
 
 /**
  * Make any changes you need to make to the database here
