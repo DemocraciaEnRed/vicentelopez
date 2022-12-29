@@ -23,7 +23,7 @@
     "lodash.sortby": "^4.7.0",
     "react-chartjs-2": "^2.7.6",
     "react-collapsible": "^2.7.0",
-    "react-pdf-js": "^3.0.7",
+    "react-pdf-js": "^5.1.0",
     "react-responsive-accordion": "^1.0.0"
   },
   "devDependencies": {
