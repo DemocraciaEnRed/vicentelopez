@@ -75,7 +75,7 @@
     "component-closest": "~1.0.1",
     "component-dom": "1.0.8",
     "component-spin": "0.1.1",
-    "compression": "1.6.2",
+    "compression": "1.7.4",
     "cookie-parser": "1.4.3",
     "cors": "~2.8.1",
     "debug": "~2.6.3",
