@@ -170,8 +170,7 @@ class TopicArticle extends Component {
           relatedAuthors={this.state.relatedProposals && this.state.relatedProposals.map((p) => p.attrs.nombre)}
           tags={topic.tags}
           forumName={forum.name}
-          mediaTitle={topic.mediaTitle} 
-          topicTitle={topic.attrs.título}/>
+          mediaTitle={topic.mediaTitle} />
           <div className='container-project-admin-actions'>
         <AdminActions forum={forum} topic={topic} />
           </div>

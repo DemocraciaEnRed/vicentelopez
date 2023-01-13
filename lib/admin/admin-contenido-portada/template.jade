@@ -6,10 +6,10 @@
           i.icon-lock
       form.form(action='/api/text', method='post', role='form', autocomplete='off', autovalidate='autovalidate', autosubmit='autosubmit')
         ul.form-messages
-        h2.titleShow= 'Contenido Portada'
+        h3.titleShow= 'Contenido Portada'
           span.glyphicon.glyphicon-menu-down.pull-right
         .showHiden.hide
-          h5= 'Títulos'
+          h5.titleContent= 'Títulos'
           .form-group
             label= 'Subtitulo principal'
             input.form-control(
@@ -27,7 +27,7 @@
               validate='required'
             )
 
-          h5= 'Videos de fondo'
+          h5.titleContent= 'Videos de fondo'
           .form-group
             span.help-text= 'Cuando un usuario entra a la página se le muestra aleatoriamente uno de los dos posibles videos.'
             span.help-text= 'El formato .webm es para celulares y el .mp4 para dispositivos más grandes.'
@@ -64,7 +64,7 @@
               validate='url'
             )
 
-          h5= 'Íconos explicativos'
+          h5.titleContent= 'Íconos explicativos'
           span.help-text= 'Las imágenes se acomodan a un tamaño de 200 x 200 píxeles'
           .form-group
             label= 'Ícono 1'
@@ -135,34 +135,34 @@
               maxlength=800,
               validate='required'
             )
-        h2.titleShow= 'Info Votacion'
+        h3.titleShow= 'Info Votacion'
           span.glyphicon.glyphicon-menu-down.pull-right
         .showHiden.hide
           .form-group
-          label= 'reglamento:'
-          input.form-control(
-            type='text',
-            data-name='info-reglamento-pdf',
-            maxlength=200,
-            validate='required url'
-          )
+            label= 'reglamento:'
+            input.form-control(
+              type='text',
+              data-name='info-reglamento-pdf',
+              maxlength=200,
+              validate='required url'
+            )
           .form-group
-          label= 'cómo votar:'
-          input.form-control(
-            type='text',
-            data-name='info-votar-pdf',
-            maxlength=200,
-            validate='required url'
-          )
+            label= 'cómo votar:'
+            input.form-control(
+              type='text',
+              data-name='info-votar-pdf',
+              maxlength=200,
+              validate='required url'
+            )
           .form-group
-          label= 'tabla reuniones:'
-          input.form-control(
-            type='text',
-            data-name='info-reuniones-pdf',
-            maxlength=200,
-            validate='required'
-          )
-        h2.titleShow= 'Propuestas'
+            label= 'tabla reuniones:'
+            input.form-control(
+              type='text',
+              data-name='info-reuniones-pdf',
+              maxlength=200,
+              validate='required'
+            )
+        h3.titleShow= 'Propuestas'
           span.glyphicon.glyphicon-menu-down.pull-right
         .showHiden.hide
           label= 'Requisitos para propuestas factibles:'
@@ -172,12 +172,12 @@
             
             validate='required'
           )
-        h2.titleShow= 'Proyectos'
+        h3.titleShow= 'Proyectos'
           span.glyphicon.glyphicon-menu-down.pull-right
         .showHiden.hide
-          h5= 'Baner'
+          h5.titleContent= 'Baner'
           .form-group
-            label= 'titulo para votacion finalizada'
+            label= 'Titulo para votacion finalizada'
             input.form-control(
               type='text',
               data-name='projects-titleVotFin-text',
@@ -185,11 +185,31 @@
               validate='required'
             )
           .form-group
-            label= 'titulo para votacion finalizada'
+            label= 'Subtitulo para votacion finalizada'
             textarea.form-control(
               data-name='projects-subtitleVotFin-text',
               rows=2,
               maxlength=200,
               validate='required'
             )
-        .form-group: button.btn.btn-success.btn-block.btn-lg= t('settings.save')
+        h3.titleShow= 'Footer'
+          span.glyphicon.glyphicon-menu-down.pull-right
+        .showHiden.hide
+          .form-group
+            label= 'reglamento:'
+            input.form-control(
+              type='text',
+              data-name='info-TyC-pdf',
+              maxlength=200,
+              validate='url'
+            )
+          .form-group
+            label= 'cómo votar:'
+            input.form-control(
+              type='text',
+              data-name='info-PPYUD-pdf',
+              maxlength=200,
+              validate='url'
+            )
+          
+        .form-group: button.btn.btn-success.btn-block.btn-lg.button-save= t('settings.save')

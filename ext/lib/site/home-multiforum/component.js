@@ -62,7 +62,7 @@ export default class HomeMultiforumOverride extends Component {
             texts={this.state.texts}
             forum={forum} />}
           <ThumbsAcerca texts={this.state.texts}/>
-          {/* <EncuentrosProximos /> */}
+          {forum && forum.config.mostrarInfoEncuentros && <EncuentrosProximos /> }
           {forum && forum.config.preVotacion && <ProyectosFactibles /> }
           {forum && forum.config.votacionFinalizada && <ProyectosGanadores /> }
           {/* <Barrios /> */}

@@ -2,8 +2,6 @@
   .topics-admin
     .password-settings
       .heading
-        .circle
-          i.icon-lock
         h2= 'Configuraciones'
       form.form(action=form.action, method='post', role='form', autovalidate, autosubmit)
         ul.form-messages
@@ -25,15 +23,25 @@
                   type='text',
                   data-name='propuestasTexto'
                 )
-                .form-group
+              .form-group
                 label.switch= 'Mostrar informacion sobre encuentros'
                   input.form(
                     type='checkbox',
                     data-name='mostrarInfoEncuentros',
-                    id='checkboxMeeting'
+                    data-type='descubrible',
+                    data-link='linkMetting',
+                    id='checkboxMeeting',
                   )
                   .slider.round
-                  
+              .form-group.linkMetting
+                label= 'Link de formulario para encuentros'
+                input.form-control.form(
+                  type='text',
+                  data-name='linkFormEncuentro',
+                  data-type='ocultable',
+                  validate='url',
+                )
+                
             .col-sm-6
               h5="votación"
               .form-group.state-votation.row
@@ -60,7 +68,7 @@
                     )
                   
               .form-group
-                label.switch= 'Mostrar puntos de votación'
+                label.switch= 'Mostrar sección Info votación'
                   input.form(
                     type='checkbox',
                     data-name='mostrarPuntosVotacion',
@@ -73,7 +81,9 @@
                   input.form(
                     type='checkbox',
                     data-name='mostrarLinkVotaciones',
-                    id='checkboxVot'
+                    data-type='descubrible',
+                    data-link='linkVotation',
+                    id='checkboxVot',
                   )
                   .slider.round
               .form-group.linkVotation
@@ -81,7 +91,7 @@
                 input.form-control.form(
                   type='text',
                   data-name='linkVotaciones',
-                  validate='url'
+                  validate='url',
                 )
           .row  
             .col-sm-6

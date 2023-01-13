@@ -6,7 +6,33 @@ h5
   margin-top: 30px;
 
 .titleShow
-  cursor: pointer
+  cursor: pointer;
+  margin: 0;
+  border: 1px solid #ddd;
+  padding:16px 24px;
+  background-color: #eee
+  &:first-of-type
+    border-radius: 5px 5px 0 0;
+  &:last-of-type
+    border-radius: 0 0 5px 5px;
+  &:not(:last-of-type)
+    border-bottom: none;
+  &.active&:last-of-type
+    border-radius: 0;
+    border-bottom: none;
+
+  
+    
+
+.showHiden
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  margin-bottom: 8px;
+  &:last-of-type
+    background-color: blue;
+    border-top:none;
+
 
 .activeAngle
   transform: rotate(3.142rad);
@@ -17,3 +43,10 @@ h5
 .hiden
   height:0px
   overflow: hidden;
+
+.titleContent
+    font-size: 16px;
+    margin-top: 8px
+
+.button-save
+  margin-top: 16px

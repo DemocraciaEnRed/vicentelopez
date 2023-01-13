@@ -6,6 +6,7 @@ import {Link} from 'react-router'
 import PuntosDeVotacion from '../assets/puntos-de-votacion'
 import config from 'lib/config'
 import makeAsyncScript from 'react-async-script'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 export default class Page extends Component {
   constructor (props) {
@@ -35,7 +36,8 @@ export default class Page extends Component {
         'fechaDiaLegible',
         'fechaHoraLegible',
         'linkLlamada'
-      ]
+      ],
+      forum:null
     }
   }
 
@@ -47,6 +49,10 @@ export default class Page extends Component {
         this.extractData(res)
       })
       .catch((err) => console.error(err))
+
+      forumStore.findOneByName('proyectos').then((forum) => {
+          this.setState({ forum })
+      }).catch((err) => { console.error(err) })
   }
 
   goTop () {
@@ -99,7 +105,7 @@ export default class Page extends Component {
   }
 
   render () {
-    const { events, isLoading, availableEvents, availableEventsId, unavailableEvents, currentEvent } = this.state
+    const { events, isLoading, availableEvents, availableEventsId, unavailableEvents, currentEvent,forum } = this.state
     return (
       <div>
         <section className="banner-static">
@@ -117,10 +123,10 @@ export default class Page extends Component {
               <p>Inscribite en la reunión de tu barrio y presentá propuestas para mejorarlo.</p>
             </div> 
              <div className='action-btns'>
-              {
+              {forum &&
                 <div className='btns-descargas'>
-                  <a className='boton-azul' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform' target="_blank">
-                      Quiero participar
+                  <a className='boton-azul' href={forum.config.linkFormEncuentro} target="_blank">
+                      Quiero participar 
                   </a>
                 </div>
               }

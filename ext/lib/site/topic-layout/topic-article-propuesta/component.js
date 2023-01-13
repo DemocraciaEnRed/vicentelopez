@@ -193,6 +193,12 @@ class TopicArticle extends Component {
             Podés ver el proyecto final presentado en la votación <Link to={`/proyectos/topic/${topic.id}`} className='alert-link'>aquí</Link>.
           </div>
         */}
+        {topic.clauses && topic.clauses.length > 0 && <div className='text-center'>
+          <a href={`/proyectos/topic/${topic.id}`} target="_blank" className='topic-article-button'>
+            Conocé el Proyecto final
+          </a>
+        </div>}
+
         <div className='topic-actions topic-article-content'>
           <Subscribe
             topic={topic}/>
