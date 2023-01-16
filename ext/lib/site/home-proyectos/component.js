@@ -151,7 +151,7 @@ export class HomeProyectos extends Component {
           // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
           // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
           initialFilters.anio = '2023'
-          initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
+          initialFilters.state = 'preparacion,compra,ejecucion,finalizado'
         } else {
           // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
           initialFilters.anio = '2018,2019,2020,2021,2022,2023'
@@ -177,7 +177,7 @@ export class HomeProyectos extends Component {
             // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
             // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
             this.setState({
-              state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : [ 'preparacion', 'compra', 'ejecucion', 'finalizado'],
+              state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
               anio: ['2023'] })
           } else {
             // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
@@ -304,7 +304,7 @@ export class HomeProyectos extends Component {
       })
     } else if (this.state.forumConfig.votacionFinalizada) {
       this.setState({
-        state: newStage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : [ 'preparacion', 'compra', 'ejecucion', 'finalizado'],
+        state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
         anio: newStage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023']
       })
     }
