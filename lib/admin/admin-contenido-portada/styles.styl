@@ -5,33 +5,41 @@ h5
   font-size: 22px;
   margin-top: 30px;
 
-.titleShow
-  cursor: pointer;
-  margin: 0;
+.panelExpandible
   border: 1px solid #ddd;
-  padding:16px 24px;
-  background-color: #eee
+  box-shadow: 0 3px 1px -2px #00000000, 0 2px 2px 0 #00000000, 0 1px 5px 0 #0000001f;
+  transition: all .1s ease-in-out;
+  &.active
+    margin: 8px -4px
+    border-radius: 5px;
+    box-shadow: 0 3px 1px -2px #00000033, 0 2px 2px 0 #00000024, 0 1px 5px 0 #0000001f;
   &:first-of-type
     border-radius: 5px 5px 0 0;
   &:last-of-type
     border-radius: 0 0 5px 5px;
-  &:not(:last-of-type)
-    border-bottom: none;
-  &.active&:last-of-type
-    border-radius: 0;
-    border-bottom: none;
+
+.titleShow
+  cursor: pointer;
+  margin: 0;
+  padding:16px 24px;
+  background-color: #fff
+  &.active
+    background-color: rgba(0, 0, 0, 0.082)
 
   
     
 
 .showHiden
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 0 0 5px 5px;
-  margin-bottom: 8px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all .5s ease-in-out;
+  &:not(.hiden)
+    max-height: 10000px
   &:last-of-type
-    background-color: blue;
     border-top:none;
+  
+.contentHiden
+  padding: 16px
 
 
 .activeAngle
@@ -46,7 +54,7 @@ h5
 
 .titleContent
     font-size: 16px;
-    margin-top: 8px
+    margin: 8px 0
 
 .button-save
   margin-top: 16px

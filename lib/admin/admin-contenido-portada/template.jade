@@ -6,210 +6,220 @@
           i.icon-lock
       form.form(action='/api/text', method='post', role='form', autocomplete='off', autovalidate='autovalidate', autosubmit='autosubmit')
         ul.form-messages
-        h3.titleShow= 'Contenido Portada'
-          span.glyphicon.glyphicon-menu-down.pull-right
-        .showHiden.hide
-          h5.titleContent= 'Títulos'
-          .form-group
-            label= 'Subtitulo principal'
-            input.form-control(
-              type='text',
-              data-name='home-subtitle',
-              maxlength=100,
-              validate='required'
-            )
-          .form-group
-            label= 'Texto subtitulo principal'
-            textarea.form-control(
-              data-name='home-subtitle-text',
-              rows=5,
-              maxlength=400,
-              validate='required'
-            )
+        .panelExpandible
+          h3.titleShow= 'Contenido Portada'
+            span.glyphicon.glyphicon-menu-down.pull-right
+          .showHiden.hiden
+            .contentHiden
+              h5.titleContent= 'Títulos'
+              .form-group
+                label= 'Subtitulo principal'
+                input.form-control(
+                  type='text',
+                  data-name='home-subtitle',
+                  maxlength=100,
+                  validate='required'
+                )
+              .form-group
+                label= 'Texto subtitulo principal'
+                textarea.form-control(
+                  data-name='home-subtitle-text',
+                  rows=5,
+                  maxlength=400,
+                  validate='required'
+                )
 
-          h5.titleContent= 'Videos de fondo'
-          .form-group
-            span.help-text= 'Cuando un usuario entra a la página se le muestra aleatoriamente uno de los dos posibles videos.'
-            span.help-text= 'El formato .webm es para celulares y el .mp4 para dispositivos más grandes.'
-          .form-group
-            label= 'Video (posibilidad 1)'
-            h6= 'Formato mp4:'
-            input.form-control(
-              type='text',
-              data-name='home-video1-mp4',
-              maxlength=200,
-              validate='required url'
-            )
-            h6= 'Formato webm:'
-            input.form-control(
-              type='text',
-              data-name='home-video1-webm',
-              maxlength=200,
-              validate='required url'
-            )
-          .form-group
-            label= 'Video (posibilidad 2)'
-            h6= 'Formato mp4:'
-            input.form-control(
-              type='text',
-              data-name='home-video2-mp4',
-              maxlength=200,
-              validate='url'
-            )
-            h6= 'Formato webm:'
-            input.form-control(
-              type='text',
-              data-name='home-video2-webm',
-              maxlength=200,
-              validate='url'
-            )
+              h5.titleContent= 'Videos de fondo'
+              .form-group
+                span.help-text= 'Cuando un usuario entra a la página se le muestra aleatoriamente uno de los dos posibles videos.'
+                span.help-text= 'El formato .webm es para celulares y el .mp4 para dispositivos más grandes.'
+              .form-group
+                label= 'Video (posibilidad 1)'
+                h6= 'Formato mp4:'
+                input.form-control(
+                  type='text',
+                  data-name='home-video1-mp4',
+                  maxlength=200,
+                  validate='required url'
+                )
+                h6= 'Formato webm:'
+                input.form-control(
+                  type='text',
+                  data-name='home-video1-webm',
+                  maxlength=200,
+                  validate='required url'
+                )
+              .form-group
+                label= 'Video (posibilidad 2)'
+                h6= 'Formato mp4:'
+                input.form-control(
+                  type='text',
+                  data-name='home-video2-mp4',
+                  maxlength=200,
+                  validate='url'
+                )
+                h6= 'Formato webm:'
+                input.form-control(
+                  type='text',
+                  data-name='home-video2-webm',
+                  maxlength=200,
+                  validate='url'
+                )
 
-          h5.titleContent= 'Íconos explicativos'
-          span.help-text= 'Las imágenes se acomodan a un tamaño de 200 x 200 píxeles'
-          .form-group
-            label= 'Ícono 1'
-            h6= 'Imagen:'
-            input.form-control(
-              type='text',
-              data-name='home-icono1-imagen',
-              maxlength=200,
-              validate='required url'
-            )
-            h6= 'Título:'
-            input.form-control(
-              type='text',
-              data-name='home-icono1-titulo',
-              maxlength=200,
-              validate='required'
-            )
-            h6= 'Texto:'
-            textarea.form-control(
-              data-name='home-icono1-texto',
-              rows=5,
-              maxlength=800,
-              validate='required'
-            )
-          .form-group
-            label= 'Ícono 2'
-            h6= 'Imagen:'
-            input.form-control(
-              type='text',
-              data-name='home-icono2-imagen',
-              maxlength=200,
-              validate='required url'
-            )
-            h6= 'Título:'
-            input.form-control(
-              type='text',
-              data-name='home-icono2-titulo',
-              maxlength=200,
-              validate='required'
-            )
-            h6= 'Texto:'
-            textarea.form-control(
-              data-name='home-icono2-texto',
-              rows=5,
-              maxlength=800,
-              validate='required'
-            )
-          .form-group
-            label= 'Ícono 3'
-            h6= 'Imagen:'
-            input.form-control(
-              type='text',
-              data-name='home-icono3-imagen',
-              maxlength=200,
-              validate='required url'
-            )
-            h6= 'Título:'
-            input.form-control(
-              type='text',
-              data-name='home-icono3-titulo',
-              maxlength=200,
-              validate='required'
-            )
-            h6= 'Texto:'
-            textarea.form-control(
-              data-name='home-icono3-texto',
-              rows=5,
-              maxlength=800,
-              validate='required'
-            )
-        h3.titleShow= 'Info Votacion'
-          span.glyphicon.glyphicon-menu-down.pull-right
-        .showHiden.hide
-          .form-group
-            label= 'reglamento:'
-            input.form-control(
-              type='text',
-              data-name='info-reglamento-pdf',
-              maxlength=200,
-              validate='required url'
-            )
-          .form-group
-            label= 'cómo votar:'
-            input.form-control(
-              type='text',
-              data-name='info-votar-pdf',
-              maxlength=200,
-              validate='required url'
-            )
-          .form-group
-            label= 'tabla reuniones:'
-            input.form-control(
-              type='text',
-              data-name='info-reuniones-pdf',
-              maxlength=200,
-              validate='required'
-            )
-        h3.titleShow= 'Propuestas'
-          span.glyphicon.glyphicon-menu-down.pull-right
-        .showHiden.hide
-          label= 'Requisitos para propuestas factibles:'
-          input.textArea.form-control(
-            type='textarea'
-            data-name='propuestas-reglamento-text',
-            
-            validate='required'
-          )
-        h3.titleShow= 'Proyectos'
-          span.glyphicon.glyphicon-menu-down.pull-right
-        .showHiden.hide
-          h5.titleContent= 'Baner'
-          .form-group
-            label= 'Titulo para votacion finalizada'
-            input.form-control(
-              type='text',
-              data-name='projects-titleVotFin-text',
-              maxlength=100,
-              validate='required'
-            )
-          .form-group
-            label= 'Subtitulo para votacion finalizada'
-            textarea.form-control(
-              data-name='projects-subtitleVotFin-text',
-              rows=2,
-              maxlength=200,
-              validate='required'
-            )
-        h3.titleShow= 'Footer'
-          span.glyphicon.glyphicon-menu-down.pull-right
-        .showHiden.hide
-          .form-group
-            label= 'reglamento:'
-            input.form-control(
-              type='text',
-              data-name='info-TyC-pdf',
-              maxlength=200,
-              validate='url'
-            )
-          .form-group
-            label= 'cómo votar:'
-            input.form-control(
-              type='text',
-              data-name='info-PPYUD-pdf',
-              maxlength=200,
-              validate='url'
-            )
+              h5.titleContent= 'Íconos explicativos'
+              span.help-text= 'Las imágenes se acomodan a un tamaño de 200 x 200 píxeles'
+              .form-group
+                label= 'Ícono 1'
+                h6= 'Imagen:'
+                input.form-control(
+                  type='text',
+                  data-name='home-icono1-imagen',
+                  maxlength=200,
+                  validate='required url'
+                )
+                h6= 'Título:'
+                input.form-control(
+                  type='text',
+                  data-name='home-icono1-titulo',
+                  maxlength=200,
+                  validate='required'
+                )
+                h6= 'Texto:'
+                textarea.form-control(
+                  data-name='home-icono1-texto',
+                  rows=5,
+                  maxlength=800,
+                  validate='required'
+                )
+              .form-group
+                label= 'Ícono 2'
+                h6= 'Imagen:'
+                input.form-control(
+                  type='text',
+                  data-name='home-icono2-imagen',
+                  maxlength=200,
+                  validate='required url'
+                )
+                h6= 'Título:'
+                input.form-control(
+                  type='text',
+                  data-name='home-icono2-titulo',
+                  maxlength=200,
+                  validate='required'
+                )
+                h6= 'Texto:'
+                textarea.form-control(
+                  data-name='home-icono2-texto',
+                  rows=5,
+                  maxlength=800,
+                  validate='required'
+                )
+              .form-group
+                label= 'Ícono 3'
+                h6= 'Imagen:'
+                input.form-control(
+                  type='text',
+                  data-name='home-icono3-imagen',
+                  maxlength=200,
+                  validate='required url'
+                )
+                h6= 'Título:'
+                input.form-control(
+                  type='text',
+                  data-name='home-icono3-titulo',
+                  maxlength=200,
+                  validate='required'
+                )
+                h6= 'Texto:'
+                textarea.form-control(
+                  data-name='home-icono3-texto',
+                  rows=5,
+                  maxlength=800,
+                  validate='required'
+                )
+        .panelExpandible
+          h3.titleShow= 'Info Votacion'
+            span.glyphicon.glyphicon-menu-down.pull-right
+          .showHiden.hiden
+            .contentHiden
+              .form-group
+                label= 'reglamento:'
+                input.form-control(
+                  type='text',
+                  data-name='info-reglamento-pdf',
+                  maxlength=200,
+                  validate='required url'
+                )
+              .form-group
+                label= 'cómo votar:'
+                input.form-control(
+                  type='text',
+                  data-name='info-votar-pdf',
+                  maxlength=200,
+                  validate='required url'
+                )
+              .form-group
+                label= 'tabla reuniones:'
+                input.form-control(
+                  type='text',
+                  data-name='info-reuniones-pdf',
+                  maxlength=200,
+                  validate='required'
+                )
+        .panelExpandible
+          h3.titleShow= 'Propuestas'
+            span.glyphicon.glyphicon-menu-down.pull-right
+          .showHiden.hiden
+            .contentHiden
+              label= 'Requisitos para propuestas factibles:'
+              input.textArea.form-control(
+                type='textarea'
+                data-name='propuestas-reglamento-text',
+                
+                validate='required'
+              )
+        .panelExpandible
+          h3.titleShow= 'Proyectos'
+            span.glyphicon.glyphicon-menu-down.pull-right
+          .showHiden.hiden
+            .contentHiden
+              h5.titleContent= 'Baner'
+              .form-group
+                label= 'Titulo para votacion finalizada'
+                input.form-control(
+                  type='text',
+                  data-name='projects-titleVotFin-text',
+                  maxlength=100,
+                  validate='required'
+                )
+              .form-group
+                label= 'Subtitulo para votacion finalizada'
+                textarea.form-control(
+                  data-name='projects-subtitleVotFin-text',
+                  rows=2,
+                  maxlength=200,
+                  validate='required'
+                )
+        .panelExpandible
+          h3.titleShow= 'Footer'
+            span.glyphicon.glyphicon-menu-down.pull-right
+          .showHiden.hiden
+            .contentHiden
+              .form-group
+                label= 'reglamento:'
+                input.form-control(
+                  type='text',
+                  data-name='info-TyC-pdf',
+                  maxlength=200,
+                  validate='url'
+                )
+              .form-group
+                label= 'cómo votar:'
+                input.form-control(
+                  type='text',
+                  data-name='info-PPYUD-pdf',
+                  maxlength=200,
+                  validate='url'
+                )
           
         .form-group: button.btn.btn-success.btn-block.btn-lg.button-save= t('settings.save')
