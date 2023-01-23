@@ -7,6 +7,7 @@ import Anchor from 'ext/lib/site/anchor'
 import DonutChart from 'ext/lib/site/graphics/donut-chart/component'
 import LineChart from 'ext/lib/site/graphics/line-chart/component'
 import Banner400Proyectos from '../../banner-400-proyectos/component.js'
+import GenericBanner from '../../generic-banner/component.js'
 const distribucionProyectosData = require('./distribucion-proyectos.json')
 const ejecucionProyectosData = require('./ejecucion-proyectos.json')
 
@@ -17,6 +18,15 @@ export default class Page extends Component {
 
   goTop() {
     window.scrollTo(0, 0)
+  }
+
+  handleClickScroll(toGo,event) {
+    const element = document.getElementById(toGo);
+
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   render() {
@@ -30,17 +40,46 @@ export default class Page extends Component {
             </div>
           </div>
         </section>
-        <Banner400Proyectos />
+        {/* <Banner400Proyectos /> */}
+        <div className='subtitle'>
+          <h2>Gracias por tu <strong>participacion y voto</strong>, seguimos mejorando los barrios de vicente lopez.</h2>
+
+        </div>
         <br />
         <br />
         <div id='container'>
 
           <div className='ext-datos'>
-            <p className="text">
+          <article className="seccion-datos">
+
+					<div className="card-deck" >
+						<div className="card wow fadeInUp" >
+							<div className="icono tiempo"></div>
+							<p>9 años de<br/>
+							<b>Presupuesto Participativo</b></p>
+						</div>
+						<div className="card wow fadeInUp" >
+							<div className="icono dinero"></div>
+							<p>Total invertido:<br/>
+							<b>$ 360 millones</b></p>
+						</div>
+						<div className="card wow fadeInUp"  data-wow-delay="1.8s">
+							<div className="icono proyectos"></div>
+							<p>Más de 450<br/>
+							<b>proyectos ejecutados</b></p>
+						</div>
+					</div>
+          
+          </article>
+          <div className='boton-group'>
+            <button className='boton-round cl-cyan' onClick={this.handleClickScroll.bind(this,'pp-evolution')} data-scroll='pp-evolution'><strong>Evolución del PP</strong></button>
+            <button className='boton-round cl-purple' onClick={this.handleClickScroll.bind(this,'open-data')} data-scroll='open-data'><strong>Datos abiertos</strong></button>
+          </div>
+            {/* <p className="text">
               El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas sus ediciones.
             </p>
 
-            <article className="seccion-datos">
+             <article className="seccion-datos">
               <h3>Evolución del Presupuesto Participativo 2012 - 2022</h3>
               <figure className="graph-box">
                 <div className="table-scroller">
@@ -141,44 +180,69 @@ export default class Page extends Component {
                   </table>
                 </div>
               </figure>
-            </article>
+            </article> */}
 
             <article className="seccion-datos">
-              <h3>Evolución de la participación</h3>
-              <figure className="graph-box">
-                <div className="graph-img">
-                  <LineChart />
-                  {/*                   <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
- */}                </div>
+              <h3>Evolucion de la participacion en el pp</h3>
+
+                <iframe 
+                  src='https://flo.uri.sh/visualisation/12392403/embed' 
+                  title='Interactive or visual content' 
+                  className='flourish-embed-iframe iframe-bars'  
+                  scrolling='no'  
+                  sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'/>
+
+                  {/*<LineChart />
+                                     <img src="/ext/lib/site/static-pages/evolucion-participacion1.png" alt=""/>
+                
                 <figcaption>
                   <p className="caption">Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en el presupuesto participativo de Vicente López.</p>
-                </figcaption>
-              </figure>
-              <tfoot>
+                </figcaption> 
+                <tfoot>
                 <tr>
                   <td colSpan={10} class="descargas-info">"Edición 2020- 2021 suspendida por pandemia"</td>
                 </tr>
-              </tfoot>
+              </tfoot> */}
             </article>
 
-            <article className="seccion-datos infogram">
-              <DonutChart data={distribucionProyectosData} title="Distribución de proyectos por área temática por año" />
+              <GenericBanner title="Nos enorgullece tener un crecimiento en la participacion de los vecinos y vecinas y sobre todo" subtitle="la formacion de una comunidad mas unida que busca los espacios comunitarios." />
+
+            <article className="seccion-datos" id="pp-evolution">
+              <h3>Evolución dEL pp</h3>
+ 
+              <iframe src='https://flo.uri.sh/story/1777711/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-map'  scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+
+              {/* <DonutChart data={ejecucionProyectosData} title="Ejecución % del Presupuesto por área temática por año" /> */}
             </article>
 
-            <article className="seccion-datos infogram">
-              <DonutChart data={ejecucionProyectosData} title="Ejecución % del Presupuesto por área temática por año" />
+
+            <article className="seccion-datos">
+            {/* <h3>Como se distribuye el presupuesto año a año por las tematicas de los proyectos</h3> */}
+              <iframe src='https://flo.uri.sh/visualisation/12369808/embed' title='Ejecución % del Presupuesto por área temática por año' className='flourish-embed-iframe iframe-cake' scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'/>
+              {/* <DonutChart data={distribucionProyectosData} title="Distribución de proyectos por área temática por año" /> */}
+            </article>
+            
+            <article className="seccion-datos table-flourish">
+            <iframe src='https://flo.uri.sh/visualisation/12360667/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-table'  scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
             </article>
 
-            <div className='descargas'>
-              <h4>HISTORIAL DE DOCUMENTOS DE PRESUPUESTO PARTICIPATIVO</h4>
-              <div className='btns-descargas btns-historial'>
-                <Link href='/s/documentos'>
-                  <button className='boton-azul'>
-                    Visualizar historial de documentos
+             <GenericBanner title="Te invitamos a conocer en mayor profundidad los resultados de años pasados en el presupuesto participativo" /> 
+
+            
+
+
+            <div className='descargas' id='open-data'>
+              <div className='btns-historial'>
+                <Link href='http://vicentelopez.opendata.junar.com/dashboards/20165/presupuesto-participativo/' target="_blank">
+                  <button className='boton-rounded'>
+                    Visita nuestro portal de datos abiertos
                   </button>
                 </Link>
               </div>
-              <h4>DATOS ABIERTOS</h4>
+              <div className='title-descargas'>
+                <h5>Descarga nuestros data sets <span> (en formato .csv) </span> con los resultados de los presupuestos realizados hasta la fecha</h5>
+
+              </div>
               <div className='btns-descargas'>
                 <div className='descargas-info'>
                   <h5>Proyectos 2013-2020 por tipo (cantidad e inversión)</h5>
@@ -237,7 +301,15 @@ export default class Page extends Component {
                   </a>
                 </div>
               </div>
-              <h4>PORTAL DE DATOS ABIERTOS DE VICENTE LOPEZ</h4>
+              <div className='btns-historial'>
+                <h6>Para conocer los diferents documentos de los presupuestos participativos pasados (2012-2019) ingresa a nuestro historial. En el podras encontrar minutas, boletas de las instancias prescenciales (hasta 2017) y el listado de proyectos.</h6>
+                <Link href='/s/documentos'>
+                  <button className='boton-outlined'>
+                    Visualizar historial de documentos
+                  </button>
+                </Link>
+              </div>
+              {/* <h4>PORTAL DE DATOS ABIERTOS DE VICENTE LOPEZ</h4>
               <div className='portal-vl btns-descargas'>
                 <div className='portal-vl-datos'>
                   <div className='portal-vl-datos-num'>
@@ -257,7 +329,7 @@ export default class Page extends Component {
                   </Link>
                   <p>La Municipalidad de Vicente López, en el marco de la Política de transparencia, participación y colaboración ciudadana, ha incorporado una plataforma de datos abiertos. La misma cuenta con una sección exclusiva del presupuesto participativo.</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
