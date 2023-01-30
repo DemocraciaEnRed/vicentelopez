@@ -11,7 +11,7 @@ var config = require('lib/config')
 var utils = require('lib/utils')
 var expose = utils.expose
 const Tag = require('lib/models').Tag
-
+const propuestasAnio = new Date().getFullYear() + 1
 const app = module.exports = express.Router()
 
 const EDITABLE_KEYS = [
@@ -42,7 +42,7 @@ const defaultValues = (defaultTag) => {
   if(defaultTag){
       return {
         'attrs.subscribers': '',
-        'attrs.anio': config.propuestasAnio, //TODO Variable de entorno que se pueda setear el año
+        'attrs.anio': propuestasAnio, //TODO Variable de entorno que se pueda setear el año
         'attrs.state': 'pendiente',
         'action.method': 'cause',
         tag: defaultTag.id //Esto debe ser un id de un document de la collection "tags" de la bd.
@@ -51,7 +51,7 @@ const defaultValues = (defaultTag) => {
     else {
       return {
         'attrs.subscribers': '',
-        'attrs.anio': config.propuestasAnio, //TODO Variable de entorno que se pueda setear el año
+        'attrs.anio': propuestasAnio, //TODO Variable de entorno que se pueda setear el año
         'attrs.state': 'pendiente',
         'action.method': 'cause'
       }

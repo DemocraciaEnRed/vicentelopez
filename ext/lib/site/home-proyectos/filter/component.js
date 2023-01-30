@@ -187,7 +187,7 @@ export default class Filter extends Component {
               {this.state.activeDropdown === 'anio' &&
               <div className='dropdown-options'>
                 <div className='options-container'>
-                  {anios.map((a, i) => (
+                  {this.props.filterYear.map((a, i) => (
                     <label className='option-label' key={i}>
                       <input
                         type='checkbox'
