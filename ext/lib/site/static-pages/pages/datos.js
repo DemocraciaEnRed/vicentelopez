@@ -42,7 +42,7 @@ export default class Page extends Component {
         </section>
         {/* <Banner400Proyectos /> */}
         <div className='subtitle'>
-          <h2>Gracias por tu <strong>participacion y voto</strong>, seguimos mejorando los barrios de vicente lopez.</h2>
+          <h2>Gracias por tu <strong>participación y voto</strong>, seguimos mejorando los barrios de Vicente Lopez.</h2>
 
         </div>
         <br />
@@ -60,13 +60,13 @@ export default class Page extends Component {
 						</div>
 						<div className="card wow fadeInUp" >
 							<div className="icono dinero"></div>
-							<p>Total invertido:<br/>
-							<b>$ 360 millones</b></p>
+							<p>Total invertido<br/>
+							<b>$ 360 <br/> millones</b></p>
 						</div>
-						<div className="card wow fadeInUp"  data-wow-delay="1.8s">
+						<div className="card wow fadeInUp">
 							<div className="icono proyectos"></div>
 							<p>Más de 450<br/>
-							<b>proyectos ejecutados</b></p>
+							<b>proyectos <br/> ejecutados</b></p>
 						</div>
 					</div>
           
@@ -183,7 +183,7 @@ export default class Page extends Component {
             </article> */}
 
             <article className="seccion-datos">
-              <h3>Evolucion de la participacion en el pp</h3>
+              <h3>Evolución de la participación en el pp</h3>
 
                 <iframe 
                   src='https://flo.uri.sh/visualisation/12392403/embed' 
@@ -205,12 +205,11 @@ export default class Page extends Component {
               </tfoot> */}
             </article>
 
-              <GenericBanner title="Nos enorgullece tener un crecimiento en la participacion de los vecinos y vecinas y sobre todo" subtitle="la formacion de una comunidad mas unida que busca los espacios comunitarios." />
+              <GenericBanner title={<div>Nos enorgullece tener un crecimiento en la participacion de los vecinos y vecinas y sobre todo <strong> la formacion de una comunidad mas unida que busca los espacios comunitarios.</strong></div>} />
 
             <article className="seccion-datos" id="pp-evolution">
               <h3>Evolución dEL pp</h3>
- 
-              <iframe src='https://flo.uri.sh/story/1777711/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-map'  scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+              <iframe src='https://flo.uri.sh/story/1794394/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-map'  sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
 
               {/* <DonutChart data={ejecucionProyectosData} title="Ejecución % del Presupuesto por área temática por año" /> */}
             </article>
@@ -223,7 +222,7 @@ export default class Page extends Component {
             </article>
             
             <article className="seccion-datos table-flourish">
-            <iframe src='https://flo.uri.sh/visualisation/12360667/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-table'  scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+            <iframe src='https://flo.uri.sh/visualisation/12538255/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-table' frameborder='0' scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
             </article>
 
              <GenericBanner title="Te invitamos a conocer en mayor profundidad los resultados de años pasados en el presupuesto participativo" /> 
@@ -235,12 +234,12 @@ export default class Page extends Component {
               <div className='btns-historial'>
                 <Link href='http://vicentelopez.opendata.junar.com/dashboards/20165/presupuesto-participativo/' target="_blank">
                   <button className='boton-rounded'>
-                    Visita nuestro portal de datos abiertos
+                    Visitá nuestro portal de datos abiertos
                   </button>
                 </Link>
               </div>
               <div className='title-descargas'>
-                <h5>Descarga nuestros data sets <span> (en formato .csv) </span> con los resultados de los presupuestos realizados hasta la fecha</h5>
+                <h5>Descargá nuestros data sets <span> (en formato .csv) </span> con los resultados de los presupuestos realizados hasta la fecha</h5>
 
               </div>
               <div className='btns-descargas'>
@@ -302,7 +301,7 @@ export default class Page extends Component {
                 </div>
               </div>
               <div className='btns-historial'>
-                <h6>Para conocer los diferents documentos de los presupuestos participativos pasados (2012-2019) ingresa a nuestro historial. En el podras encontrar minutas, boletas de las instancias prescenciales (hasta 2017) y el listado de proyectos.</h6>
+                <h6>Para conocer los diferentes documentos de los presupuestos participativos pasados (2012-2019) ingresa a nuestro historial. En el podrás encontrar minutas, boletas de las instancias prescenciales (hasta 2017) y el listado de proyectos.</h6>
                 <Link href='/s/documentos'>
                   <button className='boton-outlined'>
                     Visualizar historial de documentos

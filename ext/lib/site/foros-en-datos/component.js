@@ -10,7 +10,12 @@ const ForosEnDatos = () => (
       <p>El Presupuesto Participativo de Vicente López se implementa de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas las ediciones del Presupuesto Participativo.</p>
       <figure className='graph-box'>
         <div className='graph-img'>
-          <img className='graph-png' src='/ext/lib/site/static-pages/evolucion-participacion1.png' alt='' />
+        <iframe 
+                  src='https://flo.uri.sh/visualisation/12392403/embed' 
+                  title='Interactive or visual content' 
+                  className='flourish-embed-iframe iframe-bars'  
+                  scrolling='no'  
+                  sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'/>
         </div>
         <figcaption>
           <p className='caption'>Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en el Presupuesto Participativo de Vicente López.</p>
