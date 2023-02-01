@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import Flickity from 'flickity'
+import forumStore from 'lib/stores/forum-store/forum-store'
+
 import { Link } from 'react-router'
 import TopicCard from '../proyectos/topic-card/component'
+import getYears from '../utils/getYears'
 
 export default class Carrusel extends Component {
   constructor (props) {
@@ -9,6 +12,7 @@ export default class Carrusel extends Component {
     this.flkty = null
     this.state = {
       topics: null,
+      forumConfig:null,
       barrios: [
         {
           'name': 'carapachay',
@@ -51,7 +55,12 @@ export default class Carrusel extends Component {
   }
 
   componentDidMount () {
-    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2023&state=preparacion,compra,ejecucion,finalizado&limit=100&sort=popular`, { credentials: 'include' })
+    forumStore.findOneByName('proyectos')
+      .then((forum) => {
+        this.setState({ forumConfig: forum.config })
+      }).then(()=>
+      window.fetch(`/ext/api/topics?forumName=proyectos&anio=${getYears(this.state.forumConfig, 'votation')}&state=preparacion,compra,ejecucion,finalizado&limit=100&sort=popular`, { credentials: 'include' })
+      )
       .then((res) => res.json())
       .then((res) => {
         this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }
@@ -78,11 +87,11 @@ export default class Carrusel extends Component {
   }
 
   render () {
-    const { topics, barrios } = this.state
+    const {forumConfig, topics, barrios } = this.state
     return (
       <div className='seccion-proyectos-factibles container-fluid'>
         <div className="fondo-titulo">
-          <h2 className='title'>Proyectos Ganadores 2023</h2>
+          <h2 className='title'>Proyectos Ganadores {forumConfig && getYears(forumConfig, 'votation')}</h2>
         </div>
         <section className='seccion-barrios-factibles container'>
           <div className='seccion-barrios-proyectos-factibles container'>

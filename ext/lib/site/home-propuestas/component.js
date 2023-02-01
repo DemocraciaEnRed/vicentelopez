@@ -9,6 +9,7 @@ import TopicCard from './topic-card/component'
 // import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 import FilterPropuestas from './filter-propuestas/component'
 import BotonMandarPropuesta from './botonMandarPropuestas'
+import getYears from '../utils/getYears'
 
 const barrios = [
   { 'name': 'Carapachay', 'value': 'carapachay' },
@@ -86,10 +87,12 @@ class HomePropuestas extends Component {
     // traer forum al state
     forumStore.findOneByName('proyectos')
       .then((forum) => this.setState({ forum }))
+      .then(()=>this.setState({anio:getYears(this.state.forum.config,'votation')}))
+      .then(()=>this.fetchTopics())
       .catch((err) => { throw err })
-
-    // traer topics
-    this.fetchTopics()
+    
+/*     // traer topics
+    this.fetchTopics() */
   }
 
   getTags = () => {
@@ -295,12 +298,12 @@ class HomePropuestas extends Component {
         }
         <div className='container topics-container'>
 
-          <FilterPropuestas
+          {forum && <FilterPropuestas
             barrios={barrios}
             barrio={this.state.barrio}
             states={states}
             state={this.state.state}
-            anios={anios}
+            anios={getYears(forum.config)}
             anio={this.state.anio}
             tags={tags}
             tag={this.state.tag}
@@ -308,7 +311,7 @@ class HomePropuestas extends Component {
             handleFilter={this.handleFilter}
             handleDefaultFilter={this.handleDefaultFilter}
             clearFilter={this.clearFilter}
-            handleRemoveBadge={this.handleRemoveBadge} />
+            handleRemoveBadge={this.handleRemoveBadge} />}
 
           <div className='row'>
             <div className='col-md-10 offset-md-1'>

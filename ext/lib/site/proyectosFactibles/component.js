@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import Flickity from 'flickity'
 import { Link } from 'react-router'
+import forumStore from 'lib/stores/forum-store/forum-store'
+
 // import TopicCard from './topic-card/component'
 import TopicCard from '../proyectos/topic-card/component'
+import getYears from '../utils/getYears'
 
 export default class Carrusel extends Component {
   constructor (props) {
@@ -10,6 +13,7 @@ export default class Carrusel extends Component {
     this.flkty = null
     this.state = {
       topics: null,
+      forumConfig:null,
       barrios: [
         {
           'name': 'carapachay',
@@ -52,7 +56,12 @@ export default class Carrusel extends Component {
   }
 
   componentDidMount () {
-    window.fetch(`/ext/api/topics?forumName=proyectos&anio=2023&state=factible&limit=30&sort=popular`, { credentials: 'include' })
+    forumStore.findOneByName('proyectos')
+      .then((forum) => {
+        this.setState({ forumConfig: forum.config })
+      }).then(()=>
+      window.fetch(`/ext/api/topics?forumName=proyectos&anio=${getYears(this.state.forumConfig, 'votation')}&state=factible&limit=30&sort=popular`, { credentials: 'include' })
+      )
       .then((res) => res.json())
       .then((res) => {
         this.setState({ topics: res.results.topics.sort(() => 0.5 - Math.random()) }
@@ -63,7 +72,7 @@ export default class Carrusel extends Component {
   componentDidUpdate () {
     if (this.flkty) this.flkty.destroy()
     // https://www.npmjs.com/package/flickity
-    const options = {
+    if(this.state.topics){const options = {
       // cellAlign: 'center',
       // draggable: true,
       // friction: 0.2,
@@ -71,7 +80,7 @@ export default class Carrusel extends Component {
       pageDots: false,
       wrapAround: this.state.topics.length > 5
     }
-    this.flkty = new Flickity(this.refs.carrusel, options)
+    this.flkty = new Flickity(this.refs.carrusel, options)}
   }
 
   componentWillUnmount () {
@@ -79,7 +88,7 @@ export default class Carrusel extends Component {
   }
 
   render () {
-    const { topics, barrios } = this.state
+    const { forumConfig, topics, barrios } = this.state
     return (
       <div className='seccion-proyectos-factibles container-fluid'>
         <div className="fondo-titulo">

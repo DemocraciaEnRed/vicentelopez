@@ -86,4 +86,39 @@ input:checked + .slider:before
 .pseudo-radio
   display: none
 
+.combobox
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: text
+  .comboboxChips
+    position: relative
+    display: flex;
+    z-index: 2
+    flex-wrap: wrap;
+    padding:4px
+    align-items: center;
+    .chip
+      background-color: #ccc;
+
+      margin: 4px;
+      padding: 4px;
+      font-size: 12px;
+      border-radius: 50px;
+      flex: 0 1 auto
+    span
+      margin-left: 2px!important
+      cursor: pointer
+    .form
+      height: 100%
+      margin: 4px;
+      flex: 1 1
+      border: none
+      box-shadow: none
+      &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+.hiden
+  margin: 0
 
