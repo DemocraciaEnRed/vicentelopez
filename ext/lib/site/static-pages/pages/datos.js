@@ -222,7 +222,7 @@ export default class Page extends Component {
             </article>
             
             <article className="seccion-datos table-flourish">
-            <iframe src='https://flo.uri.sh/visualisation/12538255/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-table' frameborder='0' scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+            <iframe src='https://flo.uri.sh/visualisation/12538255/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-table' scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
             </article>
 
              <GenericBanner title="Te invitamos a conocer en mayor profundidad los resultados de años pasados en el presupuesto participativo" /> 

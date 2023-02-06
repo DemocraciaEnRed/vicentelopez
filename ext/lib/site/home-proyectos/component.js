@@ -270,9 +270,9 @@ export class HomeProyectos extends Component {
                 subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP' />
         }
 
-        <Anchor id='containerr'>
-          <section className='grid-container'>
-            {forumConfig && <Filter
+         <Anchor id='containerr'>
+          {forumConfig.filterYear && <section className='grid-container'>
+            {forumConfig &&  <Filter
               handleFilter={this.handleFilter}
               handleDefaultFilter={this.handleDefaultFilter}
               anio={this.state.anio}
@@ -286,12 +286,14 @@ export class HomeProyectos extends Component {
               filterYear={forumConfig.seguimientoNormal ?  getYears( this.state.forumConfig ) :getYears( this.state.forumConfig, 'seguimiento' )} />}
             <TopicGrid topics={topics} />
           </section>
+            }
           <div className='paginacion-container'>
-            {this.state.noMore
+            {!forumConfig.filterYear && <span className='mt-3 alert alert-warning'>No hay proyectos para mostrar</span> }
+            {forumConfig.filterYear && (this.state.noMore
               ? <span>No hay más proyectos que coincidan con la búsqueda</span>
               : <button className='boton-azul btn' onClick={this.seeMore}>
                 Ver más
-              </button>
+              </button>)
             }
           </div>
         </Anchor>

@@ -6,6 +6,8 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
 import TopicCard from './topic-card/component'
+import Footer from 'ext/lib/site/footer/component'
+import Jump from 'ext/lib/site/jump-button/component'
 // import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 import FilterPropuestas from './filter-propuestas/component'
 import BotonMandarPropuesta from './botonMandarPropuestas'
@@ -74,6 +76,10 @@ class HomePropuestas extends Component {
     this.handleInputChange = this.handleInputChange.bind(this)
 
     this.getTags()
+  }
+
+  goTop () {
+    window.scrollTo(0,0)
   }
 
   componentWillMount () {
@@ -296,9 +302,9 @@ class HomePropuestas extends Component {
           </div>
         </div>
         }
-        <div className='container topics-container'>
+        {forum && <div className='container topics-container'>
 
-          {forum && <FilterPropuestas
+          {forum && forum.config.filterYear && <FilterPropuestas
             barrios={barrios}
             barrio={this.state.barrio}
             states={states}
@@ -313,9 +319,9 @@ class HomePropuestas extends Component {
             clearFilter={this.clearFilter}
             handleRemoveBadge={this.handleRemoveBadge} />}
 
-          <div className='row'>
+          <div className='row mt-2'>
             <div className='col-md-10 offset-md-1'>
-              {topics && topics.length === 0 && (
+              {topics && topics.length === 0 || !forum.config.filterYear && (
                 <div className='empty-msg'>
                   <div className='alert alert-warning' role='alert'>
                     No se encontraron propuestas.
@@ -338,7 +344,9 @@ class HomePropuestas extends Component {
               )}
             </div>
           </div>
-        </div>
+        </div>}
+        <Jump goTop={this.goTop} />
+        <Footer />
       </div>
     )
   }
