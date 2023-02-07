@@ -80,9 +80,7 @@ exports.findTopics = (opts) => {
     page = 1,
     sort,
     user,
-    anio
   } = opts
-  if (!anio) return
   return queryTopics(opts)
     .populate(topicScopes.ordinary.populate)
     .sort(sortMap[sort])

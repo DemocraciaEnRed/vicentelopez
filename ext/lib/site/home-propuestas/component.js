@@ -118,7 +118,7 @@ class HomePropuestas extends Component {
       page: page.toString(),
       limit: defaultValues.limit.toString(),
 
-      anio: this.state.anio,
+      anio: this.state.anio.length > 0 ? this.state.anio : getYears(this.state.forum.config),
       barrio: this.state.barrio,
       state: this.state.state,
       // tags: this.state.tag,
@@ -328,7 +328,7 @@ class HomePropuestas extends Component {
                   </div>
                 </div>
               )}
-              {topics && topics.map((topic, i) => (
+              {topics && forum.config.filterYear && topics.map((topic, i) => (
                 <TopicCard
                   barrio={topic.attrs && barrios.find(b => b.value == topic.attrs.barrio)}
                   onSubscribe={this.handleSubscribe}
@@ -337,7 +337,7 @@ class HomePropuestas extends Component {
                   forum={forum}
                   topic={topic} />
               ))}
-              {!this.state.noMore && (
+              {!this.state.noMore && forum.config.filterYear && (
                 <div className='more-topics'>
                   <button onClick={this.paginateForward}>Ver Más</button>
                 </div>

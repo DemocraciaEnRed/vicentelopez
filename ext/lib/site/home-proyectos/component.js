@@ -19,7 +19,7 @@ import getYears from '../utils/getYears.js'
 const defaultValues = {
   'votacion': {
     barrio: [],
-    anio: ['2022'],
+    anio: [],
     // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
     // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
     state: ['factible']
@@ -28,14 +28,11 @@ const defaultValues = {
     barrio: [],
     // anio: ['2018', '2019', '2020'],
     // anio: ['2018', '2019', '2020','2021','2022'],
-    anio: ['2018', '2019', '2020','2021','2022'],
+    anio: [],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
-let fiveYearNotCurrent = []
-let fiveYearNextCurrent = []
-let currentYear = []
-let nextYear = []
+
 
 export class HomeProyectos extends Component {
   constructor () {
@@ -164,8 +161,9 @@ export class HomeProyectos extends Component {
   }
 
   fetchTopics = () => {
+    let stage = this.state.forumConfig.seguimientoNormal ? '' : 'seguimiento'  
     let query = {
-      anio: this.state.anio,
+      anio: this.state.anio.length > 0 ? this.state.anio : getYears(this.state.forumConfig, stage),
       barrio: this.state.barrio,
       state: this.state.state,
       sort: this.state.sort
