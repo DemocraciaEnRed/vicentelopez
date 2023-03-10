@@ -119,7 +119,7 @@ export default class Page extends Component {
         <div id='container' className="events-page">
           <div className='ext-herramientas'>
             <div className="text-center">
-              <h3 className="color-black">Calendario de reuniones</h3>
+              <h3 className="color-black">REUNIONES INFORMATIVAS</h3>
               <p>Inscribite en la reunión de tu barrio y presentá propuestas para mejorarlo.</p>
             </div> 
              <div className='action-btns'>
@@ -154,8 +154,8 @@ export default class Page extends Component {
               )
             }
               <div className="text-center">
-              <h3 className="color-primary">Proximos encuentros</h3>
-              {
+              <h3 className="color-primary">Próximos encuentros</h3>
+              { forum &&
                 isLoading 
                 ? <p>Cargando...</p> 
                 : <div>
@@ -174,7 +174,7 @@ export default class Page extends Component {
                       </div> 
                       <div className="event-actions">
                         { event.cupoLleno == 'FALSE' ? 
-                          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
+                          <a href={forum.config.linkFormEncuentro} className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
                           : <div className="btn btn-danger btn-inscripcion" disabled>¡CUPO LLENO!</div>
                         }
                         { event.cupoLleno == 'FALSE' ? 

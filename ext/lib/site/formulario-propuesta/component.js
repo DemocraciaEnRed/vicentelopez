@@ -292,7 +292,7 @@ class FormularioPropuesta extends Component {
       return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
-          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2022</h1>
+          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO </h1>
           <p>¡Acá podes presentar tu propuesta para el presupuesto participativo!</p>
           {//<p>¡Gracias a todos y todas por participar!</p>
           }
@@ -588,7 +588,7 @@ class FormularioPropuesta extends Component {
               </button>
             }
           </div>
-          <p className="more-info add-color">¡Luego de mandarla, podes volver a editarla!</p>
+          {/* <p className="more-info add-color">¡Luego de mandarla, podes volver a editarla!</p> */}
           </section>
           }
         </form>

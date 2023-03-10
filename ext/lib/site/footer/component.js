@@ -39,7 +39,7 @@ class Footer extends Component {
             <span>Secretaría de Gobierno y Legal y Técnica</span>
             <span>D. de Acassuso 1750</span>
             <span>CP1636, Olivos.</span>
-            <span>Tel: 4851-2000 interno 203</span>
+            <span>Tel: 4851-2000 opción 6</span>
             <span>WhatsApp para consultas: +5491162426741</span>
             <span>Mail: participacion.ciudadana@vicentelopez.gov.ar</span>
           </p>
