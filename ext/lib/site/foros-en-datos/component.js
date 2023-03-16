@@ -11,7 +11,7 @@ const ForosEnDatos = () => (
       <figure className='graph-box'>
         <div className='graph-img'>
         <iframe 
-                  src='https://flo.uri.sh/visualisation/12392403/embed' 
+                  src='https://flo.uri.sh/visualisation/13058014/embed' 
                   title='Interactive or visual content' 
                   className='flourish-embed-iframe iframe-bars'  
                   scrolling='no'  

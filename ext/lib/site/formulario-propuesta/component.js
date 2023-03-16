@@ -107,6 +107,7 @@ class FormularioPropuesta extends Component {
       'attrs.telefono': this.state.telefono,
       'attrs.email': this.state.email,
       'attrs.barrio': this.state.barrio,
+      'attrs.título':this.state.titulo,
       'attrs.problema': this.state.problema,
       'attrs.solucion': this.state.solucion,
       'attrs.beneficios': this.state.beneficios,
@@ -588,7 +589,7 @@ class FormularioPropuesta extends Component {
               </button>
             }
           </div>
-          {/* <p className="more-info add-color">¡Luego de mandarla, podes volver a editarla!</p> */}
+          <p className="more-info add-color">"¡Luego de mandarla, podes volver a editarla!  Ingresando a la misma desde la sección de propuestas"</p>
           </section>
           }
         </form>

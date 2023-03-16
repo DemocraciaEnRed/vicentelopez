@@ -258,7 +258,7 @@ export class HomeProyectos extends Component {
           this.state.stage === 'seguimiento'
           ? <BannerListadoTopics
             title='Seguimiento de Proyectos'
-            subtitle='Acá podés encontrar los proyectos elegidos cada año por los vecinos y ver en qué estado de su ejecución se encuentran' />
+            subtitle='Acá podés encontrar los proyectos que fueron ganadores o están aprobados y ver en qué estado de su ejecución se encuentran' />
             : forumConfig.votacionFinalizada
               ? <BannerListadoTopics
                 title={texts['projects-titleVotFin-text']}
