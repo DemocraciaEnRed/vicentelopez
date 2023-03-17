@@ -205,10 +205,10 @@ export default class Page extends Component {
               </tfoot> */}
             </article>
 
-              <GenericBanner title={<div>Nos enorgullece tener un crecimiento en la participacion de los vecinos y vecinas y sobre todo <strong> la formacion de una comunidad mas unida que busca los espacios comunitarios.</strong></div>} />
+              <GenericBanner title={<div>Nos enorgullece tener un crecimiento en la participación de los vecinos e instituciones</div>} />
 
             <article className="seccion-datos" id="pp-evolution">
-              <h3>Evolución dEL pp</h3>
+              <h3>Evolución dEL ppvl</h3>
               <iframe src='https://flo.uri.sh/story/1794394/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-map'  sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
 
               {/* <DonutChart data={ejecucionProyectosData} title="Ejecución % del Presupuesto por área temática por año" /> */}
@@ -225,12 +225,16 @@ export default class Page extends Component {
             <iframe src='https://flo.uri.sh/visualisation/12538255/embed' title='Interactive or visual content' className='flourish-embed-iframe iframe-table' scrolling='no' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
             </article>
 
-             <GenericBanner title="Te invitamos a conocer en mayor profundidad los resultados de años pasados en el presupuesto participativo" /> 
+             <GenericBanner title="Te invitamos a conocer en mayor profundidad los resultados de años anteriores del presupuesto participativo"  /> 
 
             
 
 
             <div className='descargas' id='open-data'>
+             <div className='title-descargas'>
+                <h5>Aquí podés encontrar el historial de diferentes documentos utilizados en años anteriores del presupuesto participativo, los resultados de los mismos y acceder a nuestro portal de datos abiertos</h5>
+
+              </div>
               <div className='btns-historial'>
                 <Link href='http://vicentelopez.opendata.junar.com/dashboards/20165/presupuesto-participativo/' target="_blank">
                   <button className='boton-rounded'>
@@ -244,9 +248,9 @@ export default class Page extends Component {
               </div>
               <div className='btns-descargas'>
                 <div className='descargas-info'>
-                  <h5>Proyectos 2013-2020 por tipo (cantidad e inversión)</h5>
+                  <h5>Proyectos 2013-2023 por tipo (cantidad e inversión)</h5>
                   <p>Datos históricos de la cantidad de proyectos e inversión presupuestaria segmentado por temática.</p>
-                  <span className='descarga-fecha'>Publicado: 18 de Febrero de 2020</span>
+                  <span className='descarga-fecha'>Publicado: Marzo de 2023</span>
                   <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/informes/proyectos-2013-2020_tipo-cantidad-inversion.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms" /><g id="Icons"><g><rect height="2" width="16" x="8" y="23" /><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5" /></g></g></svg>
                   </a>
@@ -301,7 +305,7 @@ export default class Page extends Component {
                 </div>
               </div>
               <div className='btns-historial'>
-                <h6>Para conocer los diferentes documentos de los presupuestos participativos pasados (2012-2019) ingresa a nuestro historial. En el podrás encontrar minutas, boletas de las instancias prescenciales (hasta 2017) y el listado de proyectos.</h6>
+                <h6>Para conocer los diferentes documentos de los presupuestos participativos pasados (2012-2019) ingresa a nuestro historial. En el podrás encontrar minutas, boletas de las instancias presenciales (hasta 2017) y el listado de proyectos.</h6>
                 <Link href='/s/documentos'>
                   <button className='boton-outlined'>
                     Visualizar historial de documentos

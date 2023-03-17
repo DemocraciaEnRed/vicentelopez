@@ -18,7 +18,7 @@ const ForosEnDatos = () => (
                   sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'/>
         </div>
         <figcaption>
-          <p className='caption'>Evolución de ciudadanos (porcentaje de la población de Vicente López) que han participado en el Presupuesto Participativo de Vicente López.</p>
+          <p className='caption'>Evolución de participantes (porcentaje de la población de Vicente López) que han participado en el Presupuesto Participativo de Vicente López.</p>
         </figcaption>
       </figure>
       <div className='row'>
