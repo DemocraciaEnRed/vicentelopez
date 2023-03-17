@@ -34,15 +34,7 @@ class Footer extends Component {
       <div className='container'>
         <div className='contacto-detalles'>
           <h3>CONTACTO</h3>
-          <p>
-            <span>Subsecretaría de Participación Ciudadana</span>
-            <span>Secretaría de Gobierno y Legal y Técnica</span>
-            <span>D. de Acassuso 1750</span>
-            <span>CP1636, Olivos.</span>
-            <span>Tel: 4851-2000 opción 6</span>
-            <span>WhatsApp para consultas: +5491162426741</span>
-            <span>Mail: participacion.ciudadana@vicentelopez.gov.ar</span>
-          </p>
+          <div dangerouslySetInnerHTML={{ __html: texts['footer-info-text'] }} ></div>
         </div>
         <div className='mapa-box'>
           <div>

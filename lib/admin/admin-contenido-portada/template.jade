@@ -226,5 +226,86 @@
                   maxlength=200,
                   validate='url'
                 )
-          
+              label= 'informacion del footer:'
+              input.textArea.form-control(
+                type='textarea'
+                data-name='footer-info-text',
+                
+                validate='required'
+              )
+        .panelExpandible
+          h3.titleShow= 'Datos'
+            span.glyphicon.glyphicon-menu-down.pull-right
+          .showHiden.hiden
+            .contentHiden
+              .row
+                .form-group.col-sm-4
+                  label= 'Ícono 1'
+                  h6= 'Imagen:'
+                  input.form-control(
+                    type='text',
+                    data-name='datos-icono1-imagen',
+                    maxlength=200,
+                    validate='required url'
+                  )
+                  h6= 'Título:'
+                  input.form-control(
+                    type='text',
+                    data-name='datos-icono1-titulo',
+                    maxlength=200,
+                    validate='required'
+                  )
+                  h6= 'Texto:'
+                  input.form-control(
+                    data-name='datos-icono1-text',
+                    type='text',
+                    maxlength=200,
+                    validate='required'
+                  )
+                .form-group.col-sm-4
+                  label= 'Ícono 2'
+                  h6= 'Imagen:'
+                  input.form-control(
+                    type='text',
+                    data-name='datos-icono2-imagen',
+                    maxlength=200,
+                    validate='required url'
+                  )
+                  h6= 'Título:'
+                  input.form-control(
+                    type='text',
+                    data-name='datos-icono2-titulo',
+                    maxlength=200,
+                    validate='required'
+                  )
+                  h6= 'Texto:'
+                  input.form-control(
+                    data-name='datos-icono2-text',
+                    type='text',
+                    maxlength=200,
+                    validate='required'
+                  )
+                .form-group.col-sm-4
+                  label= 'Ícono 3'
+                  h6= 'Imagen:'
+                  input.form-control(
+                    type='text',
+                    data-name='datos-icono3-imagen',
+                    maxlength=200,
+                    validate='required url'
+                  )
+                  h6= 'Título:'
+                  input.form-control(
+                    type='text',
+                    data-name='datos-icono3-titulo',
+                    maxlength=200,
+                    validate='required'
+                  )
+                  h6= 'Texto:'
+                  input.form-control(
+                    data-name='datos-icono3-text',
+                    type='text',
+                    maxlength=200,
+                    validate='required'
+                  )  
         .form-group: button.btn.btn-success.btn-block.btn-lg.button-save= t('settings.save')

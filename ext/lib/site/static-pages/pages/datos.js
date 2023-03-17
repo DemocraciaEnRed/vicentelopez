@@ -8,11 +8,32 @@ import DonutChart from 'ext/lib/site/graphics/donut-chart/component'
 import LineChart from 'ext/lib/site/graphics/line-chart/component'
 import Banner400Proyectos from '../../banner-400-proyectos/component.js'
 import GenericBanner from '../../generic-banner/component.js'
+import textStore from 'lib/stores/text-store'
+
 const distribucionProyectosData = require('./distribucion-proyectos.json')
 const ejecucionProyectosData = require('./ejecucion-proyectos.json')
 
 export default class Page extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      texts: null
+    }
+  }
+  
   componentDidMount() {
+    textStore.findAllDict().then((textsDict) => {
+      this.setState({
+        texts: textsDict
+      })
+    }).catch((err) => {
+      this.state = {
+        texts: {}
+      }
+    }
+    )
+    
     this.goTop()
   }
 
@@ -30,6 +51,8 @@ export default class Page extends Component {
   }
 
   render() {
+    const {texts} = this.state
+
     return (
       <div>
         <section className="banner-static">
@@ -52,135 +75,30 @@ export default class Page extends Component {
           <div className='ext-datos'>
           <article className="seccion-datos">
 
-					<div className="card-deck" >
+					{texts && <div className="card-deck" >
 						<div className="card wow fadeInUp" >
-							<div className="icono tiempo"></div>
-							<p>9 años de<br/>
-							<b>Presupuesto Participativo</b></p>
+							<div className="icono"  style={{backgroundImage: `url(${texts['datos-icono1-imagen']})`}}></div>
+							<p>{texts['datos-icono1-titulo']}<br/>
+							<b>{texts['datos-icono1-text']}</b></p>
 						</div>
 						<div className="card wow fadeInUp" >
-							<div className="icono dinero"></div>
-							<p>Total invertido<br/>
-							<b>$ 360 <br/> millones</b></p>
+							<div className="icono"  style={{backgroundImage: `url(${texts['datos-icono2-imagen']})`}}></div>
+							<p>{texts['datos-icono2-titulo']}<br/>
+							<b>{texts['datos-icono2-text']}</b></p>
 						</div>
 						<div className="card wow fadeInUp">
-							<div className="icono proyectos"></div>
-							<p>Más de 450<br/>
-							<b>proyectos <br/> ejecutados</b></p>
+							<div className="icono"  style={{backgroundImage: `url(${texts['datos-icono3-imagen']})`}}></div>
+							<p>{texts['datos-icono3-titulo']}<br/>
+							<b>{texts['datos-icono3-text']}</b></p>
 						</div>
-					</div>
+					</div>}
           
           </article>
           <div className='boton-group'>
             <button className='boton-round cl-cyan' onClick={this.handleClickScroll.bind(this,'pp-evolution')} data-scroll='pp-evolution'><strong>Evolución del PP</strong></button>
             <button className='boton-round cl-purple' onClick={this.handleClickScroll.bind(this,'open-data')} data-scroll='open-data'><strong>Datos abiertos</strong></button>
           </div>
-            {/* <p className="text">
-              El presupuesto participativo de Vicente López se viene haciendo de manera ininterrumpida desde el 2012. Aquí encontrarás información y datos históricos de todas sus ediciones.
-            </p>
-
-             <article className="seccion-datos">
-              <h3>Evolución del Presupuesto Participativo 2012 - 2022</h3>
-              <figure className="graph-box">
-                <div className="table-scroller">
-                  <table className="tabla-presupuestoparticipativo">
-                    <thead>
-                      <tr>
-                        <th className="sticky-col">Edición</th>
-                        <th>2012 - 2013</th>
-                        <th>2013 - 2014</th>
-                        <th>2014 - 2015</th>
-                        <th>2015 - 2016</th>
-                        <th>2016 - 2017</th>
-                        <th>2017 - 2018</th>
-                        <th>2018 - 2019</th>
-                        <th>2019 - 2020</th>
-                        <th>2021 - 2022</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="sticky-col">Presupuesto Asignado</td>
-                        <td>10 M</td>
-                        <td>15 M</td>
-                        <td>20 M</td>
-                        <td>30 M</td>
-                        <td>45 M</td>
-                        <td>65 M</td>
-                        <td>75 M</td>
-                        <td>110 M</td>
-                        <td>200 M</td>
-                      </tr>
-                      <tr>
-                        <td className="sticky-col">Propuestas Presentadas</td>
-                        <td>86</td>
-                        <td>165</td>
-                        <td>277</td>
-                        <td>465</td>
-                        <td>348</td>
-                        <td>350</td>
-                        <td>524</td>
-                        <td>507</td>
-                        <td>517</td>
-                      </tr>
-                      <tr>
-                        <td className="sticky-col">Proyectos Factibles</td>
-                        <td>65</td>
-                        <td>104</td>
-                        <td>153</td>
-                        <td>152</td>
-                        <td>148</td>
-                        <td>145</td>
-                        <td>198</td>
-                        <td>213</td>
-                        <td>217</td>
-                      </tr>
-                      <tr>
-                        <td className="sticky-col">Proyectos Ganadores</td>
-                        <td>50</td>
-                        <td>69</td>
-                        <td>69</td>
-                        <td>63</td>
-                        <td>81</td>
-                        <td>74</td>
-                        <td>47</td>
-                        <td>66</td>
-                        <td>76</td>
-                      </tr>
-                      <tr>
-                        <td className="sticky-col">Cantidad de Participantes</td>
-                        <td>1.178</td>
-                        <td>6.691</td>
-                        <td>10.068</td>
-                        <td>18.880</td>
-                        <td>26.537</td>
-                        <td>45.010</td>
-                        <td>69.201</td>
-                        <td>78.310</td>
-                        <td>14.149</td>
-                      </tr>
-                      <tr>
-                        <td className="sticky-col">Proporción de Participantes</td>
-                        <td>1 cada 156</td>
-                        <td>1 cada 31</td>
-                        <td>1 cada 20</td>
-                        <td>1 cada 11</td>
-                        <td>1 cada 8</td>
-                        <td>1 cada 5</td>
-                        <td>1 cada 3</td>
-                        <td>1 cada 3</td>
-                        <td>1 cada 15</td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <td colSpan={10}>"Edición 2020- 2021 suspendida por pandemia"</td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-              </figure>
-            </article> */}
+            
 
             <article className="seccion-datos">
               <h3>Evolución de la participación en el pp</h3>
