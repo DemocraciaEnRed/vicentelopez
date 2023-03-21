@@ -34,6 +34,11 @@ ul.admin-menu.nav.nav-pills.nav-stacked(class=forum.privileges.canChangeTopics ?
       a(href=urlBuilder.for('admin.about-us', {forum: forum.name}) data-section='about-us')
         span.glyphicon.glyphicon-question-sign
         =t('admin-sidebar.about-us.title')
+  - if (user.staff)
+    li
+      a(href=urlBuilder.for('admin.data-file', {forum: forum.name}) data-section='data-file')
+        span.glyphicon.glyphicon-question-sign
+        ='escrutinios'
   - if (forum.privileges.canEdit)
     li
       a(href=urlBuilder.for('admin.settings-stage', {forum: forum.name}) data-section='settings-stage')

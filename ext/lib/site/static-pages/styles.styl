@@ -423,8 +423,6 @@
           background-position: center;
         &.proyectos
           background-position: center;
-      b
-        word-spacing: 100vw;
   .boton-rounded
     color: #fff
     background-color: rgb(136,41,130)
@@ -515,6 +513,7 @@
       max-width: 800px
       display: inline-block
       border-right: 8px solid #1791be
+      position: relative
       @media screen and (max-width: 768px)
          width: 100%
       h5
@@ -528,8 +527,12 @@
         font-size: 14px
       .icon-descarga
         display: inline-block
-        float: right
-        margin-top: -5px;
+        position: absolute
+        right: 30px
+        bottom: 8px
+        @media screen and (max-width: 400px)
+          right: 8px
+
         svg
           cursor: pointer
           g, polygon

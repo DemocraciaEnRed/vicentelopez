@@ -1,0 +1,67 @@
+#topics-wrapper
+  .topics-admin
+    .heading
+      h2= 'Escrutinios'
+      .row
+        .col-sm-8
+          .form-messages 
+        .col-sm-4
+          .action.text-right
+            button.btn.btn-info.createSortable="Ordenar"
+            button.btn.btn-danger.cancel-order.hidden="Cancelar"
+            button.btn.btn-success.save-order.hidden="Guardar"
+
+      .template-panel-group 
+        .panel.bs-callout-right.bs-callout-primary.panel-default.col-sm-6.template
+          .panel-heading
+            h4.panel-title
+            .head-action
+              span.glyphicon.glyphicon-sort.icon-sort.hidden     
+          .panel-collapsable
+            .actions.text-right
+              span.glyphicon.glyphicon-edit
+              span.glyphicon.glyphicon-trash
+      .panel-group-data
+      form#editForm.row.form(action=form.action, method='post', role='form', autovalidate, autosubmit)
+        .form-group
+          h4= 'Titulo:'
+          input.form-control(
+            id='title'
+            type='text'
+            name='title'
+            required
+          )
+          br
+        .form-group
+          h4='Desripcion:'
+          textarea.form-control(
+                  id='description'
+                  name='description'
+                  rows=3,
+                  maxlength=400,
+                )
+        .form-group
+          h4= 'Publicado:'
+          input.form-control(
+            id='publishedAt'
+            type='text'
+            name='publishedAt'
+          )
+        .form-group
+          h4= 'Link:'
+          input.form-control(
+            id='link'
+            type='text'
+            name='link'
+            validate='required url'
+          )
+
+        .alert.alert-warning.hidden(
+          role="alert"
+        )
+          span.glyphicon.glyphicon-alert
+          span.sr-only="alert:"
+          span.alertText
+        .form-group.actionsForm
+          button.btn.btn-success.btn-lg= t('settings.save')
+          a.btn.btn-danger.btn-lg= t('common.cancel')

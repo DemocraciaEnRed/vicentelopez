@@ -9,6 +9,8 @@ import LineChart from 'ext/lib/site/graphics/line-chart/component'
 import Banner400Proyectos from '../../banner-400-proyectos/component.js'
 import GenericBanner from '../../generic-banner/component.js'
 import textStore from 'lib/stores/text-store'
+import dataFilesStore from 'lib/stores/data-file-store/data-files-store.js'
+
 
 const distribucionProyectosData = require('./distribucion-proyectos.json')
 const ejecucionProyectosData = require('./ejecucion-proyectos.json')
@@ -18,6 +20,7 @@ export default class Page extends Component {
     super()
 
     this.state = {
+      files: null,
       texts: null
     }
   }
@@ -33,6 +36,13 @@ export default class Page extends Component {
       }
     }
     )
+
+    dataFilesStore
+    .findAll()
+    .then((files) => this.setState({ files }))
+    .catch((err) => {
+      throw err
+    })
     
     this.goTop()
   }
@@ -51,7 +61,7 @@ export default class Page extends Component {
   }
 
   render() {
-    const {texts} = this.state
+    const {files, texts} = this.state
 
     return (
       <div>
@@ -165,7 +175,18 @@ export default class Page extends Component {
 
               </div>
               <div className='btns-descargas'>
-                <div className='descargas-info'>
+              {files && files.map(file =>
+                  <div className='descargas-info' key={file.id}>
+                  <h5>{file.title}</h5>
+                  {file.description && <p>{file.description}</p>}
+                  {file.publishedAt && <span className='descarga-fecha'>Publicado: {file.publishedAt}</span>}
+                  <a href={file.link} className='icon-descarga'>
+                    <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms" /><g id="Icons"><g><rect height="2" width="16" x="8" y="23" /><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5" /></g></g></svg>
+                  </a>
+                </div>
+                  
+                  )}
+                {/* <div className='descargas-info'>
                   <h5>Proyectos 2013-2023 por tipo (cantidad e inversión)</h5>
                   <p>Datos históricos de la cantidad de proyectos e inversión presupuestaria segmentado por temática.</p>
                   <span className='descarga-fecha'>Publicado: Marzo de 2023</span>
@@ -220,7 +241,7 @@ export default class Page extends Component {
                   <a href='https://celeste.blob.core.windows.net/pp-vicentelopez/informes/Escrutinio-2022.xlsx' className='icon-descarga'>
                     <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"><g id="Guides__x26__Forms" /><g id="Icons"><g><rect height="2" width="16" x="8" y="23" /><polygon points="24,13.5 22.586,12.086 17,17.672 17,7 15,7 15,17.672 9.414,12.086 8,13.5 16,21.5" /></g></g></svg>
                   </a>
-                </div>
+                </div> */}
               </div>
               <div className='btns-historial'>
                 <h6>Para conocer los diferentes documentos de los presupuestos participativos pasados (2012-2019) ingresa a nuestro historial. En el podrás encontrar minutas, boletas de las instancias presenciales (hasta 2017) y el listado de proyectos.</h6>
