@@ -1,4 +1,3 @@
-import { prop } from 'component-dom/lib/attributes'
 import React from 'react'
 
 export default function GenericBanner(props) {

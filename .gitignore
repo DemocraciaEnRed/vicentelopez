@@ -25,6 +25,7 @@ public
 tmp
 results
 ssl
+ignore/
 
 config/development.json
 
