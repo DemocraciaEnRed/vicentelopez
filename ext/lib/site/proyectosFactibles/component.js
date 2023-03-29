@@ -88,7 +88,7 @@ export default class Carrusel extends Component {
   }
 
   render () {
-    const { forumConfig, topics, barrios } = this.state
+    const { topics, barrios } = this.state
     return (
       <div className='seccion-proyectos-factibles container-fluid'>
         <div className="fondo-titulo">
