@@ -160,7 +160,7 @@ export default class Page extends Component {
 
             <div className='descargas' id='open-data'>
              <div className='title-descargas'>
-                <h5>Aquí podés encontrar el historial de diferentes documentos utilizados en años anteriores del presupuesto participativo, los resultados de los mismos y acceder a nuestro portal de datos abiertos</h5>
+                <h5>Acá podés encontrar el historial de diferentes documentos utilizados en años anteriores del presupuesto participativo, los resultados de los mismos y acceder a nuestro portal de datos abiertos</h5>
 
               </div>
               <div className='btns-historial'>
