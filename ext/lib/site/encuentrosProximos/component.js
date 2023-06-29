@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import config from 'lib/config'
+import forumStore from 'lib/stores/forum-store/forum-store'
+
 
 export default class EncuentrosProximos extends Component {
    constructor (props) {
@@ -30,7 +32,8 @@ export default class EncuentrosProximos extends Component {
         'fechaDiaLegible',
         'fechaHoraLegible',
         'linkLlamada'
-      ]
+      ],
+      forum:null
     }
   }
 
@@ -43,6 +46,12 @@ export default class EncuentrosProximos extends Component {
         this.extractData(res)
       })
       .catch((err) => console.error(err))
+
+      forumStore.findOneByName('proyectos').then((forum) => {
+        this.setState({ forum })
+    }).catch((err) => { console.error(err) })
+
+
   }
 
   goTop () {
@@ -92,12 +101,12 @@ export default class EncuentrosProximos extends Component {
   }
 
   render () {
-    const { isLoading, availableEvents, currentEvent } = this.state
+    const { isLoading, availableEvents, currentEvent,forum } = this.state
     return (
       <div className='seccion-proximos-encuentros'>
         <div className="text-center">
           <div className="fondo-titulo">
-            <h3 className='subtitle'>ENCUENTROS PRESENCIALES Y VIRTUALES 2022</h3>
+            <h3 className='subtitle'>REUNIONES INFORMATIVAS</h3>
           </div>
         </div>
         <div className="container">
@@ -109,9 +118,9 @@ export default class EncuentrosProximos extends Component {
         </div>
         <div className="row">
           <div className="btn-container">
-            <a className='boton-azul boton-blanco text-center' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform' target="_blank">
+           {forum && <a className='boton-azul boton-blanco text-center' href={forum.config.linkFormEncuentro} target="_blank">
               Quiero participar
-            </a>
+            </a>}
           </div>
         </div>
             {
@@ -144,7 +153,7 @@ export default class EncuentrosProximos extends Component {
                 Ver todos
               </Link>
             </div>
-            {
+            { forum &&
               isLoading
               ? <div>
                   <p>Cargando...</p>
@@ -157,7 +166,7 @@ export default class EncuentrosProximos extends Component {
                     <div className="poppi-left"></div>
                     <div className="poppi-right"></div>
                   </div>
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform" target="_blank">
+                  <a href={forum.config.linkFormEncuentro} target="_blank">
                   <div className="bottom">
                     <h3>{event.barrio}</h3>
                     <h4>{event.fechaDiaLegible}<br/>{event.inicioHora}:{event.inicioMinuto} Hs</h4>

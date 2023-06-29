@@ -79,7 +79,7 @@ exports.findTopics = (opts) => {
     limit = 30,
     page = 1,
     sort,
-    user
+    user,
   } = opts
   return queryTopics(opts)
     .populate(topicScopes.ordinary.populate)

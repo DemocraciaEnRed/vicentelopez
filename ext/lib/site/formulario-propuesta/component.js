@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
+import textStore from 'lib/stores/text-store'
 import Tags from 'lib/admin/admin-topics-form/tag-autocomplete/component'
 import Attrs from 'lib/admin/admin-topics-form/attrs/component'
 import { browserHistory } from 'react-router'
@@ -35,6 +36,7 @@ class FormularioPropuesta extends Component {
       selectedTag: '',
       acceptedTerms: false,
       tag: '',
+      texts: '',
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -47,6 +49,15 @@ class FormularioPropuesta extends Component {
   }
 
   componentWillMount () {
+    textStore.findAllDict().then((textsDict) => {
+      this.setState({
+        texts: textsDict
+      })
+    }).catch((err) => {
+      this.state = {
+        texts: {}
+      }
+    })
     this.getTags()
     if (this.props.params.id) {
       this.setState({ mode: 'edit' })
@@ -96,6 +107,7 @@ class FormularioPropuesta extends Component {
       'attrs.telefono': this.state.telefono,
       'attrs.email': this.state.email,
       'attrs.barrio': this.state.barrio,
+      'attrs.título':this.state.titulo,
       'attrs.problema': this.state.problema,
       'attrs.solucion': this.state.solucion,
       'attrs.beneficios': this.state.beneficios,
@@ -274,15 +286,15 @@ class FormularioPropuesta extends Component {
   }
 
   render () {
-    const { forum } = this.state
+    const { forum, texts } = this.state
 
     if (!forum) return null
     if(forum && forum.config.propuestasAbiertas || (this.state.forum.privileges && this.state.forum.privileges.canChangeTopics)) {
-    return (
+      return (
       <div className='form-propuesta'>
         <div className='propuesta-header'>
-          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO 2022</h1>
-          <p>¡Acá vas a poder subir tu propuesta para el presupuesto participativo!</p>
+          <h1 className='text-center'>PRESUPUESTO PARTICIPATIVO </h1>
+          <p>¡Acá podes presentar tu propuesta para el presupuesto participativo!</p>
           {//<p>¡Gracias a todos y todas por participar!</p>
           }
         </div>
@@ -372,14 +384,15 @@ class FormularioPropuesta extends Component {
             <p className="section-title">Acerca de la propuesta</p>
             </div>
             <div className="upload-info-container">
-              <p className="important">Requisitos para que los proyectos sean factibles:</p>
-              <ul>
+              <p className="important">Requisitos para que las propuestas sean factibles:</p>
+              {texts && <div dangerouslySetInnerHTML={{__html:texts['propuestas-reglamento-text']}}/>}
+              {/* <ul>
                 <li>Serán factibles las propuestas de obras o equipamiento para entidades sin fines de lucro (polideportivos, sociedades de fomento,  centros de jubilados, espacios públicos, escuelas de gestión pública, centros de salud    municipales, etc).</li>
                 <li>Serán factibles campañas o talleres sobre un tema específico cuya ejecución sólo sea durante el 2023.</li>
                 <li>No serán factibles las propuestas que impliquen un gasto corriente (recursos humanos que incrementen la planta municipal).</li>
-                <li>Cada propuesta se debe presentar para un solo barrio. (No se puede presentar una propuesta para todo el Municipio)</li>
+                <li>Cada propuesta se debe presentar para un solo barrio. (No se puede presentar una propuesta para el Municipio)</li>
                 <li>El presupuesto máximo de la propuesta no puede superar los $ 6.000.000.</li>
-              </ul>
+              </ul> */}
               <hr />
             { !this.state.acceptedTerms ?
               <section>
@@ -576,7 +589,7 @@ class FormularioPropuesta extends Component {
               </button>
             }
           </div>
-          <p className="more-info add-color">¡Luego de mandarla, podes volver a editarla!</p>
+          <p className="more-info add-color">"¡Luego de mandarla, podes volver a editarla!  Ingresando a la misma desde la sección de propuestas"</p>
           </section>
           }
         </form>

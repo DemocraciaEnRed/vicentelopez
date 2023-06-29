@@ -85,7 +85,10 @@ export default class Page extends Component {
               </button>
             })}
           </div>
+          <div className='timeline'>
+            <p>* A partir de la edición del 2021 el proceso es 100% digital. Por lo tanto, si querés conocer los proyectos seleccionados te invitamos a acceder a la sección de proyectos. Si querés ver los escrutinios, podés encontrarlos en la sección de datos</p>
 
+          </div>
           <div className='visualizador-wrapper'>
             <div className='navbar-seccion'>
               <button className={`seccion ${this.state.archivo === 'minuta' ? 'active' : ''}`}

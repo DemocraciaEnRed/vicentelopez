@@ -104,7 +104,7 @@ export class TopicCard extends Component {
           </div>
 
           <h1 className='topic-card-title'>
-            {topic.mediaTitle}
+            {topic.attrs.título || topic.mediaTitle}
           </h1>
           <p className='topic-card-description'>
             {createClauses(topic)}

@@ -6,9 +6,12 @@ import topicStore from 'lib/stores/topic-store/topic-store'
 import userConnector from 'lib/site/connectors/user'
 import { findAllTags } from 'lib/middlewares/tag-middlewares/tag-middlewares'
 import TopicCard from './topic-card/component'
+import Footer from 'ext/lib/site/footer/component'
+import Jump from 'ext/lib/site/jump-button/component'
 // import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
 import FilterPropuestas from './filter-propuestas/component'
 import BotonMandarPropuesta from './botonMandarPropuestas'
+import getYears from '../utils/getYears'
 
 const barrios = [
   { 'name': 'Carapachay', 'value': 'carapachay' },
@@ -27,6 +30,7 @@ const states = [
   { 'name': 'Factible', 'value': 'factible' },
   { 'name': 'No factible', 'value': 'no-factible' },
   { 'name': 'Integrado', 'value': 'integrado' },
+
 ]
 
 const anios = ['2018', '2019', '2020', '2021','2022','2023']
@@ -38,11 +42,13 @@ let tags = []
 // config.propuestasTexto
 // Botón manda a: href='/formulario-propuesta'
 
+const factibleStates= ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado', 'factible']
+
 const defaultValues = {
   limit: 20,
   barrio: [],
   anio: ['2023'],
-  //state: ['pendiente', 'factible', 'no-factible', 'integrado'],
+  //state: ['pendiente', 'factible', 'no-factible', 'integrado','preparacion', 'compra', 'ejecucion', 'finalizado'],
   state: [],
   tag: [],
   // 'barrio' o 'newest' o 'popular'
@@ -72,6 +78,10 @@ class HomePropuestas extends Component {
     this.getTags()
   }
 
+  goTop () {
+    window.scrollTo(0,0)
+  }
+
   componentWillMount () {
     if (this.props.location.query.tags)
       defaultValues.tag.push(this.props.location.query.tags)
@@ -83,10 +93,12 @@ class HomePropuestas extends Component {
     // traer forum al state
     forumStore.findOneByName('proyectos')
       .then((forum) => this.setState({ forum }))
+      .then(()=>this.setState({anio:getYears(this.state.forum.config,'votation')}))
+      .then(()=>this.fetchTopics())
       .catch((err) => { throw err })
-
-    // traer topics
-    this.fetchTopics()
+    
+/*     // traer topics
+    this.fetchTopics() */
   }
 
   getTags = () => {
@@ -106,7 +118,7 @@ class HomePropuestas extends Component {
       page: page.toString(),
       limit: defaultValues.limit.toString(),
 
-      anio: this.state.anio,
+      anio: this.state.anio.length > 0 ? this.state.anio : getYears(this.state.forum.config),
       barrio: this.state.barrio,
       state: this.state.state,
       // tags: this.state.tag,
@@ -118,7 +130,7 @@ class HomePropuestas extends Component {
       .filter((k) => query[k] && query[k].length > 0)
       .map((k) => `${k}=${ Array.isArray(query[k]) ?  query[k].join(',') : query[k] }`)
       .join('&')
-
+      
     return window
       .fetch(`/ext/api/topics?${queryString}`, {credentials: 'include'})
       .then((res) => res.json())
@@ -161,7 +173,7 @@ class HomePropuestas extends Component {
     // If the value is not included in the filter array, add it
     if (!this.state[filter].includes(value)) {
       this.setState({
-        [filter]: [...this.state[filter], value]
+        [filter]: value==='factible' ? [...this.state[filter], ...factibleStates] : [...this.state[filter], value]
       }, () => this.fetchTopics())
       // If it's already included and it's the only filter applied, apply default filters
     /* } else if (this.state[filter].length === 1) {
@@ -169,14 +181,14 @@ class HomePropuestas extends Component {
       // If it's already included erase it
     } else {
       this.setState({
-        [filter]: [...this.state[filter]].filter((item) => item !== value)
+        [filter]: value==='factible' ? [...this.state[filter].filter(item=>!factibleStates.includes(item))] : [...this.state[filter]].filter((item) => item !== value)
       }, () => this.fetchTopics())
     }
   }
 
   handleDefaultFilter = (filter, value) => {
     this.setState({
-      [filter]: [value]
+      [filter]: value==='factible' ? factibleStates : [value]
     }, () => this.fetchTopics())
   }
 
@@ -260,6 +272,8 @@ class HomePropuestas extends Component {
     }else if (this.state.tag.includes(option)){
       this.setState({ tag: this.state.tag.filter(i => i != option) })
     }
+
+    this.setState({topics:[]}, ()=>this.fetchTopics())
   }
 
   render () {
@@ -276,6 +290,7 @@ class HomePropuestas extends Component {
           forum && forum.config.propuestasAbiertas ? <BotonMandarPropuesta /> : 
             <header className='banner-proyectos'>
               <h1 className='proyectos-title'>Propuestas</h1>
+              <p>Acá podés encontrar las propuestas correspondientes al Presupuesto Participativo de Vicente López</p>
             </header>
         }
         { forum && forum.config.propuestasTexto &&
@@ -287,14 +302,14 @@ class HomePropuestas extends Component {
           </div>
         </div>
         }
-        <div className='container topics-container'>
+        {forum && <div className='container topics-container'>
 
-          <FilterPropuestas
+          {forum && forum.config.filterYear && <FilterPropuestas
             barrios={barrios}
             barrio={this.state.barrio}
             states={states}
             state={this.state.state}
-            anios={anios}
+            anios={getYears(forum.config)}
             anio={this.state.anio}
             tags={tags}
             tag={this.state.tag}
@@ -302,18 +317,18 @@ class HomePropuestas extends Component {
             handleFilter={this.handleFilter}
             handleDefaultFilter={this.handleDefaultFilter}
             clearFilter={this.clearFilter}
-            handleRemoveBadge={this.handleRemoveBadge} />
+            handleRemoveBadge={this.handleRemoveBadge} />}
 
-          <div className='row'>
+          <div className='row mt-2'>
             <div className='col-md-10 offset-md-1'>
-              {topics && topics.length === 0 && (
+              {topics && topics.length === 0 || !forum.config.filterYear && (
                 <div className='empty-msg'>
                   <div className='alert alert-warning' role='alert'>
                     No se encontraron propuestas.
                   </div>
                 </div>
               )}
-              {topics && topics.map((topic, i) => (
+              {topics && forum.config.filterYear && topics.map((topic, i) => (
                 <TopicCard
                   barrio={topic.attrs && barrios.find(b => b.value == topic.attrs.barrio)}
                   onSubscribe={this.handleSubscribe}
@@ -322,14 +337,16 @@ class HomePropuestas extends Component {
                   forum={forum}
                   topic={topic} />
               ))}
-              {!this.state.noMore && (
+              {!this.state.noMore && forum.config.filterYear && (
                 <div className='more-topics'>
                   <button onClick={this.paginateForward}>Ver Más</button>
                 </div>
               )}
             </div>
           </div>
-        </div>
+        </div>}
+        <Jump goTop={this.goTop} />
+        <Footer />
       </div>
     )
   }

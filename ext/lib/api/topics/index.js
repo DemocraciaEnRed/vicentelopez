@@ -36,7 +36,7 @@ app.get('/topics',
       state: {
         type: 'string',
         format: 'states',
-        default: 'pendiente,factible,no-factible,integrado'
+        default: 'pendiente,factible,no-factible,integrado,preparacion,compra,ejecucion,finalizado'
       },
       barrio: {
         type: 'string',

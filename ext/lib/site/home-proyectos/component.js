@@ -4,6 +4,7 @@ import t from 't-component'
 import config from 'lib/config'
 import forumStore from 'lib/stores/forum-store/forum-store'
 import topicStore from 'lib/stores/topic-store/topic-store'
+import textStore from 'lib/stores/text-store'
 import userConnector from 'lib/site/connectors/user'
 import Footer from 'ext/lib/site/footer/component'
 import Barrios from 'ext/lib/site/barrios/component'
@@ -13,11 +14,12 @@ import Anchor from 'ext/lib/site/anchor'
 import Filter from './filter/component'
 import TopicGrid from './grid/component'
 import BannerListadoTopics from 'ext/lib/site/banner-listado-topics/component'
+import getYears from '../utils/getYears.js'
 
 const defaultValues = {
   'votacion': {
     barrio: [],
-    anio: ['2022'],
+    anio: [],
     // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
     // state: ['preparacion', 'compra', 'ejecucion', 'finalizado']
     state: ['factible']
@@ -26,14 +28,11 @@ const defaultValues = {
     barrio: [],
     // anio: ['2018', '2019', '2020'],
     // anio: ['2018', '2019', '2020','2021','2022'],
-    anio: ['2022'],
+    anio: [],
     state: ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado']
   }
 }
-let fiveYearNotCurrent = []
-let fiveYearNextCurrent = []
-let currentYear = []
-let nextYear = []
+
 
 export class HomeProyectos extends Component {
   constructor () {
@@ -50,83 +49,27 @@ export class HomeProyectos extends Component {
       // puede ser 'seguimiento' o 'votacion'
       stage: 'votacion', //anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
       // stage: 'seguimiento', // anterior 'votación', se modificó para ocultar filtro de proyectos ganadores del 2018.
-      sort: ['barrio']
+      sort: ['barrio'],
+      texts:{}
     }
   }
 
   componentDidMount () {
-    // async function getInfo (){
-    //   await forumStore.findOneByName('proyectos').then((forum) => {
-    //     this.setState({ forumConfig: forum.config })
-    //   })
-
-    //   let initialFilters = {}
-    //   if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
-    //   if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
-
-    //   if (this.state.forumConfig.preVotacion) {
-    //     // pre-votacion seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
-    //     // pre-votacion seccion votacion: muestra, 'factibles' de año de votacion
-    //     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
-    //     initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
-    //   } else if (this.state.forumConfig.votacionFinalizada) {
-    //     // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
-    //     // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
-    //     initialFilters.anio = '2018,2019,2020,2021,2022'
-    //     initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'preparacion,compra,ejecucion,finalizado'
-    //   } else {
-    //     // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
-    //     initialFilters.anio = '2018,2019,2020,2021,2022,2023'
-    //     initialFilters.state = 'preparacion,compra,ejecucion,finalizado'
-    //   }
-    //   initialFilters.sort = 'barrio'
-    //   const queryString = Object.keys(initialFilters).map((k) => `&${k}=${initialFilters[k]}`).join('')
-    //   window.fetch(`/ext/api/topics?forumName=proyectos${queryString}&limit=100`, {
-    //     credentials: 'include'
-    //   })
-    //   // window.fetch(`/ext/api/topics?forumName=proyectos${queryString}`, {
-    //   //   credentials: 'include'
-    //   // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     if (this.state.forumConfig.preVotacion) {
-    //       // pre-votacion seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
-    //       // pre-votacion seccion votacion: muestra, 'factibles' de año de votacion
-    //       this.setState({
-    //         state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
-    //         anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023'] })
-    //     } else if (this.state.forumConfig.votacionFinalizada) {
-    //       // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
-    //       // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
-    //       this.setState({
-    //         state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-    //         anio: ['2018', '2019', '2020', '2021', '2022'] })
-    //     } else {
-    //       // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
-    //       this.setState({
-    //         state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-    //         anio: ['2018', '2019', '2020', '2021', '2022', '2023'] })
-    //     }
-    //     this.setState({
-    //       barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
-    //       stage: !this.state.forumConfig.preVotacion ? 'seguimiento' : this.props.location.query.stage === 'seguimiento' ? 'seguimiento' : 'votacion',
-    //       topics: res.results.topics,
-    //       page: res.pagination.page,
-    //       noMore: res.results.topics.length < 20
-    //     }, () => {
-    //       this.firstSeeMore()
-    //     })
-    //   })
-    //   .catch((err) => console.error(err))
-    // }
-
-    // getInfo()
+    textStore.findAllDict().then((textsDict) => {
+      this.setState({
+        texts: textsDict
+      })
+    }).catch((err) => {
+      this.state = {
+        texts: {}
+      }
+    })
     let initialFilters = {}
     forumStore.findOneByName('proyectos')
-      .then((forum) => {
-        this.setState({ forumConfig: forum.config })
-      })
-      .then(() => {
+    .then((forum) => {
+      this.setState({ forumConfig: forum.config })
+    })
+    .then(() => {
         if (this.props.location.query.barrio) initialFilters.barrio = this.props.location.query.barrio
         if (this.props.location.query.tag) initialFilters.tags = this.props.location.query.tag
 
@@ -134,15 +77,15 @@ export class HomeProyectos extends Component {
           // pre-votacion seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
           // pre-votacion seccion votacion: muestra, 'factibles' de año de votacion
           initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'no-ganador,preparacion,compra,ejecucion,finalizado' : 'factible'
-          initialFilters.anio = this.props.location.query.stage === 'seguimiento' ? '2018,2019,2020,2021,2022' : '2023'
+          initialFilters.anio = getYears( this.state.forumConfig, 'votation')[0]
         } else if (this.state.forumConfig.votacionFinalizada) {
           // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
           // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
-          initialFilters.anio = '2023'
-          initialFilters.state = this.props.location.query.stage === 'seguimiento' ? 'preparacion,compra,ejecucion,finalizado' : 'no-ganador,preparacion,compra,ejecucion,finalizado'
+          initialFilters.anio = getYears( this.state.forumConfig, 'votation')[0]
+          initialFilters.state = 'preparacion,compra,ejecucion,finalizado'
         } else {
           // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
-          initialFilters.anio = '2018,2019,2020,2021,2022,2023'
+          initialFilters.anio = this.state.forumConfig.filterYear
           initialFilters.state = 'preparacion,compra,ejecucion,finalizado'
         }
         initialFilters.sort = 'barrio'
@@ -160,18 +103,19 @@ export class HomeProyectos extends Component {
             // pre-votacion seccion votacion: muestra, 'factibles' de año de votacion
             this.setState({
               state: this.props.location.query.stage === 'seguimiento' ? ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
-              anio: this.props.location.query.stage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023'] })
+              anio: getYears( this.state.forumConfig, 'votation')
+            })
           } else if (this.state.forumConfig.votacionFinalizada) {
             // votacionFinalizada seccion seguimiento: muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de votaciones pasadas
             // votacionFinalizada seccion ganadores: muestra, 'no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado' de año de votacion
             this.setState({
-              state: this.props.location.query.stage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'],
-              anio: ['2023'] })
+              state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
+              anio: getYears( this.state.forumConfig, 'votation') })
           } else {
             // seguimientoNormal muestra, 'preparacion', 'compra', 'ejecucion', 'finalizado' de todos los años
             this.setState({
               state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
-              anio: ['2018', '2019', '2020', '2021', '2022', '2023'] })
+              anio: getYears( this.state.forumConfig, ) })
           }
           this.setState({
             barrio: initialFilters.barrio ? [ initialFilters.barrio ] : [],
@@ -217,8 +161,9 @@ export class HomeProyectos extends Component {
   }
 
   fetchTopics = () => {
+    let stage = this.state.forumConfig.seguimientoNormal ? '' : 'seguimiento'  
     let query = {
-      anio: this.state.anio,
+      anio: this.state.anio.length > 0 ? this.state.anio : getYears(this.state.forumConfig, stage),
       barrio: this.state.barrio,
       state: this.state.state,
       sort: this.state.sort
@@ -288,12 +233,12 @@ export class HomeProyectos extends Component {
     if (this.state.forumConfig.preVotacion) {
       this.setState({
         state: newStage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['factible'],
-        anio: newStage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023']
+        anio: newStage === 'seguimiento' ? getYears( this.state.forumConfig, 'seguimiento') : getYears( this.state.forumConfig, 'votation')
       })
     } else if (this.state.forumConfig.votacionFinalizada) {
       this.setState({
-        state: newStage === 'seguimiento' ? ['preparacion', 'compra', 'ejecucion', 'finalizado'] : ['no-ganador', 'preparacion', 'compra', 'ejecucion', 'finalizado'],
-        anio: newStage === 'seguimiento' ? ['2018', '2019', '2020', '2021', '2022'] : ['2023']
+        state: ['preparacion', 'compra', 'ejecucion', 'finalizado'],
+        anio: newStage === 'seguimiento' ? getYears( this.state.forumConfig, 'seguimiento') : getYears( this.state.forumConfig, 'votation')
       })
     }
     this.setState(() => {
@@ -305,7 +250,7 @@ export class HomeProyectos extends Component {
   }
 
   render () {
-    let { topics, forumConfig } = this.state
+    let { topics, forumConfig,texts } = this.state
     if (!forumConfig) return null
     return (
       <div id='forum-home'>
@@ -313,19 +258,19 @@ export class HomeProyectos extends Component {
           this.state.stage === 'seguimiento'
           ? <BannerListadoTopics
             title='Seguimiento de Proyectos'
-            subtitle='Acá podés encontrar los proyectos que fueron <b>ganadores</b> o <b>están aprobados</b> y ver en qué estado de su ejecución se encuentran.' />
+            subtitle='Acá podés encontrar los proyectos que fueron ganadores o están aprobados y ver en qué estado de su ejecución se encuentran' />
             : forumConfig.votacionFinalizada
               ? <BannerListadoTopics
-                title='Proyectos Ganadores 2023'
-                subtitle='Acá podés encontrar los proyectos a ejecutar en 2023' />
+                title={texts['projects-titleVotFin-text']}
+                subtitle={texts['projects-subtitleVotFin-text']} />
               : <BannerListadoTopics
                 title='Proyectos para votar'
                 subtitle='Acá podés encontrar los proyectos que van a participar de la votación de PP' />
         }
 
-        <Anchor id='containerr'>
-          <section className='grid-container'>
-            {forumConfig && <Filter
+         <Anchor id='containerr'>
+          {forumConfig.filterYear && <section className='grid-container'>
+            {forumConfig &&  <Filter
               handleFilter={this.handleFilter}
               handleDefaultFilter={this.handleDefaultFilter}
               anio={this.state.anio}
@@ -335,15 +280,18 @@ export class HomeProyectos extends Component {
               stage={this.state.stage}
               clearFilter={this.clearFilter}
               openVotation={forumConfig.preVotacion || forumConfig.votacionFinalizada}
-              votacionFinalizada={forumConfig.votacionFinalizada} />}
+              votacionFinalizada={forumConfig.votacionFinalizada}
+              filterYear={forumConfig.seguimientoNormal ?  getYears( this.state.forumConfig ) :getYears( this.state.forumConfig, 'seguimiento' )} />}
             <TopicGrid topics={topics} />
           </section>
+            }
           <div className='paginacion-container'>
-            {this.state.noMore
+            {!forumConfig.filterYear && <span className='mt-3 alert alert-warning'>No hay proyectos para mostrar</span> }
+            {forumConfig.filterYear && (this.state.noMore
               ? <span>No hay más proyectos que coincidan con la búsqueda</span>
               : <button className='boton-azul btn' onClick={this.seeMore}>
                 Ver más
-              </button>
+              </button>)
             }
           </div>
         </Anchor>

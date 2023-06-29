@@ -134,8 +134,9 @@
       font-weight: bold
 
   .estado
-    position: absolute
-    right: 0
+    position: relative;
+    right: -35;
+    float: right;
     width: 130px;
     text-align: center;
     padding: 5px 0;
@@ -144,7 +145,7 @@
     &.pendiente
       color: #024057
       background-color: #ffdf8b
-    &.factible
+    &.factible, &.finalizado, &.preparacion, &.compra, &.ejecucion, &.no-ganador
       color: #356905
       background-color: #a4f5a7
     &.integrado

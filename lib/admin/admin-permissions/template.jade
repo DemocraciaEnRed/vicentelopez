@@ -2,6 +2,9 @@
   .loader.view-loader
   h2= t('admin-permissions.roles.title')
   .admin-permissions-lists
+  - if (user.staff)
+    a.btn.btn-primary.btn-download
+      p='Descargar base de datos de usuarios registrados'
   h2= t('admin-permissions.visibility.title')
   each visibility in visibilities
     .radio

@@ -21,7 +21,7 @@ const states = [
   { 'name': 'No ganador', 'value': 'no-ganador' },
 ]
 
-const anios = ['2018', '2019','2020','2021', '2022']
+const anios = ['2018', '2019','2020','2021', '2022','2023']
 
 export default class Filter extends Component {
   constructor (props) {
@@ -187,7 +187,7 @@ export default class Filter extends Component {
               {this.state.activeDropdown === 'anio' &&
               <div className='dropdown-options'>
                 <div className='options-container'>
-                  {anios.map((a, i) => (
+                  {this.props.filterYear.map((a, i) => (
                     <label className='option-label' key={i}>
                       <input
                         type='checkbox'

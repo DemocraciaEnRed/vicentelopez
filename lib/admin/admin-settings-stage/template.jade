@@ -2,8 +2,6 @@
   .topics-admin
     .password-settings
       .heading
-        .circle
-          i.icon-lock
         h2= 'Configuraciones'
       form.form(action=form.action, method='post', role='form', autovalidate, autosubmit)
         ul.form-messages
@@ -25,8 +23,27 @@
                   type='text',
                   data-name='propuestasTexto'
                 )
+              .form-group
+                label.switch= 'Mostrar información sobre encuentros'
+                  input.form(
+                    type='checkbox',
+                    data-name='mostrarInfoEncuentros',
+                    data-type='descubrible',
+                    data-link='linkMetting',
+                    id='checkboxMeeting',
+                  )
+                  .slider.round
+              .form-group.linkMetting
+                label= 'Link de formulario para encuentros'
+                input.form-control.form(
+                  type='text',
+                  data-name='linkFormEncuentro',
+                  data-type='ocultable',
+                  validate='url',
+                )
+                
             .col-sm-6
-              h5="votación"
+              h5="Votación"
               .form-group.state-votation.row
                 .col-sm-4
                   label= 'Pre votación'
@@ -42,16 +59,29 @@
                       data-name="votacionFinalizada",
                       id='postVot',
                     )
-                .col-sm-4    
+                .col-sm-4.last
                   label= 'seguimiento normal'
                     input.form.pseudo-radio(
                       type='checkbox',
                       data-name="seguimientoNormal",
                       id='finishVot',
                     )
-                  
+              .form-group.hiden
+                label= 'Filtros de años'
+                input.form-control.form(
+                  type='text',
+                  data-name='filterYear',
+                )
               .form-group
-                label.switch= 'Mostrar puntos de votación'
+                label= 'Filtros de años'
+                .combobox
+                  .comboboxChips
+                    input.form-control.form(
+                     type='number',
+                     max='9999'
+                      )
+              .form-group
+                label.switch= 'Mostrar sección Info votación'
                   input.form(
                     type='checkbox',
                     data-name='mostrarPuntosVotacion',
@@ -64,7 +94,9 @@
                   input.form(
                     type='checkbox',
                     data-name='mostrarLinkVotaciones',
-                    id='checkboxVot'
+                    data-type='descubrible',
+                    data-link='linkVotation',
+                    id='checkboxVot',
                   )
                   .slider.round
               .form-group.linkVotation
@@ -72,7 +104,7 @@
                 input.form-control.form(
                   type='text',
                   data-name='linkVotaciones',
-                  validate='url'
+                  validate='url',
                 )
           .row  
             .col-sm-6

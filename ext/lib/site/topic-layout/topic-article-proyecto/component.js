@@ -154,7 +154,7 @@ class TopicArticle extends Component {
 
     const socialLinksUrl = window.location.origin + topic.url
     const twitterText = this.twitText()
-
+    
     return (
       <div className='topic-article-wrapper'>
         {

@@ -117,10 +117,16 @@ export default ({ topic, forum }) => {
       <div className='topic-card-info'>
         <div className='topic-card-body'>
           <h4 className='topic-card-title'>
-            {topic.mediaTitle.length > 70
+          {topic.mediaTitle.length > 70
               ? topic.mediaTitle.substring(0, 70).concat('...')
               : topic.mediaTitle
             }
+            {/* {topic.attrs.título ? (topic.attrs.título.length > 70
+              ? topic.attrs.título.substring(0, 70).concat('...')
+              : topic.attrs.título) : (topic.mediaTitle.length > 70
+              ? topic.mediaTitle.substring(0, 70).concat('...')
+              : topic.mediaTitle)
+            } */}
           </h4>
           <h5 className='topic-card-forum'>
             {barrios.find((barrio) => barrio.name === topic.attrs.barrio).title}

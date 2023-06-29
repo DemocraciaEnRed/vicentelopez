@@ -6,6 +6,7 @@ import {Link} from 'react-router'
 import PuntosDeVotacion from '../assets/puntos-de-votacion'
 import config from 'lib/config'
 import makeAsyncScript from 'react-async-script'
+import forumStore from 'lib/stores/forum-store/forum-store'
 
 export default class Page extends Component {
   constructor (props) {
@@ -35,7 +36,8 @@ export default class Page extends Component {
         'fechaDiaLegible',
         'fechaHoraLegible',
         'linkLlamada'
-      ]
+      ],
+      forum:null
     }
   }
 
@@ -47,6 +49,10 @@ export default class Page extends Component {
         this.extractData(res)
       })
       .catch((err) => console.error(err))
+
+      forumStore.findOneByName('proyectos').then((forum) => {
+          this.setState({ forum })
+      }).catch((err) => { console.error(err) })
   }
 
   goTop () {
@@ -99,28 +105,28 @@ export default class Page extends Component {
   }
 
   render () {
-    const { events, isLoading, availableEvents, availableEventsId, unavailableEvents, currentEvent } = this.state
+    const { events, isLoading, availableEvents, availableEventsId, unavailableEvents, currentEvent,forum } = this.state
     return (
       <div>
         <section className="banner-static">
           <div className="banner"></div>
           <div className='contenedor'>
             <div className='fondo-titulo'>
-              <h1>Encuentros 2022</h1>
+              <h1>Encuentros</h1>
             </div>
           </div>
         </section>
         <div id='container' className="events-page">
           <div className='ext-herramientas'>
             <div className="text-center">
-              <h3 className="color-black">Calendario de reuniones</h3>
+              <h3 className="color-black">REUNIONES INFORMATIVAS</h3>
               <p>Inscribite en la reunión de tu barrio y presentá propuestas para mejorarlo.</p>
             </div> 
              <div className='action-btns'>
-              {
+              {forum &&
                 <div className='btns-descargas'>
-                  <a className='boton-azul' href='https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform' target="_blank">
-                      Quiero participar
+                  <a className='boton-azul' href={forum.config.linkFormEncuentro} target="_blank">
+                      Quiero participar 
                   </a>
                 </div>
               }
@@ -148,8 +154,8 @@ export default class Page extends Component {
               )
             }
               <div className="text-center">
-              <h3 className="color-primary">Proximos encuentros</h3>
-              {
+              <h3 className="color-primary">Próximos encuentros</h3>
+              { forum &&
                 isLoading 
                 ? <p>Cargando...</p> 
                 : <div>
@@ -168,7 +174,7 @@ export default class Page extends Component {
                       </div> 
                       <div className="event-actions">
                         { event.cupoLleno == 'FALSE' ? 
-                          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwI-HQ7dRweIRAG13PzqHorJ4TFookYqbV4RaslmPmM2ZodQ/viewform" className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
+                          <a href={forum.config.linkFormEncuentro} className="btn btn-primary btn-inscripcion" target="_blank" >Inscribite!</a>
                           : <div className="btn btn-danger btn-inscripcion" disabled>¡CUPO LLENO!</div>
                         }
                         { event.cupoLleno == 'FALSE' ? 
